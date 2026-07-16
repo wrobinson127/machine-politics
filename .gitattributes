@@ -1,0 +1,6 @@
+# Normalize line endings; this repo builds on Windows and deploys on Linux CI
+* text=auto eol=lf
+*.gz binary
+*.png binary
+*.ico binary
+*.woff2 binary

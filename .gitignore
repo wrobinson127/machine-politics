@@ -1,0 +1,26 @@
+# Local-only working areas (never tracked; retrofitting gitignore after tracking is the known trap)
+/.scratch/
+/board/
+/DESIGN.md
+/docs/reviews/
+
+# Raw source data (only the committed extract under data/source/ is tracked)
+*.csv
+!data/source/ga_voting_extract.csv.gz
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Node / tooling caches (if ever introduced)
+node_modules/
+.playwright/
+test-results/
+
+# OS noise
+Thumbs.db
+.DS_Store
