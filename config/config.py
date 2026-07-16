@@ -67,12 +67,13 @@ DOCTRINE_ABSENCE_PHRASE = (
 # Vote values as they appear in the derived votes.json
 # ---------------------------------------------------------------------------
 
+# Exactly the domain the UN data dictionary defines; verified against all
+# 947,434 rows of the source dataset in Phase 0.
 VOTE_VALUES = {
     "Y": "Yes",
     "N": "No",
     "A": "Abstain",
-    "X": "Non-voting",  # present but did not vote, per UN dataset conventions
-    "-": "Not a member / not present",
+    "X": "Non-voting",
 }
 
 # The three LAWS resolutions tracked in v1, with expected plenary tallies
