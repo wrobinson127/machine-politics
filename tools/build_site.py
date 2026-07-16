@@ -140,8 +140,15 @@ def load_pages():
 def _md_inline(text):
     text = esc(text)
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
-    text = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', text)
-    return text
+
+    def link(m):
+        label, url = m.group(1), m.group(2)
+        # http(s) and relative paths only; anything else stays plain text
+        if re.match(r"^(https?://|[A-Za-z0-9_./#-]+$)", url) and not url.lower().startswith("javascript"):
+            return f'<a href="{url}">{label}</a>'
+        return label
+
+    return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, text)
 
 
 def md_to_html(md):

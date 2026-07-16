@@ -18,4 +18,4 @@ $0 infrastructure. Static pages, no tracking, no ads, no accounts. The coding is
 
 ## Contact and corrections
 
-If you find an error, start at the [corrections page](corrections.html); it explains the policy. Report it by opening an issue in the repository or writing to the contact address there.
+If you find an error, start at the [corrections page](corrections.html); it explains the policy. Report it by opening an issue in the repository. <!-- FLAG: Walker decides whether to add a public contact address here and supplies it if so. -->

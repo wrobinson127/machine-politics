@@ -29,6 +29,12 @@ def test_md_escapes_html_and_strips_comments():
     assert "FLAG" not in html_out
 
 
+def test_md_rejects_unsafe_link_schemes():
+    html_out = bs.md_to_html("A [bad](javascript:alert(1)) and a [good](about.html) link.")
+    assert "javascript" not in html_out
+    assert '<a href="about.html">good</a>' in html_out
+
+
 def test_unapproved_page_falls_back_to_shell():
     pages = {"about": {"meta": {"approved": False, "title": "About"}, "body": "Secret draft prose."}}
     manifest = {"entries": []}

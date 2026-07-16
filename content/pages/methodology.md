@@ -48,7 +48,7 @@ Walker Robinson is the analyst of record. Tooling drafts, checks, and formats. I
 
 ## Corrections
 
-Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice, the only red on this site. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository or use the contact route on the [about page](about.html).
+Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice, the only red on this site. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository. The [about page](about.html) says who runs this.
 
 ## Related work
 
