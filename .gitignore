@@ -7,6 +7,8 @@
 # Raw source data (only the committed extract under data/source/ is tracked)
 *.csv
 !data/source/ga_voting_extract.csv.gz
+# Test fixtures are real-sample cuts, small and intentionally committed
+!tools/tests/fixtures/*.csv
 
 # Python
 venv/
