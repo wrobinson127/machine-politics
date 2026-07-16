@@ -15,6 +15,7 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: python -m pytest tools/tests -q
+      - run: python tools/validate_content.py
       - name: Build site (when the build entrypoint exists)
         run: |
           if [ -f tools/build_site.py ]; then

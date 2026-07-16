@@ -1,0 +1,121 @@
+# Machine Politics position-coding rubric.
+# Drafted by tooling, awaiting analyst review. Nothing here renders on the
+# public site until approved: true. The analyst of record is Walker Robinson.
+approved: false
+version: 0.1-draft
+updated: 2026-07-16
+
+axis_a:
+  name: Instrument preference
+  question: >
+    What kind of international instrument, if any, does this state support
+    for autonomous weapons systems?
+  rules: >
+    Categories are mutually exclusive at a dated point in time. A state holds
+    exactly one coding on a given date. When the record supports two readings,
+    the coding is AMBIG, and the evidence shows both readings. AMBIG is a
+    finding about the record, not a coding failure.
+  categories:
+    LBI-BAN:
+      label: Binding instrument with prohibitions
+      description: >
+        The state supports a legally binding international instrument that
+        includes prohibitions. This covers both a full ban and the two-tier
+        approach: prohibit some systems, regulate the rest.
+    LBI-OPEN:
+      label: Binding instrument, form open
+      description: >
+        The state supports negotiating a legally binding instrument but has
+        not committed to prohibitions. The form of the instrument stays open
+        in its statements.
+    REG-SOFT:
+      label: New non-binding measures
+      description: >
+        The state supports new international measures that are not legally
+        binding: political declarations, codes of conduct, or guidelines.
+    CCW-ONLY:
+      label: CCW process only
+      description: >
+        The state supports continuing the consensus process in the Convention
+        on Certain Conventional Weapons and its Group of Governmental Experts,
+        without a stated position on what that process should produce.
+    OPPOSE:
+      label: Opposes new instruments
+      description: >
+        The state opposes new international instruments on autonomous weapons.
+        Its stated view is that existing international humanitarian law
+        suffices.
+    AMBIG:
+      label: Ambiguous or evolving
+      description: >
+        The record supports more than one reading, or the position is moving.
+        A first-class category. The evidence entries show the tension rather
+        than hiding it.
+    NONE:
+      label: No substantive position on record
+      description: >
+        This project reviewed the record and found no substantive stated
+        position. This is a coverage finding about the record, not a claim
+        that the state holds no view.
+
+axis_b:
+  name: Confidence
+  rules: >
+    Confidence describes how directly the evidence supports the coding. It
+    modulates visual saturation and a dotted-underline convention on the
+    site. It never changes the category hue.
+  tiers:
+    EXPLICIT: >
+      The state says it directly, in an official statement or document, in
+      words a careful reader cannot mistake.
+    INFERRED: >
+      The coding rests on interpretation: voting behavior, sponsorship,
+      alignment statements, or untranslated sources described rather than
+      quoted.
+    AMBIGUOUS: >
+      The record points in more than one direction and the coding marks the
+      best-supported reading of an unclear record.
+
+shift_event:
+  description: >
+    A shift event records a state moving from one Axis A category to another
+    on a dated record. Shift events are first-class data. Each one carries
+    the evidence that dates the move.
+  fields:
+    state: ISO 3166-1 alpha-3 key
+    date: date of the evidencing record, YYYY-MM-DD
+    from: Axis A category before the move
+    to: Axis A category after the move
+    evidence: list of evidence entries, each resolving to the source registry
+
+evidence_entry:
+  description: >
+    Every coding and every shift event traces to quoted, dated, linked
+    primary sources. These fields are validator-enforced.
+  fields:
+    source: id in content/sources.yaml
+    quote: verbatim, 25 words maximum, only when a citable text exists
+    date: document date, YYYY-MM-DD
+    url: direct link to the document
+    lang: source language code
+    translation: official, unofficial, or none
+    confidence: EXPLICIT, INFERRED, or AMBIGUOUS
+  rules: >
+    A source with no translation cannot yield an English quote. The entry
+    describes and links the document instead, and the coding it supports is
+    INFERRED at best.
+
+worked_examples:
+  - state: USA
+    why: >
+      An explicit-statement case with a recorded vote arc: Yes on 78/241 and
+      79/62, No on 80/57. Doctrine on record since 2012.
+  - state: AUT
+    why: >
+      The sponsor archetype. Lead sponsor of all three resolutions, explicit
+      support for a binding instrument with prohibitions, stable trajectory.
+  - state: CHN
+    why: >
+      The hard case. Stated support for a ban on use next to a narrow
+      definition of the systems covered, plus abstentions on all three
+      resolutions. Demonstrates honest AMBIG handling.

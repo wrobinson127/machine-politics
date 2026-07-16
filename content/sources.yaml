@@ -1,0 +1,3 @@
+# Canonical registry of every document cited anywhere in the content layer.
+# Every evidence entry's `source` field must resolve to an id here.
+sources: []
