@@ -16,6 +16,7 @@ import argparse
 import gzip
 import html
 import json
+import re
 import shutil
 import sys
 from datetime import date
@@ -117,6 +118,71 @@ def load_content():
         for path in sorted(config.STATES_DIR.glob("*.yaml")):
             states[path.stem] = load_yaml(path)
     return rubric, sources, states
+
+
+def parse_front_matter(text):
+    m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n(.*)$", text, re.S)
+    if not m:
+        return {}, text
+    return yaml.safe_load(m.group(1)) or {}, m.group(2)
+
+
+def load_pages():
+    pages = {}
+    pages_dir = config.CONTENT_DIR / "pages"
+    if pages_dir.exists():
+        for path in sorted(pages_dir.glob("*.md")):
+            meta, body = parse_front_matter(path.read_text(encoding="utf-8"))
+            pages[path.stem] = {"meta": meta, "body": body}
+    return pages
+
+
+def _md_inline(text):
+    text = esc(text)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', text)
+    return text
+
+
+def md_to_html(md):
+    """Deliberately small markdown subset: h2/h3, paragraphs, bold, links,
+    flat lists. Prose pages need nothing more, and no dependency."""
+    md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
+    out = []
+    for block in re.split(r"\n\s*\n", md.strip()):
+        lines = block.strip().splitlines()
+        if block.startswith("### "):
+            out.append(f"<h3>{_md_inline(block[4:].strip())}</h3>")
+        elif block.startswith("## "):
+            out.append(f"<h2>{_md_inline(block[3:].strip())}</h2>")
+        elif all(ln.lstrip().startswith("- ") for ln in lines):
+            items = "".join(f"<li>{_md_inline(ln.lstrip()[2:])}</li>" for ln in lines)
+            out.append(f"<ul>{items}</ul>")
+        else:
+            out.append(f"<p>{_md_inline(' '.join(ln.strip() for ln in lines))}</p>")
+    return "\n".join(out)
+
+
+def prose_page(key, pages, fallback_lines, preview, manifest):
+    """A prose page renders only when approved (invariant 1 covers analyst
+    sentences); otherwise the factual shell stands in."""
+    entry = pages.get(key)
+    title = (entry or {}).get("meta", {}).get("title", key.capitalize())
+    if entry:
+        approved = is_approved(entry["meta"])
+        manifest["entries"].append(
+            {"state": None, "kind": f"page:{key}", "approved": approved,
+             "rendered": bool(preview or approved)}
+        )
+        if preview or approved:
+            chip = (
+                '<span class="draft-chip">DRAFT</span>'
+                if preview and not approved
+                else ""
+            )
+            body = f"<h1>{esc(title)}{chip}</h1>\n" + md_to_html(entry["body"])
+            return page(title, body, current=f"{key}.html", preview=preview)
+    return shell_page(title, f"{key}.html", fallback_lines, preview)
 
 
 def is_approved(entry):
@@ -870,23 +936,25 @@ def build(out_dir, preview=False):
         votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
     )
     (out / "rubric.html").write_text(rubric_page(rubric, preview), encoding="utf-8", newline="\n")
+    pages = load_pages()
     (out / "methodology.html").write_text(
-        shell_page(
-            "Methodology", "methodology.html",
+        prose_page(
+            "methodology", pages,
             [
-                "The full methodology write-up lands with the prose pass and "
-                "publishes after analyst approval.",
+                "The full methodology write-up publishes after analyst approval.",
                 "Until then: every coding on this site traces to a quoted, dated, "
                 "linked primary source, and nothing renders without the analyst "
-                "of record approving it.",
+                "of record approving it. The site takes no position on whether "
+                "autonomous weapons should be banned or regulated. It records "
+                "who says what.",
             ],
-            preview,
+            preview, manifest,
         ),
         encoding="utf-8", newline="\n",
     )
     (out / "about.html").write_text(
-        shell_page(
-            "About", "about.html",
+        prose_page(
+            "about", pages,
             [
                 "Machine Politics records where every country stands on autonomous "
                 "weapons: recorded votes, official statements, and national policy, "
@@ -894,18 +962,18 @@ def build(out_dir, preview=False):
                 "The site takes no position on whether autonomous weapons should be "
                 "banned or regulated. It records who says what.",
             ],
-            preview,
+            preview, manifest,
         ),
         encoding="utf-8", newline="\n",
     )
     (out / "corrections.html").write_text(
-        shell_page(
-            "Corrections", "corrections.html",
+        prose_page(
+            "corrections", pages,
             [
                 "The corrections policy publishes with the methodology. Data-"
                 "integrity notices, and only they, render in red on this site.",
             ],
-            preview,
+            preview, manifest,
         ),
         encoding="utf-8", newline="\n",
     )

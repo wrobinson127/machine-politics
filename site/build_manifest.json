@@ -2,6 +2,24 @@
  "entries": [
   {
    "approved": false,
+   "kind": "page:methodology",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "page:about",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "page:corrections",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
    "kind": "position_codings",
    "rendered": false,
    "state": "AUT"

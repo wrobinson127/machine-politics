@@ -315,6 +315,24 @@ def check_state_file(errors, path, source_ids, vote_states):
     scan_prohibited_claims(errors, where, data)
 
 
+def check_page_file(errors, path):
+    where = f"pages/{path.name}"
+    text = path.read_text(encoding="utf-8")
+    m = re.match(r"^---\r?\n(.*?)\r?\n---\r?\n(.*)$", text, re.S)
+    if not m:
+        errors.add(where, "prose page needs YAML front matter with approved and title")
+        return
+    meta = yaml.safe_load(m.group(1)) or {}
+    _check_approved(errors, where, meta)
+    if not meta.get("title"):
+        errors.add(where, "front matter needs a title")
+    body = re.sub(r"<!--.*?-->", "", m.group(2), flags=re.S)  # comments are notes to the analyst
+    scan_prohibited_claims(errors, where, body)
+    for ch, name in (("—", "em dash"), ("–", "en dash")):
+        if ch in body:
+            errors.add(where, f"prose contains an {name}; voice rules forbid it")
+
+
 def validate(content_dir=None):
     content_dir = Path(content_dir) if content_dir else config.CONTENT_DIR
     errors = Errors()
@@ -325,6 +343,10 @@ def validate(content_dir=None):
     if states_dir.exists():
         for path in sorted(states_dir.glob("*.yaml")):
             check_state_file(errors, path, source_ids, vote_states)
+    pages_dir = content_dir / "pages"
+    if pages_dir.exists():
+        for path in sorted(pages_dir.glob("*.md")):
+            check_page_file(errors, path)
     return errors
 
 
