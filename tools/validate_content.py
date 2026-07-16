@@ -56,6 +56,9 @@ class Errors:
 
 
 def _is_date(value):
+    # PyYAML parses unquoted ISO dates into datetime.date; both forms are fine
+    if isinstance(value, date):
+        return True
     if not isinstance(value, str) or not DATE_RE.match(value):
         return False
     try:
