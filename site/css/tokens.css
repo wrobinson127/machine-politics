@@ -1,0 +1,19 @@
+:root {
+  --ground: #F7F4EE;
+  --ground-raise: #F1EDE4;
+  --ink: #1A1A1A;
+  --ink-soft: #55524C;
+  --rule: #D9D3C6;
+  --rule-faint: #E8E3D8;
+  --shadow-tint: rgba(26, 26, 26, 0.12);
+  --integrity-red: #C0392B;
+  --pos-lbiban: #3B5BA5;
+  --pos-lbiopen: #2E7F86;
+  --pos-regsoft: #B07D2B;
+  --pos-ccwonly: #7A5C99;
+  --pos-oppose: #7A5648;
+  --pos-none: #D8D3C8;
+  --font-display: "Newsreader", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-data: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --label-col: clamp(7.5rem, 18vw, 13rem);
+}

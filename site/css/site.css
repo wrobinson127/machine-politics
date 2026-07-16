@@ -1,0 +1,381 @@
+/* Machine Politics: the reading room, not the rally.
+   Semantic rules live in DESIGN.md and config/config.py; tokens.css is
+   generated from config and must be loaded before this file. */
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-data);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  line-height: 1.55;
+}
+
+/* ------------------------------------------------------------------ */
+/* Type                                                                */
+/* ------------------------------------------------------------------ */
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: 0.005em;
+}
+
+h1 { font-size: clamp(1.9rem, 4.5vw, 3.1rem); }
+h2 { font-size: clamp(1.3rem, 2.6vw, 1.8rem); margin-top: 2.2em; }
+h3 { font-size: 1.1rem; margin-top: 1.6em; }
+
+p { max-width: 62ch; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Citations render in a smaller hanging style throughout */
+.citation {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding-left: 1.1rem;
+  text-indent: -1.1rem;
+  display: block;
+  margin-top: 0.35rem;
+}
+
+/* Confidence conventions: hue never changes, treatment does */
+.conf-INFERRED { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
+.conf-AMBIGUOUS { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
+
+/* ------------------------------------------------------------------ */
+/* Shell                                                               */
+/* ------------------------------------------------------------------ */
+
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+header.masthead {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.9rem 0 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.masthead-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+nav.primary { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+
+nav.primary a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+nav.primary a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+nav.primary a:hover { color: var(--ink); }
+
+footer.colophon {
+  margin-top: 4rem;
+  border-top: 1px solid var(--rule);
+  padding: 1.4rem 0 2.2rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+footer.colophon p { margin: 0.3rem 0; }
+
+.updated-through {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ */
+/* Trajectory board                                                    */
+/* ------------------------------------------------------------------ */
+
+.board {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.board-axis {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: var(--ground);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  align-items: end;
+}
+
+.board-axis .axis-label {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  padding: 0.5rem 0.6rem 0.35rem 0;
+}
+
+.axis-track { position: relative; height: 34px; }
+
+.axis-tick {
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 8px;
+  background: var(--ink);
+  opacity: 0.5;
+}
+
+.axis-tick > span {
+  position: absolute;
+  bottom: 10px;
+  left: 3px;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+.board-row {
+  display: grid;
+  grid-template-columns: var(--label-col) 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--rule-faint);
+}
+
+.board-row:target, .board-row:hover { background: var(--ground-raise); }
+
+.row-label {
+  font-size: 0.86rem;
+  padding: 0.28rem 0.6rem 0.28rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-label a { text-decoration: none; }
+.row-label a:hover { text-decoration: underline; }
+
+.row-track { position: relative; height: 30px; }
+
+.band {
+  position: absolute;
+  top: 7px;
+  height: 16px;
+  border-radius: 1px;
+}
+
+/* AMBIG is a designed hatch texture: never gray, never a blend */
+.band-hatch {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 4px,
+    rgba(26, 26, 26, 0.55) 4px 5.5px
+  ), var(--ground);
+}
+
+.vote-mark, .shift-node {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.shift-node > span {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--ground);
+  position: relative;
+}
+
+.shift-node > span::after {
+  content: "";
+  position: absolute;
+  inset: 2.5px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.board-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.board-legend .swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 0.85em;
+  vertical-align: -0.12em;
+  margin-right: 0.45em;
+  border-radius: 1px;
+}
+
+.board-controls {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.8rem 0;
+  font-size: 0.88rem;
+}
+
+.board-controls button {
+  font: inherit;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.board-controls button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--ground);
+  border-color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Evidence popover / bottom sheet                                     */
+/* ------------------------------------------------------------------ */
+
+.popover {
+  position: absolute;
+  z-index: 9;
+  max-width: 26rem;
+  background: var(--ground);
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  padding: 0.9rem 1rem;
+  font-size: 0.88rem;
+  box-shadow: 0 2px 4px var(--shadow-tint);
+}
+
+.popover .quote { font-family: var(--font-display); }
+
+@media (max-width: 640px) {
+  .popover {
+    position: fixed;
+    left: 0; right: 0; bottom: 0; top: auto;
+    max-width: none;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+    padding-bottom: 1.6rem;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* State pages: three-signal layout                                    */
+/* ------------------------------------------------------------------ */
+
+.signal {
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.signal h2 { margin-top: 0; }
+
+.coverage-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  max-width: 40rem;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.vote-table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.vote-table th, .vote-table td {
+  text-align: left;
+  padding: 0.45rem 1.1rem 0.45rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 0.92rem;
+}
+.vote-table th { font-weight: 600; font-size: 0.85rem; }
+
+.vote-glyph { font-size: 1rem; }
+
+/* Data-integrity notices are the ONLY red on the site */
+.integrity-notice {
+  border-left: 3px solid var(--integrity-red);
+  padding: 0.5rem 0 0.5rem 1rem;
+  color: var(--ink);
+  max-width: 40rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Draft banner: preview builds only, never in the deploy artifact     */
+/* ------------------------------------------------------------------ */
+
+.draft-banner {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--integrity-red);
+  color: #FFF8F0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 1rem;
+}
+
+.draft-chip {
+  display: inline-block;
+  border: 2px solid var(--integrity-red);
+  color: var(--integrity-red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.05rem 0.45rem;
+  border-radius: 3px;
+  vertical-align: 0.15em;
+  margin-left: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

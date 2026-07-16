@@ -1,0 +1,90 @@
+{
+ "entries": [
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "AUT"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "AUT"
+  },
+  {
+   "approved": false,
+   "kind": "shift_events",
+   "rendered": false,
+   "state": "AUT"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "AUT"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "USA"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "USA"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "USA"
+  },
+  {
+   "approved": false,
+   "kind": "shift_events",
+   "rendered": false,
+   "state": "USA"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "USA"
+  }
+ ],
+ "mode": "deploy",
+ "unapproved_rendered": 0
+}
