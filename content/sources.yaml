@@ -136,15 +136,6 @@ sources:
     type: web_page
     lang: en
     accessed: 2026-07-16
-  - id: bmeia-vienna-conference-page
-    title: "2024 Vienna Conference on Autonomous Weapons Systems (ministry topic page, undated; date given is access date)"
-    publisher: Austrian Federal Ministry for European and International Affairs
-    date: 2026-07-16
-    url: https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems/2024-vienna-conference-on-autonomous-weapons-systems
-    type: web_page
-    lang: en
-    accessed: 2026-07-16
-
   # China
   - id: ccw-gge1-2018-wp7-china
     title: "Position Paper. Submitted by China (CCW/GGE.1/2018/WP.7)"

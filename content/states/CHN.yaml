@@ -81,10 +81,13 @@ position_codings:
         quote: "Relevant weapon systems must be under human control and efforts must be made to ensure human suspension at any time"
         date: 2021-12-13
         url: https://geneva.china-mission.gov.cn/eng/dbdt/202112/t20211213_10467517.htm
-        lang: en
+        lang: zh
         translation: official
         confidence: EXPLICIT
-        note: China's own official English text; the fmprc.gov.cn copy carries identical wording.
+        note: >
+          Quoted from China's own official English text; the fmprc.gov.cn copy
+          carries identical wording. lang records the original language of the
+          underlying document per the registry convention.
 
   - code: AMBIG
     confidence: EXPLICIT

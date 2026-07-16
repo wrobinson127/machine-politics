@@ -72,7 +72,7 @@ position_codings:
         confidence: EXPLICIT
 
   - code: CCW-ONLY
-    confidence: EXPLICIT
+    confidence: AMBIGUOUS
     as_of: 2025-12-01
     approved: false
     rationale: >
@@ -80,8 +80,9 @@ position_codings:
       First Committee that it did not support the text, and its 2025
       submission under resolution 79/239 opposes any new UN-based regulatory
       process. The 2025 record carries language close to the OPPOSE category.
-      Whether this is a reaffirmed CCW-ONLY or a move to OPPOSE is an open
-      analyst question.
+      CCW-ONLY marks the best-supported reading; whether the record shows a
+      reaffirmed CCW-ONLY or a move to OPPOSE is an open analyst question,
+      and the confidence tier records that.
     evidence:
       - source: us-submission-79-239
         claim: By 2025 the US stated opposition to any new UN-based regulatory process for military AI and autonomy.

@@ -82,9 +82,11 @@ position_codings:
         date: 2026-07-16
         url: https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems
         lang: en
-        translation: official
+        translation: none
         confidence: EXPLICIT
-        note: Ministry topic page, undated; the date given is the access date.
+        note: >
+          Ministry topic page, undated; the date given is the access date. The
+          ministry's own official English text, so no translation applies.
 
 shift_events:
   - state: AUT
@@ -122,6 +124,6 @@ doctrine:
   approved: false
   context:
     - note: >
-        Austria is not on this project's doctrine coverage list, which
-        targets states with major autonomous-weapons programs. Its
-        international positions are recorded above.
+        Austria is not on this project's doctrine coverage list; the
+        methodology page defines that list. Its international positions are
+        recorded above.

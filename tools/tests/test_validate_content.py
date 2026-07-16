@@ -159,6 +159,51 @@ def test_prohibited_claim_variants_rejected(tmp_path):
         assert any("prohibited claim" in e for e in errs), phrase
 
 
+def test_prohibited_claim_paraphrases_rejected(tmp_path):
+    for phrase in (
+        "The state maintains no policy on autonomous weapons.",
+        "There is no national policy in this state.",
+        "It has never adopted a policy on the question.",
+        "The ministry has published no doctrine on autonomy.",
+        "It holds no position on the instrument question.",
+    ):
+        def mutate(s, p=phrase):
+            s["position_codings"][0]["rationale"] = p
+        errs = errors_for(tmp_path, mutate)
+        assert any("prohibited claim" in e for e in errs), phrase
+
+
+def test_verbatim_quote_may_contain_absence_language(tmp_path):
+    def mutate(s):
+        s["position_codings"][0]["evidence"][0] = dict(
+            VALID_EVIDENCE,
+            quote="Our government has no policy of pursuing such systems.",
+        )
+    assert errors_for(tmp_path, mutate) == []
+
+
+def test_evidence_without_quote_or_description_rejected(tmp_path):
+    def mutate(s):
+        ev = dict(VALID_EVIDENCE)
+        del ev["quote"]
+        s["position_codings"][0]["evidence"][0] = ev
+    errs = errors_for(tmp_path, mutate)
+    assert any("quote or, where none can exist, a description" in e for e in errs)
+
+
+def test_context_annotation_smuggled_coding_rejected(tmp_path):
+    def mutate(s):
+        s["doctrine"]["context"] = [
+            {
+                "note": "National AI strategy.",
+                "category": "REG-SOFT",
+                "evidence": [dict(VALID_EVIDENCE)],
+            }
+        ]
+    errs = errors_for(tmp_path, mutate)
+    assert any("strict scope" in e for e in errs)
+
+
 def test_coverage_statement_is_allowed(tmp_path):
     def mutate(s):
         s["doctrine"] = {

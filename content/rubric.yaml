@@ -37,8 +37,8 @@ axis_a:
       label: CCW process only
       description: >
         The state supports continuing the consensus process in the Convention
-        on Certain Conventional Weapons and its Group of Governmental Experts,
-        without a stated position on what that process should produce.
+        on Certain Conventional Weapons and its Group of Governmental Experts.
+        It leaves open what that process should produce.
     OPPOSE:
       label: Opposes new instruments
       description: >
@@ -103,7 +103,10 @@ evidence_entry:
   rules: >
     A source with no translation cannot yield an English quote. The entry
     describes and links the document instead, and the coding it supports is
-    INFERRED at best.
+    INFERRED at best. The lang field records the original language of the
+    underlying document; translation records the provenance of the English
+    text quoted. When a state's own official English text is the primary
+    record, lang is en and translation is none.
 
 worked_examples:
   - state: USA
@@ -112,8 +115,9 @@ worked_examples:
       79/62, No on 80/57. Doctrine on record since 2012.
   - state: AUT
     why: >
-      The sponsor archetype. Lead sponsor of all three resolutions, explicit
-      support for a binding instrument with prohibitions, stable trajectory.
+      The sponsor archetype. Austria initiated the resolution track in 2023
+      and sponsored all three resolutions, with explicit support for a
+      binding instrument with prohibitions.
   - state: CHN
     why: >
       The hard case. Stated support for a ban on use next to a narrow

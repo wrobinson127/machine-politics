@@ -32,14 +32,25 @@ DOCTRINE_STATUSES = ("policy_identified", "no_policy_identified", "not_yet_revie
 
 # The prohibited-claim class (invariant 6): copy that asserts a state has no
 # policy or position. The site only ever makes dated coverage statements.
+# The scan skips `quote` fields: quotes are verbatim source material, and the
+# prohibition binds this project's copy, not what states or documents say.
+_PPD = r"(?:policy|position|doctrine)"
 PROHIBITED_CLAIM_PATTERNS = [
-    re.compile(r"\bhas\s+no\s+(?:\w+\s+){0,2}?(?:policy|position|doctrine)", re.I),
-    re.compile(r"\bhave\s+no\s+(?:\w+\s+){0,2}?(?:policy|position|doctrine)", re.I),
-    re.compile(r"\bdoes\s+not\s+have\s+(?:\w+\s+){0,3}?(?:policy|position|doctrine)", re.I),
-    re.compile(r"\bno\s+(?:\w+\s+){0,2}?policy\s+exists\b", re.I),
-    re.compile(r"\bwithout\s+any\s+(?:\w+\s+){0,2}?(?:policy|position)\b", re.I),
-    re.compile(r"\blacks?\s+a\s+(?:\w+\s+){0,2}?(?:policy|position)\b", re.I),
+    re.compile(r"\bhas\s+no\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\bhave\s+no\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\bdoes\s+not\s+have\s+(?:\w+\s+){0,3}?" + _PPD, re.I),
+    re.compile(r"\bno\s+(?:\w+\s+){0,2}?" + _PPD + r"\s+exists\b", re.I),
+    re.compile(r"\bwithout\s+(?:a|any)\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\blacks?\s+(?:a|any)\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\b(?:maintains?|holds?|possess(?:es)?)\s+no\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\b(?:has\s+)?(?:adopted|published|issued|articulated|stated)\s+no\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
+    re.compile(r"\bthere\s+is\s+no\s+(?:\w+\s+){0,3}?" + _PPD, re.I),
+    re.compile(r"\bnever\s+(?:adopted|published|issued|articulated|stated|held)\s+(?:a|any)\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
 ]
+
+# Keys a doctrine context annotation may carry. Context is never coded
+# evidence (invariant 7), so anything beyond descriptive fields is rejected.
+CONTEXT_ALLOWED_KEYS = {"note", "title", "url", "date", "source"}
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -83,8 +94,10 @@ def _check_approved(errors, where, entry):
         errors.add(where, "claim-bearing entry needs an explicit approved: true/false")
 
 
-def scan_prohibited_claims(errors, where, value):
+def scan_prohibited_claims(errors, where, value, key=None):
     """Walk every string in a structure for the prohibited-claim class."""
+    if key == "quote":
+        return  # verbatim source material is exempt; the ban binds our copy
     if isinstance(value, str):
         for pattern in PROHIBITED_CLAIM_PATTERNS:
             if pattern.search(value):
@@ -95,10 +108,10 @@ def scan_prohibited_claims(errors, where, value):
                 )
     elif isinstance(value, dict):
         for k, v in value.items():
-            scan_prohibited_claims(errors, f"{where}.{k}", v)
+            scan_prohibited_claims(errors, f"{where}.{k}", v, key=k)
     elif isinstance(value, list):
         for i, v in enumerate(value):
-            scan_prohibited_claims(errors, f"{where}[{i}]", v)
+            scan_prohibited_claims(errors, f"{where}[{i}]", v, key=key)
 
 
 def check_evidence(errors, where, entry, source_ids):
@@ -142,6 +155,8 @@ def check_evidence(errors, where, entry, source_ids):
             errors.add(where, "untranslated non-English source needs a description")
         if confidence == "EXPLICIT":
             errors.add(where, "untranslated non-English source caps confidence at INFERRED")
+    if quote is None and not entry.get("description"):
+        errors.add(where, "evidence needs a quote or, where none can exist, a description")
 
 
 def check_coding(errors, where, coding, source_ids):
@@ -203,11 +218,17 @@ def check_doctrine(errors, where, doctrine, source_ids):
                 errors.add(e_where, "doctrine entry needs evidence")
             for j, ev in enumerate(evidence):
                 check_evidence(errors, f"{e_where}.evidence[{j}]", ev, source_ids)
-    # context annotations are never coded evidence (invariant 7)
+    # context annotations are never coded evidence (invariant 7): only
+    # descriptive keys are allowed, so nothing codeable can be smuggled in
     for i, note in enumerate(doctrine.get("context") or []):
         n_where = f"{where}.context[{i}]"
-        if any(k in note for k in ("code", "confidence")):
-            errors.add(n_where, "context annotations carry no coding fields (strict scope)")
+        extra = set(note) - CONTEXT_ALLOWED_KEYS
+        if extra:
+            errors.add(
+                n_where,
+                f"context annotations allow only {sorted(CONTEXT_ALLOWED_KEYS)}; "
+                f"found {sorted(extra)} (strict scope)",
+            )
         if not note.get("note"):
             errors.add(n_where, "context annotation needs a note")
 
