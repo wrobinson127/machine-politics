@@ -158,6 +158,9 @@ def page(title, body, *, current, depth=0, preview=False, description=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · {esc(config.SITE_NAME)}</title>
 <meta name="description" content="{esc(description or 'Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time.')}">
+<meta property="og:title" content="{esc(title)} · {esc(config.SITE_NAME)}">
+<meta property="og:description" content="{esc(description or 'Where every country stands on autonomous weapons, tracked as positions shift over time.')}">
+<meta property="og:image" content="https://{config.SITE_DOMAIN}/assets/board-poster.svg">
 <link rel="stylesheet" href="{prefix}css/tokens.css">
 <link rel="stylesheet" href="{prefix}css/site.css">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
@@ -223,25 +226,39 @@ def vote_glyph_svg(vote):
     return f'<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">{shape}</svg>'
 
 
+def compute_bands(codings):
+    """Segment a coding timeline into bands in TRACK_W (0-1000) units."""
+    bands = []
+    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
+    for i, coding in enumerate(timeline):
+        left = x_of(coding["as_of"])
+        right = x_of(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else float(TRACK_W)
+        if right <= left:
+            continue
+        bands.append(
+            {
+                "code": coding["code"],
+                "confidence": coding.get("confidence"),
+                "left": left,
+                "width": right - left,
+                "opacity": "1" if coding.get("confidence") == "EXPLICIT" else "0.55",
+                "since": iso(coding["as_of"]),
+            }
+        )
+    return bands
+
+
 def row_track_html(iso3, entry, resolutions, codings, shifts):
     """One state's track: coded bands where approved, vote marks always.
     Everything is percent-positioned HTML, so nothing distorts at any
     viewport width and every trigger is a real button."""
     parts = ['<div class="row-track">']
-    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for i, coding in enumerate(timeline):
-        left = x_of(coding["as_of"], 100)
-        right = x_of(timeline[i + 1]["as_of"], 100) if i + 1 < len(timeline) else 100.0
-        if right <= left:
-            continue
-        style, extra_class = band_style(coding["code"], coding.get("confidence"))
-        title = (
-            f"{coding['code']} since {iso(coding['as_of'])}, "
-            f"confidence {coding.get('confidence')}"
-        )
+    for band in compute_bands(codings):
+        style, extra_class = band_style(band["code"], band["confidence"])
+        title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
         parts.append(
-            f'<div class="band{extra_class}" style="left:{left:.2f}%;'
-            f'width:{right - left:.2f}%;{style}" title="{esc(title)}"></div>'
+            f'<div class="band{extra_class}" style="left:{band["left"] / 10:.2f}%;'
+            f'width:{band["width"] / 10:.2f}%;{style}" title="{esc(title)}"></div>'
         )
     for shift in sorted(shifts, key=lambda s: iso(s["date"])):
         parts.append(
@@ -323,6 +340,7 @@ def board_rows(votes, content_states, preview):
                 "name": name,
                 "latest_shift": latest_shift,
                 "reviewed": bool(codings),
+                "bands": compute_bands(codings),
                 "html": (
                     f'<div class="board-row" id="{iso3}" data-name="{esc(name)}" '
                     f'data-shift="{latest_shift}">'
@@ -372,9 +390,8 @@ def index_page(votes, content_states, preview):
     rows = board_rows(votes, content_states, preview)
     n_reviewed = sum(1 for r in rows if r["reviewed"])
     coverage_line = (
-        f"{len(rows)} states with recorded votes; "
-        f"{n_reviewed} with reviewed position codings so far. "
-        "The two numbers differ and the site says both."
+        f"Recorded votes cover all {len(rows)} member states. "
+        f"Reviewed position codings cover {n_reviewed} states so far."
     )
     body = f"""
 <h1>Who moved, when, and on what record.</h1>
@@ -709,6 +726,17 @@ def poster_svg(votes, content_states):
     y = 40
     ink = config.PALETTE["ink"]
     for r in rows:
+        for band in r["bands"]:
+            if band["code"] == "AMBIG":
+                continue  # the poster is a glance artifact; hatch needs defs
+            color = config.PALETTE["positions"][band["code"]]
+            if color is None:
+                continue
+            parts.append(
+                f'<rect x="{band["left"]:.1f}" y="{y}" '
+                f'width="{band["width"]:.1f}" height="{rh - 1}" fill="{color}" '
+                f'fill-opacity="{band["opacity"]}"/>'
+            )
         for key in config.LAWS_RESOLUTIONS:
             x = x_of(votes["resolutions"][key]["date"])
             vote = votes["states"][r["iso3"]]["votes"][key]
@@ -751,25 +779,41 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
   function close() {
     if (open) { open.remove(); open = null; }
   }
+  // Popovers are built with textContent, never markup injection, because
+  // quote and url values come from the content layer.
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text) node.textContent = text;
+    return node;
+  }
+  function link(url, label) {
+    var a = el("a", null, label);
+    a.href = url;
+    return a;
+  }
   function show(trigger, data) {
     close();
-    var pop = document.createElement("div");
-    pop.className = "popover";
+    var pop = el("div", "popover");
     pop.setAttribute("role", "dialog");
     if (data.kind === "vote") {
-      pop.innerHTML =
-        "<strong>" + data.vote + "</strong> on " + data.resolution +
-        '<span class="citation">' + data.date +
-        ' · <a href="' + data.url + '">UN record</a></span>';
+      pop.appendChild(el("strong", null, data.vote));
+      pop.appendChild(document.createTextNode(" on " + data.resolution));
+      var cite = el("span", "citation", data.date + " · ");
+      cite.appendChild(link(data.url, "UN record"));
+      pop.appendChild(cite);
     } else {
-      var ev = (data.evidence || []).map(function (e) {
-        return '<span class="citation">' +
-          (e.quote ? "“" + e.quote + "” · " : "") + e.date +
-          (e.url ? ' · <a href="' + e.url + '">source</a>' : "") +
-          (e.confidence ? " · " + e.confidence : "") + "</span>";
-      }).join("");
-      pop.innerHTML = "<strong>" + data.from + " → " + data.to +
-        "</strong>" + '<span class="citation">' + data.date + "</span>" + ev;
+      pop.appendChild(el("strong", null, data.from + " → " + data.to));
+      pop.appendChild(el("span", "citation", data.date));
+      (data.evidence || []).forEach(function (e) {
+        var row = el("span", "citation", (e.quote ? "“" + e.quote + "” · " : "") + e.date);
+        if (e.url) {
+          row.appendChild(document.createTextNode(" · "));
+          row.appendChild(link(e.url, "source"));
+        }
+        if (e.confidence) row.appendChild(document.createTextNode(" · " + e.confidence));
+        pop.appendChild(row);
+      });
     }
     document.body.appendChild(pop);
     var r = trigger.getBoundingClientRect();

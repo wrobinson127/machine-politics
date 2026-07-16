@@ -28,25 +28,41 @@
   function close() {
     if (open) { open.remove(); open = null; }
   }
+  // Popovers are built with textContent, never markup injection, because
+  // quote and url values come from the content layer.
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text) node.textContent = text;
+    return node;
+  }
+  function link(url, label) {
+    var a = el("a", null, label);
+    a.href = url;
+    return a;
+  }
   function show(trigger, data) {
     close();
-    var pop = document.createElement("div");
-    pop.className = "popover";
+    var pop = el("div", "popover");
     pop.setAttribute("role", "dialog");
     if (data.kind === "vote") {
-      pop.innerHTML =
-        "<strong>" + data.vote + "</strong> on " + data.resolution +
-        '<span class="citation">' + data.date +
-        ' · <a href="' + data.url + '">UN record</a></span>';
+      pop.appendChild(el("strong", null, data.vote));
+      pop.appendChild(document.createTextNode(" on " + data.resolution));
+      var cite = el("span", "citation", data.date + " · ");
+      cite.appendChild(link(data.url, "UN record"));
+      pop.appendChild(cite);
     } else {
-      var ev = (data.evidence || []).map(function (e) {
-        return '<span class="citation">' +
-          (e.quote ? "“" + e.quote + "” · " : "") + e.date +
-          (e.url ? ' · <a href="' + e.url + '">source</a>' : "") +
-          (e.confidence ? " · " + e.confidence : "") + "</span>";
-      }).join("");
-      pop.innerHTML = "<strong>" + data.from + " → " + data.to +
-        "</strong>" + '<span class="citation">' + data.date + "</span>" + ev;
+      pop.appendChild(el("strong", null, data.from + " → " + data.to));
+      pop.appendChild(el("span", "citation", data.date));
+      (data.evidence || []).forEach(function (e) {
+        var row = el("span", "citation", (e.quote ? "“" + e.quote + "” · " : "") + e.date);
+        if (e.url) {
+          row.appendChild(document.createTextNode(" · "));
+          row.appendChild(link(e.url, "source"));
+        }
+        if (e.confidence) row.appendChild(document.createTextNode(" · " + e.confidence));
+        pop.appendChild(row);
+      });
     }
     document.body.appendChild(pop);
     var r = trigger.getBoundingClientRect();

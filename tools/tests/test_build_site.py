@@ -92,15 +92,28 @@ def test_no_valence_hues_in_generated_output(deploy):
     """Invariant 5: no position renders red or green anywhere, and the
     integrity red appears only in css, never as an SVG band fill."""
     out, _ = deploy
-    for svg_source in (
-        (out / "index.html").read_text(encoding="utf-8"),
-        (out / "assets" / "board-poster.svg").read_text(encoding="utf-8"),
-    ):
-        for hexval in set(re.findall(r'fill="(#[0-9A-Fa-f]{6})"', svg_source)):
+    sources = {
+        "index": (out / "index.html").read_text(encoding="utf-8"),
+        "poster": (out / "assets" / "board-poster.svg").read_text(encoding="utf-8"),
+        "tokens": (out / "css" / "tokens.css").read_text(encoding="utf-8"),
+    }
+    # preview renders position bands; scan those too (banner red excepted)
+    preview_index = config.REPO_ROOT / ".scratch" / "preview" / "index.html"
+    if preview_index.exists():
+        sources["preview"] = re.sub(
+            r'<div class="draft-banner".*?</div>', "",
+            preview_index.read_text(encoding="utf-8"),
+        )
+    for name, text in sources.items():
+        hexes = set(re.findall(r'fill="(#[0-9A-Fa-f]{6})"', text))
+        hexes |= set(re.findall(r"background:(#[0-9A-Fa-f]{6})", text))
+        hexes |= set(re.findall(r"--pos-[a-z]+:\s*(#[0-9A-Fa-f]{6})", text))
+        for hexval in hexes:
             r, g, b = (int(hexval[i : i + 2], 16) for i in (1, 3, 5))
-            assert not (r > g + 60 and r > b + 60), f"red fill {hexval}"
-            assert not (g > r + 60 and g > b + 60), f"green fill {hexval}"
-        assert config.PALETTE["integrity_red"] not in svg_source
+            assert not (r > g + 60 and r > b + 60), f"red fill {hexval} in {name}"
+            assert not (g > r + 60 and g > b + 60), f"green fill {hexval} in {name}"
+        if name != "tokens":  # tokens.css defines the variable; that is its job
+            assert config.PALETTE["integrity_red"] not in text, name
 
 
 def test_doctrine_absence_renders_exact_phrase(tmp_path):

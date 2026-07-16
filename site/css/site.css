@@ -217,6 +217,12 @@ footer.colophon p { margin: 0.3rem 0; }
   line-height: 0;
 }
 
+/* 44px touch targets on coarse pointers without changing the visual mark */
+@media (pointer: coarse) {
+  .vote-mark, .shift-node { padding: 16px 14px; }
+  .popover a { padding: 0.4em 0; display: inline-block; }
+}
+
 .shift-node > span {
   display: block;
   width: 13px;
