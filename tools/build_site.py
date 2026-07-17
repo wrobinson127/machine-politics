@@ -308,9 +308,9 @@ def canvas_row_html(iso3, entry, resolutions, cs, preview):
     move_year = _last_move_year(entry)
     votes_csv = ",".join(entry["votes"][k] for k in config.LAWS_RESOLUTIONS)
     attrs = [
-        f'data-iso3="{iso3}"',
+        f'data-iso3="{esc(iso3)}"',
         f'data-name="{esc(name)}"',
-        f'data-votes="{votes_csv}"',
+        f'data-votes="{esc(votes_csv)}"',
     ]
     if move_year:
         attrs.append(f'data-move-year="{move_year}"')
@@ -341,7 +341,8 @@ def canvas_teach_sets(stats):
         "b7": f"{stats['movers']} states changed a recorded vote. One row per state.",
         "b8": f"{stats['coded']} states with a coded position, one row per state.",
         "b9": f"{stats['states']} member states. One row per state, three recorded votes each.",
-        "b10": f"{stats['states']} member states. Seventh Review Conference: 16 to 20 November 2026.",
+        "b10": (f"{stats['states']} member states. Seventh Review Conference: "
+                "16 to 20 November 2026. Click or tap any row for its record."),
     }
 
 
@@ -2353,7 +2354,15 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
   // where every mark is a real button.
   function initTelemetry() {
     var pop = null;
+    var hideTimer = null;
     function close() { if (pop) { pop.remove(); pop = null; } }
+    function scheduleClose() {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(close, 300);
+    }
+    function cancelClose() {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+    }
     function el(tag, cls, text) {
       var node = document.createElement(tag);
       if (cls) node.className = cls;
@@ -2364,13 +2373,10 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
     try { RES = JSON.parse(board.getAttribute("data-resolutions") || "[]"); }
     catch (e) { RES = []; }
     var WORDS = { Y: "voted Yes", N: "voted No", A: "abstained", X: "non-voting" };
-    board.addEventListener("click", function (ev) {
-      if (!canvas.classList.contains("c-live")) return;
-      var row = ev.target.closest ? ev.target.closest(".c-row") : null;
-      if (!row || row.classList.contains("c-off")) return;
+    function showFor(row) {
       close();
       pop = el("div", "popover");
-      pop.setAttribute("role", "dialog");
+      pop.setAttribute("data-for", row.getAttribute("data-iso3"));
       pop.appendChild(el("strong", null, row.getAttribute("data-name")));
       var votes = (row.getAttribute("data-votes") || "").split(",");
       RES.forEach(function (r, i) {
@@ -2391,11 +2397,38 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
       var more = el("a", null, "Full record: state page");
       more.href = "state/" + row.getAttribute("data-iso3") + ".html";
       pop.appendChild(more);
+      pop.addEventListener("mouseenter", cancelClose);
+      pop.addEventListener("mouseleave", scheduleClose);
       document.body.appendChild(pop);
       var r = row.getBoundingClientRect();
       pop.style.top = (window.scrollY + r.bottom + 6) + "px";
       pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 330)) + "px";
+    }
+    function liveRow(ev) {
+      if (!canvas.classList.contains("c-live")) return null;
+      var row = ev.target.closest ? ev.target.closest(".c-row") : null;
+      if (!row || row.classList.contains("c-off")) return null;
+      return row;
+    }
+    board.addEventListener("click", function (ev) {
+      var row = liveRow(ev);
+      if (!row) return;
+      showFor(row);
       ev.stopPropagation();
+    });
+    // Hover surfaces the same readout for fine pointers (the storyboard's
+    // hover telemetry); a short grace period lets the pointer travel into
+    // the popover to reach its links.
+    board.addEventListener("mouseover", function (ev) {
+      if (!window.matchMedia("(hover: hover)").matches) return;
+      var row = liveRow(ev);
+      if (!row) return;
+      cancelClose();
+      if (pop && pop.getAttribute("data-for") === row.getAttribute("data-iso3")) return;
+      showFor(row);
+    });
+    board.addEventListener("mouseleave", function () {
+      if (pop) scheduleClose();
     });
     document.addEventListener("click", function (ev) {
       if (pop && !pop.contains(ev.target)) close();

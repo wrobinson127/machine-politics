@@ -504,6 +504,13 @@ footer.colophon p { margin: 0.3rem 0; }
 .c-release { align-self: flex-start; }
 .c-release[hidden] { display: none; }
 
+/* Once the board is live (beat 10), rows advertise their telemetry */
+.c-live .c-row:not(.c-off) { cursor: pointer; }
+
+@media (hover: hover) {
+  .c-live .c-row:not(.c-off):hover { background: var(--ground-raise); }
+}
+
 /* Stepper mode (mobile, P4c): the canvas is a card above the prose,
    driven by the same beat states as the scroll mode */
 .tour-stepped .scrolly { display: flex; flex-direction: column-reverse; }
