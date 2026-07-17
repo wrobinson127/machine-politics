@@ -1093,10 +1093,11 @@ MAP_STYLE_URL = "https://tiles.openfreemap.org/styles/positron"
 MAP_CREDIT = "Map data © OpenStreetMap contributors, tiles by OpenFreeMap."
 
 # Country shapes: the world-atlas TopoJSON (Natural Earth derived, public
-# domain) is committed at site/assets/countries-110m.json; the build converts
-# it to GeoJSON deterministically. Nothing but tiles is fetched at runtime
-# from third parties.
-COUNTRIES_TOPOJSON = config.SITE_DIR / "assets" / "countries-110m.json"
+# domain) is committed at data/source/countries-110m.json; the build converts
+# it to GeoJSON deterministically, and only the derived GeoJSON ever lands in
+# an output directory (preview only, alongside the map surfaces). Nothing but
+# tiles is fetched at runtime from third parties.
+COUNTRIES_TOPOJSON = config.DATA_SOURCE_DIR / "countries-110m.json"
 ISO_NUMERIC_TABLE = config.DATA_DERIVED_DIR / "iso_numeric_alpha3.json"
 
 # One hue PER instrument view at fixed saturation, drawn from the position
@@ -1360,6 +1361,22 @@ def quadrant_block(votes, content_states, declaration, instruments):
     states = _quadrant_states(votes, content_states, declaration)
     steps = _quadrant_steps(votes, instruments)
     last = steps[-1]
+    # State search (DESIGN v2 mobile contract): the primary nav into the
+    # quadrant. Server-rendered, disabled until the script enables it, so a
+    # no-JS page never shows a control that swallows input. One datalist
+    # option per member state, name and ISO code together, so either matches.
+    options = "\n".join(
+        f'<option value="{esc(st["name"])} ({st["iso3"]})"></option>'
+        for st in sorted(states, key=lambda s: (s["name"], s["iso3"]))
+    )
+    search = f"""<div class="quadrant-search">
+  <label for="quadrant-search">Find a state</label>
+  <input type="search" id="quadrant-search" list="quadrant-state-list"
+    autocomplete="off" spellcheck="false" disabled>
+</div>
+<datalist id="quadrant-state-list">
+{options}
+</datalist>"""
     table_rows = []
     for st in sorted(states, key=lambda s: s["name"]):
         status = (
@@ -1386,21 +1403,24 @@ on lethal autonomous weapons systems the state voted Yes on. Up: whether the
 state endorsed the Political Declaration on Responsible Military Use of
 Artificial Intelligence and Autonomy. The axes are the instruments. The
 regions carry no names.</p>
+{search}
 <div class="scrub-control">
   <label for="quadrant-time">Timeline</label>
   <input type="range" id="quadrant-time" min="0" max="{len(steps) - 1}" step="1"
     value="{len(steps) - 1}" disabled>
   <output id="quadrant-step" for="quadrant-time">{esc(last["date"])} · {esc(last["label"])}</output>
 </div>
-<p class="citation">The scrub steps through the three resolution dates and the
-four instrument dates. It needs JavaScript. Without it, the chart shows the
-record through {esc(config.UPDATED_THROUGH)}.</p>
+<p class="citation">The search box rings a state's dot and filters the table
+below; the scrub steps through the three resolution dates and the four
+instrument dates. Both need JavaScript. Without it, the chart shows the
+record through {esc(config.UPDATED_THROUGH)} and the table carries every
+state.</p>
 <div class="quadrant-scroll">
 {_quadrant_svg(states, declaration, last["date"])}
 </div>
 {_json_script(data, "quadrant-data")}
 <h3>The same data as a table</h3>
-<table class="vote-table quadrant-table">
+<table class="vote-table quadrant-table" id="quadrant-table">
 <tr><th>State</th><th>Yes votes (of 3)</th><th>{esc(declaration["name"].split(" on ")[0])}</th></tr>
 {chr(10).join(table_rows)}
 </table>
@@ -1414,11 +1434,14 @@ def wave_map_block(instruments):
     map_instruments = []
     for i, inst in enumerate(instruments):
         hue = INSTRUMENT_HUES.get(inst["id"], config.PALETTE["ink"])
+        # An instrument with no per-state rows (the Blueprint publishes only
+        # a count) paints an all-paper map; say so at the control itself.
+        suffix = "" if _endorsed_rows(inst) else " (count only, no named list)"
         radios.append(
             f'<label class="map-radio"><input type="radio" name="map-instrument" '
             f'value="{esc(inst["id"])}"{" checked" if i == 0 else ""}>'
             f'<span class="swatch" style="background:{hue}" aria-hidden="true"></span>'
-            f'{esc(inst["name"])}</label>'
+            f'{esc(inst["name"])}{esc(suffix)}</label>'
         )
         map_instruments.append({
             "id": inst["id"],
@@ -2067,6 +2090,54 @@ INSTRUMENTS_JS = """// Instruments page enhancements. The server-rendered lists 
       applyStep(Number(qRange.value));
     });
     applyStep(Number(qRange.value));
+
+    // ---- State search (primary nav, DESIGN v2 mobile contract) ----
+    // A match rings the state's dot (ink stroke, radius bump, never a color
+    // change), scrolls the chart to it when overflowed, and filters the
+    // fallback table to that state. Clearing restores everything.
+    var qSearch = document.getElementById("quadrant-search");
+    var qTable = document.getElementById("quadrant-table");
+    var qScroll = qSvg.parentElement;
+    if (qSearch) {
+      var lookup = {};
+      q.states.forEach(function (st) {
+        lookup[st.name.toLowerCase()] = st.iso3;
+        lookup[st.iso3.toLowerCase()] = st.iso3;
+        lookup[(st.name + " (" + st.iso3 + ")").toLowerCase()] = st.iso3;
+      });
+      var applySearch = function () {
+        var hit = lookup[qSearch.value.trim().toLowerCase()] || null;
+        Object.keys(dots).forEach(function (iso3) {
+          var dot = dots[iso3];
+          if (iso3 === hit) {
+            dot.classList.add("q-hit");
+            dot.setAttribute("r", "7");
+          } else {
+            dot.classList.remove("q-hit");
+            dot.setAttribute("r", "5");
+          }
+        });
+        if (hit && dots[hit]) {
+          // Redraw the ringed dot above its neighbors.
+          dots[hit].parentNode.appendChild(dots[hit]);
+          if (qScroll && qScroll.scrollWidth > qScroll.clientWidth) {
+            var vw = qSvg.viewBox.baseVal.width || 1;
+            var x = (Number(dots[hit].getAttribute("cx")) / vw) * qScroll.scrollWidth;
+            qScroll.scrollLeft = Math.max(0, x - qScroll.clientWidth / 2);
+          }
+        }
+        if (qTable) {
+          qTable.querySelectorAll("tr").forEach(function (row) {
+            var link = row.querySelector('a[href^="state/"]');
+            if (!link) return; // header row always stands
+            row.hidden = !!hit &&
+              link.getAttribute("href") !== "state/" + hit + ".html";
+          });
+        }
+      };
+      qSearch.disabled = false;
+      qSearch.addEventListener("input", applySearch);
+    }
   }
 
   // ---- Endorsement wave map ----

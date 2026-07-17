@@ -622,6 +622,41 @@ footer.colophon p { margin: 0.3rem 0; }
   flex-basis: 100%;
 }
 
+/* Quadrant state search: the primary nav into the chart (DESIGN v2
+   mobile contract). Disabled until JS enables it, like the scrubs. */
+.quadrant-search {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 0.2rem;
+  font-size: 0.9rem;
+  max-width: 44rem;
+}
+
+.quadrant-search input[type="search"] {
+  flex: 1;
+  min-width: 12rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.quadrant-search input[type="search"]:disabled { opacity: 0.45; }
+
+.quadrant-search input[type="search"]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .quadrant-search input[type="search"] { min-height: 44px; }
+}
+
 /* Quadrant view: monochrome ink dots, unlabeled regions (DESIGN v2) */
 .quadrant-scroll { overflow-x: auto; margin-top: 0.8rem; }
 
@@ -634,6 +669,9 @@ footer.colophon p { margin: 0.3rem 0; }
 }
 
 .quadrant-svg .q-dot { fill: var(--ink); fill-opacity: 0.5; }
+
+/* Search hit: an ink ring and a radius bump, never a color change */
+.quadrant-svg .q-dot.q-hit { stroke: var(--ink); stroke-width: 2; }
 
 .quadrant-table th, .quadrant-table td { font-size: 0.85rem; }
 

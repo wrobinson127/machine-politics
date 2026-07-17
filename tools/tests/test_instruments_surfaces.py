@@ -55,6 +55,10 @@ def test_deploy_instruments_is_a_factual_shell(deploy):
         assert marker not in html
     assert not (out / "js" / "instruments.js").exists()
     assert not (out / "assets" / "countries.geojson").exists()
+    # the search box is a quadrant surface: preview only
+    assert "quadrant-search" not in html
+    assert "quadrant-state-list" not in html
+    assert "<datalist" not in html
     ends = [e for e in manifest["entries"]
             if str(e["kind"]).startswith("endorsement_instrument:")]
     recs = [e for e in manifest["entries"]
@@ -88,6 +92,9 @@ def test_preview_instruments_renders_everything(preview):
     assert f'integrity="{bs.MAPLIBRE_JS_SRI}"' in html
     assert f'integrity="{bs.MAPLIBRE_CSS_SRI}"' in html
     assert html.count('name="map-instrument"') == 4
+    # the Blueprint's all-paper map is explained at its own control
+    assert "REAIM Blueprint for Action (count only, no named list)" in html
+    assert html.count("(count only, no named list)") == 1
     assert "Map unavailable" in html
     assert "OpenStreetMap contributors, tiles by OpenFreeMap" in html
     assert (out / "js" / "instruments.js").exists()
@@ -95,6 +102,42 @@ def test_preview_instruments_renders_everything(preview):
     ends = [e for e in manifest["entries"]
             if str(e["kind"]).startswith("endorsement_instrument:")]
     assert all(e["rendered"] for e in ends)
+
+
+def test_quadrant_search_renders_in_preview(preview):
+    """DESIGN v2 mobile contract: a state search box is the quadrant's
+    primary nav. Server-rendered, disabled until JS enables it, one
+    datalist option per member state carrying name and ISO code."""
+    out, _ = preview
+    html = (out / "instruments.html").read_text(encoding="utf-8")
+    assert re.search(
+        r'<input type="search" id="quadrant-search" list="quadrant-state-list"'
+        r'\s+autocomplete="off" spellcheck="false" disabled>', html
+    )
+    assert '<label for="quadrant-search">' in html
+    assert 'id="quadrant-state-list"' in html
+    m = re.search(r"<datalist[^>]*>(.*?)</datalist>", html, re.S)
+    assert m
+    options = re.findall(r'<option value="([^"]+) \(([A-Z]{3})\)">', m.group(1))
+    assert len(options) == 193
+    votes = bs.load_votes()
+    assert {iso3 for _, iso3 in options} == set(votes["states"])
+    # the search input appears before the SVG, and the JS hooks exist
+    assert html.index('id="quadrant-search"') < html.index('id="quadrant-svg"')
+    assert 'id="quadrant-table"' in html
+    js = (out / "js" / "instruments.js").read_text(encoding="utf-8")
+    for hook in ("quadrant-search", "quadrant-table", "q-hit"):
+        assert hook in js
+
+
+def test_countries_topojson_never_ships(deploy, preview):
+    """The world-atlas TopoJSON lives in data/source; no output artifact
+    carries it, and the committed deploy dir carries no copy either."""
+    assert bs.COUNTRIES_TOPOJSON == config.DATA_SOURCE_DIR / "countries-110m.json"
+    assert bs.COUNTRIES_TOPOJSON.exists()
+    for out, _ in (deploy, preview):
+        assert not list(Path(out).rglob("countries-110m.json"))
+    assert not list(config.SITE_DIR.rglob("countries-110m.json"))
 
 
 def test_no_quadrant_region_labels(preview):
