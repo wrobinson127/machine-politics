@@ -206,11 +206,235 @@ def move_x(d, w=1000.0):
     return round((0.04 + 0.92 * frac) * w, 1)
 
 
+# ---------------------------------------------------------------------------
+# The persistent canvas (P2c). ONE server-rendered board that the tour
+# reveals progressively: it is complete markup at build time (the end
+# state), hidden until JS enhances, so the no-JS and reduced-motion paths
+# read the stacked prose above the classic board and lose nothing.
+# The canvas uses a zoomed domain: the resolutions cluster after mid-2023
+# and the story ends at the Review Conference.
+# ---------------------------------------------------------------------------
+
+CANVAS_T0 = date(2023, 6, 1)
+CANVAS_T1 = date(2027, 1, 15)
+REVCON_START = date(2026, 11, 16)
+
+
+def canvas_x(d):
+    """Percent position in the canvas domain, with 5%/95% margins."""
+    span = (CANVAS_T1 - CANVAS_T0).days
+    frac = max(0.0, min(1.0, (as_date(d) - CANVAS_T0).days / span))
+    return round((0.05 + 0.90 * frac) * 100, 2)
+
+
+def canvas_stats(votes, content_states, preview):
+    """Stat-row values: sourced counts only (handoff II.3). Tallies come
+    from the dataset's reconciled tally block; non-voting is counted from
+    the dataset's X values, never back-computed. Disagreement between the
+    two is a build failure, not a rounding choice."""
+    per_res = {}
+    for key in config.LAWS_RESOLUTIONS:
+        res = votes["resolutions"][key]
+        t = res["tally"]
+        nv = sum(1 for e in votes["states"].values() if e["votes"][key] == "X")
+        if t["yes"] + t["no"] + t["abstain"] + nv != len(votes["states"]):
+            raise SystemExit(
+                f"stat-row reconciliation failed for {key}: tally block and "
+                "per-state non-voting count disagree"
+            )
+        per_res[key] = dict(t, non_voting=nv, year=res["date"][:4], date=res["date"])
+    coded = sum(
+        1 for iso3 in votes["states"]
+        if any(preview or is_approved(c)
+               for c in content_states.get(iso3, {}).get("position_codings", []))
+    )
+    return {
+        "res": per_res,
+        "coded": coded,
+        "movers": len(substantive_changers(votes)),
+        "states": len(votes["states"]),
+    }
+
+
+def _last_move_year(entry):
+    """Year of the state's most recent cast-vote change, or None."""
+    prev, year = None, None
+    for key in config.LAWS_RESOLUTIONS:
+        vote = entry["votes"][key]
+        if vote == "X":
+            continue
+        if prev is not None and vote != prev:
+            year = config.LAWS_RESOLUTIONS[key]["year"]
+        prev = vote
+    return year
+
+
+def canvas_row_html(iso3, entry, resolutions, cs, preview):
+    name = cs.get("display_name") or display_from_un_name(entry["un_name"])
+    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
+    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
+    parts = []
+    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
+    for i, c in enumerate(timeline):
+        left = canvas_x(c["as_of"])
+        right = canvas_x(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else 95.0
+        if right <= left:
+            continue
+        style, extra = band_style(c["code"], c.get("confidence"))
+        parts.append(
+            f'<i class="c-band{extra}" data-code="{esc(c["code"])}" '
+            f'style="left:{left}%;width:{right - left:.2f}%;{style}"></i>'
+        )
+    for s in shifts:
+        # The seam is one of red's two reserved meanings (DESIGN v2.1 rule
+        # 10): the moment a coded position changes, direction-neutral.
+        parts.append(f'<i class="c-seam" style="left:{canvas_x(s["date"])}%"></i>')
+    for key in config.LAWS_RESOLUTIONS:
+        vote = entry["votes"][key]
+        parts.append(
+            f'<span class="c-mark c-mark-{vote}" '
+            f'style="left:{canvas_x(resolutions[key]["date"])}%">'
+            + vote_glyph_svg(vote, 12) + "</span>"
+        )
+    note = next(
+        (str(c["provisional_note"]).strip() for c in timeline
+         if c.get("provisional_note")), None,
+    )
+    note_html = (
+        f'<span class="c-note citation">{esc(note)}</span>' if note else ""
+    )
+    move_year = _last_move_year(entry)
+    attrs = [
+        f'data-iso3="{iso3}"',
+        f'data-name="{esc(name)}"',
+    ]
+    if move_year:
+        attrs.append(f'data-move-year="{move_year}"')
+    if timeline:
+        attrs.append(f'data-code="{esc(timeline[-1]["code"])}"')
+    return (
+        f'<div class="c-row" {" ".join(attrs)}>'
+        f'<span class="c-label">{esc(name)}</span>'
+        f'<span class="c-track">{"".join(parts)}</span>'
+        f"{note_html}</div>"
+    )
+
+
+def canvas_teach_sets(stats):
+    """The teaching sentences: plain lines naming unit and count above the
+    mark-field (the craft standard's highest-value rule). Factual chart
+    furniture computed from the dataset, never analyst prose."""
+    r = stats["res"]
+    keys = list(config.LAWS_RESOLUTIONS)
+    r1, r2, r3 = (r[k] for k in keys)
+    return {
+        "b1": "",
+        "b2": f"One state. One recorded vote, adopted {r1['date']}.",
+        "b3": "One state. Three recorded votes, 2023 to 2025.",
+        "b4": "One state. Three recorded votes, 2023 to 2025.",
+        "b5": "The band is the coded position. The seam marks the change.",
+        "b6": "Two states. Three recorded votes each.",
+        "b7": f"{stats['movers']} states changed a recorded vote. One row per state.",
+        "b8": f"{stats['coded']} states with a coded position, one row per state.",
+        "b9": f"{stats['states']} member states. One row per state, three recorded votes each.",
+        "b10": f"{stats['states']} member states. Seventh Review Conference: 16 to 20 November 2026.",
+    }
+
+
+def canvas_stat_sets(stats):
+    """Stat-row variants per beat: always hard numbers, never adjectives."""
+    r = stats["res"]
+    keys = list(config.LAWS_RESOLUTIONS)
+
+    def tally_chip(k):
+        t = r[k]
+        return (
+            f'<span class="c-stat"><strong>{t["year"]}</strong> '
+            f'{t["yes"]} Y · {t["no"]} N · {t["abstain"]} A · '
+            f'{t["non_voting"]} NV</span>'
+        )
+
+    first = r[keys[0]]
+    all_three = "".join(tally_chip(k) for k in keys)
+    full = (
+        f'<span class="c-stat"><strong>{stats["states"]}</strong> states</span>'
+        '<span class="c-stat"><strong>3</strong> recorded votes</span>'
+        f'<span class="c-stat"><strong>{stats["coded"]}</strong> positions coded</span>'
+    )
+    return {
+        "b1": "",
+        "b2": (
+            f'<span class="c-stat"><strong>{first["yes"]}</strong> in favour</span>'
+            f'<span class="c-stat"><strong>{first["no"]}</strong> against</span>'
+            f'<span class="c-stat"><strong>{first["abstain"]}</strong> abstentions</span>'
+            f'<span class="c-stat"><strong>{first["non_voting"]}</strong> not voting</span>'
+        ),
+        "b3": all_three,
+        "b4": all_three,
+        "b5": all_three,
+        "b6": all_three,
+        "b7": f'<span class="c-stat"><strong>{stats["movers"]}</strong> states changed a recorded vote</span>',
+        "b8": (
+            f'<span class="c-stat"><strong>{stats["coded"]}</strong> coded</span>'
+            f'<span class="c-stat"><strong>{stats["states"] - stats["coded"]}</strong> not yet coded</span>'
+        ),
+        "b9": full,
+        "b10": full,
+    }
+
+
+def canvas_html(votes, content_states, preview):
+    """The whole canvas, server-rendered in its end state: 193 rows, every
+    mark, band, and seam, the stat-row sets, the teaching sentences, and
+    the deadline line. JS only reveals and transforms; it never builds."""
+    resolutions = votes["resolutions"]
+    stats = canvas_stats(votes, content_states, preview)
+    ordered = sorted(
+        votes["states"].items(),
+        key=lambda kv: (
+            content_states.get(kv[0], {}).get("display_name")
+            or display_from_un_name(kv[1]["un_name"])
+        ),
+    )
+    rows = "\n".join(
+        canvas_row_html(iso3, entry, resolutions, content_states.get(iso3, {}), preview)
+        for iso3, entry in ordered
+    )
+    teach = "".join(
+        f'<p class="c-teach" data-set="{k}"{" hidden" if k != "b9" else ""}>{esc(v)}</p>'
+        for k, v in canvas_teach_sets(stats).items() if v
+    )
+    stat_sets = "".join(
+        f'<div class="c-statset" data-set="{k}"{" hidden" if k != "b9" else ""}>{v}</div>'
+        for k, v in canvas_stat_sets(stats).items() if v
+    )
+    dx = canvas_x(REVCON_START)
+    deadline = (
+        f'<div class="c-deadline" style="left:{dx}%">'
+        '<svg viewBox="0 0 10 100" preserveAspectRatio="none" aria-hidden="true">'
+        '<line id="deadline-line" x1="5" y1="0" x2="5" y2="100" '
+        f'stroke="{config.PALETTE["ink"]}" stroke-width="2" '
+        'stroke-dasharray="6 5"/></svg>'
+        '<span class="c-deadline-label citation">16 to 20 Nov 2026</span></div>'
+    )
+    return f"""
+    <div class="scrolly-canvas" id="scrolly-canvas" hidden>
+      <div class="c-teach-slot" aria-live="polite">{teach}</div>
+      <div class="c-board-wrap">
+        <div class="c-board" id="c-board" data-beat="9">
+{rows}
+        </div>
+        {deadline}
+      </div>
+      <div class="c-stats" aria-live="polite">{stat_sets}</div>
+    </div>"""
+
+
 def tour_html(tour, votes, content_states, preview):
-    """P1c scaffold: the ten storyboard beats as stacked prose with the
-    always-visible skip link. With no JavaScript this stack, above the
-    server-rendered board, IS the story; the persistent canvas and its
-    choreography are enhancement layered on in P2c and after."""
+    """The scrollytelling scaffold: ten stacked prose beats (the no-JS and
+    reduced-motion path) beside the hidden server-rendered canvas. JS
+    enhances into the two-column sticky layout; nothing here depends on
+    script to be readable."""
     beats = []
     for i, beat in enumerate(tour.get("beats", []), 1):
         chip = (
@@ -227,9 +451,13 @@ def tour_html(tour, votes, content_states, preview):
   </section>""")
     return (
         '<a class="skip-board" href="#board-top">Skip to the board</a>\n'
-        '<section class="tour" id="tour" aria-label="Guided tour">'
+        '<section class="tour" id="tour" aria-label="Guided tour">\n'
+        '  <div class="scrolly">\n'
+        '    <div class="scrolly-steps">'
         + "".join(beats)
-        + "\n</section>\n"
+        + "\n    </div>"
+        + canvas_html(votes, content_states, preview)
+        + "\n  </div>\n</section>\n"
     )
 
 
@@ -309,23 +537,36 @@ def is_approved(entry):
 # Animation stack: pinned version + SRI from cdnjs, loaded deferred and only
 # on pages that render the tour. The tour is enhancement; the scaffold and
 # the board are complete without it (DESIGN v2, binding).
+# Division of labor (craft standard): Scrollama says WHEN, CSS sticky
+# HOLDS, GSAP DRAWS. ScrollTrigger is deliberately absent: one scroll
+# driver, not two.
 GSAP_VERSION = "3.15.0"
 GSAP_SCRIPTS = (
     ("gsap.min.js",
      "sha512-Qrpii3NEFZ02RN6ZqpTu6pS/5PEq7EzBYJLki3AKBd8IncrlAwQdZHzExYwS0+b1NM0/qfxI1GOhqWLVosocDA=="),
-    ("ScrollTrigger.min.js",
-     "sha512-HemPoJ+m4KR4XM3VY+N58XFYN7qdXuR0elHeVYGJBJ6LYC+xoeHodEpwiN5JxXLyvA+sRd7/FJ6w6lz5IkANNQ=="),
     ("DrawSVGPlugin.min.js",
      "sha512-AxhfgcJYY6BU9wEF3FLWSrBjzra6a0tIdNPZIG5mhdCCtrrvzkMDEARvWsTGR9FJG9z/t8l9g5gJqtMIt5Nf5w=="),
 )
 
 
+# Scrollama (MIT): step enter/exit triggering only, per the craft-standard
+# division of labor (Scrollama says WHEN, CSS sticky HOLDS, GSAP DRAWS).
+# License notes for the whole stack: docs/THIRD_PARTY.md.
+SCROLLAMA_VERSION = "3.2.0"
+SCROLLAMA_SRI = "sha512-YE2BOLTLBOkZ10ahg304yD425ncH98QTjdCgfsjzAJB1tMHWeruT4BBrHL2FXfXLjFJqfsB7I7qhqxubPsT/dw=="
+
+
 def gsap_script_tags():
-    return "\n".join(
+    tags = [
         f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/{GSAP_VERSION}/{name}" '
         f'integrity="{sri}" crossorigin="anonymous"></script>'
         for name, sri in GSAP_SCRIPTS
+    ]
+    tags.append(
+        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/{SCROLLAMA_VERSION}/scrollama.min.js" '
+        f'integrity="{SCROLLAMA_SRI}" crossorigin="anonymous"></script>'
     )
+    return "\n".join(tags)
 
 
 NAV = [
@@ -457,6 +698,8 @@ def compute_bands(codings):
                 "width": right - left,
                 "opacity": "1" if coding.get("confidence") == "EXPLICIT" else "0.55",
                 "since": iso(coding["as_of"]),
+                "note": (str(coding["provisional_note"]).strip()
+                         if coding.get("provisional_note") else None),
             }
         )
     return bands
@@ -470,6 +713,8 @@ def row_track_html(iso3, entry, resolutions, codings, shifts):
     for band in compute_bands(codings):
         style, extra_class = band_style(band["code"], band["confidence"])
         title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
+        if band.get("note"):
+            title += f". {band['note']}"
         parts.append(
             f'<div class="band{extra_class}" style="left:{band["left"] / 10:.2f}%;'
             f'width:{band["width"] / 10:.2f}%;{style}" title="{esc(title)}"></div>'
@@ -1938,11 +2183,12 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
 """
 
 
-TOUR_JS = """// Tour scaffold behavior (P1c). The stacked-prose beats and the static
-// board ARE the page; this file holds only the guards and the mobile
-// tap-through stepper. The persistent-canvas choreography arrives in P2c
-// behind these same guards: reduced-motion and no-JS readers keep the
-// complete stacked scaffold.
+TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic board ARE
+// the page; everything here is enhancement behind guards. Division of
+// labor per the craft standard: Scrollama says WHEN, CSS sticky HOLDS,
+// GSAP DRAWS. Motion is one tempo in every direction (neutrality in
+// motion, DESIGN v2): a row arriving, leaving, or re-sorting animates
+// identically whatever the state did.
 (function () {
   "use strict";
   var tour = document.querySelector(".tour");
@@ -1990,8 +2236,126 @@ TOUR_JS = """// Tour scaffold behavior (P1c). The stacked-prose beats and the st
 
   // ---- Reduced motion: instant states; the stacked scaffold stands ----
   if (reduced) return;
+  if (typeof window.scrollama === "undefined" || typeof window.gsap === "undefined") return;
+  var gsap = window.gsap;
+  var hasDraw = typeof window.DrawSVGPlugin !== "undefined";
+  if (hasDraw) gsap.registerPlugin(window.DrawSVGPlugin);
 
-  // P2c wires Scrollama and GSAP here, behind the guards above.
+  var canvas = document.getElementById("scrolly-canvas");
+  var board = document.getElementById("c-board");
+  if (!canvas || !board) return;
+
+  tour.classList.add("tour-enhanced");
+  canvas.hidden = false;
+
+  var rows = Array.prototype.slice.call(board.querySelectorAll(".c-row"));
+  var ALL = rows.map(function (r) { return r.getAttribute("data-iso3"); });
+
+  function byName(a, b) {
+    return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"));
+  }
+  // The movers, sorted by when each state last moved (beat 7).
+  var MOVERS = rows.filter(function (r) { return r.hasAttribute("data-move-year"); })
+    .sort(function (a, b) {
+      var ya = a.getAttribute("data-move-year"), yb = b.getAttribute("data-move-year");
+      if (ya !== yb) return ya < yb ? -1 : 1;
+      return byName(a, b);
+    })
+    .map(function (r) { return r.getAttribute("data-iso3"); });
+  // The coded states, grouped into camps by category (beat 8). The order
+  // is the rubric's own category order: a listing, never a ranking.
+  var CODE_ORDER = ["LBI-BAN", "LBI-OPEN", "REG-SOFT", "CCW-ONLY", "OPPOSE", "AMBIG", "NONE"];
+  var CODED = rows.filter(function (r) { return r.hasAttribute("data-code"); })
+    .sort(function (a, b) {
+      var ca = CODE_ORDER.indexOf(a.getAttribute("data-code"));
+      var cb = CODE_ORDER.indexOf(b.getAttribute("data-code"));
+      if (ca !== cb) return ca - cb;
+      return byName(a, b);
+    })
+    .map(function (r) { return r.getAttribute("data-iso3"); });
+
+  var SCALES = { xl: 64, m: 26, s: 13, xs: 3.4 };
+  // The full wall must fit the stage: at poster scale the row height
+  // shrinks to fill at most 58% of the viewport.
+  function rowHeight(st) {
+    var h = SCALES[st.scale];
+    if (st.scale === "xs" && st.order.length) {
+      h = Math.max(2, Math.min(h, (window.innerHeight * 0.58) / st.order.length));
+    }
+    return h;
+  }
+
+  // One entry per storyboard beat. P3c layers the within-beat drawing
+  // (bands, glyph teaching, muting) onto this state model.
+  var STATES = [null,
+    { order: [], scale: "xl", set: "b1", deadline: "faint" },
+    { order: ["USA"], scale: "xl", set: "b2" },
+    { order: ["USA"], scale: "xl", set: "b3" },
+    { order: ["USA"], scale: "xl", set: "b4" },
+    { order: ["USA"], scale: "xl", set: "b5" },
+    { order: ["USA", "IND"], scale: "xl", set: "b6" },
+    { order: MOVERS, scale: "m", set: "b7" },
+    { order: CODED, scale: "m", set: "b8" },
+    { order: ALL, scale: "xs", set: "b9" },
+    { order: ALL, scale: "xs", set: "b10", deadline: "draw" }
+  ];
+
+  function showSet(cls, set) {
+    Array.prototype.forEach.call(canvas.querySelectorAll("." + cls), function (el) {
+      el.hidden = el.getAttribute("data-set") !== set;
+    });
+  }
+
+  // State application is CSS-transition-driven (set target values, the
+  // browser interpolates): unlike ticker-based tweens it lands on the
+  // final state even if rendering stalls mid-flight (hidden tab,
+  // occluded window). GSAP is reserved for actual drawing (DrawSVG).
+  var deadlineDrawn = false;
+  function setBeat(n) {
+    var st = STATES[n];
+    if (!st) return;
+    board.setAttribute("data-beat", String(n));
+    board.setAttribute("data-scale", st.scale);
+    var h = rowHeight(st);
+    var pos = {};
+    st.order.forEach(function (iso, i) { pos[iso] = i; });
+    rows.forEach(function (row) {
+      var iso = row.getAttribute("data-iso3");
+      if (iso in pos) {
+        row.style.transform = "translateY(" + (pos[iso] * h).toFixed(2) + "px)";
+        row.style.height = Math.max(h - (h > 10 ? 2 : 0.6), 2).toFixed(2) + "px";
+        row.classList.remove("c-off");
+      } else {
+        row.classList.add("c-off");
+      }
+    });
+    board.style.height = (Math.max(st.order.length, 4) * h).toFixed(1) + "px";
+    showSet("c-teach", st.set);
+    showSet("c-statset", st.set);
+    var dl = canvas.querySelector(".c-deadline");
+    if (dl) {
+      dl.setAttribute("data-state", st.deadline || "off");
+      if (st.deadline === "draw" && hasDraw && !deadlineDrawn) {
+        deadlineDrawn = true;
+        gsap.fromTo("#deadline-line", { drawSVG: "0%" },
+          { drawSVG: "100%", duration: 0.9, ease: "none" });
+      }
+    }
+  }
+
+  var scroller = window.scrollama();
+  scroller.setup({ step: ".scrolly-steps .beat", offset: 0.55 })
+    .onStepEnter(function (r) { setBeat(r.index + 1); });
+  window.addEventListener("resize", function () { scroller.resize(); });
+
+  // Initial state before reveal: everything off, then beat 1.
+  rows.forEach(function (row) { row.classList.add("c-off"); });
+  setBeat(1);
+
+  // Positions depend on the serif loading; recalc offsets once it settles.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { scroller.resize(); });
+  }
 })();
 """
 

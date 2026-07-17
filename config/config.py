@@ -92,8 +92,10 @@ LAWS_RESOLUTIONS = {
 
 # ---------------------------------------------------------------------------
 # Palette tokens (DESIGN.md is authoritative for semantics; these are the
-# concrete values). No position renders red or green. Saturated red is
-# reserved for data-integrity notices. AMBIG is a hatch texture, not a hue.
+# concrete values). No position renders red or green. Saturated red carries
+# exactly two reserved meanings (DESIGN v2.1 rule 10): data-integrity
+# notices, and the shift-seam marking the moment a coded position changes.
+# AMBIG is a hatch texture, not a hue.
 # ---------------------------------------------------------------------------
 
 PALETTE = {
@@ -109,7 +111,7 @@ PALETTE = {
         "NONE": "#D8D3C8",      # light neutral (absence: on record, nothing substantive)
     },
     "not_yet_reviewed": None,    # empty/paper with explicit label, never a fill
-    "integrity_red": "#C0392B",  # data-integrity notices ONLY
+    "integrity_red": "#C0392B",  # data-integrity notices + shift-seams ONLY
 }
 
 # ---------------------------------------------------------------------------

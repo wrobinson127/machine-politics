@@ -67,7 +67,9 @@ def test_skip_link_precedes_tour_and_targets_board(preview):
     assert 'href="#board-top"' in index
 
 
-def test_gsap_pinned_with_integrity(preview):
+def test_animation_stack_pinned_with_integrity(preview):
+    """GSAP and Scrollama load pinned with SRI; ScrollTrigger is absent by
+    design (one scroll driver: Scrollama triggers, GSAP draws)."""
     out, _ = preview
     index = (out / "index.html").read_text(encoding="utf-8")
     for name, sri in bs.GSAP_SCRIPTS:
@@ -79,20 +81,47 @@ def test_gsap_pinned_with_integrity(preview):
         )
         assert tag, name
         assert tag.group(1) == sri
+    scrollama_tag = re.search(
+        rf'<script defer src="https://cdnjs\.cloudflare\.com/ajax/libs/scrollama/'
+        rf'{re.escape(bs.SCROLLAMA_VERSION)}/scrollama\.min\.js" integrity="([^"]+)" '
+        rf'crossorigin="anonymous"></script>',
+        index,
+    )
+    assert scrollama_tag and scrollama_tag.group(1) == bs.SCROLLAMA_SRI
+    assert "ScrollTrigger" not in index
     assert '<script defer src="js/tour.js">' in index
 
 
+def test_canvas_is_server_rendered_and_hidden(preview):
+    """The persistent canvas ships complete in markup (193 rows, marks,
+    seams, stat sets, deadline) and hidden: JS reveals, it never builds."""
+    out, _ = preview
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert '<div class="scrolly-canvas" id="scrolly-canvas" hidden>' in index
+    canvas = index.split('id="scrolly-canvas"')[1].split('id="board-top"')[0]
+    assert canvas.count('class="c-row"') == 193
+    assert canvas.count("c-mark-") == 193 * 3
+    assert 'class="c-seam"' in canvas  # the USA shift seam (preview)
+    assert 'id="deadline-line"' in canvas
+    assert 'data-set="b9"' in canvas and 'data-set="b2"' in canvas
+    assert 'aria-live="polite"' in canvas
+    # the provisional note rides the canvas row as a visible caption
+    assert "Provisional: coded from secondary reporting" in canvas
+
+
 def test_tour_js_guards_are_first(preview):
-    """The reduced-motion guard precedes any GSAP use; in the P1c scaffold
-    there is no GSAP use at all, and the guard must still be present."""
+    """The mobile and reduced-motion guards precede any library use. The
+    detector keys on 'gsap.' and 'scrollama', not just registerPlugin, so
+    bare tween calls cannot slip ahead of the guards."""
     out, _ = preview
     tour_js = (out / "js" / "tour.js").read_text(encoding="utf-8")
     body = tour_js.split('"use strict";')[1]
     reduced = body.find("prefers-reduced-motion")
     assert reduced > -1
-    gsap_use = body.find("registerPlugin")
-    if gsap_use > -1:
-        assert reduced < gsap_use
+    first_lib_use = min(
+        p for p in (body.find("gsap."), body.find("scrollama")) if p > -1
+    )
+    assert reduced < first_lib_use
 
 
 def test_movers_are_the_substantive_changers():

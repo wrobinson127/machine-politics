@@ -162,8 +162,12 @@ def check_evidence(errors, where, entry, source_ids):
     if translation not in config.TRANSLATION_VALUES:
         errors.add(where, f"translation must be one of {config.TRANSLATION_VALUES}")
     confidence = entry.get("confidence")
-    if confidence not in config.CONFIDENCE_TIERS:
-        errors.add(where, f"confidence must be one of {config.CONFIDENCE_TIERS}")
+    # PROVISIONAL is a coding-level tier (it describes the coding's relation
+    # to a pending primary record, not how directly one document supports a
+    # claim); evidence entries keep the original three tiers.
+    evidence_tiers = tuple(t for t in config.CONFIDENCE_TIERS if t != "PROVISIONAL")
+    if confidence not in evidence_tiers:
+        errors.add(where, f"evidence confidence must be one of {evidence_tiers}")
     lang = entry.get("lang")
     quote = entry.get("quote")
     if quote is not None:
