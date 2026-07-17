@@ -43,9 +43,15 @@ POSITION_CATEGORIES = {
 # ---------------------------------------------------------------------------
 # Confidence tiers (Axis B). Confidence modulates saturation and a
 # dotted-underline convention in the UI. It never changes hue.
+# PROVISIONAL (P3c, analyst ruling 2026-07-17): coded from secondary
+# reporting pending verification against the primary record. Renders with
+# the lowered-confidence treatment (reduced saturation, dotted underline)
+# plus a required provisional_note surfaced in captions and telemetry.
+# Distinct from the data-integrity red state, which stays reserved for
+# corrections and superseded codings.
 # ---------------------------------------------------------------------------
 
-CONFIDENCE_TIERS = ("EXPLICIT", "INFERRED", "AMBIGUOUS")
+CONFIDENCE_TIERS = ("EXPLICIT", "INFERRED", "AMBIGUOUS", "PROVISIONAL")
 
 TRANSLATION_VALUES = ("official", "unofficial", "none")
 

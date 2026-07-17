@@ -32,7 +32,7 @@ Axis A, instrument preference, mutually exclusive at a dated point in time:
 | AMBIG | Position ambiguous or evolving |
 | NONE | No substantive position on record |
 
-Axis B, confidence: EXPLICIT, INFERRED, AMBIGUOUS. Confidence describes how directly the evidence supports the coding. On the site it modulates saturation and a dotted-underline convention. It never changes the category hue.
+Axis B, confidence: EXPLICIT, INFERRED, AMBIGUOUS, PROVISIONAL. Confidence describes how directly the evidence supports the coding. On the site it modulates saturation and a dotted-underline convention. It never changes the category hue. PROVISIONAL marks a coding that rests on secondary reporting of a primary record not yet retrieved; it requires a note stating exactly what is pending, rendered as a visible caption and in the mark's hover readout, and it is upgraded or corrected once the primary record is reviewed.
 
 AMBIG is a finding, not a failure. When a state supports a "ban" while defining the banned class so narrowly that little falls inside it, the honest coding is AMBIG with evidence showing both halves. That case is real and it is one of the three worked examples.
 
@@ -74,7 +74,7 @@ There is no automated or model-assisted position classification. The publishing 
 ## Design rules that carry meaning
 
 - No position category renders red or green, anywhere, including exported images. Coloring a state's position red is an editorial act, so the palette is categorical with no good/bad ordering.
-- Saturated red has exactly one meaning: a data-integrity notice.
+- Saturated red has exactly two meanings, and no others: a data-integrity notice, and the shift-seam marking the moment a coded position changes. It never colors a position, a camp, a vote, or motion.
 - AMBIG renders as a hatch texture, not gray and not a blend, because gray means absence.
 - Annotations are outlines and markers, never fills.
 

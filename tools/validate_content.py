@@ -210,11 +210,27 @@ def check_no_inference(errors, where, coding, source_ids):
         )
 
 
+def _check_provisional(errors, where, entry):
+    """A PROVISIONAL coding or shift must say exactly what is pending; the
+    note is surfaced in captions and hover telemetry (analyst ruling
+    2026-07-17). A provisional_note on a non-provisional entry is drift."""
+    if entry.get("confidence") == "PROVISIONAL":
+        note = entry.get("provisional_note")
+        if not isinstance(note, str) or not note.strip():
+            errors.add(where, "PROVISIONAL confidence requires a provisional_note")
+    elif entry.get("provisional_note"):
+        errors.add(
+            where,
+            "provisional_note present but confidence is not PROVISIONAL",
+        )
+
+
 def check_coding(errors, where, coding, source_ids):
     if coding.get("code") not in config.POSITION_CATEGORIES:
         errors.add(where, f"unknown Axis A code {coding.get('code')!r}")
     if coding.get("confidence") not in config.CONFIDENCE_TIERS:
         errors.add(where, f"confidence must be one of {config.CONFIDENCE_TIERS}")
+    _check_provisional(errors, where, coding)
     _check_date(errors, where, coding.get("as_of"), "as_of")
     _check_approved(errors, where, coding)
     evidence = coding.get("evidence") or []
@@ -237,6 +253,12 @@ def check_shift_event(errors, where, event, iso3, source_ids):
             errors.add(where, f"{field} must be an Axis A code, got {event.get(field)!r}")
     if event.get("from") == event.get("to"):
         errors.add(where, "shift event must change category (from == to)")
+    # A shift event may carry a provisional_note (rendered at the seam and
+    # in telemetry) when the record dating it is secondary reporting.
+    if "provisional_note" in event:
+        note = event.get("provisional_note")
+        if not isinstance(note, str) or not note.strip():
+            errors.add(where, "provisional_note, when present, must be a non-empty string")
     _check_approved(errors, where, event)
     evidence = event.get("evidence") or []
     if not evidence:
@@ -552,21 +574,37 @@ def check_eras(errors, eras_dir, vote_states):
         scan_prohibited_claims(errors, where, data)
 
 
+# The storyboard's beat sequence is authoritative (P3c): ten beats, these
+# ids, this order. A reordered or truncated tour fails the build.
+TOUR_BEAT_SEQUENCE = (
+    "the-question", "one-vote", "the-glyphs", "the-canvas", "the-coding",
+    "the-mirror", "the-movers", "the-camps", "the-board", "the-clock",
+)
+
+
 def check_tour(errors, path):
     where = "tour.yaml"
     tour = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     _check_approved(errors, where, tour)
     beats = tour.get("beats") or []
-    if len(beats) != 4:
-        errors.add(where, f"the tour has exactly four beats, found {len(beats)}")
-    known_figures = {"tally-78-241", "track-USA", "movers", "full-board"}
+    if len(beats) != len(TOUR_BEAT_SEQUENCE):
+        errors.add(
+            where,
+            f"the tour has exactly {len(TOUR_BEAT_SEQUENCE)} beats "
+            f"(the storyboard sequence), found {len(beats)}",
+        )
+    ids = tuple(beat.get("id") for beat in beats)
+    if ids != TOUR_BEAT_SEQUENCE and len(beats) == len(TOUR_BEAT_SEQUENCE):
+        errors.add(
+            where,
+            f"beat ids must match the storyboard sequence {TOUR_BEAT_SEQUENCE}, "
+            f"found {ids}",
+        )
     for i, beat in enumerate(beats):
         b_where = f"{where}.beats[{i}]"
-        for field in ("id", "title", "copy", "figure"):
+        for field in ("id", "title", "copy"):
             if not beat.get(field):
                 errors.add(b_where, f"beat needs {field!r}")
-        if beat.get("figure") and beat["figure"] not in known_figures:
-            errors.add(b_where, f"unknown figure {beat['figure']!r}; known: {sorted(known_figures)}")
         for ch, name in (("—", "em dash"), ("–", "en dash")):
             if ch in str(beat.get("copy", "")) + str(beat.get("title", "")):
                 errors.add(b_where, f"beat title or copy contains an {name}; voice rules forbid it")

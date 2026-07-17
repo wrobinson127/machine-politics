@@ -30,7 +30,7 @@ Every coded position sits on two axes.
 
 Axis A is instrument preference: what kind of international instrument, if any, does the state support? Seven categories: LBI-BAN, LBI-OPEN, REG-SOFT, CCW-ONLY, OPPOSE, AMBIG, NONE. The [rubric page](rubric.html) defines each in plain language. Categories are mutually exclusive at a dated point in time.
 
-Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction.
+Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction, PROVISIONAL when the coding rests on secondary reporting of a primary record this project has not yet verified. A provisional coding says so on its face, carries a note stating exactly what is pending, and is upgraded or corrected once the primary record is reviewed.
 
 AMBIG is a first-class category, not a failure state. When a state's record supports two readings, the coding says so and the evidence shows both. China is the worked example.
 
@@ -64,7 +64,7 @@ Walker Robinson is the analyst of record. Tooling drafts, checks, and formats. I
 
 ## Corrections
 
-Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice, the only red on this site. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository. The [about page](about.html) says who runs this.
+Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice. Red on this site carries exactly two meanings: that notice, and the thin seam marking the moment a coded position changed. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository. The [about page](about.html) says who runs this.
 
 ## Related work
 

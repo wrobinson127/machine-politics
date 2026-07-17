@@ -292,3 +292,34 @@ def test_context_annotation_with_coding_fields_rejected(tmp_path):
         ]
     errs = errors_for(tmp_path, mutate)
     assert any("strict scope" in e for e in errs)
+
+
+def test_provisional_coding_requires_note(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0], confidence="PROVISIONAL"
+        )
+    errs = errors_for(tmp_path, mutate)
+    assert any("requires a provisional_note" in e for e in errs)
+
+
+def test_provisional_coding_with_note_passes(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0],
+            confidence="PROVISIONAL",
+            provisional_note=(
+                "Provisional: coded from secondary reporting; pending "
+                "verification against the primary record."
+            ),
+        )
+    assert errors_for(tmp_path, mutate) == []
+
+
+def test_provisional_note_without_tier_is_drift(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0], provisional_note="Stray note."
+        )
+    errs = errors_for(tmp_path, mutate)
+    assert any("confidence is not PROVISIONAL" in e for e in errs)

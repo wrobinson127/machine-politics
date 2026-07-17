@@ -71,9 +71,12 @@ li > .citation {
   font-size: 1.04rem;
 }
 
-/* Confidence conventions: hue never changes, treatment does */
+/* Confidence conventions: hue never changes, treatment does.
+   PROVISIONAL takes the same lowered-confidence treatment; its note
+   renders as a visible caption wherever the coding renders. */
 .conf-INFERRED { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
 .conf-AMBIGUOUS { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
+.conf-PROVISIONAL { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
 
 /* ------------------------------------------------------------------ */
 /* Shell                                                               */
@@ -177,192 +180,23 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .skip-board:hover { background: var(--ink); color: var(--ground); }
 
+/* P1c scaffold: beats are a stacked prose column. P2c adds the sticky
+   canvas beside them; this layout IS the no-JS and reduced-motion path. */
 .tour .beat {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
-  gap: 2.5rem;
-  align-items: center;
-  padding: 3.5rem 0;
+  padding: 3rem 0;
   border-bottom: 1px solid var(--rule-faint);
 }
 
 .tour .beat:last-child { border-bottom: none; }
 
+.beat-copy { max-width: 34rem; }
+
 .beat-copy h2 { margin-top: 0; }
 
 .beat-copy p { font-size: 1.05rem; }
 
-.beat-figure {
-  margin: 0;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: var(--ground-raise);
-  padding: 1rem 1.2rem;
-}
-
-.beat-figure img { display: block; width: 100%; height: auto; }
-
-/* Tour figures: purpose-built charts, every number and label on the
-   figure itself (the board's axis and reading key are not present here) */
-.tally-stats {
-  display: flex;
-  gap: 1.8rem;
-  flex-wrap: wrap;
-  margin: 0.5rem 0 1rem;
-}
-
-.tally-stat strong {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 2.1rem;
-  line-height: 1.1;
-  font-variant-numeric: tabular-nums;
-}
-
-.tally-stat span { font-size: 0.78rem; color: var(--ink-soft); }
-
-.tally-units { display: flex; flex-wrap: wrap; gap: 2px; }
-
-.tally-units i {
-  width: 9px;
-  height: 13px;
-  border-radius: 1px;
-  background: var(--ink);
-}
-
-.move-chart { position: relative; height: 158px; margin-top: 1.4rem; }
-
-.move-stroke {
-  position: absolute;
-  top: 56px;
-  left: 0;
-  width: 100%;
-  height: 24px;
-}
-
-.move-col {
-  position: absolute;
-  top: 0;
-  transform: translateX(-50%);
-  display: grid;
-  justify-items: center;
-  gap: 0.1rem;
-  text-align: center;
-}
-
-.move-col .move-year { font-weight: 600; font-size: 0.92rem; }
-
-.move-col .move-sym {
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
-
-.move-col svg { margin: 0.3rem 0 0.15rem; background: var(--ground-raise); }
-
-.move-col strong { font-size: 0.9rem; }
-
-.move-break {
-  position: absolute;
-  top: 106px;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-  white-space: nowrap;
-}
-
-.move-break::before {
-  content: "";
-  display: block;
-  width: 1.5px;
-  height: 14px;
-  margin: 0 auto 3px;
-  background: var(--ink);
-  opacity: 0.55;
-}
-
-.move-band { position: relative; height: 34px; margin: 0.6rem 0 0.2rem; }
-
-.move-band .move-seg {
-  position: absolute;
-  top: 0;
-  height: 12px;
-  border-radius: 2px;
-}
-
-.move-band .move-seg b {
-  position: absolute;
-  top: 14px;
-  left: 0;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.mover-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-variant-numeric: tabular-nums;
-}
-
-.mover-table th, .mover-table td {
-  text-align: left;
-  padding: 0.28rem 0.5rem 0.28rem 0;
-  border-bottom: 1px solid var(--rule-faint);
-  font-size: 0.85rem;
-  font-weight: 400;
-}
-
-.mover-table thead th { font-weight: 600; line-height: 1.2; }
-
-.mover-table thead th span {
-  display: block;
-  font-weight: 400;
-  font-size: 0.72rem;
-  color: var(--ink-soft);
-}
-
-.mover-table td svg { vertical-align: -0.12em; margin-right: 0.3em; }
-
-.mover-table td span { font-size: 0.8rem; }
-
-.mover-table td.mv-changed {
-  box-shadow: inset 0 0 0 1.5px var(--ink);
-  border-radius: 2px;
-}
-
-.mover-table td.mv-changed span { font-weight: 600; }
-
 @media (max-width: 860px) {
-  .tour .beat { grid-template-columns: 1fr; gap: 1.2rem; padding: 2.2rem 0; }
-  .tally-stat strong { font-size: 1.6rem; }
-  .tally-units i { width: 7px; height: 11px; }
-  .mover-table th, .mover-table td { font-size: 0.78rem; }
-}
-
-/* Enhanced (scroll-driven) tour: each beat's figure holds as a pinned
-   pane while its copy scrolls past; the last beat releases the scroll */
-.tour-enhanced .beat {
-  min-height: 130vh;
-  align-items: start;
-}
-
-.tour-enhanced .beat-copy { padding-top: 22vh; padding-bottom: 30vh; }
-
-.tour-enhanced .beat-figure {
-  position: sticky;
-  top: 20vh;
-}
-
-.tour-enhanced .beat:last-child { min-height: 110vh; }
-
-.revcon-stamp {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.6rem;
-  font-variant-numeric: tabular-nums;
+  .tour .beat { padding: 2.2rem 0; }
 }
 
 /* Mobile stepper: tap-through beats, one at a time. The display rule on

@@ -29,60 +29,24 @@ position_codings:
           an error page to this project's tooling. The declaration launched
           2023-02-16 at REAIM; a revised version circulated October 2023.
 
-  - code: CCW-ONLY
-    confidence: EXPLICIT
-    as_of: 2024-05-25
+  - code: OPPOSE
+    confidence: PROVISIONAL
+    as_of: 2025-12-02
     approved: false
+    provisional_note: >
+      Provisional: coded from secondary reporting of the December 2025
+      explanation of vote; pending verification against the primary record.
     rationale: >
-      The United States' submission for the Secretary-General's report calls
-      the CCW GGE uniquely suitable, opposes parallel initiatives, and states
-      the time is not right to negotiate a legally binding instrument.
-    evidence:
-      - source: us-submission-78-241
-        claim: The US identifies the CCW GGE as its preferred forum for international work on LAWS.
-        quote: "The LAWS GGE is a uniquely suitable forum for international work on LAWS."
-        date: 2024-05-25
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
-        lang: en
-        translation: none
-        confidence: EXPLICIT
-      - source: us-submission-78-241
-        claim: The US opposed initiatives outside the GGE.
-        quote: "strongly opposed to any efforts to create parallel initiatives that would prejudge or seek to undermine the centrality of the LAWS GGE"
-        date: 2024-05-25
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
-        lang: en
-        translation: none
-        confidence: EXPLICIT
-      - source: us-submission-78-241
-        claim: The US stated it did not support beginning negotiation of a legally binding instrument at that time.
-        quote: "negotiations on a legally binding instrument on LAWS, we do not believe the time is right for such an endeavor"
-        date: 2024-05-25
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
-        lang: en
-        translation: none
-        confidence: EXPLICIT
-      - source: us-submission-78-241
-        claim: The US position rests on existing international humanitarian law as the applicable framework.
-        quote: "IHL already provides the applicable framework of prohibitions and regulations on the use of LAWS in armed conflict"
-        date: 2024-05-25
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
-        lang: en
-        translation: none
-        confidence: EXPLICIT
-
-  - code: CCW-ONLY
-    confidence: AMBIGUOUS
-    as_of: 2025-12-01
-    approved: false
-    rationale: >
-      The United States voted No on resolution 80/57 after stating in the
-      First Committee that it did not support the text, and its 2025
-      submission under resolution 79/239 opposes any new UN-based regulatory
-      process. The 2025 record carries language close to the OPPOSE category.
-      CCW-ONLY marks the best-supported reading; whether the record shows a
-      reaffirmed CCW-ONLY or a move to OPPOSE is an open analyst question,
-      and the confidence tier records that.
+      The United States voted No on resolution 80/57. Its 2025 submission
+      under resolution 79/239 opposes any new UN-based regulatory process
+      and announces resistance to new restrictions, and the First Committee
+      explanation of vote states it did not support the resolution. The
+      coding is provisional because the December 2025 explanation of vote is
+      known to this project only through secondary reporting; the tier is
+      upgraded or the coding corrected once the primary record is reviewed.
+      The 2024 submission's defense of the CCW GGE track reads, on this
+      record, as a stage in the same trajectory rather than a separate
+      category, per the analyst ruling of 2026-07-17.
     evidence:
       - source: us-submission-79-239
         claim: By 2025 the US stated opposition to any new UN-based regulatory process for military AI and autonomy.
@@ -116,22 +80,40 @@ position_codings:
 
 shift_events:
   - state: USA
-    date: 2024-05-25
+    date: 2025-12-02
     from: REG-SOFT
-    to: CCW-ONLY
+    to: OPPOSE
     approved: false
+    provisional_note: >
+      Provisional: coded from secondary reporting of the December 2025
+      explanation of vote; pending verification against the primary record.
     rationale: >
-      Between the 2023 declaration push and the 2024 submission, the stated
-      preference narrowed from promoting new non-binding measures to defending
-      the CCW GGE as the only appropriate track. The date marks the earliest
-      verified record of the narrowed position, not necessarily the day the
-      position changed.
+      Between the 2023 declaration push and the December 2025 No vote on
+      resolution 80/57, the stated preference moved from promoting new
+      non-binding measures to opposing a new instrument. The date marks the
+      recorded vote the explanation of vote accompanies, not necessarily the
+      day the position changed. The event is provisional pending review of
+      the primary explanation-of-vote record, per the analyst ruling of
+      2026-07-17.
     evidence:
-      - source: us-submission-78-241
-        claim: The submission opposes initiatives outside the GGE and declines negotiation of a binding instrument.
-        quote: "strongly opposed to any efforts to create parallel initiatives that would prejudge or seek to undermine the centrality of the LAWS GGE"
-        date: 2024-05-25
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
+      - source: un-c1-80-transcript-24
+        claim: In its First Committee explanation of vote the US announced it did not support the LAWS resolution.
+        quote: "The United States does not support L41 the law's resolution, and voted against it."
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: >
+          Verbatim from the UN automatic-speech-recognition transcript, which
+          is not an official record; the ASR renders "L.41, the LAWS
+          resolution" as quoted. The official text is the US Mission Geneva
+          Cluster 4 statement, which blocks tool fetches (link on record).
+      - source: us-submission-79-239
+        claim: By 2025 the US stated opposition to any new UN-based regulatory process for military AI and autonomy.
+        quote: "the creation of a new regulatory process under UN auspices would be inappropriate and undermine efforts to strengthen international peace and security"
+        date: 2025-03-31
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf
         lang: en
         translation: none
         confidence: EXPLICIT

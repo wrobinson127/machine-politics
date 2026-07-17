@@ -206,188 +206,24 @@ def move_x(d, w=1000.0):
     return round((0.04 + 0.92 * frac) * w, 1)
 
 
-def tally_figure_html(res):
-    """The 78/241 tally as labeled numerals plus a unit chart: one mark
-    per member state, ink intensity by vote, counts stated on the figure."""
-    tally = res["tally"]
-    non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
-    groups = (
-        (tally["yes"], "in favour", "0.92"),
-        (tally["no"], "against", "0.62"),
-        (tally["abstain"], "abstentions", "0.40"),
-        (non_voting, "not voting", "0.16"),
-    )
-    stats = "".join(
-        f'<div class="tally-stat"><strong>{n}</strong><span>{label}</span></div>'
-        for n, label, _ in groups
-    )
-    cells = "".join(f'<i style="opacity:{op}"></i>' * n for n, _, op in groups)
-    aria = ", ".join(f"{n} {label}" for n, label, _ in groups)
-    return (
-        f"<p class=\"citation\">{esc(res['symbol'])} · adopted {esc(res['date'])} · "
-        "one mark per member state</p>"
-        f'<div class="tally-stats">{stats}</div>'
-        f'<div class="tally-units" role="img" '
-        f'aria-label="{aria}, of 193 member states">{cells}</div>'
-    )
-
-
-def us_move_figure_html(votes, content_states, preview):
-    """The US move, zoomed and annotated: three dated, labeled votes on a
-    time axis, a stroke broken at each recorded shift (the one DrawSVG
-    target, fully rendered without JavaScript), and the coded band below
-    with the rubric category written on it."""
-    entry = votes["states"]["USA"]
-    resolutions = votes["resolutions"]
-    cs = content_states.get("USA", {})
-    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
-    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
-    ink = config.PALETTE["ink"]
-
-    cols = []
-    for key in config.LAWS_RESOLUTIONS:
-        res = resolutions[key]
-        vote = entry["votes"][key]
-        cols.append(
-            f'<div class="move-col" style="left:{move_x(res["date"], 100):.1f}%">'
-            f'<span class="move-year">{esc(res["date"][:4])}</span>'
-            f'<span class="move-sym">{esc(key)}</span>'
-            + vote_glyph_svg(vote, 30)
-            + f"<strong>{VOTE_GLYPHS[vote]}</strong></div>"
-        )
-
-    keys = list(config.LAWS_RESOLUTIONS)
-    x0 = move_x(resolutions[keys[0]]["date"])
-    x2 = move_x(resolutions[keys[-1]]["date"])
-    segments, cursor = [], x0
-    for bx in sorted(move_x(s["date"]) for s in shifts):
-        if cursor < bx - 12:
-            segments.append(f"M {cursor} 12 H {bx - 12}")
-        cursor = bx + 12
-    if cursor < x2:
-        segments.append(f"M {cursor} 12 H {x2}")
-    stroke = (
-        '<svg class="move-stroke" viewBox="0 0 1000 24" '
-        'preserveAspectRatio="none" aria-hidden="true">'
-        f'<path id="us-band-path" d="{" ".join(segments)}" fill="none" '
-        f'stroke="{ink}" stroke-width="3" stroke-opacity="0.55"/></svg>'
-    )
-    breaks = "".join(
-        f'<span class="move-break" style="left:{move_x(s["date"], 100):.1f}%">'
-        f"<span>{esc(iso(s['date']))}</span></span>"
-        for s in shifts
-    )
-
-    band = ""
-    if codings:
-        timeline = []
-        for c in sorted(codings, key=lambda c: iso(c["as_of"])):
-            if timeline and timeline[-1]["code"] == c["code"]:
-                continue  # same category re-coded later: one labeled segment
-            timeline.append(c)
-        segs = []
-        for i, c in enumerate(timeline):
-            left = move_x(c["as_of"], 100)
-            right = (
-                move_x(timeline[i + 1]["as_of"], 100)
-                if i + 1 < len(timeline) else 96.0
-            )
-            if right <= left:
-                continue
-            style, extra = band_style(c["code"], c.get("confidence"))
-            segs.append(
-                f'<span class="move-seg{extra}" '
-                f'style="left:{left:.1f}%;width:{right - left:.1f}%;{style}">'
-                f"<b>{esc(c['code'])} since {esc(iso(c['as_of']))}</b></span>"
-            )
-        band = (
-            '<div class="move-band">' + "".join(segs) + "</div>"
-            '<p class="citation">Coded instrument preference over the same span, '
-            'per the <a href="rubric.html">rubric</a>.</p>'
-        )
-    return (
-        '<p class="citation">United States · recorded vote on each resolution</p>'
-        f'<div class="move-chart">{stroke}{"".join(cols)}{breaks}</div>'
-        + band
-    )
-
-
-def movers_figure_html(votes, content_states):
-    """Every substantive changer with its three votes written out; the vote
-    that differs from the state's previous cast vote is boxed."""
-    resolutions = votes["resolutions"]
-    keys = list(config.LAWS_RESOLUTIONS)
-    head = "".join(
-        f"<th scope=\"col\">{esc(resolutions[k]['date'][:4])}"
-        f"<span>{esc(k)}</span></th>"
-        for k in keys
-    )
-    rows = []
-    for iso3 in substantive_changers(votes):
-        entry = votes["states"][iso3]
-        cs = content_states.get(iso3, {})
-        name = cs.get("display_name") or display_from_un_name(entry["un_name"])
-        cells, prev_cast = [], None
-        for k in keys:
-            vote = entry["votes"][k]
-            changed = vote != "X" and prev_cast is not None and vote != prev_cast
-            if vote != "X":
-                prev_cast = vote
-            cls = ' class="mv-changed"' if changed else ""
-            cells.append(
-                f"<td{cls}>" + vote_glyph_svg(vote, 14)
-                + f"<span>{VOTE_GLYPHS[vote]}</span></td>"
-            )
-        rows.append(
-            f'<tr><th scope="row"><a href="state/{iso3}.html">{esc(name)}</a></th>'
-            + "".join(cells) + "</tr>"
-        )
-    return (
-        f'<p class="citation">The {len(rows)} states whose cast vote changed '
-        "across the three resolutions. A boxed vote differs from the state's "
-        "previous cast vote.</p>"
-        '<table class="mover-table"><thead><tr><th scope="col">State</th>'
-        + head + "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>"
-    )
-
-
-def beat_figure_html(figure, votes, content_states, preview):
-    """Build-time figures: every beat is meaningful with no JavaScript."""
-    if figure == "tally-78-241":
-        return tally_figure_html(votes["resolutions"]["78/241"])
-    if figure == "track-USA":
-        return us_move_figure_html(votes, content_states, preview)
-    if figure == "movers":
-        return movers_figure_html(votes, content_states)
-    if figure == "full-board":
-        return (
-            '<img src="assets/board-poster.svg" alt="The full record: one row '
-            'per member state, three recorded votes, 2023 to 2025" loading="lazy">'
-            '<p class="citation revcon-stamp">Seventh CCW Review Conference · '
-            "16 to 20 November 2026 · Geneva</p>"
-        )
-    return ""
-
-
 def tour_html(tour, votes, content_states, preview):
-    """The scaffold: stacked prose beats with build-time figures and the
-    always-visible skip link. Scroll choreography is enhancement (P3b)."""
+    """P1c scaffold: the ten storyboard beats as stacked prose with the
+    always-visible skip link. With no JavaScript this stack, above the
+    server-rendered board, IS the story; the persistent canvas and its
+    choreography are enhancement layered on in P2c and after."""
     beats = []
-    for beat in tour.get("beats", []):
+    for i, beat in enumerate(tour.get("beats", []), 1):
         chip = (
             '<span class="draft-chip">DRAFT</span>'
             if preview and not is_approved(tour)
             else ""
         )
         beats.append(f"""
-  <section class="beat" id="beat-{esc(beat["id"])}" data-figure="{esc(beat["figure"])}">
+  <section class="beat" id="beat-{esc(beat["id"])}" data-beat="{i}">
     <div class="beat-copy">
       <h2>{esc(beat["title"])}{chip}</h2>
       <p>{esc(beat["copy"])}</p>
     </div>
-    <figure class="beat-figure">
-{beat_figure_html(beat["figure"], votes, content_states, preview)}
-    </figure>
   </section>""")
     return (
         '<a class="skip-board" href="#board-top">Skip to the board</a>\n'
@@ -681,13 +517,16 @@ def _shift_payload(shift):
                 "confidence": e.get("confidence"),
             }
         )
-    return {
+    payload = {
         "kind": "shift",
         "from": shift["from"],
         "to": shift["to"],
         "date": iso(shift["date"]),
         "evidence": ev,
     }
+    if shift.get("provisional_note"):
+        payload["provisional"] = str(shift["provisional_note"]).strip()
+    return payload
 
 
 def axis_html():
@@ -911,10 +750,11 @@ def positions_signal(cs, sources, preview):
     for coding in sorted(codings, key=lambda c: iso(c["as_of"])):
         cat = config.POSITION_CATEGORIES.get(coding["code"], "")
         parts.append(f"""
-<h3>{esc(coding["code"])} <span class="citation">since {esc(iso(coding["as_of"]))},
+<h3><span class="conf-{esc(coding["confidence"])}">{esc(coding["code"])}</span>
+<span class="citation">since {esc(iso(coding["as_of"]))},
 confidence {esc(coding["confidence"])}</span>{draft_chip(preview, coding)}</h3>
 <p>{esc(cat)}.</p>
-{f"<p>{esc(coding['rationale'])}</p>" if coding.get("rationale") else ""}
+{provisional_caption(coding)}{f"<p>{esc(coding['rationale'])}</p>" if coding.get("rationale") else ""}
 <ul>
 {chr(10).join(evidence_html(e, sources) for e in coding.get("evidence", []))}
 </ul>
@@ -923,12 +763,21 @@ confidence {esc(coding["confidence"])}</span>{draft_chip(preview, coding)}</h3>
         parts.append(f"""
 <h3>Shift: {esc(shift["from"])} → {esc(shift["to"])}
 <span class="citation">{esc(iso(shift["date"]))}</span>{draft_chip(preview, shift)}</h3>
-{f"<p>{esc(shift['rationale'])}</p>" if shift.get("rationale") else ""}
+{provisional_caption(shift)}{f"<p>{esc(shift['rationale'])}</p>" if shift.get("rationale") else ""}
 <ul>
 {chr(10).join(evidence_html(e, sources) for e in shift.get("evidence", []))}
 </ul>
 """)
     return "\n".join(parts)
+
+
+def provisional_caption(entry):
+    """The provisional_note is a designed visible caption (DESIGN v2.1
+    rule 11), not a footnote: it renders wherever the coding renders."""
+    note = entry.get("provisional_note")
+    if not note:
+        return ""
+    return f'<p class="provisional-note citation">{esc(str(note).strip())}</p>\n'
 
 
 def doctrine_signal(cs, sources, preview):
@@ -2016,6 +1865,7 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
     } else {
       pop.appendChild(el("strong", null, data.from + " → " + data.to));
       pop.appendChild(el("span", "citation", data.date));
+      if (data.provisional) pop.appendChild(el("span", "citation", data.provisional));
       (data.evidence || []).forEach(function (e) {
         var row = el("span", "citation", (e.quote ? "“" + e.quote + "” · " : "") + e.date);
         if (e.url) {
@@ -2088,10 +1938,11 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
 """
 
 
-TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figures ARE
-// the page; everything here is enhancement, and every guard is a semantic
-// rule from DESIGN v2. Motion reveals sequence and change, never valence:
-// every tween runs at one tempo, no shake, no flash, no red or green.
+TOUR_JS = """// Tour scaffold behavior (P1c). The stacked-prose beats and the static
+// board ARE the page; this file holds only the guards and the mobile
+// tap-through stepper. The persistent-canvas choreography arrives in P2c
+// behind these same guards: reduced-motion and no-JS readers keep the
+// complete stacked scaffold.
 (function () {
   "use strict";
   var tour = document.querySelector(".tour");
@@ -2139,84 +1990,8 @@ TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figure
 
   // ---- Reduced motion: instant states; the stacked scaffold stands ----
   if (reduced) return;
-  if (typeof window.gsap === "undefined" || typeof window.ScrollTrigger === "undefined") return;
-  var gsap = window.gsap;
-  gsap.registerPlugin(window.ScrollTrigger);
-  var hasDraw = typeof window.DrawSVGPlugin !== "undefined";
-  if (hasDraw) gsap.registerPlugin(window.DrawSVGPlugin);
 
-  tour.classList.add("tour-enhanced");
-
-  // Beat 1: the unit chart fills in state by state as the reader arrives.
-  // scaleY from a sliver, never from nothing; transform only, one tempo,
-  // so the inline per-group opacity (the data encoding) is never touched.
-  var tallyCells = gsap.utils.toArray("#beat-vote-2023 .tally-units > i");
-  if (tallyCells.length) {
-    gsap.fromTo(tallyCells,
-      { scaleY: 0.12, transformOrigin: "center bottom" },
-      {
-        scaleY: 1, ease: "none", stagger: 0.004,
-        scrollTrigger: {
-          trigger: "#beat-vote-2023", start: "top 55%", end: "center 40%", scrub: 0.4
-        }
-      });
-  }
-
-  // Beat 2: the US band break draws (DrawSVG on a real stroke); the shift
-  // node settles into place. Same tempo whichever way the state moved.
-  var usPath = document.getElementById("us-band-path");
-  if (usPath && hasDraw) {
-    gsap.fromTo(usPath, { drawSVG: "0%" }, {
-      drawSVG: "100%", ease: "none",
-      scrollTrigger: {
-        trigger: "#beat-us-shift", start: "top 55%", end: "center 35%", scrub: 0.4
-      }
-    });
-  }
-  // The three dated vote columns settle in sequence; dimmed to full,
-  // never hidden to shown, the same tempo for a Yes as for a No.
-  var moveCols = gsap.utils.toArray("#beat-us-shift .move-col");
-  if (moveCols.length) {
-    gsap.fromTo(moveCols,
-      { autoAlpha: 0.35, y: 6 },
-      {
-        autoAlpha: 1, y: 0, ease: "none", stagger: 0.2,
-        scrollTrigger: {
-          trigger: "#beat-us-shift", start: "center 55%", end: "bottom 45%", scrub: 0.4
-        }
-      });
-  }
-
-  // Beat 3: the mover rows settle in; dimmed to full, never hidden to
-  // shown, so the table reads complete at every scroll position.
-  var moverRows = gsap.utils.toArray("#beat-the-movers .mover-table tbody tr");
-  if (moverRows.length) {
-    gsap.fromTo(moverRows,
-      { autoAlpha: 0.35 },
-      {
-        autoAlpha: 1, ease: "none", stagger: 0.04,
-        scrollTrigger: {
-          trigger: "#beat-the-movers", start: "top 55%", end: "bottom 45%", scrub: 0.4
-        }
-      });
-  }
-
-  // Beat 4: pull back to the whole record; the date stamp sets. The tour
-  // releases: past this point nothing is pinned and the board is the page.
-  var poster = document.querySelector("#beat-the-stakes img");
-  if (poster) {
-    gsap.fromTo(poster, { scale: 0.96, transformOrigin: "center top" }, {
-      scale: 1, ease: "none",
-      scrollTrigger: {
-        trigger: "#beat-the-stakes", start: "top 60%", end: "center 40%", scrub: 0.4
-      }
-    });
-  }
-
-  // Positions depend on the serif loading; recalculate once fonts settle.
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(function () { window.ScrollTrigger.refresh(); });
-  }
+  // P2c wires Scrollama and GSAP here, behind the guards above.
 })();
 """
 

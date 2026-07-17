@@ -146,12 +146,6 @@
   },
   {
    "approved": false,
-   "kind": "position_codings",
-   "rendered": false,
-   "state": "USA"
-  },
-  {
-   "approved": false,
    "kind": "shift_events",
    "rendered": false,
    "state": "USA"

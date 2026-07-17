@@ -43,20 +43,16 @@ def test_deploy_has_no_tour_and_no_gsap(deploy):
 
 
 def test_preview_tour_scaffold_renders(preview):
+    """P1c scaffold: the ten storyboard beats render as stacked prose in
+    storyboard order, before the server-rendered board (the no-JS path)."""
     out, manifest = preview
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert index.count('class="beat"') == 4
-    assert "PLACEHOLDER BEAT 1" in index
-    # no-JS completeness: figures are server-rendered content, not JS mounts,
-    # and each carries its own numbers and labels (self-explanatory rule)
-    tour_markup = index.split('class="tour"')[1].split("board-head")[0]
-    assert "tally-units" in tour_markup
-    assert "<strong>152</strong>" in tour_markup  # the count is on the figure
-    assert tour_markup.count("<i style=") == 193  # one unit mark per state
-    assert 'id="us-band-path"' in tour_markup  # the DrawSVG stroke pre-renders
-    assert "mover-table" in tour_markup
-    assert "mv-changed" in tour_markup  # changed votes are marked in markup
-    assert 'id="beat-us-shift"' in index
+    assert index.count('class="beat"') == 10
+    assert "PLACEHOLDER BEAT 1" in index and "PLACEHOLDER BEAT 10" in index
+    positions = [index.find(f'id="beat-{bid}"') for bid in vc.TOUR_BEAT_SEQUENCE]
+    assert all(p > -1 for p in positions)
+    assert positions == sorted(positions)  # storyboard order preserved
+    assert positions[-1] < index.find('id="board-top"')  # prose above board
     tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
     assert tour_entries and tour_entries[0]["rendered"] is True
 
@@ -87,12 +83,16 @@ def test_gsap_pinned_with_integrity(preview):
 
 
 def test_tour_js_guards_are_first(preview):
+    """The reduced-motion guard precedes any GSAP use; in the P1c scaffold
+    there is no GSAP use at all, and the guard must still be present."""
     out, _ = preview
     tour_js = (out / "js" / "tour.js").read_text(encoding="utf-8")
     body = tour_js.split('"use strict";')[1]
     reduced = body.find("prefers-reduced-motion")
+    assert reduced > -1
     gsap_use = body.find("registerPlugin")
-    assert -1 < reduced < gsap_use
+    if gsap_use > -1:
+        assert reduced < gsap_use
 
 
 def test_movers_are_the_substantive_changers():
@@ -109,15 +109,31 @@ def test_validator_enforces_tour_rules(tmp_path):
     (tmp_path / "rubric.yaml").write_text(rubric_src.read_text(encoding="utf-8"), encoding="utf-8")
     (tmp_path / "tour.yaml").write_text(
         "approved: false\nbeats:\n"
-        "  - {id: a, title: One — dash, copy: Text, figure: f}\n"
-        "  - {id: b, title: Two, copy: This state has no policy., figure: f}\n"
-        "  - {id: c, title: Three, copy: Text, figure: f}\n",
+        "  - {id: a, title: One — dash, copy: Text}\n"
+        "  - {id: b, title: Two, copy: This state has no policy.}\n"
+        "  - {id: c, title: Three, copy: Text}\n",
         encoding="utf-8",
     )
     errs = vc.validate(tmp_path).items
-    assert any("exactly four beats" in e for e in errs)
+    assert any("exactly 10 beats" in e for e in errs)
     assert any("em dash" in e for e in errs)
     assert any("prohibited claim" in e for e in errs)
+
+
+def test_validator_enforces_storyboard_sequence(tmp_path):
+    (tmp_path / "sources.yaml").write_text("sources: []\n", encoding="utf-8")
+    rubric_src = Path(__file__).resolve().parents[2] / "content" / "rubric.yaml"
+    (tmp_path / "rubric.yaml").write_text(rubric_src.read_text(encoding="utf-8"), encoding="utf-8")
+    shuffled = list(vc.TOUR_BEAT_SEQUENCE)
+    shuffled[0], shuffled[1] = shuffled[1], shuffled[0]
+    beats = "".join(
+        f"  - {{id: {bid}, title: T, copy: Text}}\n" for bid in shuffled
+    )
+    (tmp_path / "tour.yaml").write_text(
+        "approved: false\nbeats:\n" + beats, encoding="utf-8"
+    )
+    errs = vc.validate(tmp_path).items
+    assert any("storyboard sequence" in e for e in errs)
 
 
 def test_real_tour_validates():

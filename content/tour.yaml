@@ -1,35 +1,88 @@
-# The four scroll-tour beats. Copy is Walker's analyst prose, written and
-# approved in-session (invariant 15); these are structural placeholders and
+# The home-page scrollytelling: ten beats on one persistent canvas, per
+# machine_politics_scrollytelling_storyboard.md (authoritative for sequence,
+# canvas state, and the single new concept per beat). Copy is Walker's
+# analyst prose, written and approved in-session; these are structural
+# placeholders carrying the storyboard's intent and factual anchors, and
 # the tour renders only in preview until approved: true.
 approved: false
 beats:
-  - id: vote-2023
-    title: The Assembly votes for the first time
+  - id: the-question
+    title: The question
     copy: >
-      PLACEHOLDER BEAT 1. Factual anchors for Walker's copy: resolution
-      78/241, adopted 2023-12-22, 152 in favour, 4 against, 11 abstentions,
-      the first General Assembly resolution on lethal autonomous weapons
-      systems. The figure shows the recorded tally.
-    figure: tally-78-241
-  - id: us-shift
-    title: One state moves
+      PLACEHOLDER BEAT 1. Intent: stakes before data. Who should be allowed
+      to decide to take a human life? For the first time, that decision
+      could be handed to a machine. The world has spent a decade arguing
+      about whether to allow it. This is the record of what every
+      government has actually said, and how their positions have moved.
+  - id: one-vote
+    title: One country, one vote
     copy: >
-      PLACEHOLDER BEAT 2. Factual anchors: the United States voted Yes in
-      2023 and 2024 and No in 2025; its stated preference narrowed between
-      the 2023 declaration push and the 2024 submission. The figure shows
-      the US track with its band break.
-    figure: track-USA
+      PLACEHOLDER BEAT 2. Factual anchors: resolution 78/241, adopted
+      2023-12-22, the first General Assembly vote on autonomous weapons.
+      The United States voted yes. The canvas shows one labeled row and
+      one mark.
+  - id: the-glyphs
+    title: The mark teaches itself
+    copy: >
+      PLACEHOLDER BEAT 3. Factual anchors: the United States voted yes
+      again in 2024 on resolution 79/62, and no in 2025 on resolution
+      80/57. The no draws as an open, crossed ring beside the word, so the
+      glyph teaches itself. No key needed.
+  - id: the-canvas
+    title: The row persists
+    copy: >
+      PLACEHOLDER BEAT 4. Intent: establish the canvas contract. Hold onto
+      that row. Every country has one. Nothing on this canvas clears; what
+      you learned remains.
+  - id: the-coding
+    title: 'Color arrives: position, not vote'
+    copy: >
+      PLACEHOLDER BEAT 5. Factual anchors: a vote is an act; behind it is
+      a stated position, coded from the public record. The United States
+      supported non-binding measures from 2023, then in December 2025
+      voted no and, per its explanation of vote, moved to oppose a new
+      instrument. The band runs ochre to brown with a red seam at the
+      break; red marks the moment a position changes. The 2025 coding is
+      provisional, from secondary reporting of the explanation of vote,
+      pending the primary record.
+  - id: the-mirror
+    title: A second country, moving the other way
+    copy: >
+      PLACEHOLDER BEAT 6. Factual anchors: India voted no in 2023,
+      abstained in 2024 (the half disc), and voted yes in 2025. Its band
+      draws opposite the United States band. Direction is the concept;
+      positions have trajectories, and they differ.
   - id: the-movers
     title: The movers
     copy: >
-      PLACEHOLDER BEAT 3. Factual anchors: eighteen states changed a
-      recorded vote across the three resolutions. The figure lists each
-      one's three votes, with the changed vote marked.
-    figure: movers
-  - id: the-stakes
-    title: The whole record, and a date
+      PLACEHOLDER BEAT 7. Factual anchors: eighteen states changed a
+      recorded vote across the three resolutions. The rows arrive sorted
+      by when each state last moved. The United States and India stay
+      saturated as anchors; every glyph on screen was taught in beats
+      three to six.
+  - id: the-camps
+    title: The camps resolve
     copy: >
-      PLACEHOLDER BEAT 4. Factual anchors: 193 states on the board; the
-      Seventh CCW Review Conference runs 16 to 20 November 2026. The full
-      board follows.
-    figure: full-board
+      PLACEHOLDER BEAT 8. Intent: structure. Step back and patterns
+      appear. One bloc supports a binding treaty. Another supports softer
+      measures. A few oppose any new law. Some remain deliberately
+      ambiguous. Rows sort by coded position and the blocs coalesce;
+      camps are described, never ranked.
+  - id: the-board
+    title: Every state, the full board
+    copy: >
+      PLACEHOLDER BEAT 9. Factual anchors: all 193 member states, three
+      recorded votes each. Position bands where this project has coded a
+      position; an honest empty track where it has not. The teaching
+      sentence precedes the mass: here is every member state, every
+      recorded vote, every verified position, and, in the blank tracks,
+      the work still open.
+  - id: the-clock
+    title: The clock
+    copy: >
+      PLACEHOLDER BEAT 10. Factual anchors: the Seventh CCW Review
+      Conference runs 16 to 20 November 2026 in Geneva. A dashed line
+      dated November 2026 draws down the right edge of the board. The
+      42-party joint statement delivered by Brazil at the GGE in
+      September 2025 says its parties are ready to negotiate. The record
+      above is still being written. The board unlocks here.
