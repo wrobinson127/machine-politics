@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Newsreader";
+  src: url("../assets/fonts/newsreader-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../assets/fonts/newsreader-italic-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
 :root {
   --ground: #F7F4EE;
   --ground-raise: #F1EDE4;
@@ -13,7 +27,8 @@
   --pos-ccwonly: #7A5C99;
   --pos-oppose: #7A5648;
   --pos-none: #D8D3C8;
-  --font-display: "Newsreader", "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-data: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-data: system-ui, -apple-system, "Segoe UI", sans-serif;
   --label-col: clamp(7.5rem, 18vw, 13rem);
+  --year-grid: linear-gradient(90deg, transparent 0%, transparent 7.56%, rgba(26, 26, 26, 0.08) 7.56%, rgba(26, 26, 26, 0.08) 7.64%, transparent 7.64%, transparent 15.26%, rgba(26, 26, 26, 0.08) 15.26%, rgba(26, 26, 26, 0.08) 15.34%, transparent 15.34%, transparent 22.86%, rgba(26, 26, 26, 0.08) 22.86%, rgba(26, 26, 26, 0.08) 22.94%, transparent 22.94%, transparent 30.46%, rgba(26, 26, 26, 0.08) 30.46%, rgba(26, 26, 26, 0.08) 30.54%, transparent 30.54%, transparent 38.16%, rgba(26, 26, 26, 0.08) 38.16%, rgba(26, 26, 26, 0.08) 38.24%, transparent 38.24%, transparent 45.76%, rgba(26, 26, 26, 0.08) 45.76%, rgba(26, 26, 26, 0.08) 45.84%, transparent 45.84%, transparent 53.36%, rgba(26, 26, 26, 0.08) 53.36%, rgba(26, 26, 26, 0.08) 53.44%, transparent 53.44%, transparent 61.06%, rgba(26, 26, 26, 0.08) 61.06%, rgba(26, 26, 26, 0.08) 61.14%, transparent 61.14%, transparent 68.66%, rgba(26, 26, 26, 0.08) 68.66%, rgba(26, 26, 26, 0.08) 68.74%, transparent 68.74%, transparent 76.26%, rgba(26, 26, 26, 0.08) 76.26%, rgba(26, 26, 26, 0.08) 76.34%, transparent 76.34%, transparent 83.96%, rgba(26, 26, 26, 0.08) 83.96%, rgba(26, 26, 26, 0.08) 84.04%, transparent 84.04%, transparent 91.56%, rgba(26, 26, 26, 0.08) 91.56%, rgba(26, 26, 26, 0.08) 91.64%, transparent 91.64%, transparent 99.16%, rgba(26, 26, 26, 0.08) 99.16%, rgba(26, 26, 26, 0.08) 99.24%, transparent 99.24%, transparent 100%);
 }

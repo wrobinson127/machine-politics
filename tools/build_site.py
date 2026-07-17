@@ -245,6 +245,7 @@ def page(title, body, *, current, depth=0, preview=False, description=""):
     <nav class="primary" aria-label="Site">
 {nav}
     </nav>
+    <span class="masthead-date updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span>
   </div>
 </header>
 <main class="shell">
@@ -467,12 +468,18 @@ def index_page(votes, content_states, preview):
         f"Reviewed position codings cover {n_reviewed} states so far."
     )
     body = f"""
-<h1>Who moved, when, and on what record.</h1>
-<p>Recorded United Nations votes, official statements, and national policy on
-autonomous weapons systems, per state, over time. Positions are trajectories,
-not snapshots.</p>
-<p class="citation">{esc(coverage_line)}</p>
+<div class="board-head">
+  <div class="board-lede">
+    <h1>Who moved, when, and <em>on what record</em>.</h1>
+    <p>Recorded United Nations votes, official statements, and national policy
+    on autonomous weapons systems, per state, over time. Positions are
+    trajectories, not snapshots.</p>
+    <p class="citation">{esc(coverage_line)}</p>
+  </div>
+  <aside class="board-key" aria-label="How to read the board">
 {legend_html()}
+  </aside>
+</div>
 <div class="board-controls">
   <span id="sort-label">Sort rows:</span>
   <button type="button" data-sort="shift" aria-pressed="true">Most recent shift</button>
@@ -510,6 +517,25 @@ def votes_page(votes, content_states, preview):
         for iso3, entry in states.items():
             groups[entry["votes"][key]].append(iso3)
         tally = res["tally"]
+        non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
+        segments = []
+        for count, label, opacity in (
+            (tally["yes"], "Yes", "0.9"),
+            (tally["no"], "No", "0.62"),
+            (tally["abstain"], "Abstain", "0.35"),
+            (non_voting, "Non-voting", "0.12"),
+        ):
+            if count:
+                segments.append(
+                    f'<span style="width:{count / 193 * 100:.2f}%;opacity:{opacity}" '
+                    f'title="{label}: {count}"></span>'
+                )
+        tally_bar = (
+            '<div class="tally-bar" role="img" '
+            f'aria-label="{tally["yes"]} yes, {tally["no"]} no, '
+            f'{tally["abstain"]} abstain, {non_voting} non-voting">'
+            + "".join(segments) + "</div>"
+        )
         rows = []
         for vote, label in (("Y", "Yes"), ("N", "No"), ("A", "Abstain"), ("X", "Non-voting")):
             names = ", ".join(
@@ -525,6 +551,7 @@ def votes_page(votes, content_states, preview):
   <p>{esc(res["title"])}</p>
   <p class="citation">Adopted {esc(res["date"])}, {tally["yes"]} in favour, {tally["no"]} against, {tally["abstain"]} abstentions ·
   <a href="{esc(res["undl_link"])}">UN Digital Library record</a></p>
+  {tally_bar}
   <table class="vote-table">
 {chr(10).join(rows)}
   </table>
@@ -656,13 +683,16 @@ def doctrine_signal(cs, sources, preview):
 def state_page(iso3, entry, votes, cs, sources, preview, manifest):
     resolutions = votes["resolutions"]
     name = cs.get("display_name") or display_from_un_name(entry["un_name"])
+    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
+    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
+    mini_track = row_track_html(iso3, entry, resolutions, codings, shifts)
     vote_rows = []
     for key in config.LAWS_RESOLUTIONS:
         res = resolutions[key]
         vote = entry["votes"][key]
         vote_rows.append(
             f"<tr><td>{esc(res['symbol'])}</td><td>{esc(res['date'])}</td>"
-            f'<td class="vote-glyph">{esc(VOTE_GLYPHS[vote])}</td>'
+            f'<td class="vote-glyph">{vote_glyph_svg(vote)} {esc(VOTE_GLYPHS[vote])}</td>'
             f'<td><a href="{esc(res["undl_link"])}">record</a></td></tr>'
         )
     for kind in ("position_codings", "shift_events"):
@@ -679,6 +709,10 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest):
     body = f"""
 <h1>{esc(name)}</h1>
 <p class="citation">{esc(entry["un_name"])} · {esc(iso3)}</p>
+<div class="state-track" aria-label="This state's track on the trajectory board">
+  <div class="track-years" aria-hidden="true"><span>{config.TIMELINE_START_YEAR}</span><span>{T1.year}</span></div>
+  {mini_track}
+</div>
 <section class="signal">
   <h2>Recorded votes</h2>
   <table class="vote-table">
@@ -748,13 +782,46 @@ def shell_page(title, current, lines, preview):
 # Assets
 # ---------------------------------------------------------------------------
 
+def year_grid_gradient():
+    """One 1px ledger vertical per year, at the exact timeline position.
+    Generated here so the CSS lines can never drift from the data axis."""
+    line = "rgba(26, 26, 26, 0.08)"
+    stops = ["transparent 0%"]
+    for year in range(config.TIMELINE_START_YEAR + 1, T1.year + 1):
+        pos = x_of(date(year, 1, 1), 100)
+        stops.append(f"transparent {pos - 0.04:.2f}%")
+        stops.append(f"{line} {pos - 0.04:.2f}%")
+        stops.append(f"{line} {pos + 0.04:.2f}%")
+        stops.append(f"transparent {pos + 0.04:.2f}%")
+    stops.append("transparent 100%")
+    return f"linear-gradient(90deg, {', '.join(stops)})"
+
+
+FONT_FACES = """\
+@font-face {
+  font-family: "Newsreader";
+  src: url("../assets/fonts/newsreader-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("../assets/fonts/newsreader-italic-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+"""
+
+
 def tokens_css():
     pos_vars = "\n".join(
         f"  --pos-{code.lower().replace('-', '')}: {color};"
         for code, color in config.PALETTE["positions"].items()
         if color
     )
-    return f""":root {{
+    return f"""{FONT_FACES}:root {{
   --ground: {config.PALETTE["ground"]};
   --ground-raise: #F1EDE4;
   --ink: {config.PALETTE["ink"]};
@@ -764,9 +831,10 @@ def tokens_css():
   --shadow-tint: rgba(26, 26, 26, 0.12);
   --integrity-red: {config.PALETTE["integrity_red"]};
 {pos_vars}
-  --font-display: "Newsreader", "Source Serif 4", Georgia, "Times New Roman", serif;
-  --font-data: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-data: system-ui, -apple-system, "Segoe UI", sans-serif;
   --label-col: clamp(7.5rem, 18vw, 13rem);
+  --year-grid: {year_grid_gradient()};
 }}
 """
 
@@ -930,6 +998,9 @@ def build(out_dir, preview=False):
     src_css = config.SITE_DIR / "css" / "site.css"
     if src_css.resolve() != (out / "css" / "site.css").resolve():
         shutil.copyfile(src_css, out / "css" / "site.css")
+    src_fonts = config.SITE_DIR / "assets" / "fonts"
+    if src_fonts.exists() and src_fonts.resolve() != (out / "assets" / "fonts").resolve():
+        shutil.copytree(src_fonts, out / "assets" / "fonts", dirs_exist_ok=True)
     (out / "js" / "board.js").write_text(BOARD_JS, encoding="utf-8", newline="\n")
     (out / "assets" / "favicon.svg").write_text(favicon_svg(), encoding="utf-8", newline="\n")
     (out / "assets" / "board-poster.svg").write_text(
@@ -981,6 +1052,18 @@ def build(out_dir, preview=False):
                 "integrity notices, and only they, render in red on this site.",
             ],
             preview, manifest,
+        ),
+        encoding="utf-8", newline="\n",
+    )
+
+    (out / "404.html").write_text(
+        page(
+            "Not on the record",
+            "<h1>Not on the record.</h1>\n"
+            "<p>No page exists at this address. Nothing was removed; corrections "
+            "and superseded material stay visible by policy.</p>\n"
+            '<p><a href="/index.html">The trajectory board</a> lists every state.</p>',
+            current="", preview=preview,
         ),
         encoding="utf-8", newline="\n",
     )
