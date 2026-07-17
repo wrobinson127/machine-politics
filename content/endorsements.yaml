@@ -1,9 +1,238 @@
-# Endorsement instruments (signal 2 of 5). Political-commitment instruments
-# with official endorsement lists. Endorsement is displayed fact, never a
-# coding input (invariant 10). Per-state rows arrive in P2b from the
-# verified official lists; instruments defined here first so the schema and
-# validator land with their fixtures.
-#
-# Statuses: endorsed | documented_non_endorsement | not_listed.
-# not_listed is an absence tier and never renders as opposition.
-instruments: []
+# Endorsement instruments (signal 2 of 5). Rows extracted from the official
+# lists recorded in .scratch/phase0b_endorsement_gates.yaml; name_as_listed
+# preserves the exact printed form so every ISO mapping is auditable.
+# Endorsement is displayed fact, never a coding input (invariant 10).
+# not_listed is computed at display time and never rendered as opposition.
+instruments:
+  - id: us-political-declaration
+    name: Political Declaration on Responsible Military Use of Artificial Intelligence and Autonomy
+    date: 2023-02-16
+    list_source_url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
+    list_source_archived: http://web.archive.org/web/20241219144554/https://www.state.gov/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy/
+    list_as_of: 2024-11-27
+    approved: false
+    list_note: >
+      The live State Department page blocks tool fetches; the list was
+      extracted from the archived capture, which prints Endorsing States as
+      of November 27, 2024 (58 entries). The research pass confirms the
+      current count in a browser.
+    states:
+      - {iso3: ALB, status: endorsed, name_as_listed: Albania}
+      - {iso3: ATG, status: endorsed, name_as_listed: Antigua and Barbuda}
+      - {iso3: ARM, status: endorsed, name_as_listed: Armenia}
+      - {iso3: AUS, status: endorsed, name_as_listed: Australia}
+      - {iso3: AUT, status: endorsed, name_as_listed: Austria}
+      - {iso3: BHR, status: endorsed, name_as_listed: Bahrain}
+      - {iso3: BEL, status: endorsed, name_as_listed: Belgium}
+      - {iso3: BGR, status: endorsed, name_as_listed: Bulgaria}
+      - {iso3: CAN, status: endorsed, name_as_listed: Canada}
+      - {iso3: HRV, status: endorsed, name_as_listed: Croatia}
+      - {iso3: CYP, status: endorsed, name_as_listed: Cyprus}
+      - {iso3: CZE, status: endorsed, name_as_listed: Czech Republic}
+      - {iso3: DNK, status: endorsed, name_as_listed: Denmark}
+      - {iso3: DJI, status: endorsed, name_as_listed: Djibouti}
+      - {iso3: DOM, status: endorsed, name_as_listed: Dominican Republic}
+      - {iso3: EST, status: endorsed, name_as_listed: Estonia}
+      - {iso3: ETH, status: endorsed, name_as_listed: Ethiopia}
+      - {iso3: FIN, status: endorsed, name_as_listed: Finland}
+      - {iso3: FRA, status: endorsed, name_as_listed: France}
+      - {iso3: GEO, status: endorsed, name_as_listed: Georgia}
+      - {iso3: DEU, status: endorsed, name_as_listed: Germany}
+      - {iso3: GRC, status: endorsed, name_as_listed: Greece}
+      - {iso3: HUN, status: endorsed, name_as_listed: Hungary}
+      - {iso3: ISL, status: endorsed, name_as_listed: Iceland}
+      - {iso3: IRL, status: endorsed, name_as_listed: Ireland}
+      - {iso3: ISR, status: endorsed, name_as_listed: Israel}
+      - {iso3: ITA, status: endorsed, name_as_listed: Italy}
+      - {iso3: JPN, status: endorsed, name_as_listed: Japan}
+      - iso3: XKX
+        status: endorsed
+        name_as_listed: Kosovo
+        non_member_note: >
+          Not a UN member state; no official ISO-3166 code. XKX is the
+          user-assigned code in wide institutional use. No board row exists;
+          endorsement surfaces list non-members in a labeled section.
+      - {iso3: LVA, status: endorsed, name_as_listed: Latvia}
+      - {iso3: LBR, status: endorsed, name_as_listed: Liberia}
+      - {iso3: LBY, status: endorsed, name_as_listed: Libya}
+      - {iso3: LTU, status: endorsed, name_as_listed: Lithuania}
+      - {iso3: LUX, status: endorsed, name_as_listed: Luxembourg}
+      - {iso3: MWI, status: endorsed, name_as_listed: Malawi}
+      - {iso3: MLT, status: endorsed, name_as_listed: Malta}
+      - {iso3: MNE, status: endorsed, name_as_listed: Montenegro}
+      - {iso3: MAR, status: endorsed, name_as_listed: Morocco}
+      - {iso3: NLD, status: endorsed, name_as_listed: Netherlands}
+      - {iso3: NZL, status: endorsed, name_as_listed: New Zealand}
+      - {iso3: MKD, status: endorsed, name_as_listed: North Macedonia}
+      - {iso3: PAN, status: endorsed, name_as_listed: Panama}
+      - {iso3: PRY, status: endorsed, name_as_listed: Paraguay}
+      - {iso3: POL, status: endorsed, name_as_listed: Poland}
+      - {iso3: PRT, status: endorsed, name_as_listed: Portugal}
+      - {iso3: KOR, status: endorsed, name_as_listed: Republic of Korea}
+      - {iso3: ROU, status: endorsed, name_as_listed: Romania}
+      - {iso3: SMR, status: endorsed, name_as_listed: San Marino}
+      - {iso3: SGP, status: endorsed, name_as_listed: Singapore}
+      - {iso3: SVK, status: endorsed, name_as_listed: Slovakia}
+      - {iso3: SVN, status: endorsed, name_as_listed: Slovenia}
+      - {iso3: ESP, status: endorsed, name_as_listed: Spain}
+      - {iso3: SWE, status: endorsed, name_as_listed: Sweden}
+      - {iso3: CHE, status: endorsed, name_as_listed: Switzerland}
+      - {iso3: TUR, status: endorsed, name_as_listed: Türkiye}
+      - {iso3: UKR, status: endorsed, name_as_listed: Ukraine}
+      - {iso3: GBR, status: endorsed, name_as_listed: United Kingdom}
+      - {iso3: USA, status: endorsed, name_as_listed: United States}
+
+  - id: reaim-2023-call-to-action
+    name: REAIM Call to Action
+    date: 2023-02-16
+    list_source_url: https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
+    list_source_archived: http://web.archive.org/web/20260313021739/https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
+    list_as_of: 2023-02-16
+    approved: false
+    list_note: >
+      The official PDF is titled Endorsing Countries and Territories; the
+      list itself is undated and the landing page publication date stands
+      as the as-of. 58 entries extracted from the PDF text.
+    states:
+      - {iso3: ARM, status: endorsed, name_as_listed: Armenia}
+      - {iso3: AUS, status: endorsed, name_as_listed: Australia}
+      - {iso3: AZE, status: endorsed, name_as_listed: Azerbaijan}
+      - {iso3: BEL, status: endorsed, name_as_listed: Belgium}
+      - {iso3: BGR, status: endorsed, name_as_listed: Bulgaria}
+      - {iso3: CAN, status: endorsed, name_as_listed: Canada}
+      - {iso3: CHL, status: endorsed, name_as_listed: Chile}
+      - {iso3: CHN, status: endorsed, name_as_listed: China}
+      - {iso3: HRV, status: endorsed, name_as_listed: Croatia}
+      - {iso3: CYP, status: endorsed, name_as_listed: Cyprus}
+      - {iso3: CZE, status: endorsed, name_as_listed: Czech Republic}
+      - {iso3: DNK, status: endorsed, name_as_listed: Denmark}
+      - {iso3: ECU, status: endorsed, name_as_listed: Ecuador}
+      - {iso3: SLV, status: endorsed, name_as_listed: El Salvador}
+      - {iso3: EST, status: endorsed, name_as_listed: Estonia}
+      - {iso3: FIN, status: endorsed, name_as_listed: Finland}
+      - {iso3: FRA, status: endorsed, name_as_listed: France}
+      - {iso3: GEO, status: endorsed, name_as_listed: Georgia}
+      - {iso3: DEU, status: endorsed, name_as_listed: Germany}
+      - {iso3: GRC, status: endorsed, name_as_listed: Greece}
+      - {iso3: HUN, status: endorsed, name_as_listed: Hungary}
+      - {iso3: IRQ, status: endorsed, name_as_listed: Iraq}
+      - {iso3: ITA, status: endorsed, name_as_listed: Italy}
+      - {iso3: JPN, status: endorsed, name_as_listed: Japan}
+      - {iso3: JOR, status: endorsed, name_as_listed: Jordan}
+      - {iso3: KWT, status: endorsed, name_as_listed: Kuwait}
+      - {iso3: LVA, status: endorsed, name_as_listed: Latvia}
+      - {iso3: LTU, status: endorsed, name_as_listed: Lithuania}
+      - {iso3: LUX, status: endorsed, name_as_listed: Luxembourg}
+      - {iso3: MYS, status: endorsed, name_as_listed: Malaysia}
+      - {iso3: MLT, status: endorsed, name_as_listed: Malta}
+      - {iso3: MDA, status: endorsed, name_as_listed: Moldova, mapping_note: Mapped to MDA, Republic of Moldova}
+      - {iso3: MNG, status: endorsed, name_as_listed: Mongolia}
+      - {iso3: MNE, status: endorsed, name_as_listed: Montenegro}
+      - {iso3: MAR, status: endorsed, name_as_listed: Morocco}
+      - {iso3: NLD, status: endorsed, name_as_listed: The Netherlands}
+      - iso3: MKD
+        status: endorsed
+        name_as_listed: Northern Macedonia
+        mapping_note: Non-standard name as printed in the PDF; mapped to MKD, North Macedonia
+      - {iso3: NOR, status: endorsed, name_as_listed: Norway}
+      - iso3: PSE
+        status: endorsed
+        name_as_listed: Palestine
+        non_member_note: >
+          Not a UN member state; UN non-member observer state (State of
+          Palestine), consistent with the PDF's countries-and-territories
+          framing. No board row exists.
+      - {iso3: POL, status: endorsed, name_as_listed: Poland}
+      - {iso3: PRT, status: endorsed, name_as_listed: Portugal}
+      - {iso3: QAT, status: endorsed, name_as_listed: Qatar}
+      - {iso3: KOR, status: endorsed, name_as_listed: Republic of Korea}
+      - {iso3: ROU, status: endorsed, name_as_listed: Romania}
+      - {iso3: RWA, status: endorsed, name_as_listed: Rwanda}
+      - {iso3: SRB, status: endorsed, name_as_listed: Serbia}
+      - {iso3: SGP, status: endorsed, name_as_listed: Singapore}
+      - {iso3: SVK, status: endorsed, name_as_listed: Slovakia}
+      - {iso3: SVN, status: endorsed, name_as_listed: Slovenia}
+      - {iso3: ESP, status: endorsed, name_as_listed: Spain}
+      - {iso3: SWE, status: endorsed, name_as_listed: Sweden}
+      - {iso3: CHE, status: endorsed, name_as_listed: Switzerland}
+      - {iso3: TUN, status: endorsed, name_as_listed: Tunisia}
+      - {iso3: TUR, status: endorsed, name_as_listed: Turkey, mapping_note: Pre-2022 spelling as printed; mapped to TUR}
+      - {iso3: GBR, status: endorsed, name_as_listed: UK, mapping_note: Abbreviation as printed; mapped to GBR}
+      - {iso3: USA, status: endorsed, name_as_listed: US, mapping_note: Abbreviation as printed; mapped to USA}
+      - {iso3: YEM, status: endorsed, name_as_listed: Yemen}
+      - {iso3: ZWE, status: endorsed, name_as_listed: Zimbabwe}
+
+  - id: reaim-2024-blueprint
+    name: REAIM Blueprint for Action
+    date: 2024-09-10
+    list_source_url: https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322676
+    list_as_of: 2024-09-10
+    approved: false
+    list_note: >
+      STOP-FLAG. Official sources publish only a count: the ROK Foreign
+      Ministry records 61 supporting states without naming them, the summit
+      site is offline, and its archive captures are empty shells. No
+      per-state rows exist until an official named list is located; named
+      lists in secondary sources are not used. China attended and did not
+      endorse per its own statements; even that is recorded only when the
+      research pass documents it from an official source.
+    states: []
+
+  - id: reaim-2026-pathways
+    name: REAIM 2026 Pathways to Action
+    date: 2026-02-05
+    list_source_url: https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
+    list_source_archived: http://web.archive.org/web/20260306152504/https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
+    list_as_of: 2026-07-17
+    approved: false
+    list_note: >
+      Rolling list; the page says as of today and remains open to further
+      endorsements. 45 entries extracted 2026-07-17; the March archive
+      capture predates several additions. The official title is Pathways
+      to Action (the planning spec wrote Pathways for Action; flagged).
+    states:
+      - {iso3: ALB, status: endorsed, name_as_listed: Albania}
+      - {iso3: ARM, status: endorsed, name_as_listed: Armenia}
+      - {iso3: AUS, status: endorsed, name_as_listed: Australia}
+      - {iso3: AUT, status: endorsed, name_as_listed: Austria}
+      - {iso3: BEL, status: endorsed, name_as_listed: Belgium}
+      - {iso3: BGR, status: endorsed, name_as_listed: Bulgaria}
+      - {iso3: CAN, status: endorsed, name_as_listed: Canada}
+      - {iso3: CHL, status: endorsed, name_as_listed: Chile}
+      - {iso3: HRV, status: endorsed, name_as_listed: Croatia}
+      - {iso3: CYP, status: endorsed, name_as_listed: Cyprus}
+      - {iso3: CZE, status: endorsed, name_as_listed: Czech Republic}
+      - {iso3: DNK, status: endorsed, name_as_listed: Denmark}
+      - {iso3: ECU, status: endorsed, name_as_listed: Ecuador}
+      - {iso3: FIN, status: endorsed, name_as_listed: Finland}
+      - {iso3: FRA, status: endorsed, name_as_listed: France}
+      - {iso3: GEO, status: endorsed, name_as_listed: Georgia}
+      - {iso3: DEU, status: endorsed, name_as_listed: Germany}
+      - {iso3: GHA, status: endorsed, name_as_listed: Ghana}
+      - {iso3: GRC, status: endorsed, name_as_listed: Greece}
+      - {iso3: HUN, status: endorsed, name_as_listed: Hungary}
+      - {iso3: ISL, status: endorsed, name_as_listed: Iceland}
+      - {iso3: IRL, status: endorsed, name_as_listed: Ireland}
+      - {iso3: ITA, status: endorsed, name_as_listed: Italy}
+      - {iso3: JPN, status: endorsed, name_as_listed: Japan}
+      - {iso3: KEN, status: endorsed, name_as_listed: Kenya}
+      - {iso3: LUX, status: endorsed, name_as_listed: Luxembourg}
+      - {iso3: MLT, status: endorsed, name_as_listed: Malta}
+      - {iso3: MAR, status: endorsed, name_as_listed: Morocco}
+      - {iso3: NLD, status: endorsed, name_as_listed: Netherlands}
+      - {iso3: NOR, status: endorsed, name_as_listed: Norway}
+      - {iso3: PAK, status: endorsed, name_as_listed: Pakistan}
+      - {iso3: PAN, status: endorsed, name_as_listed: Panama}
+      - {iso3: PHL, status: endorsed, name_as_listed: Philippines}
+      - {iso3: PRT, status: endorsed, name_as_listed: Portugal}
+      - {iso3: KOR, status: endorsed, name_as_listed: Republic of Korea}
+      - {iso3: ROU, status: endorsed, name_as_listed: Romania}
+      - {iso3: SEN, status: endorsed, name_as_listed: Senegal}
+      - {iso3: SGP, status: endorsed, name_as_listed: Singapore}
+      - {iso3: SVN, status: endorsed, name_as_listed: Slovenia}
+      - {iso3: ESP, status: endorsed, name_as_listed: Spain}
+      - {iso3: SWE, status: endorsed, name_as_listed: Sweden}
+      - {iso3: CHE, status: endorsed, name_as_listed: Switzerland}
+      - {iso3: TUR, status: endorsed, name_as_listed: Turkiye, mapping_note: Unaccented on the Spanish MFA page; mapped to TUR}
+      - {iso3: UKR, status: endorsed, name_as_listed: Ukraine}
+      - {iso3: GBR, status: endorsed, name_as_listed: United Kingdom}
