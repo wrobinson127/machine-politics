@@ -12,7 +12,7 @@ You may share and adapt this data for any purpose, including commercial use, wit
 
 ## 2. UN-derived vote extracts (UN terms, non-commercial)
 
-The files `data/source/ga_voting_extract.csv.gz` and `data/derived/votes.json.gz` derive from the United Nations General Assembly voting dataset published by the UN Digital Library.
+The files `data/source/ga_voting_extract.csv.gz`, `data/derived/votes.json.gz`, and the test fixture `tools/tests/fixtures/ga_voting_sample.csv` derive from the United Nations General Assembly voting dataset published by the UN Digital Library.
 
 © United Nations, 2026, https://digitallibrary.un.org, downloaded on 2026-07-16.
 

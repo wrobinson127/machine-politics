@@ -1,0 +1,171 @@
+# Canonical registry of every document cited anywhere in the content layer.
+# Every evidence entry's `source` field must resolve to an id here.
+# Pages with no publication date of their own carry the access date in the
+# date field, noted per entry.
+sources:
+  # United Nations records
+  - id: unga-res-78-241
+    title: "Resolution adopted by the General Assembly on 22 December 2023: 78/241. Lethal autonomous weapons systems"
+    publisher: United Nations General Assembly
+    date: 2023-12-22
+    url: https://docs.un.org/en/A/RES/78/241
+    type: resolution
+    lang: en
+    accessed: 2026-07-16
+  - id: unga-res-79-62
+    title: "Resolution adopted by the General Assembly on 2 December 2024: 79/62. Lethal autonomous weapons systems"
+    publisher: United Nations General Assembly
+    date: 2024-12-02
+    url: https://docs.un.org/en/A/RES/79/62
+    type: resolution
+    lang: en
+    accessed: 2026-07-16
+  - id: unga-res-80-57
+    title: "Resolution adopted by the General Assembly on 1 December 2025: 80/57. Lethal autonomous weapons systems"
+    publisher: United Nations General Assembly
+    date: 2025-12-01
+    url: https://docs.un.org/en/A/RES/80/57
+    type: resolution
+    lang: en
+    accessed: 2026-07-16
+  - id: unsg-report-a-79-88
+    title: "Lethal autonomous weapons systems: report of the Secretary-General (A/79/88)"
+    publisher: United Nations General Assembly
+    date: 2024-07-01
+    url: https://docs.un.org/en/A/79/88
+    type: report
+    lang: en
+    accessed: 2026-07-16
+  - id: un-press-ga12736
+    title: "General Assembly Adopts More Than 60 Resolutions, Decisions of Its First Committee (GA/12736)"
+    publisher: UN Meetings Coverage and Press Releases
+    date: 2025-12-01
+    url: https://press.un.org/en/2025/ga12736.doc.htm
+    type: press_release
+    lang: en
+    accessed: 2026-07-16
+  - id: un-c1-80-transcript-24
+    title: "General Assembly First Committee, 80th session, 24th meeting, automatic speech recognition transcript"
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-11-04
+    url: https://transcripts.un.org/en/ga/c1/80/24
+    type: transcript
+    lang: en
+    accessed: 2026-07-16
+
+  # United States
+  - id: us-submission-78-241
+    title: "Resolution 78/241 Lethal autonomous weapons systems: Submission of the United States of America"
+    publisher: Government of the United States, via UNODA Documents Library
+    date: 2024-05-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-US-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-16
+  - id: us-submission-79-239
+    title: "Resolution 79/239 Artificial Intelligence in the military domain: Submission by the United States of America"
+    publisher: Government of the United States, via UNODA Documents Library
+    date: 2025-03-31
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-16
+  - id: dodd-3000-09
+    title: "DoD Directive 3000.09, Autonomy in Weapon Systems"
+    publisher: United States Department of Defense
+    date: 2023-01-25
+    url: https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf
+    type: policy
+    lang: en
+    accessed: 2026-07-16
+  - id: us-political-declaration-2023
+    title: "Political Declaration on Responsible Military Use of Artificial Intelligence and Autonomy"
+    publisher: United States Department of State
+    date: 2023-02-16
+    url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
+    type: policy
+    lang: en
+    accessed: 2026-07-16
+  - id: us-mission-cluster4-2025
+    title: "80th session of the UNGA First Committee, Cluster 4, Conventional Weapons: United States statement"
+    publisher: United States Mission to International Organizations in Geneva
+    date: 2025-11-04
+    url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
+    type: statement
+    lang: en
+    accessed: 2026-07-16
+
+  # Austria
+  - id: ccw-gge2-2018-wp7-aut-bra-chl
+    title: "Proposal for a Mandate to Negotiate a Legally-binding Instrument that addresses the Legal, Humanitarian and Ethical Concerns posed by Emerging Technologies in the Area of Lethal Autonomous Weapons Systems (CCW/GGE.2/2018/WP.7)"
+    publisher: CCW Group of Governmental Experts, submitted by Austria, Brazil and Chile
+    date: 2018-08-30
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.2/2018/WP.7&l=E
+    type: working_paper
+    lang: en
+    accessed: 2026-07-16
+  - id: aut-submission-78-241
+    title: "UNGA Resolution 78/241: Submission by Austria"
+    publisher: Federal Ministry for European and International Affairs (Austria), via UNODA Documents Library
+    date: 2024-05-28
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-16
+  - id: aut-submission-79-239
+    title: "UNGA Resolution 79/239: Submission by Austria"
+    publisher: Federal Ministry for European and International Affairs (Austria), via UNODA Documents Library
+    date: 2025-05-12
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Austria-en.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-16
+  - id: vienna-chairs-summary-2024
+    title: "Humanity at the Crossroads: Autonomous Weapons Systems and the Challenge of Regulation. Chair's Summary"
+    publisher: Republic of Austria (Conference Chair), via UNODA Documents Library
+    date: 2024-04-30
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf
+    type: conference_document
+    lang: en
+    accessed: 2026-07-16
+  - id: bmeia-aws-page
+    title: "Autonomous Weapons Systems (ministry topic page, undated; date given is access date)"
+    publisher: Austrian Federal Ministry for European and International Affairs
+    date: 2026-07-16
+    url: https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems
+    type: web_page
+    lang: en
+    accessed: 2026-07-16
+  # China
+  - id: ccw-gge1-2018-wp7-china
+    title: "Position Paper. Submitted by China (CCW/GGE.1/2018/WP.7)"
+    publisher: CCW Group of Governmental Experts on LAWS
+    date: 2018-04-11
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2018)/CCW_GGE.1_2018_WP.7.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-07-16
+  - id: chn-position-paper-2021
+    title: "Position Paper of the People's Republic of China on Regulating Military Applications of Artificial Intelligence"
+    publisher: Permanent Mission of China to the UN Office at Geneva
+    date: 2021-12-13
+    url: https://geneva.china-mission.gov.cn/eng/dbdt/202112/t20211213_10467517.htm
+    type: position_paper
+    lang: en
+    accessed: 2026-07-16
+  - id: ccw-gge-2022-wp6-china
+    title: "Working paper on Lethal Autonomous Weapons Systems. Submitted by the People's Republic of China (CCW/GGE.1/2022/WP.6)"
+    publisher: CCW Group of Governmental Experts on LAWS
+    date: 2022-08-09
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2022)/CCW-GGE.1-2022-WP.6.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-07-16
+  - id: hrw-stopping-killer-robots-2020
+    title: "Stopping Killer Robots: Country Positions on Banning Fully Autonomous Weapons and Retaining Human Control"
+    publisher: Human Rights Watch
+    date: 2020-08-10
+    url: https://www.hrw.org/report/2020/08/10/stopping-killer-robots/country-positions-banning-fully-autonomous-weapons-and
+    type: secondary_report
+    lang: en
+    accessed: 2026-07-16

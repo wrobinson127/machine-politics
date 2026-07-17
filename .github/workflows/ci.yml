@@ -15,10 +15,9 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: python -m pytest tools/tests -q
-      - name: Build site (when the build entrypoint exists)
+      - run: python tools/validate_content.py
+      - name: Build site and assert committed artifact is fresh
         run: |
-          if [ -f tools/build_site.py ]; then
-            python tools/build_site.py
-          else
-            echo "build entrypoint not present yet; skipping"
-          fi
+          python tools/build_site.py
+          git diff --exit-code -- site/
+          test -z "$(git status --porcelain -- site/)"

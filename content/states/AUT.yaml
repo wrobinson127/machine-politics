@@ -1,0 +1,129 @@
+# Worked example: the sponsor archetype. Drafted by tooling from verified
+# primary sources. Nothing renders until the analyst of record sets
+# approved: true.
+iso3: AUT
+un_name: AUSTRIA
+display_name: Austria
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2018-08-30
+    approved: false
+    rationale: >
+      Austria, with Brazil and Chile, formally proposed a CCW mandate to
+      negotiate a legally binding instrument ensuring meaningful human
+      control. The proposal does not yet specify a prohibitions-plus-
+      regulations structure.
+    evidence:
+      - source: ccw-gge2-2018-wp7-aut-bra-chl
+        claim: The 2018 working paper proposes a mandate to negotiate a legally binding instrument.
+        quote: "negotiate a legally-binding instrument to ensure meaningful human control over critical functions in lethal autonomous weapon systems"
+        date: 2018-08-30
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.2/2018/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-04-30
+    approved: false
+    rationale: >
+      As chair of the April 2024 Vienna Conference and in its submission for
+      the Secretary-General's report, Austria states support for a legally
+      binding instrument consisting of prohibitions and regulations, to be
+      concluded by 2026. Austria initiated the UNGA resolution track in 2023
+      and voted Yes on all three resolutions.
+    evidence:
+      - source: vienna-chairs-summary-2024
+        claim: The chair's summary affirms commitment to an international legal instrument on autonomous weapons systems.
+        quote: "affirms our strong commitment to work with urgency and with all interested stakeholders for an international legal instrument to regulate autonomous weapons systems"
+        date: 2024-04-30
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: vienna-chairs-summary-2024
+        claim: The chair's summary records convergence on explicit prohibitions within a two-tier structure.
+        quote: "There is strong convergence that AWS that cannot be used in accordance with international law or that are ethically unacceptable should be explicitly prohibited."
+        date: 2024-04-30
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: aut-submission-78-241
+        claim: Austria's submission states support for a legally binding instrument structured as prohibitions plus regulations.
+        quote: "Austria will therefore promote negotiations for a legally binding instrument that consists of prohibitions and regulations."
+        date: 2024-05-28
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: aut-submission-78-241
+        claim: Austria endorses 2026 as the target date for concluding a legally binding instrument.
+        quote: "the objective of concluding a legally-binding instrument by 2026 is an appropriate target date"
+        date: 2024-05-28
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: aut-submission-79-239
+        claim: Austria reaffirms its position in favour of a legally binding instrument in 2025.
+        quote: "emphasize its position in favour of a legally binding instrument on autonomous weapons systems"
+        date: 2025-05-12
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Austria-en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: bmeia-aws-page
+        claim: The Foreign Ministry states the national position for international legal regulation with human control.
+        quote: "Austria takes the clear position that significant human control over autonomous weapon systems is necessary and supports the international legal regulation of these weapon systems."
+        date: 2026-07-16
+        url: https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Ministry topic page, undated; the date given is the access date. The
+          ministry's own official English text, so no translation applies.
+
+shift_events:
+  - state: AUT
+    date: 2024-04-30
+    from: LBI-OPEN
+    to: LBI-BAN
+    approved: false
+    rationale: >
+      The earliest verified record of Austria specifying prohibitions within
+      the instrument it seeks is the Vienna Conference chair's summary,
+      followed within a month by the two-tier commitment in its submission
+      for the Secretary-General's report. Austrian support for prohibitions
+      likely predates this record; the date marks the earliest verified
+      document, and the analyst may move it on better evidence.
+    evidence:
+      - source: vienna-chairs-summary-2024
+        claim: First verified Austrian-authored text committing to explicit prohibitions.
+        quote: "There is strong convergence that AWS that cannot be used in accordance with international law or that are ethically unacceptable should be explicitly prohibited."
+        date: 2024-04-30
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: aut-submission-78-241
+        claim: The submission commits to promoting negotiations for an instrument of prohibitions and regulations.
+        quote: "Austria will therefore promote negotiations for a legally binding instrument that consists of prohibitions and regulations."
+        date: 2024-05-28
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Austria is not on this project's doctrine coverage list; the
+        methodology page defines that list. Its international positions are
+        recorded above.

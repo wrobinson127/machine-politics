@@ -1,0 +1,187 @@
+# Worked example: the hard case. China's record supports more than one
+# reading, and the coding shows the tension instead of resolving it.
+# Drafted by tooling from verified primary sources. Nothing renders until
+# the analyst of record sets approved: true.
+iso3: CHN
+un_name: CHINA
+display_name: China
+
+position_codings:
+  - code: AMBIG
+    confidence: EXPLICIT
+    as_of: 2018-04-13
+    approved: false
+    rationale: >
+      At the April 2018 CCW GGE, China supported negotiating a ban on the use
+      of fully autonomous lethal weapons systems while its working paper
+      defined those systems through five cumulative characteristics,
+      including total absence of human intervention, a threshold few real
+      systems would meet. The written paper itself calls only for precaution
+      and contains no ban language. The record supports both a
+      prohibition-seeking and a prohibition-limiting reading.
+    evidence:
+      - source: ccw-gge1-2018-wp7-china
+        claim: China defines LAWS narrowly as fully autonomous systems.
+        quote: "LAWS should be understood as fully autonomous lethal weapon systems"
+        date: 2018-04-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2018)/CCW_GGE.1_2018_WP.7.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2018-wp7-china
+        claim: The paper sets out the five-characteristic definition.
+        quote: "LAWS should include but not be limited to the following 5 basic characteristics"
+        date: 2018-04-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2018)/CCW_GGE.1_2018_WP.7.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2018-wp7-china
+        claim: The autonomy characteristic requires total absence of human involvement.
+        quote: "autonomy, which means absence of human intervention and control during the entire process of executing a task"
+        date: 2018-04-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2018)/CCW_GGE.1_2018_WP.7.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2018-wp7-china
+        claim: The written paper calls for precaution and contains no ban proposal.
+        quote: "we call on all countries to exercise precaution, and to refrain, in particular, from any indiscriminate use against civilians"
+        date: 2018-04-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2018)/CCW_GGE.1_2018_WP.7.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: hrw-stopping-killer-robots-2020
+        claim: A secondary report records China's oral call for a ban and its clarification that the ban would cover use only.
+        quote: "China called for a ban on fully autonomous weapons, but later clarified its call was limited to use only and not development and production"
+        date: 2020-08-10
+        url: https://www.hrw.org/report/2020/08/10/stopping-killer-robots/country-positions-banning-fully-autonomous-weapons-and
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: >
+          The April 2018 oral statement itself is archived only on a site
+          this project links but never fetches; it is evidenced here through
+          a secondary report and coded INFERRED accordingly.
+
+  - code: AMBIG
+    confidence: INFERRED
+    as_of: 2021-12-13
+    approved: false
+    rationale: >
+      China's 2021 position paper on military AI requires human control and
+      the ability to suspend systems at any time, but proposes norms and
+      national measures rather than a new instrument, and does not use the
+      term LAWS. The paper neither advances nor retracts the 2018 ban-on-use
+      language.
+    evidence:
+      - source: chn-position-paper-2021
+        claim: The paper requires human control and suspendability without proposing a new instrument.
+        quote: "Relevant weapon systems must be under human control and efforts must be made to ensure human suspension at any time"
+        date: 2021-12-13
+        url: https://geneva.china-mission.gov.cn/eng/dbdt/202112/t20211213_10467517.htm
+        lang: zh
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Quoted from China's own official English text; the fmprc.gov.cn copy
+          carries identical wording. lang records the original language of the
+          underlying document per the registry convention.
+
+  - code: AMBIG
+    confidence: EXPLICIT
+    as_of: 2022-08-09
+    approved: false
+    rationale: >
+      China's 2022 working paper supports a legal instrument prohibiting
+      systems bearing all five 2018 characteristics, modeled on the blinding
+      lasers protocol, while warning in the same document that general
+      prohibitions would undermine legitimate defense capabilities. Both
+      halves are explicit; together they support more than one coding.
+    evidence:
+      - source: ccw-gge-2022-wp6-china
+        claim: China opposes broad prohibitions on autonomous weapons.
+        quote: "general prohibitions or restrictions may undermine the legitimate defense capabilities of countries, and even their rights to use relevant technologies peacefully"
+        date: 2022-08-09
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2022)/CCW-GGE.1-2022-WP.6.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge-2022-wp6-china
+        claim: China supports a legal instrument prohibiting a narrow class of systems, following the blinding-lasers model.
+        quote: "could consider following the example of the Protocol on Blinding Laser Weapons and work to reach a legal instrument to prohibit such weapons systems"
+        date: 2022-08-09
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2022)/CCW-GGE.1-2022-WP.6.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge-2022-wp6-china
+        claim: The proposed prohibition applies only to systems bearing all five characteristics, which narrows its practical scope.
+        quote: "Autonomous weapons systems with all of the five characteristics clearly have anti-human characteristics and significant humanitarian risks"
+        date: 2022-08-09
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-_Group_of_Governmental_Experts_(2022)/CCW-GGE.1-2022-WP.6.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+
+  - code: AMBIG
+    confidence: EXPLICIT
+    as_of: 2024-05-23
+    approved: false
+    rationale: >
+      China's submission for the Secretary-General's report names the CCW as
+      the appropriate forum, conditions any negotiation of a binding
+      instrument on first agreeing definitions, rejects blanket bans, and
+      restates the narrow prohibition proposal. China abstained on all three
+      UNGA resolutions. The operative position sits between CCW-ONLY and a
+      narrowly scoped binding-instrument stance, and the record does not
+      settle it.
+    evidence:
+      - source: unsg-report-a-79-88
+        claim: China names the CCW as the appropriate forum.
+        quote: "the Convention on Certain Conventional Weapons framework is the appropriate forum for the discussion of lethal autonomous weapons systems"
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: zh
+        translation: official
+        confidence: EXPLICIT
+        note: China's reply, printed at pages 36 to 37 of A/79/88; quotes from the official UN English translation.
+      - source: unsg-report-a-79-88
+        claim: China conditions negotiation of a binding instrument on first agreeing definitions and technical characteristics.
+        quote: "as a basis on which to formulate targeted measures and negotiate a legally binding international instrument"
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: zh
+        translation: official
+        confidence: EXPLICIT
+      - source: unsg-report-a-79-88
+        claim: China rejects blanket bans in the same submission.
+        quote: "The introduction of blanket bans or restrictions would undermine States' legitimate defence capabilities and even their right to the peaceful use of these technologies"
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: zh
+        translation: official
+        confidence: EXPLICIT
+      - source: unsg-report-a-79-88
+        claim: China restates the narrow prohibition proposal on the blinding-lasers model.
+        quote: "consideration should be given to concluding a legal instrument to prohibit them, following the example of the Protocol on Blinding Laser Weapons"
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: zh
+        translation: official
+        confidence: EXPLICIT
+
+# No shift events: the coding has remained AMBIG across the record. The
+# stability of the category is itself the finding; the composition of the
+# ambiguity has changed and the dated codings above document how.
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        China is on this project's doctrine coverage list. The doctrine
+        review for China has not yet been performed; its international
+        position papers above are diplomatic instruments, not national
+        doctrine, and are recorded in the position layer only.
