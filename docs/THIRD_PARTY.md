@@ -7,7 +7,7 @@ the map tiles noted below.
 
 | Component | Version | License | Use |
 |---|---|---|---|
-| GSAP (gsap.min.js, ScrollTrigger, DrawSVGPlugin) | 3.15.0 | GreenSock Standard License (free, including commercial use; DrawSVG free since April 2025) | Within-beat drawing on the preview tour |
+| GSAP (gsap.min.js, DrawSVGPlugin) | 3.15.0 | GreenSock Standard License (free, including commercial use; DrawSVG free since April 2025) | Within-beat drawing on the preview tour |
 | Scrollama | 3.2.0 | MIT | Scroll step enter/exit triggering (IntersectionObserver) |
 | MapLibre GL JS | 5.12.0 | BSD-3-Clause | Endorsement wave map on the instruments page |
 | OpenFreeMap tiles (Positron style) | rolling | tiles © OpenFreeMap, data © OpenStreetMap contributors (ODbL); credited on-map | Base map |

@@ -2310,7 +2310,6 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
   // browser interpolates): unlike ticker-based tweens it lands on the
   // final state even if rendering stalls mid-flight (hidden tab,
   // occluded window). GSAP is reserved for actual drawing (DrawSVG).
-  var deadlineDrawn = false;
   function setBeat(n) {
     var st = STATES[n];
     if (!st) return;
@@ -2332,15 +2331,11 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
     board.style.height = (Math.max(st.order.length, 4) * h).toFixed(1) + "px";
     showSet("c-teach", st.set);
     showSet("c-statset", st.set);
+    // The deadline draws by CSS clip reveal keyed off data-state, so the
+    // stroke keeps its dashed identity (review R1: DrawSVG rewrites the
+    // dash pattern to draw, settling the line solid).
     var dl = canvas.querySelector(".c-deadline");
-    if (dl) {
-      dl.setAttribute("data-state", st.deadline || "off");
-      if (st.deadline === "draw" && hasDraw && !deadlineDrawn) {
-        deadlineDrawn = true;
-        gsap.fromTo("#deadline-line", { drawSVG: "0%" },
-          { drawSVG: "100%", duration: 0.9, ease: "none" });
-      }
-    }
+    if (dl) dl.setAttribute("data-state", st.deadline || "off");
   }
 
   var scroller = window.scrollama();

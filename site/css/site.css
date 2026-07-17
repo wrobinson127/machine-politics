@@ -302,6 +302,16 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .c-deadline { transition: opacity 0.4s linear, visibility 0s 0.4s; }
 
+/* The line draws down by clip reveal, so the stroke keeps its dashed
+   identity (DrawSVG would rewrite the dash pattern to draw). */
+.c-deadline svg {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.9s linear;
+}
+
+.c-deadline[data-state="faint"] svg,
+.c-deadline[data-state="draw"] svg { clip-path: inset(0 0 0 0); }
+
 .c-deadline[data-state="draw"] { opacity: 1; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
 
 .c-deadline[data-state="faint"] { opacity: 0.15; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
@@ -998,7 +1008,8 @@ footer.colophon p { margin: 0.3rem 0; }
   font-size: 0.92rem;
 }
 
-/* Data-integrity notices are the ONLY red on the site */
+/* Data-integrity notices and the shift-seam are red's only two meanings
+   on this site (DESIGN v2.1 rule 10) */
 .integrity-notice {
   border-left: 3px solid var(--integrity-red);
   padding: 0.5rem 0 0.5rem 1rem;
