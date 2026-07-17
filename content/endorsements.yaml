@@ -176,6 +176,11 @@ instruments:
       lists in secondary sources are not used. China attended and did not
       endorse per its own statements; even that is recorded only when the
       research pass documents it from an official source.
+    display_note: >
+      Official sources record 61 supporting states. The ROK Foreign Ministry
+      announcement publishes the count without naming the states, and this
+      project has not located an official named list. Per-state rows appear
+      here once one is found.
     states: []
 
   - id: reaim-2026-pathways
