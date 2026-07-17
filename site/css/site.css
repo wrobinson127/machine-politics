@@ -111,8 +111,6 @@ header.masthead {
   gap: 0.5rem;
 }
 
-.wordmark .mark { flex: none; transform: translateY(1px); }
-
 .masthead-date {
   margin-left: auto;
   font-size: 0.78rem;
@@ -299,10 +297,18 @@ footer.colophon p { margin: 0.3rem 0; }
   line-height: 0;
 }
 
-/* 44px touch targets on coarse pointers without changing the visual mark */
+/* Coarse pointers: the marks sit too close together for per-mark 44px
+   targets, so the whole track is the tap target and opens one sheet
+   with the row's full record. Keyboard access keeps the buttons. */
 @media (pointer: coarse) {
-  .vote-mark, .shift-node { padding: 16px 14px; }
-  .popover a { padding: 0.4em 0; display: inline-block; }
+  .vote-mark, .shift-node { pointer-events: none; }
+  .row-track { cursor: pointer; }
+  .popover a {
+    display: inline-block;
+    padding: 0.75em 0.2em;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
 }
 
 .shift-node > span {

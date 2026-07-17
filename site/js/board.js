@@ -72,10 +72,49 @@
     }
     open = pop;
   }
+  // Coarse pointers get one sheet per row: adjacent marks are too close
+  // together for separate 44px targets, so the track is the target.
+  function showRow(track) {
+    close();
+    var pop = el("div", "popover");
+    pop.setAttribute("role", "dialog");
+    var row = track.closest ? track.closest(".board-row") : null;
+    var label = row ? row.getAttribute("data-name") : "";
+    if (label) pop.appendChild(el("strong", null, label));
+    track.querySelectorAll("[data-shift]").forEach(function (node) {
+      var d = JSON.parse(node.getAttribute("data-shift"));
+      var line = el("span", "citation", "Shift " + d.from + " → " + d.to + ", " + d.date);
+      (d.evidence || []).forEach(function (e) {
+        if (e.url) {
+          line.appendChild(document.createTextNode(" · "));
+          line.appendChild(link(e.url, "source"));
+        }
+      });
+      pop.appendChild(line);
+    });
+    track.querySelectorAll("[data-vote]").forEach(function (node) {
+      var d = JSON.parse(node.getAttribute("data-vote"));
+      var line = el("span", "citation", d.vote + " on " + d.resolution + ", " + d.date + " · ");
+      line.appendChild(link(d.url, "UN record"));
+      pop.appendChild(line);
+    });
+    document.body.appendChild(pop);
+    if (window.matchMedia("(min-width: 641px)").matches) {
+      var r = track.getBoundingClientRect();
+      pop.style.left = Math.min(window.scrollX + r.left, window.scrollX + window.innerWidth - pop.offsetWidth - 16) + "px";
+      pop.style.top = (window.scrollY + r.bottom + 8) + "px";
+    }
+    open = pop;
+  }
+
   document.addEventListener("click", function (ev) {
     var t = ev.target.closest ? ev.target.closest("[data-vote],[data-shift]") : null;
     if (t && t.hasAttribute("data-vote")) { show(t, JSON.parse(t.getAttribute("data-vote"))); ev.stopPropagation(); return; }
     if (t && t.hasAttribute("data-shift") && t.classList.contains("shift-node")) { show(t, JSON.parse(t.getAttribute("data-shift"))); ev.stopPropagation(); return; }
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      var track = ev.target.closest ? ev.target.closest(".row-track") : null;
+      if (track) { showRow(track); ev.stopPropagation(); return; }
+    }
     close();
   });
   // Triggers are real <button> elements, so Enter and Space already fire
