@@ -178,6 +178,22 @@ def labeled_track(iso3, votes, content_states, preview):
     )
 
 
+def us_band_draw_svg(votes):
+    """A stroke tracing the US track with a visible break at the shift
+    date: the one DrawSVG target, built at build time and fully visible
+    without JavaScript (the animation only re-draws what is already there)."""
+    x0 = x_of(votes["resolutions"]["78/241"]["date"])
+    x2 = x_of(votes["resolutions"]["80/57"]["date"])
+    x_break = x_of("2024-05-25")  # the drafted US shift record date
+    ink = config.PALETTE["ink"]
+    return (
+        f'<svg class="band-draw" viewBox="0 0 {TRACK_W} 30" preserveAspectRatio="none" aria-hidden="true">'
+        f'<path id="us-band-path" d="M {x0} 15 H {x_break - 8} M {x_break + 8} 15 H {x2}" '
+        f'fill="none" stroke="{ink}" stroke-width="3" stroke-opacity="0.55"/>'
+        "</svg>"
+    )
+
+
 def beat_figure_html(figure, votes, content_states, preview):
     """Build-time figures: every beat is meaningful with no JavaScript."""
     if figure == "tally-78-241":
@@ -187,7 +203,10 @@ def beat_figure_html(figure, votes, content_states, preview):
             + tally_bar_html(res["tally"])
         )
     if figure == "track-USA":
-        return labeled_track("USA", votes, content_states, preview)
+        return (
+            labeled_track("USA", votes, content_states, preview)
+            + us_band_draw_svg(votes)
+        )
     if figure == "movers":
         return "".join(
             labeled_track(iso3, votes, content_states, preview)
@@ -197,6 +216,8 @@ def beat_figure_html(figure, votes, content_states, preview):
         return (
             '<img src="assets/board-poster.svg" alt="The full trajectory board: '
             '193 states, 2013 to 2026" loading="lazy">'
+            '<p class="citation revcon-stamp">Seventh CCW Review Conference · '
+            "16 to 20 November 2026 · Geneva</p>"
         )
     return ""
 
@@ -1142,21 +1163,130 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
 """
 
 
-TOUR_JS = """// Tour choreography scaffold. The stacked-prose beats and build-time
-// figures ARE the page; everything in this file is enhancement and every
-// guard below is a semantic rule from DESIGN v2, not an optimization.
+TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figures ARE
+// the page; everything here is enhancement, and every guard is a semantic
+// rule from DESIGN v2. Motion reveals sequence and change, never valence:
+// every tween runs at one tempo, no shake, no flash, no red or green.
 (function () {
   "use strict";
   var tour = document.querySelector(".tour");
   if (!tour) return;
-  // Reduced motion: instant states only; the stacked scaffold stands.
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  // Mobile contract: tap-through stepper (built in P3b), never scroll-driven.
-  if (window.matchMedia("(max-width: 720px), (pointer: coarse)").matches) return;
+
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mobile = window.matchMedia("(max-width: 720px), (pointer: coarse)").matches;
+
+  // ---- Mobile contract: tap-through stepper, never scroll-driven ----
+  if (mobile) {
+    var beats = Array.prototype.slice.call(tour.querySelectorAll(".beat"));
+    if (beats.length < 2) return;
+    var index = 0;
+    var nav = document.createElement("div");
+    nav.className = "tour-stepper";
+    var prev = document.createElement("button");
+    prev.type = "button";
+    prev.textContent = "Back";
+    var counter = document.createElement("span");
+    counter.setAttribute("aria-live", "polite");
+    var next = document.createElement("button");
+    next.type = "button";
+    next.textContent = "Next";
+    nav.appendChild(prev); nav.appendChild(counter); nav.appendChild(next);
+    tour.classList.add("tour-stepped");
+    tour.appendChild(nav);
+    function show(i) {
+      index = Math.max(0, Math.min(beats.length - 1, i));
+      beats.forEach(function (b, j) { b.hidden = j !== index; });
+      counter.textContent = "Beat " + (index + 1) + " of " + beats.length;
+      prev.disabled = index === 0;
+      next.textContent = index === beats.length - 1 ? "To the board" : "Next";
+    }
+    prev.addEventListener("click", function () { show(index - 1); });
+    next.addEventListener("click", function () {
+      if (index === beats.length - 1) {
+        document.getElementById("board-top").scrollIntoView();
+        return;
+      }
+      show(index + 1);
+    });
+    show(0);
+    return;
+  }
+
+  // ---- Reduced motion: instant states; the stacked scaffold stands ----
+  if (reduced) return;
   if (typeof window.gsap === "undefined" || typeof window.ScrollTrigger === "undefined") return;
-  window.gsap.registerPlugin(window.ScrollTrigger);
-  // P3b wires the four beats here: pinned pane, band draw, release into
-  // the board. Phase 0b ships the guards and the scaffold only.
+  var gsap = window.gsap;
+  gsap.registerPlugin(window.ScrollTrigger);
+  var hasDraw = typeof window.DrawSVGPlugin !== "undefined";
+  if (hasDraw) gsap.registerPlugin(window.DrawSVGPlugin);
+
+  tour.classList.add("tour-enhanced");
+
+  // Beat 1: the tally draws itself as the reader arrives. scaleX from a
+  // sliver, never from nothing; transform only, one tempo.
+  var tallySpans = gsap.utils.toArray("#beat-vote-2023 .tally-bar > span");
+  if (tallySpans.length) {
+    gsap.fromTo(tallySpans,
+      { scaleX: 0.06, transformOrigin: "left center" },
+      {
+        scaleX: 1, ease: "none", stagger: 0.12,
+        scrollTrigger: {
+          trigger: "#beat-vote-2023", start: "top 55%", end: "center 40%", scrub: 0.4
+        }
+      });
+  }
+
+  // Beat 2: the US band break draws (DrawSVG on a real stroke); the shift
+  // node settles into place. Same tempo whichever way the state moved.
+  var usPath = document.getElementById("us-band-path");
+  if (usPath && hasDraw) {
+    gsap.fromTo(usPath, { drawSVG: "0%" }, {
+      drawSVG: "100%", ease: "none",
+      scrollTrigger: {
+        trigger: "#beat-us-shift", start: "top 55%", end: "center 35%", scrub: 0.4
+      }
+    });
+  }
+  var shiftNode = document.querySelector("#beat-us-shift .shift-node");
+  if (shiftNode) {
+    gsap.fromTo(shiftNode, { scale: 0.6 }, {
+      scale: 1, ease: "none",
+      scrollTrigger: {
+        trigger: "#beat-us-shift", start: "center 55%", end: "bottom 45%", scrub: 0.4
+      }
+    });
+  }
+
+  // Beat 3: the movers settle in as small multiples; dimmed to full,
+  // never hidden to shown.
+  var moverRows = gsap.utils.toArray("#beat-the-movers .board-row");
+  if (moverRows.length) {
+    gsap.fromTo(moverRows,
+      { autoAlpha: 0.45, y: 8 },
+      {
+        autoAlpha: 1, y: 0, ease: "none", stagger: 0.05,
+        scrollTrigger: {
+          trigger: "#beat-the-movers", start: "top 55%", end: "bottom 45%", scrub: 0.4
+        }
+      });
+  }
+
+  // Beat 4: pull back to the whole record; the date stamp sets. The tour
+  // releases: past this point nothing is pinned and the board is the page.
+  var poster = document.querySelector("#beat-the-stakes img");
+  if (poster) {
+    gsap.fromTo(poster, { scale: 0.96, transformOrigin: "center top" }, {
+      scale: 1, ease: "none",
+      scrollTrigger: {
+        trigger: "#beat-the-stakes", start: "top 60%", end: "center 40%", scrub: 0.4
+      }
+    });
+  }
+
+  // Positions depend on the serif loading; recalculate once fonts settle.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { window.ScrollTrigger.refresh(); });
+  }
 })();
 """
 

@@ -1,4 +1,76 @@
-# Sponsorship layer (signal 3 of 5): resolution co-sponsor lists, working-
-# paper co-authorship, joint-statement membership. Membership is fact;
-# meaning stays with the reader (invariant 10). Rows arrive in P2b.
-records: []
+# Sponsorship layer (signal 3 of 5): co-sponsor lists as printed on tabled
+# drafts, working-paper co-authorship, joint-statement membership. Extracted
+# from documents fetched via the UN symbol API and UNODA library; counts and
+# name notes are in each record. Membership is fact; meaning stays with the
+# reader (invariant 10). All approved: false.
+records:
+  - instrument_id: cosponsors-78-241-as-tabled
+    name: Co-sponsors of A/C.1/78/L.56 as tabled (became resolution 78/241)
+    date: 2023-10-12
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/78/L.56&l=en
+    approved: false
+    note: >
+      Sponsor list verbatim from the face of the tabled draft. No Add.1
+      addendum resolves at the symbol API and no evidence one was issued;
+      later co-sponsors, if any, live in the First Committee report.
+    members: [AUT, BEL, CPV, CRI, HRV, ECU, DEU, HUN, ISL, IRL, ITA, KAZ,
+              KIR, LIE, LUX, MLT, MEX, NLD, NZL, MKD, NOR, PHL, SMR, SLE,
+              LKA, CHE, TTO]
+
+  - instrument_id: cosponsors-79-62-as-tabled
+    name: Co-sponsors of A/C.1/79/L.77 as tabled (became resolution 79/62)
+    date: 2024-10-18
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/79/L.77&l=en
+    approved: false
+    note: Sponsor list verbatim from the face of the tabled draft.
+    members: [AUT, BEL, BRA, CRI, GTM, IRL, KIR, LIE, MLT, MEX, NZL, PHL,
+              SLE, LKA, CHE, TTO]
+
+  - instrument_id: cosponsors-80-57-as-tabled
+    name: Co-sponsors of A/C.1/80/L.41 as tabled (became resolution 80/57)
+    date: 2025-10-14
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/80/L.41&l=en
+    approved: false
+    note: >
+      Sponsor list verbatim from the face of the tabled draft (21 states).
+      Secondary reporting counts 31 co-sponsors by the committee vote; the
+      extended list is unverified against UN records and is not recorded.
+    members: [AUT, BEL, BRA, CRI, CUB, GTM, IRL, KAZ, KIR, LIE, MLT, MEX,
+              NZL, PHL, MDA, SMR, SLE, LKA, CHE, TON, VEN]
+
+  - instrument_id: gge-2025-wp7-draft-articles
+    name: Draft articles on autonomous weapon systems (CCW/GGE.1/2025/WP.7)
+    date: 2025-09-03
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+    approved: false
+    note: >
+      Eleven-state working paper: prohibitions and other regulatory measures
+      on the basis of international humanitarian law. Co-authors from the
+      document header.
+    members: [AUS, CAN, CZE, EST, JPN, LVA, LTU, POL, KOR, GBR, USA]
+
+  - instrument_id: joint-statement-gge-sept-2025
+    name: Joint statement to the September 2025 session of the CCW GGE on LAWS, delivered by Brazil
+    date: 2025-09-01
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf
+    archived: http://web.archive.org/web/20250905170520/https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf
+    approved: false
+    note: >
+      The planning spec placed this at the First Committee; the document
+      itself belongs to the GGE second 2025 session (1 to 5 September),
+      and no separate First Committee joint statement was found (FLAG).
+      Composition: 39 High Contracting Parties (Brazil delivering,
+      Palestine among them as a CCW party) plus three Observer States
+      associating themselves. The date is the session opening; the
+      statement PDF carries no exact day.
+    members: [AUT, BEL, BGR, CHL, COL, CRI, DNK, DOM, ECU, SLV, FIN, FRA,
+              DEU, GTM, ISL, IRL, ITA, KAZ, LSO, LUX, MWI, MEX, MNE, NRU,
+              NZL, MKD, NOR, PAK, PAN, PER, PRT, SLE, SVN, ESP, SWE, CHE,
+              URY, BRA]
+    associates: [KIR, WSM, THA]
+    non_members:
+      - iso3: PSE
+        name_as_listed: Palestine
+        note: >
+          CCW High Contracting Party and UN non-member observer state;
+          counted among the 39 parties to the statement, no board row.

@@ -498,13 +498,23 @@ def check_sponsorships(errors, path, vote_states):
         if "date" in rec:
             _check_date(errors, where, rec["date"])
         members = rec.get("members") or []
-        if len(set(members)) != len(members):
-            errors.add(where, "duplicate members")
-        for m in members:
+        associates = rec.get("associates") or []
+        if len(set(members + associates)) != len(members + associates):
+            errors.add(where, "duplicate members or associates")
+        for m in members + associates:
             if not isinstance(m, str) or not ISO3_RE.match(m):
                 errors.add(where, f"member {m!r} must be an uppercase alpha-3 code")
             elif vote_states is not None and m not in vote_states:
                 errors.add(where, f"member {m!r} not a UN member state in the vote data")
+        for j, nm in enumerate(rec.get("non_members") or []):
+            n_where = f"{where}.non_members[{j}]"
+            if not _check_entry_dict(errors, n_where, nm):
+                continue
+            if not str(nm.get("note") or "").strip():
+                errors.add(n_where, "non-member participants need a note")
+            iso3 = nm.get("iso3")
+            if not isinstance(iso3, str) or not ISO3_RE.match(str(iso3 or "")):
+                errors.add(n_where, f"needs an uppercase alpha-3 iso3, got {iso3!r}")
     scan_prohibited_claims(errors, "sponsorships.yaml", data)
 
 
