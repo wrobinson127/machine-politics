@@ -291,7 +291,8 @@ footer.colophon p { margin: 0.3rem 0; }
     opacity 0.35s linear, visibility 0s 0.35s;
 }
 
-.tour-enhanced .c-row:not(.c-off) {
+.tour-enhanced .c-row:not(.c-off),
+.tour-stepped .c-row:not(.c-off) {
   opacity: 1;
   visibility: visible;
   transition: transform 0.55s ease-in-out, height 0.55s ease-in-out,
@@ -497,6 +498,28 @@ footer.colophon p { margin: 0.3rem 0; }
 @media (max-width: 860px) {
   .tour-enhanced .scrolly { display: block; }
 }
+
+/* The release affordance appears only at beat 10; skip-board's display
+   rule outranks the UA [hidden] default, so restate it */
+.c-release { align-self: flex-start; }
+.c-release[hidden] { display: none; }
+
+/* Stepper mode (mobile, P4c): the canvas is a card above the prose,
+   driven by the same beat states as the scroll mode */
+.tour-stepped .scrolly { display: flex; flex-direction: column-reverse; }
+
+.tour-stepped .scrolly-canvas {
+  position: static;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+  padding: 0.9rem 1rem 1.1rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 3.6rem; /* clears the preview banner on step taps */
+}
+
+.tour-stepped .c-teach-slot { min-height: 3.2em; }
 
 /* ------------------------------------------------------------------ */
 /* Trajectory board                                                    */
