@@ -8,6 +8,60 @@
   },
   {
    "approved": false,
+   "kind": "endorsement_instrument:us-political-declaration",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2023-call-to-action",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2024-blueprint",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2026-pathways",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-78-241-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-79-62-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-80-57-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:gge-2025-wp7-draft-articles",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:joint-statement-gge-sept-2025",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
    "kind": "page:methodology",
    "rendered": false,
    "state": null

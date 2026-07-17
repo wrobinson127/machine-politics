@@ -20,6 +20,10 @@
   --rule: #D9D3C6;
   --rule-faint: #E8E3D8;
   --shadow-tint: rgba(26, 26, 26, 0.12);
+  /* Era bands: exactly two neutral shades from the paper family, never a
+     party color (invariant 14) */
+  --era-a: #F4F0E8;
+  --era-b: #EAE4D6;
   --integrity-red: #C0392B;
   --pos-lbiban: #3B5BA5;
   --pos-lbiopen: #2E7F86;

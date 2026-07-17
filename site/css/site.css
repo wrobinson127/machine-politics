@@ -574,6 +574,206 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .vote-glyph { font-size: 1rem; }
 
+/* ------------------------------------------------------------------ */
+/* Instruments page: endorsement record, quadrant view, wave map       */
+/* ------------------------------------------------------------------ */
+
+.endorser-list {
+  max-width: none;
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+
+.nonmember-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 44rem;
+}
+
+.nonmember-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 0.92rem;
+}
+
+/* Scrub controls: plain range inputs, enabled only when JS is live */
+.scrub-control {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 0.2rem;
+  font-size: 0.9rem;
+  max-width: 44rem;
+}
+
+.scrub-control input[type="range"] {
+  flex: 1;
+  min-width: 10rem;
+  min-height: 44px;
+  accent-color: var(--ink);
+  margin: 0;
+}
+
+.scrub-control output {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  flex-basis: 100%;
+}
+
+/* Quadrant view: monochrome ink dots, unlabeled regions (DESIGN v2) */
+.quadrant-scroll { overflow-x: auto; margin-top: 0.8rem; }
+
+.quadrant-svg { display: block; width: 100%; min-width: 640px; }
+
+.quadrant-svg .q-axis {
+  font-family: var(--font-data);
+  font-size: 12px;
+  fill: var(--ink-soft);
+}
+
+.quadrant-svg .q-dot { fill: var(--ink); fill-opacity: 0.5; }
+
+.quadrant-table th, .quadrant-table td { font-size: 0.85rem; }
+
+/* Wave map: radios are 44px targets; the container gets height only when
+   the map actually initialises, so the no-JS page never shows a dead box */
+.map-controls {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.4rem 0.9rem 0.6rem;
+  margin: 1.2rem 0 0;
+  max-width: 44rem;
+}
+
+.map-controls legend {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 0 0.3rem;
+}
+
+.map-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.map-radio input {
+  accent-color: var(--ink);
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+}
+
+.map-radio .swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 0.85em;
+  border-radius: 1px;
+}
+
+.wave-map { max-width: 100%; }
+
+.wave-map-live {
+  height: 420px;
+  margin-top: 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+}
+
+@media (max-width: 640px) {
+  .wave-map-live { height: 320px; }
+}
+
+.map-fallback {
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  max-width: 44rem;
+  margin-top: 0.8rem;
+}
+
+.map-fallback[hidden] { display: none; }
+
+/* ------------------------------------------------------------------ */
+/* Doctrine timeline: era bands, filled core / outlined context marks  */
+/* ------------------------------------------------------------------ */
+
+.doctrine-timeline {
+  max-width: 44rem;
+  margin: 0.6rem 0 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem 0.4rem;
+  background: var(--ground);
+  overflow-x: auto;
+}
+
+/* Narrow viewports scroll the timeline instead of clipping era labels */
+.doctrine-timeline .timeline-inner { min-width: 560px; }
+
+.timeline-svg { display: block; width: 100%; }
+
+.timeline-svg .era-label {
+  font-family: var(--font-data);
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+
+.timeline-svg .timeline-base { stroke: var(--ink); stroke-opacity: 0.3; }
+
+.timeline-svg .tl-core { fill: var(--ink); }
+
+.timeline-svg .tl-context {
+  fill: var(--ground);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.doctrine-timeline .track-years {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  padding: 0.2rem 0;
+}
+
+/* Era swatches sit on paper, so they carry a hairline to stay visible */
+.era-legend .swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 0.85em;
+  vertical-align: -0.12em;
+  margin-right: 0.45em;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+}
+
+.era-legend > span {
+  display: inline-block;
+  margin-right: 1.2rem;
+  white-space: nowrap;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 44rem;
+}
+
+.timeline-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 0.92rem;
+}
+
 /* Data-integrity notices are the ONLY red on the site */
 .integrity-notice {
   border-left: 3px solid var(--integrity-red);

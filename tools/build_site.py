@@ -14,6 +14,7 @@ produces byte-identical files.
 
 import argparse
 import gzip
+import hashlib
 import html
 import json
 import re
@@ -130,6 +131,32 @@ def parse_front_matter(text):
 def load_tour():
     path = config.CONTENT_DIR / "tour.yaml"
     return load_yaml(path) if path.exists() else None
+
+
+def load_endorsements():
+    path = config.CONTENT_DIR / "endorsements.yaml"
+    return (load_yaml(path).get("instruments") or []) if path.exists() else []
+
+
+def load_sponsorships():
+    path = config.CONTENT_DIR / "sponsorships.yaml"
+    return (load_yaml(path).get("records") or []) if path.exists() else []
+
+
+def load_eras(iso3):
+    """Government eras are context data (invariant 14): factual labels and
+    dates, no approval gate because nothing in them is a claim about a
+    position. The validator enforces the no-causal-copy rule."""
+    path = config.CONTENT_DIR / "eras" / f"{iso3}.yaml"
+    return (load_yaml(path).get("eras") or []) if path.exists() else []
+
+
+def state_display_name(iso3, votes, content_states):
+    cs = content_states.get(iso3, {})
+    entry = votes["states"].get(iso3)
+    if entry is None:
+        return None  # non-member: no board row, no vote record
+    return cs.get("display_name") or display_from_un_name(entry["un_name"])
 
 
 def substantive_changers(votes):
@@ -348,6 +375,7 @@ def gsap_script_tags():
 NAV = [
     ("index.html", "Board"),
     ("votes.html", "Votes"),
+    ("instruments.html", "Instruments"),
     ("rubric.html", "Rubric"),
     ("methodology.html", "Methodology"),
     ("about.html", "About"),
@@ -356,12 +384,14 @@ NAV = [
 
 
 def page(title, body, *, current, depth=0, preview=False, description="",
-         absolute=False, extra_scripts=""):
+         absolute=False, extra_scripts="", extra_head=""):
     # Pages serves 404.html from any missing path, so its asset links must
     # be root-absolute; every real page stays relative and previewable
     prefix = "/" if absolute else "../" * depth
     if extra_scripts:
         extra_scripts = extra_scripts + "\n"
+    if extra_head:
+        extra_head = extra_head + "\n"
     nav = "\n".join(
         f'      <a href="{prefix}{href}"'
         + (' aria-current="page"' if href == current else "")
@@ -387,7 +417,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
 <link rel="stylesheet" href="{prefix}css/tokens.css">
 <link rel="stylesheet" href="{prefix}css/site.css">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
-</head>
+{extra_head}</head>
 <body>
 {banner}<header class="masthead">
   <div class="shell masthead-inner">
@@ -825,7 +855,172 @@ def doctrine_signal(cs, sources, preview):
     return "\n".join(parts) if parts else doctrine_signal({}, sources, preview)
 
 
-def state_page(iso3, entry, votes, cs, sources, preview, manifest):
+# ---------------------------------------------------------------------------
+# Doctrine timeline (per-state surface, DESIGN v2)
+# ---------------------------------------------------------------------------
+
+TIMELINE_H = 88
+TIMELINE_BASE_Y = 58
+
+
+def _doctrine_timeline_records(cs, preview):
+    """Two marker classes: core doctrine entries render FILLED, dated context
+    instruments render OUTLINED. Deploy hard-excludes anything unapproved:
+    the whole doctrine block gates first, then every entry."""
+    doctrine = cs.get("doctrine") or {}
+    if not (preview or is_approved(doctrine)):
+        return []
+    records = []
+    for entry in doctrine.get("entries") or []:
+        if not isinstance(entry, dict) or not (preview or is_approved(entry)):
+            continue
+        ev = [e for e in entry.get("evidence") or [] if isinstance(e, dict)]
+        dates = [as_date(e["date"]) for e in ev if e.get("date")]
+        d = entry.get("date") or (min(dates) if dates else None)
+        if d is None:
+            continue
+        records.append({
+            "kind": "core",
+            "date": as_date(d),
+            "title": entry.get("title", ""),
+            "url": entry.get("url") or next((e.get("url") for e in ev if e.get("url")), None),
+            "archived": entry.get("archived"),
+            "approved": is_approved(entry),
+        })
+    for note in doctrine.get("context") or []:
+        if not isinstance(note, dict) or not note.get("date"):
+            continue
+        if not (preview or is_approved(note)):
+            continue
+        records.append({
+            "kind": "context",
+            "date": as_date(note["date"]),
+            "title": note.get("title") or note.get("note", ""),
+            "url": note.get("url"),
+            "archived": note.get("archived"),
+            "approved": is_approved(note),
+        })
+    records.sort(key=lambda r: (r["date"], r["title"]))
+    return records
+
+
+def _era_bands(eras):
+    """Era bands are background context: alternating the two neutral era
+    tokens in file (chronological) order, clamped to the board's span."""
+    bands = []
+    for i, era in enumerate(eras):
+        start = as_date(era["start"])
+        end = as_date(era["end"]) if era.get("end") else T1
+        if end < T0 or start > T1:
+            continue
+        left = x_of(max(start, T0), 100)
+        right = x_of(min(end, T1), 100)
+        if right <= left:
+            continue
+        bands.append({
+            "label": era.get("label", ""),
+            "start": start,
+            "end": as_date(era["end"]) if era.get("end") else None,
+            "left": left,
+            "width": right - left,
+            "shade": "a" if i % 2 == 0 else "b",
+        })
+    return bands
+
+
+def doctrine_timeline_html(name, cs, eras, preview):
+    """Horizontal dated timeline: era bands behind a baseline, core doctrine
+    as filled markers, dated context instruments as outlined markers, and a
+    server-rendered dated list below. Complete without JavaScript."""
+    records = _doctrine_timeline_records(cs, preview)
+    bands = _era_bands(eras or [])
+    if not records and not bands:
+        return ""
+    svg = [
+        f'<svg class="timeline-svg" width="100%" height="{TIMELINE_H}" '
+        f'role="img" aria-label="Doctrine timeline for {esc(name)}, '
+        f'{config.TIMELINE_START_YEAR} to {esc(config.UPDATED_THROUGH)}. '
+        'The dated list below carries the same entries.">'
+    ]
+    for band in bands:
+        span = (
+            f"{band['start'].year} to {band['end'].year}"
+            if band["end"] else f"since {band['start'].year}"
+        )
+        svg.append(
+            f'<rect x="{band["left"]:.2f}%" y="0" width="{band["width"]:.2f}%" '
+            f'height="{TIMELINE_H}" style="fill:var(--era-{band["shade"]})">'
+            f"<title>{esc(band['label'])}, {esc(span)}</title></rect>"
+        )
+        if band["width"] >= 18:
+            svg.append(
+                f'<text x="{band["left"] + 0.8:.2f}%" y="18" class="era-label">'
+                f"{esc(band['label'])}</text>"
+            )
+    svg.append(
+        f'<line x1="0" y1="{TIMELINE_BASE_Y}" x2="100%" y2="{TIMELINE_BASE_Y}" '
+        'class="timeline-base"/>'
+    )
+    for r in records:
+        klass = "tl-core" if r["kind"] == "core" else "tl-context"
+        kind_label = "core doctrine" if r["kind"] == "core" else "context instrument"
+        svg.append(
+            f'<circle cx="{pct(r["date"])}" cy="{TIMELINE_BASE_Y}" r="6" '
+            f'class="{klass}"><title>{esc(r["title"])} · {esc(iso(r["date"]))} · '
+            f"{kind_label}</title></circle>"
+        )
+    svg.append("</svg>")
+    legend_items = []
+    for band in bands:
+        span = (
+            f"{band['start'].year} to {band['end'].year}"
+            if band["end"] else f"since {band['start'].year}"
+        )
+        legend_items.append(
+            f'<span><span class="swatch" style="background:var(--era-{band["shade"]})" '
+            f'aria-hidden="true"></span>{esc(band["label"])}, {esc(span)}</span>'
+        )
+    legend = (
+        '<p class="era-legend citation">Government eras (context, never a signal): '
+        + " ".join(legend_items) + "</p>"
+        if legend_items else ""
+    )
+    items = []
+    for r in records:
+        links = ""
+        if r["url"]:
+            links += f' · <a href="{esc(r["url"])}">source</a>'
+        if r["archived"]:
+            links += f' · <a href="{esc(r["archived"])}">archived</a>'
+        kind_label = (
+            "core doctrine, filled marker" if r["kind"] == "core"
+            else "context instrument, outlined marker"
+        )
+        chip = (
+            '<span class="draft-chip">DRAFT</span>'
+            if preview and not r["approved"] else ""
+        )
+        items.append(
+            f"<li>{esc(iso(r['date']))} · {esc(r['title'])}{chip}"
+            f'<span class="citation">{kind_label}{links}</span></li>'
+        )
+    dated_list = (
+        '<ul class="timeline-list">\n' + "\n".join(items) + "\n</ul>"
+        if items else ""
+    )
+    return f"""
+<div class="doctrine-timeline">
+  <div class="timeline-inner">
+  {chr(10).join(svg)}
+  <div class="track-years" aria-hidden="true"><span>{config.TIMELINE_START_YEAR}</span><span>{T1.year}</span></div>
+  </div>
+</div>
+{legend}
+{dated_list}
+"""
+
+
+def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None):
     resolutions = votes["resolutions"]
     name = cs.get("display_name") or display_from_un_name(entry["un_name"])
     codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
@@ -871,12 +1066,544 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest):
 </section>
 <section class="signal">
   <h2>National policy</h2>
-{doctrine_signal(cs, sources, preview)}
+{doctrine_timeline_html(name, cs, eras, preview)}{doctrine_signal(cs, sources, preview)}
 </section>
 """
     return page(
         name, body, current="", depth=1, preview=preview,
         description=f"{name}: recorded votes, stated positions, and national policy on autonomous weapons systems.",
+    )
+
+
+# ---------------------------------------------------------------------------
+# Instruments page: endorsement + sponsorship record, quadrant view, wave map
+# ---------------------------------------------------------------------------
+
+# MapLibre GL JS: pinned version with SRI hashes from cdnjs, loaded deferred
+# and ONLY on the instruments page when endorsement instruments render. The
+# server-rendered lists and tables ARE the content; the map is enhancement.
+MAPLIBRE_VERSION = "5.12.0"
+MAPLIBRE_JS_SRI = (
+    "sha512-8zwkEbAPWRxEwazkrkQuxRX5rNuyQgoXdMNUnh6CU+Ch0peJ6m6nz505BMte989ZHUQD1R1Iwwz8VV9dYCPVKg=="
+)
+MAPLIBRE_CSS_SRI = (
+    "sha512-GT5+KstPNd/krQxWK1xI+fs/Pwlrekt9E+A9fOLGo2tvG/RsXz99dwH0mbB+zZWwA0gIb/ATWIO3/JIev0xwTA=="
+)
+MAP_STYLE_URL = "https://tiles.openfreemap.org/styles/positron"
+MAP_CREDIT = "Map data © OpenStreetMap contributors, tiles by OpenFreeMap."
+
+# Country shapes: the world-atlas TopoJSON (Natural Earth derived, public
+# domain) is committed at site/assets/countries-110m.json; the build converts
+# it to GeoJSON deterministically. Nothing but tiles is fetched at runtime
+# from third parties.
+COUNTRIES_TOPOJSON = config.SITE_DIR / "assets" / "countries-110m.json"
+ISO_NUMERIC_TABLE = config.DATA_DERIVED_DIR / "iso_numeric_alpha3.json"
+
+# One hue PER instrument view at fixed saturation, drawn from the position
+# palette family (all non-red, non-green, colorblind-safe against paper).
+# Not-yet-endorsed always renders as paper: not endorsing is not opposing.
+INSTRUMENT_HUES = {
+    "us-political-declaration": config.PALETTE["positions"]["LBI-BAN"],
+    "reaim-2023-call-to-action": config.PALETTE["positions"]["LBI-OPEN"],
+    "reaim-2024-blueprint": config.PALETTE["positions"]["REG-SOFT"],
+    "reaim-2026-pathways": config.PALETTE["positions"]["CCW-ONLY"],
+}
+
+DECLARATION_ID = "us-political-declaration"
+
+# Quadrant geometry (SVG viewBox units). Two unlabeled y rows, four x
+# columns; regions carry no names, colors, or icons (DESIGN v2 rule 9).
+QUAD_W, QUAD_H = 772, 340
+QUAD_COLS = (210.0, 375.0, 540.0, 705.0)
+QUAD_ROW_ENDORSED = 108.0
+QUAD_ROW_NOT = 244.0
+QUAD_JITTER_X = 55.0
+QUAD_JITTER_Y = 44.0
+
+MAP_MONTH_START = (2023, 2)
+MAP_MONTH_END = (2026, 7)
+
+
+def _det_jitter(iso3, salt, amp):
+    """Deterministic jitter from a hash of the ISO code, never random:
+    rebuilds stay byte-identical, and the client scrub reuses these values
+    from the embedded JSON. sha256 rather than a polynomial hash so the x
+    and y offsets are uncorrelated (a polynomial hash makes them affine in
+    the salt, which draws the dots into diagonal streaks)."""
+    h = int.from_bytes(hashlib.sha256((iso3 + salt).encode("ascii")).digest()[:2], "big")
+    return round((h / 65535.0 - 0.5) * 2 * amp, 1)
+
+
+def _map_months():
+    out = []
+    y, m = MAP_MONTH_START
+    while (y, m) <= MAP_MONTH_END:
+        out.append(f"{y:04d}-{m:02d}")
+        m += 1
+        if m == 13:
+            y, m = y + 1, 1
+    return out
+
+
+def _endorsed_rows(inst):
+    return [r for r in inst.get("states") or []
+            if isinstance(r, dict) and r.get("status") == "endorsed"]
+
+
+def _effective_date(row, inst):
+    return iso(row.get("date") or inst["date"])
+
+
+def _named_links(iso3s, votes, content_states):
+    named = sorted(
+        (state_display_name(iso3, votes, content_states), iso3) for iso3 in iso3s
+    )
+    return ", ".join(
+        f'<a href="state/{iso3}.html">{esc(name)}</a>' for name, iso3 in named
+    )
+
+
+def _flow(text):
+    return esc(" ".join(str(text).split()))
+
+
+def endorsement_section(inst, votes, content_states, preview):
+    chip = draft_chip(preview, inst)
+    links = f'<a href="{esc(inst["list_source_url"])}">official list</a>'
+    if inst.get("list_source_archived"):
+        links += f' · <a href="{esc(inst["list_source_archived"])}">archived</a>'
+    parts = [
+        f'<section class="signal" id="{esc(inst["id"])}">',
+        f'<h2>{esc(inst["name"])}{chip}</h2>',
+        f'<p class="citation">Instrument date {esc(iso(inst["date"]))} · {links} · '
+        f'list as of {esc(iso(inst["list_as_of"]))}</p>',
+    ]
+    rows = _endorsed_rows(inst)
+    members = [r for r in rows if r["iso3"] in votes["states"]]
+    non_members = [r for r in rows if r["iso3"] not in votes["states"]]
+    if rows:
+        parts.append(f"<p>{len(rows)} endorsers on the official list.</p>")
+        parts.append(
+            '<p class="endorser-list">'
+            + _named_links([r["iso3"] for r in members], votes, content_states)
+            + "</p>"
+        )
+        if non_members:
+            parts.append("<h3>Non-member endorsers</h3>")
+            parts.append('<ul class="nonmember-list">')
+            for r in non_members:
+                parts.append(
+                    f"<li>{esc(r.get('name_as_listed', r['iso3']))} ({esc(r['iso3'])})"
+                    f'<span class="citation">{_flow(r.get("non_member_note", ""))}</span></li>'
+                )
+            parts.append("</ul>")
+    elif inst.get("display_note"):
+        parts.append(f"<p>{_flow(inst['display_note'])}</p>")
+    documented = [
+        r for r in inst.get("states") or []
+        if isinstance(r, dict) and r.get("status") == "documented_non_endorsement"
+    ]
+    if documented:
+        parts.append("<h3>Documented non-endorsements</h3>")
+        parts.append(
+            '<p class="citation">Recorded only where an official source documents '
+            "attendance without signature. Not listed is never opposition.</p>"
+        )
+        parts.append('<ul class="nonmember-list">')
+        for r in documented:
+            name = state_display_name(r["iso3"], votes, content_states) or r.get(
+                "name_as_listed", r["iso3"]
+            )
+            parts.append(
+                f"<li>{esc(name)}"
+                f'<span class="citation">{_flow(r.get("note", ""))}</span></li>'
+            )
+        parts.append("</ul>")
+    parts.append("</section>")
+    return "\n".join(parts)
+
+
+def sponsorship_section(rec, votes, content_states, preview):
+    chip = draft_chip(preview, rec)
+    links = f'<a href="{esc(rec["url"])}">document</a>'
+    if rec.get("archived"):
+        links += f' · <a href="{esc(rec["archived"])}">archived</a>'
+    members = rec.get("members") or []
+    parts = [
+        f'<section class="signal" id="{esc(rec["instrument_id"])}">',
+        f'<h2>{esc(rec["name"])}{chip}</h2>',
+        f'<p class="citation">{esc(iso(rec["date"]))} · {links}</p>',
+        f"<p>{len(members)} states listed.</p>",
+        '<p class="endorser-list">'
+        + _named_links(members, votes, content_states)
+        + "</p>",
+    ]
+    associates = rec.get("associates") or []
+    if associates:
+        parts.append(
+            f"<p>Associating states ({len(associates)}): "
+            + _named_links(associates, votes, content_states)
+            + "</p>"
+        )
+    non_members = rec.get("non_members") or []
+    if non_members:
+        parts.append("<h3>Non-member participants</h3>")
+        parts.append('<ul class="nonmember-list">')
+        for nm in non_members:
+            parts.append(
+                f"<li>{esc(nm.get('name_as_listed', nm.get('iso3', '')))} "
+                f"({esc(nm.get('iso3', ''))})"
+                f'<span class="citation">{_flow(nm.get("note", ""))}</span></li>'
+            )
+        parts.append("</ul>")
+    parts.append("</section>")
+    return "\n".join(parts)
+
+
+def _quadrant_states(votes, content_states, declaration):
+    """Per-state quadrant data: dated Yes votes and the state's Political
+    Declaration endorsement date, if listed. Members only: the quadrant is
+    the 193 board states."""
+    endorsed_dates = {}
+    for row in _endorsed_rows(declaration):
+        if row["iso3"] in votes["states"]:
+            endorsed_dates[row["iso3"]] = _effective_date(row, declaration)
+    res_dates = {k: votes["resolutions"][k]["date"] for k in config.LAWS_RESOLUTIONS}
+    states = []
+    for iso3 in sorted(votes["states"]):
+        entry = votes["states"][iso3]
+        yes = sorted(
+            res_dates[k] for k in config.LAWS_RESOLUTIONS if entry["votes"][k] == "Y"
+        )
+        states.append({
+            "iso3": iso3,
+            "name": state_display_name(iso3, votes, content_states),
+            "jx": _det_jitter(iso3, "x", QUAD_JITTER_X),
+            "jy": _det_jitter(iso3, "y", QUAD_JITTER_Y),
+            "yes": yes,
+            "endorsed": endorsed_dates.get(iso3),
+        })
+    return states
+
+
+def _quadrant_steps(votes, instruments):
+    steps = [
+        {"date": votes["resolutions"][k]["date"], "label": f"A/RES/{k} adopted"}
+        for k in config.LAWS_RESOLUTIONS
+    ]
+    steps.extend({"date": iso(i["date"]), "label": i["name"]} for i in instruments)
+    steps.sort(key=lambda s: (s["date"], s["label"]))
+    return steps
+
+
+def _quadrant_dot_title(st, yes, endorsed, step_date):
+    return (
+        f"{st['name']} ({st['iso3']}): {yes} Yes vote{'' if yes == 1 else 's'}; "
+        f"{'endorsed' if endorsed else 'not listed'}, as of {step_date}"
+    )
+
+
+def _quadrant_svg(states, declaration, step_date):
+    ink = config.PALETTE["ink"]
+    parts = [
+        f'<svg id="quadrant-svg" class="quadrant-svg" viewBox="0 0 {QUAD_W} {QUAD_H}" '
+        'role="img" aria-label="Scatter of all 193 member states: Yes votes on the '
+        'three UNGA resolutions against Political Declaration endorsement. The '
+        'table below carries the same data.">'
+    ]
+    for row_y in (QUAD_ROW_ENDORSED, QUAD_ROW_NOT):
+        parts.append(
+            f'<line x1="{QUAD_COLS[0] - 55}" y1="{row_y}" x2="{QUAD_COLS[-1] + 50}" '
+            f'y2="{row_y}" stroke="{ink}" stroke-opacity="0.12" stroke-dasharray="2 4"/>'
+        )
+    parts.append(
+        f'<text x="12" y="{QUAD_ROW_ENDORSED - 8}" class="q-axis">'
+        f'<tspan x="12">{esc(declaration["name"].split(" on ")[0])}:</tspan>'
+        f'<tspan x="12" dy="15">endorsed</tspan></text>'
+    )
+    parts.append(
+        f'<text x="12" y="{QUAD_ROW_NOT - 8}" class="q-axis">'
+        f'<tspan x="12">{esc(declaration["name"].split(" on ")[0])}:</tspan>'
+        f'<tspan x="12" dy="15">not listed</tspan></text>'
+    )
+    for count, x in enumerate(QUAD_COLS):
+        parts.append(
+            f'<text x="{x}" y="308" text-anchor="middle" class="q-axis">{count}</text>'
+        )
+    mid_x = (QUAD_COLS[0] + QUAD_COLS[-1]) / 2
+    parts.append(
+        f'<text x="{mid_x}" y="330" text-anchor="middle" class="q-axis">'
+        "Yes votes on UNGA resolutions 78/241, 79/62 and 80/57</text>"
+    )
+    for st in states:
+        yes = len([d for d in st["yes"] if d <= step_date])
+        endorsed = bool(st["endorsed"] and st["endorsed"] <= step_date)
+        cx = QUAD_COLS[yes] + st["jx"]
+        cy = (QUAD_ROW_ENDORSED if endorsed else QUAD_ROW_NOT) + st["jy"]
+        parts.append(
+            f'<circle class="q-dot" data-iso3="{st["iso3"]}" cx="{cx:.1f}" '
+            f'cy="{cy:.1f}" r="5"><title>'
+            + esc(_quadrant_dot_title(st, yes, endorsed, step_date))
+            + "</title></circle>"
+        )
+    parts.append("</svg>")
+    return "\n".join(parts)
+
+
+def _json_script(data, element_id):
+    payload = json.dumps(data, sort_keys=True, separators=(",", ":"))
+    payload = payload.replace("</", "<\\/")
+    return f'<script type="application/json" id="{element_id}">{payload}</script>'
+
+
+def quadrant_block(votes, content_states, declaration, instruments):
+    states = _quadrant_states(votes, content_states, declaration)
+    steps = _quadrant_steps(votes, instruments)
+    last = steps[-1]
+    table_rows = []
+    for st in sorted(states, key=lambda s: s["name"]):
+        status = (
+            f"endorsed {st['endorsed']}" if st["endorsed"] else "not listed"
+        )
+        table_rows.append(
+            f'<tr><td><a href="state/{st["iso3"]}.html">{esc(st["name"])}</a></td>'
+            f"<td>{len(st['yes'])}</td><td>{esc(status)}</td></tr>"
+        )
+    data = {
+        "layout": {
+            "cols": list(QUAD_COLS),
+            "rowEndorsed": QUAD_ROW_ENDORSED,
+            "rowNot": QUAD_ROW_NOT,
+        },
+        "steps": steps,
+        "states": states,
+    }
+    return f"""
+<section class="signal" id="quadrant">
+<h2>The quadrant view</h2>
+<p>Each dot is a member state. Across: how many of the three UNGA resolutions
+on lethal autonomous weapons systems the state voted Yes on. Up: whether the
+state endorsed the Political Declaration on Responsible Military Use of
+Artificial Intelligence and Autonomy. The axes are the instruments. The
+regions carry no names.</p>
+<div class="scrub-control">
+  <label for="quadrant-time">Timeline</label>
+  <input type="range" id="quadrant-time" min="0" max="{len(steps) - 1}" step="1"
+    value="{len(steps) - 1}" disabled>
+  <output id="quadrant-step" for="quadrant-time">{esc(last["date"])} · {esc(last["label"])}</output>
+</div>
+<p class="citation">The scrub steps through the three resolution dates and the
+four instrument dates. It needs JavaScript. Without it, the chart shows the
+record through {esc(config.UPDATED_THROUGH)}.</p>
+<div class="quadrant-scroll">
+{_quadrant_svg(states, declaration, last["date"])}
+</div>
+{_json_script(data, "quadrant-data")}
+<h3>The same data as a table</h3>
+<table class="vote-table quadrant-table">
+<tr><th>State</th><th>Yes votes (of 3)</th><th>{esc(declaration["name"].split(" on ")[0])}</th></tr>
+{chr(10).join(table_rows)}
+</table>
+</section>
+"""
+
+
+def wave_map_block(instruments):
+    months = _map_months()
+    radios = []
+    map_instruments = []
+    for i, inst in enumerate(instruments):
+        hue = INSTRUMENT_HUES.get(inst["id"], config.PALETTE["ink"])
+        radios.append(
+            f'<label class="map-radio"><input type="radio" name="map-instrument" '
+            f'value="{esc(inst["id"])}"{" checked" if i == 0 else ""}>'
+            f'<span class="swatch" style="background:{hue}" aria-hidden="true"></span>'
+            f'{esc(inst["name"])}</label>'
+        )
+        map_instruments.append({
+            "id": inst["id"],
+            "name": inst["name"],
+            "hue": hue,
+            "states": [
+                {"iso3": r["iso3"], "date": _effective_date(r, inst)}
+                for r in _endorsed_rows(inst)
+            ],
+        })
+    data = {
+        "months": months,
+        "paper": config.PALETTE["ground"],
+        "ink": config.PALETTE["ink"],
+        "style": MAP_STYLE_URL,
+        "instruments": map_instruments,
+    }
+    return f"""
+<section class="signal" id="wave-map-section">
+<h2>Endorsement wave map</h2>
+<p>One instrument at a time. States that endorsed by the shown month fill in
+the instrument's hue. States not yet on the list render as paper. The lists
+above are the record; the map only shows the wave.</p>
+<fieldset class="map-controls">
+  <legend>Instrument</legend>
+  {chr(10).join("  " + r for r in radios)}
+</fieldset>
+<div class="scrub-control">
+  <label for="map-time">Month</label>
+  <input type="range" id="map-time" min="0" max="{len(months) - 1}" step="1"
+    value="{len(months) - 1}" disabled>
+  <output id="map-month" for="map-time">{months[-1]}</output>
+</div>
+<div id="wave-map" class="wave-map" role="region" aria-label="Endorsement wave map"></div>
+<p class="map-fallback" id="map-fallback">Map unavailable. It needs JavaScript,
+WebGL, and the tile server. The endorsement lists above carry the complete
+data.</p>
+<p class="citation">{esc(MAP_CREDIT)}</p>
+{_json_script(data, "map-data")}
+</section>
+"""
+
+
+def instruments_page(votes, content_states, endorsements, sponsorships,
+                     preview, manifest):
+    for inst in endorsements:
+        manifest["entries"].append({
+            "state": None,
+            "kind": f"endorsement_instrument:{inst.get('id')}",
+            "approved": is_approved(inst),
+            "rendered": bool(preview or is_approved(inst)),
+        })
+    for rec in sponsorships:
+        manifest["entries"].append({
+            "state": None,
+            "kind": f"sponsorship_record:{rec.get('instrument_id')}",
+            "approved": is_approved(rec),
+            "rendered": bool(preview or is_approved(rec)),
+        })
+    r_inst = [i for i in endorsements if preview or is_approved(i)]
+    r_rec = [r for r in sponsorships if preview or is_approved(r)]
+    if not r_inst and not r_rec:
+        # The factual shell (prose-page pattern): the record is in review,
+        # and the deploy artifact says so without leaking a single row.
+        return shell_page(
+            "Instruments", "instruments.html",
+            [
+                "Endorsement and sponsorship records appear here once the "
+                "analyst of record approves them: which states endorsed which "
+                "political-commitment instruments, and which states co-sponsored "
+                "which texts, with dates and official list sources.",
+                f"As of {esc(config.UPDATED_THROUGH)}, the drafted records are "
+                "in analyst review. Endorsement and sponsorship are displayed "
+                "facts. They never feed a position coding.",
+                'Recorded votes are complete on the '
+                '<a href="votes.html">votes page</a>.',
+            ],
+            preview,
+        )
+    sections = [
+        endorsement_section(i, votes, content_states, preview) for i in r_inst
+    ] + [
+        sponsorship_section(r, votes, content_states, preview) for r in r_rec
+    ]
+    declaration = next((i for i in r_inst if i["id"] == DECLARATION_ID), None)
+    extra_head = ""
+    extra_scripts = ""
+    if declaration:
+        sections.append(quadrant_block(votes, content_states, declaration, r_inst))
+    if r_inst:
+        sections.append(wave_map_block(r_inst))
+        extra_head = (
+            '<link rel="stylesheet" '
+            f'href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/{MAPLIBRE_VERSION}/maplibre-gl.css" '
+            f'integrity="{MAPLIBRE_CSS_SRI}" crossorigin="anonymous">'
+        )
+        extra_scripts = (
+            '<script defer '
+            f'src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/{MAPLIBRE_VERSION}/maplibre-gl.min.js" '
+            f'integrity="{MAPLIBRE_JS_SRI}" crossorigin="anonymous"></script>\n'
+            '<script defer src="js/instruments.js"></script>'
+        )
+    body = f"""
+<h1>Instruments</h1>
+<p>Political-commitment endorsements and sponsorship records, per instrument,
+from official lists. Endorsement and sponsorship are displayed facts. They
+never feed a position coding. A state that is not listed is recorded as not
+listed, never as opposed.</p>
+{chr(10).join(sections)}
+"""
+    return page(
+        "Instruments", body, current="instruments.html", preview=preview,
+        extra_head=extra_head, extra_scripts=extra_scripts,
+        description="Endorsement and sponsorship records for the political-commitment instruments on military AI and autonomy.",
+    )
+
+
+def countries_geojson():
+    """Deterministic TopoJSON to GeoJSON conversion for the wave map. IDs in
+    world-atlas are ISO 3166-1 numeric; the committed pycountry-generated
+    table bridges them to alpha-3. Kosovo has no ISO code and maps by name
+    to XKX, the same user-assigned code the endorsement records use."""
+    topo = json.loads(COUNTRIES_TOPOJSON.read_text(encoding="utf-8"))
+    table = json.loads(ISO_NUMERIC_TABLE.read_text(encoding="utf-8"))
+    sx, sy = topo["transform"]["scale"]
+    tx, ty = topo["transform"]["translate"]
+    decoded = []
+    for arc in topo["arcs"]:
+        pts, x, y = [], 0, 0
+        for dx, dy in arc:
+            x += dx
+            y += dy
+            pts.append((round(x * sx + tx, 4), round(y * sy + ty, 4)))
+        decoded.append(pts)
+
+    def ring(arc_ids):
+        out = []
+        for a in arc_ids:
+            pts = decoded[a] if a >= 0 else decoded[~a][::-1]
+            if out:
+                pts = pts[1:]
+            out.extend(pts)
+        if out and out[0] != out[-1]:
+            out.append(out[0])
+        # Natural Earth keeps rings that jump across the antimeridian
+        # (Russia, Fiji). A spherical renderer handles that; MapLibre's
+        # planar fill draws a band across the world. Unwrap longitudes so
+        # each ring is continuous; world copies render the wrapped part.
+        unwrapped = [[out[0][0], out[0][1]]]
+        for x, y in out[1:]:
+            prev_x = unwrapped[-1][0]
+            while x - prev_x > 180:
+                x -= 360
+            while x - prev_x < -180:
+                x += 360
+            x = round(x, 4)
+            if [x, y] != unwrapped[-1]:
+                unwrapped.append([x, y])
+        return unwrapped
+
+    features = []
+    for geom in topo["objects"]["countries"]["geometries"]:
+        name = (geom.get("properties") or {}).get("name", "")
+        iso3 = table.get(str(geom.get("id")), "")
+        if not iso3 and name == "Kosovo":
+            iso3 = "XKX"
+        if iso3 == "ATA":
+            # Antarctica's ring circles the pole: it cannot close once
+            # unwrapped, it is not a state, and the basemap already draws
+            # the continent. Leave it to the tiles.
+            continue
+        if geom["type"] == "Polygon":
+            coords = [ring(r) for r in geom["arcs"]]
+        elif geom["type"] == "MultiPolygon":
+            coords = [[ring(r) for r in poly] for poly in geom["arcs"]]
+        else:
+            continue
+        features.append({
+            "type": "Feature",
+            "properties": {"iso3": iso3, "name": name},
+            "geometry": {"type": geom["type"], "coordinates": coords},
+        })
+    return json.dumps(
+        {"type": "FeatureCollection", "features": features},
+        sort_keys=True, separators=(",", ":"),
     )
 
 
@@ -974,6 +1701,10 @@ def tokens_css():
   --rule: #D9D3C6;
   --rule-faint: #E8E3D8;
   --shadow-tint: rgba(26, 26, 26, 0.12);
+  /* Era bands: exactly two neutral shades from the paper family, never a
+     party color (invariant 14) */
+  --era-a: #F4F0E8;
+  --era-b: #EAE4D6;
   --integrity-red: {config.PALETTE["integrity_red"]};
 {pos_vars}
   --font-display: "Newsreader", Georgia, "Times New Roman", serif;
@@ -1291,6 +2022,144 @@ TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figure
 """
 
 
+INSTRUMENTS_JS = """// Instruments page enhancements. The server-rendered lists and tables ARE
+// the content; the quadrant scrub and the wave map only add sequence.
+// Endorsement renders in the instrument's own hue; not-yet-endorsed renders
+// as paper, never as an opposing color. No motion here encodes valence, and
+// every update is an instant state change (reduced-motion safe by design).
+(function () {
+  "use strict";
+
+  // ---- Quadrant time scrub ----
+  var qNode = document.getElementById("quadrant-data");
+  var qSvg = document.getElementById("quadrant-svg");
+  var qRange = document.getElementById("quadrant-time");
+  var qOut = document.getElementById("quadrant-step");
+  if (qNode && qSvg && qRange && qOut) {
+    var q = JSON.parse(qNode.textContent);
+    var dots = {};
+    qSvg.querySelectorAll("[data-iso3]").forEach(function (d) {
+      dots[d.getAttribute("data-iso3")] = d;
+    });
+    var applyStep = function (i) {
+      var step = q.steps[i];
+      qOut.textContent = step.date + " \\u00b7 " + step.label;
+      q.states.forEach(function (st) {
+        var dot = dots[st.iso3];
+        if (!dot) return;
+        var yes = st.yes.filter(function (d) { return d <= step.date; }).length;
+        var endorsed = !!(st.endorsed && st.endorsed <= step.date);
+        dot.setAttribute("cx", (q.layout.cols[yes] + st.jx).toFixed(1));
+        dot.setAttribute(
+          "cy",
+          ((endorsed ? q.layout.rowEndorsed : q.layout.rowNot) + st.jy).toFixed(1)
+        );
+        var title = dot.querySelector("title");
+        if (title) {
+          title.textContent = st.name + " (" + st.iso3 + "): " + yes +
+            " Yes vote" + (yes === 1 ? "" : "s") + "; " +
+            (endorsed ? "endorsed" : "not listed") + ", as of " + step.date;
+        }
+      });
+    };
+    qRange.disabled = false;
+    qRange.addEventListener("input", function () {
+      applyStep(Number(qRange.value));
+    });
+    applyStep(Number(qRange.value));
+  }
+
+  // ---- Endorsement wave map ----
+  var mNode = document.getElementById("map-data");
+  var box = document.getElementById("wave-map");
+  var fallback = document.getElementById("map-fallback");
+  var mRange = document.getElementById("map-time");
+  var mOut = document.getElementById("map-month");
+  if (!mNode || !box || !mRange || !mOut) return;
+  var m = JSON.parse(mNode.textContent);
+  function hasWebgl() {
+    try {
+      var c = document.createElement("canvas");
+      return !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch (err) {
+      return false;
+    }
+  }
+  // Without MapLibre or WebGL the fallback text stands; the lists above
+  // are the data either way. file:// cannot serve the local GeoJSON to
+  // fetch(), so the fallback stands there too, without console noise.
+  if (typeof window.maplibregl === "undefined" || !hasWebgl()) return;
+  if (window.location.protocol === "file:") return;
+
+  function currentInstrument() {
+    var checked = document.querySelector('input[name="map-instrument"]:checked');
+    if (!checked) return m.instruments[0];
+    return m.instruments.filter(function (i) { return i.id === checked.value; })[0];
+  }
+  function paint(map) {
+    var inst = currentInstrument();
+    var month = m.months[Number(mRange.value)];
+    mOut.textContent = month;
+    var endorsed = inst.states
+      .filter(function (s) { return s.date.slice(0, 7) <= month; })
+      .map(function (s) { return s.iso3; });
+    map.setPaintProperty("countries-fill", "fill-color", [
+      "case",
+      ["in", ["get", "iso3"], ["literal", endorsed]],
+      inst.hue,
+      m.paper
+    ]);
+  }
+  fetch("assets/countries.geojson")
+    .then(function (r) {
+      if (!r.ok) throw new Error("geojson " + r.status);
+      return r.json();
+    })
+    .then(function (geo) {
+      box.classList.add("wave-map-live");
+      var map = new maplibregl.Map({
+        container: box,
+        style: m.style,
+        center: [10, 22],
+        zoom: 0.9,
+        minZoom: 0.4,
+        maxZoom: 6,
+        cooperativeGestures: true,
+        attributionControl: { compact: false }
+      });
+      map.on("load", function () {
+        map.addSource("countries", { type: "geojson", data: geo });
+        map.addLayer({
+          id: "countries-fill",
+          type: "fill",
+          source: "countries",
+          paint: { "fill-color": m.paper, "fill-opacity": 0.75 }
+        });
+        map.addLayer({
+          id: "countries-line",
+          type: "line",
+          source: "countries",
+          paint: { "line-color": m.ink, "line-opacity": 0.25, "line-width": 0.5 }
+        });
+        // Only a fully loaded map replaces the fallback text.
+        if (fallback) fallback.hidden = true;
+        mRange.disabled = false;
+        paint(map);
+        mRange.addEventListener("input", function () { paint(map); });
+        document.querySelectorAll('input[name="map-instrument"]').forEach(function (r) {
+          r.addEventListener("change", function () { paint(map); });
+        });
+        map.resize();
+      });
+    })
+    .catch(function () {
+      box.classList.remove("wave-map-live");
+      /* fallback stands */
+    });
+})();
+"""
+
+
 # ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
@@ -1334,6 +2203,20 @@ def build(out_dir, preview=False):
     (out / "votes.html").write_text(
         votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
     )
+    endorsements = load_endorsements()
+    sponsorships = load_sponsorships()
+    (out / "instruments.html").write_text(
+        instruments_page(votes, content_states, endorsements, sponsorships,
+                         preview, manifest),
+        encoding="utf-8", newline="\n",
+    )
+    if any(preview or is_approved(i) for i in endorsements):
+        (out / "js" / "instruments.js").write_text(
+            INSTRUMENTS_JS, encoding="utf-8", newline="\n"
+        )
+        (out / "assets" / "countries.geojson").write_text(
+            countries_geojson(), encoding="utf-8", newline="\n"
+        )
     (out / "rubric.html").write_text(rubric_page(rubric, preview), encoding="utf-8", newline="\n")
     pages = load_pages()
     (out / "methodology.html").write_text(
@@ -1392,7 +2275,8 @@ def build(out_dir, preview=False):
     for iso3, entry in votes["states"].items():
         cs = content_states.get(iso3, {})
         (out / "state" / f"{iso3}.html").write_text(
-            state_page(iso3, entry, votes, cs, sources, preview, manifest),
+            state_page(iso3, entry, votes, cs, sources, preview, manifest,
+                       eras=load_eras(iso3)),
             encoding="utf-8", newline="\n",
         )
 
