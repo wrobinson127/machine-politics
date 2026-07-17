@@ -30,6 +30,16 @@ from config import config
 
 DOCTRINE_STATUSES = ("policy_identified", "no_policy_identified", "not_yet_reviewed")
 
+# Invariant 10, the no-inference rule: these source types never support an
+# axis-A coding by themselves. Endorsing an instrument is not a position;
+# sponsoring a text is not a position; doctrine is its own signal.
+NON_CODING_SOURCE_TYPES = {"policy", "endorsement_list", "sponsorship_record"}
+
+ENDORSEMENT_STATUSES = ("endorsed", "documented_non_endorsement", "not_listed")
+
+# Evidence entries may carry an optional kind; EOVs are a named subtype.
+EVIDENCE_KINDS = ("eov", "statement", "submission", "working_paper")
+
 # The prohibited-claim class (invariant 6): copy that asserts a state has no
 # policy or position. The site only ever makes dated coverage statements.
 # The scan skips `quote` fields: quotes are verbatim source material, and the
@@ -48,9 +58,10 @@ PROHIBITED_CLAIM_PATTERNS = [
     re.compile(r"\bnever\s+(?:adopted|published|issued|articulated|stated|held)\s+(?:a|any)\s+(?:\w+\s+){0,2}?" + _PPD, re.I),
 ]
 
-# Keys a doctrine context annotation may carry. Context is never coded
-# evidence (invariant 7), so anything beyond descriptive fields is rejected.
-CONTEXT_ALLOWED_KEYS = {"note", "title", "url", "date", "source"}
+# Keys a doctrine context annotation may carry. Context instruments are
+# first-class timeline entries (two-class model) but never coded evidence
+# (invariant 7), so nothing codeable is allowed.
+CONTEXT_ALLOWED_KEYS = {"note", "title", "url", "date", "archived", "source", "approved"}
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -58,9 +69,13 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 class Errors:
     def __init__(self):
         self.items = []
+        self.warnings = []  # reported, never fatal (invariant 11 archive links)
 
     def add(self, where, message):
         self.items.append(f"{where}: {message}")
+
+    def warn(self, where, message):
+        self.warnings.append(f"{where}: {message}")
 
     def __bool__(self):
         return bool(self.items)
@@ -157,6 +172,26 @@ def check_evidence(errors, where, entry, source_ids):
             errors.add(where, "untranslated non-English source caps confidence at INFERRED")
     if quote is None and not entry.get("description"):
         errors.add(where, "evidence needs a quote or, where none can exist, a description")
+    kind = entry.get("kind")
+    if kind is not None and kind not in EVIDENCE_KINDS:
+        errors.add(where, f"evidence kind must be one of {EVIDENCE_KINDS}")
+
+
+def check_no_inference(errors, where, coding, source_ids):
+    """Invariant 10: a coding whose every evidence ref is an endorsement,
+    sponsorship, or doctrine source has no statement or vote behind it."""
+    evidence = coding.get("evidence") or []
+    if not evidence:
+        return
+    types = {
+        (source_ids.get(e.get("source")) or {}).get("type") for e in evidence
+    }
+    if types and types <= NON_CODING_SOURCE_TYPES:
+        errors.add(
+            where,
+            "no-inference rule: endorsements, sponsorships, and doctrine "
+            f"never feed a coding by themselves (evidence types: {sorted(t for t in types if t)})",
+        )
 
 
 def check_coding(errors, where, coding, source_ids):
@@ -174,6 +209,7 @@ def check_coding(errors, where, coding, source_ids):
         errors.add(where, "a coding other than NONE needs at least one evidence entry")
     for i, entry in enumerate(evidence):
         check_evidence(errors, f"{where}.evidence[{i}]", entry, source_ids)
+    check_no_inference(errors, where, coding, source_ids)
 
 
 def check_shift_event(errors, where, event, iso3, source_ids):
@@ -191,6 +227,7 @@ def check_shift_event(errors, where, event, iso3, source_ids):
         errors.add(where, "shift event needs at least one evidence entry")
     for i, entry in enumerate(evidence):
         check_evidence(errors, f"{where}.evidence[{i}]", entry, source_ids)
+    check_no_inference(errors, where, event, source_ids)
 
 
 def check_doctrine(errors, where, doctrine, source_ids):
@@ -213,6 +250,7 @@ def check_doctrine(errors, where, doctrine, source_ids):
             if not entry.get("title"):
                 errors.add(e_where, "doctrine entry needs a title")
             _check_approved(errors, e_where, entry)
+            _check_archived(errors, e_where, entry)
             evidence = entry.get("evidence") or []
             if not evidence:
                 errors.add(e_where, "doctrine entry needs evidence")
@@ -231,6 +269,21 @@ def check_doctrine(errors, where, doctrine, source_ids):
             )
         if not note.get("note"):
             errors.add(n_where, "context annotation needs a note")
+        # dated context instruments are timeline entries; they carry links
+        if note.get("date"):
+            if not note.get("url"):
+                errors.add(n_where, "a dated context instrument needs a url")
+            _check_archived(errors, n_where, note)
+
+
+def _check_archived(errors, where, entry):
+    """Invariant 11: doctrine and endorsement entries carry url + archived.
+    Missing links are CI warnings, not failures; the research passes fill
+    them and the morning report carries the outstanding count."""
+    if not entry.get("url"):
+        errors.warn(where, "entry has no url (invariant 11)")
+    elif not entry.get("archived"):
+        errors.warn(where, "no archived snapshot for this url (invariant 11)")
 
 
 def load_sources(errors, content_dir):
@@ -350,7 +403,108 @@ def validate(content_dir=None):
     tour_path = content_dir / "tour.yaml"
     if tour_path.exists():
         check_tour(errors, tour_path)
+    endorsements = content_dir / "endorsements.yaml"
+    if endorsements.exists():
+        check_endorsements(errors, endorsements, vote_states)
+    sponsorships = content_dir / "sponsorships.yaml"
+    if sponsorships.exists():
+        check_sponsorships(errors, sponsorships, vote_states)
+    eras_dir = content_dir / "eras"
+    if eras_dir.exists():
+        check_eras(errors, eras_dir, vote_states)
     return errors
+
+
+def check_endorsements(errors, path, vote_states):
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    seen = set()
+    for i, inst in enumerate(data.get("instruments") or []):
+        where = f"endorsements.yaml[{i}]({inst.get('id', '?')})"
+        for field in ("id", "name", "date", "list_source_url", "list_as_of"):
+            if not inst.get(field):
+                errors.add(where, f"instrument needs {field!r}")
+        if inst.get("id") in seen:
+            errors.add(where, f"duplicate instrument id {inst['id']!r}")
+        seen.add(inst.get("id"))
+        _check_approved(errors, where, inst)
+        _check_archived(errors, where, {"url": inst.get("list_source_url"),
+                                        "archived": inst.get("list_source_archived")})
+        for j, row in enumerate(inst.get("states") or []):
+            r_where = f"{where}.states[{j}]"
+            status = row.get("status")
+            if status not in ENDORSEMENT_STATUSES:
+                errors.add(r_where, f"status must be one of {ENDORSEMENT_STATUSES}")
+            iso3 = row.get("iso3")
+            if not iso3:
+                errors.add(r_where, "row needs iso3")
+            elif vote_states is not None and iso3 not in vote_states and not row.get("non_member_note"):
+                errors.add(
+                    r_where,
+                    f"{iso3} is not a UN member state in the vote data; "
+                    "non-member endorsers need a non_member_note",
+                )
+            if status == "documented_non_endorsement" and not (row.get("evidence") or row.get("note")):
+                errors.add(
+                    r_where,
+                    "documented_non_endorsement needs evidence or a note recording "
+                    "the official documentation (attendance + non-signature)",
+                )
+            if row.get("date"):
+                _check_date(errors, r_where, row["date"])
+    scan_prohibited_claims(errors, "endorsements.yaml", data)
+
+
+def check_sponsorships(errors, path, vote_states):
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    seen = set()
+    for i, rec in enumerate(data.get("records") or []):
+        where = f"sponsorships.yaml[{i}]({rec.get('instrument_id', '?')})"
+        for field in ("instrument_id", "name", "date", "url", "members"):
+            if not rec.get(field):
+                errors.add(where, f"record needs {field!r}")
+        if rec.get("instrument_id") in seen:
+            errors.add(where, f"duplicate instrument_id {rec['instrument_id']!r}")
+        seen.add(rec.get("instrument_id"))
+        _check_approved(errors, where, rec)
+        _check_archived(errors, where, rec)
+        if "date" in rec:
+            _check_date(errors, where, rec["date"])
+        members = rec.get("members") or []
+        if len(set(members)) != len(members):
+            errors.add(where, "duplicate members")
+        for m in members:
+            if vote_states is not None and m not in vote_states:
+                errors.add(where, f"member {m!r} not a UN member state in the vote data")
+    scan_prohibited_claims(errors, "sponsorships.yaml", data)
+
+
+CAUSAL_WORDS = re.compile(r"\bbecause\b|\bcaused\b|\bled to\b|\bresulted in\b", re.I)
+
+
+def check_eras(errors, eras_dir, vote_states):
+    for path in sorted(eras_dir.glob("*.yaml")):
+        iso3 = path.stem
+        where = f"eras/{path.name}"
+        if vote_states is not None and iso3 not in vote_states:
+            errors.add(where, f"{iso3} not a UN member state in the vote data")
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        for i, era in enumerate(data.get("eras") or []):
+            e_where = f"{where}[{i}]"
+            for field in ("label", "start", "source"):
+                if not era.get(field):
+                    errors.add(e_where, f"era needs {field!r}")
+            if era.get("start"):
+                _check_date(errors, e_where, era["start"], "start")
+            if era.get("end"):
+                _check_date(errors, e_where, era["end"], "end")
+            text = f"{era.get('label', '')} {era.get('note', '')}"
+            if CAUSAL_WORDS.search(text):
+                errors.add(
+                    e_where,
+                    "era bands are context data; causal copy is prohibited "
+                    "(invariant 14; documented-causation lives in evidence, not era labels)",
+                )
+        scan_prohibited_claims(errors, where, data)
 
 
 def check_tour(errors, path):
@@ -376,12 +530,17 @@ def check_tour(errors, path):
 
 def main():
     errors = validate()
+    for warning in errors.warnings:
+        print(f"WARNING {warning}")
     if errors:
         print(f"content validation FAILED with {len(errors.items)} error(s):")
         for item in errors.items:
             print(f"  - {item}")
         sys.exit(1)
-    print("content validation OK")
+    print(
+        "content validation OK"
+        + (f" ({len(errors.warnings)} warning(s))" if errors.warnings else "")
+    )
 
 
 if __name__ == "__main__":

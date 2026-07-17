@@ -83,7 +83,9 @@ sources:
     publisher: United States Department of State
     date: 2023-02-16
     url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
-    type: policy
+    # a diplomatic instrument the US authored: statement-class for coding
+    # purposes; the endorsement LIST built on it is the endorsement signal
+    type: statement
     lang: en
     accessed: 2026-07-16
   - id: us-mission-cluster4-2025

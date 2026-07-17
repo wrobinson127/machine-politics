@@ -1,0 +1,9 @@
+# Endorsement instruments (signal 2 of 5). Political-commitment instruments
+# with official endorsement lists. Endorsement is displayed fact, never a
+# coding input (invariant 10). Per-state rows arrive in P2b from the
+# verified official lists; instruments defined here first so the schema and
+# validator land with their fixtures.
+#
+# Statuses: endorsed | documented_non_endorsement | not_listed.
+# not_listed is an absence tier and never renders as opposition.
+instruments: []

@@ -24,15 +24,27 @@ VALID_SOURCES = {
             "type": "policy",
             "lang": "en",
             "accessed": "2026-07-16",
-        }
+        },
+        {
+            "id": "us-gge-statement",
+            "title": "US statement to the CCW GGE",
+            "publisher": "United States Mission",
+            "date": "2023-03-06",
+            "url": "https://docs-library.unoda.org/example-us-statement.pdf",
+            "type": "statement",
+            "lang": "en",
+            "accessed": "2026-07-16",
+        },
     ]
 }
 
+# Statement-class evidence: valid as coding support under the no-inference
+# rule. Doctrine tests build policy-class evidence explicitly.
 VALID_EVIDENCE = {
-    "source": "dod-3000-09",
+    "source": "us-gge-statement",
     "quote": "Autonomous and semi-autonomous weapon systems will be designed to allow commanders and operators to exercise appropriate levels of human judgment over the use of force.",
-    "date": "2023-01-25",
-    "url": "https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf",
+    "date": "2023-03-06",
+    "url": "https://docs-library.unoda.org/example-us-statement.pdf",
     "lang": "en",
     "translation": "none",
     "confidence": "EXPLICIT",
