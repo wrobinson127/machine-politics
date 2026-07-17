@@ -171,3 +171,66 @@ sources:
     type: secondary_report
     lang: en
     accessed: 2026-07-16
+
+  # Launch-set coding pass (2026-07-17, from research passes 1-6).
+  # Quotes for FRA/DEU/GBR verified verbatim against these primaries by
+  # tooling this pass; NOR and IND carry retrieval flags on exact URLs.
+  - id: fr-submission-78-241
+    title: "Resolution 78/241 Lethal autonomous weapons systems: Submission of France"
+    publisher: Government of France, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Undated on its face (reference ODA-2024-00019/LAWS); dated by the
+      PDF's own creation stamp (2024-05-24), the same batch date as the
+      German submission, which is dated Berlin, 24 May 2024 on its face.
+  - id: de-submission-78-241
+    title: "UN Secretary-General's Report on lethal autonomous weapons systems (LAWS): Germany's national contribution"
+    publisher: Government of Germany, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-17
+  - id: uk-asr-2022
+    title: "Ambitious, Safe, Responsible: our approach to the delivery of AI-enabled capability in Defence"
+    publisher: UK Ministry of Defence
+    date: 2022-06-14
+    url: https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf
+    type: position_paper
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      The UK's published public position on AI-enabled capability and
+      autonomous weapons; a public position document, not an internal
+      directive, hence position_paper. Its doctrine-class ruling
+      (core vs context) is the analyst's, flagged on the state file.
+  - id: no-gge-statement-2024
+    title: "Statement by Norway to the CCW Group of Governmental Experts on LAWS, second 2024 session"
+    publisher: Government of Norway, via UNODA Documents Library
+    date: 2024-08-26
+    url: https://docs-library.unoda.org/
+    type: statement
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Quote captured verbatim by research pass 5e from the primary
+      statement; the exact document URL is not yet pinned (flagged;
+      research names UNODA and norway.no as hosts). URL here is the
+      documents-library root pending retrieval.
+  - id: in-eov-79-62
+    title: "Explanation of vote by India on resolution 79/62 (L.77), Lethal autonomous weapons systems"
+    publisher: Permanent Mission of India to the United Nations, New York
+    date: 2024-12-02
+    url: https://pmindiaun.gov.in/
+    type: statement
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Captured verbatim by research pass 5d from the mission's statements
+      archive (pmindiaun.gov.in, November 2024). Dated here by the
+      recorded plenary vote it explains (2024-12-02); the statement's own
+      publication date and exact URL are flagged for retrieval.

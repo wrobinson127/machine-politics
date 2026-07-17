@@ -1,0 +1,17 @@
+# Iceland: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: ISL
+un_name: ICELAND
+display_name: Iceland
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: the smallest record in the Nordic set (no armed forces); Iceland's positions ride the Nordic joint statements (it delivered the 2025-10-08 statement); research pass 5e advises honest thin coverage, do not over-profile; code only if a national statement surfaces"
+  - "Nordic joint-statement series member and rotating deliverer: joint-statement layer"
+  - "US Political Declaration endorser (on the captured 58 list)"

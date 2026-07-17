@@ -46,8 +46,26 @@ records:
     note: >
       Eleven-state working paper: prohibitions and other regulatory measures
       on the basis of international humanitarian law. Co-authors from the
-      document header.
+      document header. Identity re-verified against the document face
+      2026-07-17 after a research-pass note claimed WP.7 was a thematic
+      compilation; the document itself is the draft-articles paper and
+      this record stands. (CCW/GGE.1/2025/WP.8 is a separate ten-state
+      joint statement, recorded below.)
     members: [AUS, CAN, CZE, EST, JPN, LVA, LTU, POL, KOR, GBR, USA]
+
+  - instrument_id: gge-2025-wp8-joint-statement
+    name: Joint Statement in Support of the CCW LAWS GGE (CCW/GGE.1/2025/WP.8)
+    date: 2025-09-03
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.8&l=en
+    approved: false
+    note: >
+      Ten-state joint statement submitted as a working paper; members
+      verbatim from the document face, fetched via the symbol API
+      2026-07-17. Distinct from WP.7 (the eleven-state draft-articles
+      paper); the two share six members and differ on five. The session
+      dates on the document cover both 2025 sessions; the date here is
+      the second session's opening week, same convention as WP.7.
+    members: [AUS, CAN, DNK, EST, DEU, POL, PRT, SGP, SWE, GBR]
 
   - instrument_id: joint-statement-gge-sept-2025
     name: Joint statement to the September 2025 session of the CCW GGE on LAWS, delivered by Brazil

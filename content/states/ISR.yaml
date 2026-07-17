@@ -1,0 +1,17 @@
+# Israel: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: ISR
+un_name: ISRAEL
+display_name: Israel
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "DATASET CORRECTION: research pass 5d recorded Israel's 2023 vote as Yes; the reconciled UNDL dataset records Abstain, Abstain, No (2023, 2024, 2025). The dataset is authoritative; the research doc is wrong on this cell"
+  - "CODING NEEDS SOURCE: candidate range OPPOSE/REG-SOFT (developer state resisting new instruments); the move to No on 80/57 is a candidate shift event; retrieve Israel's EOVs, then code"
+  - "US Political Declaration endorser (on the captured 58 list); documented non-endorsement of the 2024 Blueprint (attended without signing, sourced)"

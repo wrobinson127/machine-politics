@@ -1,0 +1,18 @@
+# Republic of Korea: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: KOR
+un_name: REPUBLIC OF KOREA
+display_name: Republic of Korea
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5d names REG-SOFT/LBI-OPEN as the candidate range but captured no primary quote; retrieve the submission and statements, then code"
+  - "REAIM 2024 Seoul summit host. Co-author of CCW/GGE.1/2025/WP.7, the eleven-state draft-articles paper (VERIFIED from the document face 2026-07-17; already in the sponsorship layer)"
+  - "US Political Declaration endorser (on the captured 58 list)"
+  - "Doctrine: check for a national AI-military policy at curation"

@@ -1,0 +1,16 @@
+# Ukraine: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: UKR
+un_name: UKRAINE
+display_name: Ukraine
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: the research anchor list names Ukraine AMBIG/INFERRED given the security context, but no statement is captured; the dataset records Yes (2023), Abstain (2024), non-voting (2025). Handle the votes honestly, do not over-read; retrieve any statement, then code"
+  - "US Political Declaration endorser (on the captured 58 list)"

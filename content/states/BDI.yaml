@@ -1,0 +1,21 @@
+# Burundi: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Thin tier: votes plus a NONE coding recording that the research passes
+# reviewed the record and captured no substantive stated position.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: BDI
+un_name: BURUNDI
+display_name: Burundi
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-07-17
+    approved: false
+    search_note: >
+      Research passes 5c and 5d (2026-07-17) reviewed the record: Yes votes in 2023 and 2024, No on 80/57; no substantive stated position captured in the reviewed record.
+
+shift_events: []
+
+flags:
+  - "The 2025 move to No is annotation-grade; an EOV, if one exists, is the retrieval target"

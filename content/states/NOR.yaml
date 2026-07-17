@@ -1,0 +1,42 @@
+# Norway: the Nordic bloc's deepest individual record; co-architect of
+# the two-tier bridge position. Drafted 2026-07-17 from research pass 5e.
+# The coding quote was captured verbatim from the primary statement by
+# the research pass; the exact document URL is flagged for retrieval.
+# approved: false throughout.
+iso3: NOR
+un_name: NORWAY
+display_name: Norway
+coverage_tier: deep
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2024-08-26
+    approved: false
+    rationale: >
+      Norway states plainly that it supports developing a legally binding
+      instrument to clarify how international humanitarian law applies to
+      autonomous weapons systems, supports the two-tier approach, and
+      co-authored the seven-state elements paper with Bulgaria, Denmark,
+      France, Germany, Italy, and Luxembourg. LBI-OPEN rather than
+      LBI-BAN: the anchor quote supports a binding instrument to clarify
+      IHL application, without itself framing the instrument around a
+      prohibition; the coding follows the state's own formulation.
+    evidence:
+      - source: no-gge-statement-2024
+        claim: Norway supports a legally binding instrument clarifying IHL application to autonomous weapons.
+        quote: "Norway supports the development of a legally binding instrument in order to clarify the application of IHL to autonomous weapons systems"
+        date: 2024-08-26
+        url: https://docs-library.unoda.org/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+flags:
+  - "Exact URL of the 2024-08-26 GGE statement: pin from UNODA or norway.no (quote captured verbatim by research pass 5e; URL currently the documents-library root)"
+  - "Seven-state elements paper co-authorship: sponsorship layer, enumeration bundle; never coding evidence by itself (no-inference rule)"
+  - "Norway UNSG submission: retrieve for a second evidence card"
+  - "Nordic joint-statement series (2022 to 2025, rotating deliverer): joint-statement layer entries plus statement evidence per member, enumeration bundle"
+  - "In the September 2025 42-state statement: sponsorship layer"

@@ -64,7 +64,9 @@ def test_deploy_instruments_is_a_factual_shell(deploy):
     recs = [e for e in manifest["entries"]
             if str(e["kind"]).startswith("sponsorship_record:")]
     assert len(ends) == 4
-    assert len(recs) == 5
+    # 6 records since the WP.8 ten-state joint statement was verified and
+    # recorded in the launch-set coding pass (2026-07-17)
+    assert len(recs) == 6
     assert all(not e["rendered"] and not e["approved"] for e in ends + recs)
 
 

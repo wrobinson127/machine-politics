@@ -1,0 +1,33 @@
+# Russia: the research passes identify the clearest no-new-instrument
+# position among the major powers (the OPPOSE anchor), but every
+# coding-bearing quote currently traces to secondary sources (RCW
+# reports, Lieber analysis), and the project's rule is that codings
+# trace to primary documents. The coding is therefore ABSENT, not
+# invented: the flags carry the retrieval queue that will ground it.
+# Drafted 2026-07-17 from research pass 5c. approved: false throughout.
+iso3: RUS
+un_name: RUSSIAN FEDERATION
+display_name: Russia
+coverage_tier: deep
+
+position_codings: []
+
+shift_events: []
+
+doctrine:
+  status: no_policy_identified
+  as_of: 2026-07-17
+  approved: false
+  search_note: >
+    Research pass 5c (2026-07-17) reviewed the record: the March 2024
+    working paper is Russia's closest articulation and is an
+    international-forum submission, not a domestic directive. No
+    published national policy specifically governing autonomy in weapons
+    systems identified by this project, as of 2026-07-17.
+
+flags:
+  - "CODING NEEDS SOURCE: the research passes support OPPOSE at EXPLICIT confidence (existing IHL suffices; no new treaty; GGE the right forum), but the quotes are secondary-sourced (RCW CCW Report vol.10 no.6; Lieber 2026). Retrieve the March 2024 working paper and the October 2025 First Committee statement from UNODA, then code. Votes alone (No, No, No) underdetermine the category: India voted No in 2023 and codes CCW-ONLY."
+  - "March 2022 GGE session boycott: capture a primary or strong contemporaneous record for the procedural-history entry"
+  - "REAIM CTA endorsement status: verify Russia's absence against the government.nl 2023 list"
+  - "Legal position vs forum preference: when coded, record the stated legal view as the coding and the consensus-forum preference as a separate dated statement; site voice never asserts the motive linking them (research pass 5c neutral-display rule, ruling-queue item)"
+  - "Behavior layer (loitering-munition use in Ukraine): out of scope for v1 by standing rule; noted so it is not imported"

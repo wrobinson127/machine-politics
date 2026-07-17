@@ -1,0 +1,67 @@
+# India: GGE chair in 2017, consistent defender of the CCW consensus
+# process, and the dataset's clearest vote trajectory (No, Abstain, Yes)
+# in the opposite direction from the United States. Drafted 2026-07-17
+# from research pass 5d. The 2024 explanation of vote was captured
+# verbatim by the research pass from the mission's own archive; exact
+# URL flagged. approved: false throughout.
+iso3: IND
+un_name: INDIA
+display_name: India
+coverage_tier: deep
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: EXPLICIT
+    as_of: 2024-12-02
+    approved: false
+    rationale: >
+      India holds that the CCW GGE is the appropriate forum and that the
+      UNGA track duplicates it: its 2024 explanation of vote states it
+      abstained because parallel mandates duplicate efforts and
+      resources, while the GGE addresses the full range of challenges.
+      The vote trajectory (No in 2023, Abstain in 2024, Yes in 2025) is
+      a change in posture toward the UNGA resolutions; the research
+      record shows no change in the underlying forum preference, so no
+      position shift event is coded. Whether the 2025 Yes reflects
+      substantive softening is an open question that the unretrieved
+      2025 explanation of vote decides.
+    evidence:
+      - source: in-eov-79-62
+        claim: India abstained on the 2024 resolution, stating its reason in its own explanation of vote.
+        quote: "India has abstained on the resolution L.77"
+        date: 2024-12-02
+        url: https://pmindiaun.gov.in/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: in-eov-79-62
+        claim: India objects to parallel UNGA mandates as duplicating the CCW GGE's work.
+        quote: "amount to a duplication of efforts and resources"
+        date: 2024-12-02
+        url: https://pmindiaun.gov.in/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Contiguous fragment; the research capture elides the sentence's
+          subject ("Parallel mandates..."), so only the verbatim fragment
+          is quoted and the claim field carries the sense. Full EOV text
+          retrieval is flagged.
+
+shift_events: []
+
+doctrine:
+  status: no_policy_identified
+  as_of: 2026-07-17
+  approved: false
+  search_note: >
+    Research pass 5d (2026-07-17) reviewed the record and identified no
+    published national directive on autonomy in weapon systems. No
+    published national policy specifically governing autonomy in weapons
+    systems identified by this project, as of 2026-07-17.
+
+flags:
+  - "India 2025 EOV (the reason for the Yes on 80/57): the highest-value India retrieval; decides whether the Yes is substantive or procedural"
+  - "2024 EOV exact URL and full text: pin from pmindiaun.gov.in (quote fragments verbatim from the research capture)"
+  - "GGE chairmanship 2017 and the 11 Guiding Principles steering: roles annotation, enumeration bundle"
+  - "Technology-neutral-IHL view: Carnegie analysis is context-class secondary, never coding evidence"

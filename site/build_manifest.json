@@ -56,6 +56,12 @@
   },
   {
    "approved": false,
+   "kind": "sponsorship_record:gge-2025-wp8-joint-statement",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
    "kind": "sponsorship_record:joint-statement-gge-sept-2025",
    "rendered": false,
    "state": null
@@ -106,6 +112,18 @@
    "approved": false,
    "kind": "position_codings",
    "rendered": false,
+   "state": "BDI"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "BLR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
    "state": "CHN"
   },
   {
@@ -131,6 +149,78 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "CHN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "DEU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "DEU"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "FRA"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "GBR"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "GBR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "IND"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "IND"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "MLI"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "NER"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "NOR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "PRK"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "RUS"
   },
   {
    "approved": false,

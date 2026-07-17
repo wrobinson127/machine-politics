@@ -1,0 +1,60 @@
+# France: the treaty camp's structural architect. Drafted 2026-07-17 from
+# research pass 5b; quote verified verbatim against the primary PDF by
+# tooling this pass. Nothing renders until the analyst of record sets
+# approved: true.
+iso3: FRA
+un_name: FRANCE
+display_name: France
+coverage_tier: deep
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: false
+    scope_note: >
+      Category-scoped: France supports a binding instrument that prohibits
+      fully autonomous systems (SALA) while regulating partially autonomous
+      ones. Not a blanket-ban position.
+    rationale: >
+      France's submission for the Secretary-General's report states its
+      preferred outcome plainly: a future instrument, possibly an
+      Additional Protocol to the CCW, structured on a two-tier approach
+      that prohibits fully autonomous systems and regulates partially
+      autonomous ones. The prohibition is category-scoped (fully
+      autonomous only), which this coding's scope note carries so France
+      is not misread as supporting a blanket ban.
+    evidence:
+      - source: fr-submission-78-241
+        claim: France's stated preferred outcome is a two-tier binding instrument, possibly a CCW Additional Protocol.
+        quote: "structuring this future instrument — which could take the form of an Additional Protocol to the CCW"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: fr-submission-78-241
+        claim: The instrument France describes follows the two-tier prohibit-and-regulate structure.
+        quote: "according to a two-tier approach"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+# Doctrine deferred: the 2021 Defence Ethics Committee opinion (SALA
+# unacceptable; PALWS acceptable under five conditions) is the doctrine
+# centerpiece, but its primary French PDF is not yet retrieved and its
+# core-vs-context class is the analyst's ruling (research pass 5b
+# recommends core). Per the translation rules an untranslated French
+# source yields no English quote, so the entry waits for the primary.
+
+flags:
+  - "Defence Ethics Committee opinion (2021-04-29): core-vs-context ruling for Walker; research recommends core; primary French PDF and the five conditions verbatim not yet retrieved"
+  - "Macron 2018 quote: original interview source not yet retrieved"
+  - "2013 debate-origin claim: needs a primary or strong contemporaneous source before the site asserts it"
+  - "France EOV on the RCW 2023 list: text retrieval pending"
+  - "French-German 2017 joint declaration (Guitton, 2017-11-15) and seven-state elements paper co-authorship: sponsorship-layer entries for the enumeration bundle, not coding evidence (no-inference rule)"
+  - "France Geneva delegation LAWS statements hub (cd-geneve.delegfrance.org): primary hub for the enumeration bundle"

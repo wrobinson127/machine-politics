@@ -1,0 +1,16 @@
+# Brazil: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: BRA
+un_name: BRAZIL
+display_name: Brazil
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5d names LBI-OPEN/LBI-BAN as the candidate range; Brazil DELIVERED the September 2025 42-state statement, but joint-statement membership is sponsorship-class and never grounds a coding alone (no-inference rule); retrieve Brazil's own submission and statements, then code"
+  - "Ruling queued (research pass 6): promote Brazil toward near-deep treatment as a leadership node"
