@@ -20,7 +20,7 @@ import json
 import re
 import shutil
 import sys
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import yaml
@@ -192,57 +192,177 @@ def tally_bar_html(tally):
     )
 
 
-def labeled_track(iso3, votes, content_states, preview):
-    cs = content_states.get(iso3, {})
-    name = cs.get("display_name") or display_from_un_name(votes["states"][iso3]["un_name"])
-    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
-    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
+# Tour figures. The board earns its legibility from its shared year axis
+# and reading key; inside the tour neither exists, so every figure is
+# purpose-built and carries its own numbers and labels. The resolutions
+# cluster after mid-2023, so the tour figures use a zoomed domain.
+MOVE_T0 = date(2023, 6, 1)
+
+
+def move_x(d, w=1000.0):
+    """Map a date into the tour's zoomed domain, with 4% margins."""
+    span = (T1 - MOVE_T0).days
+    frac = max(0.0, min(1.0, (as_date(d) - MOVE_T0).days / span))
+    return round((0.04 + 0.92 * frac) * w, 1)
+
+
+def tally_figure_html(res):
+    """The 78/241 tally as labeled numerals plus a unit chart: one mark
+    per member state, ink intensity by vote, counts stated on the figure."""
+    tally = res["tally"]
+    non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
+    groups = (
+        (tally["yes"], "in favour", "0.92"),
+        (tally["no"], "against", "0.62"),
+        (tally["abstain"], "abstentions", "0.40"),
+        (non_voting, "not voting", "0.16"),
+    )
+    stats = "".join(
+        f'<div class="tally-stat"><strong>{n}</strong><span>{label}</span></div>'
+        for n, label, _ in groups
+    )
+    cells = "".join(f'<i style="opacity:{op}"></i>' * n for n, _, op in groups)
+    aria = ", ".join(f"{n} {label}" for n, label, _ in groups)
     return (
-        f'<div class="board-row" data-name="{esc(name)}">'
-        f'<div class="row-label"><a href="state/{iso3}.html">{esc(name)}</a></div>'
-        + row_track_html(iso3, votes["states"][iso3], votes["resolutions"], codings, shifts)
-        + "</div>"
+        f"<p class=\"citation\">{esc(res['symbol'])} · adopted {esc(res['date'])} · "
+        "one mark per member state</p>"
+        f'<div class="tally-stats">{stats}</div>'
+        f'<div class="tally-units" role="img" '
+        f'aria-label="{aria}, of 193 member states">{cells}</div>'
     )
 
 
-def us_band_draw_svg(votes):
-    """A stroke tracing the US track with a visible break at the shift
-    date: the one DrawSVG target, built at build time and fully visible
-    without JavaScript (the animation only re-draws what is already there)."""
-    x0 = x_of(votes["resolutions"]["78/241"]["date"])
-    x2 = x_of(votes["resolutions"]["80/57"]["date"])
-    x_break = x_of("2024-05-25")  # the drafted US shift record date
+def us_move_figure_html(votes, content_states, preview):
+    """The US move, zoomed and annotated: three dated, labeled votes on a
+    time axis, a stroke broken at each recorded shift (the one DrawSVG
+    target, fully rendered without JavaScript), and the coded band below
+    with the rubric category written on it."""
+    entry = votes["states"]["USA"]
+    resolutions = votes["resolutions"]
+    cs = content_states.get("USA", {})
+    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
+    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
     ink = config.PALETTE["ink"]
+
+    cols = []
+    for key in config.LAWS_RESOLUTIONS:
+        res = resolutions[key]
+        vote = entry["votes"][key]
+        cols.append(
+            f'<div class="move-col" style="left:{move_x(res["date"], 100):.1f}%">'
+            f'<span class="move-year">{esc(res["date"][:4])}</span>'
+            f'<span class="move-sym">{esc(key)}</span>'
+            + vote_glyph_svg(vote, 30)
+            + f"<strong>{VOTE_GLYPHS[vote]}</strong></div>"
+        )
+
+    keys = list(config.LAWS_RESOLUTIONS)
+    x0 = move_x(resolutions[keys[0]]["date"])
+    x2 = move_x(resolutions[keys[-1]]["date"])
+    segments, cursor = [], x0
+    for bx in sorted(move_x(s["date"]) for s in shifts):
+        if cursor < bx - 12:
+            segments.append(f"M {cursor} 12 H {bx - 12}")
+        cursor = bx + 12
+    if cursor < x2:
+        segments.append(f"M {cursor} 12 H {x2}")
+    stroke = (
+        '<svg class="move-stroke" viewBox="0 0 1000 24" '
+        'preserveAspectRatio="none" aria-hidden="true">'
+        f'<path id="us-band-path" d="{" ".join(segments)}" fill="none" '
+        f'stroke="{ink}" stroke-width="3" stroke-opacity="0.55"/></svg>'
+    )
+    breaks = "".join(
+        f'<span class="move-break" style="left:{move_x(s["date"], 100):.1f}%">'
+        f"<span>{esc(iso(s['date']))}</span></span>"
+        for s in shifts
+    )
+
+    band = ""
+    if codings:
+        timeline = []
+        for c in sorted(codings, key=lambda c: iso(c["as_of"])):
+            if timeline and timeline[-1]["code"] == c["code"]:
+                continue  # same category re-coded later: one labeled segment
+            timeline.append(c)
+        segs = []
+        for i, c in enumerate(timeline):
+            left = move_x(c["as_of"], 100)
+            right = (
+                move_x(timeline[i + 1]["as_of"], 100)
+                if i + 1 < len(timeline) else 96.0
+            )
+            if right <= left:
+                continue
+            style, extra = band_style(c["code"], c.get("confidence"))
+            segs.append(
+                f'<span class="move-seg{extra}" '
+                f'style="left:{left:.1f}%;width:{right - left:.1f}%;{style}">'
+                f"<b>{esc(c['code'])} since {esc(iso(c['as_of']))}</b></span>"
+            )
+        band = (
+            '<div class="move-band">' + "".join(segs) + "</div>"
+            '<p class="citation">Coded instrument preference over the same span, '
+            'per the <a href="rubric.html">rubric</a>.</p>'
+        )
     return (
-        f'<svg class="band-draw" viewBox="0 0 {TRACK_W} 30" preserveAspectRatio="none" aria-hidden="true">'
-        f'<path id="us-band-path" d="M {x0} 15 H {x_break - 8} M {x_break + 8} 15 H {x2}" '
-        f'fill="none" stroke="{ink}" stroke-width="3" stroke-opacity="0.55"/>'
-        "</svg>"
+        '<p class="citation">United States · recorded vote on each resolution</p>'
+        f'<div class="move-chart">{stroke}{"".join(cols)}{breaks}</div>'
+        + band
+    )
+
+
+def movers_figure_html(votes, content_states):
+    """Every substantive changer with its three votes written out; the vote
+    that differs from the state's previous cast vote is boxed."""
+    resolutions = votes["resolutions"]
+    keys = list(config.LAWS_RESOLUTIONS)
+    head = "".join(
+        f"<th scope=\"col\">{esc(resolutions[k]['date'][:4])}"
+        f"<span>{esc(k)}</span></th>"
+        for k in keys
+    )
+    rows = []
+    for iso3 in substantive_changers(votes):
+        entry = votes["states"][iso3]
+        cs = content_states.get(iso3, {})
+        name = cs.get("display_name") or display_from_un_name(entry["un_name"])
+        cells, prev_cast = [], None
+        for k in keys:
+            vote = entry["votes"][k]
+            changed = vote != "X" and prev_cast is not None and vote != prev_cast
+            if vote != "X":
+                prev_cast = vote
+            cls = ' class="mv-changed"' if changed else ""
+            cells.append(
+                f"<td{cls}>" + vote_glyph_svg(vote, 14)
+                + f"<span>{VOTE_GLYPHS[vote]}</span></td>"
+            )
+        rows.append(
+            f'<tr><th scope="row"><a href="state/{iso3}.html">{esc(name)}</a></th>'
+            + "".join(cells) + "</tr>"
+        )
+    return (
+        f'<p class="citation">The {len(rows)} states whose cast vote changed '
+        "across the three resolutions. A boxed vote differs from the state's "
+        "previous cast vote.</p>"
+        '<table class="mover-table"><thead><tr><th scope="col">State</th>'
+        + head + "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>"
     )
 
 
 def beat_figure_html(figure, votes, content_states, preview):
     """Build-time figures: every beat is meaningful with no JavaScript."""
     if figure == "tally-78-241":
-        res = votes["resolutions"]["78/241"]
-        return (
-            f"<p class=\"citation\">{esc(res['symbol'])} · adopted {esc(res['date'])}</p>"
-            + tally_bar_html(res["tally"])
-        )
+        return tally_figure_html(votes["resolutions"]["78/241"])
     if figure == "track-USA":
-        return (
-            labeled_track("USA", votes, content_states, preview)
-            + us_band_draw_svg(votes)
-        )
+        return us_move_figure_html(votes, content_states, preview)
     if figure == "movers":
-        return "".join(
-            labeled_track(iso3, votes, content_states, preview)
-            for iso3 in substantive_changers(votes)
-        )
+        return movers_figure_html(votes, content_states)
     if figure == "full-board":
         return (
-            '<img src="assets/board-poster.svg" alt="The full trajectory board: '
-            '193 states, 2013 to 2026" loading="lazy">'
+            '<img src="assets/board-poster.svg" alt="The full record: one row '
+            'per member state, three recorded votes, 2023 to 2025" loading="lazy">'
             '<p class="citation revcon-stamp">Seventh CCW Review Conference · '
             "16 to 20 November 2026 · Geneva</p>"
         )
@@ -460,8 +580,9 @@ def band_style(code, confidence):
     return f"background:{config.PALETTE['positions'][code]};opacity:{opacity}", ""
 
 
-def vote_glyph_svg(vote):
-    """Fixed-size monochrome ink shapes; meaning never carried by hue."""
+def vote_glyph_svg(vote, size=12):
+    """Monochrome ink shapes; meaning never carried by hue. The tour
+    renders them larger, the board at 12px."""
     ink = config.PALETTE["ink"]
     if vote == "Y":
         shape = f'<circle cx="6" cy="6" r="4.2" fill="{ink}"/>'
@@ -477,7 +598,10 @@ def vote_glyph_svg(vote):
         )
     else:  # X non-voting
         shape = f'<line x1="2.5" y1="6" x2="9.5" y2="6" stroke="{ink}" stroke-width="1.6" stroke-opacity="0.5"/>'
-    return f'<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">{shape}</svg>'
+    return (
+        f'<svg viewBox="0 0 12 12" width="{size}" height="{size}" '
+        f'aria-hidden="true">{shape}</svg>'
+    )
 
 
 def compute_bands(codings):
@@ -1752,19 +1876,53 @@ def favicon_svg():
 
 
 def poster_svg(votes, content_states):
-    """Condensed pre-rendered board poster: the whole wall at a glance."""
+    """Condensed pre-rendered board poster: the whole wall at a glance.
+    Zoomed to the voting era (the tour's MOVE_T0 domain) so the 193-row
+    wall reads as a record, not empty runway, with each vote column
+    labeled with its symbol, year, and recorded tally."""
     rows = board_rows(votes, content_states, preview=False)
     rh = 4
-    height = 40 + rh * len(rows)
+    top = 66
+    height = top + rh * len(rows) + 8
+    ink = config.PALETTE["ink"]
+
+    def zx(d):
+        return move_x(d, TRACK_W)
+
+    def conv(track_units):
+        """Track units (x_of domain) back to a date, then into the zoom."""
+        d = T0 + timedelta(days=track_units / TRACK_W * (T1 - T0).days)
+        return zx(d)
+
     parts = [
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {TRACK_W} {height}" '
         f'font-family="Georgia, serif">',
         f'<rect width="{TRACK_W}" height="{height}" fill="{config.PALETTE["ground"]}"/>',
-        f'<text x="8" y="24" font-size="18" fill="{config.PALETTE["ink"]}">'
-        f"{esc(config.SITE_NAME)}: positions over time, {config.TIMELINE_START_YEAR} to {T1.year}</text>",
+        f'<text x="12" y="26" font-size="18" fill="{ink}">'
+        f"{esc(config.SITE_NAME)}: the recorded votes, one row per member state</text>",
     ]
-    y = 40
-    ink = config.PALETTE["ink"]
+    # Faint year rules make the sparse span read as ledger paper, and give
+    # the three vote columns their time context.
+    for year in range(2024, T1.year + 1):
+        gx = zx(date(year, 1, 1))
+        parts.append(
+            f'<line x1="{gx}" y1="36" x2="{gx}" y2="{height - 4}" '
+            f'stroke="{ink}" stroke-opacity="0.08" stroke-width="1"/>'
+        )
+    for key in config.LAWS_RESOLUTIONS:
+        res = votes["resolutions"][key]
+        x = zx(res["date"])
+        t = res["tally"]
+        parts.append(
+            f'<text x="{x}" y="47" font-size="13" text-anchor="middle" '
+            f'fill="{ink}">{esc(key)} · {esc(res["date"][:4])}</text>'
+        )
+        parts.append(
+            f'<text x="{x}" y="61" font-size="10" text-anchor="middle" '
+            f'fill="{ink}" fill-opacity="0.65">'
+            f'{t["yes"]} Y · {t["no"]} N · {t["abstain"]} A</text>'
+        )
+    y = top
     for r in rows:
         for band in r["bands"]:
             if band["code"] == "AMBIG":
@@ -1772,18 +1930,31 @@ def poster_svg(votes, content_states):
             color = config.PALETTE["positions"][band["code"]]
             if color is None:
                 continue
+            left = conv(band["left"])
+            right = conv(band["left"] + band["width"])
+            if right - left < 1:
+                continue
             parts.append(
-                f'<rect x="{band["left"]:.1f}" y="{y}" '
-                f'width="{band["width"]:.1f}" height="{rh - 1}" fill="{color}" '
+                f'<rect x="{left:.1f}" y="{y}" '
+                f'width="{right - left:.1f}" height="{rh - 1}" fill="{color}" '
                 f'fill-opacity="{band["opacity"]}"/>'
             )
         for key in config.LAWS_RESOLUTIONS:
-            x = x_of(votes["resolutions"][key]["date"])
+            # Wide marks: a 3px needle vanishes at poster scale; 22 units
+            # is about three weeks of timeline, visually a vote column.
+            x = zx(votes["resolutions"][key]["date"]) - 11
             vote = votes["states"][r["iso3"]]["votes"][key]
-            op = {"Y": "0.9", "N": "0.9", "A": "0.6", "X": "0.2"}[vote]
-            parts.append(
-                f'<rect x="{x}" y="{y}" width="3" height="{rh - 1}" fill="{ink}" fill-opacity="{op}"/>'
-            )
+            if vote == "N":  # outline, echoing the crossed-ring glyph
+                parts.append(
+                    f'<rect x="{x:.1f}" y="{y}" width="22" height="{rh - 1}" '
+                    f'fill="none" stroke="{ink}" stroke-width="0.9" stroke-opacity="0.9"/>'
+                )
+            else:
+                op = {"Y": "0.9", "A": "0.5", "X": "0.15"}[vote]
+                parts.append(
+                    f'<rect x="{x:.1f}" y="{y}" width="22" height="{rh - 1}" '
+                    f'fill="{ink}" fill-opacity="{op}"/>'
+                )
         y += rh
     parts.append("</svg>")
     return "".join(parts)
@@ -1976,14 +2147,15 @@ TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figure
 
   tour.classList.add("tour-enhanced");
 
-  // Beat 1: the tally draws itself as the reader arrives. scaleX from a
-  // sliver, never from nothing; transform only, one tempo.
-  var tallySpans = gsap.utils.toArray("#beat-vote-2023 .tally-bar > span");
-  if (tallySpans.length) {
-    gsap.fromTo(tallySpans,
-      { scaleX: 0.06, transformOrigin: "left center" },
+  // Beat 1: the unit chart fills in state by state as the reader arrives.
+  // scaleY from a sliver, never from nothing; transform only, one tempo,
+  // so the inline per-group opacity (the data encoding) is never touched.
+  var tallyCells = gsap.utils.toArray("#beat-vote-2023 .tally-units > i");
+  if (tallyCells.length) {
+    gsap.fromTo(tallyCells,
+      { scaleY: 0.12, transformOrigin: "center bottom" },
       {
-        scaleX: 1, ease: "none", stagger: 0.12,
+        scaleY: 1, ease: "none", stagger: 0.004,
         scrollTrigger: {
           trigger: "#beat-vote-2023", start: "top 55%", end: "center 40%", scrub: 0.4
         }
@@ -2001,24 +2173,28 @@ TOUR_JS = """// Tour choreography. The stacked-prose beats and build-time figure
       }
     });
   }
-  var shiftNode = document.querySelector("#beat-us-shift .shift-node");
-  if (shiftNode) {
-    gsap.fromTo(shiftNode, { scale: 0.6 }, {
-      scale: 1, ease: "none",
-      scrollTrigger: {
-        trigger: "#beat-us-shift", start: "center 55%", end: "bottom 45%", scrub: 0.4
-      }
-    });
+  // The three dated vote columns settle in sequence; dimmed to full,
+  // never hidden to shown, the same tempo for a Yes as for a No.
+  var moveCols = gsap.utils.toArray("#beat-us-shift .move-col");
+  if (moveCols.length) {
+    gsap.fromTo(moveCols,
+      { autoAlpha: 0.35, y: 6 },
+      {
+        autoAlpha: 1, y: 0, ease: "none", stagger: 0.2,
+        scrollTrigger: {
+          trigger: "#beat-us-shift", start: "center 55%", end: "bottom 45%", scrub: 0.4
+        }
+      });
   }
 
-  // Beat 3: the movers settle in as small multiples; dimmed to full,
-  // never hidden to shown.
-  var moverRows = gsap.utils.toArray("#beat-the-movers .board-row");
+  // Beat 3: the mover rows settle in; dimmed to full, never hidden to
+  // shown, so the table reads complete at every scroll position.
+  var moverRows = gsap.utils.toArray("#beat-the-movers .mover-table tbody tr");
   if (moverRows.length) {
     gsap.fromTo(moverRows,
-      { autoAlpha: 0.45, y: 8 },
+      { autoAlpha: 0.35 },
       {
-        autoAlpha: 1, y: 0, ease: "none", stagger: 0.05,
+        autoAlpha: 1, ease: "none", stagger: 0.04,
         scrollTrigger: {
           trigger: "#beat-the-movers", start: "top 55%", end: "bottom 45%", scrub: 0.4
         }

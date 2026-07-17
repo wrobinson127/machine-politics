@@ -47,8 +47,15 @@ def test_preview_tour_scaffold_renders(preview):
     index = (out / "index.html").read_text(encoding="utf-8")
     assert index.count('class="beat"') == 4
     assert "PLACEHOLDER BEAT 1" in index
-    # no-JS completeness: figures are server-rendered content, not JS mounts
-    assert "tally-bar" in index.split('class="tour"')[1].split("board-head")[0]
+    # no-JS completeness: figures are server-rendered content, not JS mounts,
+    # and each carries its own numbers and labels (self-explanatory rule)
+    tour_markup = index.split('class="tour"')[1].split("board-head")[0]
+    assert "tally-units" in tour_markup
+    assert "<strong>152</strong>" in tour_markup  # the count is on the figure
+    assert tour_markup.count("<i style=") == 193  # one unit mark per state
+    assert 'id="us-band-path"' in tour_markup  # the DrawSVG stroke pre-renders
+    assert "mover-table" in tour_markup
+    assert "mv-changed" in tour_markup  # changed votes are marked in markup
     assert 'id="beat-us-shift"' in index
     tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
     assert tour_entries and tour_entries[0]["rendered"] is True

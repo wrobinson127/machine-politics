@@ -23,8 +23,8 @@ beats:
     title: The movers
     copy: >
       PLACEHOLDER BEAT 3. Factual anchors: eighteen states changed a
-      recorded vote across the three resolutions. The figure shows their
-      tracks together.
+      recorded vote across the three resolutions. The figure lists each
+      one's three votes, with the changed vote marked.
     figure: movers
   - id: the-stakes
     title: The whole record, and a date
