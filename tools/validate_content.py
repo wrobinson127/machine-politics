@@ -37,6 +37,22 @@ NON_CODING_SOURCE_TYPES = {"policy", "endorsement_list", "sponsorship_record"}
 
 ENDORSEMENT_STATUSES = ("endorsed", "documented_non_endorsement", "not_listed")
 
+# Invariant 13: no state ever receives a rank, grade, or index. The display
+# layer enforces the rest; the schema layer refuses to even hold one.
+SCORE_KEYS = {"score", "rank", "grade", "rating", "index", "tier"}
+
+ISO3_RE = re.compile(r"^[A-Z]{3}$")
+
+
+def _check_entry_dict(errors, where, entry):
+    if not isinstance(entry, dict):
+        errors.add(where, f"entry must be a mapping, got {type(entry).__name__}")
+        return False
+    hits = set(entry) & SCORE_KEYS
+    if hits:
+        errors.add(where, f"no composite scores, ranks, or grades, ever (invariant 13): {sorted(hits)}")
+    return True
+
 # Evidence entries may carry an optional kind; EOVs are a named subtype.
 EVIDENCE_KINDS = ("eov", "statement", "submission", "working_paper")
 
@@ -180,7 +196,7 @@ def check_evidence(errors, where, entry, source_ids):
 def check_no_inference(errors, where, coding, source_ids):
     """Invariant 10: a coding whose every evidence ref is an endorsement,
     sponsorship, or doctrine source has no statement or vote behind it."""
-    evidence = coding.get("evidence") or []
+    evidence = [e for e in (coding.get("evidence") or []) if isinstance(e, dict)]
     if not evidence:
         return
     types = {
@@ -360,9 +376,13 @@ def check_state_file(errors, path, source_ids, vote_states):
         if not data.get(field):
             errors.add(where, f"missing field {field!r}")
     for i, coding in enumerate(data.get("position_codings") or []):
-        check_coding(errors, f"{where}.position_codings[{i}]", coding, source_ids)
+        c_where = f"{where}.position_codings[{i}]"
+        if _check_entry_dict(errors, c_where, coding):
+            check_coding(errors, c_where, coding, source_ids)
     for i, event in enumerate(data.get("shift_events") or []):
-        check_shift_event(errors, f"{where}.shift_events[{i}]", event, iso3, source_ids)
+        e_where = f"{where}.shift_events[{i}]"
+        if _check_entry_dict(errors, e_where, event):
+            check_shift_event(errors, e_where, event, iso3, source_ids)
     if "doctrine" in data:
         check_doctrine(errors, f"{where}.doctrine", data["doctrine"], source_ids)
     scan_prohibited_claims(errors, where, data)
@@ -419,6 +439,9 @@ def check_endorsements(errors, path, vote_states):
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     seen = set()
     for i, inst in enumerate(data.get("instruments") or []):
+        where = f"endorsements.yaml[{i}]"
+        if not _check_entry_dict(errors, where, inst):
+            continue
         where = f"endorsements.yaml[{i}]({inst.get('id', '?')})"
         for field in ("id", "name", "date", "list_source_url", "list_as_of"):
             if not inst.get(field):
@@ -431,13 +454,15 @@ def check_endorsements(errors, path, vote_states):
                                         "archived": inst.get("list_source_archived")})
         for j, row in enumerate(inst.get("states") or []):
             r_where = f"{where}.states[{j}]"
+            if not _check_entry_dict(errors, r_where, row):
+                continue
             status = row.get("status")
             if status not in ENDORSEMENT_STATUSES:
                 errors.add(r_where, f"status must be one of {ENDORSEMENT_STATUSES}")
             iso3 = row.get("iso3")
-            if not iso3:
-                errors.add(r_where, "row needs iso3")
-            elif vote_states is not None and iso3 not in vote_states and not row.get("non_member_note"):
+            if not iso3 or not isinstance(iso3, str) or not ISO3_RE.match(iso3):
+                errors.add(r_where, f"row needs an uppercase alpha-3 iso3, got {iso3!r}")
+            elif vote_states is not None and iso3 not in vote_states and not str(row.get("non_member_note") or "").strip():
                 errors.add(
                     r_where,
                     f"{iso3} is not a UN member state in the vote data; "
@@ -458,6 +483,9 @@ def check_sponsorships(errors, path, vote_states):
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     seen = set()
     for i, rec in enumerate(data.get("records") or []):
+        where = f"sponsorships.yaml[{i}]"
+        if not _check_entry_dict(errors, where, rec):
+            continue
         where = f"sponsorships.yaml[{i}]({rec.get('instrument_id', '?')})"
         for field in ("instrument_id", "name", "date", "url", "members"):
             if not rec.get(field):
@@ -473,12 +501,17 @@ def check_sponsorships(errors, path, vote_states):
         if len(set(members)) != len(members):
             errors.add(where, "duplicate members")
         for m in members:
-            if vote_states is not None and m not in vote_states:
+            if not isinstance(m, str) or not ISO3_RE.match(m):
+                errors.add(where, f"member {m!r} must be an uppercase alpha-3 code")
+            elif vote_states is not None and m not in vote_states:
                 errors.add(where, f"member {m!r} not a UN member state in the vote data")
     scan_prohibited_claims(errors, "sponsorships.yaml", data)
 
 
-CAUSAL_WORDS = re.compile(r"\bbecause\b|\bcaused\b|\bled to\b|\bresulted in\b", re.I)
+CAUSAL_WORDS = re.compile(
+    r"\bbecause\b|\bcaused?\b|\bled to\b|\bresult(?:ed|ing) in\b|\bdue to\b|\bin response to\b",
+    re.I,
+)
 
 
 def check_eras(errors, eras_dir, vote_states):
@@ -490,6 +523,8 @@ def check_eras(errors, eras_dir, vote_states):
         data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         for i, era in enumerate(data.get("eras") or []):
             e_where = f"{where}[{i}]"
+            if not _check_entry_dict(errors, e_where, era):
+                continue
             for field in ("label", "start", "source"):
                 if not era.get(field):
                     errors.add(e_where, f"era needs {field!r}")

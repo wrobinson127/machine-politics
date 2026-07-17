@@ -204,6 +204,55 @@ def test_dated_context_instrument_needs_url(tmp_path):
     assert any("dated context instrument needs a url" in e for e in errs)
 
 
+def test_malformed_rows_report_instead_of_crashing(tmp_path):
+    """P1b review REJECT: non-dict entries must produce itemized errors."""
+    write_base(tmp_path)
+    (tmp_path / "endorsements.yaml").write_text(
+        "instruments:\n  - just-a-string\n", encoding="utf-8"
+    )
+    (tmp_path / "sponsorships.yaml").write_text(
+        "records:\n  - also-a-string\n", encoding="utf-8"
+    )
+    state = copy.deepcopy(VALID_STATE)
+    state["position_codings"] = ["not-a-mapping"]
+    del state["shift_events"]
+    (tmp_path / "states" / "USA.yaml").write_text(
+        yaml.safe_dump(state, allow_unicode=True), encoding="utf-8"
+    )
+    errs = vc.validate(tmp_path).items  # must not raise
+    assert sum("must be a mapping" in e for e in errs) == 3
+
+
+def test_score_keys_rejected_everywhere(tmp_path):
+    """Invariant 13 tripwire: the schema layer refuses to hold a score."""
+    def mutate(inst):
+        inst["states"][0]["score"] = 9.5
+    errs = endorsement_errors(tmp_path, mutate).items
+    assert any("invariant 13" in e for e in errs)
+
+
+def test_iso3_format_enforced_despite_note(tmp_path):
+    def mutate(inst):
+        inst["states"][0] = {"iso3": "deu", "status": "endorsed",
+                             "non_member_note": "laundering attempt"}
+    errs = endorsement_errors(tmp_path, mutate).items
+    assert any("uppercase alpha-3" in e for e in errs)
+
+
+def test_causal_net_extended(tmp_path):
+    write_base(tmp_path)
+    eras_dir = tmp_path / "eras"
+    eras_dir.mkdir()
+    (eras_dir / "USA.yaml").write_text(
+        yaml.safe_dump({"eras": [
+            {"label": "Reforms resulting in change", "start": "2021-01-20",
+             "source": "https://example.gov"},
+        ]}), encoding="utf-8",
+    )
+    errs = vc.validate(tmp_path).items
+    assert any("causal copy is prohibited" in e for e in errs)
+
+
 def test_real_content_still_validates():
     result = vc.validate()
     assert result.items == []
