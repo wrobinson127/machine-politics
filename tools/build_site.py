@@ -1184,7 +1184,6 @@ def build(out_dir, preview=False):
     if src_fonts.exists() and src_fonts.resolve() != (out / "assets" / "fonts").resolve():
         shutil.copytree(src_fonts, out / "assets" / "fonts", dirs_exist_ok=True)
     (out / "js" / "board.js").write_text(BOARD_JS, encoding="utf-8", newline="\n")
-    (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
     (out / "assets" / "favicon.svg").write_text(favicon_svg(), encoding="utf-8", newline="\n")
     (out / "assets" / "board-poster.svg").write_text(
         poster_svg(votes, content_states), encoding="utf-8", newline="\n"
@@ -1196,6 +1195,8 @@ def build(out_dir, preview=False):
             {"state": None, "kind": "tour", "approved": is_approved(tour),
              "rendered": bool(preview or is_approved(tour))}
         )
+        if preview or is_approved(tour):
+            (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
     (out / "index.html").write_text(
         index_page(votes, content_states, preview, tour=tour),
         encoding="utf-8", newline="\n",

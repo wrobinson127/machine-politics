@@ -360,14 +360,17 @@ def check_tour(errors, path):
     beats = tour.get("beats") or []
     if len(beats) != 4:
         errors.add(where, f"the tour has exactly four beats, found {len(beats)}")
+    known_figures = {"tally-78-241", "track-USA", "movers", "full-board"}
     for i, beat in enumerate(beats):
         b_where = f"{where}.beats[{i}]"
         for field in ("id", "title", "copy", "figure"):
             if not beat.get(field):
                 errors.add(b_where, f"beat needs {field!r}")
+        if beat.get("figure") and beat["figure"] not in known_figures:
+            errors.add(b_where, f"unknown figure {beat['figure']!r}; known: {sorted(known_figures)}")
         for ch, name in (("—", "em dash"), ("–", "en dash")):
             if ch in str(beat.get("copy", "")) + str(beat.get("title", "")):
-                errors.add(b_where, f"beat copy contains an {name}; voice rules forbid it")
+                errors.add(b_where, f"beat title or copy contains an {name}; voice rules forbid it")
     scan_prohibited_claims(errors, where, tour)
 
 
