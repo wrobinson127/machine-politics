@@ -8,6 +8,14 @@ Machine Politics records where every United Nations member state stands on auton
 
 The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
 
+## Five signals, never a score
+
+The tracker records five separable signals per state: recorded votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy. They display side by side. They never merge into a rank, grade, or index. The site triangulates; it does not grade.
+
+**The no-inference rule:** endorsements, sponsorships, and doctrine never produce a position coding by themselves. Endorsing the US Political Declaration is not a position against a binding instrument; Austria endorses it and sponsors the treaty resolution in the same year. Codings derive from statements and votes, with the reasoning shown. The validator enforces this rule in code: a coding whose only evidence is an endorsement, a sponsorship, or a policy document fails the build.
+
+**Endorsement absence:** a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.
+
 ## Three signals, three coverage depths
 
 **Votes:** complete. All 193 member states, from the official UN General Assembly voting dataset published by the Dag Hammarskjöld Library. The extraction code, the reconciliation checks, and the committed extract are public in the repository. Nothing is scraped.
@@ -41,6 +49,14 @@ Absence is tiered, and the tiers never blend.
 "No substantive position on record" means this project reviewed the record and found no stated position. "Not yet reviewed by this project" means exactly that. Neither renders as a position.
 
 For national policy, the site only ever makes a dated coverage statement: no published national policy identified by this project, as of a stated date, with a note recording where the project looked. The site never asserts that a state has nothing. The validator rejects that entire class of claim.
+
+## Secondary sources, used honestly
+
+Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
+
+## Links that outlive administrations
+
+Government URLs die when governments change. Every doctrine and endorsement source carries both its live link and an archived snapshot, and the build warns on any entry missing one. Where a live page blocks automated access, the archived capture is the verified record and the page says so.
 
 ## Who codes, and how
 
