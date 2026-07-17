@@ -361,13 +361,14 @@ def canvas_stat_sets(stats):
         '<span class="c-stat"><strong>3</strong> recorded votes</span>'
         f'<span class="c-stat"><strong>{stats["coded"]}</strong> positions coded</span>'
     )
+    # Beat 2's stat-row is a single figure (the storyboard's one-unit
+    # start); the full tallies arrive with the third vote at beat 3.
     return {
         "b1": "",
         "b2": (
-            f'<span class="c-stat"><strong>{first["yes"]}</strong> in favour</span>'
-            f'<span class="c-stat"><strong>{first["no"]}</strong> against</span>'
-            f'<span class="c-stat"><strong>{first["abstain"]}</strong> abstentions</span>'
-            f'<span class="c-stat"><strong>{first["non_voting"]}</strong> not voting</span>'
+            '<span class="c-stat"><strong>1</strong> recorded vote shown · '
+            f'{first["yes"]} in favour, {first["no"]} against, '
+            f'{first["abstain"]} abstentions</span>'
         ),
         "b3": all_three,
         "b4": all_three,
@@ -2274,7 +2275,7 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
     })
     .map(function (r) { return r.getAttribute("data-iso3"); });
 
-  var SCALES = { xl: 64, m: 26, s: 13, xs: 3.4 };
+  var SCALES = { xl: 88, m: 26, s: 13, xs: 3.4 };
   // The full wall must fit the stage: at poster scale the row height
   // shrinks to fill at most 58% of the viewport.
   function rowHeight(st) {
@@ -2287,17 +2288,21 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
 
   // One entry per storyboard beat. P3c layers the within-beat drawing
   // (bands, glyph teaching, muting) onto this state model.
+  // One entry per storyboard beat: what is on the canvas, at what scale,
+  // which marks and layers have been taught so far. Color arrives as an
+  // event at beat 5 (bands: true) and never leaves; the movers keep the
+  // two known rows saturated as anchors (muting is focus, not valence).
   var STATES = [null,
-    { order: [], scale: "xl", set: "b1", deadline: "faint" },
-    { order: ["USA"], scale: "xl", set: "b2" },
-    { order: ["USA"], scale: "xl", set: "b3" },
-    { order: ["USA"], scale: "xl", set: "b4" },
-    { order: ["USA"], scale: "xl", set: "b5" },
-    { order: ["USA", "IND"], scale: "xl", set: "b6" },
-    { order: MOVERS, scale: "m", set: "b7" },
-    { order: CODED, scale: "m", set: "b8" },
-    { order: ALL, scale: "xs", set: "b9" },
-    { order: ALL, scale: "xs", set: "b10", deadline: "draw" }
+    { order: [], scale: "xl", set: "b1", deadline: "faint", marks: 0 },
+    { order: ["USA"], scale: "xl", set: "b2", marks: 1 },
+    { order: ["USA"], scale: "xl", set: "b3", marks: 3, draw: "no-ring" },
+    { order: ["USA"], scale: "xl", set: "b4", marks: 3 },
+    { order: ["USA"], scale: "xl", set: "b5", marks: 3, bands: true },
+    { order: ["USA", "IND"], scale: "xl", set: "b6", marks: 3, bands: true },
+    { order: MOVERS, scale: "m", set: "b7", marks: 3, bands: true, anchors: ["USA", "IND"] },
+    { order: CODED, scale: "m", set: "b8", marks: 3, bands: true },
+    { order: ALL, scale: "xs", set: "b9", marks: 3, bands: true },
+    { order: ALL, scale: "xs", set: "b10", marks: 3, bands: true, deadline: "draw" }
   ];
 
   function showSet(cls, set) {
@@ -2310,16 +2315,22 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
   // browser interpolates): unlike ticker-based tweens it lands on the
   // final state even if rendering stalls mid-flight (hidden tab,
   // occluded window). GSAP is reserved for actual drawing (DrawSVG).
+  var lastBeat = 0;
   function setBeat(n) {
     var st = STATES[n];
     if (!st) return;
     board.setAttribute("data-beat", String(n));
     board.setAttribute("data-scale", st.scale);
+    board.classList.toggle("c-marks-0", st.marks === 0);
+    board.classList.toggle("c-marks-1", st.marks === 1);
+    board.classList.toggle("c-bands-on", !!st.bands);
     var h = rowHeight(st);
     var pos = {};
     st.order.forEach(function (iso, i) { pos[iso] = i; });
     rows.forEach(function (row) {
       var iso = row.getAttribute("data-iso3");
+      row.classList.toggle("c-dim",
+        !!st.anchors && iso in pos && st.anchors.indexOf(iso) === -1);
       if (iso in pos) {
         row.style.transform = "translateY(" + (pos[iso] * h).toFixed(2) + "px)";
         row.style.height = Math.max(h - (h > 10 ? 2 : 0.6), 2).toFixed(2) + "px";
@@ -2328,6 +2339,16 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
         row.classList.add("c-off");
       }
     });
+    // The one within-beat GSAP draw so far: the crossed ring draws itself
+    // as the word no arrives (beat 3, forward entries only). Same tempo
+    // as every other reveal; motion teaches the glyph, not a verdict.
+    if (st.draw === "no-ring" && hasDraw && lastBeat < n) {
+      var ring = board.querySelectorAll('.c-row[data-iso3="USA"] .c-mark-N svg *');
+      if (ring.length) {
+        gsap.fromTo(ring, { drawSVG: "0%" },
+          { drawSVG: "100%", duration: 0.7, ease: "none", stagger: 0.15 });
+      }
+    }
     board.style.height = (Math.max(st.order.length, 4) * h).toFixed(1) + "px";
     showSet("c-teach", st.set);
     showSet("c-statset", st.set);
@@ -2336,6 +2357,7 @@ TOUR_JS = """// Scrollytelling spine (P2c). The stacked prose and the classic bo
     // dash pattern to draw, settling the line solid).
     var dl = canvas.querySelector(".c-deadline");
     if (dl) dl.setAttribute("data-state", st.deadline || "off");
+    lastBeat = n;
   }
 
   var scroller = window.scrollama();

@@ -319,7 +319,8 @@ footer.colophon p { margin: 0.3rem 0; }
 .c-deadline[data-state="faint"] .c-deadline-label { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .c-row, .c-board, .c-deadline { transition: none; }
+  .c-row, .c-board, .c-deadline, .c-deadline svg, .c-band, .c-seam,
+  .c-mark, .c-note, .c-track, .c-label { transition: none; }
 }
 
 .c-label {
@@ -331,7 +332,9 @@ footer.colophon p { margin: 0.3rem 0; }
   white-space: nowrap;
 }
 
-.c-track { position: absolute; left: 0; right: 0; top: 24px; bottom: 18px; }
+/* xl rows reserve a caption line beneath the track so the provisional
+   note never runs into the band */
+.c-track { position: absolute; left: 0; right: 0; top: 26px; bottom: 38px; }
 
 .c-note {
   position: absolute;
@@ -366,13 +369,45 @@ footer.colophon p { margin: 0.3rem 0; }
 #c-board[data-scale="xs"] .c-track { left: 0; top: 0; bottom: 0; }
 #c-board:not([data-scale="xl"]) .c-note { display: none; }
 
+/* Progressive reveal (P3c): marks appear per beat; color arrives as an
+   event at beat 5 (bands, then the seam); the provisional note rides
+   with the band. All reveals are opacity/transform transitions at one
+   tempo; nothing is ever rebuilt. */
 .c-band {
   position: absolute;
   top: 50%;
   height: 58%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
   border-radius: 2px;
+  transition: transform 0.7s ease-in-out;
 }
+
+#c-board.c-bands-on .c-band { transform: translateY(-50%) scaleX(1); }
+
+#c-board .c-seam {
+  opacity: 0;
+  transition: opacity 0.35s linear 0.55s;
+}
+
+#c-board.c-bands-on .c-seam { opacity: 1; }
+
+.c-mark { transition: opacity 0.4s linear; }
+
+#c-board.c-marks-1 .c-mark:nth-of-type(n+2) { opacity: 0; }
+#c-board.c-marks-0 .c-mark { opacity: 0; }
+
+.c-note { opacity: 0; transition: opacity 0.4s linear 0.7s; }
+
+#c-board.c-bands-on[data-scale="xl"] .c-note { opacity: 1; }
+
+/* Muting is focus, never judgment: the focal rows keep full contrast,
+   the rest drop together, and every element gets its turn. */
+.c-row.c-dim .c-track,
+.c-row.c-dim .c-label { opacity: 0.42; transition: opacity 0.4s linear; }
+
+.c-row .c-track,
+.c-row .c-label { transition: opacity 0.4s linear; }
 
 /* The seam: red's second reserved meaning, the moment a position
    changes. Direction-neutral by construction. */
@@ -399,8 +434,8 @@ footer.colophon p { margin: 0.3rem 0; }
 
 #c-board[data-scale="s"] .c-mark,
 #c-board[data-scale="xs"] .c-mark {
-  width: 3px;
-  height: 78%;
+  width: 4px;
+  height: 92%;
   border-radius: 0.5px;
   background: var(--ink);
 }
