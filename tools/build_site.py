@@ -127,6 +127,108 @@ def parse_front_matter(text):
     return yaml.safe_load(m.group(1)) or {}, m.group(2)
 
 
+def load_tour():
+    path = config.CONTENT_DIR / "tour.yaml"
+    return load_yaml(path) if path.exists() else None
+
+
+def substantive_changers(votes):
+    """States whose cast vote (Y/N/A) changed across the three resolutions.
+    Moves between voting and non-voting are attendance, not position."""
+    out = []
+    for iso3, entry in votes["states"].items():
+        cast = {entry["votes"][k] for k in config.LAWS_RESOLUTIONS} - {"X"}
+        if len(cast) > 1:
+            out.append(iso3)
+    return sorted(out)
+
+
+def tally_bar_html(tally):
+    non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
+    segments = []
+    for count, label, opacity in (
+        (tally["yes"], "Yes", "0.9"),
+        (tally["no"], "No", "0.65"),
+        (tally["abstain"], "Abstain", "0.45"),
+        (non_voting, "Non-voting", "0.22"),
+    ):
+        if count:
+            segments.append(
+                f'<span style="width:{count / 193 * 100:.2f}%;opacity:{opacity}" '
+                f'title="{label}: {count}"></span>'
+            )
+    return (
+        '<div class="tally-bar" role="img" '
+        f'aria-label="{tally["yes"]} yes, {tally["no"]} no, '
+        f'{tally["abstain"]} abstain, {non_voting} non-voting">'
+        + "".join(segments) + "</div>"
+    )
+
+
+def labeled_track(iso3, votes, content_states, preview):
+    cs = content_states.get(iso3, {})
+    name = cs.get("display_name") or display_from_un_name(votes["states"][iso3]["un_name"])
+    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
+    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
+    return (
+        f'<div class="board-row" data-name="{esc(name)}">'
+        f'<div class="row-label"><a href="state/{iso3}.html">{esc(name)}</a></div>'
+        + row_track_html(iso3, votes["states"][iso3], votes["resolutions"], codings, shifts)
+        + "</div>"
+    )
+
+
+def beat_figure_html(figure, votes, content_states, preview):
+    """Build-time figures: every beat is meaningful with no JavaScript."""
+    if figure == "tally-78-241":
+        res = votes["resolutions"]["78/241"]
+        return (
+            f"<p class=\"citation\">{esc(res['symbol'])} · adopted {esc(res['date'])}</p>"
+            + tally_bar_html(res["tally"])
+        )
+    if figure == "track-USA":
+        return labeled_track("USA", votes, content_states, preview)
+    if figure == "movers":
+        return "".join(
+            labeled_track(iso3, votes, content_states, preview)
+            for iso3 in substantive_changers(votes)
+        )
+    if figure == "full-board":
+        return (
+            '<img src="assets/board-poster.svg" alt="The full trajectory board: '
+            '193 states, 2013 to 2026" loading="lazy">'
+        )
+    return ""
+
+
+def tour_html(tour, votes, content_states, preview):
+    """The scaffold: stacked prose beats with build-time figures and the
+    always-visible skip link. Scroll choreography is enhancement (P3b)."""
+    beats = []
+    for beat in tour.get("beats", []):
+        chip = (
+            '<span class="draft-chip">DRAFT</span>'
+            if preview and not is_approved(tour)
+            else ""
+        )
+        beats.append(f"""
+  <section class="beat" id="beat-{esc(beat["id"])}" data-figure="{esc(beat["figure"])}">
+    <div class="beat-copy">
+      <h2>{esc(beat["title"])}{chip}</h2>
+      <p>{esc(beat["copy"])}</p>
+    </div>
+    <figure class="beat-figure">
+{beat_figure_html(beat["figure"], votes, content_states, preview)}
+    </figure>
+  </section>""")
+    return (
+        '<a class="skip-board" href="#board-top">Skip to the board</a>\n'
+        '<section class="tour" id="tour" aria-label="Guided tour">'
+        + "".join(beats)
+        + "\n</section>\n"
+    )
+
+
 def load_pages():
     pages = {}
     pages_dir = config.CONTENT_DIR / "pages"
@@ -200,6 +302,28 @@ def is_approved(entry):
 # Page shell
 # ---------------------------------------------------------------------------
 
+# Animation stack: pinned version + SRI from cdnjs, loaded deferred and only
+# on pages that render the tour. The tour is enhancement; the scaffold and
+# the board are complete without it (DESIGN v2, binding).
+GSAP_VERSION = "3.15.0"
+GSAP_SCRIPTS = (
+    ("gsap.min.js",
+     "sha512-Qrpii3NEFZ02RN6ZqpTu6pS/5PEq7EzBYJLki3AKBd8IncrlAwQdZHzExYwS0+b1NM0/qfxI1GOhqWLVosocDA=="),
+    ("ScrollTrigger.min.js",
+     "sha512-HemPoJ+m4KR4XM3VY+N58XFYN7qdXuR0elHeVYGJBJ6LYC+xoeHodEpwiN5JxXLyvA+sRd7/FJ6w6lz5IkANNQ=="),
+    ("DrawSVGPlugin.min.js",
+     "sha512-AxhfgcJYY6BU9wEF3FLWSrBjzra6a0tIdNPZIG5mhdCCtrrvzkMDEARvWsTGR9FJG9z/t8l9g5gJqtMIt5Nf5w=="),
+)
+
+
+def gsap_script_tags():
+    return "\n".join(
+        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/{GSAP_VERSION}/{name}" '
+        f'integrity="{sri}" crossorigin="anonymous"></script>'
+        for name, sri in GSAP_SCRIPTS
+    )
+
+
 NAV = [
     ("index.html", "Board"),
     ("votes.html", "Votes"),
@@ -210,10 +334,13 @@ NAV = [
 ]
 
 
-def page(title, body, *, current, depth=0, preview=False, description="", absolute=False):
+def page(title, body, *, current, depth=0, preview=False, description="",
+         absolute=False, extra_scripts=""):
     # Pages serves 404.html from any missing path, so its asset links must
     # be root-absolute; every real page stays relative and previewable
     prefix = "/" if absolute else "../" * depth
+    if extra_scripts:
+        extra_scripts = extra_scripts + "\n"
     nav = "\n".join(
         f'      <a href="{prefix}{href}"'
         + (' aria-current="page"' if href == current else "")
@@ -260,7 +387,7 @@ def page(title, body, *, current, depth=0, preview=False, description="", absolu
   </div>
 </footer>
 <script src="{prefix}js/board.js" defer></script>
-</body>
+{extra_scripts}</body>
 </html>
 """
 
@@ -462,15 +589,20 @@ def legend_html():
     return '<div class="board-legend">' + "\n".join(items) + "</div>"
 
 
-def index_page(votes, content_states, preview):
+def index_page(votes, content_states, preview, tour=None):
     rows = board_rows(votes, content_states, preview)
     n_reviewed = sum(1 for r in rows if r["reviewed"])
     coverage_line = (
         f"Recorded votes cover all {len(rows)} member states. "
         f"Reviewed position codings cover {n_reviewed} states so far."
     )
+    tour_block = ""
+    extra_scripts = ""
+    if tour and (preview or is_approved(tour)):
+        tour_block = tour_html(tour, votes, content_states, preview)
+        extra_scripts = gsap_script_tags() + '\n<script defer src="js/tour.js"></script>'
     body = f"""
-<div class="board-head">
+{tour_block}<div class="board-head" id="board-top">
   <div class="board-lede">
     <h1>Who moved, when, and <em>on what record</em>.</h1>
     <p>Recorded United Nations votes, official statements, and national policy
@@ -502,6 +634,7 @@ def index_page(votes, content_states, preview):
         body,
         current="index.html",
         preview=preview,
+        extra_scripts=extra_scripts,
         description="Where every country stands on autonomous weapons, tracked as positions shift over time.",
     )
 
@@ -519,25 +652,7 @@ def votes_page(votes, content_states, preview):
         for iso3, entry in states.items():
             groups[entry["votes"][key]].append(iso3)
         tally = res["tally"]
-        non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
-        segments = []
-        for count, label, opacity in (
-            (tally["yes"], "Yes", "0.9"),
-            (tally["no"], "No", "0.65"),
-            (tally["abstain"], "Abstain", "0.45"),
-            (non_voting, "Non-voting", "0.22"),
-        ):
-            if count:
-                segments.append(
-                    f'<span style="width:{count / 193 * 100:.2f}%;opacity:{opacity}" '
-                    f'title="{label}: {count}"></span>'
-                )
-        tally_bar = (
-            '<div class="tally-bar" role="img" '
-            f'aria-label="{tally["yes"]} yes, {tally["no"]} no, '
-            f'{tally["abstain"]} abstain, {non_voting} non-voting">'
-            + "".join(segments) + "</div>"
-        )
+        tally_bar = tally_bar_html(tally)
         rows = []
         for vote, label in (("Y", "Yes"), ("N", "No"), ("A", "Abstain"), ("X", "Non-voting")):
             named = sorted(
@@ -1027,6 +1142,25 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
 """
 
 
+TOUR_JS = """// Tour choreography scaffold. The stacked-prose beats and build-time
+// figures ARE the page; everything in this file is enhancement and every
+// guard below is a semantic rule from DESIGN v2, not an optimization.
+(function () {
+  "use strict";
+  var tour = document.querySelector(".tour");
+  if (!tour) return;
+  // Reduced motion: instant states only; the stacked scaffold stands.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Mobile contract: tap-through stepper (built in P3b), never scroll-driven.
+  if (window.matchMedia("(max-width: 720px), (pointer: coarse)").matches) return;
+  if (typeof window.gsap === "undefined" || typeof window.ScrollTrigger === "undefined") return;
+  window.gsap.registerPlugin(window.ScrollTrigger);
+  // P3b wires the four beats here: pinned pane, band draw, release into
+  // the board. Phase 0b ships the guards and the scaffold only.
+})();
+"""
+
+
 # ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
@@ -1050,13 +1184,21 @@ def build(out_dir, preview=False):
     if src_fonts.exists() and src_fonts.resolve() != (out / "assets" / "fonts").resolve():
         shutil.copytree(src_fonts, out / "assets" / "fonts", dirs_exist_ok=True)
     (out / "js" / "board.js").write_text(BOARD_JS, encoding="utf-8", newline="\n")
+    (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
     (out / "assets" / "favicon.svg").write_text(favicon_svg(), encoding="utf-8", newline="\n")
     (out / "assets" / "board-poster.svg").write_text(
         poster_svg(votes, content_states), encoding="utf-8", newline="\n"
     )
 
+    tour = load_tour()
+    if tour:
+        manifest["entries"].append(
+            {"state": None, "kind": "tour", "approved": is_approved(tour),
+             "rendered": bool(preview or is_approved(tour))}
+        )
     (out / "index.html").write_text(
-        index_page(votes, content_states, preview), encoding="utf-8", newline="\n"
+        index_page(votes, content_states, preview, tour=tour),
+        encoding="utf-8", newline="\n",
     )
     (out / "votes.html").write_text(
         votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"

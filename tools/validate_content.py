@@ -347,7 +347,28 @@ def validate(content_dir=None):
     if pages_dir.exists():
         for path in sorted(pages_dir.glob("*.md")):
             check_page_file(errors, path)
+    tour_path = content_dir / "tour.yaml"
+    if tour_path.exists():
+        check_tour(errors, tour_path)
     return errors
+
+
+def check_tour(errors, path):
+    where = "tour.yaml"
+    tour = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    _check_approved(errors, where, tour)
+    beats = tour.get("beats") or []
+    if len(beats) != 4:
+        errors.add(where, f"the tour has exactly four beats, found {len(beats)}")
+    for i, beat in enumerate(beats):
+        b_where = f"{where}.beats[{i}]"
+        for field in ("id", "title", "copy", "figure"):
+            if not beat.get(field):
+                errors.add(b_where, f"beat needs {field!r}")
+        for ch, name in (("—", "em dash"), ("–", "en dash")):
+            if ch in str(beat.get("copy", "")) + str(beat.get("title", "")):
+                errors.add(b_where, f"beat copy contains an {name}; voice rules forbid it")
+    scan_prohibited_claims(errors, where, tour)
 
 
 def main():

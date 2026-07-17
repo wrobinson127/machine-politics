@@ -160,6 +160,55 @@ footer.colophon p { margin: 0.3rem 0; }
 }
 
 /* ------------------------------------------------------------------ */
+/* Guided tour (scaffold; scroll choreography is enhancement)          */
+/* ------------------------------------------------------------------ */
+
+/* The skip link is a designed element visible from first paint,
+   never a hidden accessibility afterthought */
+.skip-board {
+  display: inline-block;
+  margin: 1.2rem 0 0;
+  font-size: 0.88rem;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 0.35rem 0.9rem;
+  text-decoration: none;
+}
+
+.skip-board:hover { background: var(--ink); color: var(--ground); }
+
+.tour .beat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 2.5rem;
+  align-items: center;
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+}
+
+.tour .beat:last-child { border-bottom: none; }
+
+.beat-copy h2 { margin-top: 0; }
+
+.beat-copy p { font-size: 1.05rem; }
+
+.beat-figure {
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+  padding: 1rem 1.2rem;
+}
+
+.beat-figure img { display: block; width: 100%; height: auto; }
+
+.beat-figure .board-row { border-bottom: 1px solid var(--rule-faint); }
+
+@media (max-width: 860px) {
+  .tour .beat { grid-template-columns: 1fr; gap: 1.2rem; padding: 2.2rem 0; }
+}
+
+/* ------------------------------------------------------------------ */
 /* Trajectory board                                                    */
 /* ------------------------------------------------------------------ */
 

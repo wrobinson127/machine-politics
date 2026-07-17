@@ -2,6 +2,12 @@
  "entries": [
   {
    "approved": false,
+   "kind": "tour",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
    "kind": "page:methodology",
    "rendered": false,
    "state": null

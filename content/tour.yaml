@@ -1,0 +1,35 @@
+# The four scroll-tour beats. Copy is Walker's analyst prose, written and
+# approved in-session (invariant 15); these are structural placeholders and
+# the tour renders only in preview until approved: true.
+approved: false
+beats:
+  - id: vote-2023
+    title: The Assembly votes for the first time
+    copy: >
+      PLACEHOLDER BEAT 1. Factual anchors for Walker's copy: resolution
+      78/241, adopted 2023-12-22, 152 in favour, 4 against, 11 abstentions,
+      the first General Assembly resolution on lethal autonomous weapons
+      systems. The figure shows the recorded tally.
+    figure: tally-78-241
+  - id: us-shift
+    title: One state moves
+    copy: >
+      PLACEHOLDER BEAT 2. Factual anchors: the United States voted Yes in
+      2023 and 2024 and No in 2025; its stated preference narrowed between
+      the 2023 declaration push and the 2024 submission. The figure shows
+      the US track with its band break.
+    figure: track-USA
+  - id: the-movers
+    title: The movers
+    copy: >
+      PLACEHOLDER BEAT 3. Factual anchors: eighteen states changed a
+      recorded vote across the three resolutions. The figure shows their
+      tracks together.
+    figure: movers
+  - id: the-stakes
+    title: The whole record, and a date
+    copy: >
+      PLACEHOLDER BEAT 4. Factual anchors: 193 states on the board; the
+      Seventh CCW Review Conference runs 16 to 20 November 2026. The full
+      board follows.
+    figure: full-board
