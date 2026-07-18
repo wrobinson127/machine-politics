@@ -11,7 +11,7 @@ position_codings:
   - code: REG-SOFT
     confidence: EXPLICIT
     as_of: 2022-06-14
-    approved: false
+    approved: true   # analyst ruling 2026-07-17
     rationale: >
       The UK's published position ("Ambitious, Safe, Responsible", 2022)
       renounces fully autonomous weapon systems and opposes systems
@@ -44,18 +44,19 @@ shift_events: []
 
 doctrine:
   status: policy_identified
-  approved: false
+  approved: true   # analyst ruling 2026-07-17
   entries:
     - title: "Ambitious, Safe, Responsible: our approach to the delivery of AI-enabled capability in Defence"
-      approved: false
+      approved: true   # analyst ruling 2026-07-17: ASR is core
       url: https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf
       note: >
         Contains the UK's stated position on autonomous weapons and its AI
         Ethical Principles; the closest UK analogue to a 3000.09-class
-        statement. Core-vs-context class is the analyst's RULING, pending;
-        research pass 5a recommends core. Published June 2022; the
-        framework survived the 2024 change of government (JSP 936 and the
-        2025 RAISO implementation report arrived under the new
+        statement. Analyst ruling 2026-07-17: ASR is core doctrine, and
+        the same document also grounds the REG-SOFT coding as the UK's
+        published position paper (recorded in both roles). Published June
+        2022; the framework survived the 2024 change of government (JSP
+        936 and the 2025 RAISO implementation report arrived under the new
         government).
       evidence:
         - source: uk-asr-2022
@@ -79,14 +80,15 @@ doctrine:
         is the citable primary for that fact. URLs to pin at curation.
     - note: >
         JSP 936 Part 1, "Dependable AI in Defence" (November 2024):
-        directive-class but AI-wide rather than weapons-autonomy-specific;
-        research pass 5a recommends context, analyst rules. URL to pin.
+        directive-class but AI-wide rather than weapons-autonomy-specific.
+        Analyst ruling 2026-07-17: JSP 936 stays context (ASR is the core
+        entry). URL to pin.
     - note: >
         JDP 0-30, UK Air Power (September 2022 edition): carries operative
         UK autonomy definitions. Definitional apparatus entry; URL to pin.
 
 flags:
-  - "ASR core-vs-context ruling (Walker); research recommends core"
+  - "RULED 2026-07-17: ASR is core doctrine AND the coding-grounding position paper (both roles recorded); JSP 936 is context. Coding and doctrine approved. ASR archived snapshot still to capture (invariant 11)"
   - "Working-paper co-authorship VERIFIED from document faces 2026-07-17: the UK co-authored both CCW/GGE.1/2025/WP.7 (eleven-state draft articles) and WP.8 (ten-state joint statement), both in the sponsorship layer. The research passes' claimed March 2023 six-state draft-articles paper is unverified and possibly a conflation of WP.7; the enumeration bundle checks whether it exists"
   - "Labour-era CCW statements: enumerate to confirm positional continuity"
   - "REAIM CTA and Pathways endorsement rows: verify against official lists"

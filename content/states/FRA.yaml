@@ -11,7 +11,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-05-24
-    approved: false
+    approved: true   # analyst ruling 2026-07-17
     scope_note: >
       Category-scoped: France supports a binding instrument that prohibits
       fully autonomous systems (SALA) while regulating partially autonomous
@@ -52,6 +52,7 @@ shift_events: []
 # source yields no English quote, so the entry waits for the primary.
 
 flags:
+  - "Coding approved 2026-07-17. Submission date 2024-05-24 is the PDF creation-stamp date (the document is undated on its face; reference ODA-2024-00019/LAWS), corroborated by Germany's same-batch submission dated 24 May 2024 on its face. Treat as approximate (PDF stamp) until confirmed against a dated record"
   - "Defence Ethics Committee opinion (2021-04-29): core-vs-context ruling for Walker; research recommends core; primary French PDF and the five conditions verbatim not yet retrieved"
   - "Macron 2018 quote: original interview source not yet retrieved"
   - "2013 debate-origin claim: needs a primary or strong contemporaneous source before the site asserts it"

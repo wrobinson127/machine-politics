@@ -151,9 +151,9 @@
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DEU"
   },
   {
@@ -163,27 +163,27 @@
    "state": "DEU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "FRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GBR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "GBR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "IND"
   },
   {
@@ -205,9 +205,9 @@
    "state": "NER"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NOR"
   },
   {

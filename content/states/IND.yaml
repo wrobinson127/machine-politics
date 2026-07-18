@@ -13,7 +13,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: EXPLICIT
     as_of: 2024-12-02
-    approved: false
+    approved: true   # analyst ruling 2026-07-17: CCW-ONLY, no shift
     rationale: >
       India holds that the CCW GGE is the appropriate forum and that the
       UNGA track duplicates it: its 2024 explanation of vote states it
@@ -67,8 +67,9 @@ doctrine:
     systems identified by this project, as of 2026-07-17.
 
 flags:
+  - "PROVENANCE (approved 2026-07-17, flag KEPT): the coding renders, but the EOV quote fragments are research-captured, not re-verified against the primary this pass. Kept at EXPLICIT for coding; re-verify against the primary EOV before launch"
   - "DATE UNCERTAINTY: the 2024 EOV is dated only November 2024 in the research record; evidence cards carry 2024-11-01 as a flagged stand-in until the primary pins the real day. The coding's as_of stays on the recorded plenary abstention (2024-12-02) per the established convention"
-  - "RULING (Walker): research pass 5d recommends marking India's vote-posture changes as events; this draft codes NO shift_event because shift events record Axis-A category changes and the category held. Rule whether posture shifts belong in shift_events or stay in the votes layer"
+  - "RULED 2026-07-17: no shift_event, per the analyst. Shift events record Axis-A category changes; India's category (CCW-ONLY) held while its vote posture moved. The vote trajectory renders in the votes layer, not as a coded shift"
   - "India 2025 EOV (the reason for the Yes on 80/57): the highest-value India retrieval; decides whether the Yes is substantive or procedural"
   - "2024 EOV exact URL and full text: pin from pmindiaun.gov.in (quote fragments verbatim from the research capture)"
   - "GGE chairmanship 2017 and the 11 Guiding Principles steering: roles annotation, enumeration bundle"

@@ -12,7 +12,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-05-24
-    approved: false
+    approved: true   # analyst ruling 2026-07-17
     scope_note: >
       Two-tier, aligned with France: prohibition of systems operating
       outside human control, regulation of the rest. Category-scoped,

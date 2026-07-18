@@ -1,6 +1,7 @@
 """Tests for the site build: the approval gate, the both-direction guard,
 absence-tier rendering, and determinism."""
 
+import html
 import json
 import re
 import sys
@@ -46,19 +47,32 @@ def test_deploy_renders_zero_unapproved(deploy):
     assert manifest["unapproved_rendered"] == 0
     written = json.loads((out / "build_manifest.json").read_text(encoding="utf-8"))
     assert written["unapproved_rendered"] == 0
-    # every claim-bearing entry in content is currently unapproved, so none
-    # of their rationales may appear anywhere in the deploy artifact
+    # the gate is per-coding: an approved coding's rationale renders on
+    # deploy, an unapproved one's never does. (Before any approvals every
+    # coding was unapproved; the first launch-set approvals landed
+    # 2026-07-17.)
     html_blob = "".join(
         p.read_text(encoding="utf-8") for p in out.rglob("*.html")
     )
+    # rationale prose is HTML-escaped when rendered (apostrophes become
+    # entities); unescape the blob so raw markers compare naturally
+    flat = html.unescape(" ".join(html_blob.split()))
     assert "draft-banner" not in html_blob
     assert "DRAFT" not in html_blob
+    approved_seen = 0
     for state_file in sorted(config.STATES_DIR.glob("*.yaml")):
         data = yaml.safe_load(state_file.read_text(encoding="utf-8"))
         for coding in data.get("position_codings", []):
             marker = " ".join((coding.get("rationale") or "").split())[:60]
-            if marker:
-                assert marker not in " ".join(html_blob.split()), state_file.name
+            if not marker:
+                continue
+            if coding.get("approved") is True:
+                assert marker in flat, f"approved coding not rendered: {state_file.name}"
+                approved_seen += 1
+            else:
+                assert marker not in flat, f"unapproved coding leaked: {state_file.name}"
+    # guard against the whole loop silently matching nothing
+    assert approved_seen >= 5
 
 
 def test_deploy_states_show_absence_tiers_not_positions(deploy):

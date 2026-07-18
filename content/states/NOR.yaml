@@ -12,7 +12,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2024-08-26
-    approved: false
+    approved: true   # analyst ruling 2026-07-17
     rationale: >
       Norway states plainly that it supports developing a legally binding
       instrument to clarify how international humanitarian law applies to
@@ -35,7 +35,7 @@ position_codings:
 shift_events: []
 
 flags:
-  - "Exact URL of the 2024-08-26 GGE statement: pin from UNODA or norway.no (quote captured verbatim by research pass 5e; URL currently the documents-library root)"
+  - "PROVENANCE (approved 2026-07-17, flag KEPT per ruling): the coding renders, but the quote is research-captured, not re-verified against the primary this pass, and the exact document URL is the documents-library root. Pin the 2024-08-26 GGE statement URL from UNODA or norway.no and re-verify the quote against the primary before launch; do not promote to verified-primary status until then"
   - "Seven-state elements paper co-authorship: sponsorship layer, enumeration bundle; never coding evidence by itself (no-inference rule)"
   - "Norway UNSG submission: retrieve for a second evidence card"
   - "Nordic joint-statement series (2022 to 2025, rotating deliverer): joint-statement layer entries plus statement evidence per member, enumeration bundle"
