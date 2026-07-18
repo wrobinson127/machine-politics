@@ -62,7 +62,8 @@ records:
       Ten-state joint statement submitted as a working paper; members
       verbatim from the document face, fetched via the symbol API
       2026-07-17. Distinct from WP.7 (the eleven-state draft-articles
-      paper); the two share six members and differ on five. The session
+      paper): the two share five members (Australia, Canada, Estonia,
+      Poland, UK); WP.7 has six others, WP.8 five others. The session
       dates on the document cover both 2025 sessions; the date here is
       the second session's opening week, same convention as WP.7.
     members: [AUS, CAN, DNK, EST, DEU, POL, PRT, SGP, SWE, GBR]

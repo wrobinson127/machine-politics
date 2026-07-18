@@ -29,15 +29,21 @@ position_codings:
       - source: in-eov-79-62
         claim: India abstained on the 2024 resolution, stating its reason in its own explanation of vote.
         quote: "India has abstained on the resolution L.77"
-        date: 2024-12-02
+        date: 2024-11-01
         url: https://pmindiaun.gov.in/
         lang: en
         translation: none
         confidence: EXPLICIT
+        note: >
+          The research record dates this statement only "November 2024";
+          the day is NOT established, so the first of the month stands in
+          as a flagged placeholder until the primary is retrieved. The
+          statement references L.77, the First Committee draft, so it
+          predates the 2024-12-02 plenary vote.
       - source: in-eov-79-62
         claim: India objects to parallel UNGA mandates as duplicating the CCW GGE's work.
         quote: "amount to a duplication of efforts and resources"
-        date: 2024-12-02
+        date: 2024-11-01
         url: https://pmindiaun.gov.in/
         lang: en
         translation: none
@@ -45,8 +51,8 @@ position_codings:
         note: >
           Contiguous fragment; the research capture elides the sentence's
           subject ("Parallel mandates..."), so only the verbatim fragment
-          is quoted and the claim field carries the sense. Full EOV text
-          retrieval is flagged.
+          is quoted and the claim field carries the sense. Date is the
+          flagged November stand-in; full EOV text retrieval is flagged.
 
 shift_events: []
 
@@ -61,6 +67,8 @@ doctrine:
     systems identified by this project, as of 2026-07-17.
 
 flags:
+  - "DATE UNCERTAINTY: the 2024 EOV is dated only November 2024 in the research record; evidence cards carry 2024-11-01 as a flagged stand-in until the primary pins the real day. The coding's as_of stays on the recorded plenary abstention (2024-12-02) per the established convention"
+  - "RULING (Walker): research pass 5d recommends marking India's vote-posture changes as events; this draft codes NO shift_event because shift events record Axis-A category changes and the category held. Rule whether posture shifts belong in shift_events or stay in the votes layer"
   - "India 2025 EOV (the reason for the Yes on 80/57): the highest-value India retrieval; decides whether the Yes is substantive or procedural"
   - "2024 EOV exact URL and full text: pin from pmindiaun.gov.in (quote fragments verbatim from the research capture)"
   - "GGE chairmanship 2017 and the 11 Guiding Principles steering: roles annotation, enumeration bundle"
