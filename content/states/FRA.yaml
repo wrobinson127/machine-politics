@@ -25,8 +25,18 @@ position_codings:
       autonomous only), which this coding's scope note carries so France
       is not misread as supporting a blanket ban.
     evidence:
+      # Primary quote (swap RULED 2026-07-19): the direct statement of the
+      # preferred outcome, promoted from the returns capture.
       - source: fr-submission-78-241
-        claim: France's stated preferred outcome is a two-tier binding instrument, possibly a CCW Additional Protocol.
+        claim: France states in its UN submission that it supports negotiating and adopting a new CCW Additional Protocol on LAWS.
+        quote: "France supports the negotiation and adoption of an Additional Protocol to the CCW"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: fr-submission-78-241
+        claim: France's preferred instrument follows a two-tier prohibit-and-regulate structure.
         quote: "structuring this future instrument — which could take the form of an Additional Protocol to the CCW"
         date: 2024-05-24
         url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
@@ -44,18 +54,83 @@ position_codings:
 
 shift_events: []
 
-# Doctrine deferred: the 2021 Defence Ethics Committee opinion (SALA
-# unacceptable; PALWS acceptable under five conditions) is the doctrine
-# centerpiece, but its primary French PDF is not yet retrieved and its
-# core-vs-context class is the analyst's ruling (research pass 5b
-# recommends core). Per the translation rules an untranslated French
-# source yields no English quote, so the entry waits for the primary.
+doctrine:
+  status: policy_identified
+  approved: false   # returns 2026-07-19; Walker approves per entry
+  entries:
+    - title: "Avis sur l'intégration de l'autonomie dans les systèmes d'armes létaux (Defence Ethics Committee opinion on autonomy in lethal weapon systems)"
+      approved: false
+      url: https://www.defense.gouv.fr/comite-dethique-defense
+      note: >
+        Opinion of the Comité d'éthique de la défense (Ministère des
+        Armées), 29 April 2021; the committee was seized by the Minister on
+        10 January 2020. An OFFICIAL ENGLISH version is published on the
+        committee page, so quotes from this document are official-translation
+        tier. Research pass 5b and returns 2026-07-19 report it holds fully
+        autonomous lethal systems (SALA) unacceptable and partially
+        autonomous systems acceptable under five conditions; those two
+        passages (the SALA renunciation and the five conditions) are NOT yet
+        captured verbatim from the official English PDF and must be before
+        the doctrinal conclusion renders. The evidence below establishes only
+        the opinion's existence, subject and date. Core-vs-context: formally
+        an advisory opinion, but the Ministry later cites it (parliamentary
+        answer QE 8402, 2025) as the standing national reference framework.
+        RULED CORE 2026-07-19: core = the opinion plus the government's
+        adopting and citing statements. The entry stays approved:false only
+        because its doctrinal conclusion (SALA renunciation + five
+        conditions) is not yet captured verbatim; it approves the moment the
+        official English passages land.
+      evidence:
+        - source: fr-comedef-avis-2021
+          claim: France's Defence Ethics Committee was seized by the Minister of the Armed Forces and issued an opinion specifically on lethal autonomous weapon systems, dated 29 April 2021.
+          quote: "une demande d'avis sur les « systèmes d'armes létaux autonomes »"
+          date: 2021-04-29
+          url: https://www.defense.gouv.fr/comite-dethique-defense
+          lang: fr
+          translation: official
+          confidence: EXPLICIT
+          note: >
+            Verbatim contiguous fragment from the French PDF face (returns
+            2026-07-19). Establishes the opinion's subject and existence
+            only; an official English version exists (translation: official).
+            The SALA-renunciation and five-conditions passages are pending
+            verbatim capture from that official English PDF.
+  context:
+    - note: >
+        Government adoption (returns 2026-07-19): a Ministry for Europe and
+        Foreign Affairs answer to written question QE 8402 (2025) cites the
+        2021 Defence Ethics opinion as the standing national reference
+        framework and states France continues to contribute actively at the
+        GGE. Verbatim quote to capture from the Journal Officiel record; it
+        feeds the core-vs-context ruling. Source questions.assemblee-nationale.fr.
+    - note: >
+        President Macron, WIRED interview (about 31 March 2018): stated he is
+        "categorically opposed" to lethal autonomous weapons to the extent
+        they would "abolish all accountability". Context-class head-of-state
+        remark; source fr-macron-wired-2018, to be archived.
+    - note: >
+        Defence Minister Florence Parly (May 2021): "France says and will
+        always say no to killer robots." Context and era texture; original
+        speech URL to pin.
+    - note: >
+        2013 origin (honest, downgraded per returns 2026-07-19): the CCW
+        agreed its first LAWS mandate at the November 2013 Meeting of High
+        Contracting Parties, and France's Ambassador Jean-Hugues
+        Simon-Michel chaired the process and led the 2014 Informal Meeting of
+        Experts (source fr-ccw-ime-2014; UN Chronicle for the chairing role).
+        The stronger "France initiated the debate" framing is not directly
+        documented and is not asserted.
 
 flags:
-  - "Coding approved 2026-07-17. Submission date 2024-05-24 is the PDF creation-stamp date (the document is undated on its face; reference ODA-2024-00019/LAWS), corroborated by Germany's same-batch submission dated 24 May 2024 on its face. Treat as approximate (PDF stamp) until confirmed against a dated record"
-  - "Defence Ethics Committee opinion (2021-04-29): core-vs-context ruling for Walker; research recommends core; primary French PDF and the five conditions verbatim not yet retrieved"
-  - "Macron 2018 quote: original interview source not yet retrieved"
-  - "2013 debate-origin claim: needs a primary or strong contemporaneous source before the site asserts it"
-  - "France EOV on the RCW 2023 list: text retrieval pending"
-  - "French-German 2017 joint declaration (Guitton, 2017-11-15) and seven-state elements paper co-authorship: sponsorship-layer entries for the enumeration bundle, not coding evidence (no-inference rule)"
-  - "France Geneva delegation LAWS statements hub (cd-geneve.delegfrance.org): primary hub for the enumeration bundle"
+  - "Coding approved 2026-07-17. Submission date 2024-05-24 is the PDF creation-stamp date (undated on its face; ref ODA-2024-00019/LAWS), now corroborated by A/79/88 (submissions received by 25 May 2024) and Germany's same-batch 24 May 2024 submission. Treat as approximate (PDF stamp within the received-by window)"
+  - "PRIMARY-QUOTE SWAP RULED 2026-07-19: the cleaner submission quote ('France supports the negotiation and adoption of an Additional Protocol to the CCW') is now the primary evidence; the two-tier fragments follow as supporting evidence"
+  - "DRAFT-INSTRUMENT ANNEX (dossier-grade, returns 2026-07-19): France's 78/241 submission attaches its own proposed treaty text (state-responsibility and accountability articles). France did not just ask for a treaty; it drafted one. Capture the annex title/first line verbatim for an evidence card"
+  - "DOCTRINE populated approved:false (returns 2026-07-19); RULED CORE 2026-07-19 (opinion + the government's adopting statements). The 2021 Defence Ethics opinion is FOUND, dated 2021-04-29, official English exists. ONE THING PENDING before it approves and its conclusion renders: capture verbatim from the official English PDF (a) the SALA-renunciation passage and (b) the five conditions"
+  - "JO PARLIAMENTARY ANSWERS staged (French, no official English), pending Walker's working-translation ruling before rendering: QE 1610/981 (JO 2024-12-10) is France's own voice, voted yes in 2024 after actively negotiating a broad-adoption compromise; QE 8640 (2025) records a no-duplication caution. NEW PRIMARY source class = parliamentary written questions + government answers (add to the methodology secondary-source table; applies to UK Hansard, Germany Bundestag equivalents)"
+  - "SECOND RESOLUTION FAMILY: QE 8640 records France = YES on 79/239 (Artificial Intelligence in the military domain). NOT added to the LAWS votes layer; pending the second-family memo ruling"
+  - "Macron 2018 FOUND (WIRED, fr-macron-wired-2018) and Parly 2021 ('no to killer robots') captured as doctrine context (context-class); the WIRED and Parly speech URLs to pin and archive"
+  - "2013 origin DOWNGRADED per returns: documented as the Nov 2013 CCW LAWS mandate plus France's Ambassador Simon-Michel chairing and leading the 2014 expert meetings (fr-ccw-ime-2014; UN Chronicle). The 'France initiated the debate' claim is not asserted"
+  - "France EOV (First Committee 2023-2025): still not retrieved; DEMOTED now that the JO answers cover the coding need in France's own voice. The GAOR/RCW path stands"
+  - "2017 Franco-German declaration: still PARTIAL / symbol-pending; RCW corroborates the Nov 2017 proposal. Resolve by reading the symbol from a document face during the delegfrance-hub walk (candidate CCW/GGE.1/2018/WP.4, authorship UNVERIFIED, do not attribute until the cover is read)"
+  - "France Geneva delegation LAWS statements hub (cd-geneve.delegfrance.org): structure confirmed (Home > Conventional weapons > Convention of 1980 > [year]); the enumeration walk 2013-2026 (title+date+url+language per statement) is France's cadence and corpus enumeration. Deferred as a larger mechanical task until scoped"
+  - "ENUMERATION flags resolved from primary footnotes (sponsorship layer, not France-specific): the six-state draft-articles paper = CCW/GGE.1/2023/WP.4/Rev.2; the US 2017 characteristics paper = CCW/GGE.1/2017/WP.7"
