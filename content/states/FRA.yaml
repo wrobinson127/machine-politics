@@ -51,67 +51,90 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      - source: fr-submission-78-241
+        claim: France did not only call for a treaty; it attached its own draft instrument as an annex to the submission.
+        quote: "Detailed proposal for such an instrument can be found in Annex of the present submission"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
 
 shift_events: []
 
 doctrine:
   status: policy_identified
-  approved: false   # returns 2026-07-19; Walker approves per entry
+  approved: true    # analyst confirms integration 2026-07-19 (official English landed)
   entries:
     - title: "Avis sur l'intégration de l'autonomie dans les systèmes d'armes létaux (Defence Ethics Committee opinion on autonomy in lethal weapon systems)"
-      approved: false
-      url: https://www.defense.gouv.fr/comite-dethique-defense
+      approved: true
+      url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
       note: >
-        Opinion of the Comité d'éthique de la défense (Ministère des
-        Armées), 29 April 2021; the committee was seized by the Minister on
-        10 January 2020. An OFFICIAL ENGLISH version is published on the
-        committee page, so quotes from this document are official-translation
-        tier. Research pass 5b and returns 2026-07-19 report it holds fully
-        autonomous lethal systems (SALA) unacceptable and partially
-        autonomous systems acceptable under five conditions; those two
-        passages (the SALA renunciation and the five conditions) are NOT yet
-        captured verbatim from the official English PDF and must be before
-        the doctrinal conclusion renders. The evidence below establishes only
-        the opinion's existence, subject and date. Core-vs-context: formally
-        an advisory opinion, but the Ministry later cites it (parliamentary
-        answer QE 8402, 2025) as the standing national reference framework.
-        RULED CORE 2026-07-19: core = the opinion plus the government's
-        adopting and citing statements. The entry stays approved:false only
-        because its doctrinal conclusion (SALA renunciation + five
-        conditions) is not yet captured verbatim; it approves the moment the
-        official English passages land.
+        Opinion of the Comité d'éthique de la défense (Ministère des Armées),
+        dated 29 April 2021 on its face; the committee was seized by the
+        Minister on 10 January 2020. Quotes below are from the Ministry's
+        OFFICIAL ENGLISH version (translation: official). RULED CORE
+        2026-07-19: core = the opinion plus the government's adopting and
+        citing statements (a 2025 parliamentary answer, QE 8402, cites it as
+        the standing national reference framework). Formally an advisory
+        opinion; in practice the government's standing framework. The
+        opinion's own architecture is six guiding principles and 25
+        guidelines; it extends the refusal beyond use to manufacturing and
+        export (P3), and traces the renunciation to the 5 April 2019 Saclay
+        declaration (footnote 10). The URL carries a double .pdf extension in
+        the ministry's own href; that is intentional, not a typo.
       evidence:
         - source: fr-comedef-avis-2021
-          claim: France's Defence Ethics Committee was seized by the Minister of the Armed Forces and issued an opinion specifically on lethal autonomous weapon systems, dated 29 April 2021.
-          quote: "une demande d'avis sur les « systèmes d'armes létaux autonomes »"
+          claim: The French government has renounced the use of lethal autonomous weapon systems, and the Defence Ethics Committee endorsed that decision.
+          quote: "The French government has declared that it renounces the use of LAWS."
           date: 2021-04-29
-          url: https://www.defense.gouv.fr/comite-dethique-defense
-          lang: fr
+          url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
+          lang: en
           translation: official
           confidence: EXPLICIT
-          note: >
-            Verbatim contiguous fragment from the French PDF face (returns
-            2026-07-19). Establishes the opinion's subject and existence
-            only; an official English version exists (translation: official).
-            The SALA-renunciation and five-conditions passages are pending
-            verbatim capture from that official English PDF.
+        - source: fr-comedef-avis-2021
+          claim: The Committee judged the renunciation unquestionably sound in light of the principles governing the French armed forces.
+          quote: "The Committee regards this decision as unquestionably sound"
+          date: 2021-04-29
+          url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
+          lang: en
+          translation: official
+          confidence: EXPLICIT
+        - source: fr-comedef-avis-2021
+          claim: The refusal extends beyond use to the manufacturing and export of fully autonomous lethal systems.
+          quote: "Such use, as well as manufacturing and exporting, should be refused."
+          date: 2021-04-29
+          url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
+          lang: en
+          translation: official
+          confidence: EXPLICIT
+        - source: fr-comedef-avis-2021
+          claim: Partially autonomous systems are acceptable only if all five guarantees (the "5 Cs" - command, risk control, compliance, competence, confidence) are met.
+          quote: "The design and implementation of PALWS should therefore only be contemplated if all the guarantees of their correct use are met"
+          date: 2021-04-29
+          url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
+          lang: en
+          translation: official
+          confidence: EXPLICIT
   context:
+    - note: >
+        Origin of the renunciation (opinion footnote 10): the government
+        declaration the Committee endorses traces to the Saclay address of
+        5 April 2019, where Defence Minister Florence Parly said "Terminator
+        will not parade on Bastille Day". Parly likewise, May 2021: "France
+        says and will always say no to killer robots." Context-class; the
+        opinion is the citing primary; original speech URLs to pin.
     - note: >
         Government adoption (returns 2026-07-19): a Ministry for Europe and
         Foreign Affairs answer to written question QE 8402 (2025) cites the
         2021 Defence Ethics opinion as the standing national reference
         framework and states France continues to contribute actively at the
-        GGE. Verbatim quote to capture from the Journal Officiel record; it
-        feeds the core-vs-context ruling. Source questions.assemblee-nationale.fr.
+        GGE. Source questions.assemblee-nationale.fr.
     - note: >
         President Macron, WIRED interview (about 31 March 2018): stated he is
         "categorically opposed" to lethal autonomous weapons to the extent
         they would "abolish all accountability". Context-class head-of-state
         remark; source fr-macron-wired-2018, to be archived.
-    - note: >
-        Defence Minister Florence Parly (May 2021): "France says and will
-        always say no to killer robots." Context and era texture; original
-        speech URL to pin.
     - note: >
         2013 origin (honest, downgraded per returns 2026-07-19): the CCW
         agreed its first LAWS mandate at the November 2013 Meeting of High
@@ -124,8 +147,8 @@ doctrine:
 flags:
   - "Coding approved 2026-07-17. Submission date 2024-05-24 is the PDF creation-stamp date (undated on its face; ref ODA-2024-00019/LAWS), now corroborated by A/79/88 (submissions received by 25 May 2024) and Germany's same-batch 24 May 2024 submission. Treat as approximate (PDF stamp within the received-by window)"
   - "PRIMARY-QUOTE SWAP RULED 2026-07-19: the cleaner submission quote ('France supports the negotiation and adoption of an Additional Protocol to the CCW') is now the primary evidence; the two-tier fragments follow as supporting evidence"
-  - "DRAFT-INSTRUMENT ANNEX (dossier-grade, returns 2026-07-19): France's 78/241 submission attaches its own proposed treaty text (state-responsibility and accountability articles). France did not just ask for a treaty; it drafted one. Capture the annex title/first line verbatim for an evidence card"
-  - "DOCTRINE populated approved:false (returns 2026-07-19); RULED CORE 2026-07-19 (opinion + the government's adopting statements). The 2021 Defence Ethics opinion is FOUND, dated 2021-04-29, official English exists. ONE THING PENDING before it approves and its conclusion renders: capture verbatim from the official English PDF (a) the SALA-renunciation passage and (b) the five conditions"
+  - "DRAFT-INSTRUMENT ANNEX carded 2026-07-19 (approved): the submission's own quote 2 ('Detailed proposal for such an instrument can be found in Annex...') is now coding evidence. France did not just ask for a treaty; it drafted one. The annex's full first line / article titles still to card in a later pass"
+  - "DOCTRINE COMPLETE + APPROVED 2026-07-19: the 2021 Defence Ethics opinion renders with four official-English verbatim quotes (the renunciation, the Committee's endorsement, the manufacturing-and-export extension P3, and the 5 Cs intro). RULED CORE. The 2019 Saclay origin and QE 8402 adoption are context. STILL TO CARD later (not blocking): the official LAWS/PALWS definitions (para 52) for the rubric LBI-BAN worked example, and the 5 Cs full list. Archive both PDF language versions (invariant 11)"
   - "JO PARLIAMENTARY ANSWERS staged (French, no official English), pending Walker's working-translation ruling before rendering: QE 1610/981 (JO 2024-12-10) is France's own voice, voted yes in 2024 after actively negotiating a broad-adoption compromise; QE 8640 (2025) records a no-duplication caution. NEW PRIMARY source class = parliamentary written questions + government answers (add to the methodology secondary-source table; applies to UK Hansard, Germany Bundestag equivalents)"
   - "SECOND RESOLUTION FAMILY: QE 8640 records France = YES on 79/239 (Artificial Intelligence in the military domain). NOT added to the LAWS votes layer; pending the second-family memo ruling"
   - "Macron 2018 FOUND (WIRED, fr-macron-wired-2018) and Parly 2021 ('no to killer robots') captured as doctrine context (context-class); the WIRED and Parly speech URLs to pin and archive"

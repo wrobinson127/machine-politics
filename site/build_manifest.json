@@ -169,9 +169,9 @@
    "state": "FRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "FRA"
   },
   {

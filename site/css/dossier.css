@@ -127,6 +127,7 @@
 .oc-h{font-family:var(--font-display);font-weight:600;font-size:18px;margin:0}
 .oc-c{font-size:11px;letter-spacing:.04em;color:var(--mp-faint);font-weight:400;margin-left:8px}
 .oc-cat{font-size:13px;color:var(--ink-soft);margin:4px 0 6px}
+.oc-claim{font-size:13px;color:var(--ink);margin:10px 0 2px;max-width:66ch}
 .oc-q{font-family:var(--font-display);font-size:17px;line-height:1.45;margin:10px 0 4px;
   padding-left:14px;border-left:3px solid var(--mp-lbiban)}
 .oc-q::before{content:"\201C"}.oc-q::after{content:"\201D"}
