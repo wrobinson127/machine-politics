@@ -169,6 +169,12 @@
    "state": "FRA"
   },
   {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "FRA"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,

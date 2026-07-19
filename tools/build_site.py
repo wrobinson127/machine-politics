@@ -28,6 +28,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from config import config
+from tools import dossier_render
 
 T0 = date(config.TIMELINE_START_YEAR, 1, 1)
 T1 = date.fromisoformat(config.UPDATED_THROUGH)
@@ -1256,21 +1257,17 @@ def doctrine_timeline_html(name, cs, eras, preview):
 """
 
 
-def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None):
-    resolutions = votes["resolutions"]
+def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
+               endorsements=None, sponsorships=None, coded=None):
+    """The country dossier: the signature artifact (DESIGN v3). Five arena
+    bands plus the corpus, server-rendered from the content YAML behind the
+    approval gate; tools/dossier_render.py holds the render, this wires the
+    data and the manifest accounting."""
+    endorsements = endorsements or []
+    sponsorships = sponsorships or []
+    if coded is None:
+        coded = dossier_render.coded_states({iso3: cs}, votes, preview)
     name = cs.get("display_name") or display_from_un_name(entry["un_name"])
-    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
-    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
-    mini_track = row_track_html(iso3, entry, resolutions, codings, shifts)
-    vote_rows = []
-    for key in config.LAWS_RESOLUTIONS:
-        res = resolutions[key]
-        vote = entry["votes"][key]
-        vote_rows.append(
-            f"<tr><td>{esc(res['symbol'])}</td><td>{esc(res['date'])}</td>"
-            f'<td class="vote-glyph">{vote_glyph_svg(vote)} {esc(VOTE_GLYPHS[vote])}</td>'
-            f'<td><a href="{esc(res["undl_link"])}">record</a></td></tr>'
-        )
     for kind in ("position_codings", "shift_events"):
         for item in cs.get(kind, []):
             manifest["entries"].append(
@@ -1282,32 +1279,16 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None):
             {"state": iso3, "kind": "doctrine", "approved": is_approved(cs["doctrine"]),
              "rendered": bool(preview or is_approved(cs["doctrine"]))}
         )
-    body = f"""
-<h1>{esc(name)}</h1>
-<p class="citation">{esc(entry["un_name"])} · {esc(iso3)}</p>
-<div class="state-track" aria-label="This state's track on the trajectory board">
-  <div class="track-years" aria-hidden="true"><span>{config.TIMELINE_START_YEAR}</span><span>{T1.year}</span></div>
-  {mini_track}
-</div>
-<section class="signal">
-  <h2>Recorded votes</h2>
-  <table class="vote-table">
-    <tr><th>Resolution</th><th>Date</th><th>Vote</th><th>Source</th></tr>
-{chr(10).join(vote_rows)}
-  </table>
-</section>
-<section class="signal">
-  <h2>Stated positions</h2>
-{positions_signal(cs, sources, preview)}
-</section>
-<section class="signal">
-  <h2>National policy</h2>
-{doctrine_timeline_html(name, cs, eras, preview)}{doctrine_signal(cs, sources, preview)}
-</section>
-"""
+    body = dossier_render.state_body(
+        iso3, name, entry["un_name"], entry, votes, cs, sources,
+        endorsements, sponsorships, coded, preview, config.UPDATED_THROUGH,
+        doctrine_timeline=doctrine_timeline_html(name, cs, eras, preview),
+    )
     return page(
         name, body, current="", depth=1, preview=preview,
-        description=f"{name}: recorded votes, stated positions, and national policy on autonomous weapons systems.",
+        description=f"{name}: recorded votes, coded position, framework signings, engagement record, and national policy on autonomous weapons systems.",
+        extra_head='<link rel="stylesheet" href="../css/dossier.css">',
+        extra_scripts='<script src="../js/dossier.js" defer></script>',
     )
 
 
@@ -2718,6 +2699,8 @@ def build(out_dir, preview=False):
     if src_fonts.exists() and src_fonts.resolve() != (out / "assets" / "fonts").resolve():
         shutil.copytree(src_fonts, out / "assets" / "fonts", dirs_exist_ok=True)
     (out / "js" / "board.js").write_text(BOARD_JS, encoding="utf-8", newline="\n")
+    (out / "css" / "dossier.css").write_text(dossier_render.dossier_css(), encoding="utf-8", newline="\n")
+    (out / "js" / "dossier.js").write_text(dossier_render.dossier_js(), encoding="utf-8", newline="\n")
     (out / "assets" / "favicon.svg").write_text(favicon_svg(), encoding="utf-8", newline="\n")
     (out / "assets" / "board-poster.svg").write_text(
         poster_svg(votes, content_states), encoding="utf-8", newline="\n"
@@ -2807,11 +2790,15 @@ def build(out_dir, preview=False):
         encoding="utf-8", newline="\n",
     )
 
+    endorsements = load_endorsements()
+    sponsorships = load_sponsorships()
+    coded = dossier_render.coded_states(content_states, votes, preview)
     for iso3, entry in votes["states"].items():
         cs = content_states.get(iso3, {})
         (out / "state" / f"{iso3}.html").write_text(
             state_page(iso3, entry, votes, cs, sources, preview, manifest,
-                       eras=load_eras(iso3)),
+                       eras=load_eras(iso3), endorsements=endorsements,
+                       sponsorships=sponsorships, coded=coded),
             encoding="utf-8", newline="\n",
         )
 

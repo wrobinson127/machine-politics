@@ -79,8 +79,14 @@ def test_deploy_states_show_absence_tiers_not_positions(deploy):
     out, _ = deploy
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
     assert "not yet reviewed by this project" in usa
-    assert "REG-SOFT" not in usa  # unapproved coding must not leak
-    assert "Recorded votes" in usa
+    # the comparative position spectrum shows the coded landscape (so the
+    # string "REG-SOFT" legitimately appears as a family label / another
+    # state's coding); the real invariant is that the USA's OWN unapproved
+    # codings and doctrine never leak on deploy.
+    assert "in accord with States" not in usa  # USA's REG-SOFT coding quote
+    assert "appropriate levels of human judgment" not in usa  # USA's doctrine quote
+    assert 'class="pmark mk me"' not in usa  # USA not located in the spectrum (uncoded)
+    assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
 
 
