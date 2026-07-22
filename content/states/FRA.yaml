@@ -52,7 +52,7 @@ position_codings:
         translation: none
         confidence: EXPLICIT
       - source: fr-submission-78-241
-        claim: France did not only call for a treaty; it attached its own draft instrument as an annex to the submission.
+        claim: France attached its own draft instrument as an annex to the submission.
         quote: "Detailed proposal for such an instrument can be found in Annex of the present submission"
         date: 2024-05-24
         url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf

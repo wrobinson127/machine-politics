@@ -6,8 +6,20 @@
   var info=document.getElementById("info-body");
   if(!info) return;
   var DEFAULT=info.innerHTML;
-  function setInfo(h){info.style.opacity=0;setTimeout(function(){info.innerHTML=h;info.style.opacity=1;},110);}
-  function clearInfo(){info.style.opacity=0;setTimeout(function(){info.innerHTML=DEFAULT;info.style.opacity=1;},110);}
+  var live=document.getElementById("sr-live");
+  var RMQ=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)");
+  function reduced(){return !!(RMQ&&RMQ.matches);}
+  var scratch=document.createElement("div");
+  function toText(h){scratch.innerHTML=h;return (scratch.textContent||"").replace(/\s+/g," ").trim();}
+  // Announce to the screen reader only after focus settles, so tabbing
+  // through many marks does not queue an announcement for every one.
+  var liveT;
+  function announce(h){if(!live)return;clearTimeout(liveT);liveT=setTimeout(function(){live.textContent=toText(h);},400);}
+  function silence(){clearTimeout(liveT);if(live)live.textContent="";}
+  // Visual panel swap: guarded so reduced-motion users get no opacity flash.
+  function swap(h){if(reduced()){info.innerHTML=h;return;}info.style.opacity=0;setTimeout(function(){info.innerHTML=h;info.style.opacity=1;},110);}
+  function setInfo(h){swap(h);announce(h);}
+  function clearInfo(){swap(DEFAULT);silence();}
   function bandMarks(el){var b=el.closest("[data-band]")||el.closest(".hero");return b?b.querySelectorAll(".mk"):[];}
   function enter(el){if(el.dataset.info)setInfo(el.dataset.info);bandMarks(el).forEach(function(s){if(s!==el)s.classList.add("dim");});el.classList.add("hot");}
   function leave(el){bandMarks(el).forEach(function(s){s.classList.remove("dim");});el.classList.remove("hot");clearInfo();}

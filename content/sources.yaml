@@ -111,6 +111,15 @@ sources:
     lang: en
     accessed: 2026-07-21
 
+  - id: ccw-gge1-2022-wp8-draftprotocol
+    title: "Draft Protocol VI (CCW/GGE.1/2022/WP.8)"
+    publisher: CCW Group of Governmental Experts, submitted by Argentina, Ecuador, Costa Rica, El Salvador, Guatemala, Kazakhstan, Nigeria, Panama, the Philippines, Sierra Leone and Uruguay
+    date: 2022-08-09
+    url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+    type: working_paper
+    lang: en
+    accessed: 2026-07-21
+
   # India
   - id: ccw-gge1-2025-wp3-india
     title: "Working Paper - Emerging Technologies in the area of Lethal Autonomous Weapons Systems (CCW/GGE.1/2025/WP.3)"
@@ -252,6 +261,7 @@ sources:
     title: "Explanation of vote by India on resolution 79/62 (L.77), Lethal autonomous weapons systems"
     publisher: Permanent Mission of India to the United Nations, New York
     date: 2024-11-01
+    date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
     url: https://pmindiaun.gov.in/
     type: statement
     lang: en
@@ -302,6 +312,7 @@ sources:
     title: "Reponse a la question ecrite n. 8640 (Assemblee nationale)"
     publisher: Ministere de l'Europe et des affaires etrangeres (France), Journal Officiel
     date: 2025-01-01
+    date_precision: year   # only the year (2025) is established; renders as "2025", not a false day
     url: https://questions.assemblee-nationale.fr/q17/17-8640QE.htm
     type: parliamentary_answer
     lang: fr

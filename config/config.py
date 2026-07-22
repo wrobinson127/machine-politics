@@ -104,7 +104,7 @@ PALETTE = {
     "positions": {
         "LBI-BAN": "#3B5BA5",   # blue
         "LBI-OPEN": "#2E7F86",  # teal
-        "REG-SOFT": "#B07D2B",  # ochre
+        "REG-SOFT": "#A9741F",  # ochre (deepened from #B07D2B for WCAG 3:1 on era-b cream)
         "CCW-ONLY": "#7A5C99",  # plum
         "OPPOSE": "#7A5648",    # brown
         "AMBIG": None,           # hatch texture over neutral; no fill hue

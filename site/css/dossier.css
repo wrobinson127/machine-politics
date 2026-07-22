@@ -2,7 +2,7 @@
    Reuses site tokens (--ground, --ink, --ink-soft, --rule, --font-display,
    --font-data); dossier-specific colors are hardcoded so nothing collides. */
 :root{--mp-g2:#F1ECE2;--mp-faint:#8A8479;--mp-rs:#B9B0A0;
-  --mp-lbiban:#3B5BA5;--mp-lbiopen:#2E7F86;--mp-regsoft:#B07D2B;
+  --mp-lbiban:#3B5BA5;--mp-lbiopen:#2E7F86;--mp-regsoft:#A9741F;
   --mp-ccwonly:#7A5C99;--mp-oppose:#7A5648;--mp-none:#D8D3C8;
   --mp-use:#BA7517;--mp-treaty:#0F6E56}
 .dossier{padding-bottom:96px}
@@ -135,6 +135,7 @@
 .oc-cite{font-size:11.5px;color:var(--mp-faint);margin:0 0 8px;padding-left:14px}
 .oc-cite a{color:var(--ink);border-bottom:1px solid var(--mp-rs);text-decoration:none}
 /* info panel */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 #info{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);color:var(--ground);min-height:70px;display:flex;align-items:center}
 #info .iw{max-width:960px;margin:0 auto;width:100%;padding:14px 28px;display:flex;gap:16px;align-items:center}
 #info .lbl{flex:none;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#9a948a;border-right:1px solid #3a362f;padding-right:16px;align-self:stretch;display:flex;align-items:center}

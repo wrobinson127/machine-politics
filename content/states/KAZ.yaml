@@ -1,0 +1,52 @@
+# Kazakhstan: co-author of Draft Protocol VI (CCW/GGE.1/2022/WP.8), the
+# Latin-American-led draft treaty prohibiting autonomous weapons used outside
+# meaningful human control. Coded from draft-instrument authorship (statement-
+# class evidence, per the 2026-07-21 rule amendment). Nothing renders until the
+# analyst of record sets approved: true.
+iso3: KAZ
+un_name: KAZAKHSTAN
+display_name: Kazakhstan
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2022-08-09
+    approved: false
+    scope_note: >
+      Coded from co-authorship of a substantive draft instrument (Draft
+      Protocol VI) - a state speaking in the strongest written form. Under the
+      2026-07-21 rule, authorship of a draft treaty text is statement-class
+      evidence for each named author, distinct from mere co-sponsorship.
+    rationale: >
+      Kazakhstan co-authored Draft Protocol VI (CCW/GGE.1/2022/WP.8, 9 August
+      2022), a proposed binding CCW protocol that prohibits autonomous weapon
+      systems used outside meaningful human control or unable to comply with
+      international humanitarian law, and regulates the rest - a two-tier
+      prohibit-and-regulate instrument.
+    evidence:
+      - source: ccw-gge1-2022-wp8-draftprotocol
+        claim: Kazakhstan co-authored a draft CCW protocol prohibiting autonomous weapons used outside meaningful human control.
+        quote: "It is prohibited to develop, produce, possess, acquire, deploy, transfer, or use under any circumstances autonomous weapons systems"
+        date: 2022-08-09
+        url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2022-wp8-draftprotocol
+        claim: The draft protocol pairs the prohibition with a meaningful-human-control regulation across the life cycle.
+        quote: "Each High Contracting Party shall institute measures to ensure that meaningful human control is retained in the entire life cycle"
+        date: 2022-08-09
+        url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Kazakhstan is not yet doctrine-reviewed by this project; its international
+        position is recorded above.

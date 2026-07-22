@@ -34,6 +34,7 @@ position_codings:
         claim: India abstained on the 2024 resolution, stating its reason in its own explanation of vote.
         quote: "India has abstained on the resolution L.77"
         date: 2024-11-01
+        date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
         url: https://pmindiaun.gov.in/
         lang: en
         translation: none
@@ -48,6 +49,7 @@ position_codings:
         claim: India objects to parallel UNGA mandates as duplicating the CCW GGE's work.
         quote: "amount to a duplication of efforts and resources"
         date: 2024-11-01
+        date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
         url: https://pmindiaun.gov.in/
         lang: en
         translation: none

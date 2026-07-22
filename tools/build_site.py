@@ -600,7 +600,7 @@ NAV = [
 
 
 def page(title, body, *, current, depth=0, preview=False, description="",
-         absolute=False, extra_scripts="", extra_head=""):
+         absolute=False, extra_scripts="", extra_head="", og_path=None):
     # Pages serves 404.html from any missing path, so its asset links must
     # be root-absolute; every real page stays relative and previewable
     prefix = "/" if absolute else "../" * depth
@@ -620,16 +620,35 @@ def page(title, body, *, current, depth=0, preview=False, description="",
         if preview
         else ""
     )
+    desc = description or ('Where every country stands on autonomous weapons: '
+                           'recorded votes, official statements, and national '
+                           'policy, tracked as they shift over time.')
+    og_desc = description or ('Where every country stands on autonomous weapons, '
+                              'tracked as positions shift over time.')
+    # Absolute URL for canonical + og:url. State pages pass og_path explicitly
+    # (their `current` is empty); others derive it from `current`.
+    _path = og_path if og_path is not None else (current or "")
+    canonical = f"https://{config.SITE_DOMAIN}/{_path}"
+    og_title = f"{esc(title)} · {esc(config.SITE_NAME)}"
+    og_image = f"https://{config.SITE_DOMAIN}/assets/og-card.png"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · {esc(config.SITE_NAME)}</title>
-<meta name="description" content="{esc(description or 'Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time.')}">
-<meta property="og:title" content="{esc(title)} · {esc(config.SITE_NAME)}">
-<meta property="og:description" content="{esc(description or 'Where every country stands on autonomous weapons, tracked as positions shift over time.')}">
-<meta property="og:image" content="https://{config.SITE_DOMAIN}/assets/board-poster.svg">
+<meta name="description" content="{esc(desc)}">
+<link rel="canonical" href="{esc(canonical)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{esc(config.SITE_NAME)}">
+<meta property="og:url" content="{esc(canonical)}">
+<meta property="og:title" content="{og_title}">
+<meta property="og:description" content="{esc(og_desc)}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{og_title}">
+<meta name="twitter:description" content="{esc(og_desc)}">
+<meta name="twitter:image" content="{og_image}">
 <link rel="stylesheet" href="{prefix}css/tokens.css">
 <link rel="stylesheet" href="{prefix}css/site.css">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
@@ -734,8 +753,12 @@ def row_track_html(iso3, entry, resolutions, codings, shifts):
         title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
         if band.get("note"):
             title += f". {band['note']}"
+        # role=img + aria-label gives the coding band an accessible name; the
+        # native title stays for pointer users. Without this the position (the
+        # board's core datum) has no name for assistive tech.
         parts.append(
-            f'<div class="band{extra_class}" style="left:{band["left"] / 10:.2f}%;'
+            f'<div class="band{extra_class}" role="img" aria-label="{esc(title)}" '
+            f'style="left:{band["left"] / 10:.2f}%;'
             f'width:{band["width"] / 10:.2f}%;{style}" title="{esc(title)}"></div>'
         )
     for shift in sorted(shifts, key=lambda s: iso(s["date"])):
@@ -1286,6 +1309,7 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
     )
     return page(
         name, body, current="", depth=1, preview=preview,
+        og_path=f"state/{iso3}.html",
         description=f"{name}: recorded votes, coded position, framework signings, engagement record, and national policy on autonomous weapons systems.",
         extra_head='<link rel="stylesheet" href="../css/dossier.css">',
         extra_scripts='<script src="../js/dossier.js" defer></script>',
