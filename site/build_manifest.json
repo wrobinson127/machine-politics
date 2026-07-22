@@ -85,21 +85,21 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AUT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AUT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "shift_events",
-   "rendered": false,
+   "rendered": true,
    "state": "AUT"
   },
   {
@@ -121,27 +121,27 @@
    "state": "BLR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHN"
   },
   {
@@ -229,21 +229,21 @@
    "state": "RUS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "shift_events",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   },
   {
