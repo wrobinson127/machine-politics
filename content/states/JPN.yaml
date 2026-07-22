@@ -1,0 +1,18 @@
+# Japan: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: JPN
+un_name: JAPAN
+display_name: Japan
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5d names LBI-OPEN/REG-SOFT as the candidate range but captured no primary quote; retrieve Japan's UNSG submission and EOVs, then code"
+  - "Co-author of CCW/GGE.1/2025/WP.7, the eleven-state draft-articles paper (VERIFIED from the document face 2026-07-17; already in the sponsorship layer). The research passes' claimed March 2023 six-state paper is unverified and possibly a conflation of WP.7"
+  - "US Political Declaration endorser (on the captured 58 list): endorsement layer"
+  - "Stated interest in the France-Germany definition: retrieve the statement that says so before display"

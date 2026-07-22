@@ -2,6 +2,72 @@
  "entries": [
   {
    "approved": false,
+   "kind": "tour",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:us-political-declaration",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2023-call-to-action",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2024-blueprint",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "endorsement_instrument:reaim-2026-pathways",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-78-241-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-79-62-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:cosponsors-80-57-as-tabled",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:gge-2025-wp7-draft-articles",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:gge-2025-wp8-joint-statement",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "sponsorship_record:joint-statement-gge-sept-2025",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
    "kind": "page:methodology",
    "rendered": false,
    "state": null
@@ -46,6 +112,18 @@
    "approved": false,
    "kind": "position_codings",
    "rendered": false,
+   "state": "BDI"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "BLR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
    "state": "CHN"
   },
   {
@@ -73,10 +151,82 @@
    "state": "CHN"
   },
   {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "DEU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "DEU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "FRA"
+  },
+  {
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
+   "state": "FRA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GBR"
+  },
+  {
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
+   "state": "GBR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "IND"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "IND"
+  },
+  {
    "approved": false,
    "kind": "position_codings",
    "rendered": false,
-   "state": "USA"
+   "state": "MLI"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "NER"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "NOR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "PRK"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "RUS"
   },
   {
    "approved": false,

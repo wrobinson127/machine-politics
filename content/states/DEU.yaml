@@ -1,0 +1,63 @@
+# Germany: LBI-BAN aligned with France, grounded in its own submission;
+# a strong international position beside a thin domestic doctrine layer
+# (the two-class model's clean demonstration). Drafted 2026-07-17 from
+# research pass 5b addendum; quotes verified verbatim against the primary
+# PDF by tooling this pass. approved: false throughout.
+iso3: DEU
+un_name: GERMANY
+display_name: Germany
+coverage_tier: deep
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: true   # analyst ruling 2026-07-17
+    scope_note: >
+      Two-tier, aligned with France: prohibition of systems operating
+      outside human control, regulation of the rest. Category-scoped,
+      not a blanket ban.
+    rationale: >
+      Germany's national contribution to the Secretary-General's report
+      supports a legally binding instrument in the CCW GGE that prohibits
+      lethal autonomous weapons systems that cannot comply with
+      international humanitarian law, and separately supports an
+      additional CCW protocol prohibiting LAWS operating outside human
+      control, with regulation for other systems. The human-decision
+      principle is stated in its own words.
+    evidence:
+      - source: de-submission-78-241
+        claim: Germany supports a CCW additional protocol prohibiting LAWS outside human control.
+        quote: "Germany supports the creation of an additional protocol to the CCW that entails the prohibition of LAWS operating outside of human control"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: de-submission-78-241
+        claim: The human-decision principle grounds the German position.
+        quote: "The decision over life and death must be made by humans."
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+doctrine:
+  status: no_policy_identified
+  as_of: 2026-07-17
+  approved: false
+  search_note: >
+    Research pass 5b (2026-07-17) reviewed the German record: German
+    security analysts themselves note the absence of a national directive
+    on weapon autonomy in the DoDD 3000.09 sense; the position lives in
+    coalition-treaty language and international submissions. No published
+    national policy specifically governing autonomy in weapons systems
+    identified by this project, as of 2026-07-17.
+
+flags:
+  - "March 2024 GGE statement (LBI to prohibit fully autonomous weapons) and coalition-treaty language: URLs not yet pinned; would strengthen the coding's document trail"
+  - "Coalition-treaty commitment (outlaw AWS beyond meaningful human control): retrieve the treaty text passage at curation"
+  - "Early co-sponsor of 78/241 and 42-state statement member: sponsorship layer, enumeration bundle"

@@ -1,0 +1,17 @@
+# Denmark: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: DNK
+un_name: DENMARK
+display_name: Denmark
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: co-author of the seven-state elements paper and in the September 2025 42-state statement (both sponsorship-class, never coding evidence alone); a secondary tracker's late-2024 note suggests the explicit LBI position firmed during 2024-2025, which would be a candidate shift once grounded in Denmark's OWN statements; retrieve the October 2025 national statement, then code"
+  - "Nordic joint-statement series member (delivered the 2023-10-02 statement): joint-statement layer plus statement evidence, enumeration bundle"
+  - "US Political Declaration endorser (on the captured 58 list)"

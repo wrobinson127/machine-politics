@@ -1,6 +1,6 @@
 # Data license
 
-This repository carries two kinds of data. They carry different terms. The split matters, so read both.
+This repository carries three kinds of data. They carry different terms. The split matters, so read all of them.
 
 ## 1. Project-coded data (CC BY 4.0)
 
@@ -17,6 +17,10 @@ The files `data/source/ga_voting_extract.csv.gz`, `data/derived/votes.json.gz`, 
 © United Nations, 2026, https://digitallibrary.un.org, downloaded on 2026-07-16.
 
 Per the UN Digital Library terms of use, this material is made available for non-commercial use with attribution. The CC BY 4.0 grant in section 1 does NOT apply to these files. If you reuse the vote extracts, you take them under the UN's terms, not ours.
+
+## 3. Basemap boundaries (public domain)
+
+Basemap boundaries: `data/source/countries-110m.json` derives from [world-atlas](https://github.com/topojson/world-atlas) (Natural Earth data, public domain).
 
 ## Boundary rule
 

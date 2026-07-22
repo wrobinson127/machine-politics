@@ -54,6 +54,7 @@
     } else {
       pop.appendChild(el("strong", null, data.from + " → " + data.to));
       pop.appendChild(el("span", "citation", data.date));
+      if (data.provisional) pop.appendChild(el("span", "citation", data.provisional));
       (data.evidence || []).forEach(function (e) {
         var row = el("span", "citation", (e.quote ? "“" + e.quote + "” · " : "") + e.date);
         if (e.url) {

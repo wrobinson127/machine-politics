@@ -75,6 +75,11 @@ axis_b:
     AMBIGUOUS: >
       The record points in more than one direction and the coding marks the
       best-supported reading of an unclear record.
+    PROVISIONAL: >
+      The coding rests on secondary reporting of a primary record this
+      project has not yet retrieved and verified. A provisional coding
+      carries a note saying exactly what is pending, and it is upgraded or
+      corrected once the primary record is reviewed.
 
 shift_event:
   description: >

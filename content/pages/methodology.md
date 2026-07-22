@@ -8,6 +8,14 @@ Machine Politics records where every United Nations member state stands on auton
 
 The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
 
+## Five signals, never a score
+
+The tracker records five separable signals per state: recorded votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy. They display side by side. They never merge into a rank, grade, or index. The site triangulates; it does not grade.
+
+**The no-inference rule:** endorsements, sponsorships, and doctrine never produce a position coding by themselves. Endorsing the US Political Declaration is not a position against a binding instrument; Austria endorses it and sponsors the treaty resolution in the same year. Codings derive from statements and votes, with the reasoning shown. The validator enforces this rule in code: a coding whose only evidence is an endorsement, a sponsorship, or a policy document fails the build.
+
+**Endorsement absence:** a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.
+
 ## Three signals, three coverage depths
 
 **Votes:** complete. All 193 member states, from the official UN General Assembly voting dataset published by the Dag Hammarskjöld Library. The extraction code, the reconciliation checks, and the committed extract are public in the repository. Nothing is scraped.
@@ -22,7 +30,7 @@ Every coded position sits on two axes.
 
 Axis A is instrument preference: what kind of international instrument, if any, does the state support? Seven categories: LBI-BAN, LBI-OPEN, REG-SOFT, CCW-ONLY, OPPOSE, AMBIG, NONE. The [rubric page](rubric.html) defines each in plain language. Categories are mutually exclusive at a dated point in time.
 
-Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction.
+Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction, PROVISIONAL when the coding rests on secondary reporting of a primary record this project has not yet verified. A provisional coding says so on its face, carries a note stating exactly what is pending, and is upgraded or corrected once the primary record is reviewed.
 
 AMBIG is a first-class category, not a failure state. When a state's record supports two readings, the coding says so and the evidence shows both. China is the worked example.
 
@@ -42,13 +50,21 @@ Absence is tiered, and the tiers never blend.
 
 For national policy, the site only ever makes a dated coverage statement: no published national policy identified by this project, as of a stated date, with a note recording where the project looked. The site never asserts that a state has nothing. The validator rejects that entire class of claim.
 
+## Secondary sources, used honestly
+
+Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
+
+## Links that outlive administrations
+
+Government URLs die when governments change. Every doctrine and endorsement source carries both its live link and an archived snapshot, and the build warns on any entry missing one. Where a live page blocks automated access, the archived capture is the verified record and the page says so.
+
 ## Who codes, and how
 
 Walker Robinson is the analyst of record. Tooling drafts, checks, and formats. It never decides. No coded position, shift event, doctrine claim, or analyst sentence publishes without explicit approval, and the site build refuses to ship unapproved content. There is no automated or model-assisted position classification, and the publishing pipeline makes no model calls. The site runs on $0 infrastructure.
 
 ## Corrections
 
-Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice, the only red on this site. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository. The [about page](about.html) says who runs this.
+Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice. Red on this site carries exactly two meanings: that notice, and the thin seam marking the moment a coded position changed. The [corrections page](corrections.html) lists every correction with dates. If you find an error, open an issue in the repository. The [about page](about.html) says who runs this.
 
 ## Related work
 

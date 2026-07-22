@@ -71,9 +71,12 @@ li > .citation {
   font-size: 1.04rem;
 }
 
-/* Confidence conventions: hue never changes, treatment does */
+/* Confidence conventions: hue never changes, treatment does.
+   PROVISIONAL takes the same lowered-confidence treatment; its note
+   renders as a visible caption wherever the coding renders. */
 .conf-INFERRED { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
 .conf-AMBIGUOUS { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
+.conf-PROVISIONAL { text-decoration: underline dotted 1px; text-underline-offset: 0.22em; }
 
 /* ------------------------------------------------------------------ */
 /* Shell                                                               */
@@ -158,6 +161,372 @@ footer.colophon p { margin: 0.3rem 0; }
 .updated-through {
   font-variant-numeric: tabular-nums;
 }
+
+/* ------------------------------------------------------------------ */
+/* Guided tour (scaffold; scroll choreography is enhancement)          */
+/* ------------------------------------------------------------------ */
+
+/* The skip link is a designed element visible from first paint,
+   never a hidden accessibility afterthought */
+.skip-board {
+  display: inline-block;
+  margin: 1.2rem 0 0;
+  font-size: 0.88rem;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 0.35rem 0.9rem;
+  text-decoration: none;
+}
+
+.skip-board:hover { background: var(--ink); color: var(--ground); }
+
+/* P1c scaffold: beats are a stacked prose column. P2c adds the sticky
+   canvas beside them; this layout IS the no-JS and reduced-motion path. */
+.tour .beat {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+}
+
+.tour .beat:last-child { border-bottom: none; }
+
+.beat-copy { max-width: 34rem; }
+
+.beat-copy h2 { margin-top: 0; }
+
+.beat-copy p { font-size: 1.05rem; }
+
+@media (max-width: 860px) {
+  .tour .beat { padding: 2.2rem 0; }
+}
+
+/* Mobile stepper: tap-through beats, one at a time. The display rule on
+   .beat outranks the UA [hidden] default, so restate it explicitly. */
+.tour .beat[hidden] { display: none; }
+
+.tour-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0 0.4rem;
+  font-size: 0.88rem;
+}
+
+.tour-stepper button {
+  font: inherit;
+  background: none;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 0.55rem 1.1rem;
+  min-height: 44px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.tour-stepper button:disabled {
+  border-color: var(--rule);
+  color: var(--ink-soft);
+  cursor: default;
+}
+
+/* ------------------------------------------------------------------ */
+/* The persistent canvas (P2c). Server-rendered end state, hidden until
+   JS enhances; the sticky stage centers in the viewport (craft
+   standard), never hugs the top.                                      */
+/* ------------------------------------------------------------------ */
+
+.tour-enhanced .scrolly {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.tour-enhanced .beat {
+  min-height: 110vh;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+
+.scrolly-canvas {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+/* display rules on these outrank the UA [hidden] default; restate it */
+.scrolly-canvas[hidden],
+.c-teach[hidden],
+.c-statset[hidden] { display: none; }
+
+.c-teach-slot { min-height: 2.4em; }
+
+.c-teach { margin: 0; font-size: 0.92rem; max-width: none; }
+
+.c-board-wrap { position: relative; }
+
+.c-board {
+  position: relative;
+  height: 320px;
+}
+
+/* Row state is CSS-transition-driven: setBeat writes target transform,
+   height, and the c-off class; the browser interpolates. One tempo in
+   every direction (neutrality in motion). */
+.c-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 62px;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.55s ease-in-out, height 0.55s ease-in-out,
+    opacity 0.35s linear, visibility 0s 0.35s;
+}
+
+.tour-enhanced .c-row:not(.c-off),
+.tour-stepped .c-row:not(.c-off) {
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.55s ease-in-out, height 0.55s ease-in-out,
+    opacity 0.35s linear, visibility 0s;
+}
+
+.c-board { transition: height 0.55s ease-in-out; }
+
+.c-deadline { transition: opacity 0.4s linear, visibility 0s 0.4s; }
+
+/* The line draws down by clip reveal, so the stroke keeps its dashed
+   identity (DrawSVG would rewrite the dash pattern to draw). */
+.c-deadline svg {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.9s linear;
+}
+
+.c-deadline[data-state="faint"] svg,
+.c-deadline[data-state="draw"] svg { clip-path: inset(0 0 0 0); }
+
+.c-deadline[data-state="draw"] { opacity: 1; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
+
+.c-deadline[data-state="faint"] { opacity: 0.15; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
+
+.c-deadline[data-state="faint"] .c-deadline-label { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .c-row, .c-board, .c-deadline, .c-deadline svg, .c-band, .c-seam,
+  .c-mark, .c-note, .c-track, .c-label { transition: none; }
+}
+
+.c-label {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* xl rows reserve a caption line beneath the track so the provisional
+   note never runs into the band */
+.c-track { position: absolute; left: 0; right: 0; top: 26px; bottom: 38px; }
+
+.c-note {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 0.7rem;
+  line-height: 1.25;
+}
+
+/* Mid scale (movers, camps): label as a left column, track beside it,
+   so early-starting bands never run under the state name */
+#c-board[data-scale="m"] .c-label,
+#c-board[data-scale="s"] .c-label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.78rem;
+  font-weight: 400;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#c-board[data-scale="m"] .c-track,
+#c-board[data-scale="s"] .c-track { left: 10.5rem; top: 0; bottom: 0; }
+
+#c-board[data-scale="s"] .c-label { font-size: 0.68rem; }
+
+/* Poster scale: no labels, full-width tracks, compact marks */
+#c-board[data-scale="xs"] .c-label { display: none; }
+#c-board[data-scale="xs"] .c-track { left: 0; top: 0; bottom: 0; }
+#c-board:not([data-scale="xl"]) .c-note { display: none; }
+
+/* Progressive reveal (P3c): marks appear per beat; color arrives as an
+   event at beat 5 (bands, then the seam); the provisional note rides
+   with the band. All reveals are opacity/transform transitions at one
+   tempo; nothing is ever rebuilt. */
+.c-band {
+  position: absolute;
+  top: 50%;
+  height: 58%;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+  border-radius: 2px;
+  transition: transform 0.7s ease-in-out;
+}
+
+#c-board.c-bands-on .c-band { transform: translateY(-50%) scaleX(1); }
+
+#c-board .c-seam {
+  opacity: 0;
+  transition: opacity 0.35s linear 0.55s;
+}
+
+#c-board.c-bands-on .c-seam { opacity: 1; }
+
+.c-mark { transition: opacity 0.4s linear; }
+
+#c-board.c-marks-1 .c-mark:nth-of-type(n+2) { opacity: 0; }
+#c-board.c-marks-0 .c-mark { opacity: 0; }
+
+.c-note { opacity: 0; transition: opacity 0.4s linear 0.7s; }
+
+#c-board.c-bands-on[data-scale="xl"] .c-note { opacity: 1; }
+
+/* Muting is focus, never judgment: the focal rows keep full contrast,
+   the rest drop together, and every element gets its turn. */
+.c-row.c-dim .c-track,
+.c-row.c-dim .c-label { opacity: 0.42; transition: opacity 0.4s linear; }
+
+.c-row .c-track,
+.c-row .c-label { transition: opacity 0.4s linear; }
+
+/* The seam: red's second reserved meaning, the moment a position
+   changes. Direction-neutral by construction. */
+.c-seam {
+  position: absolute;
+  top: 6%;
+  height: 88%;
+  width: 2.5px;
+  margin-left: -1.25px;
+  background: var(--integrity-red);
+}
+
+.c-mark {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 0;
+}
+
+.c-mark svg { display: block; }
+
+#c-board[data-scale="s"] .c-mark svg,
+#c-board[data-scale="xs"] .c-mark svg { display: none; }
+
+#c-board[data-scale="s"] .c-mark,
+#c-board[data-scale="xs"] .c-mark {
+  width: 4px;
+  height: 92%;
+  border-radius: 0.5px;
+  background: var(--ink);
+}
+
+#c-board[data-scale="s"] .c-mark-N,
+#c-board[data-scale="xs"] .c-mark-N {
+  background: none;
+  border: 1px solid var(--ink);
+}
+
+#c-board[data-scale="s"] .c-mark-A,
+#c-board[data-scale="xs"] .c-mark-A { opacity: 0.55; }
+
+#c-board[data-scale="s"] .c-mark-X,
+#c-board[data-scale="xs"] .c-mark-X { opacity: 0.18; }
+
+.c-deadline {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 10px;
+  margin-left: -5px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.c-deadline svg { width: 100%; height: 100%; display: block; }
+
+.c-deadline-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  margin-top: 0.5rem;
+}
+
+.c-stats {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  min-height: 3.2em;
+}
+
+.c-statset { display: flex; gap: 1.6rem; flex-wrap: wrap; }
+
+.c-stat { font-size: 0.8rem; color: var(--ink-soft); }
+
+.c-stat strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.15;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 860px) {
+  .tour-enhanced .scrolly { display: block; }
+}
+
+/* The release affordance appears only at beat 10; skip-board's display
+   rule outranks the UA [hidden] default, so restate it */
+.c-release { align-self: flex-start; }
+.c-release[hidden] { display: none; }
+
+/* Once the board is live (beat 10), rows advertise their telemetry */
+.c-live .c-row:not(.c-off) { cursor: pointer; }
+
+@media (hover: hover) {
+  .c-live .c-row:not(.c-off):hover { background: var(--ground-raise); }
+}
+
+/* Stepper mode (mobile, P4c): the canvas is a card above the prose,
+   driven by the same beat states as the scroll mode */
+.tour-stepped .scrolly { display: flex; flex-direction: column-reverse; }
+
+.tour-stepped .scrolly-canvas {
+  position: static;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+  padding: 0.9rem 1rem 1.1rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 3.6rem; /* clears the preview banner on step taps */
+}
+
+.tour-stepped .c-teach-slot { min-height: 3.2em; }
 
 /* ------------------------------------------------------------------ */
 /* Trajectory board                                                    */
@@ -466,7 +835,246 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .vote-glyph { font-size: 1rem; }
 
-/* Data-integrity notices are the ONLY red on the site */
+/* ------------------------------------------------------------------ */
+/* Instruments page: endorsement record, quadrant view, wave map       */
+/* ------------------------------------------------------------------ */
+
+.endorser-list {
+  max-width: none;
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+
+.nonmember-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 44rem;
+}
+
+.nonmember-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 0.92rem;
+}
+
+/* Scrub controls: plain range inputs, enabled only when JS is live */
+.scrub-control {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 0.2rem;
+  font-size: 0.9rem;
+  max-width: 44rem;
+}
+
+.scrub-control input[type="range"] {
+  flex: 1;
+  min-width: 10rem;
+  min-height: 44px;
+  accent-color: var(--ink);
+  margin: 0;
+}
+
+.scrub-control output {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  flex-basis: 100%;
+}
+
+/* Quadrant state search: the primary nav into the chart (DESIGN v2
+   mobile contract). Disabled until JS enables it, like the scrubs. */
+.quadrant-search {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 0.2rem;
+  font-size: 0.9rem;
+  max-width: 44rem;
+}
+
+.quadrant-search input[type="search"] {
+  flex: 1;
+  min-width: 12rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.quadrant-search input[type="search"]:disabled { opacity: 0.45; }
+
+.quadrant-search input[type="search"]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .quadrant-search input[type="search"] { min-height: 44px; }
+}
+
+/* Quadrant view: monochrome ink dots, unlabeled regions (DESIGN v2) */
+.quadrant-scroll { overflow-x: auto; margin-top: 0.8rem; }
+
+.quadrant-svg { display: block; width: 100%; min-width: 640px; }
+
+.quadrant-svg .q-axis {
+  font-family: var(--font-data);
+  font-size: 12px;
+  fill: var(--ink-soft);
+}
+
+.quadrant-svg .q-dot { fill: var(--ink); fill-opacity: 0.5; }
+
+/* Search hit: an ink ring and a radius bump, never a color change */
+.quadrant-svg .q-dot.q-hit { stroke: var(--ink); stroke-width: 2; }
+
+.quadrant-table th, .quadrant-table td { font-size: 0.85rem; }
+
+/* Wave map: radios are 44px targets; the container gets height only when
+   the map actually initialises, so the no-JS page never shows a dead box */
+.map-controls {
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.4rem 0.9rem 0.6rem;
+  margin: 1.2rem 0 0;
+  max-width: 44rem;
+}
+
+.map-controls legend {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  padding: 0 0.3rem;
+}
+
+.map-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.map-radio input {
+  accent-color: var(--ink);
+  width: 1.05rem;
+  height: 1.05rem;
+  margin: 0;
+}
+
+.map-radio .swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 0.85em;
+  border-radius: 1px;
+}
+
+.wave-map { max-width: 100%; }
+
+.wave-map-live {
+  height: 420px;
+  margin-top: 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--ground-raise);
+}
+
+@media (max-width: 640px) {
+  .wave-map-live { height: 320px; }
+}
+
+.map-fallback {
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  max-width: 44rem;
+  margin-top: 0.8rem;
+}
+
+.map-fallback[hidden] { display: none; }
+
+/* ------------------------------------------------------------------ */
+/* Doctrine timeline: era bands, filled core / outlined context marks  */
+/* ------------------------------------------------------------------ */
+
+.doctrine-timeline {
+  max-width: 44rem;
+  margin: 0.6rem 0 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.15rem 0.5rem 0.4rem;
+  background: var(--ground);
+  overflow-x: auto;
+}
+
+/* Narrow viewports scroll the timeline instead of clipping era labels */
+.doctrine-timeline .timeline-inner { min-width: 560px; }
+
+.timeline-svg { display: block; width: 100%; }
+
+.timeline-svg .era-label {
+  font-family: var(--font-data);
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+
+.timeline-svg .timeline-base { stroke: var(--ink); stroke-opacity: 0.3; }
+
+.timeline-svg .tl-core { fill: var(--ink); }
+
+.timeline-svg .tl-context {
+  fill: var(--ground);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.doctrine-timeline .track-years {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  padding: 0.2rem 0;
+}
+
+/* Era swatches sit on paper, so they carry a hairline to stay visible */
+.era-legend .swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 0.85em;
+  vertical-align: -0.12em;
+  margin-right: 0.45em;
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+}
+
+.era-legend > span {
+  display: inline-block;
+  margin-right: 1.2rem;
+  white-space: nowrap;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: 0;
+  max-width: 44rem;
+}
+
+.timeline-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 0.92rem;
+}
+
+/* Data-integrity notices and the shift-seam are red's only two meanings
+   on this site (DESIGN v2.1 rule 10) */
 .integrity-notice {
   border-left: 3px solid var(--integrity-red);
   padding: 0.5rem 0 0.5rem 1rem;

@@ -43,9 +43,15 @@ POSITION_CATEGORIES = {
 # ---------------------------------------------------------------------------
 # Confidence tiers (Axis B). Confidence modulates saturation and a
 # dotted-underline convention in the UI. It never changes hue.
+# PROVISIONAL (P3c, analyst ruling 2026-07-17): coded from secondary
+# reporting pending verification against the primary record. Renders with
+# the lowered-confidence treatment (reduced saturation, dotted underline)
+# plus a required provisional_note surfaced in captions and telemetry.
+# Distinct from the data-integrity red state, which stays reserved for
+# corrections and superseded codings.
 # ---------------------------------------------------------------------------
 
-CONFIDENCE_TIERS = ("EXPLICIT", "INFERRED", "AMBIGUOUS")
+CONFIDENCE_TIERS = ("EXPLICIT", "INFERRED", "AMBIGUOUS", "PROVISIONAL")
 
 TRANSLATION_VALUES = ("official", "unofficial", "none")
 
@@ -86,8 +92,10 @@ LAWS_RESOLUTIONS = {
 
 # ---------------------------------------------------------------------------
 # Palette tokens (DESIGN.md is authoritative for semantics; these are the
-# concrete values). No position renders red or green. Saturated red is
-# reserved for data-integrity notices. AMBIG is a hatch texture, not a hue.
+# concrete values). No position renders red or green. Saturated red carries
+# exactly two reserved meanings (DESIGN v2.1 rule 10): data-integrity
+# notices, and the shift-seam marking the moment a coded position changes.
+# AMBIG is a hatch texture, not a hue.
 # ---------------------------------------------------------------------------
 
 PALETTE = {
@@ -103,7 +111,7 @@ PALETTE = {
         "NONE": "#D8D3C8",      # light neutral (absence: on record, nothing substantive)
     },
     "not_yet_reviewed": None,    # empty/paper with explicit label, never a fill
-    "integrity_red": "#C0392B",  # data-integrity notices ONLY
+    "integrity_red": "#C0392B",  # data-integrity notices + shift-seams ONLY
 }
 
 # ---------------------------------------------------------------------------

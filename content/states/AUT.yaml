@@ -9,7 +9,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2018-08-30
-    approved: false
+    approved: true    # ruled + render-approved 2026-07-21 (LBI-OPEN->LBI-BAN arc, both legs primary-grounded)
     rationale: >
       Austria, with Brazil and Chile, formally proposed a CCW mandate to
       negotiate a legally binding instrument ensuring meaningful human
@@ -28,7 +28,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-04-30
-    approved: false
+    approved: true    # ruled + render-approved 2026-07-21 (LBI-OPEN->LBI-BAN arc, both legs primary-grounded)
     rationale: >
       As chair of the April 2024 Vienna Conference and in its submission for
       the Secretary-General's report, Austria states support for a legally
@@ -93,7 +93,7 @@ shift_events:
     date: 2024-04-30
     from: LBI-OPEN
     to: LBI-BAN
-    approved: false
+    approved: true    # ruled + render-approved 2026-07-21 (LBI-OPEN->LBI-BAN arc, both legs primary-grounded)
     rationale: >
       The earliest verified record of Austria specifying prohibitions within
       the instrument it seeks is the Vienna Conference chair's summary,

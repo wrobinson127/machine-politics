@@ -1,0 +1,18 @@
+# Türkiye: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: TUR
+un_name: TÜRKİYE
+display_name: Türkiye
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: the 2022 First Committee statement is captured and quotable (autonomous systems without meaningful human control are undesirable and conflict with IHL; humans bear ultimate life-and-death responsibility) but its URL is unpinned and the research leaves the category unresolved (REG-SOFT/LBI-OPEN); pin the primary, then code"
+  - "Dataset note: abstained on all three resolutions (research pass 5d recorded only the 80/57 abstention)"
+  - "US Political Declaration endorser (on the captured 58 list)"
+  - "Türkiye develops autonomous-capable systems: behavior layer, out of scope by standing rule"

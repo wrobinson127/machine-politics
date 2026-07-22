@@ -1,6 +1,7 @@
 """Tests for the site build: the approval gate, the both-direction guard,
 absence-tier rendering, and determinism."""
 
+import html
 import json
 import re
 import sys
@@ -46,28 +47,62 @@ def test_deploy_renders_zero_unapproved(deploy):
     assert manifest["unapproved_rendered"] == 0
     written = json.loads((out / "build_manifest.json").read_text(encoding="utf-8"))
     assert written["unapproved_rendered"] == 0
-    # every claim-bearing entry in content is currently unapproved, so none
-    # of their rationales may appear anywhere in the deploy artifact
+    # the gate is per-coding: an approved coding's rationale renders on
+    # deploy, an unapproved one's never does. (Before any approvals every
+    # coding was unapproved; the first launch-set approvals landed
+    # 2026-07-17.)
     html_blob = "".join(
         p.read_text(encoding="utf-8") for p in out.rglob("*.html")
     )
+    # rationale prose is HTML-escaped when rendered (apostrophes become
+    # entities); unescape the blob so raw markers compare naturally
+    flat = html.unescape(" ".join(html_blob.split()))
     assert "draft-banner" not in html_blob
     assert "DRAFT" not in html_blob
+    approved_seen = 0
     for state_file in sorted(config.STATES_DIR.glob("*.yaml")):
         data = yaml.safe_load(state_file.read_text(encoding="utf-8"))
         for coding in data.get("position_codings", []):
             marker = " ".join((coding.get("rationale") or "").split())[:60]
-            if marker:
-                assert marker not in " ".join(html_blob.split()), state_file.name
+            if not marker:
+                continue
+            if coding.get("approved") is True:
+                assert marker in flat, f"approved coding not rendered: {state_file.name}"
+                approved_seen += 1
+            else:
+                assert marker not in flat, f"unapproved coding leaked: {state_file.name}"
+    # guard against the whole loop silently matching nothing
+    assert approved_seen >= 5
 
 
 def test_deploy_states_show_absence_tiers_not_positions(deploy):
     out, _ = deploy
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
-    assert "not yet reviewed by this project" in usa
-    assert "REG-SOFT" not in usa  # unapproved coding must not leak
-    assert "Recorded votes" in usa
+    # The USA is now coded (CCW-ONLY, approved 2026-07-21) so its position
+    # legitimately renders; but its DOCTRINE (DoDD 3000.09) stays unapproved
+    # and must not leak, and shows the absence tier. The vote waffle renders.
+    assert "not yet reviewed by this project" in usa  # doctrine absence tier
+    assert "appropriate levels of human judgment" not in usa  # unapproved doctrine quote
+    assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
+    # A genuinely uncoded state must show absence tiers and NOT be located in
+    # the position spectrum. Picked dynamically so future approvals do not
+    # restale this test (the USA used to be this example until it was coded).
+    picked = None
+    for sf in sorted(config.STATES_DIR.glob("*.yaml")):
+        d = yaml.safe_load(sf.read_text(encoding="utf-8"))
+        if any(c.get("approved") is True for c in (d.get("position_codings") or [])):
+            continue
+        if (d.get("doctrine") or {}).get("approved") is True:
+            continue
+        page = out / "state" / f"{sf.stem}.html"
+        if page.exists():
+            picked = (sf.stem, page.read_text(encoding="utf-8"))
+            break
+    assert picked, "expected at least one uncoded state on deploy"
+    iso, html = picked
+    assert "not yet reviewed by this project" in html, iso
+    assert 'class="pmark mk me"' not in html, f"{iso} uncoded but located in spectrum"
 
 
 def test_preview_renders_drafts_behind_banner(preview):

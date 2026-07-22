@@ -1,0 +1,21 @@
+# Niger: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Thin tier: votes plus a NONE coding recording that the research passes
+# reviewed the record and captured no substantive stated position.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: NER
+un_name: NIGER
+display_name: Niger
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-07-17
+    approved: false
+    search_note: >
+      Research pass 1 (2026-07-17) recorded Niger's committee-stage No on L.56 and its move to Abstain at the 78/241 plenary; the reviewed record contains no substantive stated position.
+
+shift_events: []
+
+flags:
+  - "Annotation-grade divergence: No in First Committee (L.56, 2023-11-01), Abstain at the plenary (2023-12-22), then Yes (2024, 2025). Committee-stage votes are outside the current votes layer; the annotation waits on a ruling"

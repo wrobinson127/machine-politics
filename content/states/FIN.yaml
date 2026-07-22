@@ -1,0 +1,18 @@
+# Finland: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: FIN
+un_name: FINLAND
+display_name: Finland
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5e names LBI-OPEN as the candidate but captured no Finland-specific primary quote; retrieve the national statement or submission, then code"
+  - "In the September 2025 42-state statement; Nordic joint-statement series member"
+  - "NATO accession (2023-04-04) era band: ruling queued (research recommends a band; no causal claim about the LAWS position, which held)"
+  - "US Political Declaration endorser (on the captured 58 list)"

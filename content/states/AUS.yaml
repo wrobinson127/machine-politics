@@ -1,0 +1,17 @@
+# Australia: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: AUS
+un_name: AUSTRALIA
+display_name: Australia
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5d suggests REG-SOFT (responsible-use, existing frameworks) but the naming source is secondary (RCW); retrieve Australia's submission and EOV, then code. A yes-vote state coding cautious would be a useful votes-mislead example once grounded"
+  - "Co-author of BOTH CCW/GGE.1/2025/WP.7 (eleven-state draft articles) and WP.8 (ten-state joint statement), VERIFIED from document faces 2026-07-17; both in the sponsorship layer. The research passes' claimed March 2023 six-state paper is unverified and possibly a conflation of WP.7"
+  - "US Political Declaration endorser (on the captured 58 list)"

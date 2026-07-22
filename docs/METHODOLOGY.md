@@ -32,7 +32,7 @@ Axis A, instrument preference, mutually exclusive at a dated point in time:
 | AMBIG | Position ambiguous or evolving |
 | NONE | No substantive position on record |
 
-Axis B, confidence: EXPLICIT, INFERRED, AMBIGUOUS. Confidence describes how directly the evidence supports the coding. On the site it modulates saturation and a dotted-underline convention. It never changes the category hue.
+Axis B, confidence: EXPLICIT, INFERRED, AMBIGUOUS, PROVISIONAL. Confidence describes how directly the evidence supports the coding. On the site it modulates saturation and a dotted-underline convention. It never changes the category hue. PROVISIONAL marks a coding that rests on secondary reporting of a primary record not yet retrieved; it requires a note stating exactly what is pending, rendered as a visible caption and in the mark's hover readout, and it is upgraded or corrected once the primary record is reviewed.
 
 AMBIG is a finding, not a failure. When a state supports a "ban" while defining the banned class so narrowly that little falls inside it, the honest coding is AMBIG with evidence showing both halves. That case is real and it is one of the three worked examples.
 
@@ -53,6 +53,18 @@ Two absence tiers, never conflated, never rendered as positions:
 
 Doctrine absence renders only as: "no published national policy identified by this project, as of [date]", with the search note. Copy asserting a state "has no" policy is a prohibited-claim class; the validator rejects it in any phrasing it can catch, and the reviewer catches the rest.
 
+## The v2 data model: five signals
+
+Version 2 expands the model from three signals to five. Endorsements (political-commitment instruments with official lists: the US Political Declaration, the REAIM outcome documents) and sponsorships (resolution co-sponsor lists as tabled, working-paper co-authorship, joint-statement membership) join votes, statements, and doctrine. Explanations of vote become a named evidence subtype; doctrine goes two-class (core instruments as coded evidence, context instruments as displayed timeline entries); government eras render as factual background bands that never touch a coding.
+
+Rules that hold the model honest, all validator-enforced:
+
+- **No inference:** endorsements, sponsorships, and doctrine never feed an axis-A coding by themselves. A coding whose only evidence carries those source types fails the build.
+- **No composite scores:** no state receives a rank, grade, or index, in data or display. The schema layer refuses to hold one.
+- **Absence tiers extend:** not listed on an endorsement list is an absence tier, never rendered as opposition.
+- **Archive links:** every doctrine and endorsement source carries a live URL and an archived snapshot; the build warns on gaps. Administration turnover kills URLs, and one endorsement list already lives partly under an archive subdomain.
+- **Era bands are context:** factual labels and dates from official sources, two neutral shades, no party colors, and the site never writes "because" across a timeline. Documented causation (a rescission order citing the policy it rescinds) is citable with the document as evidence.
+
 ## The approval gate
 
 The analyst of record is Walker Robinson. Tooling drafts and checks; it does not decide. Every claim-bearing entry carries an explicit `approved` flag, authored false. The site build hard-excludes unapproved entries from the deploy artifact, writes a manifest of what rendered, refuses to build if any unapproved entry slipped through, and CI asserts the artifact is byte-identical to a fresh rebuild. A separate preview mode renders drafts behind an unmistakable banner, on localhost only, and never deploys.
@@ -62,7 +74,7 @@ There is no automated or model-assisted position classification. The publishing 
 ## Design rules that carry meaning
 
 - No position category renders red or green, anywhere, including exported images. Coloring a state's position red is an editorial act, so the palette is categorical with no good/bad ordering.
-- Saturated red has exactly one meaning: a data-integrity notice.
+- Saturated red has exactly two meanings, and no others: a data-integrity notice, and the shift-seam marking the moment a coded position changes. It never colors a position, a camp, a vote, or motion.
 - AMBIG renders as a hatch texture, not gray and not a blend, because gray means absence.
 - Annotations are outlines and markers, never fills.
 

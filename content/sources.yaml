@@ -83,7 +83,9 @@ sources:
     publisher: United States Department of State
     date: 2023-02-16
     url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
-    type: policy
+    # a diplomatic instrument the US authored: statement-class for coding
+    # purposes; the endorsement LIST built on it is the endorsement signal
+    type: statement
     lang: en
     accessed: 2026-07-16
   - id: us-mission-cluster4-2025
@@ -94,6 +96,30 @@ sources:
     type: statement
     lang: en
     accessed: 2026-07-16
+    archive_note: >
+      Archive snapshot REQUIRED at launch (invariant 11): the mission site
+      robots-blocks this project's tooling; the analyst captures it in-browser
+      and pins a web.archive.org snapshot. The US CCW-ONLY coding (2025-11-04)
+      cites this as its primary explanation of vote.
+
+  - id: ccw-gge1-2025-wp6-usa
+    title: "The Autonomy Aspect of Lethal Autonomous Weapon Systems (CCW/GGE.1/2025/WP.6)"
+    publisher: CCW Group of Governmental Experts, submitted by the United States
+    date: 2025-09-02
+    url: https://undocs.org/en/CCW/GGE.1/2025/WP.6
+    type: working_paper
+    lang: en
+    accessed: 2026-07-21
+
+  # India
+  - id: ccw-gge1-2025-wp3-india
+    title: "Working Paper - Emerging Technologies in the area of Lethal Autonomous Weapons Systems (CCW/GGE.1/2025/WP.3)"
+    publisher: CCW Group of Governmental Experts, submitted by India
+    date: 2025-05-16
+    url: https://undocs.org/en/CCW/GGE.1/2025/WP.3
+    type: working_paper
+    lang: en
+    accessed: 2026-07-21
 
   # Austria
   - id: ccw-gge2-2018-wp7-aut-bra-chl
@@ -169,3 +195,147 @@ sources:
     type: secondary_report
     lang: en
     accessed: 2026-07-16
+
+  # Launch-set coding pass (2026-07-17, from research passes 1-6).
+  # Quotes for FRA/DEU/GBR verified verbatim against these primaries by
+  # tooling this pass; NOR and IND carry retrieval flags on exact URLs.
+  - id: fr-submission-78-241
+    title: "Resolution 78/241 Lethal autonomous weapons systems: Submission of France"
+    publisher: Government of France, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Undated on its face (reference ODA-2024-00019/LAWS); dated by the
+      PDF's own creation stamp (2024-05-24), the same batch date as the
+      German submission, which is dated Berlin, 24 May 2024 on its face.
+      Corroborated by the Secretary-General's report A/79/88 (2024-07-01),
+      which states the submissions it reproduces were "received by 25 May
+      2024"; the stamp date sits inside that window (returns 2026-07-19).
+  - id: de-submission-78-241
+    title: "UN Secretary-General's Report on lethal autonomous weapons systems (LAWS): Germany's national contribution"
+    publisher: Government of Germany, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-07-17
+  - id: uk-asr-2022
+    title: "Ambitious, Safe, Responsible: our approach to the delivery of AI-enabled capability in Defence"
+    publisher: UK Ministry of Defence
+    date: 2022-06-14
+    url: https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf
+    type: position_paper
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      The UK's published public position on AI-enabled capability and
+      autonomous weapons; a public position document, not an internal
+      directive, hence position_paper. Its doctrine-class ruling
+      (core vs context) is the analyst's, flagged on the state file.
+  - id: no-gge-statement-2024
+    title: "Statement by Norway to the CCW Group of Governmental Experts on LAWS, second 2024 session"
+    publisher: Government of Norway, via UNODA Documents Library
+    date: 2024-08-26
+    url: https://docs-library.unoda.org/
+    type: statement
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Quote captured verbatim by research pass 5e from the primary
+      statement; the exact document URL is not yet pinned (flagged;
+      research names UNODA and norway.no as hosts). URL here is the
+      documents-library root pending retrieval.
+  - id: in-eov-79-62
+    title: "Explanation of vote by India on resolution 79/62 (L.77), Lethal autonomous weapons systems"
+    publisher: Permanent Mission of India to the United Nations, New York
+    date: 2024-11-01
+    url: https://pmindiaun.gov.in/
+    type: statement
+    lang: en
+    accessed: 2026-07-17
+    note: >
+      Captured verbatim by research pass 5d from the mission's statements
+      archive (pmindiaun.gov.in, November 2024). The day is NOT
+      established by the research record: 2024-11-01 is a flagged
+      stand-in until the primary pins the real date. The statement
+      references L.77, the First Committee draft, so it predates the
+      2024-12-02 plenary vote. Exact URL also flagged for retrieval.
+
+  # France retrieval returns (2026-07-19). approved:false throughout;
+  # Walker approves per entry. Verbatim quotes captured by his research
+  # session per the retrieval request's rules.
+  - id: fr-comedef-avis-2021
+    title: "Avis sur l'integration de l'autonomie dans les systemes d'armes letaux (Opinion on integrating autonomy into lethal weapon systems)"
+    publisher: Comite d'ethique de la defense, Ministere des Armees (France)
+    date: 2021-04-29
+    url: https://www.defense.gouv.fr/comite-dethique-defense
+    type: ethics_opinion
+    lang: fr
+    accessed: 2026-07-19
+    note: >
+      Dated 29 April 2021 on the document's face; the committee was seized
+      by the Minister of the Armed Forces on 10 January 2020. French primary
+      PDF at defense.gouv.fr (20210429 ... Avis integration autonomie
+      systemes armes letaux.pdf); an OFFICIAL ENGLISH version is published
+      on the committee page ("... Version anglaise.pdf"), so quotes are
+      official-translation tier. The SALA-renunciation passage and the five
+      conditions are NOT yet captured verbatim (returns 2026-07-19); both
+      PDFs and the committee page to be archived at curation.
+  - id: fr-jo-qe-1610
+    title: "Reponse du ministere de l'Europe et des affaires etrangeres a la question ecrite n. 1610 (Assemblee nationale)"
+    publisher: Ministere de l'Europe et des affaires etrangeres (France), Journal Officiel
+    date: 2024-12-10
+    url: https://questions.assemblee-nationale.fr/q17/17-1610QE.htm
+    type: parliamentary_answer
+    lang: fr
+    accessed: 2026-07-19
+    note: >
+      Published in the Journal Officiel, 10 December 2024, p. 6643. An
+      identical answer appears at QE n. 981 (17-981QE.htm). The government's
+      own dated voice on the 2024 LAWS resolution vote. No official English;
+      handling of a working translation is pending Walker's ruling, so the
+      quote is staged in the state file's flags, not as rendered evidence.
+  - id: fr-jo-qe-8640
+    title: "Reponse a la question ecrite n. 8640 (Assemblee nationale)"
+    publisher: Ministere de l'Europe et des affaires etrangeres (France), Journal Officiel
+    date: 2025-01-01
+    url: https://questions.assemblee-nationale.fr/q17/17-8640QE.htm
+    type: parliamentary_answer
+    lang: fr
+    accessed: 2026-07-19
+    note: >
+      2025 answer. Concerns resolution 79/239 (Artificial Intelligence in
+      the military domain family), NOT the LAWS family: it records France as
+      a Yes on 79/239 with a no-duplication caution toward the GGE. Exact JO
+      publication date to pin (2025-01-01 is a flagged year stand-in).
+  - id: fr-macron-wired-2018
+    title: "Emmanuel Macron Talks to WIRED About France's AI Strategy"
+    publisher: WIRED (interview by Nicholas Thompson)
+    date: 2018-03-31
+    url: https://www.wired.com/story/emmanuel-macron-talks-to-wired-about-frances-ai-strategy/
+    type: interview
+    lang: en
+    accessed: 2026-07-19
+    note: >
+      Context-class (a head-of-state remark, not a directive). Quote
+      corroborated via War on the Rocks (2021); the WIRED interview is the
+      citation, to be archived. Exact publication day (~31 March 2018) to
+      confirm from the article face.
+  - id: fr-ccw-ime-2014
+    title: "CCW Informal Meeting of Experts on Lethal Autonomous Weapons Systems (2014): mandate and record"
+    publisher: United Nations Office for Disarmament Affairs (meetings.unoda.org)
+    date: 2014-05-13
+    url: https://meetings.unoda.org/ccw-ime/convention-certain-conventional-weapons-informal-meeting-experts-2014
+    type: web_page
+    lang: en
+    accessed: 2026-07-19
+    note: >
+      Official UNODA page carrying the November 2013 first LAWS mandate and
+      the 2014 expert-meeting record. With the UN Chronicle (which records
+      France's Ambassador Jean-Hugues Simon-Michel chairing), this grounds
+      the honest, downgraded 2013 origin note: the mandate was adopted in
+      2013 and France's ambassador chaired; "France initiated the debate" is
+      not directly documented and is not asserted.

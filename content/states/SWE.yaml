@@ -1,0 +1,18 @@
+# Sweden: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Anchor tier: the research passes ground facts and candidates but no primary
+# coding quote, so there is no coding here: flag, never invent.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: SWE
+un_name: SWEDEN
+display_name: Sweden
+coverage_tier: anchor
+
+position_codings: []
+
+shift_events: []
+
+flags:
+  - "CODING NEEDS SOURCE: research pass 5e warns against assuming bloc uniformity; Sweden's non-aligned arms-control tradition may place it softer than Norway; retrieve Sweden's GGE statement and submission for the precise line, then code"
+  - "In the September 2025 42-state statement; Nordic joint-statement series member"
+  - "NATO accession (2024-03-07) era band: ruling queued, same terms as Finland"
+  - "US Political Declaration endorser (on the captured 58 list)"

@@ -1,0 +1,22 @@
+# Democratic People's Republic of Korea: launch-set coding pass, drafted 2026-07-17 from the
+# research passes. Thin tier: votes plus a NONE coding recording that the research passes
+# reviewed the record and captured no substantive stated position.
+# approved: false throughout; nothing renders without the analyst's flip.
+iso3: PRK
+un_name: DEMOCRATIC PEOPLE'S REPUBLIC OF KOREA
+display_name: Democratic People's Republic of Korea
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-07-17
+    approved: false
+    search_note: >
+      Research passes 5c and 5d (2026-07-17) reviewed the record: minimal statement record; no substantive stated position captured in the reviewed record.
+
+shift_events: []
+
+flags:
+  - "DATASET CORRECTION: research pass 5d grouped the DPRK with Belarus as No on all three; the reconciled dataset records Abstain (2023), No (2024), No (2025). The dataset is authoritative"
+  - "Sparse statements or EOVs may exist; retrieval flagged"

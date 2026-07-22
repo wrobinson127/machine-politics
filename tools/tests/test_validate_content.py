@@ -24,15 +24,27 @@ VALID_SOURCES = {
             "type": "policy",
             "lang": "en",
             "accessed": "2026-07-16",
-        }
+        },
+        {
+            "id": "us-gge-statement",
+            "title": "US statement to the CCW GGE",
+            "publisher": "United States Mission",
+            "date": "2023-03-06",
+            "url": "https://docs-library.unoda.org/example-us-statement.pdf",
+            "type": "statement",
+            "lang": "en",
+            "accessed": "2026-07-16",
+        },
     ]
 }
 
+# Statement-class evidence: valid as coding support under the no-inference
+# rule. Doctrine tests build policy-class evidence explicitly.
 VALID_EVIDENCE = {
-    "source": "dod-3000-09",
+    "source": "us-gge-statement",
     "quote": "Autonomous and semi-autonomous weapon systems will be designed to allow commanders and operators to exercise appropriate levels of human judgment over the use of force.",
-    "date": "2023-01-25",
-    "url": "https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf",
+    "date": "2023-03-06",
+    "url": "https://docs-library.unoda.org/example-us-statement.pdf",
     "lang": "en",
     "translation": "none",
     "confidence": "EXPLICIT",
@@ -280,3 +292,34 @@ def test_context_annotation_with_coding_fields_rejected(tmp_path):
         ]
     errs = errors_for(tmp_path, mutate)
     assert any("strict scope" in e for e in errs)
+
+
+def test_provisional_coding_requires_note(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0], confidence="PROVISIONAL"
+        )
+    errs = errors_for(tmp_path, mutate)
+    assert any("requires a provisional_note" in e for e in errs)
+
+
+def test_provisional_coding_with_note_passes(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0],
+            confidence="PROVISIONAL",
+            provisional_note=(
+                "Provisional: coded from secondary reporting; pending "
+                "verification against the primary record."
+            ),
+        )
+    assert errors_for(tmp_path, mutate) == []
+
+
+def test_provisional_note_without_tier_is_drift(tmp_path):
+    def mutate(s):
+        s["position_codings"][0] = dict(
+            s["position_codings"][0], provisional_note="Stray note."
+        )
+    errs = errors_for(tmp_path, mutate)
+    assert any("confidence is not PROVISIONAL" in e for e in errs)

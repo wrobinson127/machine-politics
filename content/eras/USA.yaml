@@ -1,0 +1,18 @@
+# Government eras as context data (invariant 14): factual labels and dates,
+# two neutral shades at render time, never touching a coding, no causal copy.
+eras:
+  - label: Obama administration
+    start: 2009-01-20
+    end: 2017-01-20
+    source: https://obamawhitehouse.archives.gov/
+  - label: Trump administration
+    start: 2017-01-20
+    end: 2021-01-20
+    source: https://trumpwhitehouse.archives.gov/
+  - label: Biden administration
+    start: 2021-01-20
+    end: 2025-01-20
+    source: https://bidenwhitehouse.archives.gov/
+  - label: Trump administration
+    start: 2025-01-20
+    source: https://www.whitehouse.gov/administration/
