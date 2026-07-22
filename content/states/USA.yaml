@@ -9,7 +9,7 @@ position_codings:
   - code: REG-SOFT
     confidence: EXPLICIT
     as_of: 2023-02-16
-    approved: false
+    approved: true   # render-approved 2026-07-21 (the 2023 anchor of the ruled REG-SOFT -> CCW-ONLY recode)
     rationale: >
       The United States launched the non-binding Political Declaration on
       Responsible Military Use of Artificial Intelligence and Autonomy as its
@@ -29,94 +29,124 @@ position_codings:
           an error page to this project's tooling. The declaration launched
           2023-02-16 at REAIM; a revised version circulated October 2023.
 
-  - code: OPPOSE
-    confidence: PROVISIONAL
-    as_of: 2025-12-02
-    approved: false
-    provisional_note: >
-      Provisional: coded from secondary reporting of the December 2025
-      explanation of vote; pending verification against the primary record.
+  - code: CCW-ONLY
+    confidence: EXPLICIT
+    as_of: 2025-11-04
+    approved: true    # ruled + render-approved 2026-07-21 (Reading B); archive snapshot of the source to follow (Walker, in-browser)
+    scope_note: >
+      Venue-exclusivity position: the United States supports the CCW GGE
+      consensus track, including work toward a possible future instrument,
+      and opposes the parallel UN General Assembly track (objecting
+      specifically to preambular paragraph 7 and operative paragraph 3 of
+      resolution 80/57). Not coded OPPOSE: the primary record does not state
+      opposition to new instruments as such.
     rationale: >
-      The United States voted No on resolution 80/57. Its 2025 submission
-      under resolution 79/239 opposes any new UN-based regulatory process
-      and announces resistance to new restrictions, and the First Committee
-      explanation of vote states it did not support the resolution. The
-      coding is provisional because the December 2025 explanation of vote is
-      known to this project only through secondary reporting; the tier is
-      upgraded or the coding corrected once the primary record is reviewed.
-      The 2024 submission's defense of the CCW GGE track reads, on this
-      record, as a stage in the same trajectory rather than a separate
-      category, per the analyst ruling of 2026-07-17.
+      In its First Committee explanation of vote (US Mission to International
+      Organizations in Geneva, 4 November 2025) the United States explained
+      its No vote on the LAWS resolution (L.41) as a defense of the CCW
+      consensus track: it strongly supports the CCW and the Group of
+      Governmental Experts, encourages a consensus outcome in 2026, and
+      objects to the parallel UNGA resolution specifically at preambular
+      paragraph 7 and operative paragraph 3. The stated core is venue
+      preference, not opposition to a new instrument as such - the statement
+      expressly frames the CCW track as working "on a future instrument and
+      other measures." This supersedes the earlier provisional OPPOSE coding
+      (see flags: correction).
     evidence:
+      # The EOV's decisive passages, quoted as contiguous verbatim excerpts
+      # (<=25 words each per the evidence-quote rule); the full text is on file.
+      - source: us-mission-cluster4-2025
+        claim: In its explanation of vote the US did not support and voted against the LAWS resolution.
+        quote: "the United States does not support L.41, the LAWS resolution, and voted against it"
+        date: 2025-11-04
+        url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: us-mission-cluster4-2025
+        claim: The US framed its No as support for the CCW track working toward a future instrument, not opposition to a new instrument.
+        quote: "with a view to further deliberations and consensus among the CCW High Contracting Parties on a future instrument and other measures"
+        date: 2025-11-04
+        url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: us-mission-cluster4-2025
+        claim: The US objection to the UNGA resolution was specific to two paragraphs, not to a new instrument as such.
+        quote: "the United States is deeply concerned about preambular paragraph 7 and operative paragraph 3"
+        date: 2025-11-04
+        url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: us-mission-cluster4-2025
+        claim: The US stated strong support for the CCW GGE on lethal autonomous weapons systems.
+        quote: "this includes the ongoing work of the Group of Governmental Experts (GGE) on emerging technologies in the area of Lethal Autonomous Weapons Systems"
+        date: 2025-11-04
+        url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
       - source: us-submission-79-239
-        claim: By 2025 the US stated opposition to any new UN-based regulatory process for military AI and autonomy.
+        claim: The US objects to the parallel UN General Assembly regulatory track for military AI and autonomy.
         quote: "the creation of a new regulatory process under UN auspices would be inappropriate and undermine efforts to strengthen international peace and security"
         date: 2025-03-31
         url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf
         lang: en
         translation: none
         confidence: EXPLICIT
-      - source: us-submission-79-239
-        claim: The 2025 submission announces resistance to new restrictions on military AI capabilities.
-        quote: "we will resist efforts to create restrictions that would stymie legitimate innovation"
-        date: 2025-03-31
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf
+      # Corroboration 2026-07-21: the US September 2025 GGE paper (WP.6), captured
+      # in-browser and read from the face; supports the CCW-track / existing-IHL reading.
+      - source: ccw-gge1-2025-wp6-usa
+        claim: The US frames autonomy as a weapon-system capability governed by existing IHL classifications.
+        quote: "autonomy is a capability of the weapon system. This understanding means that LAWS fall under existing classifications in IHL"
+        date: 2025-09-02
+        url: https://undocs.org/en/CCW/GGE.1/2025/WP.6
         lang: en
         translation: none
         confidence: EXPLICIT
-      - source: un-c1-80-transcript-24
-        claim: In its First Committee explanation of vote the US announced it did not support the LAWS resolution.
-        quote: "The United States does not support L41 the law's resolution, and voted against it."
-        date: 2025-11-04
-        url: https://transcripts.un.org/en/ga/c1/80/24
+      - source: ccw-gge1-2025-wp6-usa
+        claim: The US contemplates a future instrument or other measures within the CCW work.
+        quote: "any future instrument or other possible measures will need a common understanding of what systems are covered to be effective"
+        date: 2025-09-02
+        url: https://undocs.org/en/CCW/GGE.1/2025/WP.6
         lang: en
         translation: none
-        confidence: INFERRED
-        note: >
-          Verbatim from the UN automatic-speech-recognition transcript, which
-          is not an official record; the ASR renders "L.41, the LAWS
-          resolution" as quoted. The official text is the US Mission Geneva
-          Cluster 4 statement, which blocks tool fetches (link on record).
+        confidence: EXPLICIT
 
 shift_events:
   - state: USA
-    date: 2025-12-02
+    date: 2025-11-04
     from: REG-SOFT
-    to: OPPOSE
-    approved: false
-    provisional_note: >
-      Provisional: coded from secondary reporting of the December 2025
-      explanation of vote; pending verification against the primary record.
+    to: CCW-ONLY
+    approved: true    # ruled + render-approved 2026-07-21 (Reading B)
     rationale: >
-      Between the 2023 declaration push and the December 2025 No vote on
-      resolution 80/57, the stated preference moved from promoting new
-      non-binding measures to opposing a new instrument. The date marks the
-      recorded vote the explanation of vote accompanies, not necessarily the
-      day the position changed. The event is provisional pending review of
-      the primary explanation-of-vote record, per the analyst ruling of
-      2026-07-17.
+      The 2023 REG-SOFT position (promoting the non-binding Political
+      Declaration as the preferred new measure) gave way, by 2025, to a
+      venue-exclusivity stance. The United States voted No on the UNGA LAWS
+      resolution 80/57 while explaining, in its First Committee explanation
+      of vote, that it does so because it supports the CCW GGE consensus
+      track "on a future instrument and other measures," objecting to the
+      UNGA resolution at preambular paragraph 7 and operative paragraph 3.
+      The date marks the explanation of vote (First Committee, 4 November
+      2025); the plenary recorded its No on resolution 80/57 on 2 December
+      2025. This shift supersedes the earlier provisional REG-SOFT -> OPPOSE
+      event (see flags: correction).
     evidence:
-      - source: un-c1-80-transcript-24
-        claim: In its First Committee explanation of vote the US announced it did not support the LAWS resolution.
-        quote: "The United States does not support L41 the law's resolution, and voted against it."
+      - source: us-mission-cluster4-2025
+        claim: The US framed its No vote as support for the CCW track working toward a future instrument.
+        quote: "with a view to further deliberations and consensus among the CCW High Contracting Parties on a future instrument and other measures"
         date: 2025-11-04
-        url: https://transcripts.un.org/en/ga/c1/80/24
-        lang: en
-        translation: none
-        confidence: INFERRED
-        note: >
-          Verbatim from the UN automatic-speech-recognition transcript, which
-          is not an official record; the ASR renders "L.41, the LAWS
-          resolution" as quoted. The official text is the US Mission Geneva
-          Cluster 4 statement, which blocks tool fetches (link on record).
-      - source: us-submission-79-239
-        claim: By 2025 the US stated opposition to any new UN-based regulatory process for military AI and autonomy.
-        quote: "the creation of a new regulatory process under UN auspices would be inappropriate and undermine efforts to strengthen international peace and security"
-        date: 2025-03-31
-        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf
+        url: https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/
         lang: en
         translation: none
         confidence: EXPLICIT
+
+flags:
+  - "CORRECTION (2026-07-21, corrections policy): this state was initially coded OPPOSE at the PROVISIONAL tier (as_of 2025-12-02) from the UN ASR transcript of the vote and the 79-239 submission, with a countervailing-evidence note flagging that the primary explanation of vote was the decisive open item. On retrieval of that primary (US Mission to International Organizations in Geneva, First Committee Cluster 4, 4 Nov 2025), the analyst ruled Reading B (2026-07-21): the No vote is stated as a defense of the CCW consensus track, including work toward a possible future instrument, not opposition to new instruments as such. Coding corrected to CCW-ONLY at EXPLICIT; the PROVISIONAL tier retires. The superseded OPPOSE reading rested on the ASR 'does not support' line and the 79-239 'resist restrictions' line, both of which read on the primary as objections to the parallel UNGA track."
+  - "RENDER-APPROVED 2026-07-21 (approved:true). One integrity follow-up remains: the analyst's in-browser web.archive.org snapshot of the mission-page EOV (robots-blocked to tooling; source us-mission-cluster4-2025) - invariant 11, a warning not a blocker, same status as the France/UK doctrine URLs."
+  - "2023 REG-SOFT anchor is Political-Declaration-based; the 1 Nov 2023 US EOV on L.56 (ADR-cited: 'the time is not right to begin negotiating a legally binding instrument') would upgrade the anchor from declaration-based to EOV-based - nice-to-have retrieval."
+  - "VOTES-LAYER ANNOTATION (nice-to-have): L.41 moved committee 156-5-8 (6 Nov 2025) to plenary 164-6-7 (2 Dec 2025) - one more No, one fewer abstention between committee and plenary. Plenary 80/57 No bloc: Belarus, Burundi, DPRK, Israel, Russian Federation, United States (corroborates the reconciled CSV, which stays authoritative)."
 
 doctrine:
   status: policy_identified

@@ -105,8 +105,12 @@ def test_canvas_is_server_rendered_and_hidden(preview):
     assert 'id="deadline-line"' in canvas
     assert 'data-set="b9"' in canvas and 'data-set="b2"' in canvas
     assert 'aria-live="polite"' in canvas
-    # the provisional note rides the canvas row as a visible caption
-    assert "Provisional: coded from secondary reporting" in canvas
+    # Provisional captions are a data-driven mechanism (build_site.provisional_caption):
+    # they ride the canvas row when a coding is PROVISIONAL. The only such coding
+    # (USA OPPOSE) was retired on the 2026-07-21 ruling that recoded the US to
+    # CCW-ONLY at EXPLICIT on retrieval of the primary EOV, so no live provisional
+    # caption renders now. Guard the invariant: no stale provisional note leaks in.
+    assert "Provisional:" not in canvas
 
 
 def test_tour_js_guards_are_first(preview):

@@ -13,7 +13,11 @@ position_codings:
   - code: CCW-ONLY
     confidence: EXPLICIT
     as_of: 2024-12-02
-    approved: true   # analyst ruling 2026-07-17: CCW-ONLY, no shift
+    approved: true   # analyst ruling 2026-07-17: CCW-ONLY, no shift; WP.3 supplement 2026-07-21
+    scope_note: >
+      India's stated two-tier: prohibit use of systems incapable of IHL
+      compliance; regulate all others through national measures - expressed
+      within its CCW-forum preference.
     rationale: >
       India holds that the CCW GGE is the appropriate forum and that the
       UNGA track duplicates it: its 2024 explanation of vote states it
@@ -53,6 +57,33 @@ position_codings:
           subject ("Parallel mandates..."), so only the verbatim fragment
           is quoted and the claim field carries the sense. Date is the
           flagged November stand-in; full EOV text retrieval is flagged.
+      # Supplement 2026-07-21: India's own 2025 working paper (CCW/GGE.1/2025/WP.3),
+      # captured in-browser and read from the face; enriches the CCW-ONLY coding
+      # with India's own-voice two-tier substance (does not displace it).
+      - source: ccw-gge1-2025-wp3-india
+        claim: In its own 2025 working paper India supports prohibiting the use of fully autonomous LAWS that cannot comply with IHL.
+        quote: "India supports the prohibition of the use of fully autonomous LAWS which cannot be used in compliance with IHL"
+        date: 2025-05-16
+        url: https://undocs.org/en/CCW/GGE.1/2025/WP.3
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2025-wp3-india
+        claim: For all other LAWS India calls for appropriate regulation of their use.
+        quote: "For all other LAWS, the GGE should identify measures for appropriate regulations on their use"
+        date: 2025-05-16
+        url: https://undocs.org/en/CCW/GGE.1/2025/WP.3
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2025-wp3-india
+        claim: India frames those regulations as implemented through national measures.
+        quote: "Appropriate regulations arising out of any possible framework should be implemented nationally"
+        date: 2025-05-16
+        url: https://undocs.org/en/CCW/GGE.1/2025/WP.3
+        lang: en
+        translation: none
+        confidence: EXPLICIT
 
 shift_events: []
 

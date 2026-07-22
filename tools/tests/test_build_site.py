@@ -78,16 +78,31 @@ def test_deploy_renders_zero_unapproved(deploy):
 def test_deploy_states_show_absence_tiers_not_positions(deploy):
     out, _ = deploy
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
-    assert "not yet reviewed by this project" in usa
-    # the comparative position spectrum shows the coded landscape (so the
-    # string "REG-SOFT" legitimately appears as a family label / another
-    # state's coding); the real invariant is that the USA's OWN unapproved
-    # codings and doctrine never leak on deploy.
-    assert "in accord with States" not in usa  # USA's REG-SOFT coding quote
-    assert "appropriate levels of human judgment" not in usa  # USA's doctrine quote
-    assert 'class="pmark mk me"' not in usa  # USA not located in the spectrum (uncoded)
+    # The USA is now coded (CCW-ONLY, approved 2026-07-21) so its position
+    # legitimately renders; but its DOCTRINE (DoDD 3000.09) stays unapproved
+    # and must not leak, and shows the absence tier. The vote waffle renders.
+    assert "not yet reviewed by this project" in usa  # doctrine absence tier
+    assert "appropriate levels of human judgment" not in usa  # unapproved doctrine quote
     assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
+    # A genuinely uncoded state must show absence tiers and NOT be located in
+    # the position spectrum. Picked dynamically so future approvals do not
+    # restale this test (the USA used to be this example until it was coded).
+    picked = None
+    for sf in sorted(config.STATES_DIR.glob("*.yaml")):
+        d = yaml.safe_load(sf.read_text(encoding="utf-8"))
+        if any(c.get("approved") is True for c in (d.get("position_codings") or [])):
+            continue
+        if (d.get("doctrine") or {}).get("approved") is True:
+            continue
+        page = out / "state" / f"{sf.stem}.html"
+        if page.exists():
+            picked = (sf.stem, page.read_text(encoding="utf-8"))
+            break
+    assert picked, "expected at least one uncoded state on deploy"
+    iso, html = picked
+    assert "not yet reviewed by this project" in html, iso
+    assert 'class="pmark mk me"' not in html, f"{iso} uncoded but located in spectrum"
 
 
 def test_preview_renders_drafts_behind_banner(preview):

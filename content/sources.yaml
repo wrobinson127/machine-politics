@@ -96,6 +96,30 @@ sources:
     type: statement
     lang: en
     accessed: 2026-07-16
+    archive_note: >
+      Archive snapshot REQUIRED at launch (invariant 11): the mission site
+      robots-blocks this project's tooling; the analyst captures it in-browser
+      and pins a web.archive.org snapshot. The US CCW-ONLY coding (2025-11-04)
+      cites this as its primary explanation of vote.
+
+  - id: ccw-gge1-2025-wp6-usa
+    title: "The Autonomy Aspect of Lethal Autonomous Weapon Systems (CCW/GGE.1/2025/WP.6)"
+    publisher: CCW Group of Governmental Experts, submitted by the United States
+    date: 2025-09-02
+    url: https://undocs.org/en/CCW/GGE.1/2025/WP.6
+    type: working_paper
+    lang: en
+    accessed: 2026-07-21
+
+  # India
+  - id: ccw-gge1-2025-wp3-india
+    title: "Working Paper - Emerging Technologies in the area of Lethal Autonomous Weapons Systems (CCW/GGE.1/2025/WP.3)"
+    publisher: CCW Group of Governmental Experts, submitted by India
+    date: 2025-05-16
+    url: https://undocs.org/en/CCW/GGE.1/2025/WP.3
+    type: working_paper
+    lang: en
+    accessed: 2026-07-21
 
   # Austria
   - id: ccw-gge2-2018-wp7-aut-bra-chl
