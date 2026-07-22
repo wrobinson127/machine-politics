@@ -92,7 +92,13 @@ instruments:
     list_note: >
       The official PDF is titled Endorsing Countries and Territories; the
       list itself is undated and the landing page publication date stands
-      as the as-of. 58 entries extracted from the PDF text.
+      as the as-of. 58 entries extracted from the PDF text. Independently
+      re-captured 2026-07-20 (enumeration session 1) from the same official
+      Government of the Netherlands roster: match is name-for-name, including
+      the printed "Northern Macedonia" and Palestine as a labelled
+      non-member. Secondary sources that say "57 countries and territories"
+      count the 57 member entries and omit Palestine; the printed roster is
+      58 entries.
     states:
       - {iso3: ARM, status: endorsed, name_as_listed: Armenia}
       - {iso3: AUS, status: endorsed, name_as_listed: Australia}
