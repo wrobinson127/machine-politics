@@ -8,13 +8,7 @@ The site takes no position on whether autonomous weapons should be banned or reg
 
 ## Who makes this
 
-<!-- HOLD FOR WALKER'S REWRITE (his ruling, 2026-08-24). This paragraph is his
-     to write in his own hand. Two things it needs to do: state plainly that he
-     works in this field and where, because a disclosed standpoint is what makes
-     the neutrality claim credible rather than a pose; and confirm or replace the
-     personal URL below, which is inferred from this site's own domain and has
-     not been verified. The draft below is a placeholder holding the shape. -->
-Machine Politics is researched and written by Walker Robinson, the analyst of record for every coding on this site. He works on AI compliance for autonomous weapons systems and writes on autonomous weapons policy. That is a standpoint, not a neutral vantage, and it is stated here so readers can weigh the codings knowing where they come from. More of his work is at [walker-robinson.com](https://walker-robinson.com).
+Machine Politics is researched and written by Walker Robinson, who works on AI policy and national security, including autonomous weapons. Every judgment call here is his own. Every position shows the rule it was judged against and the document it came from. More of his work is at [walker-robinson.com](https://walker-robinson.com).
 
 Every coded position on this site traces to a quoted, dated, linked primary source, and every one was approved by the analyst of record before it rendered. The [methodology page](methodology.html) explains the rubric, the evidence rules, and what the site does when the record is ambiguous.
 
