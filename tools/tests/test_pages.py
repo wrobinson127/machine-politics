@@ -12,6 +12,34 @@ from tools import build_site as bs
 from tools import validate_content as vc
 
 
+def test_rubric_page_renders_every_authored_field(tmp_path):
+    """The rubric page is the load-bearing credibility document, so nothing
+    written into rubric.yaml may silently fail to reach it. This caught two
+    real regressions: worked_examples and the whole instrument_authorship
+    block rendering nowhere, then a later clause dropped by an allowlist of
+    key names. Guards against a third."""
+    bs.build(tmp_path / "dep", preview=False)
+    html = (tmp_path / "dep" / "rubric.html").read_text(encoding="utf-8")
+    rubric = bs.load_yaml(config.RUBRIC_YAML)
+
+    auth = rubric.get("instrument_authorship") or {}
+    assert auth, "fixture expects the authorship rule present"
+    for key, value in auth.items():
+        if not isinstance(value, str):
+            continue
+        # Compare on a distinctive interior fragment: the renderer escapes
+        # and re-wraps, so full-string equality would be brittle.
+        probe = " ".join(value.split())[:60]
+        assert probe.split(".")[0][:40] in " ".join(html.split()), (
+            f"instrument_authorship.{key} never reaches rubric.html"
+        )
+
+    for ex in rubric.get("worked_examples") or []:
+        assert f'href="state/{ex["state"]}.html"' in html
+        probe = " ".join(str(ex.get("why", "")).split())[:40]
+        assert probe in " ".join(html.split())
+
+
 def test_md_subset_renders():
     html_out = bs.md_to_html(
         "## Head\n\nA **bold** [link](about.html) here.\n\n- one\n- two\n\n### Sub\n\nTail."

@@ -1924,9 +1924,14 @@ def rubric_page(rubric, preview, states=None):
         parts = [
             f'<h2>{esc(auth.get("name", "Authoring a draft instrument"))}</h2>'
         ]
-        for key in ("rule", "why", "quote_the_scope", "limits", "reader_check"):
-            if auth.get(key):
-                parts.append(f"<p>{esc(auth[key])}</p>")
+        # Every prose field in the block renders, in file order. An allowlist
+        # of key names was silently dropping fields added to the rubric later,
+        # which is how a load-bearing clause reached the YAML but never the
+        # page. The rubric file is the source; the renderer does not curate it.
+        for key, value in auth.items():
+            if key == "name" or not isinstance(value, str):
+                continue
+            parts.append(f"<p>{esc(value)}</p>")
         auth_html = (
             '<section class="signal" id="instrument-authorship">'
             + chr(10).join(parts)
