@@ -1,6 +1,7 @@
 """Tests for the prose-page layer: approval gating, markdown subset,
 and validator coverage of pages."""
 
+import shutil
 import sys
 from pathlib import Path
 
@@ -104,19 +105,26 @@ def test_deploy_never_renders_unapproved_prose(tmp_path, monkeypatch):
     and would need rewriting after every future approval. Instead: unapprove a
     copy of the page, point the loader at it, and prove the prose does not
     reach the deploy artifact while the shell's neutrality line still does."""
+    # Copy the whole content tree, not just pages/. Everything else that
+    # resolves through CONTENT_DIR (tour, endorsements, sponsorships, eras)
+    # returns empty when its file is missing, so a partial copy silently
+    # builds a degenerate site and makes the unapproved_rendered assertion
+    # below vacuous.
     work = tmp_path / "content"
-    (work / "pages").mkdir(parents=True)
-    real_pages = config.CONTENT_DIR / "pages"
-    for path in real_pages.glob("*.md"):
-        text = path.read_text(encoding="utf-8")
-        if path.name == "methodology.md":
-            assert "approved: true" in text, "fixture expects the live page approved"
-            text = text.replace("approved: true", "approved: false", 1)
-        (work / "pages" / path.name).write_text(text, encoding="utf-8")
+    shutil.copytree(config.CONTENT_DIR, work)
+    page = work / "pages" / "methodology.md"
+    text = page.read_text(encoding="utf-8")
+    assert "approved: true" in text, "fixture expects the live page approved"
+    page.write_text(text.replace("approved: true", "approved: false", 1),
+                    encoding="utf-8")
     monkeypatch.setattr(config, "CONTENT_DIR", work)
 
     manifest = bs.build(tmp_path / "dep", preview=False)
     assert manifest["unapproved_rendered"] == 0
+    # Guard the vacuity directly: the instrument and tour layers must be
+    # present in this build, or the gate assertions below prove nothing.
+    kinds = {str(e["kind"]).split(":")[0] for e in manifest["entries"]}
+    assert {"tour", "endorsement_instrument", "sponsorship_record"} <= kinds
     meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
     assert "Walker Robinson is the analyst of record" not in meth
     assert "takes no position" in meth

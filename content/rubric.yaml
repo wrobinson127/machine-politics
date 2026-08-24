@@ -116,6 +116,16 @@ instrument_authorship:
     itself. Signing a joint statement is not authorship of an instrument.
     An author who publicly departs from the text it co-authored is coded on
     the later record, and the divergence is shown rather than resolved.
+  confidence_depends_on_what_the_text_says: >
+    Authorship is EXPLICIT evidence only for the position the text actually
+    states. Where a draft instrument states an instrument preference on its
+    face, its authors are coded EXPLICIT. Where a draft states no instrument
+    preference at all, authorship still evidences a position, but reaching
+    it requires reading the venue the text was filed in and what the text
+    declines to ask for, and that is interpretation. Those codings are
+    INFERRED. The site does not treat what a document omits as something a
+    state said, for the same reason it does not treat a missing endorsement
+    as opposition.
   reader_check: >
     Every coding made under this rule shows the draft text, the document
     symbol, the date, and the state's name among the authors, so a reader
@@ -162,8 +172,11 @@ evidence_entry:
 worked_examples:
   - state: USA
     why: >
-      An explicit-statement case with a recorded vote arc: Yes on 78/241 and
-      79/62, No on 80/57. Doctrine on record since 2012.
+      An explicit-statement case, and the site's clearest coded shift. The
+      recorded vote arc runs Yes on 78/241, Yes on 79/62, No on 80/57, and
+      behind it the coding moves from support for non-binding measures to a
+      stated preference for keeping the work inside the CCW, dated to the
+      explanation of vote that says so.
   - state: AUT
     why: >
       A coded position that moved, and the clearest illustration of why

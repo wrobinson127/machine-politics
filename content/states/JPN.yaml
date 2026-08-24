@@ -9,28 +9,38 @@ coverage_tier: anchor
 
 position_codings:
   - code: CCW-ONLY
-    confidence: EXPLICIT
+    confidence: INFERRED
     as_of: 2023-03-13
     approved: false
     scope_note: >
       Coded from co-authorship of a substantive draft instrument, the same
       rule the ban camp is coded under and applied symmetrically here. Japan
-      is a named author of CCW/GGE.1/2023/WP.4/Rev.1, CCW/GGE.1/2023/WP.4/Rev.2, CCW/GGE.1/2025/WP.7.
+      is a named author of CCW/GGE.1/2023/WP.4/Rev.1, CCW/GGE.1/2023/WP.4/Rev.2, CCW/GGE.1/2025/WP.7. INFERRED, not EXPLICIT, and the reason
+      matters: the draft-articles text states no instrument preference on its
+      face. It never uses the words legally binding, binding instrument,
+      negotiation, or forum. Reaching a position from it means reading the
+      venue it was filed in and what it declines to ask for, which is
+      interpretation. The ban camp's texts are EXPLICIT because Draft
+      Protocol VI states its instrument preference in its own operative
+      articles; this one does not.
     rationale: >
       Japan co-authored the draft-articles series, a written text submitted
-      into the CCW Group of Governmental Experts that sets out prohibitions
-      and regulatory measures derived from international humanitarian law as
-      it already stands. The text works the CCW process and does not call for
-      a new legally binding instrument: its Article 1 opens by describing what
-      IHL already prohibits, and the articles specify measures for States to
-      implement to satisfy those existing requirements. That is CCW-ONLY on
-      the rubric - support for the CCW consensus process, with the form of
-      what it should produce left open - rather than LBI-OPEN, which would
-      require the state to have asked for a binding instrument.
+      into the CCW Group of Governmental Experts setting out prohibitions and
+      regulatory measures that States are to implement to satisfy
+      international humanitarian law as it already stands. Article 1 opens by
+      describing what IHL already prohibits, rather than creating a
+      prohibition the instrument itself would impose, which is the sharpest
+      contrast with Draft Protocol VI. The text asks for no new legally
+      binding instrument, and it asks for nothing outside the CCW. Read
+      together with the venue, that best supports CCW-ONLY: support for the
+      CCW consensus process with the form of its output left open. The
+      reading is interpretation and is marked as such. LBI-OPEN would require
+      the state to have asked for a binding instrument, and none of these
+      texts does.
     evidence:
       - source: ccw-gge1-2023-wp4rev1-draftarticles
         claim: Japan is a named author of CCW/GGE.1/2023/WP.4/Rev.1, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
-        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
         date: 2023-03-13
         url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
         lang: en
@@ -38,7 +48,7 @@ position_codings:
         confidence: EXPLICIT
       - source: ccw-gge1-2023-wp4rev2-draftarticles
         claim: Japan is a named author of CCW/GGE.1/2023/WP.4/Rev.2, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
-        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
         date: 2023-05-15
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en
         lang: en
@@ -46,33 +56,35 @@ position_codings:
         confidence: EXPLICIT
       - source: ccw-gge1-2025-wp7-draftarticles
         claim: Japan is a named author of CCW/GGE.1/2025/WP.7, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
-        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
         date: 2025-09-03
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
         lang: en
         translation: none
         confidence: EXPLICIT
       - source: ccw-gge1-2023-wp4rev1-draftarticles
-        claim: The draft articles ground their prohibition in international humanitarian law as it already stands, rather than in a new instrument.
-        quote: "IHL prohibits the use of an autonomous weapon system if it is of a nature to cause superfluous injury or unnecessary suffering"
+        claim: The draft articles specify measures for States to implement in order to satisfy international humanitarian law as it already stands, rather than obligations a new instrument would create.
+        quote: "which specify prohibitions and other regulatory measures for States to implement to effectively satisfy these IHL requirements in armed conflict"
         date: 2023-03-13
         url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
         lang: en
         translation: none
         confidence: EXPLICIT
         note: >
-          Article 1 opens "IHL prohibits", describing law already in force
-          rather than creating a new treaty prohibition. This is the sentence
-          that separates the series from Draft Protocol VI, whose Article 3
-          creates a prohibition the instrument itself would impose. The
-          wording is carried unchanged through every revision of the series;
-          it is quoted once here, on the earliest text this state authored.
+          The purpose clause is quoted whole rather than cut after
+          "regulatory measures", because the truncated form reads as though
+          the articles create prohibitions and would overstate the authors'
+          position in the same way a cut excerpt of Draft Protocol VI would
+          understate the ban camp's. The wording is carried unchanged through
+          every revision of the series and is quoted once here, on the
+          earliest text this state authored.
 
 
 shift_events: []
 
 flags:
-  - "JUDGMENT CALL FOR THE ANALYST: CCW-ONLY is the reading of the draft-articles series taken here, on the ground that the text never asks for a legally binding instrument and grounds itself in existing IHL. The competing reading is LBI-OPEN: the series is drafted as articles, the 2023 agenda item invites measures taking into account the example of existing CCW protocols, and protocols are binding. This coding does not follow that reading, because the mandate language is the Group's and not the authors', and the authors themselves never name a binding instrument. Ruling this one way sets it for all nine states and for how GBR and USA authorship is read"
+  - "JUDGMENT CALL FOR THE ANALYST: CCW-ONLY at INFERRED is the reading of the draft-articles series taken here, on the ground that the text never asks for a legally binding instrument and grounds itself in existing IHL. The competing reading is LBI-OPEN: the series is drafted as articles, the 2023 agenda item invites measures taking into account the example of existing CCW protocols, and protocols are binding. This coding does not follow that reading, because the mandate language is the Group's and not the authors', and the authors themselves never name a binding instrument. Ruling this one way sets it for all nine states and for how GBR and USA authorship is read"
+  - "CONFIDENCE, corrected 2026-08-24 in adversarial review: this coding was first drafted EXPLICIT. A search of the WP.7 face returned zero occurrences of forum, legally binding, binding instrument, negotiation or consensus process, so the position is reached from what the text omits plus where it was filed. That is interpretation, and EXPLICIT would have coded an absence as something the state said, which the methodology disclaims. Downgraded to INFERRED"
   - "CODING NEEDS SOURCE: research pass 5d names LBI-OPEN/REG-SOFT as the candidate range but captured no primary quote; retrieve Japan's UNSG submission and EOVs, then code"
   - "Co-author of CCW/GGE.1/2025/WP.7, the eleven-state draft-articles paper (VERIFIED from the document face 2026-07-17; already in the sponsorship layer). The research passes' claimed March 2023 six-state paper is unverified and possibly a conflation of WP.7"
   - "US Political Declaration endorser (on the captured 58 list): endorsement layer"

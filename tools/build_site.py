@@ -129,19 +129,37 @@ def parse_front_matter(text):
     return yaml.safe_load(m.group(1)) or {}, m.group(2)
 
 
+def _warn_missing(path):
+    """These files are expected. Absent them the build still succeeds and
+    silently drops a whole layer (the tour, the instrument rosters), which
+    reads as a clean build of a site that quietly lost its homepage
+    narrative. Say so on stderr rather than degrade in silence."""
+    print(f"WARNING: expected content file missing, layer will be empty: {path}",
+          file=sys.stderr)
+
+
 def load_tour():
     path = config.CONTENT_DIR / "tour.yaml"
-    return load_yaml(path) if path.exists() else None
+    if not path.exists():
+        _warn_missing(path)
+        return None
+    return load_yaml(path)
 
 
 def load_endorsements():
     path = config.CONTENT_DIR / "endorsements.yaml"
-    return (load_yaml(path).get("instruments") or []) if path.exists() else []
+    if not path.exists():
+        _warn_missing(path)
+        return []
+    return load_yaml(path).get("instruments") or []
 
 
 def load_sponsorships():
     path = config.CONTENT_DIR / "sponsorships.yaml"
-    return (load_yaml(path).get("records") or []) if path.exists() else []
+    if not path.exists():
+        _warn_missing(path)
+        return []
+    return load_yaml(path).get("records") or []
 
 
 def load_eras(iso3):
