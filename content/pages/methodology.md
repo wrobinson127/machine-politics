@@ -1,5 +1,5 @@
 ---
-approved: false
+approved: true
 title: Methodology
 ---
 ## What this site does

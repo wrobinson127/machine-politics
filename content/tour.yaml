@@ -2,8 +2,8 @@
 # machine_politics_scrollytelling_storyboard.md (authoritative for sequence,
 # canvas state, and the single new concept per beat).
 #
-# PROPOSAL 2026-08-24, drafted for Walker to edit. This replaces the earlier
-# PLACEHOLDER text. Division of labour, per build_site.canvas_teach_sets and
+# Copy drafted 2026-08-24, reviewed and APPROVED by the analyst of record the
+# same day. Division of labour, per build_site.canvas_teach_sets and
 # canvas_stat_sets: the build prints the counts, tallies and teaching lines
 # from the dataset. This file carries only the analyst prose, so the copy
 # below deliberately does NOT restate figures the chart furniture already
@@ -11,8 +11,8 @@
 #
 # Every factual anchor below was checked against the content layer on
 # 2026-08-24. Two corrections to the placeholder are noted inline at the
-# beats they affect. Renders only in preview until approved: true.
-approved: false
+# beats they affect.
+approved: true
 beats:
   - id: the-question
     title: The question
@@ -119,4 +119,6 @@ beats:
     # Parties" and lists exactly 39, then names Kiribati, Samoa and Thailand
     # as observer States associating themselves. 39 + 3 observers = 42, which
     # is where the disagreement came from. The beat uses the face's own count
-    # and does not fold the observers in. Source: jointstmt-gge-2025-09.
+    # and does not fold the observers in. The record of this document is the
+    # sponsorship entry joint-statement-gge-sept-2025, which carries the
+    # roster, the archived snapshot and the Palestine handling.

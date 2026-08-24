@@ -12,7 +12,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2022-08-09
-    approved: false
+    approved: true
     scope_note: >
       Coded from co-authorship of a substantive draft instrument (Draft
       Protocol VI) - a state speaking in the strongest written form. Under the

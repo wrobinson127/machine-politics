@@ -1,93 +1,93 @@
 {
  "entries": [
   {
-   "approved": false,
+   "approved": true,
    "kind": "tour",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2023-call-to-action",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2024-blueprint",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2026-pathways",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-78-241-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-79-62-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-80-57-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:gge-2025-wp7-draft-articles",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:gge-2025-wp8-joint-statement",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:joint-statement-gge-sept-2025",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:methodology",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:about",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:corrections",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ARG"
   },
   {
@@ -163,9 +163,9 @@
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CRI"
   },
   {
@@ -187,9 +187,9 @@
    "state": "DEU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ECU"
   },
   {
@@ -223,9 +223,9 @@
    "state": "GBR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GTM"
   },
   {
@@ -247,9 +247,9 @@
    "state": "IND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KAZ"
   },
   {
@@ -271,9 +271,9 @@
    "state": "NER"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NGA"
   },
   {
@@ -289,9 +289,9 @@
    "state": "NOR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PAN"
   },
   {
@@ -301,9 +301,9 @@
    "state": "PAN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PHL"
   },
   {
@@ -325,9 +325,9 @@
    "state": "RUS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SLE"
   },
   {
@@ -337,9 +337,9 @@
    "state": "SLE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SLV"
   },
   {
@@ -349,9 +349,9 @@
    "state": "SLV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "URY"
   },
   {

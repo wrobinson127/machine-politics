@@ -2,7 +2,7 @@
 # drafts, working-paper co-authorship, joint-statement membership. Extracted
 # from documents fetched via the UN symbol API and UNODA library; counts and
 # name notes are in each record. Membership is fact; meaning stays with the
-# reader (invariant 10). All approved: false.
+# reader (invariant 10). Approved by the analyst of record 2026-08-24.
 #
 # class (analyst ruling 2026-07-20): the "signed/commitment" pie counts only
 # commitment-class records (co-sponsorships, signed joint declarations,
@@ -17,7 +17,7 @@ records:
     name: Co-sponsors of A/C.1/78/L.56 as tabled (became resolution 78/241)
     date: 2023-10-12
     url: https://documents.un.org/api/symbol/access?s=A/C.1/78/L.56&l=en
-    approved: false
+    approved: true
     note: >
       Sponsor list verbatim from the face of the tabled draft. No Add.1
       addendum resolves at the symbol API and no evidence one was issued;
@@ -31,7 +31,7 @@ records:
     name: Co-sponsors of A/C.1/79/L.77 as tabled (became resolution 79/62)
     date: 2024-10-18
     url: https://documents.un.org/api/symbol/access?s=A/C.1/79/L.77&l=en
-    approved: false
+    approved: true
     note: Sponsor list verbatim from the face of the tabled draft.
     members: [AUT, BEL, BRA, CRI, GTM, IRL, KIR, LIE, MLT, MEX, NZL, PHL,
               SLE, LKA, CHE, TTO]
@@ -41,7 +41,7 @@ records:
     name: Co-sponsors of A/C.1/80/L.41 as tabled (became resolution 80/57)
     date: 2025-10-14
     url: https://documents.un.org/api/symbol/access?s=A/C.1/80/L.41&l=en
-    approved: false
+    approved: true
     note: >
       Sponsor list verbatim from the face of the tabled draft (21 states).
       Secondary reporting counts 31 co-sponsors by the committee vote; the
@@ -54,7 +54,7 @@ records:
     name: Draft articles on autonomous weapon systems (CCW/GGE.1/2025/WP.7)
     date: 2025-09-03
     url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
-    approved: false
+    approved: true
     note: >
       Eleven-state working paper: prohibitions and other regulatory measures
       on the basis of international humanitarian law. Co-authors from the
@@ -70,7 +70,7 @@ records:
     name: Joint Statement in Support of the CCW LAWS GGE (CCW/GGE.1/2025/WP.8)
     date: 2025-09-03
     url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.8&l=en
-    approved: false
+    approved: true
     note: >
       Ten-state joint statement submitted as a working paper; members
       verbatim from the document face, fetched via the symbol API
@@ -87,7 +87,7 @@ records:
     date: 2025-09-01
     url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf
     archived: http://web.archive.org/web/20250905170520/https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf
-    approved: false
+    approved: true
     note: >
       The planning spec placed this at the First Committee; the document
       itself belongs to the GGE second 2025 session (1 to 5 September),
@@ -95,7 +95,14 @@ records:
       Composition: 39 High Contracting Parties (Brazil delivering,
       Palestine among them as a CCW party) plus three Observer States
       associating themselves. The date is the session opening; the
-      statement PDF carries no exact day.
+      statement PDF carries no exact day. Re-verified against the face
+      2026-08-24: it reads "on behalf of the following 39 High-Contracting
+      Parties" and lists exactly 39, then names Kiribati, Samoa and Thailand
+      separately as Observer States. That settles the 42-against-39 split in
+      secondary reporting: 39 parties plus 3 observers is 42, so the widely
+      quoted 42 folds the observers in. This project reports the face's own
+      count. The members list below holds 38 because Palestine, counted
+      among the 39, has no board row.
     members: [AUT, BEL, BGR, CHL, COL, CRI, DNK, DOM, ECU, SLV, FIN, FRA,
               DEU, GTM, ISL, IRL, ITA, KAZ, LSO, LUX, MWI, MEX, MNE, NRU,
               NZL, MKD, NOR, PAK, PAN, PER, PRT, SLE, SVN, ESP, SWE, CHE,

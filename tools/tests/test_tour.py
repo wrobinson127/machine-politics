@@ -2,6 +2,7 @@
 first, and the animation stack is pinned with integrity hashes."""
 
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -29,20 +30,46 @@ def preview(tmp_path_factory):
     return out, manifest
 
 
-def test_deploy_has_no_tour_and_no_gsap(deploy):
-    """Unapproved beat copy never reaches the deploy artifact, and neither
-    do the animation scripts that exist only to serve it."""
-    out, manifest = deploy
+def test_deploy_has_no_tour_and_no_gsap(tmp_path, monkeypatch):
+    """Unapproved beat copy never reaches the deploy artifact, and neither do
+    the animation scripts that exist only to serve it. The tour was approved
+    on 2026-08-24, so the gate is exercised against an unapproved copy rather
+    than against today's editorial state; the approved counterpart is below.
+    Beat 1's opening line is the canary, not a placeholder marker, because a
+    placeholder check would now pass vacuously."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    tour = work / "tour.yaml"
+    text = tour.read_text(encoding="utf-8")
+    assert "\napproved: true" in text, "fixture expects the live tour approved"
+    tour.write_text(text.replace("\napproved: true", "\napproved: false", 1),
+                    encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
     index = (out / "index.html").read_text(encoding="utf-8")
-    # Gate on the real beat copy, not on a placeholder marker: the copy is
-    # written now, so "no PLACEHOLDER in deploy" would pass vacuously and
-    # stop guarding anything. Beat 1's opening line is the canary.
     assert "Who should be allowed to decide" not in index
     assert 'class="tour"' not in index
     assert "gsap" not in index.lower()
     assert "tour.js" not in index
     tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
     assert tour_entries and tour_entries[0]["rendered"] is False
+
+
+def test_deploy_ships_the_tour_once_approved(deploy):
+    """The other half of the gate, against the live content as approved on
+    2026-08-24: the beats and the animation stack now ship."""
+    out, manifest = deploy
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert manifest["unapproved_rendered"] == 0
+    assert "Who should be allowed to decide" in index
+    assert index.count('class="beat"') == 10
+    assert '<script defer src="js/tour.js">' in index
+    assert f"gsap/{bs.GSAP_VERSION}/gsap.min.js" in index
+    assert "DRAFT" not in index  # the draft chip is a preview-only affordance
+    tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
+    assert tour_entries and tour_entries[0]["rendered"] is True
 
 
 def test_preview_tour_scaffold_renders(preview):

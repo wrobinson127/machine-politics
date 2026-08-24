@@ -1,5 +1,5 @@
 ---
-approved: false
+approved: true
 title: Corrections
 ---
 This site will make mistakes. Position coding is interpretation, statements are diplomatic and deliberately ambiguous, and records arrive in many languages. The policy is to fix errors fast and in the open.

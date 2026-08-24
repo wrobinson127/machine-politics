@@ -4,6 +4,7 @@ rows, hue discipline on the new outputs, the two era tokens, the doctrine
 timeline's marker classes, and deterministic rebuilds."""
 
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -40,10 +41,25 @@ def test_nav_places_instruments_between_votes_and_rubric(deploy):
     )
 
 
-def test_deploy_instruments_is_a_factual_shell(deploy):
-    """The instruments all carry approved: false today, so the deploy page
-    is the prose-shell pattern: no rows, no scripts, no surfaces."""
-    out, manifest = deploy
+def test_deploy_instruments_is_a_factual_shell(tmp_path, monkeypatch):
+    """The gate, tested on the mechanism rather than on today's editorial
+    state. The instruments were approved on 2026-08-24, so this no longer
+    holds for the live content and is exercised against an unapproved copy:
+    gated instruments produce the prose-shell pattern with no rows, no
+    scripts and no surfaces. The live-approved counterpart is the test
+    below."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    for name in ("endorsements.yaml", "sponsorships.yaml"):
+        path = work / name
+        text = path.read_text(encoding="utf-8")
+        assert "approved: true" in text, f"fixture expects {name} approved"
+        path.write_text(text.replace("approved: true", "approved: false"),
+                        encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
     html = (out / "instruments.html").read_text(encoding="utf-8")
     assert "analyst review" in html
     assert "maplibre" not in html.lower()
@@ -68,6 +84,31 @@ def test_deploy_instruments_is_a_factual_shell(deploy):
     # recorded in the launch-set coding pass (2026-07-17)
     assert len(recs) == 6
     assert all(not e["rendered"] and not e["approved"] for e in ends + recs)
+
+
+def test_deploy_instruments_render_once_approved(deploy):
+    """The other half of the gate, against the live content as approved on
+    2026-08-24: the rosters, the quadrant and the wave map now ship in the
+    deploy artifact, and the manifest records every record as approved and
+    rendered with nothing unapproved leaking through."""
+    out, manifest = deploy
+    html = (out / "instruments.html").read_text(encoding="utf-8")
+    assert manifest["unapproved_rendered"] == 0
+    assert "analyst review" not in html
+    assert "58 endorsers on the official list." in html
+    assert 'id="quadrant-svg"' in html
+    assert html.count('class="q-dot"') == 193
+    assert f"maplibre-gl/{bs.MAPLIBRE_VERSION}/maplibre-gl.min.js" in html
+    assert (out / "js" / "instruments.js").exists()
+    # The count-only Blueprint still renders its honest zero-row disclosure
+    # rather than a roster it does not have.
+    assert "61 supporting states" in html
+    ends = [e for e in manifest["entries"]
+            if str(e["kind"]).startswith("endorsement_instrument:")]
+    recs = [e for e in manifest["entries"]
+            if str(e["kind"]).startswith("sponsorship_record:")]
+    assert len(ends) == 4 and len(recs) == 6
+    assert all(e["rendered"] and e["approved"] for e in ends + recs)
 
 
 def test_preview_instruments_renders_everything(preview):

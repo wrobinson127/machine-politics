@@ -366,30 +366,7 @@ sources:
       2013 and France's ambassador chaired; "France initiated the debate" is
       not directly documented and is not asserted.
 
-  # Retrieved 2026-08-24 to settle the closing figure in the home-page tour,
-  # where secondary sources disagreed (42 against 39). The face decides it.
-  - id: jointstmt-gge-2025-09
-    title: "Joint statement to the September 2025 session of the CCW GGE LAWS (as delivered)"
-    publisher: Delivered by Brazil on behalf of 39 High Contracting Parties, via UNODA Documents Library
-    date: 2025-09-03
-    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf
-    type: statement
-    lang: en
-    accessed: 2026-08-24
-    note: >
-      Roster captured from the document face. The statement reads "I take the
-      floor on behalf of the following 39 High-Contracting Parties" and then
-      lists exactly 39: Austria, Belgium, Bulgaria, Chile, Colombia, Costa
-      Rica, Denmark, Dominican Republic, Ecuador, El Salvador, Finland,
-      France, Germany, Guatemala, Iceland, Ireland, Italy, Kazakhstan,
-      Lesotho, Luxembourg, Malawi, Mexico, Montenegro, Nauru, New Zealand,
-      North Macedonia, Norway, Pakistan, Palestine, Panama, Peru, Portugal,
-      Sierra Leone, Slovenia, Spain, Sweden, Switzerland, Uruguay and Brazil.
-      Kiribati, Samoa and Thailand are named separately as observer States
-      associating themselves, which is where the widely reported 42 comes
-      from: 39 parties plus 3 observers. This project reports the face's own
-      count and does not fold the observers in. Palestine appears here as a
-      CCW High Contracting Party; it is a UN non-member observer state and so
-      has no board row, consistent with the endorsement rosters. Distinct
-      from CCW/GGE.1/2025/WP.8, the separate ten-state joint statement filed
-      as a working paper.
+  # The September 2025 joint statement is not registered here. It lives in the
+  # sponsorship layer (sponsorships.yaml, joint-statement-gge-sept-2025), which
+  # already carries the face-verified roster, the archived snapshot, and the
+  # Palestine handling. One record of truth per document, deliberately.

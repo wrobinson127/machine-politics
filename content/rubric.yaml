@@ -1,7 +1,7 @@
 # Machine Politics position-coding rubric.
 # Drafted by tooling, awaiting analyst review. Nothing here renders on the
 # public site until approved: true. The analyst of record is Walker Robinson.
-approved: false
+approved: true
 version: 0.2-draft
 updated: 2026-08-24
 
@@ -68,7 +68,8 @@ axis_b:
     EXPLICIT: >
       The state says it directly, in an official statement or document, in
       words a careful reader cannot mistake. Authoring a draft instrument
-      counts: see instrument_authorship below.
+      counts, on the terms set out under "Authoring a draft instrument"
+      below.
     INFERRED: >
       The coding rests on interpretation: voting behavior, sponsorship,
       alignment statements, or untranslated sources described rather than

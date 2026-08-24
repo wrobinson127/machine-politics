@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
+from config import config
 from tools import build_site as bs
 from tools import validate_content as vc
 
@@ -96,10 +97,35 @@ def test_real_pages_validate_and_render_in_preview(tmp_path):
     assert "takes no position" in about
 
 
-def test_deploy_shows_shells_until_approval(tmp_path):
+def test_deploy_never_renders_unapproved_prose(tmp_path, monkeypatch):
+    """The gate, tested on the mechanism rather than on today's editorial
+    state. This used to assert that the real methodology page was a shell,
+    which stopped being true the moment the analyst approved it (2026-08-24)
+    and would need rewriting after every future approval. Instead: unapprove a
+    copy of the page, point the loader at it, and prove the prose does not
+    reach the deploy artifact while the shell's neutrality line still does."""
+    work = tmp_path / "content"
+    (work / "pages").mkdir(parents=True)
+    real_pages = config.CONTENT_DIR / "pages"
+    for path in real_pages.glob("*.md"):
+        text = path.read_text(encoding="utf-8")
+        if path.name == "methodology.md":
+            assert "approved: true" in text, "fixture expects the live page approved"
+            text = text.replace("approved: true", "approved: false", 1)
+        (work / "pages" / path.name).write_text(text, encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+
     manifest = bs.build(tmp_path / "dep", preview=False)
     assert manifest["unapproved_rendered"] == 0
     meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
-    # the draft prose must not leak; the shell still carries the neutrality line
     assert "Walker Robinson is the analyst of record" not in meth
+    assert "takes no position" in meth
+
+
+def test_deploy_renders_approved_prose(tmp_path):
+    """The other half of the gate: once approved, the prose does ship."""
+    manifest = bs.build(tmp_path / "dep", preview=False)
+    assert manifest["unapproved_rendered"] == 0
+    meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
+    assert "Walker Robinson is the analyst of record" in meth
     assert "takes no position" in meth

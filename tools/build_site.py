@@ -1875,7 +1875,7 @@ def countries_geojson():
 # Rubric and prose shells
 # ---------------------------------------------------------------------------
 
-def rubric_page(rubric, preview):
+def rubric_page(rubric, preview, states=None):
     if not (preview or is_approved(rubric)):
         body = f"""
 <h1>The coding rubric</h1>
@@ -1896,6 +1896,43 @@ def rubric_page(rubric, preview):
         f"<h3>{esc(tier)}</h3><p>{esc(text)}</p>"
         for tier, text in (rubric.get("axis_b", {}).get("tiers") or {}).items()
     ]
+    # The authorship rule decides how a whole bloc of states is coded, and
+    # the confidence tiers cross-reference it by name, so it has to render or
+    # the tier text points at nothing. Fields are emitted in a fixed order
+    # and only when present, so the rubric stays the single source.
+    auth = rubric.get("instrument_authorship") or {}
+    auth_html = ""
+    if auth:
+        parts = [
+            f'<h2>{esc(auth.get("name", "Authoring a draft instrument"))}</h2>'
+        ]
+        for key in ("rule", "why", "quote_the_scope", "limits", "reader_check"):
+            if auth.get(key):
+                parts.append(f"<p>{esc(auth[key])}</p>")
+        auth_html = (
+            '<section class="signal" id="instrument-authorship">'
+            + chr(10).join(parts)
+            + "</section>"
+        )
+
+    # Worked examples are the "re-derive it yourself" promise made concrete,
+    # so each one links to the state page carrying the evidence.
+    examples = []
+    for ex in rubric.get("worked_examples") or []:
+        iso3 = str(ex.get("state", ""))
+        name = (states or {}).get(iso3, {}).get("display_name") or iso3
+        head = (f'<a href="state/{esc(iso3)}.html">{esc(name)}</a>'
+                if iso3 else "")
+        examples.append(f"<h3>{head}</h3><p>{esc(ex.get('why', ''))}</p>")
+    examples_html = ""
+    if examples:
+        examples_html = (
+            '<section class="signal"><h2>Worked examples</h2>'
+            "<p>Each of these is a coding you can check against its own "
+            "evidence. Follow the link and read the documents the coding "
+            "rests on.</p>" + chr(10).join(examples) + "</section>"
+        )
+
     chip = '<span class="draft-chip">DRAFT</span>' if preview and not is_approved(rubric) else ""
     body = f"""
 <h1>The coding rubric{chip}</h1>
@@ -1905,6 +1942,8 @@ def rubric_page(rubric, preview):
 <section class="signal"><h2>Axis B: confidence</h2>
 <p>{esc((rubric.get("axis_b") or {}).get("rules", ""))}</p>
 {chr(10).join(tiers)}</section>
+{auth_html}
+{examples_html}
 """
     return page("Rubric", body, current="rubric.html", preview=preview)
 
@@ -2759,7 +2798,8 @@ def build(out_dir, preview=False):
         (out / "assets" / "countries.geojson").write_text(
             countries_geojson(), encoding="utf-8", newline="\n"
         )
-    (out / "rubric.html").write_text(rubric_page(rubric, preview), encoding="utf-8", newline="\n")
+    (out / "rubric.html").write_text(
+        rubric_page(rubric, preview, content_states), encoding="utf-8", newline="\n")
     pages = load_pages()
     (out / "methodology.html").write_text(
         prose_page(

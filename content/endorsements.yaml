@@ -10,7 +10,7 @@ instruments:
     list_source_url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
     list_source_archived: http://web.archive.org/web/20241219144554/https://www.state.gov/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy/
     list_as_of: 2024-11-27
-    approved: false
+    approved: true
     list_note: >
       The live State Department page blocks tool fetches; the list was
       extracted from the archived capture, which prints Endorsing States as
@@ -88,7 +88,7 @@ instruments:
     list_source_url: https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
     list_source_archived: http://web.archive.org/web/20260313021739/https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
     list_as_of: 2023-02-16
-    approved: false
+    approved: true
     list_note: >
       The official PDF is titled Endorsing Countries and Territories; the
       list itself is undated and the landing page publication date stands
@@ -173,7 +173,7 @@ instruments:
     date: 2024-09-10
     list_source_url: https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322676
     list_as_of: 2024-09-10
-    approved: false
+    approved: true
     list_note: >
       STOP-FLAG. Official sources publish only a count: the ROK Foreign
       Ministry records 61 supporting states without naming them, the summit
@@ -195,7 +195,7 @@ instruments:
     list_source_url: https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
     list_source_archived: http://web.archive.org/web/20260306152504/https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
     list_as_of: 2026-07-17
-    approved: false
+    approved: true
     list_note: >
       Rolling list; the page says as of today and remains open to further
       endorsements. 45 entries extracted 2026-07-17; the March archive

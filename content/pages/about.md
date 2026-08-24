@@ -1,5 +1,5 @@
 ---
-approved: false
+approved: true
 title: About
 ---
 Machine Politics records where every country stands on autonomous weapons, tracked as positions shift over time. It reads five signals per state: recorded votes, endorsements, sponsorships, official statements, and national policy.
