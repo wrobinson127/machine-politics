@@ -4,7 +4,7 @@ title: Methodology
 ---
 ## What this site does
 
-Machine Politics records where every United Nations member state stands on autonomous weapons systems. It tracks three signals per state: recorded General Assembly votes, official statements, and national policy documents. Positions are trajectories, not snapshots. The site shows who moved, when, and on what record.
+Machine Politics records where every United Nations member state stands on autonomous weapons systems. It tracks five signals per state: recorded General Assembly votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy documents. Positions are trajectories, not snapshots. The site shows who moved, when, and on what record.
 
 The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
 
@@ -16,7 +16,9 @@ The tracker records five separable signals per state: recorded votes, endorsemen
 
 **Endorsement absence:** a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.
 
-## Three signals, three coverage depths
+## Coverage depth: the three signals that carry coded depth
+
+Endorsements and sponsorships are recorded as membership facts, taken verbatim from the face of each instrument's own roster. They are never coded and never graded, so they have no coverage depth to report. The three signals below are the ones this project reads, weighs, and codes from, and each is covered to a different depth.
 
 **Votes:** complete. All 193 member states, from the official UN General Assembly voting dataset published by the Dag Hammarskjöld Library. The extraction code, the reconciliation checks, and the committed extract are public in the repository. Nothing is scraped.
 
@@ -74,4 +76,4 @@ Automated Decision Research, the monitoring arm of the Stop Killer Robots campai
 
 ## Sources and licensing
 
-Vote data: © United Nations, used with attribution under the UN Digital Library terms, non-commercial. This project's own coded data: CC BY 4.0. Code: MIT. Details in the repository's DATA_LICENSE.
+Two layers, two sets of terms, and the split is deliberate. The vote extracts are © United Nations, taken from the UN Digital Library with attribution and offered on for non-commercial use only. This project's own coded data, meaning the codings, shift events, confidence tiers, rubric, and analyst notes, is CC BY 4.0 and free to reuse commercially with attribution. The CC BY grant does not reach the vote extracts. Any page showing both is a composite, and the stricter terms control the part they cover. Code: MIT. The full split, including the composite rule, is in the repository's DATA_LICENSE.

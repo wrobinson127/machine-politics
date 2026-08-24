@@ -131,7 +131,7 @@ instruments:
       - {iso3: LUX, status: endorsed, name_as_listed: Luxembourg}
       - {iso3: MYS, status: endorsed, name_as_listed: Malaysia}
       - {iso3: MLT, status: endorsed, name_as_listed: Malta}
-      - {iso3: MDA, status: endorsed, name_as_listed: Moldova, mapping_note: Mapped to MDA, Republic of Moldova}
+      - {iso3: MDA, status: endorsed, name_as_listed: Moldova, mapping_note: "Mapped to MDA, Republic of Moldova"}
       - {iso3: MNG, status: endorsed, name_as_listed: Mongolia}
       - {iso3: MNE, status: endorsed, name_as_listed: Montenegro}
       - {iso3: MAR, status: endorsed, name_as_listed: Morocco}

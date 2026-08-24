@@ -17,12 +17,13 @@ beats:
   - id: the-question
     title: The question
     copy: >
-      Who should be allowed to decide to take a human life? For as long as
-      there has been war, that question had one answer available to it,
-      because only a person could make the decision. Autonomous weapons make
-      a second answer possible. Governments have spent a decade arguing over
-      whether to permit it. This is the record of what each of them has
-      actually said, and where each of them has moved.
+      Who should be allowed to decide to take a human life? Weapons have
+      killed without a person present for a long time, but the choice of
+      target was always made by someone, somewhere, in advance. What is new
+      is a machine that selects and engages a target on its own judgment.
+      Governments have spent a decade arguing over whether to permit it.
+      This is the record of what each of them has actually said, and where
+      each of them has moved.
   - id: one-vote
     title: One country, one vote
     copy: >
@@ -54,8 +55,9 @@ beats:
       beneath the marks. The United States backed non-binding measures from
       2023, and in November 2025 it set out a preference for keeping the work
       inside the Convention on Certain Conventional Weapons. The band changes
-      color there. The red seam marks the moment the position moved, and it
-      is the only thing on this site that red is allowed to mean.
+      color there. The red seam marks the moment the position moved. Red is
+      reserved on this site: it marks a change of position, or a correction
+      to this project's own record, and nothing else.
     # CORRECTION to the placeholder: the earlier copy narrated this shift as a
     # move to OPPOSE with a brown band, sourced provisionally from secondary
     # reporting. The content layer codes it REG-SOFT to CCW-ONLY, EXPLICIT,
@@ -87,11 +89,11 @@ beats:
     copy: >
       Step back from the movement and structure appears. One group of states
       wants a binding treaty with prohibitions in it. Another wants new
-      measures that bind nobody. A few want no new law at all, and hold that
-      the law of armed conflict already covers this. Some are genuinely hard
-      to read, and this site says so rather than picking for them. The rows
-      sort by coded position. They are described in the order the axis runs,
-      and never ranked.
+      international measures that are not legally binding. A few want no new
+      law at all, and hold that the law of armed conflict already covers
+      this. Some are genuinely hard to read, and this site says so rather
+      than picking for them. The rows sort by coded position. They are
+      described in the order the axis runs, and never ranked.
   - id: the-board
     title: Every state, the full board
     copy: >
@@ -106,13 +108,15 @@ beats:
       A dated line runs down the right edge. The Seventh Review Conference of
       the Convention on Certain Conventional Weapons opens in Geneva on 16
       November 2026, and it is the next moment at which any of this can turn
-      into law. Everything to the left of that line is on the record.
+      into law. In September 2025, Brazil read a statement to the expert
+      group on behalf of thirty-nine parties saying they were ready to begin
+      negotiating. Everything to the left of that line is on the record.
       Everything to the right is still being decided. The board is yours from
       here: choose any row for the evidence behind it.
-    # NOTE for Walker: the placeholder's closing anchor was "the 42-party
-    # joint statement delivered by Brazil at the GGE in September 2025". That
-    # figure is NOT supported by the content layer. The September 2025 joint
-    # statement on record (CCW/GGE.1/2025/WP.8) carries ten states, and the
-    # separate draft-articles paper (WP.7) carries eleven. I have left the
-    # claim out rather than print an unverified number. If you want a closing
-    # figure here, it needs a source record first.
+    # T3 RESOLVED 2026-08-24. The placeholder claimed 42 parties; secondary
+    # sources split between 42 and 39. The as-delivered primary was retrieved
+    # and read: it says "on behalf of the following 39 High-Contracting
+    # Parties" and lists exactly 39, then names Kiribati, Samoa and Thailand
+    # as observer States associating themselves. 39 + 3 observers = 42, which
+    # is where the disagreement came from. The beat uses the face's own count
+    # and does not fold the observers in. Source: jointstmt-gge-2025-09.

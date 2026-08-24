@@ -6,7 +6,7 @@ This site will make mistakes. Position coding is interpretation, statements are 
 
 ## The policy
 
-A correction never disappears history. When a coding is superseded, the old coding stays visible with a data-integrity notice and the date it was corrected. Data-integrity notices are the only red on this site. Red never marks a state's position; it marks this project's own record-keeping.
+A correction never disappears history. When a coding is superseded, the old coding stays visible with a data-integrity notice and the date it was corrected. Red on this site carries exactly two meanings: that notice, and the thin seam marking the moment a coded position changed. Red never marks a state's position, and it never signals approval or disapproval of one.
 
 Corrections are listed on this page as they happen, newest first, each with what changed, why, and the evidence that forced the change.
 
