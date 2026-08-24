@@ -1,10 +1,10 @@
-# Republic of Korea: launch-set coding pass, drafted 2026-07-17 from the
-# research passes. Anchor tier: the research passes ground facts and candidates but no primary
-# coding quote, so there is no coding here: flag, never invent.
-# approved: false throughout; nothing renders without the analyst's flip.
-iso3: KOR
-un_name: REPUBLIC OF KOREA
-display_name: Republic of Korea
+# Canada: co-author of the draft-articles series, the other camp's
+# substantive written text. Coded from draft-instrument authorship under
+# the 2026-07-21 rule, applied symmetrically with the ban camp. Faces
+# checked 2026-08-24. Nothing renders until the analyst sets approved: true.
+iso3: CAN
+un_name: CANADA
+display_name: Canada
 coverage_tier: anchor
 
 position_codings:
@@ -14,10 +14,10 @@ position_codings:
     approved: false
     scope_note: >
       Coded from co-authorship of a substantive draft instrument, the same
-      rule the ban camp is coded under and applied symmetrically here. Republic of Korea
+      rule the ban camp is coded under and applied symmetrically here. Canada
       is a named author of CCW/GGE.1/2023/WP.4/Rev.1, CCW/GGE.1/2023/WP.4/Rev.2, CCW/GGE.1/2025/WP.7.
     rationale: >
-      Republic of Korea co-authored the draft-articles series, a written text submitted
+      Canada co-authored the draft-articles series, a written text submitted
       into the CCW Group of Governmental Experts that sets out prohibitions
       and regulatory measures derived from international humanitarian law as
       it already stands. The text works the CCW process and does not call for
@@ -29,7 +29,7 @@ position_codings:
       require the state to have asked for a binding instrument.
     evidence:
       - source: ccw-gge1-2023-wp4rev1-draftarticles
-        claim: Republic of Korea is a named author of CCW/GGE.1/2023/WP.4/Rev.1, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
+        claim: Canada is a named author of CCW/GGE.1/2023/WP.4/Rev.1, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
         quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
         date: 2023-03-13
         url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
@@ -37,7 +37,7 @@ position_codings:
         translation: none
         confidence: EXPLICIT
       - source: ccw-gge1-2023-wp4rev2-draftarticles
-        claim: Republic of Korea is a named author of CCW/GGE.1/2023/WP.4/Rev.2, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
+        claim: Canada is a named author of CCW/GGE.1/2023/WP.4/Rev.2, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
         quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
         date: 2023-05-15
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en
@@ -45,7 +45,7 @@ position_codings:
         translation: none
         confidence: EXPLICIT
       - source: ccw-gge1-2025-wp7-draftarticles
-        claim: Republic of Korea is a named author of CCW/GGE.1/2025/WP.7, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
+        claim: Canada is a named author of CCW/GGE.1/2025/WP.7, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
         quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
         date: 2025-09-03
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
@@ -68,12 +68,15 @@ position_codings:
           wording is carried unchanged through every revision of the series;
           it is quoted once here, on the earliest text this state authored.
 
-
 shift_events: []
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Canada is not yet doctrine-reviewed by this project; its
+        international position is recorded above.
 
 flags:
   - "JUDGMENT CALL FOR THE ANALYST: CCW-ONLY is the reading of the draft-articles series taken here, on the ground that the text never asks for a legally binding instrument and grounds itself in existing IHL. The competing reading is LBI-OPEN: the series is drafted as articles, the 2023 agenda item invites measures taking into account the example of existing CCW protocols, and protocols are binding. This coding does not follow that reading, because the mandate language is the Group's and not the authors', and the authors themselves never name a binding instrument. Ruling this one way sets it for all nine states and for how GBR and USA authorship is read"
-  - "CODING NEEDS SOURCE: research pass 5d names REG-SOFT/LBI-OPEN as the candidate range but captured no primary quote; retrieve the submission and statements, then code"
-  - "REAIM 2024 Seoul summit host. Co-author of CCW/GGE.1/2025/WP.7, the eleven-state draft-articles paper (VERIFIED from the document face 2026-07-17; already in the sponsorship layer)"
-  - "US Political Declaration endorser (on the captured 58 list)"
-  - "Doctrine: check for a national AI-military policy at curation"

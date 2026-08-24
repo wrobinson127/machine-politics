@@ -1,0 +1,66 @@
+# Latvia: co-author of the draft-articles series, the other camp's
+# substantive written text. Coded from draft-instrument authorship under
+# the 2026-07-21 rule, applied symmetrically with the ban camp. Faces
+# checked 2026-08-24. Nothing renders until the analyst sets approved: true.
+iso3: LVA
+un_name: LATVIA
+display_name: Latvia
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: EXPLICIT
+    as_of: 2025-09-03
+    approved: false
+    scope_note: >
+      Coded from co-authorship of a substantive draft instrument, the same
+      rule the ban camp is coded under and applied symmetrically here. Latvia
+      is a named author of CCW/GGE.1/2025/WP.7.
+    rationale: >
+      Latvia co-authored the draft-articles series, a written text submitted
+      into the CCW Group of Governmental Experts that sets out prohibitions
+      and regulatory measures derived from international humanitarian law as
+      it already stands. The text works the CCW process and does not call for
+      a new legally binding instrument: its Article 1 opens by describing what
+      IHL already prohibits, and the articles specify measures for States to
+      implement to satisfy those existing requirements. That is CCW-ONLY on
+      the rubric - support for the CCW consensus process, with the form of
+      what it should produce left open - rather than LBI-OPEN, which would
+      require the state to have asked for a binding instrument.
+    evidence:
+      - source: ccw-gge1-2025-wp7-draftarticles
+        claim: Latvia is a named author of CCW/GGE.1/2025/WP.7, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems, which specify prohibitions and other regulatory measures"
+        date: 2025-09-03
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2025-wp7-draftarticles
+        claim: The draft articles ground their prohibition in international humanitarian law as it already stands, rather than in a new instrument.
+        quote: "IHL prohibits the use of an autonomous weapon system if it is of a nature to cause superfluous injury or unnecessary suffering"
+        date: 2025-09-03
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Article 1 opens "IHL prohibits", describing law already in force
+          rather than creating a new treaty prohibition. This is the sentence
+          that separates the series from Draft Protocol VI, whose Article 3
+          creates a prohibition the instrument itself would impose. The
+          wording is carried unchanged through every revision of the series;
+          it is quoted once here, on the earliest text this state authored.
+
+shift_events: []
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Latvia is not yet doctrine-reviewed by this project; its
+        international position is recorded above.
+
+flags:
+  - "JUDGMENT CALL FOR THE ANALYST: CCW-ONLY is the reading of the draft-articles series taken here, on the ground that the text never asks for a legally binding instrument and grounds itself in existing IHL. The competing reading is LBI-OPEN: the series is drafted as articles, the 2023 agenda item invites measures taking into account the example of existing CCW protocols, and protocols are binding. This coding does not follow that reading, because the mandate language is the Group's and not the authors', and the authors themselves never name a binding instrument. Ruling this one way sets it for all nine states and for how GBR and USA authorship is read"

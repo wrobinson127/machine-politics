@@ -97,6 +97,12 @@
    "state": "ARG"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "AUS"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
@@ -133,6 +139,18 @@
    "state": "BLR"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CAN"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "CAN"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
@@ -175,6 +193,18 @@
    "state": "CRI"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "CZE"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "CZE"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
@@ -197,6 +227,18 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "ECU"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "EST"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "EST"
   },
   {
    "approved": true,
@@ -247,6 +289,12 @@
    "state": "IND"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "JPN"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
@@ -257,6 +305,36 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "KAZ"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "KOR"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "LTU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "LTU"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "LVA"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "LVA"
   },
   {
    "approved": false,
@@ -311,6 +389,18 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "PHL"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "POL"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "POL"
   },
   {
    "approved": false,

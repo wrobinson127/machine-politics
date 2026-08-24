@@ -370,3 +370,53 @@ sources:
   # sponsorship layer (sponsorships.yaml, joint-statement-gge-sept-2025), which
   # already carries the face-verified roster, the archived snapshot, and the
   # Palestine handling. One record of truth per document, deliberately.
+
+  # Populate pass 2 (2026-08-24): the draft-articles series, the other camp's
+  # substantive written texts. All three faces were retrieved and read; the
+  # author lists below are verbatim from them, in printed order. The series
+  # shows a coalition growing: six authors in March 2023, seven in May 2023,
+  # eleven in September 2025.
+  - id: ccw-gge1-2023-wp4rev1-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2023/WP.4/Rev.1)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Japan, the Republic of Korea, the United Kingdom, and the United States
+    date: 2023-03-13
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24: six authors, not the seven some secondary
+      summaries report. Poland joins at Rev.2. This also closes the flag on
+      AUS.yaml doubting whether a March 2023 six-state paper existed and
+      suspecting a conflation with WP.7: it exists, and the research pass
+      was right.
+  - id: ccw-gge1-2023-wp4rev2-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2023/WP.4/Rev.2)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Japan, Poland, the Republic of Korea, the United Kingdom, and the United States
+    date: 2023-05-15
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24. Seven authors: Rev.1's six plus Poland, which
+      is why Poland's coding dates from this revision and not from March.
+  - id: ccw-gge1-2025-wp7-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2025/WP.7)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Czechia, Estonia, Japan, Latvia, Lithuania, Poland, the Republic of Korea, the United Kingdom, and the United States
+    date: 2025-09-03
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24. Eleven authors: Rev.2's seven plus Czechia,
+      Estonia, Latvia and Lithuania, whose codings date from here. Read
+      against Draft Protocol VI, the contrast is the point of the series.
+      Both are draft instrument texts; this one restates and operationalises
+      existing IHL rather than creating new treaty prohibitions, and its
+      Article 1 opens "IHL prohibits", describing law already in force. The
+      2025 agenda item under which it was filed speaks of elements of an
+      instrument "without prejudging its nature"; that is the Group's
+      mandate language, not the authors' own, and is not quoted as their
+      position.
