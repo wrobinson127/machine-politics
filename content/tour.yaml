@@ -113,6 +113,9 @@ beats:
       negotiating. Everything to the left of that line is on the record.
       Everything to the right is still being decided. The board is yours from
       here: choose any row for the evidence behind it.
+    sources:
+      - label: "Joint statement to the September 2025 session of the CCW GGE on LAWS (as delivered)"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf"
     # T3 RESOLVED 2026-08-24. The placeholder claimed 42 parties; secondary
     # sources split between 42 and 39. The as-delivered primary was retrieved
     # and read: it says "on behalf of the following 39 High-Contracting

@@ -56,7 +56,9 @@ For national policy, the site only ever makes a dated coverage statement: no pub
 
 ## Secondary sources, used honestly
 
-Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
+Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents.
+
+This is not a formality, and two counts on this site differ from the widely reported ones because of it. A September 2025 joint statement is usually described as carrying 42 parties. Its own text reads "on behalf of the following 39 High-Contracting Parties" and then names 39, listing Kiribati, Samoa and Thailand separately as observer states that associate themselves: 39 plus 3, reported as 42. A 2023 draft-articles paper is usually credited to seven states; the face of its first revision names six, and the seventh joins at the second revision two months later. Neither correction required special access. Both required opening the document and counting the names, which is what this project does instead of repeating a figure. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
 
 ## Links that outlive administrations
 

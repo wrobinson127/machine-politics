@@ -8,38 +8,37 @@ display_name: Czechia
 coverage_tier: anchor
 
 position_codings:
-  - code: CCW-ONLY
-    confidence: INFERRED
+  - code: AMBIG
+    confidence: AMBIGUOUS
     as_of: 2025-09-03
     approved: false
     scope_note: >
       Coded from co-authorship of a substantive draft instrument, the same
-      rule the ban camp is coded under and applied symmetrically here. Czechia
-      is a named author of CCW/GGE.1/2025/WP.7. INFERRED, not EXPLICIT, and the reason
-      matters: the draft-articles text states no instrument preference on its
-      face. It never uses the words legally binding, binding instrument,
-      negotiation, or forum. Reaching a position from it means reading the
-      venue it was filed in and what it declines to ask for, which is
-      interpretation. The ban camp's texts are EXPLICIT because Draft
-      Protocol VI states its instrument preference in its own operative
-      articles; this one does not.
+      rule the ban camp is coded under. Czechia is a named author of CCW/GGE.1/2025/WP.7.
+      The rule reads the text, and this text declines to state an instrument
+      preference: searched on its face, it contains no occurrence of legally
+      binding, binding instrument, negotiation, or forum. That is a property
+      of the document, not a gap in this project's retrieval, so the rubric
+      yields AMBIG rather than a category picked out of the silence.
     rationale: >
-      Czechia co-authored the draft-articles series, a written text submitted
-      into the CCW Group of Governmental Experts setting out prohibitions and
-      regulatory measures that States are to implement to satisfy
-      international humanitarian law as it already stands. Article 1 opens by
-      describing what IHL already prohibits, rather than creating a
-      prohibition the instrument itself would impose, which is the sharpest
-      contrast with Draft Protocol VI. The text asks for no new legally
-      binding instrument, and it asks for nothing outside the CCW. Read
-      together with the venue, that best supports CCW-ONLY: support for the
-      CCW consensus process with the form of its output left open. The
-      reading is interpretation and is marked as such. LBI-OPEN would require
-      the state to have asked for a binding instrument, and none of these
-      texts does.
+      The draft-articles series supports two readings and settles neither.
+      It is drafted as articles, the form a treaty takes, and its authors
+      affirm them as such; that points toward a binding instrument. It also
+      asks for nothing new, specifying measures States are to implement to
+      satisfy international humanitarian law as it already stands, with
+      Article 1 opening by describing what IHL already prohibits rather than
+      creating a prohibition the instrument itself would impose; that points
+      toward the existing process being sufficient. Both readings rest on the
+      document; neither is stated by it. Coding CCW-ONLY would infer a forum
+      preference from where the paper was filed and what it omits, and
+      coding LBI-OPEN would infer a binding instrument from the genre of the
+      document. Both are readings of the same silence in opposite
+      directions, which is what AMBIG is for. The two evidence entries below
+      carry the tension rather than resolving it. Czechia's own statements, if
+      and when retrieved, are what would resolve it.
     evidence:
       - source: ccw-gge1-2025-wp7-draftarticles
-        claim: Czechia is a named author of CCW/GGE.1/2025/WP.7, draft articles specifying prohibitions and regulatory measures to satisfy existing IHL.
+        claim: Czechia is a named author of CCW/GGE.1/2025/WP.7, and affirms it in the form a treaty takes, as numbered draft articles.
         quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
         date: 2025-09-03
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
@@ -47,7 +46,7 @@ position_codings:
         translation: none
         confidence: EXPLICIT
       - source: ccw-gge1-2025-wp7-draftarticles
-        claim: The draft articles specify measures for States to implement in order to satisfy international humanitarian law as it already stands, rather than obligations a new instrument would create.
+        claim: The same articles ask for nothing new, specifying measures States are to implement to satisfy international humanitarian law as it already stands.
         quote: "which specify prohibitions and other regulatory measures for States to implement to effectively satisfy these IHL requirements in armed conflict"
         date: 2025-09-03
         url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
@@ -55,12 +54,15 @@ position_codings:
         translation: none
         confidence: EXPLICIT
         note: >
-          The purpose clause is quoted whole rather than cut after
-          "regulatory measures", because the truncated form reads as though
-          the articles create prohibitions and would overstate the authors'
-          position in the same way a cut excerpt of Draft Protocol VI would
-          understate the ban camp's. The wording is carried unchanged through
-          every revision of the series and is quoted once here, on the
+          This is the other side of the tension, and the reason the coding is
+          AMBIG: the entry above shows a text written in the form of a treaty,
+          and this one shows the same text asking only that existing law be
+          implemented. The purpose clause is quoted whole rather than cut
+          after "regulatory measures", because the truncated form reads as
+          though the articles create prohibitions and would overstate the
+          authors' position in the same way a cut excerpt of Draft Protocol VI
+          would understate the ban camp's. The wording is carried unchanged
+          through every revision of the series and is quoted once here, on the
           earliest text this state authored.
 
 shift_events: []
@@ -74,5 +76,5 @@ doctrine:
         international position is recorded above.
 
 flags:
-  - "JUDGMENT CALL FOR THE ANALYST: CCW-ONLY at INFERRED is the reading of the draft-articles series taken here, on the ground that the text never asks for a legally binding instrument and grounds itself in existing IHL. The competing reading is LBI-OPEN: the series is drafted as articles, the 2023 agenda item invites measures taking into account the example of existing CCW protocols, and protocols are binding. This coding does not follow that reading, because the mandate language is the Group's and not the authors', and the authors themselves never name a binding instrument. Ruling this one way sets it for all nine states and for how GBR and USA authorship is read"
-  - "CONFIDENCE, corrected 2026-08-24 in adversarial review: this coding was first drafted EXPLICIT. A search of the WP.7 face returned zero occurrences of forum, legally binding, binding instrument, negotiation or consensus process, so the position is reached from what the text omits plus where it was filed. That is interpretation, and EXPLICIT would have coded an absence as something the state said, which the methodology disclaims. Downgraded to INFERRED"
+  - "ANALYST RULING 2026-08-24: AMBIG, on the ground that the draft-articles text supports a treaty-shaped reading (they wrote articles) and a process-shaped reading (they filed inside the CCW and asked for nothing new) and refuses to choose between them. Both CCW-ONLY and LBI-OPEN were rejected as readings of the same silence in opposite directions. A face search returning zero occurrences of legally binding, binding instrument, negotiation and forum is a finding about the document, not a gap in retrieval: these states deliberately did not specify. Drafted first as CCW-ONLY at EXPLICIT, corrected to INFERRED in adversarial review, then ruled to AMBIG. Same shape as the China coding, and correct for the same reason"
+  - "RESOLVES ON RETRIEVAL: this state's own statements are what would settle the reading. Until they are retrieved the coding stays AMBIG. The coverage asymmetry against the ban camp is real and is the honest cost of not guessing"

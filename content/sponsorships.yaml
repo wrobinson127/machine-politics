@@ -13,6 +13,7 @@
 # sponsorship/cadence bands regardless of class.
 records:
   - instrument_id: cosponsors-78-241-as-tabled
+    roster_verified: 2026-08-24   # 27 sponsors match the face of A/C.1/78/L.56
     class: commitment
     name: Co-sponsors of A/C.1/78/L.56 as tabled (became resolution 78/241)
     date: 2023-10-12
@@ -27,6 +28,7 @@ records:
               LKA, CHE, TTO]
 
   - instrument_id: cosponsors-79-62-as-tabled
+    roster_verified: 2026-08-24   # 16 sponsors match the face of A/C.1/79/L.77
     class: commitment
     name: Co-sponsors of A/C.1/79/L.77 as tabled (became resolution 79/62)
     date: 2024-10-18
@@ -37,6 +39,7 @@ records:
               SLE, LKA, CHE, TTO]
 
   - instrument_id: cosponsors-80-57-as-tabled
+    roster_verified: 2026-08-24   # 21 sponsors match the face of A/C.1/80/L.41
     class: commitment
     name: Co-sponsors of A/C.1/80/L.41 as tabled (became resolution 80/57)
     date: 2025-10-14
@@ -50,6 +53,7 @@ records:
               NZL, PHL, MDA, SMR, SLE, LKA, CHE, TON, VEN]
 
   - instrument_id: gge-2025-wp7-draft-articles
+    roster_verified: 2026-08-24   # 11 authors match the face of CCW/GGE.1/2025/WP.7
     class: working_paper
     name: Draft articles on autonomous weapon systems (CCW/GGE.1/2025/WP.7)
     date: 2025-09-03
@@ -66,7 +70,8 @@ records:
     members: [AUS, CAN, CZE, EST, JPN, LVA, LTU, POL, KOR, GBR, USA]
 
   - instrument_id: gge-2025-wp8-joint-statement
-    class: working_paper   # CONFIRMED 2026-07-21: the symbol series governs the class - WP.8 sits in the WP symbol series, so it is working-paper class and out of the pie (the pie counts signed commitment rosters). The 42-party 'as delivered' joint statement stays in as commitment-class.
+    roster_verified: 2026-08-24   # 10 authors match the face of CCW/GGE.1/2025/WP.8
+    class: working_paper   # CONFIRMED 2026-07-21: the symbol series governs the class - WP.8 sits in the WP symbol series, so it is working-paper class and out of the pie (the pie counts signed commitment rosters). The 'as delivered' joint statement stays in as commitment-class; its count is 39 parties on the face, widely reported as 42 because that folds in three observer States.
     name: Joint Statement in Support of the CCW LAWS GGE (CCW/GGE.1/2025/WP.8)
     date: 2025-09-03
     url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.8&l=en
@@ -82,6 +87,7 @@ records:
     members: [AUS, CAN, DNK, EST, DEU, POL, PRT, SGP, SWE, GBR]
 
   - instrument_id: joint-statement-gge-sept-2025
+    roster_verified: 2026-08-24   # 39 parties on the face, 38 with board rows plus Palestine, and 3 observers named separately
     class: commitment   # a signed joint declaration ("As delivered" statement PDF), not a WP-symbol negotiating paper
     name: Joint statement to the September 2025 session of the CCW GGE on LAWS, delivered by Brazil
     date: 2025-09-01

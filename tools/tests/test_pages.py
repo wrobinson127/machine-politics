@@ -1,6 +1,7 @@
 """Tests for the prose-page layer: approval gating, markdown subset,
 and validator coverage of pages."""
 
+import html as html_lib
 import shutil
 import sys
 from pathlib import Path
@@ -19,7 +20,11 @@ def test_rubric_page_renders_every_authored_field(tmp_path):
     block rendering nowhere, then a later clause dropped by an allowlist of
     key names. Guards against a third."""
     bs.build(tmp_path / "dep", preview=False)
-    html = (tmp_path / "dep" / "rubric.html").read_text(encoding="utf-8")
+    raw = (tmp_path / "dep" / "rubric.html").read_text(encoding="utf-8")
+    # Unescape before comparing. The renderer escapes apostrophes to &#x27;,
+    # so a raw-text probe reports a false absence for any sentence containing
+    # one, which is most of them.
+    page_text = " ".join(html_lib.unescape(raw).split())
     rubric = bs.load_yaml(config.RUBRIC_YAML)
 
     auth = rubric.get("instrument_authorship") or {}
@@ -27,17 +32,17 @@ def test_rubric_page_renders_every_authored_field(tmp_path):
     for key, value in auth.items():
         if not isinstance(value, str):
             continue
-        # Compare on a distinctive interior fragment: the renderer escapes
-        # and re-wraps, so full-string equality would be brittle.
         probe = " ".join(value.split())[:60]
-        assert probe.split(".")[0][:40] in " ".join(html.split()), (
+        assert probe in page_text, (
             f"instrument_authorship.{key} never reaches rubric.html"
         )
 
     for ex in rubric.get("worked_examples") or []:
-        assert f'href="state/{ex["state"]}.html"' in html
-        probe = " ".join(str(ex.get("why", "")).split())[:40]
-        assert probe in " ".join(html.split())
+        assert f'href="state/{ex["state"]}.html"' in raw
+        probe = " ".join(str(ex.get("why", "")).split())[:60]
+        assert probe in page_text, (
+            f"worked example {ex['state']} never reaches rubric.html"
+        )
 
 
 def test_md_subset_renders():

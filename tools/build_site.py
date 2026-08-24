@@ -479,11 +479,21 @@ def tour_html(tour, votes, content_states, preview):
             if preview and not is_approved(tour)
             else ""
         )
+        # A hard number in the narration gets its document one click away,
+        # on the same standard the codings are held to. Prose is not exempt.
+        cites = ""
+        srcs = beat.get("sources") or []
+        if srcs:
+            links = " · ".join(
+                f'<a href="{esc(s["url"])}" rel="noopener">{esc(s["label"])}</a>'
+                for s in srcs
+            )
+            cites = f'\n      <p class="beat-cite">Source: {links}</p>'
         beats.append(f"""
   <section class="beat" id="beat-{esc(beat["id"])}" data-beat="{i}">
     <div class="beat-copy">
       <h2>{esc(beat["title"])}{chip}</h2>
-      <p>{esc(beat["copy"])}</p>
+      <p>{esc(beat["copy"])}</p>{cites}
     </div>
   </section>""")
     return (

@@ -195,6 +195,17 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .beat-copy p { font-size: 1.05rem; }
 
+/* Citation line under a beat: present and checkable, never louder than the
+   narration it supports. */
+.beat-copy p.beat-cite {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  margin-top: 0.75rem;
+}
+
+.beat-copy p.beat-cite a { color: inherit; }
+
 @media (max-width: 860px) {
   .tour .beat { padding: 2.2rem 0; }
 }
