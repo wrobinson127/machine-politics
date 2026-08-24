@@ -248,31 +248,37 @@ sources:
     title: "Statement by Norway to the CCW Group of Governmental Experts on LAWS, second 2024 session"
     publisher: Government of Norway, via UNODA Documents Library
     date: 2024-08-26
-    url: https://docs-library.unoda.org/
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/2024-08-26_Norway_CCW_GGE_LAWS_2nd_session_general_statement.pdf
     type: statement
     lang: en
-    accessed: 2026-07-17
+    accessed: 2026-08-24
     note: >
-      Quote captured verbatim by research pass 5e from the primary
-      statement; the exact document URL is not yet pinned (flagged;
-      research names UNODA and norway.no as hosts). URL here is the
-      documents-library root pending retrieval.
+      Primary retrieved and read 2026-08-24; the document URL is now pinned to
+      the UNODA Documents Library PDF. The retrieval corrected the
+      research-captured quote, which had compressed the statement's
+      "international humanitarian law" to "IHL"; the quote now matches the
+      primary word for word. The document's own dateline reads only "Geneva,
+      August 2024" - the day 26 August comes from UNODA's filing of it as the
+      second-session general statement, not from the face of the document.
   - id: in-eov-79-62
     title: "Explanation of vote by India on resolution 79/62 (L.77), Lethal autonomous weapons systems"
-    publisher: Permanent Mission of India to the United Nations, New York
+    publisher: Permanent Mission of India to the United Nations, New York; published in the India Geneva mission's statements archive
     date: 2024-11-01
-    date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
-    url: https://pmindiaun.gov.in/
+    date_precision: month   # the primary itself carries only "November 2024"; renders as "November 2024", never a day
+    url: https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3
     type: statement
     lang: en
-    accessed: 2026-07-17
+    accessed: 2026-08-24
     note: >
-      Captured verbatim by research pass 5d from the mission's statements
-      archive (pmindiaun.gov.in, November 2024). The day is NOT
-      established by the research record: 2024-11-01 is a flagged
-      stand-in until the primary pins the real date. The statement
+      Primary retrieved and read 2026-08-24; the document URL is now pinned.
+      Both quoted fragments were checked against the primary and match it word
+      for word. The statement heads itself "India's Explanation of Vote
+      (POST-VOTING) Conventional Weapons Cluster 79 UNGA First Committee, New
+      York, November 2024" and carries no dateline of its own, so month
+      precision is a property of the primary record, not a gap in this
+      project's retrieval: the day does not exist on the document. It
       references L.77, the First Committee draft, so it predates the
-      2024-12-02 plenary vote. Exact URL also flagged for retrieval.
+      2024-12-02 plenary vote.
 
   # France retrieval returns (2026-07-19). approved:false throughout;
   # Walker approves per entry. Verbatim quotes captured by his research

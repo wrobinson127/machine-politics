@@ -67,7 +67,8 @@ axis_b:
   tiers:
     EXPLICIT: >
       The state says it directly, in an official statement or document, in
-      words a careful reader cannot mistake.
+      words a careful reader cannot mistake. Authoring a draft instrument
+      counts: see instrument_authorship below.
     INFERRED: >
       The coding rests on interpretation: voting behavior, sponsorship,
       alignment statements, or untranslated sources described rather than
@@ -80,6 +81,35 @@ axis_b:
       project has not yet retrieved and verified. A provisional coding
       carries a note saying exactly what is pending, and it is upgraded or
       corrected once the primary record is reviewed.
+
+instrument_authorship:
+  name: Authoring a draft instrument
+  rule: >
+    When a state is a named author of a substantive draft treaty text, that
+    authorship is read as an explicit statement of the position the text
+    takes, and the coding is EXPLICIT. The text itself is the quoted
+    evidence.
+  why: >
+    A draft instrument is the most committing written form available to a
+    state in a negotiation. It is not a speech about what should happen; it
+    is the operative language the state is asking other states to sign. A
+    government that puts its name on the words "it is prohibited to develop,
+    produce, possess, acquire, deploy, transfer, or use" has stated a
+    position on prohibition in terms no careful reader can mistake, and it
+    has done so more concretely than most floor statements manage.
+  limits: >
+    This rule is narrow on purpose, and it is applied symmetrically: it
+    reads authorship the same way for a draft that prohibits and for a
+    draft that declines to. Three things it does not cover. Co-sponsoring a
+    resolution is not authorship, and sponsorship never produces a coding by
+    itself. Signing a joint statement is not authorship of an instrument.
+    An author who publicly departs from the text it co-authored is coded on
+    the later record, and the divergence is shown rather than resolved.
+  reader_check: >
+    Every coding made under this rule shows the draft text, the document
+    symbol, the date, and the state's name among the authors, so a reader
+    who thinks authorship should count for less can see exactly what the
+    coding rests on and discount it themselves.
 
 shift_event:
   description: >

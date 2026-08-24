@@ -34,7 +34,10 @@ def test_deploy_has_no_tour_and_no_gsap(deploy):
     do the animation scripts that exist only to serve it."""
     out, manifest = deploy
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert "PLACEHOLDER BEAT" not in index
+    # Gate on the real beat copy, not on a placeholder marker: the copy is
+    # written now, so "no PLACEHOLDER in deploy" would pass vacuously and
+    # stop guarding anything. Beat 1's opening line is the canary.
+    assert "Who should be allowed to decide" not in index
     assert 'class="tour"' not in index
     assert "gsap" not in index.lower()
     assert "tour.js" not in index
@@ -48,7 +51,11 @@ def test_preview_tour_scaffold_renders(preview):
     out, manifest = preview
     index = (out / "index.html").read_text(encoding="utf-8")
     assert index.count('class="beat"') == 10
-    assert "PLACEHOLDER BEAT 1" in index and "PLACEHOLDER BEAT 10" in index
+    # Every beat carries real prose. Checked structurally rather than against
+    # fixed strings so editing the copy does not break the scaffold gate.
+    beat_copy = re.findall(r'<div class="beat-copy">.*?<p>(.*?)</p>', index, re.S)
+    assert len(beat_copy) == 10
+    assert all(len(c.strip()) > 40 for c in beat_copy)
     positions = [index.find(f'id="beat-{bid}"') for bid in vc.TOUR_BEAT_SEQUENCE]
     assert all(p > -1 for p in positions)
     assert positions == sorted(positions)  # storyboard order preserved

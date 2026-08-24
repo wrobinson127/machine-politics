@@ -34,31 +34,32 @@ position_codings:
         claim: India abstained on the 2024 resolution, stating its reason in its own explanation of vote.
         quote: "India has abstained on the resolution L.77"
         date: 2024-11-01
-        date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
-        url: https://pmindiaun.gov.in/
+        date_precision: month   # the primary itself carries only "November 2024"; renders as "November 2024", never a day
+        url: https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3
         lang: en
         translation: none
         confidence: EXPLICIT
         note: >
-          The research record dates this statement only "November 2024";
-          the day is NOT established, so the first of the month stands in
-          as a flagged placeholder until the primary is retrieved. The
-          statement references L.77, the First Committee draft, so it
+          Verified against the primary 2026-08-24. The statement heads itself
+          "November 2024" and carries no dateline, so the month is the
+          precision the document itself supports; the day does not exist on
+          the record. It references L.77, the First Committee draft, so it
           predates the 2024-12-02 plenary vote.
       - source: in-eov-79-62
         claim: India objects to parallel UNGA mandates as duplicating the CCW GGE's work.
-        quote: "amount to a duplication of efforts and resources"
+        quote: "Parallel mandates and processes on lethal autonomous weapons systems also amount to a duplication of efforts and resources"
         date: 2024-11-01
-        date_precision: month   # only "November 2024" is established; renders as "November 2024", not a false day
-        url: https://pmindiaun.gov.in/
+        date_precision: month   # the primary itself carries only "November 2024"; renders as "November 2024", never a day
+        url: https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3
         lang: en
         translation: none
         confidence: EXPLICIT
         note: >
-          Contiguous fragment; the research capture elides the sentence's
-          subject ("Parallel mandates..."), so only the verbatim fragment
-          is quoted and the claim field carries the sense. Date is the
-          flagged November stand-in; full EOV text retrieval is flagged.
+          Upgraded 2026-08-24 from a truncated fragment to the full sentence,
+          now that the primary has been retrieved. The research capture had
+          elided the subject ("Parallel mandates and processes..."), so the
+          claim field had to carry sense the quote did not. India's next
+          sentence names the consequence: it abstained on OP7 and OP9.
       # Supplement 2026-07-21: India's own 2025 working paper (CCW/GGE.1/2025/WP.3),
       # captured in-browser and read from the face; enriches the CCW-ONLY coding
       # with India's own-voice two-tier substance (does not displace it).
@@ -100,10 +101,9 @@ doctrine:
     systems identified by this project, as of 2026-07-17.
 
 flags:
-  - "PROVENANCE (approved 2026-07-17, flag KEPT): the coding renders, but the EOV quote fragments are research-captured, not re-verified against the primary this pass. Kept at EXPLICIT for coding; re-verify against the primary EOV before launch"
-  - "DATE UNCERTAINTY: the 2024 EOV is dated only November 2024 in the research record; evidence cards carry 2024-11-01 as a flagged stand-in until the primary pins the real day. The coding's as_of stays on the recorded plenary abstention (2024-12-02) per the established convention"
+  - "PROVENANCE RESOLVED 2026-08-24: the 2024 EOV primary was retrieved and both quotes verified word for word against it. The document URL is pinned to the statement page. The second quote was upgraded from a truncated fragment to the full sentence. Verified-primary status granted"
+  - "DATE RESOLVED 2026-08-24: the primary heads itself 'November 2024' and carries no dateline, so month precision is a property of the document, not a gap in retrieval - there is no day to pin. Evidence renders as 'November 2024'. The coding's as_of stays on the recorded plenary abstention (2024-12-02) per the established convention"
   - "RULED 2026-07-17: no shift_event, per the analyst. Shift events record Axis-A category changes; India's category (CCW-ONLY) held while its vote posture moved. The vote trajectory renders in the votes layer, not as a coded shift"
   - "India 2025 EOV (the reason for the Yes on 80/57): the highest-value India retrieval; decides whether the Yes is substantive or procedural"
-  - "2024 EOV exact URL and full text: pin from pmindiaun.gov.in (quote fragments verbatim from the research capture)"
   - "GGE chairmanship 2017 and the 11 Guiding Principles steering: roles annotation, enumeration bundle"
   - "Technology-neutral-IHL view: Carnegie analysis is context-class secondary, never coding evidence"
