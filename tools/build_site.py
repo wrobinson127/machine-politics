@@ -590,9 +590,9 @@ def is_approved(entry):
 GSAP_VERSION = "3.15.0"
 GSAP_SCRIPTS = (
     ("gsap.min.js",
-     "sha512-Qrpii3NEFZ02RN6ZqpTu6pS/5PEq7EzBYJLki3AKBd8IncrlAwQdZHzExYwS0+b1NM0/qfxI1GOhqWLVosocDA=="),
+     "sha512-oJ8QbaQThQoJZ7oEv+29jfPM6CcP+zUxh3PKJs1vyOhx0UraUrE7PQgeItu3dOuCJyrzWpoYMsVjkkPEBzbUqw=="),
     ("DrawSVGPlugin.min.js",
-     "sha512-AxhfgcJYY6BU9wEF3FLWSrBjzra6a0tIdNPZIG5mhdCCtrrvzkMDEARvWsTGR9FJG9z/t8l9g5gJqtMIt5Nf5w=="),
+     "sha512-egrFtAMXB/E3deN7qNirS2hUrVU9Y5HK12Fea4yzjtfZ5gVYPlsH+r3IxsQ4oOR2wfOAfeUv5pCIoSg58R1YoA=="),
 )
 
 
@@ -1353,10 +1353,10 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
 # server-rendered lists and tables ARE the content; the map is enhancement.
 MAPLIBRE_VERSION = "5.12.0"
 MAPLIBRE_JS_SRI = (
-    "sha512-8zwkEbAPWRxEwazkrkQuxRX5rNuyQgoXdMNUnh6CU+Ch0peJ6m6nz505BMte989ZHUQD1R1Iwwz8VV9dYCPVKg=="
+    "sha512-0BWq+SR7EMt0191JMIlQk0jZxAQmrTvGFA4xzd/NukRhDKZvqfF7sxIq5m5tecR4OMaXRb+Ry52hmng5gTBaVQ=="
 )
 MAPLIBRE_CSS_SRI = (
-    "sha512-GT5+KstPNd/krQxWK1xI+fs/Pwlrekt9E+A9fOLGo2tvG/RsXz99dwH0mbB+zZWwA0gIb/ATWIO3/JIev0xwTA=="
+    "sha512-A+upg1UEqFAoCJJ4P5OFl2JXKybtcKh4qyhvPxTcusRMWf55btrRVY/1pOTE83R/oXzrRzwh1FakAtXfta62rg=="
 )
 MAP_STYLE_URL = "https://tiles.openfreemap.org/styles/positron"
 MAP_CREDIT = "Map data © OpenStreetMap contributors, tiles by OpenFreeMap."
