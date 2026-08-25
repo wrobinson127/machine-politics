@@ -715,12 +715,20 @@ def pct(d):
 
 
 def band_style(code, confidence):
-    """Fill styling for a coded band. AMBIG is a designed hatch texture,
-    confidence modulates opacity, hue never changes."""
+    """Fill styling for a coded band. Every substantive position carries both a
+    hue and a texture, so the category survives colour-vision deficiency (see
+    config.POSITION_TEXTURES). AMBIG is texture only, over paper, because it
+    has no hue. Confidence modulates opacity, hue never changes."""
     opacity = "1" if confidence == "EXPLICIT" else "0.55"
-    if code == "AMBIG":
-        return f"opacity:{opacity}", " band-hatch"
-    return f"background:{config.PALETTE['positions'][code]};opacity:{opacity}", ""
+    texture = config.POSITION_TEXTURES.get(code, "")
+    color = config.PALETTE["positions"][code]
+    if color is None:
+        return f"opacity:{opacity}", texture
+    # The hue rides on a custom property rather than the background shorthand
+    # so the texture class can set background-image without being clobbered:
+    # an inline shorthand resets background-image to none and outranks the
+    # stylesheet, which would silently drop every texture.
+    return f"--fill:{color};opacity:{opacity}", texture
 
 
 def vote_glyph_svg(vote, size=12):
@@ -901,11 +909,11 @@ def board_rows(votes, content_states, preview):
 def legend_html():
     items = []
     for code, label in config.POSITION_CATEGORIES.items():
-        color = config.PALETTE["positions"][code]
-        if code == "AMBIG":
-            swatch = '<span class="swatch band-hatch" aria-hidden="true"></span>'
-        else:
-            swatch = f'<span class="swatch" style="background:{color}" aria-hidden="true"></span>'
+        # The legend swatch carries the same hue and the same texture as the
+        # band, so the reader learns both channels from one place.
+        style, texture = band_style(code, "EXPLICIT")
+        swatch = (f'<span class="swatch{texture}" style="{style}" '
+                  f'aria-hidden="true"></span>')
         items.append(f"<span>{swatch}{esc(code)}: {esc(label)}</span>")
     items.append(
         "<span><span class=\"swatch\" style=\"border:1px dashed "
@@ -2116,6 +2124,11 @@ def poster_svg(votes, content_states):
         for band in r["bands"]:
             if band["code"] == "AMBIG":
                 continue  # the poster is a glance artifact; hatch needs defs
+            # Known gap: the poster encodes by hue alone, so it does not carry
+            # the texture channel the board uses to stay readable under
+            # colour-vision deficiency. Closing it means SVG pattern defs per
+            # category. Acceptable only while the poster stays a decorative
+            # preview and is never the artifact a reader is asked to read.
             color = config.PALETTE["positions"][band["code"]]
             if color is None:
                 continue

@@ -423,6 +423,12 @@ footer.colophon p { margin: 0.3rem 0; }
 
 /* The seam: red's second reserved meaning, the moment a position
    changes. Direction-neutral by construction. */
+/* The seam marks the moment a coded position changed, and is one of red's two
+   reserved meanings. Red alone cannot carry it: simulated under deuteranopia
+   the seam separates from a REG-SOFT band by 32 on a scale where about 90 is
+   the threshold, so it would vanish into exactly the band it is meant to cut.
+   The hairline edge makes the seam's position legible as a shape, so the datum
+   survives without spending a second colour on it. */
 .c-seam {
   position: absolute;
   top: 6%;
@@ -430,6 +436,7 @@ footer.colophon p { margin: 0.3rem 0; }
   width: 2.5px;
   margin-left: -1.25px;
   background: var(--integrity-red);
+  box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.55);
 }
 
 .c-mark {
@@ -656,13 +663,83 @@ footer.colophon p { margin: 0.3rem 0; }
   border-radius: 1px;
 }
 
-/* AMBIG is a designed hatch texture: never gray, never a blend */
+/* Position hue arrives as --fill rather than an inline background shorthand,
+   so the texture classes below can layer a background-image over it. */
+/* Kept to a single class so .band-hatch, which follows, can win on source
+   order and keep its paper background. A descendant selector here would
+   outrank it and leave the AMBIG swatch transparent. */
+.band, .c-band, .swatch {
+  background-color: var(--fill, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+   Position textures.
+
+   Hue alone cannot carry these categories. Simulated under deuteranopia,
+   LBI-OPEN and CCW-ONLY separate by 30 where about 90 is the threshold for
+   reading as different fills, and REG-SOFT collides with integrity red at 32,
+   which would quietly break the promise that saturated red means only a
+   data-integrity notice. Repaletting cannot fix it: the best available move
+   takes the worst pair from 30 to 32, because the binding constraint just
+   becomes ochre against red.
+
+   So orientation carries the category alongside hue. Orientation is the right
+   channel because it survives at 16px tall and stays readable on a band a few
+   pixels wide, which is what a state that moves twice in a year produces.
+   Every pair below differs in orientation or density, so no two are alike once
+   the colour is removed. LBI-BAN is deliberately plain: it is the largest
+   category, and leaving it untextured keeps the board quiet.
+
+   Class names are assigned in config.POSITION_TEXTURES.
+   --------------------------------------------------------------------------- */
+
+.band-horizontal {   /* LBI-OPEN */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 4px,
+    rgba(255, 255, 255, 0.42) 4px 5.5px
+  );
+}
+
+.band-grid {   /* REG-SOFT */
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 6px,
+      rgba(255, 255, 255, 0.36) 6px 7.5px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(255, 255, 255, 0.36) 5px 6.5px
+    );
+}
+
+.band-backslash {   /* CCW-ONLY */
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 5px,
+    rgba(255, 255, 255, 0.42) 5px 6.5px
+  );
+}
+
+.band-dots {   /* OPPOSE */
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.5) 1.1px, transparent 1.2px
+  );
+  background-size: 6px 6px;
+}
+
+/* AMBIG is a designed hatch texture: never gray, never a blend. It is the one
+   category with no hue at all, so its hatch is ink on paper rather than a
+   lightening of a fill, and it stays the coarsest texture on the board. */
 .band-hatch {
-  background: repeating-linear-gradient(
+  background-image: repeating-linear-gradient(
     45deg,
     transparent 0 4px,
     rgba(26, 26, 26, 0.55) 4px 5.5px
-  ), var(--ground);
+  );
+  background-color: var(--ground);
 }
 
 .vote-mark, .shift-node {

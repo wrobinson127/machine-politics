@@ -75,7 +75,9 @@ There is no automated or model-assisted position classification. The publishing 
 
 - No position category renders red or green, anywhere, including exported images. Coloring a state's position red is an editorial act, so the palette is categorical with no good/bad ordering.
 - Saturated red has exactly two meanings, and no others: a data-integrity notice, and the shift-seam marking the moment a coded position changes. It never colors a position, a camp, a vote, or motion.
-- AMBIG renders as a hatch texture, not gray and not a blend, because gray means absence.
+- AMBIG renders as a hatch texture, not gray and not a blend, because gray means absence. It is the one category with no hue at all.
+- No category depends on hue alone. Every position pairs its hue with a texture, because hue cannot carry six categories: simulated under deuteranopia, LBI-OPEN and CCW-ONLY separate by 30 where about 90 is the threshold for reading as different fills, and REG-SOFT sits 32 from integrity red, which would quietly break the rule above about what red means. A palette search confirmed the limit is structural rather than a bad choice of hex, since the best available repalette moves the worst pair only from 30 to 32. Orientation carries the category alongside hue because it survives at 16px and on a band a few pixels wide. The legend teaches both channels at once.
+- The shift-seam carries a hairline edge, so the moment a position changed stays legible as a shape even where its red collides with the band it cuts.
 - Annotations are outlines and markers, never fills.
 
 ## Corrections
