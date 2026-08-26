@@ -659,7 +659,13 @@ def _record_asset_hashes(out):
                 "js/instruments.js", "assets/favicon.svg"):
         path = out / rel
         if path.exists():  # tour.js and instruments.js are conditional
-            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            # Hash the normalised text, not the raw bytes. Every generated
+            # asset is written with newline="\n", but site.css is copied from
+            # the source tree, so on Windows it carries CRLF while a CI
+            # checkout has LF. Hashing bytes made the same stylesheet produce
+            # two different URLs by platform and broke the freshness gate.
+            text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+            digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
             _ASSET_HASHES[rel] = digest[:10]
 
 

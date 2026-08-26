@@ -56,7 +56,11 @@ def test_every_version_matches_the_bytes_on_disk(tmp_path):
             base = out if path.startswith("/") else page.parent
             target = (base / path.lstrip("/")).resolve()
             assert target.exists(), f"{page.name} links missing asset {path}"
-            actual = hashlib.sha256(target.read_bytes()).hexdigest()[:len(digest)]
+            # Newlines normalised, deliberately restated here rather than
+            # imported, so a change to how the build hashes has to be a
+            # conscious change to this rule too. See the line-endings test.
+            text = target.read_text(encoding="utf-8").replace("\r\n", "\n")
+            actual = hashlib.sha256(text.encode("utf-8")).hexdigest()[:len(digest)]
             if actual != digest:
                 wrong.append(f"{page.name} -> {path}: links {digest}, file is {actual}")
     assert not wrong, "stale asset hashes:\n" + "\n".join(wrong)
@@ -91,6 +95,29 @@ def test_identical_content_produces_an_identical_url(tmp_path):
     bs.build(two, preview=False)
     second = (two / "index.html").read_text(encoding="utf-8")
     assert first == second, "two builds of the same content disagree"
+
+
+def test_the_hash_ignores_line_endings(tmp_path):
+    """Generated assets are written with newline="\\n", but site.css is copied
+    from the source tree, so on Windows it carries CRLF while a CI checkout
+    has LF. Hashing raw bytes made one stylesheet produce two URLs depending
+    on the platform, and the freshness gate failed on CI while passing
+    locally. The hash describes content, not line endings."""
+    out = tmp_path / "dep"
+    bs.build(out, preview=False)
+    css = out / "css" / "site.css"
+
+    bs._record_asset_hashes(out)
+    with_lf = bs.asset("", "css/site.css")
+
+    crlf = css.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\n", "\r\n")
+    css.write_bytes(crlf.encode("utf-8"))
+    bs._record_asset_hashes(out)
+    with_crlf = bs.asset("", "css/site.css")
+
+    assert with_lf == with_crlf, (
+        f"line endings alone changed the asset URL ({with_lf} vs {with_crlf}), "
+        "so the same stylesheet versions differently on Windows and CI")
 
 
 def test_cdn_assets_are_left_alone(tmp_path):
