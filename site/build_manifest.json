@@ -1,4 +1,36 @@
 {
+ "codings_past_axis": [
+  {
+   "approved": false,
+   "as_of": "2026-07-17",
+   "code": "NONE",
+   "iso3": "BDI"
+  },
+  {
+   "approved": false,
+   "as_of": "2026-07-17",
+   "code": "NONE",
+   "iso3": "BLR"
+  },
+  {
+   "approved": false,
+   "as_of": "2026-07-17",
+   "code": "NONE",
+   "iso3": "MLI"
+  },
+  {
+   "approved": false,
+   "as_of": "2026-07-17",
+   "code": "NONE",
+   "iso3": "NER"
+  },
+  {
+   "approved": false,
+   "as_of": "2026-07-17",
+   "code": "NONE",
+   "iso3": "PRK"
+  }
+ ],
  "entries": [
   {
    "approved": true,

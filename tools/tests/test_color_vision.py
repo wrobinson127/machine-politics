@@ -168,18 +168,60 @@ def test_legend_swatches_carry_the_same_texture_as_the_bands():
             f"legend swatch for {code} is missing its {cls} texture")
 
 
+def _worst_contrast(color):
+    return min(cv.contrast_ratio(color, ERA_A), cv.contrast_ratio(color, ERA_B))
+
+
 def test_every_fill_clears_the_contrast_floor_against_both_era_bands():
-    """A band a reader cannot see against the paper carries no information.
-    NONE is exempt and deliberately quiet: it means 'reviewed, nothing
-    substantive on record', and is pinned here so a change is a decision."""
+    """A band a reader cannot see against the paper carries no information."""
     for code, color in config.PALETTE["positions"].items():
         if color is None or code == "NONE":
-            continue
-        worst = min(cv.contrast_ratio(color, ERA_A),
-                    cv.contrast_ratio(color, ERA_B))
+            continue  # absence has its own rule below
+        worst = _worst_contrast(color)
         assert worst >= 3.0, (
             f"{code} ({color}) contrasts only {worst:.2f}:1 against the era "
             "bands; 3:1 is the floor for a meaningful UI element")
+
+
+def test_absence_reads_as_a_fill_but_stays_quieter_than_every_position():
+    """NONE means 'reviewed, nothing substantive on record'. It has to be
+    visibly a band, or it collapses into 'not yet reviewed' and the absence
+    tiers blend, which the methodology promises they never do. It also has to
+    stay the quietest fill, or absence starts competing with presence."""
+    none = _worst_contrast(config.PALETTE["positions"]["NONE"])
+    assert none >= 2.0, (
+        f"NONE contrasts only {none:.2f}:1 against the era bands, which reads "
+        "as an empty track rather than a coded absence")
+
+    positions = [
+        _worst_contrast(c) for k, c in config.PALETTE["positions"].items()
+        if c and k != "NONE"]
+    assert none < min(positions), (
+        f"NONE at {none:.2f}:1 is not quieter than the faintest substantive "
+        f"position at {min(positions):.2f}:1")
+
+
+def test_a_coding_past_the_axis_is_reported_rather_than_dropped_silently():
+    """compute_bands drops a coding dated after UPDATED_THROUGH, because it
+    clamps to the end of the track and computes zero width. That is the
+    silent-absence failure mode, so the build has to say so."""
+    from datetime import timedelta
+
+    past = bs.iso(bs.T1 + timedelta(days=90))
+    states = {
+        "AAA": {"position_codings": [
+            {"code": "NONE", "as_of": past, "approved": True}]},
+        "BBB": {"position_codings": [
+            {"code": "LBI-BAN", "as_of": "2024-01-01", "approved": True}]},
+    }
+    assert bs.compute_bands(states["AAA"]["position_codings"]) == [], (
+        "premise changed: a coding past the axis now renders, so this guard "
+        "may no longer be needed")
+
+    reported = bs.report_codings_past_axis(states)
+    assert [r["iso3"] for r in reported] == ["AAA"]
+    assert reported[0]["as_of"] == past
+    assert bs.report_codings_past_axis({"BBB": states["BBB"]}) == []
 
 
 def test_body_ink_clears_wcag_aa():

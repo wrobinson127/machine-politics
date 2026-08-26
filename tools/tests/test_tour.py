@@ -65,7 +65,7 @@ def test_deploy_ships_the_tour_once_approved(deploy):
     assert manifest["unapproved_rendered"] == 0
     assert "Who should be allowed to decide" in index
     assert index.count('class="beat"') == 10
-    assert '<script defer src="js/tour.js">' in index
+    assert re.search(r'<script defer src="js/tour\.js\?v=[0-9a-f]+"></script>', index)
     assert f"gsap/{bs.GSAP_VERSION}/gsap.min.js" in index
     assert "DRAFT" not in index  # the draft chip is a preview-only affordance
     tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
@@ -123,7 +123,7 @@ def test_animation_stack_pinned_with_integrity(preview):
     )
     assert scrollama_tag and scrollama_tag.group(1) == bs.SCROLLAMA_SRI
     assert "ScrollTrigger" not in index
-    assert '<script defer src="js/tour.js">' in index
+    assert re.search(r'<script defer src="js/tour\.js\?v=[0-9a-f]+"></script>', index)
 
 
 def test_canvas_is_server_rendered_and_hidden(preview):

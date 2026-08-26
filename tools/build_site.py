@@ -627,6 +627,50 @@ NAV = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# Asset versioning.
+#
+# The stylesheets and scripts are served from stable paths, so a browser or CDN
+# that has cached one will keep serving it after a deploy. That is not a
+# theoretical risk: during the colour-vision work a stale site.css made a
+# working board render with transparent bands twice, and it looked exactly like
+# a bug in the build. On a live site the same thing hands returning readers a
+# page whose markup and stylesheet disagree.
+#
+# So every locally served asset is linked with a short content hash. Same bytes
+# means same URL, which keeps the build deterministic and the CI freshness gate
+# meaningful; changed bytes means a new URL, which no cache can answer from
+# stale storage. Hashes are filled in during build() after the assets are
+# written and before any page is rendered.
+#
+# Not covered: the font files, which are referenced from inside tokens.css by
+# name. A stale font is the same font, so it costs nothing.
+# ---------------------------------------------------------------------------
+
+_ASSET_HASHES = {}
+
+
+def _record_asset_hashes(out):
+    """Hash every asset the pages link, keyed by its site-relative path."""
+    _ASSET_HASHES.clear()
+    out = Path(out)
+    for rel in ("css/tokens.css", "css/site.css", "css/dossier.css",
+                "js/board.js", "js/dossier.js", "js/tour.js",
+                "js/instruments.js", "assets/favicon.svg"):
+        path = out / rel
+        if path.exists():  # tour.js and instruments.js are conditional
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            _ASSET_HASHES[rel] = digest[:10]
+
+
+def asset(prefix, rel):
+    """Link an asset at `rel` with its content hash, so a deploy invalidates
+    any cached copy. Falls back to the bare path if the asset was not hashed,
+    which keeps preview builds and tests working."""
+    digest = _ASSET_HASHES.get(rel)
+    return f"{prefix}{rel}?v={digest}" if digest else f"{prefix}{rel}"
+
+
 def page(title, body, *, current, depth=0, preview=False, description="",
          absolute=False, extra_scripts="", extra_head="", og_path=None):
     # Pages serves 404.html from any missing path, so its asset links must
@@ -677,9 +721,9 @@ def page(title, body, *, current, depth=0, preview=False, description="",
 <meta name="twitter:title" content="{og_title}">
 <meta name="twitter:description" content="{esc(og_desc)}">
 <meta name="twitter:image" content="{og_image}">
-<link rel="stylesheet" href="{prefix}css/tokens.css">
-<link rel="stylesheet" href="{prefix}css/site.css">
-<link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{asset(prefix, 'css/tokens.css')}">
+<link rel="stylesheet" href="{asset(prefix, 'css/site.css')}">
+<link rel="icon" href="{asset(prefix, 'assets/favicon.svg')}" type="image/svg+xml">
 {extra_head}</head>
 <body>
 {banner}<header class="masthead">
@@ -700,7 +744,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
     <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every coding traces to a quoted, dated, linked source · <a href="{prefix}corrections.html">Corrections</a></p>
   </div>
 </footer>
-<script src="{prefix}js/board.js" defer></script>
+<script src="{asset(prefix, 'js/board.js')}" defer></script>
 {extra_scripts}</body>
 </html>
 """
@@ -937,7 +981,8 @@ def index_page(votes, content_states, preview, tour=None):
     extra_scripts = ""
     if tour and (preview or is_approved(tour)):
         tour_block = tour_html(tour, votes, content_states, preview)
-        extra_scripts = gsap_script_tags() + '\n<script defer src="js/tour.js"></script>'
+        extra_scripts = (gsap_script_tags() +
+                         f'\n<script defer src="{asset("", "js/tour.js")}"></script>')
     body = f"""
 {tour_block}<div class="board-head" id="board-top">
   <div class="board-lede">
@@ -1347,8 +1392,8 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
         name, body, current="", depth=1, preview=preview,
         og_path=f"state/{iso3}.html",
         description=f"{name}: recorded votes, coded position, framework signings, engagement record, and national policy on autonomous weapons systems.",
-        extra_head='<link rel="stylesheet" href="../css/dossier.css">',
-        extra_scripts='<script src="../js/dossier.js" defer></script>',
+        extra_head=f'<link rel="stylesheet" href="{asset("../", "css/dossier.css")}">',
+        extra_scripts=f'<script src="{asset("../", "js/dossier.js")}" defer></script>',
     )
 
 
@@ -1819,7 +1864,7 @@ def instruments_page(votes, content_states, endorsements, sponsorships,
             '<script defer '
             f'src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/{MAPLIBRE_VERSION}/maplibre-gl.min.js" '
             f'integrity="{MAPLIBRE_JS_SRI}" crossorigin="anonymous"></script>\n'
-            '<script defer src="js/instruments.js"></script>'
+            f'<script defer src="{asset("", "js/instruments.js")}"></script>'
         )
     body = f"""
 <h1>Instruments</h1>
@@ -2823,20 +2868,8 @@ def build(out_dir, preview=False):
         )
         if preview or is_approved(tour):
             (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
-    (out / "index.html").write_text(
-        index_page(votes, content_states, preview, tour=tour),
-        encoding="utf-8", newline="\n",
-    )
-    (out / "votes.html").write_text(
-        votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
-    )
     endorsements = load_endorsements()
     sponsorships = load_sponsorships()
-    (out / "instruments.html").write_text(
-        instruments_page(votes, content_states, endorsements, sponsorships,
-                         preview, manifest),
-        encoding="utf-8", newline="\n",
-    )
     if any(preview or is_approved(i) for i in endorsements):
         (out / "js" / "instruments.js").write_text(
             INSTRUMENTS_JS, encoding="utf-8", newline="\n"
@@ -2844,6 +2877,25 @@ def build(out_dir, preview=False):
         (out / "assets" / "countries.geojson").write_text(
             countries_geojson(), encoding="utf-8", newline="\n"
         )
+
+    # Every asset a page can link now exists on disk. Hash them before
+    # rendering any page, so the links carry the version of the bytes actually
+    # shipped. Conditional assets are written above for this reason: a page
+    # rendered before its script exists would link an unversioned path.
+    _record_asset_hashes(out)
+
+    (out / "index.html").write_text(
+        index_page(votes, content_states, preview, tour=tour),
+        encoding="utf-8", newline="\n",
+    )
+    (out / "votes.html").write_text(
+        votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
+    )
+    (out / "instruments.html").write_text(
+        instruments_page(votes, content_states, endorsements, sponsorships,
+                         preview, manifest),
+        encoding="utf-8", newline="\n",
+    )
     (out / "rubric.html").write_text(
         rubric_page(rubric, preview, content_states), encoding="utf-8", newline="\n")
     pages = load_pages()
@@ -2915,11 +2967,40 @@ def build(out_dir, preview=False):
     manifest["unapproved_rendered"] = sum(
         1 for e in manifest["entries"] if e["rendered"] and not e["approved"]
     )
+    manifest["codings_past_axis"] = report_codings_past_axis(content_states)
     (out / "build_manifest.json").write_text(
         json.dumps(manifest, indent=1, sort_keys=True), encoding="utf-8", newline="\n"
     )
     assert_deploy_clean(manifest, preview)
     return manifest
+
+
+def report_codings_past_axis(content_states):
+    """A coding dated after UPDATED_THROUGH clamps to the end of the track, so
+    its band computes zero width and compute_bands drops it. The coding is
+    real, its approval flag means something, and the board shows nothing: the
+    silent-absence failure mode this repo has shipped before.
+
+    This warns rather than refuses, because the fix is an editorial call
+    between moving the axis and re-dating the coding, and every case today is
+    still gated. The manifest count makes it checkable rather than a message
+    someone has to notice scrolling past."""
+    past = []
+    for iso3, cs in sorted(content_states.items()):
+        for coding in cs.get("position_codings") or []:
+            if as_date(coding["as_of"]) > T1:
+                past.append({"iso3": iso3, "code": coding["code"],
+                             "as_of": iso(coding["as_of"]),
+                             "approved": bool(coding.get("approved"))})
+    if past:
+        listed = ", ".join(f"{p['iso3']} {p['code']} {p['as_of']}" for p in past)
+        print(
+            f"warning: {len(past)} coding(s) dated after UPDATED_THROUGH "
+            f"({config.UPDATED_THROUGH}) render no band at all: {listed}. "
+            "Either move the axis or re-date the coding.",
+            file=sys.stderr,
+        )
+    return past
 
 
 def assert_deploy_clean(manifest, preview):

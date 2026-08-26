@@ -110,7 +110,14 @@ PALETTE = {
         "CCW-ONLY": "#7A5C99",  # plum
         "OPPOSE": "#7A5648",    # brown
         "AMBIG": None,           # hatch texture over neutral; no fill hue
-        "NONE": "#D8D3C8",      # light neutral (absence: on record, nothing substantive)
+        # Absence, on record: reviewed, nothing substantive found. Deepened
+        # from #D8D3C8, which sat at 1.18:1 on the era-b band and was very
+        # nearly invisible, collapsing "no substantive position on record"
+        # into "empty track: not yet reviewed" and contradicting the
+        # methodology's promise that the absence tiers never blend. Pinned at
+        # roughly 2.4:1: unmistakably a fill, and still quieter than every
+        # substantive position, the lowest of which is REG-SOFT at 3.18.
+        "NONE": "#9E9482",
     },
     "not_yet_reviewed": None,    # empty/paper with explicit label, never a fill
     "integrity_red": "#C0392B",  # data-integrity notices + shift-seams ONLY
