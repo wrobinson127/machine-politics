@@ -243,9 +243,9 @@
    "state": "DEU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "DEU"
   },
   {
@@ -315,9 +315,9 @@
    "state": "IND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "IND"
   },
   {
@@ -441,9 +441,9 @@
    "state": "PRK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "RUS"
   },
   {
@@ -501,9 +501,9 @@
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   }
  ],

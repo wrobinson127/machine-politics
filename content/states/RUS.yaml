@@ -17,7 +17,7 @@ shift_events: []
 doctrine:
   status: no_policy_identified
   as_of: 2026-07-17
-  approved: false
+  approved: true   # render-approved 2026-08-31
   search_note: >
     Research pass 5c (2026-07-17) reviewed the record: the March 2024
     working paper is Russia's closest articulation and is an

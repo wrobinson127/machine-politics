@@ -151,10 +151,11 @@ flags:
 
 doctrine:
   status: policy_identified
-  approved: false
+  approved: true   # render-approved 2026-08-31
   entries:
     - title: "DoD Directive 3000.09, Autonomy in Weapon Systems"
-      approved: false
+      approved: true   # render-approved 2026-08-31
+      url: https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf
       note: >
         Current version issued 2023-01-25; the original issued November 2012.
         The canonical PDF blocks tool fetches; quotes verified via official

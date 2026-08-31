@@ -78,11 +78,12 @@ def test_deploy_renders_zero_unapproved(deploy):
 def test_deploy_states_show_absence_tiers_not_positions(deploy):
     out, _ = deploy
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
-    # The USA is now coded (CCW-ONLY, approved 2026-07-21) so its position
-    # legitimately renders; but its DOCTRINE (DoDD 3000.09) stays unapproved
-    # and must not leak, and shows the absence tier. The vote waffle renders.
-    assert "not yet reviewed by this project" in usa  # doctrine absence tier
-    assert "appropriate levels of human judgment" not in usa  # unapproved doctrine quote
+    # The USA is coded (CCW-ONLY, approved 2026-07-21) and its doctrine was
+    # approved 2026-08-31, so both legitimately render. The gate itself is
+    # exercised against a forced-unapproved copy in test_instruments_surfaces,
+    # not here, so that approving real content never restales this test.
+    assert "DoD Directive 3000.09" in usa  # approved doctrine renders
+    assert "not yet reviewed by this project" not in usa
     assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
     # A genuinely uncoded state must show absence tiers and NOT be located in
