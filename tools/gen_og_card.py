@@ -1,4 +1,4 @@
-"""Generate the social-share (Open Graph) card as a static PNG.
+﻿"""Generate the social-share (Open Graph) card as a static PNG.
 
 This is deliberately NOT part of build_site.py: PNG text rendering depends on
 locally installed fonts and is not byte-identical across platforms, so baking
@@ -13,24 +13,34 @@ motif), not a live board snapshot, so it never goes stale as data changes.
 Usage:  python tools/gen_og_card.py
 Output: site/assets/og-card.png  (1200x630)
 """
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from config import config  # noqa: E402
+
+
+def _rgb(hex_color):
+    h = hex_color.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
 W, H = 1200, 630
-BG = (247, 244, 238)     # #F7F4EE paper
-INK = (26, 26, 26)       # #1A1A1A
+BG = _rgb(config.PALETTE["ground"])
+INK = _rgb(config.PALETTE["ink"])
 SOFT = (122, 116, 105)   # muted ink for secondary text
 
-# Position palette, in axis order, as the motif strip (echoes the board).
-BANDS = [
-    (0x3B, 0x5B, 0xA5),  # LBI-BAN blue
-    (0x2E, 0x7F, 0x86),  # LBI-OPEN teal
-    (0xA9, 0x74, 0x1F),  # REG-SOFT ochre
-    (0x7A, 0x5C, 0x99),  # CCW-ONLY plum
-    (0x7A, 0x56, 0x48),  # OPPOSE brown
-    (0xD8, 0xD3, 0xC8),  # NONE neutral
-]
+# Position palette, in the rubric's own category order, as the motif strip
+# that echoes the board. Derived from config rather than copied: this strip
+# previously held its own literal hex values and silently kept showing the old
+# NONE neutral for a week after the palette moved, on the single most-seen
+# image the project has. AMBIG is absent because it has no hue at all; it is a
+# texture over paper, and a solid swatch would misrepresent it.
+BANDS = [_rgb(config.PALETTE["positions"][code])
+         for code in config.POSITION_CATEGORIES
+         if config.PALETTE["positions"].get(code)]
 
 
 def _font(names, size):
