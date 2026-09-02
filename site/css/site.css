@@ -1132,6 +1132,74 @@ footer.colophon p { margin: 0.3rem 0; }
   padding: 0.2rem 0;
 }
 
+/* ---------------------------------------------------------------------------
+   Coverage table on the methodology page. Rules, not fills: a table of
+   findings should not look scored, and zebra striping would read as ranking
+   where the order is alphabetical. Wide content scrolls in its own container
+   so the page body never scrolls sideways on a phone.
+   --------------------------------------------------------------------------- */
+
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.4rem 0;
+}
+
+.coverage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.coverage-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  padding-bottom: 0.7rem;
+}
+
+.coverage-table thead th {
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  border-bottom: 1px solid var(--ink);
+  padding: 0 1.2rem 0.45rem 0;
+  white-space: nowrap;
+}
+
+.coverage-table tbody th,
+.coverage-table td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.6rem 1.2rem 0.6rem 0;
+  vertical-align: top;
+  font-weight: 400;
+}
+
+.coverage-table tbody th {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* The finding is a two-word verdict, not prose: wrapping it makes the rows
+   uneven and the column read as fuller than it is. Only the record wraps. */
+.coverage-table tbody td:first-of-type {
+  white-space: nowrap;
+}
+
+/* The date column lines up; the document titles are prose and wrap. */
+.coverage-table td:last-child {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.coverage-table tbody tr:last-child th,
+.coverage-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 /* Era swatches sit on paper, so they carry a hairline to stay visible */
 .era-legend .swatch {
   display: inline-block;

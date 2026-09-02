@@ -4,6 +4,7 @@ absence-tier rendering, and determinism."""
 import html
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -168,10 +169,39 @@ def test_doctrine_absence_renders_exact_phrase(tmp_path):
     assert "has no" not in html_out
 
 
-def test_unapproved_doctrine_renders_as_not_reviewed(deploy):
+def test_unapproved_doctrine_renders_as_not_reviewed(tmp_path, monkeypatch):
+    """Gated doctrine falls back to the not-yet-reviewed card whatever its
+    status says, so an unapproved finding never reaches a reader.
+
+    Exercised against a forced-unapproved copy rather than whichever state is
+    gated today: China used to be the example here until its review landed,
+    and pinning to real editorial state is what restaled it."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    chn = work / "states" / "CHN.yaml"
+    text = chn.read_text(encoding="utf-8")
+    marker = "approved: true   # render-approved 2026-09-02"
+    assert marker in text, "fixture expects the China doctrine approved"
+    chn.write_text(text.replace(marker, "approved: false"), encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+    monkeypatch.setattr(config, "STATES_DIR", work / "states")
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
+    assert manifest["unapproved_rendered"] == 0
+    page = (out / "state" / "CHN.html").read_text(encoding="utf-8")
+    assert "Doctrine not yet reviewed by this project" in page
+    assert "No published national policy identified" not in page
+    assert "intelligent warfare is on the horizon" not in page  # the quote
+
+
+def test_approved_doctrine_absence_renders_its_finding(deploy):
+    """The approved-side counterpart, so the guarantee above cannot pass by
+    the absence card being broken for everyone."""
     out, _ = deploy
     chn = (out / "state" / "CHN.html").read_text(encoding="utf-8")
-    assert "Doctrine not yet reviewed by this project" in chn
+    assert "No published national policy identified by this project" in chn
+    assert "Doctrine not yet reviewed by this project" not in chn
 
 
 def test_build_is_deterministic(tmp_path):

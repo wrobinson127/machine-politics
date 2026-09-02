@@ -26,6 +26,10 @@ Endorsements and sponsorships are recorded as membership facts, taken verbatim f
 
 **National policy:** strict scope, major players only. A doctrine entry means a policy document specifically governing autonomy in weapons systems, like DoD Directive 3000.09. Military AI strategies, responsible-AI frameworks, and legislative bills are context notes, never coded evidence.
 
+Of the seven states on this list, three have a published policy specifically governing autonomy in weapon systems and four do not. That split is a finding about the public record, not a gap in this review: each of the four carries a dated note recording where the project looked. It says nothing about internal processes that are not published.
+
+{{doctrine-coverage}}
+
 ## The rubric
 
 Every coded position sits on two axes.

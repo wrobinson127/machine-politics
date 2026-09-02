@@ -551,9 +551,64 @@ def md_to_html(md):
     return "\n".join(out)
 
 
-def prose_page(key, pages, fallback_lines, preview, manifest):
+def doctrine_coverage_table(content_states, preview):
+    """The national-policy coverage list as a table, derived from the state
+    files rather than written out.
+
+    A hand-written list of which states have doctrine is the staleness failure
+    this repo keeps meeting: it reads as current and silently stops being so
+    the moment a review lands. Generating it means the page cannot disagree
+    with the records it describes.
+
+    Gated doctrine is absent entirely rather than listed as pending, because
+    its status is itself an unapproved claim.
+    """
+    rows = []
+    for iso3, cs in sorted(content_states.items()):
+        doctrine = cs.get("doctrine") or {}
+        status = doctrine.get("status")
+        if status not in ("policy_identified", "no_policy_identified"):
+            continue
+        if not (preview or is_approved(doctrine)):
+            continue
+        name = cs.get("display_name") or iso3
+        if status == "policy_identified":
+            titles = [e.get("title") for e in (doctrine.get("entries") or [])
+                      if preview or is_approved(e)]
+            detail = "; ".join(t for t in titles if t)
+            finding = "Published policy"
+        else:
+            detail = (f"Reviewed {iso(doctrine['as_of'])}"
+                      if doctrine.get("as_of") else "Reviewed")
+            finding = "None identified"
+        rows.append((iso3, name, finding, detail))
+
+    if not rows:
+        return ""
+    body = "\n".join(
+        f'<tr><th scope="row"><a href="state/{esc(iso3)}.html">{esc(name)}</a></th>'
+        f"<td>{esc(finding)}</td><td>{esc(detail)}</td></tr>"
+        for iso3, name, finding, detail in rows
+    )
+    return (
+        '<div class="table-scroll">'
+        '<table class="coverage-table">'
+        "<caption>National-policy coverage: every state on the list, and what "
+        "the review found.</caption>"
+        '<thead><tr><th scope="col">State</th><th scope="col">Finding</th>'
+        '<th scope="col">Record</th></tr></thead>'
+        f"<tbody>{body}</tbody></table></div>"
+    )
+
+
+def prose_page(key, pages, fallback_lines, preview, manifest, blocks=None):
     """A prose page renders only when approved (invariant 1 covers analyst
-    sentences); otherwise the factual shell stands in."""
+    sentences); otherwise the factual shell stands in.
+
+    `blocks` maps a {{marker}} in the markdown to generated HTML, so a page can
+    carry a table the markdown subset cannot express without the prose having
+    to restate data that lives in the content files.
+    """
     entry = pages.get(key)
     title = (entry or {}).get("meta", {}).get("title", key.capitalize())
     if entry:
@@ -568,9 +623,31 @@ def prose_page(key, pages, fallback_lines, preview, manifest):
                 if preview and not approved
                 else ""
             )
-            body = f"<h1>{esc(title)}{chip}</h1>\n" + md_to_html(entry["body"])
+            body = f"<h1>{esc(title)}{chip}</h1>\n" + _render_with_blocks(
+                entry["body"], blocks or {})
             return page(title, body, current=f"{key}.html", preview=preview)
     return shell_page(title, f"{key}.html", fallback_lines, preview)
+
+
+def _render_with_blocks(md, blocks):
+    """Render markdown, substituting {{name}} markers with generated HTML.
+
+    An unknown marker raises rather than rendering: a literal {{doctrine-
+    coverage}} shipped to readers is the silent-failure shape this project has
+    hit before, and it should stop the build instead of reaching a page.
+    """
+    parts = re.split(r"^\{\{([a-z0-9-]+)\}\}$", md, flags=re.M)
+    out = [md_to_html(parts[0])] if parts[0].strip() else []
+    for i in range(1, len(parts), 2):
+        name, rest = parts[i], parts[i + 1]
+        if name not in blocks:
+            raise SystemExit(
+                f"prose page references unknown block {{{{{name}}}}}; "
+                f"known blocks: {sorted(blocks) or 'none'}")
+        out.append(blocks[name])
+        if rest.strip():
+            out.append(md_to_html(rest))
+    return "\n".join(out)
 
 
 def is_approved(entry):
@@ -2917,6 +2994,8 @@ def build(out_dir, preview=False):
                 "who says what.",
             ],
             preview, manifest,
+            blocks={"doctrine-coverage":
+                    doctrine_coverage_table(content_states, preview)},
         ),
         encoding="utf-8", newline="\n",
     )

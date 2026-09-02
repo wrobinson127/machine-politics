@@ -188,14 +188,16 @@ position_codings:
 doctrine:
   status: no_policy_identified
   as_of: 2026-08-31
-  approved: false
+  approved: true   # render-approved 2026-09-02
   search_note: >
     Reviewed for a published national policy specifically governing autonomy
     in weapon systems: the State Council Information Office defence white
     paper "China's National Defense in the New Era" (2019), publicly
     available Central Military Commission regulations, and PLA doctrinal
     publications and military strategic guidelines. The closest candidate is
-    the 2019 white paper, which characterises intelligentised warfare as a
+    the 2019 white paper (official English text, State Council Information
+    Office, https://english.www.gov.cn/atts/stream/files/5d3943eec6d0a15c923d2036),
+    which characterises intelligentised warfare as a
     trend, stating that "intelligent warfare is on the horizon," but contains
     no provision governing autonomy in weapon systems: no human-judgment
     requirement, no review process, and no categories defined for national
