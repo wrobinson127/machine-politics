@@ -1,0 +1,37 @@
+# Deploys the committed site/ to GitHub Pages. Gated on the repository
+# variable PAGES_ENABLED so the job stays skipped, not red, until Pages is
+# switched on at launch (Settings > Pages > Source: GitHub Actions, then
+# Settings > Secrets and variables > Actions > Variables > PAGES_ENABLED=true).
+# The site is a committed artifact that ci.yml proves byte-identical to a fresh
+# build, so this job publishes exactly what the repository holds.
+name: pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: vars.PAGES_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
