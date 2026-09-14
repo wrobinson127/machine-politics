@@ -185,9 +185,13 @@
         pop.appendChild(line);
       });
       Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
+        var code = b.getAttribute("data-code");
+        // NONE is a coverage statement: its date is the review date, not a start.
+        var when = code === "NONE"
+          ? "NONE: no substantive position on record, reviewed as of " + b.getAttribute("data-since")
+          : code + " since " + b.getAttribute("data-since");
         pop.appendChild(el("span", "citation",
-          b.getAttribute("data-code") + " since " + b.getAttribute("data-since") +
-          " \u00b7 confidence " + b.getAttribute("data-conf")));
+          when + " \u00b7 confidence " + b.getAttribute("data-conf")));
       });
       var note = row.querySelector(".c-note");
       if (note) pop.appendChild(el("span", "citation", note.textContent));

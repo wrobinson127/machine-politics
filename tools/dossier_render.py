@@ -796,7 +796,8 @@ def own_coding(iso3, name, cs, sources, preview, updated_through):
         ev = "".join(_evi(e, sources) for e in c.get("evidence") or [])
         parts.append(
             f'<div class="own-coding"><h3 class="oc-h">{esc(c["code"])} '
-            f'<span class="oc-c">since {esc(iso(c.get("as_of")))}, {esc(c.get("confidence", ""))}</span>'
+            f'<span class="oc-c">{"reviewed as of" if c["code"] == "NONE" else "since"} '
+            f'{esc(iso(c.get("as_of")))}, {esc(c.get("confidence", ""))}</span>'
             f'{draft}</h3><p class="oc-cat">{esc(cat)}.</p>{rat}{ev}</div>')
     for s in sorted(shifts, key=lambda s: iso(s.get("date"))):
         draft = ' <span class="dchip">DRAFT</span>' if (preview and not _approved(s)) else ''

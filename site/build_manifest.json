@@ -1,36 +1,5 @@
 {
- "codings_past_axis": [
-  {
-   "approved": false,
-   "as_of": "2026-07-17",
-   "code": "NONE",
-   "iso3": "BDI"
-  },
-  {
-   "approved": false,
-   "as_of": "2026-07-17",
-   "code": "NONE",
-   "iso3": "BLR"
-  },
-  {
-   "approved": false,
-   "as_of": "2026-07-17",
-   "code": "NONE",
-   "iso3": "MLI"
-  },
-  {
-   "approved": false,
-   "as_of": "2026-07-17",
-   "code": "NONE",
-   "iso3": "NER"
-  },
-  {
-   "approved": false,
-   "as_of": "2026-07-17",
-   "code": "NONE",
-   "iso3": "PRK"
-  }
- ],
+ "codings_past_axis": [],
  "entries": [
   {
    "approved": true,
@@ -129,9 +98,9 @@
    "state": "ARG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AUS"
   },
   {
@@ -171,9 +140,9 @@
    "state": "BLR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CAN"
   },
   {
@@ -225,9 +194,9 @@
    "state": "CRI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CZE"
   },
   {
@@ -261,9 +230,9 @@
    "state": "ECU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "EST"
   },
   {
@@ -321,9 +290,9 @@
    "state": "IND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "JPN"
   },
   {
@@ -339,15 +308,15 @@
    "state": "KAZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KOR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LTU"
   },
   {
@@ -357,9 +326,9 @@
    "state": "LTU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LVA"
   },
   {
@@ -423,9 +392,9 @@
    "state": "PHL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "POL"
   },
   {

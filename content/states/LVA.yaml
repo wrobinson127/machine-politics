@@ -11,7 +11,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2025-09-03
-    approved: false
+    approved: true   # render-approved 2026-09-14
     scope_note: >
       Coded from co-authorship of a substantive draft instrument, the same
       rule the ban camp is coded under. Latvia is a named author of CCW/GGE.1/2025/WP.7.

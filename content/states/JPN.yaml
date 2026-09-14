@@ -11,7 +11,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2023-03-13
-    approved: false
+    approved: true   # render-approved 2026-09-14
     scope_note: >
       Coded from co-authorship of a substantive draft instrument, the same
       rule the ban camp is coded under. Japan is a named author of CCW/GGE.1/2023/WP.4/Rev.1, CCW/GGE.1/2023/WP.4/Rev.2, CCW/GGE.1/2025/WP.7.

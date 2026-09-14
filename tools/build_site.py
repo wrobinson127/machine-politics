@@ -293,10 +293,11 @@ def canvas_row_html(iso3, entry, resolutions, cs, preview):
     codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
     shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
     parts = []
+    # Still needed below for the provisional note and the row's latest code.
     timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for i, c in enumerate(timeline):
-        left = canvas_x(c["as_of"])
-        right = canvas_x(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else 95.0
+    for c, start, end in coding_spans(codings):
+        left = canvas_x(start) if start else 5.0
+        right = canvas_x(end) if end else 95.0
         if right <= left:
             continue
         style, extra = band_style(c["code"], c.get("confidence"))
@@ -882,13 +883,39 @@ def vote_glyph_svg(vote, size=12):
     )
 
 
+def coding_spans(codings):
+    """Yield (coding, start, end) for each coding, as ISO dates or None for
+    the track edges, in drawing order.
+
+    A substantive coding starts on its as_of date and runs to the next one.
+    NONE is different in kind: it is a coverage statement, never a position
+    (config invariant 6), and its as_of is the date the record was reviewed,
+    not a date a position began. A band starting on the review date would
+    say "no position from July onward" when the finding is "no position
+    anywhere in the record, as reviewed in July". So NONE starts at the
+    origin and runs to the first substantive coding, or the end of the track
+    if there is none, and its review date goes in the label instead.
+
+    This is also what makes the axis end irrelevant to NONE: a review dated
+    after UPDATED_THROUGH used to clamp to the track edge and vanish.
+    """
+    substantive = sorted((c for c in codings if c["code"] != "NONE"),
+                         key=lambda c: iso(c["as_of"]))
+    first = iso(substantive[0]["as_of"]) if substantive else None
+    for coding in codings:
+        if coding["code"] == "NONE":
+            yield coding, None, first
+    for i, coding in enumerate(substantive):
+        nxt = iso(substantive[i + 1]["as_of"]) if i + 1 < len(substantive) else None
+        yield coding, iso(coding["as_of"]), nxt
+
+
 def compute_bands(codings):
     """Segment a coding timeline into bands in TRACK_W (0-1000) units."""
     bands = []
-    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for i, coding in enumerate(timeline):
-        left = x_of(coding["as_of"])
-        right = x_of(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else float(TRACK_W)
+    for coding, start, end in coding_spans(codings):
+        left = x_of(start) if start else 0.0
+        right = x_of(end) if end else float(TRACK_W)
         if right <= left:
             continue
         bands.append(
@@ -913,7 +940,13 @@ def row_track_html(iso3, entry, resolutions, codings, shifts):
     parts = ['<div class="row-track">']
     for band in compute_bands(codings):
         style, extra_class = band_style(band["code"], band["confidence"])
-        title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
+        if band["code"] == "NONE":
+            # A coverage statement, not a position: the date is when the
+            # record was reviewed, and the band covers the whole record.
+            title = (f"NONE: no substantive position on record, reviewed as of "
+                     f"{band['since']}, confidence {band['confidence']}")
+        else:
+            title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
         if band.get("note"):
             title += f". {band['note']}"
         # role=img + aria-label gives the coding band an accessible name; the
@@ -2606,9 +2639,13 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
         pop.appendChild(line);
       });
       Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
+        var code = b.getAttribute("data-code");
+        // NONE is a coverage statement: its date is the review date, not a start.
+        var when = code === "NONE"
+          ? "NONE: no substantive position on record, reviewed as of " + b.getAttribute("data-since")
+          : code + " since " + b.getAttribute("data-since");
         pop.appendChild(el("span", "citation",
-          b.getAttribute("data-code") + " since " + b.getAttribute("data-since") +
-          " \\u00b7 confidence " + b.getAttribute("data-conf")));
+          when + " \\u00b7 confidence " + b.getAttribute("data-conf")));
       });
       var note = row.querySelector(".c-note");
       if (note) pop.appendChild(el("span", "citation", note.textContent));
@@ -3073,6 +3110,10 @@ def report_codings_past_axis(content_states):
     past = []
     for iso3, cs in sorted(content_states.items()):
         for coding in cs.get("position_codings") or []:
+            if coding["code"] == "NONE":
+                # NONE spans the record from the origin (coding_spans); its
+                # as_of is a review date and never places the band.
+                continue
             if as_date(coding["as_of"]) > T1:
                 past.append({"iso3": iso3, "code": coding["code"],
                              "as_of": iso(coding["as_of"]),

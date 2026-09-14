@@ -208,9 +208,12 @@ def test_a_coding_past_the_axis_is_reported_rather_than_dropped_silently():
     from datetime import timedelta
 
     past = bs.iso(bs.T1 + timedelta(days=90))
+    # A substantive code: NONE no longer places by its as_of (coding_spans
+    # anchors it at the origin), so it is exempt from this guard by design
+    # and is covered in test_absence_bands.
     states = {
         "AAA": {"position_codings": [
-            {"code": "NONE", "as_of": past, "approved": True}]},
+            {"code": "LBI-OPEN", "as_of": past, "approved": True}]},
         "BBB": {"position_codings": [
             {"code": "LBI-BAN", "as_of": "2024-01-01", "approved": True}]},
     }
