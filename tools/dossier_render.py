@@ -20,13 +20,8 @@ CAMP_TREATY = "#0F6E56"
 # Position families as lateral shelves, ordered by how much binding law each
 # seeks (never a ranking of the states; the axis is the instrument sought).
 FAMILY_ORDER = ["LBI-BAN", "LBI-OPEN", "REG-SOFT", "CCW-ONLY", "OPPOSE"]
-FAMILY_BLURB = {
-    "LBI-BAN": "Binding, ban+regulate",
-    "LBI-OPEN": "Binding, clarify IHL",
-    "REG-SOFT": "Responsible use, no treaty",
-    "CCW-ONLY": "The CCW forum only",
-    "OPPOSE": "No new law",
-}
+FAMILY_BLURB = {code: config.POSITION_PLAIN[code]
+                for code in ("LBI-BAN", "LBI-OPEN", "REG-SOFT", "CCW-ONLY", "OPPOSE")}
 
 
 def esc(v):
@@ -90,8 +85,8 @@ def spectrum(coded, self_iso, self_name):
             me = c["iso3"] == self_iso
             left = (i + 1) / (n + 1) * 100
             code2 = c["iso3"][:2].upper()
-            info = (f"<b>{esc(c['name'])}</b> holds {esc(c['code'])}: "
-                    f"{esc(FAMILY_BLURB.get(c['code'], ''))}."
+            info = (f"<b>{esc(c['name'])}</b>: {esc(FAMILY_BLURB.get(c['code'], ''))} "
+                    f"({esc(c['code'])})."
                     + (" This page's state." if me else ""))
             cls = "pmark mk me" if me else "pmark mk"
             marks.append(
@@ -99,20 +94,20 @@ def spectrum(coded, self_iso, self_name):
                 f'style="left:{left:.1f}%" data-info="{info}">{esc(code2)}</span>'
             )
         empty = '' if members else '<div class="fam-empty">none coded yet</div>'
-        shelf_info = (f"<b>{esc(fam)}</b>: {esc(FAMILY_BLURB[fam])}. "
-                      + (f"{n} coded state{'s' if n != 1 else ''} here."
-                         if n else "No coded state here yet."))
+        shelf_info = (f"<b>{esc(FAMILY_BLURB[fam])}</b> ({esc(fam)}). "
+                      + (f"{n} state{'s' if n != 1 else ''} here."
+                         if n else "No state here yet."))
         shelves.append(
             f'<div class="fam mk{" host" if host else ""}" tabindex="0" '
             f'data-hi="f:{esc(fam)}" data-info="{shelf_info}" '
             f'style="--famhue:{POS.get(fam) or "#999"}">'
-            f'<div class="fam-h">{esc(fam)}</div>'
-            f'<div class="fam-s">{esc(FAMILY_BLURB[fam])}</div>'
+            f'<div class="fam-h">{esc(FAMILY_BLURB[fam])}</div>'
+            f'<div class="fam-s">{esc(fam)}</div>'
             f'{empty}{"".join(marks)}</div>'
         )
     return (
         '<div class="spectrum">'
-        f'<div class="spec-cap"><b>{esc(self_name)}</b> among the states coded so far</div>'
+        f'<div class="spec-cap"><b>{esc(self_name)}</b> among the states with a position so far</div>'
         '<div class="spec-ax"><span>&larr; seeks the most binding law</span>'
         '<span>seeks no new law &rarr;</span></div>'
         f'<div class="shelves">{"".join(shelves)}</div></div>'
@@ -379,12 +374,12 @@ def doctrine(cs, sources, preview, updated_through):
     if not (d and _shows(d, preview)):
         return ('<div class="coverage mk" tabindex="0" '
                 'data-info="Doctrine has not been reviewed by this project for this state yet.">'
-                f'<p class="cv-h">Doctrine not yet reviewed by this project, as of {esc(updated_through)}.</p></div>')
+                f'<p class="cv-h">Military policy not yet reviewed by this site, as of {esc(updated_through)}.</p></div>')
     status = d.get("status")
     if status == "no_policy_identified":
         return ('<div class="coverage mk" tabindex="0" '
                 'data-info="A coverage statement, not a finding of no policy.">'
-                f'<p class="cv-h">No published national policy identified by this project, as of {esc(iso(d.get("as_of")))}.</p>'
+                f'<p class="cv-h">{esc(config.DOCTRINE_ABSENCE_PHRASE.format(as_of=iso(d.get("as_of"))).capitalize())}.</p>'
                 f'<p class="cv-b">{esc(d.get("search_note",""))}</p></div>')
     parts = []
     for entry in d.get("entries") or []:
@@ -435,10 +430,27 @@ def corpus(iso3, name, cs, sources, preview):
 def _plain_position(cs, preview):
     codings = [c for c in cs.get("position_codings", []) if _shows(c, preview)]
     if not codings:
-        return "Not yet coded by this project."
+        return "Not yet reviewed by this site."
     c = sorted(codings, key=lambda c: iso(c.get("as_of")))[-1]
     cat = config.POSITION_CATEGORIES.get(c["code"], "")
-    return f"Coded {esc(c['code'])}: {esc(cat)}."
+    plain = config.POSITION_PLAIN[c["code"]]
+    return f"Position: {esc(plain[0].lower() + plain[1:])} ({esc(c['code'])}). {esc(cat)}."
+
+
+def _lower(s):
+    return s[0].lower() + s[1:] if s else s
+
+
+def _coding_heading(c):
+    """'Wants a treaty with bans (LBI-BAN), since 2022-08-09, stated directly
+    (EXPLICIT)'; for NONE, a review date rather than a start."""
+    code = c["code"]
+    conf = c.get("confidence", "") or ""
+    plain = config.POSITION_PLAIN[code]
+    cp = config.CONFIDENCE_PLAIN.get(conf, "")
+    if code == "NONE":
+        return f"No stated position (NONE), reviewed {iso(c.get('as_of'))}, {cp}"
+    return f"{plain} ({code}), since {iso(c.get('as_of'))}, {cp} ({conf})"
 
 
 def _vote_pattern(entry):
@@ -446,7 +458,7 @@ def _vote_pattern(entry):
     words = {"Y": "Yes", "N": "No", "A": "Abstain", "X": "did not vote"}
     if all(v == "Y" for v in seq):
         return "Yes on all three UN votes on autonomous weapons."
-    return "Votes: " + ", ".join(words[v] for v in seq) + " across the three resolutions."
+    return ", ".join(words[v] for v in seq) + " across the three resolutions."
 
 
 def state_body(iso3, name, un_name, entry, votes, cs, sources,
@@ -460,21 +472,21 @@ def state_body(iso3, name, un_name, entry, votes, cs, sources,
     body = [
         f'<section class="hero"><p class="doc-label">State dossier</p>'
         f'<h1>{esc(name)}</h1>'
-        f'<p class="sub"><b>{esc(iso3)}</b> &middot; {esc(un_name)} &middot; board row present</p></section>',
-        band("What does this state want?", _plain_position(cs, preview),
+        f'<p class="sub"><b>{esc(iso3)}</b> &middot; {esc(un_name)} &middot; on the board</p></section>',
+        band("What does it want?", _plain_position(cs, preview),
              spectrum(coded, iso3, name)
              + own_coding(iso3, name, cs, sources, preview, updated_through),
-             "This state shown large among peers &middot; hover a mark for its coding"),
+             "Shown large among its peers &middot; hover a mark for its position"),
         band("How did it vote?", esc(_vote_pattern(entry)),
              waffles(iso3, name, entry, votes),
              "Hover a legend chip to light those votes &middot; each resolution links to its record"),
-        band("What has it signed?", "Membership is fact, not opposition.",
+        band("What has it signed?", "Being on a list is a fact. Not being on one is not opposition.",
              signing(iso3, name, endorsements, sponsorships),
-             "Hover a track header to light its signings &middot; click a seal to open the document"),
-        band("When is it on the record?", "The engagement cadence, dated.",
+             "Hover a column heading to light its signings &middot; click a seal to open the document"),
+        band("When has it spoken?", "Every time it went on the record, dated.",
              cadence(iso3, name, entry, votes, cs, endorsements, sponsorships, preview),
-             "Hover a mark for its act &middot; a legend chip lights that type"),
-        band("What has it written down at home?", "National doctrine.",
+             "Hover a mark for what it was &middot; a legend chip lights that type"),
+        band("What rules has it written at home?", "Its own military policy.",
              doctrine_timeline + doctrine(cs, sources, preview, updated_through)),
         band("The record", "The documents on file.",
              corpus(iso3, name, cs, sources, preview),
@@ -785,9 +797,9 @@ def own_coding(iso3, name, cs, sources, preview, updated_through):
     codings = [c for c in cs.get("position_codings", []) if _shows(c, preview)]
     shifts = [s for s in cs.get("shift_events", []) if _shows(s, preview)]
     if not codings and not shifts:
-        return ('<div class="coverage"><p class="cv-b">Statements for this state are '
-                f'not yet reviewed by this project, as of {esc(updated_through)}. The '
-                'recorded votes above are complete.</p></div>')
+        return ('<div class="coverage"><p class="cv-b">This site has not yet reviewed this '
+                f"state's statements, as of {esc(updated_through)}. Its votes above are "
+                'complete.</p></div>')
     parts = []
     for c in sorted(codings, key=lambda c: iso(c.get("as_of"))):
         cat = config.POSITION_CATEGORIES.get(c["code"], "")
@@ -795,15 +807,13 @@ def own_coding(iso3, name, cs, sources, preview, updated_through):
         rat = f'<p class="cv-b">{esc(c.get("rationale", ""))}</p>' if c.get("rationale") else ''
         ev = "".join(_evi(e, sources) for e in c.get("evidence") or [])
         parts.append(
-            f'<div class="own-coding"><h3 class="oc-h">{esc(c["code"])} '
-            f'<span class="oc-c">{"reviewed as of" if c["code"] == "NONE" else "since"} '
-            f'{esc(iso(c.get("as_of")))}, {esc(c.get("confidence", ""))}</span>'
+            f'<div class="own-coding"><h3 class="oc-h">{esc(_coding_heading(c))}'
             f'{draft}</h3><p class="oc-cat">{esc(cat)}.</p>{rat}{ev}</div>')
     for s in sorted(shifts, key=lambda s: iso(s.get("date"))):
         draft = ' <span class="dchip">DRAFT</span>' if (preview and not _approved(s)) else ''
         ev = "".join(_evi(e, sources) for e in s.get("evidence") or [])
         parts.append(
-            f'<div class="own-coding"><h3 class="oc-h">Shift: {esc(s.get("from", ""))} '
-            f'&rarr; {esc(s.get("to", ""))} <span class="oc-c">{esc(iso(s.get("date")))}</span>'
+            f'<div class="own-coding"><h3 class="oc-h">Shift: {esc(_lower(config.POSITION_PLAIN.get(s.get("from", ""), s.get("from", ""))))} '
+            f'&rarr; {esc(_lower(config.POSITION_PLAIN.get(s.get("to", ""), s.get("to", ""))))} <span class="oc-c">{esc(iso(s.get("date")))}</span>'
             f'{draft}</h3>{ev}</div>')
     return '<div class="codings">' + "".join(parts) + '</div>'

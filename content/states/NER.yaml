@@ -12,6 +12,9 @@ position_codings:
     confidence: INFERRED
     as_of: 2026-07-17
     approved: true   # render-approved 2026-09-14
+    rationale: >
+      This site reviewed what Niger has said on autonomous weapons and found
+      no stated position.
     search_note: >
       Research pass 1 (2026-07-17) recorded Niger's committee-stage No on L.56 and its move to Abstain at the 78/241 plenary; the reviewed record contains no substantive stated position.
 

@@ -30,14 +30,37 @@ SOURCES_YAML = CONTENT_DIR / "sources.yaml"
 # point in time). Order here is the canonical display order.
 # ---------------------------------------------------------------------------
 
+# One sentence per category, plain language (analyst rewrite, 2026-09-14).
 POSITION_CATEGORIES = {
-    "LBI-BAN": "Supports a legally binding instrument that includes prohibitions",
-    "LBI-OPEN": "Supports negotiating a legally binding instrument, form unspecified",
-    "REG-SOFT": "Supports new non-binding measures",
-    "CCW-ONLY": "Supports the CCW/GGE consensus process only, no stated outcome position",
-    "OPPOSE": "Opposes new international instruments",
-    "AMBIG": "Position ambiguous or evolving",
-    "NONE": "No substantive position on record",
+    "LBI-BAN": "Supports a legally binding treaty that prohibits some systems",
+    "LBI-OPEN": "Supports negotiating a treaty but has not said what it should prohibit",
+    "REG-SOFT": "Supports new international rules that are not legally binding",
+    "CCW-ONLY": "Supports continuing the consensus process in the Geneva weapons convention, and has not said what it should produce",
+    "OPPOSE": "Opposes any new international rules on autonomous weapons",
+    "AMBIG": "Has said things that point in more than one direction",
+    "NONE": "This site looked and found no stated position",
+}
+
+# The plain label that leads everywhere a code appears (key, legend, state
+# pages, hover text). The code follows it in small type: the code is what the
+# data files use, the label is what a reader needs. Pick the words once; the
+# rubric's own label fields must match these exactly.
+POSITION_PLAIN = {
+    "LBI-BAN": "Wants a treaty with bans",
+    "LBI-OPEN": "Wants a treaty, terms open",
+    "REG-SOFT": "Wants new rules, not a treaty",
+    "CCW-ONLY": "Keep it in Geneva",
+    "OPPOSE": "No new rules",
+    "AMBIG": "Unclear or shifting",
+    "NONE": "No stated position",
+}
+
+# Confidence in plain words, paired with the tier in brackets on the page.
+CONFIDENCE_PLAIN = {
+    "EXPLICIT": "stated directly",
+    "INFERRED": "interpreted",
+    "AMBIGUOUS": "points both ways",
+    "PROVISIONAL": "awaiting the document",
 }
 
 # ---------------------------------------------------------------------------
@@ -66,7 +89,7 @@ ABSENCE_TIERS = ("no_position_on_record", "not_yet_reviewed")
 
 DOCTRINE_ABSENCE = "no_policy_identified"  # requires as_of + search_note
 DOCTRINE_ABSENCE_PHRASE = (
-    "no published national policy identified by this project, as of {as_of}"
+    "no published military policy on weapon autonomy found by this site, as of {as_of}"
 )
 
 # ---------------------------------------------------------------------------

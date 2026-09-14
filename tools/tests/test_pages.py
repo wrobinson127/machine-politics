@@ -159,7 +159,7 @@ def test_deploy_never_renders_unapproved_prose(tmp_path, monkeypatch):
     kinds = {str(e["kind"]).split(":")[0] for e in manifest["entries"]}
     assert {"tour", "endorsement_instrument", "sponsorship_record"} <= kinds
     meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
-    assert "Walker Robinson is the analyst of record" not in meth
+    assert "Walker Robinson makes every judgment call" not in meth
     assert "takes no position" in meth
 
 
@@ -168,5 +168,5 @@ def test_deploy_renders_approved_prose(tmp_path):
     manifest = bs.build(tmp_path / "dep", preview=False)
     assert manifest["unapproved_rendered"] == 0
     meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
-    assert "Walker Robinson is the analyst of record" in meth
+    assert "Walker Robinson makes every judgment call" in meth
     assert "takes no position" in meth

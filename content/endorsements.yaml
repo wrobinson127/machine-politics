@@ -8,6 +8,7 @@ instruments:
     roster_verified: 2026-08-24   # live state.gov page read in-browser; 58 names and the as-of date match exactly
     name: Political Declaration on Responsible Military Use of Artificial Intelligence and Autonomy
     date: 2023-02-16
+    date_note: launched at the REAIM summit in The Hague; the text was re-issued on 9 November 2023
     list_source_url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
     list_source_archived: http://web.archive.org/web/20241219144554/https://www.state.gov/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy/
     list_as_of: 2024-11-27

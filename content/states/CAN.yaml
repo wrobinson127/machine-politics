@@ -21,21 +21,17 @@ position_codings:
       of the document, not a gap in this project's retrieval, so the rubric
       yields AMBIG rather than a category picked out of the silence.
     rationale: >
-      The draft-articles series supports two readings and settles neither.
-      It is drafted as articles, the form a treaty takes, and its authors
-      affirm them as such; that points toward a binding instrument. It also
-      asks for nothing new, specifying measures States are to implement to
-      satisfy international humanitarian law as it already stands, with
-      Article 1 opening by describing what IHL already prohibits rather than
-      creating a prohibition the instrument itself would impose; that points
-      toward the existing process being sufficient. Both readings rest on the
-      document; neither is stated by it. Coding CCW-ONLY would infer a forum
-      preference from where the paper was filed and what it omits, and
-      coding LBI-OPEN would infer a binding instrument from the genre of the
-      document. Both are readings of the same silence in opposite
-      directions, which is what AMBIG is for. The two evidence entries below
-      carry the tension rather than resolving it. Canada's own statements, if
-      and when retrieved, are what would resolve it.
+      Canada co-wrote a set of draft articles on autonomous weapons at the
+      Geneva talks. The document is written like the start of a treaty,
+      which points one way. But it never asks for anything new: it spells
+      out what the laws of war already require, and its first article
+      describes what is already prohibited rather than creating a new ban.
+      That points the other way. The text supports both readings and states
+      neither. Reading it as "keep it in Geneva" would mean guessing from
+      where it was filed; reading it as "wants a treaty" would mean guessing
+      from its format. Both are guesses about a silence, so this site marks
+      the position unclear and shows both. Canada's own statements would
+      settle it; this site has not yet reviewed them.
     evidence:
       - source: ccw-gge1-2023-wp4rev1-draftarticles
         claim: Canada is a named author of CCW/GGE.1/2023/WP.4/Rev.1, and affirms it in the form a treaty takes, as numbered draft articles.

@@ -19,16 +19,16 @@ position_codings:
       compliance; regulate all others through national measures - expressed
       within its CCW-forum preference.
     rationale: >
-      India holds that the CCW GGE is the appropriate forum and that the
-      UNGA track duplicates it: its 2024 explanation of vote states it
-      abstained because parallel mandates duplicate efforts and
-      resources, while the GGE addresses the full range of challenges.
-      The vote trajectory (No in 2023, Abstain in 2024, Yes in 2025) is
-      a change in posture toward the UNGA resolutions; the research
-      record shows no change in the underlying forum preference, so no
-      position shift event is coded. Whether the 2025 Yes reflects
-      substantive softening is an open question that the unretrieved
-      2025 explanation of vote decides.
+      India holds that the Geneva convention's expert group is the right
+      forum and that the UN General Assembly track duplicates it. In its
+      2024 statement explaining its vote, India said it abstained because
+      parallel processes duplicate effort while the Geneva group already
+      covers the full range of issues. India's votes ran No, Abstain, Yes
+      across the three resolutions. That is a change in how it treats the UN
+      resolutions, not a change in which forum it wants, so no position
+      shift is recorded. Whether the 2025 Yes signals a softer position is
+      an open question; India's 2025 statement explaining that vote, not yet
+      obtained, would answer it.
     evidence:
       - source: in-eov-79-62
         claim: India abstained on the 2024 resolution, stating its reason in its own explanation of vote.
@@ -95,10 +95,8 @@ doctrine:
   as_of: 2026-07-17
   approved: true   # render-approved 2026-08-31
   search_note: >
-    Research pass 5d (2026-07-17) reviewed the record and identified no
-    published national directive on autonomy in weapon systems. No
-    published national policy specifically governing autonomy in weapons
-    systems identified by this project, as of 2026-07-17.
+    This site reviewed the public record and found no published national
+    directive on autonomy in weapon systems.
 
 flags:
   - "PROVENANCE RESOLVED 2026-08-24: the 2024 EOV primary was retrieved and both quotes verified word for word against it. The document URL is pinned to the statement page. The second quote was upgraded from a truncated fragment to the full sentence. Verified-primary status granted"

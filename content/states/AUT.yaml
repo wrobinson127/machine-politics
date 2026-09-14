@@ -11,10 +11,9 @@ position_codings:
     as_of: 2018-08-30
     approved: true    # ruled + render-approved 2026-07-21 (LBI-OPEN->LBI-BAN arc, both legs primary-grounded)
     rationale: >
-      Austria, with Brazil and Chile, formally proposed a CCW mandate to
-      negotiate a legally binding instrument ensuring meaningful human
-      control. The proposal does not yet specify a prohibitions-plus-
-      regulations structure.
+      Austria, with Brazil and Chile, formally proposed that the Geneva
+      convention start negotiating a treaty to guarantee meaningful human
+      control. The proposal did not yet say what the treaty should ban.
     evidence:
       - source: ccw-gge2-2018-wp7-aut-bra-chl
         claim: The 2018 working paper proposes a mandate to negotiate a legally binding instrument.
@@ -30,11 +29,11 @@ position_codings:
     as_of: 2024-04-30
     approved: true    # ruled + render-approved 2026-07-21 (LBI-OPEN->LBI-BAN arc, both legs primary-grounded)
     rationale: >
-      As chair of the April 2024 Vienna Conference and in its submission for
-      the Secretary-General's report, Austria states support for a legally
-      binding instrument consisting of prohibitions and regulations, to be
-      concluded by 2026. Austria initiated the UNGA resolution track in 2023
-      and voted Yes on all three resolutions.
+      As chair of the April 2024 Vienna conference, and in its submission to
+      the UN Secretary-General, Austria said it supports a treaty made of
+      prohibitions and regulations, to be concluded by 2026. Austria started
+      the UN resolution track in 2023 and voted Yes on all three
+      resolutions.
     evidence:
       - source: vienna-chairs-summary-2024
         claim: The chair's summary affirms commitment to an international legal instrument on autonomous weapons systems.

@@ -187,11 +187,12 @@
       Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
         var code = b.getAttribute("data-code");
         // NONE is a coverage statement: its date is the review date, not a start.
+        var plain = b.getAttribute("data-plain") || code;
+        var confPlain = b.getAttribute("data-conf-plain") || "";
         var when = code === "NONE"
-          ? "NONE: no substantive position on record, reviewed as of " + b.getAttribute("data-since")
-          : code + " since " + b.getAttribute("data-since");
-        pop.appendChild(el("span", "citation",
-          when + " \u00b7 confidence " + b.getAttribute("data-conf")));
+          ? "No stated position (NONE), reviewed " + b.getAttribute("data-since") + ", " + confPlain
+          : plain + " (" + code + "), since " + b.getAttribute("data-since") + ", " + confPlain + " (" + b.getAttribute("data-conf") + ")";
+        pop.appendChild(el("span", "citation", when));
       });
       var note = row.querySelector(".c-note");
       if (note) pop.appendChild(el("span", "citation", note.textContent));

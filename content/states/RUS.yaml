@@ -19,11 +19,8 @@ doctrine:
   as_of: 2026-07-17
   approved: true   # render-approved 2026-08-31
   search_note: >
-    Research pass 5c (2026-07-17) reviewed the record: the March 2024
-    working paper is Russia's closest articulation and is an
-    international-forum submission, not a domestic directive. No
-    published national policy specifically governing autonomy in weapons
-    systems identified by this project, as of 2026-07-17.
+    Russia's March 2024 paper to the Geneva talks is its fullest statement
+    on the subject, but it is a diplomatic submission, not a domestic rule.
 
 flags:
   - "CODING NEEDS SOURCE: the research passes support OPPOSE at EXPLICIT confidence (existing IHL suffices; no new treaty; GGE the right forum), but the quotes are secondary-sourced (RCW CCW Report vol.10 no.6; Lieber 2026). Retrieve the March 2024 working paper and the October 2025 First Committee statement from UNODA, then code. Votes alone (No, No, No) underdetermine the category: India voted No in 2023 and codes CCW-ONLY."

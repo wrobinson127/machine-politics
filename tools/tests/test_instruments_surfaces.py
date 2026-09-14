@@ -294,7 +294,7 @@ def test_doctrine_timeline_deploy_excludes_unapproved(tmp_path, monkeypatch):
     assert manifest["unapproved_rendered"] == 0
 
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
-    assert "Doctrine not yet reviewed by this project" in usa
+    assert "Military policy not yet reviewed by this site" in usa
     assert "DoD Directive" not in usa
     assert "appropriate levels of human judgment" not in usa  # the quote
     assert "tl-core" not in usa
@@ -318,7 +318,7 @@ def test_doctrine_timeline_deploy_renders_approved_doctrine(deploy):
     assert 'class="tl-core"' in usa
     assert "2023-01-25" in usa
     assert "timeline-list" in usa
-    assert "Doctrine not yet reviewed by this project" not in usa
+    assert "Military policy not yet reviewed by this site" not in usa
 
 
 def test_doctrine_timeline_preview_renders_markers(preview):
@@ -326,7 +326,7 @@ def test_doctrine_timeline_preview_renders_markers(preview):
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
     assert 'class="doctrine-timeline"' in usa
     assert 'class="tl-core"' in usa  # filled marker for core doctrine
-    assert "core doctrine, filled marker" in usa
+    assert "core policy, filled marker" in usa
     assert "2023-01-25" in usa  # the dated list below the SVG
     assert "timeline-list" in usa
 

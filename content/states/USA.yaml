@@ -11,10 +11,10 @@ position_codings:
     as_of: 2023-02-16
     approved: true   # render-approved 2026-07-21 (the 2023 anchor of the ruled REG-SOFT -> CCW-ONLY recode)
     rationale: >
-      The United States launched the non-binding Political Declaration on
-      Responsible Military Use of Artificial Intelligence and Autonomy as its
-      preferred new international measure, anchored in existing international
-      humanitarian law.
+      The United States launched the Political Declaration on Responsible
+      Military Use of AI and Autonomy, a non-binding pledge, as its
+      preferred new international measure, built on the existing laws of
+      war.
     evidence:
       - source: us-political-declaration-2023
         claim: The US-led non-binding declaration anchors military AI use in existing international humanitarian law.
@@ -41,17 +41,14 @@ position_codings:
       resolution 80/57). Not coded OPPOSE: the primary record does not state
       opposition to new instruments as such.
     rationale: >
-      In its First Committee explanation of vote (US Mission to International
-      Organizations in Geneva, 4 November 2025) the United States explained
-      its No vote on the LAWS resolution (L.41) as a defense of the CCW
-      consensus track: it strongly supports the CCW and the Group of
-      Governmental Experts, encourages a consensus outcome in 2026, and
-      objects to the parallel UNGA resolution specifically at preambular
-      paragraph 7 and operative paragraph 3. The stated core is venue
-      preference, not opposition to a new instrument as such - the statement
-      expressly frames the CCW track as working "on a future instrument and
-      other measures." This supersedes the earlier provisional OPPOSE coding
-      (see flags: correction).
+      In November 2025 the United States voted against the UN resolution on
+      autonomous weapons and explained why. It wants the work to stay inside
+      the Geneva weapons convention, where decisions need consensus, and it
+      objected to two specific paragraphs of the resolution. It did not say
+      it opposes a future treaty. Its statement describes the Geneva track
+      as working "on a future instrument and other measures". This replaces
+      an earlier reading that had the US opposing any new rules; see the
+      corrections page.
     evidence:
       # The EOV's decisive passages, quoted as contiguous verbatim excerpts
       # (<=25 words each per the evidence-quote rule); the full text is on file.
@@ -130,8 +127,8 @@ shift_events:
       UNGA resolution at preambular paragraph 7 and operative paragraph 3.
       The date marks the explanation of vote (First Committee, 4 November
       2025); the plenary recorded its No on resolution 80/57 on 2 December
-      2025. This shift supersedes the earlier provisional REG-SOFT -> OPPOSE
-      event (see flags: correction).
+      2025. This shift replaces an earlier provisional reading that had the
+      position moving to no new rules; see the corrections page.
     evidence:
       - source: us-mission-cluster4-2025
         claim: The US framed its No vote as support for the CCW track working toward a future instrument.
@@ -157,9 +154,9 @@ doctrine:
       approved: true   # render-approved 2026-08-31
       url: https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf
       note: >
-        Current version issued 2023-01-25; the original issued November 2012.
-        The canonical PDF blocks tool fetches; quotes verified via official
-        reproductions in the US submission to A/79/88 and the ICRC casebook.
+        Current version issued 25 January 2023; first issued November 2012.
+        Quotes checked against official reproductions in the US submission
+        to the UN Secretary-General and the ICRC casebook.
       evidence:
         - source: dodd-3000-09
           claim: US doctrine requires design for appropriate levels of human judgment over the use of force.

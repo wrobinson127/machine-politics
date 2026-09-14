@@ -12,13 +12,13 @@ position_codings:
     as_of: 2018-04-13
     approved: true    # ruled + render-approved 2026-07-21 (AMBIG, primary-grounded)
     rationale: >
-      At the April 2018 CCW GGE, China supported negotiating a ban on the use
-      of fully autonomous lethal weapons systems (an oral statement recorded
-      in secondary sources) while its written working paper defined those
-      systems through five characteristics that apply cumulatively, including
-      total absence of human intervention. The written paper itself calls only
-      for precaution and contains no ban language. The two poles, at different
-      dates, are recorded side by side.
+      At the Geneva talks in April 2018, China said it supported negotiating
+      a ban on the use of fully autonomous lethal weapons. That was said
+      aloud and is recorded in secondary sources. Its written paper from the
+      same session defined those weapons by five features a system must have
+      all at once, including no human involvement at all, and asked only for
+      caution. The paper contains no ban language. Both are shown, at their
+      dates.
     evidence:
       - source: ccw-gge1-2018-wp7-china
         claim: China defines LAWS narrowly as fully autonomous systems.
@@ -70,11 +70,11 @@ position_codings:
     as_of: 2021-12-13
     approved: true    # ruled + render-approved 2026-07-21 (AMBIG, primary-grounded)
     rationale: >
-      China's 2021 position paper on military AI requires human control and
-      the ability to suspend systems at any time, but proposes norms and
-      national measures rather than a new instrument, and does not use the
-      term LAWS. The paper neither advances nor retracts the 2018 ban-on-use
-      language.
+      China's 2021 position paper on military AI calls for human control and
+      the ability to switch systems off at any time, but proposes norms and
+      national measures rather than a treaty, and never uses the term
+      "lethal autonomous weapons". It neither repeats nor withdraws the 2018
+      ban language.
     evidence:
       - source: chn-position-paper-2021
         claim: The paper requires human control and suspendability without proposing a new instrument.
@@ -100,14 +100,13 @@ position_codings:
       uncontrolled evolution - with the criteria applying cumulatively, and
       regulation for other systems.
     rationale: >
-      China's 2022 working paper supports prohibiting systems bearing all
-      five of its stated characteristics - lethality; full autonomy with no
-      intervention possible; impossibility of termination; indiscriminate
-      effects; uncontrolled evolution - with the criteria applying
-      cumulatively and modeled on the blinding lasers protocol, and
-      regulation for other systems; it warns in the same document that
-      general prohibitions would undermine legitimate defense capabilities.
-      Both halves are explicit; together they support more than one coding.
+      China's 2022 paper supports banning systems that have all five of its
+      features at once (lethal, fully autonomous with no possible
+      intervention, impossible to stop, indiscriminate, self-evolving),
+      modelled on the ban on blinding lasers, with regulation for everything
+      else. The same paper warns that broad bans would undermine legitimate
+      defence. Both halves are stated directly, and together they point in
+      more than one direction.
     evidence:
       - source: ccw-gge-2022-wp6-china
         claim: China opposes broad prohibitions on autonomous weapons.
@@ -139,13 +138,12 @@ position_codings:
     as_of: 2024-05-23
     approved: true    # ruled + render-approved 2026-07-21 (AMBIG, primary-grounded)
     rationale: >
-      China's submission for the Secretary-General's report names the CCW as
-      the appropriate forum, conditions any negotiation of a binding
-      instrument on first agreeing definitions, rejects blanket bans, and
-      restates the narrow prohibition proposal. China abstained on all three
-      UNGA resolutions. The operative position sits between CCW-ONLY and a
-      narrowly scoped binding-instrument stance, and the record does not
-      settle it.
+      China's submission to the UN Secretary-General names the Geneva
+      convention as the right forum, makes any treaty negotiation
+      conditional on first agreeing definitions, rejects blanket bans, and
+      repeats the narrow ban proposal. China abstained on all three UN
+      resolutions. The position sits between "keep it in Geneva" and a
+      narrowly scoped treaty, and China's own words do not settle it.
     evidence:
       - source: unsg-report-a-79-88
         claim: China names the CCW as the appropriate forum.
@@ -190,22 +188,16 @@ doctrine:
   as_of: 2026-08-31
   approved: true   # render-approved 2026-09-02
   search_note: >
-    Reviewed for a published national policy specifically governing autonomy
-    in weapon systems: the State Council Information Office defence white
-    paper "China's National Defense in the New Era" (2019), publicly
-    available Central Military Commission regulations, and PLA doctrinal
-    publications and military strategic guidelines. The closest candidate is
-    the 2019 white paper (official English text, State Council Information
-    Office, https://english.www.gov.cn/atts/stream/files/5d3943eec6d0a15c923d2036),
-    which characterises intelligentised warfare as a
-    trend, stating that "intelligent warfare is on the horizon," but contains
-    no provision governing autonomy in weapon systems: no human-judgment
-    requirement, no review process, and no categories defined for national
-    use. Characterising a trend is not governing it. Export controls under
-    the Export Control Law, which require State Council and Central Military
-    Commission approval for military and dual-use items, govern transfer
-    rather than autonomy and fall outside this scope. China's position-layer
-    documents at the CCW and the United Nations are diplomatic instruments,
-    not national doctrine, and are recorded in the position layer. No
-    published national policy governing autonomy in weapon systems was
-    identified by this project as of this date.
+    This site looked for a published Chinese policy specifically governing
+    autonomy in weapons in three places: the 2019 defence white paper
+    "China's National Defense in the New Era", published Central Military
+    Commission regulations, and public PLA doctrine. The closest candidate
+    is the white paper, which describes "intelligent warfare" as a coming
+    trend but sets no rule for it: no requirement for human judgment, no
+    review process, no categories. Describing a trend is not governing it.
+    China's export controls require government approval to sell military and
+    dual-use goods, but they govern sales, not autonomy. China's papers at
+    the UN and in Geneva are diplomatic documents, not domestic policy, and
+    are recorded under its position above.
+flags:
+  - "Source for the white-paper wording in the national-policy note (official English text, State Council Information Office): https://english.www.gov.cn/atts/stream/files/5d3943eec6d0a15c923d2036"

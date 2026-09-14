@@ -80,7 +80,7 @@ def _real_entry():
 def test_the_board_labels_none_as_a_review_not_a_start():
     entry, resolutions = _real_entry()
     html = bs.row_track_html("PRK", entry, resolutions, [_none("2026-07-17")], [])
-    assert "no substantive position on record, reviewed as of 2026-07-17" in html
+    assert "No stated position (NONE), reviewed 2026-07-17" in html
     assert "NONE since" not in html
     assert "left:0.00%;width:100.00%" in html
 

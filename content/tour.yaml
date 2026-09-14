@@ -17,50 +17,47 @@ beats:
     title: The question
     copy: >
       Who should be allowed to decide to take a human life? Weapons have
-      killed without a person present for a long time, but the choice of
-      target was always made by someone, somewhere, in advance. What is new
-      is a machine that selects and engages a target on its own judgment.
-      Governments have spent a decade arguing over whether to permit it.
-      This is the record of what each of them has actually said, and where
-      each of them has moved.
+      killed without a person present for a long time, but someone always
+      chose the target in advance. What is new is a machine that picks its
+      own target and attacks. Governments have argued for a decade over
+      whether to allow it. This is the record of what each of them has said,
+      and where each has moved.
   - id: one-vote
     title: One country, one vote
     copy: >
-      In December 2023 the General Assembly voted on autonomous weapons for
-      the first time. Resolution 78/241 asked governments to state a view,
-      and the answers went on the record by name. Start with one of them.
-      The United States voted in favour.
+      In December 2023 the UN General Assembly voted on autonomous weapons
+      for the first time. Resolution 78/241 asked every government to take a
+      stand, and the answers went on the record by name. Start with one. The
+      United States voted in favour.
   - id: the-glyphs
-    title: Three votes, four marks
+    title: How to read the marks
     copy: >
       Two more votes followed, one each year. The United States voted in
-      favour again in 2024, then against in 2025. On the board a filled disc
-      is a vote in favour, a crossed ring is a vote against, a half-filled
-      disc is an abstention, and a faint dash means the state did not vote.
+      favour again in 2024, then against in 2025. On the board, a filled
+      disc is a vote in favour, a crossed ring is a vote against, a half-
+      filled disc is an abstention, and a faint dash means the state did not
+      vote.
   - id: the-canvas
     title: Every country has a row
     copy: >
-      The United States is one row of 193. Each runs left to right through
-      the same years, and each state's three votes sit on its row at the
-      dates they were cast. Everything the board shows from here is added on
-      top of these rows.
+      The United States is one row of 193. Every row runs left to right
+      through the same years, and each state's three votes sit at the dates
+      they were cast. Everything else on the board is built on top of these
+      rows.
   - id: the-coding
     title: The band is the position
-    copy: >
-      A vote is one day. Behind it is a position, which this project reads
-      from the public record and draws as a coloured band under the marks.
-      Each colour is a category. Blue supports a binding treaty that
-      includes prohibitions. Teal supports a binding treaty but has not said
-      what it should prohibit. Ochre supports new measures that are not
-      legally binding. Plum wants the work kept inside the Convention on
-      Certain Conventional Weapons. Brown opposes any new instrument. A
-      hatched band means the record supports more than one reading. Grey means this project reviewed the record and found no stated
-      position on it. The United
-      States backed non-binding measures from 2023, so its band is ochre. In
-      November 2025 it said the work should stay inside the Convention, and
-      the band turns plum. The red seam marks the day that changed. Red on
-      this site means only that a position changed or that this project
-      corrected its own record.
+    copy: |
+      A vote is one day. Behind it is a position: what the government says it actually wants. This site reads that from what each government has said and draws it as a coloured band under the marks. Each colour is one answer to the same question.
+
+      Blue: wants a treaty that bans some systems.
+      Teal: wants a treaty, but has not said what it should ban.
+      Ochre: wants new rules, but not a treaty.
+      Plum: wants the work kept inside the Geneva weapons convention.
+      Brown: wants no new rules at all.
+      Hatched: has said things that point in more than one direction.
+      Grey: this site looked and found no stated position.
+
+      The United States backed non-binding rules from 2023, so its band starts ochre. In November 2025 it said the work should stay inside the Geneva convention, and the band turns plum. The red seam marks the day that changed. Red on this site means one of two things only: a position changed, or this site corrected its own record.
     # CORRECTION to the placeholder: the earlier copy narrated this shift as a
     # move to OPPOSE with a brown band, sourced provisionally from secondary
     # reporting. The content layer codes it REG-SOFT to CCW-ONLY, EXPLICIT,
@@ -69,12 +66,11 @@ beats:
     title: A second country, moving the other way
     copy: >
       India travelled the opposite road on the same three votes: against,
-      then an abstention, then in favour. What they do not show is two
-      opposite positions. India's coded position held steady throughout,
-      because its argument was always about which forum should do the work,
-      and a change in how a state votes is not by itself a change in what it
-      wants. That gap between the act and the position is the reason this
-      site codes them separately.
+      then an abstention, then in favour. But the two arcs do not show two
+      opposite positions. India's position never moved. Its argument was
+      always about which forum should do the work, and changing how you vote
+      is not the same as changing what you want. That gap between the vote
+      and the position is why this site tracks them separately.
     # CORRECTION to the placeholder: its FLAG said India had no coded position
     # in the content layer. India has been coded CCW-ONLY / EXPLICIT since the
     # 2026-07-17 ruling, so the mirror can now be drawn with bands, not marks
@@ -82,38 +78,37 @@ beats:
   - id: the-movers
     title: The movers
     copy: >
-      They are not the only two that moved. Attendance changes are left out
-      of this count, because missing a vote is not the same as changing your
+      They are not the only two that moved. Changes caused by missing a vote
+      are left out, because missing a vote is not the same as changing your
       mind. The rows are sorted by when each state last moved, most recent
       at the top.
   - id: the-camps
     title: The camps
     copy: >
-      One group of states wants a binding treaty with prohibitions in it.
-      Another wants new international measures that are not legally binding.
-      A few want no new law at all and say the existing law of armed
-      conflict is enough. Where a state's record supports more than one
-      reading, the board marks it ambiguous instead of choosing. Here the
-      rows are grouped by position, in the order the key lists them. That
-      order is a list, not a ranking.
+      One group of states wants a treaty with bans in it. Another wants new
+      rules that are not a treaty. A few want no new law at all and say the
+      existing laws of war are enough. Where a state has said things that
+      point both ways, the board marks it as unclear instead of choosing for
+      it. Here the rows are grouped by position, in the order the key lists
+      them. That order is a list, not a ranking.
   - id: the-board
     title: Every state, the full board
     copy: >
-      Here is the whole record: every member state, every recorded vote, and
-      a position band wherever this project has coded one. An empty track
-      means this project has not yet read that state's statements. It says
+      Here is the whole record: every member state, every vote, and a
+      position band wherever this site has worked one out. An empty track
+      means this site has not yet read that state's statements. It says
       nothing about the country.
   - id: the-clock
     title: The clock
     copy: >
-      A dated line runs down the right edge. The Seventh Review Conference
-      of the Convention on Certain Conventional Weapons opens in Geneva on
-      16 November 2026, and it is the next moment at which any of this can
-      turn into law. In September 2025, Brazil read a statement to the
-      expert group on behalf of thirty-nine parties saying they were ready
-      to begin negotiating. Everything to the left of that line is on the
-      record. Everything to the right is still being decided. From here,
-      open any row for the evidence behind it.
+      A dated line runs down the right edge. The Geneva weapons convention
+      holds its Seventh Review Conference on 16 November 2026, and that is
+      the next moment any of this can turn into law. In September 2025,
+      Brazil read a statement to the convention's expert group on behalf of
+      thirty-nine parties saying they were ready to start negotiating.
+      Everything left of the line is on the record. Everything right of it
+      is still being decided. From here, open any row for the evidence
+      behind it.
     sources:
       - label: "Joint statement to the September 2025 session of the CCW GGE on LAWS (as delivered)"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf"

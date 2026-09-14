@@ -18,13 +18,12 @@ position_codings:
       outside human control, regulation of the rest. Category-scoped,
       not a blanket ban.
     rationale: >
-      Germany's national contribution to the Secretary-General's report
-      supports a legally binding instrument in the CCW GGE that prohibits
-      lethal autonomous weapons systems that cannot comply with
-      international humanitarian law, and separately supports an
-      additional CCW protocol prohibiting LAWS operating outside human
-      control, with regulation for other systems. The human-decision
-      principle is stated in its own words.
+      Germany's submission to the UN Secretary-General supports a treaty in
+      the Geneva convention that bans autonomous weapons that cannot comply
+      with the laws of war, and separately supports a new protocol banning
+      weapons that operate outside human control, with regulation for the
+      rest. It states in its own words that the decision over life and death
+      must be made by humans.
     evidence:
       - source: de-submission-78-241
         claim: Germany supports a CCW additional protocol prohibiting LAWS outside human control.
@@ -50,12 +49,10 @@ doctrine:
   as_of: 2026-07-17
   approved: true   # render-approved 2026-08-31
   search_note: >
-    Research pass 5b (2026-07-17) reviewed the German record: German
-    security analysts themselves note the absence of a national directive
-    on weapon autonomy in the DoDD 3000.09 sense; the position lives in
-    coalition-treaty language and international submissions. No published
-    national policy specifically governing autonomy in weapons systems
-    identified by this project, as of 2026-07-17.
+    German security analysts themselves note that Germany has no national
+    directive on weapon autonomy of the kind the US has. Germany's position
+    lives in its coalition agreement and its international submissions, not
+    in a domestic rulebook.
 
 flags:
   - "March 2024 GGE statement (LBI to prohibit fully autonomous weapons) and coalition-treaty language: URLs not yet pinned; would strengthen the coding's document trail"

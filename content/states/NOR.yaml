@@ -14,14 +14,12 @@ position_codings:
     as_of: 2024-08-26
     approved: true   # analyst ruling 2026-07-17
     rationale: >
-      Norway states plainly that it supports developing a legally binding
-      instrument to clarify how international humanitarian law applies to
-      autonomous weapons systems, supports the two-tier approach, and
-      co-authored the seven-state elements paper with Bulgaria, Denmark,
-      France, Germany, Italy, and Luxembourg. LBI-OPEN rather than
-      LBI-BAN: the anchor quote supports a binding instrument to clarify
-      IHL application, without itself framing the instrument around a
-      prohibition; the coding follows the state's own formulation.
+      Norway says plainly that it supports a treaty to clarify how the laws
+      of war apply to autonomous weapons, backs the two-tier approach, and
+      co-wrote the seven-state paper with Bulgaria, Denmark, France,
+      Germany, Italy, and Luxembourg. It is read as "terms open" rather than
+      "with bans" because its own words support a treaty to clarify the law,
+      without framing it around a ban. The reading follows what Norway said.
     evidence:
       - source: no-gge-statement-2024
         claim: Norway supports a legally binding instrument clarifying IHL application to autonomous weapons.

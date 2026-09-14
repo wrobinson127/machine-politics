@@ -84,7 +84,7 @@ def test_deploy_states_show_absence_tiers_not_positions(deploy):
     # exercised against a forced-unapproved copy in test_instruments_surfaces,
     # not here, so that approving real content never restales this test.
     assert "DoD Directive 3000.09" in usa  # approved doctrine renders
-    assert "not yet reviewed by this project" not in usa
+    assert "not yet reviewed by this site" not in usa
     assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
     # A genuinely uncoded state must show absence tiers and NOT be located in
@@ -103,7 +103,7 @@ def test_deploy_states_show_absence_tiers_not_positions(deploy):
             break
     assert picked, "expected at least one uncoded state on deploy"
     iso, html = picked
-    assert "not yet reviewed by this project" in html, iso
+    assert "not yet reviewed by this site" in html, iso
     assert 'class="pmark mk me"' not in html, f"{iso} uncoded but located in spectrum"
 
 
@@ -163,7 +163,7 @@ def test_doctrine_absence_renders_exact_phrase(tmp_path):
     }
     html_out = bs.doctrine_signal({"doctrine": doctrine}, {}, preview=False)
     assert (
-        "No published national policy identified by this project, as of 2026-02-01"
+        "No published military policy on weapon autonomy found by this site, as of 2026-02-01"
         in html_out
     )
     assert "has no" not in html_out
@@ -190,8 +190,8 @@ def test_unapproved_doctrine_renders_as_not_reviewed(tmp_path, monkeypatch):
     manifest = bs.build(out, preview=False)
     assert manifest["unapproved_rendered"] == 0
     page = (out / "state" / "CHN.html").read_text(encoding="utf-8")
-    assert "Doctrine not yet reviewed by this project" in page
-    assert "No published national policy identified" not in page
+    assert "Military policy not yet reviewed by this site" in page
+    assert "No published military policy" not in page
     assert "intelligent warfare is on the horizon" not in page  # the quote
 
 
@@ -200,8 +200,8 @@ def test_approved_doctrine_absence_renders_its_finding(deploy):
     the absence card being broken for everyone."""
     out, _ = deploy
     chn = (out / "state" / "CHN.html").read_text(encoding="utf-8")
-    assert "No published national policy identified by this project" in chn
-    assert "Doctrine not yet reviewed by this project" not in chn
+    assert "No published military policy on weapon autonomy found by this site" in chn
+    assert "Military policy not yet reviewed by this site" not in chn
 
 
 def test_build_is_deterministic(tmp_path):

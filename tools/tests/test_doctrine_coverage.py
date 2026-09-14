@@ -55,7 +55,7 @@ def test_the_prose_numbers_match_the_generated_table(tmp_path):
     html = (out / "methodology.html").read_text(encoding="utf-8")
 
     prose = re.search(
-        r"Of the (\w+) states on this list, (\w+) have a published policy"
+        r"Of the (\w+) major powers reviewed, (\w+) have a published policy"
         r"[^.]*?and (\w+) do not", html)
     assert prose, "the coverage finding is missing from the methodology page"
     total, have, lack = (WORDS[w.lower()] for w in prose.groups())
@@ -107,7 +107,7 @@ def test_gated_doctrine_never_appears_in_the_table(tmp_path, monkeypatch):
     assert "Reviewed 2026-08-31" not in html, "gated doctrine leaked its review date"
     # and the sentence still agrees with the smaller table
     prose = re.search(
-        r"Of the (\w+) states on this list, (\w+) have a published policy"
+        r"Of the (\w+) major powers reviewed, (\w+) have a published policy"
         r"[^.]*?and (\w+) do not", html)
     if prose:
         total, have, lack = (WORDS[w.lower()] for w in prose.groups())

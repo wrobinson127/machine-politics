@@ -17,13 +17,11 @@ position_codings:
       fully autonomous systems (SALA) while regulating partially autonomous
       ones. Not a blanket-ban position.
     rationale: >
-      France's submission for the Secretary-General's report states its
-      preferred outcome plainly: a future instrument, possibly an
-      Additional Protocol to the CCW, structured on a two-tier approach
-      that prohibits fully autonomous systems and regulates partially
-      autonomous ones. The prohibition is category-scoped (fully
-      autonomous only), which this coding's scope note carries so France
-      is not misread as supporting a blanket ban.
+      France's submission to the UN Secretary-General says plainly what it
+      wants: a new treaty, possibly as an additional protocol to the Geneva
+      convention, that bans fully autonomous systems and regulates partially
+      autonomous ones. The ban covers fully autonomous systems only, and
+      this page says so, so France is not misread as backing a blanket ban.
     evidence:
       # Primary quote (swap RULED 2026-07-19): the direct statement of the
       # preferred outcome, promoted from the returns capture.
@@ -70,19 +68,15 @@ doctrine:
       approved: true
       url: http://www.defense.gouv.fr/sites/default/files/ministere-armees/20210429_Comit%C3%A9%20d%27%C3%A9thique%20de%20la%20d%C3%A9fense%20-%20Avis%20int%C3%A9gration%20autonomie%20syst%C3%A8mes%20armes%20l%C3%A9taux%20-%20Version%20anglaise.pdf.pdf
       note: >
-        Opinion of the Comité d'éthique de la défense (Ministère des Armées),
-        dated 29 April 2021 on its face; the committee was seized by the
-        Minister on 10 January 2020. Quotes below are from the Ministry's
-        OFFICIAL ENGLISH version (translation: official). RULED CORE
-        2026-07-19: core = the opinion plus the government's adopting and
-        citing statements (a 2025 parliamentary answer, QE 8402, cites it as
-        the standing national reference framework). Formally an advisory
-        opinion; in practice the government's standing framework. The
-        opinion's own architecture is six guiding principles and 25
-        guidelines; it extends the refusal beyond use to manufacturing and
-        export (P3), and traces the renunciation to the 5 April 2019 Saclay
-        declaration (footnote 10). The URL carries a double .pdf extension in
-        the ministry's own href; that is intentional, not a typo.
+        An opinion of the French Ministry of Armed Forces' Defence Ethics
+        Committee, dated 29 April 2021, requested by the Minister in January
+        2020. Quotes are from the Ministry's own official English version.
+        Formally it is advice; in practice it is the government's standing
+        framework, and a 2025 parliamentary answer cites it as exactly that.
+        The opinion sets out six principles and 25 guidelines. It rules
+        fully autonomous lethal weapons unacceptable, extends that refusal
+        from use to manufacturing and export, and traces the government's
+        renunciation back to a ministerial speech in April 2019.
       evidence:
         - source: fr-comedef-avis-2021
           claim: The French government has renounced the use of lethal autonomous weapon systems, and the Defence Ethics Committee endorsed that decision.

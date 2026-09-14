@@ -303,6 +303,8 @@ def canvas_row_html(iso3, entry, resolutions, cs, preview):
         style, extra = band_style(c["code"], c.get("confidence"))
         parts.append(
             f'<i class="c-band{extra}" data-code="{esc(c["code"])}" '
+            f'data-plain="{esc(config.POSITION_PLAIN[c["code"]])}" '
+            f'data-conf-plain="{esc(config.CONFIDENCE_PLAIN.get(c.get("confidence", ""), ""))}" '
             f'data-since="{esc(iso(c["as_of"]))}" '
             f'data-conf="{esc(c.get("confidence", ""))}" '
             f'style="left:{left}%;width:{right - left:.2f}%;{style}"></i>'
@@ -468,6 +470,15 @@ def canvas_html(votes, content_states, preview):
     </div>"""
 
 
+def tour_copy_html(copy):
+    """A beat's copy as paragraphs: blank lines separate paragraphs, single
+    newlines inside a paragraph become line breaks (the colour key in beat 5
+    is one item per line)."""
+    paras = [p.strip() for p in str(copy).strip().split("\n\n") if p.strip()]
+    return "".join("<p>" + "<br>".join(esc(ln.strip()) for ln in p.split("\n")) + "</p>"
+                   for p in paras)
+
+
 def tour_html(tour, votes, content_states, preview):
     """The scrollytelling scaffold: ten stacked prose beats (the no-JS and
     reduced-motion path) beside the hidden server-rendered canvas. JS
@@ -494,7 +505,7 @@ def tour_html(tour, votes, content_states, preview):
   <section class="beat" id="beat-{esc(beat["id"])}" data-beat="{i}">
     <div class="beat-copy">
       <h2>{esc(beat["title"])}{chip}</h2>
-      <p>{esc(beat["copy"])}</p>{cites}
+      {tour_copy_html(beat["copy"])}{cites}
     </div>
   </section>""")
     return (
@@ -826,8 +837,8 @@ def page(title, body, *, current, depth=0, preview=False, description="",
 </main>
 <footer class="colophon">
   <div class="shell">
-    <p>Votes from the United Nations General Assembly voting dataset. © United Nations, 2026, <a href="https://digitallibrary.un.org">digitallibrary.un.org</a>. Data reuse terms in <a href="https://github.com/wrobinson127/machine-politics">the repository</a>.</p>
-    <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every coding traces to a quoted, dated, linked source · <a href="{prefix}corrections.html">Corrections</a></p>
+    <p>Vote data from the UN General Assembly voting dataset. © United Nations, 2026, <a href="https://digitallibrary.un.org">digitallibrary.un.org</a>. Reuse terms in <a href="https://github.com/wrobinson127/machine-politics">the repository</a>.</p>
+    <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every position links to a quoted, dated source · <a href="{prefix}corrections.html">Corrections</a></p>
   </div>
 </footer>
 <button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
@@ -943,13 +954,15 @@ def row_track_html(iso3, entry, resolutions, codings, shifts):
     parts = ['<div class="row-track">']
     for band in compute_bands(codings):
         style, extra_class = band_style(band["code"], band["confidence"])
+        conf = band["confidence"] or ""
+        conf_plain = config.CONFIDENCE_PLAIN.get(conf, "")
         if band["code"] == "NONE":
             # A coverage statement, not a position: the date is when the
             # record was reviewed, and the band covers the whole record.
-            title = (f"NONE: no substantive position on record, reviewed as of "
-                     f"{band['since']}, confidence {band['confidence']}")
+            title = f"No stated position (NONE), reviewed {band['since']}, {conf_plain}"
         else:
-            title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
+            title = (f"{config.POSITION_PLAIN[band['code']]} ({band['code']}), since "
+                     f"{band['since']}, {conf_plain} ({conf})")
         if band.get("note"):
             title += f". {band['note']}"
         # role=img + aria-label gives the coding band an accessible name; the
@@ -1079,8 +1092,8 @@ def axis_key_html():
         style, texture = band_style(code, "EXPLICIT")
         items.append(
             f'<span title="{esc(label)}"><i class="swatch{texture}" style="{style}"></i>'
-            f"{esc(code)}</span>")
-    items.append('<span title="Not yet reviewed by this project">'
+            f"{esc(config.POSITION_PLAIN[code])}</span>")
+    items.append('<span title="Not yet reviewed by this site">'
                  '<i class="swatch swatch-empty"></i>Empty</span>')
     return '    <div class="axis-key" aria-hidden="true">' + "".join(items) + "</div>"
 
@@ -1093,14 +1106,17 @@ def legend_html():
         style, texture = band_style(code, "EXPLICIT")
         swatch = (f'<span class="swatch{texture}" style="{style}" '
                   f'aria-hidden="true"></span>')
-        items.append(f"<span>{swatch}{esc(code)}: {esc(label)}</span>")
+        plain = config.POSITION_PLAIN[code]
+        desc = label[0].lower() + label[1:]
+        items.append(f'<span>{swatch}{esc(plain)} <small class="code">({esc(code)})</small>: '
+                     f"{esc(desc)}</span>")
     items.append(
         "<span><span class=\"swatch\" style=\"border:1px dashed "
         f"{config.PALETTE['ink']}66\" aria-hidden=\"true\"></span>"
-        "Empty track: not yet reviewed by this project</span>"
+        "Empty track: not yet reviewed by this site</span>"
     )
     items.append(
-        "<span>Vote marks: solid Yes, crossed ring No, half disc Abstain, faint dash non-voting</span>"
+        "<span>Vote marks: filled disc Yes, crossed ring No, half disc Abstain, faint dash did not vote</span>"
     )
     return '<div class="board-legend">' + "\n".join(items) + "</div>"
 
@@ -1109,8 +1125,8 @@ def index_page(votes, content_states, preview, tour=None):
     rows = board_rows(votes, content_states, preview)
     n_reviewed = sum(1 for r in rows if r["reviewed"])
     coverage_line = (
-        f"Recorded votes cover all {len(rows)} member states. "
-        f"Reviewed position codings cover {n_reviewed} states so far."
+        f"Votes cover all {len(rows)} member states. "
+        f"Positions have been reviewed for {n_reviewed} states so far."
     )
     tour_block = ""
     extra_scripts = ""
@@ -1122,9 +1138,9 @@ def index_page(votes, content_states, preview, tour=None):
 {tour_block}<div class="board-head" id="board-top">
   <div class="board-lede">
     <h1>Who moved, when, and <em>on what record</em>.</h1>
-    <p>Recorded United Nations votes, official statements, and national policy
-    on autonomous weapons systems, per state, over time. Positions are
-    trajectories, not snapshots.</p>
+    <p>UN votes, official statements, and national policy on autonomous
+    weapons, for every state, over time. Positions are trajectories, not
+    snapshots.</p>
     <p class="citation">{esc(coverage_line)}</p>
   </div>
   <aside class="board-key" aria-label="How to read the board">
@@ -1201,9 +1217,9 @@ def votes_page(votes, content_states, preview):
 """)
     body = f"""
 <h1>Recorded votes</h1>
-<p>The three General Assembly resolutions on lethal autonomous weapons systems,
-with the recorded vote of every member state. Extracted from the official UN
-GA voting dataset; extraction and checks are in the open repository.</p>
+<p>The three UN General Assembly resolutions on lethal autonomous weapons, with
+every member state's vote. Taken from the official UN voting dataset. The
+extraction and the checks are in the open repository.</p>
 {chr(10).join(sections)}
 """
     return page("Votes", body, current="votes.html", preview=preview)
@@ -1245,7 +1261,7 @@ def positions_signal(cs, sources, preview):
     if not codings and not shifts:
         return f"""
 <div class="coverage-card">
-  <p>Statements for this state are not yet reviewed by this project, as of
+  <p>This site has not yet reviewed this state's statements, as of
   {esc(config.UPDATED_THROUGH)}. That is a statement about this project's
   coverage, not about the state's record. Recorded votes above are complete.</p>
 </div>
@@ -1290,7 +1306,7 @@ def doctrine_signal(cs, sources, preview):
     if not renderable:
         return f"""
 <div class="coverage-card">
-  <p>Doctrine not yet reviewed by this project, as of {esc(config.UPDATED_THROUGH)}.</p>
+  <p>Military policy not yet reviewed by this site, as of {esc(config.UPDATED_THROUGH)}.</p>
 </div>
 """
     status = doctrine.get("status")
@@ -1300,7 +1316,7 @@ def doctrine_signal(cs, sources, preview):
         return f"""
 <div class="coverage-card">
   <p>{esc(phrase.capitalize())}.{chip}</p>
-  <p class="citation">Where this project looked: {esc(doctrine.get("search_note", ""))}</p>
+  <p class="citation">{esc(doctrine.get("search_note", ""))}</p>
 </div>
 """
     if status == "not_yet_reviewed":
@@ -1311,7 +1327,7 @@ def doctrine_signal(cs, sources, preview):
         )
         return f"""
 <div class="coverage-card">
-  <p>Doctrine not yet reviewed by this project, as of {esc(config.UPDATED_THROUGH)}.{chip}</p>
+  <p>Military policy not yet reviewed by this site, as of {esc(config.UPDATED_THROUGH)}.{chip}</p>
   {note}
 </div>
 """
@@ -1440,7 +1456,7 @@ def doctrine_timeline_html(name, cs, eras, preview):
     )
     for r in records:
         klass = "tl-core" if r["kind"] == "core" else "tl-context"
-        kind_label = "core doctrine" if r["kind"] == "core" else "context instrument"
+        kind_label = "core policy" if r["kind"] == "core" else "context"
         svg.append(
             f'<circle cx="{pct(r["date"])}" cy="{TIMELINE_BASE_Y}" r="6" '
             f'class="{klass}"><title>{esc(r["title"])} · {esc(iso(r["date"]))} · '
@@ -1458,7 +1474,7 @@ def doctrine_timeline_html(name, cs, eras, preview):
             f'aria-hidden="true"></span>{esc(band["label"])}, {esc(span)}</span>'
         )
     legend = (
-        '<p class="era-legend citation">Government eras (context, never a signal): '
+        '<p class="era-legend citation">Government eras, for context only: '
         + " ".join(legend_items) + "</p>"
         if legend_items else ""
     )
@@ -1470,8 +1486,8 @@ def doctrine_timeline_html(name, cs, eras, preview):
         if r["archived"]:
             links += f' · <a href="{esc(r["archived"])}">archived</a>'
         kind_label = (
-            "core doctrine, filled marker" if r["kind"] == "core"
-            else "context instrument, outlined marker"
+            "core policy, filled marker" if r["kind"] == "core"
+            else "context, outlined marker"
         )
         chip = (
             '<span class="draft-chip">DRAFT</span>'
@@ -1634,7 +1650,7 @@ def endorsement_section(inst, votes, content_states, preview):
     parts = [
         f'<section class="signal" id="{esc(inst["id"])}">',
         f'<h2>{esc(inst["name"])}{chip}</h2>',
-        f'<p class="citation">Instrument date {esc(iso(inst["date"]))} · {links} · '
+        f'<p class="citation">Date {esc(iso(inst["date"]))}{(" (" + esc(inst["date_note"]) + ")") if inst.get("date_note") else ""} · {links} · '
         f'list as of {esc(iso(inst["list_as_of"]))}</p>',
     ]
     rows = _endorsed_rows(inst)
@@ -1856,11 +1872,11 @@ def quadrant_block(votes, content_states, declaration, instruments):
     return f"""
 <section class="signal" id="quadrant">
 <h2>The quadrant view</h2>
-<p>Each dot is a member state. Across: how many of the three UNGA resolutions
-on lethal autonomous weapons systems the state voted Yes on. Up: whether the
-state endorsed the Political Declaration on Responsible Military Use of
-Artificial Intelligence and Autonomy. The axes are the instruments. The
-regions carry no names.</p>
+<p>Each dot is a member state. Left to right: how many of the three UN
+resolutions on autonomous weapons the state voted Yes on. Bottom to top:
+whether the state signed the US Political Declaration on Responsible Military
+Use of AI and Autonomy. The two axes are the two documents. The four regions
+have no names on purpose.</p>
 {search}
 <div class="scrub-control">
   <label for="quadrant-time">Timeline</label>
@@ -1868,11 +1884,10 @@ regions carry no names.</p>
     value="{len(steps) - 1}" disabled>
   <output id="quadrant-step" for="quadrant-time">{esc(last["date"])} · {esc(last["label"])}</output>
 </div>
-<p class="citation">The search box rings a state's dot and filters the table
-below; the scrub steps through the three resolution dates and the four
-instrument dates. Both need JavaScript. Without it, the chart shows the
-record through {esc(config.UPDATED_THROUGH)} and the table carries every
-state.</p>
+<p class="citation">Type a state's name to ring its dot and filter the table
+below. Drag the timeline to step through the three vote dates and the four
+signing dates. Both need JavaScript. Without it, the chart shows the record
+as of {esc(config.UPDATED_THROUGH)} and the table lists every state.</p>
 <div class="quadrant-scroll">
 {_quadrant_svg(states, declaration, last["date"])}
 </div>
@@ -1919,12 +1934,12 @@ def wave_map_block(instruments):
     }
     return f"""
 <section class="signal" id="wave-map-section">
-<h2>Endorsement wave map</h2>
-<p>One instrument at a time. States that endorsed by the shown month fill in
-the instrument's hue. States not yet on the list render as paper. The lists
-above are the record; the map only shows the wave.</p>
+<h2>Signing map</h2>
+<p>One document at a time. States that had signed it by the month shown fill
+in with that document's colour. States not yet on the list stay blank. The
+lists above are the record; the map only shows the wave.</p>
 <fieldset class="map-controls">
-  <legend>Instrument</legend>
+  <legend>Document</legend>
   {chr(10).join("  " + r for r in radios)}
 </fieldset>
 <div class="scrub-control">
@@ -2004,10 +2019,11 @@ def instruments_page(votes, content_states, endorsements, sponsorships,
         )
     body = f"""
 <h1>Instruments</h1>
-<p>Political-commitment endorsements and sponsorship records, per instrument,
-from official lists. Endorsement and sponsorship are displayed facts. They
-never feed a position coding. A state that is not listed is recorded as not
-listed, never as opposed.</p>
+<p>Who has signed what. This page lists every pledge, declaration, resolution,
+and joint paper this site tracks, with the states on each one, taken from the
+official list. Being on a list is a fact. Not being on a list is not
+opposition, and this site never treats it as such. Signing something never
+decides a state's position on its own.</p>
 {chr(10).join(sections)}
 """
     return page(
@@ -2095,7 +2111,7 @@ def countries_geojson():
 def rubric_page(rubric, preview, states=None):
     if not (preview or is_approved(rubric)):
         body = f"""
-<h1>The coding rubric</h1>
+<h1>The rubric</h1>
 <div class="coverage-card">
   <p>The published rubric appears here once the analyst of record approves
   it. Positions are coded on two axes: instrument preference and confidence.
@@ -2106,7 +2122,7 @@ def rubric_page(rubric, preview, states=None):
     cats = []
     for code, cat in (rubric.get("axis_a", {}).get("categories") or {}).items():
         cats.append(
-            f"<h3>{esc(code)} <span class=\"citation\">{esc(cat.get('label', ''))}</span></h3>"
+            f"<h3>{esc(cat.get('label', ''))} <span class=\"citation\">({esc(code)})</span></h3>"
             f"<p>{esc(cat.get('description', ''))}</p>"
         )
     tiers = [
@@ -2121,7 +2137,7 @@ def rubric_page(rubric, preview, states=None):
     auth_html = ""
     if auth:
         parts = [
-            f'<h2>{esc(auth.get("name", "Authoring a draft instrument"))}</h2>'
+            f'<h2>{esc(auth.get("name", "Co-writing a draft treaty"))}</h2>'
         ]
         # Every prose field in the block renders, in file order. An allowlist
         # of key names was silently dropping fields added to the rubric later,
@@ -2149,7 +2165,7 @@ def rubric_page(rubric, preview, states=None):
     examples_html = ""
     if examples:
         examples_html = (
-            '<section class="signal"><h2>Worked examples</h2>'
+            '<section class="signal"><h2>Worked examples</h2><p>Each of these is a reading you can check yourself. Follow the link and read the documents it rests on.</p>'
             "<p>Each of these is a coding you can check against its own "
             "evidence. Follow the link and read the documents the coding "
             "rests on.</p>" + chr(10).join(examples) + "</section>"
@@ -2157,11 +2173,12 @@ def rubric_page(rubric, preview, states=None):
 
     chip = '<span class="draft-chip">DRAFT</span>' if preview and not is_approved(rubric) else ""
     body = f"""
-<h1>The coding rubric{chip}</h1>
-<p>{esc((rubric.get("axis_a") or {}).get("rules", ""))}</p>
-<section class="signal"><h2>Axis A: instrument preference</h2>
+<h1>The rubric{chip}</h1>
+<section class="signal"><h2>How positions are classified</h2>
+<p>{esc((rubric.get("axis_a") or {}).get("rules", ""))}</p></section>
+<section class="signal"><h2>Axis A: what does the state want?</h2>
 {chr(10).join(cats)}</section>
-<section class="signal"><h2>Axis B: confidence</h2>
+<section class="signal"><h2>Axis B: how sure are we?</h2>
 <p>{esc((rubric.get("axis_b") or {}).get("rules", ""))}</p>
 {chr(10).join(tiers)}</section>
 {auth_html}
@@ -2685,11 +2702,12 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
       Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
         var code = b.getAttribute("data-code");
         // NONE is a coverage statement: its date is the review date, not a start.
+        var plain = b.getAttribute("data-plain") || code;
+        var confPlain = b.getAttribute("data-conf-plain") || "";
         var when = code === "NONE"
-          ? "NONE: no substantive position on record, reviewed as of " + b.getAttribute("data-since")
-          : code + " since " + b.getAttribute("data-since");
-        pop.appendChild(el("span", "citation",
-          when + " \\u00b7 confidence " + b.getAttribute("data-conf")));
+          ? "No stated position (NONE), reviewed " + b.getAttribute("data-since") + ", " + confPlain
+          : plain + " (" + code + "), since " + b.getAttribute("data-since") + ", " + confPlain + " (" + b.getAttribute("data-conf") + ")";
+        pop.appendChild(el("span", "citation", when));
       });
       var note = row.querySelector(".c-note");
       if (note) pop.appendChild(el("span", "citation", note.textContent));

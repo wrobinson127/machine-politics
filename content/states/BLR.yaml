@@ -12,6 +12,9 @@ position_codings:
     confidence: INFERRED
     as_of: 2026-07-17
     approved: true   # render-approved 2026-09-14
+    rationale: >
+      This site reviewed what Belarus has said on autonomous weapons and
+      found no stated position.
     search_note: >
       Research passes 5c and 5d (2026-07-17) reviewed the record: consistent No votes on all three resolutions; minimal statement record; no substantive stated position captured in the reviewed record.
 

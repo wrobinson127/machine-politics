@@ -13,15 +13,15 @@ position_codings:
     as_of: 2022-06-14
     approved: true   # analyst ruling 2026-07-17
     rationale: >
-      The UK's published position ("Ambitious, Safe, Responsible", 2022)
-      renounces fully autonomous weapon systems and opposes systems
-      operating without meaningful, context-appropriate human involvement,
-      while pursuing responsible-use measures rather than a new binding
-      instrument: the UK endorses the US Political Declaration and the
-      REAIM instruments, votes yes on the UNGA resolutions, and is absent
-      from the September 2025 ready-to-negotiate statement that France and
-      Germany joined. The position has been stable across a change of
-      government; the "no intention" formulation runs back to 2013.
+      The UK's published policy "Ambitious, Safe, Responsible" (2022) says
+      the UK does not have and will not build fully autonomous weapons, and
+      opposes any system without meaningful human involvement. But it
+      pursues non-binding rules rather than a treaty: the UK signed the US
+      Political Declaration and the REAIM pledges, voted Yes on all three UN
+      resolutions, and did not join the September 2025 statement in which
+      France and Germany said they were ready to negotiate a treaty. The
+      position has held across a change of government, and the "no
+      intention" wording goes back to 2013.
     evidence:
       - source: uk-asr-2022
         claim: The UK renounces possession and development of fully autonomous weapon systems.
@@ -50,14 +50,12 @@ doctrine:
       approved: true   # analyst ruling 2026-07-17: ASR is core
       url: https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf
       note: >
-        Contains the UK's stated position on autonomous weapons and its AI
-        Ethical Principles; the closest UK analogue to a 3000.09-class
-        statement. Analyst ruling 2026-07-17: ASR is core doctrine, and
-        the same document also grounds the REG-SOFT coding as the UK's
-        published position paper (recorded in both roles). Published June
-        2022; the framework survived the 2024 change of government (JSP
-        936 and the 2025 RAISO implementation report arrived under the new
-        government).
+        The UK's stated position on autonomous weapons and its ethical
+        principles for military AI, published June 2022. This is the closest
+        UK equivalent to the US directive. It is both the UK's military
+        policy and the published position paper behind the reading above. It
+        survived the 2024 change of government; the new government's own
+        implementation documents build on it.
       evidence:
         - source: uk-asr-2022
           claim: The policy paper states the UK position on autonomy in weapon systems.
@@ -80,9 +78,7 @@ doctrine:
         is the citable primary for that fact. URLs to pin at curation.
     - note: >
         JSP 936 Part 1, "Dependable AI in Defence" (November 2024):
-        directive-class but AI-wide rather than weapons-autonomy-specific.
-        Analyst ruling 2026-07-17: JSP 936 stays context (ASR is the core
-        entry). URL to pin.
+        directive- class but AI-wide rather than weapons-autonomy-specific.
     - note: >
         JDP 0-30, UK Air Power (September 2022 edition): carries operative
         UK autonomy definitions. Definitional apparatus entry; URL to pin.

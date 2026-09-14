@@ -6,139 +6,130 @@ version: 0.2-draft
 updated: 2026-08-24
 
 axis_a:
-  name: Instrument preference
-  question: >
+  name: What the state wants
+  question: What does the state want?
     What kind of international instrument, if any, does this state support
     for autonomous weapons systems?
   rules: >
-    Categories are mutually exclusive at a dated point in time. A state holds
-    exactly one coding on a given date. When the record supports two readings,
-    the coding is AMBIG, and the evidence shows both readings. AMBIG is a
-    finding about the record, not a coding failure.
+    Every state gets one position at any given date. When a state's own
+    words point in more than one direction, its position is marked unclear,
+    and the evidence shows both directions. That is a finding about what the
+    state said, not a failure to decide.
   categories:
     LBI-BAN:
-      label: Binding instrument with prohibitions
+      label: Wants a treaty with bans
       description: >
-        The state supports a legally binding international instrument that
-        includes prohibitions. This covers both a full ban and the two-tier
-        approach: prohibit some systems, regulate the rest.
+        The state supports a legally binding treaty that prohibits some
+        autonomous weapons. This covers a full ban, and it covers the two-
+        tier approach: ban some systems, regulate the rest.
     LBI-OPEN:
-      label: Binding instrument, form open
+      label: Wants a treaty, terms open
       description: >
-        The state supports negotiating a legally binding instrument but has
-        not committed to prohibitions. The form of the instrument stays open
-        in its statements.
+        The state supports negotiating a legally binding treaty, but has not
+        said it should prohibit anything.
     REG-SOFT:
-      label: New non-binding measures
+      label: Wants new rules, not a treaty
       description: >
-        The state supports new international measures that are not legally
-        binding: political declarations, codes of conduct, or guidelines.
+        The state supports new international rules that are not legally
+        binding: political declarations, codes of conduct, guidelines.
     CCW-ONLY:
-      label: CCW process only
+      label: Keep it in Geneva
       description: >
-        The state supports continuing the consensus process in the Convention
-        on Certain Conventional Weapons and its Group of Governmental Experts.
-        It leaves open what that process should produce.
+        The state supports continuing the consensus process in the Geneva
+        weapons convention (the CCW) and its expert group. It has not said
+        what that process should produce.
     OPPOSE:
-      label: Opposes new instruments
+      label: No new rules
       description: >
-        The state opposes new international instruments on autonomous weapons.
-        Its stated view is that existing international humanitarian law
-        suffices.
+        The state opposes any new international rules on autonomous weapons.
+        Its stated view is that the existing laws of war already cover this.
     AMBIG:
-      label: Ambiguous or evolving
+      label: Unclear or shifting
       description: >
-        The record supports more than one reading, or the position is moving.
-        A first-class category. The evidence entries show the tension rather
-        than hiding it.
+        The state has said things that point in more than one direction, or
+        its position is moving. This is a real category, not a catch-all.
+        The evidence shows both directions instead of hiding one.
     NONE:
-      label: No substantive position on record
+      label: No stated position
       description: >
-        This project reviewed the record and found no substantive stated
-        position. This is a coverage finding about the record, not a claim
-        that the state holds no view.
+        This site reviewed what the state has said and found no stated
+        position. That is a finding about the public record, not a claim
+        that the state has no view.
 
 axis_b:
-  name: Confidence
+  name: How sure we are
   rules: >
-    Confidence describes how directly the evidence supports the coding. It
-    modulates visual saturation and a dotted-underline convention on the
-    site. It never changes the category hue.
+    Confidence describes how directly the evidence supports the reading. On
+    the site it changes how strong the colour is and adds a dotted
+    underline. It never changes the colour itself.
   tiers:
     EXPLICIT: >
-      The state says it directly, in an official statement or document, in
-      words a careful reader cannot mistake. Authoring a draft instrument
-      counts, on the terms set out under "Authoring a draft instrument"
-      below.
+      The state said it directly, in an official statement or document, in
+      words a careful reader cannot mistake. Co-writing a draft treaty
+      counts; see below.
     INFERRED: >
-      The coding rests on interpretation: voting behavior, sponsorship,
-      alignment statements, or untranslated sources described rather than
-      quoted.
+      The reading rests on interpretation: how the state voted, what it co-
+      sponsored, who it aligned with, or a document in a language this site
+      could describe but not quote.
     AMBIGUOUS: >
-      The record points in more than one direction and the coding marks the
-      best-supported reading of an unclear record.
+      The state's words point in more than one direction, and the reading
+      marks the best-supported one.
     PROVISIONAL: >
-      The coding rests on secondary reporting of a primary record this
-      project has not yet retrieved and verified. A provisional coding
-      carries a note saying exactly what is pending, and it is upgraded or
-      corrected once the primary record is reviewed.
+      The reading rests on someone else's report of a document this site has
+      not yet obtained and checked. A provisional reading says exactly what
+      is missing, and it is confirmed or corrected once the document is
+      read.
 
 instrument_authorship:
-  name: Authoring a draft instrument
+  name: Co-writing a draft treaty
   rule: >
-    When a state is a named author of a substantive draft treaty text, that
-    authorship is read as an explicit statement of the position the text
-    takes, and the coding is EXPLICIT. The text itself is the quoted
-    evidence.
+    When a state puts its name on the text of a draft treaty, this site
+    reads that as the state stating the position the text takes, and marks
+    it EXPLICIT. The text itself is the evidence.
   why: >
-    A draft instrument is the most committing written form available to a
-    state in a negotiation. It is not a speech about what should happen; it
-    is the operative language the state is asking other states to sign. A
-    government that puts its name on an article beginning "It is prohibited
-    to develop, produce, possess, acquire, deploy, transfer, or use under any
-    circumstances autonomous weapons systems if:" has stated a position on
-    prohibition in terms that leave no doubt, and has done so more
-    concretely than most floor statements manage.
+    A draft treaty is the most committing thing a state can write in a
+    negotiation. It is not a speech about what should happen. It is the
+    exact language the state is asking other states to sign. A government
+    that signs its name under an article beginning "It is prohibited to
+    develop, produce, possess, acquire, deploy, transfer, or use under any
+    circumstances autonomous weapons systems if:" has taken a position on
+    prohibition in words that leave no doubt.
   quote_the_scope: >
-    Always read the conditions together with the verbs. The article above prohibits
-    conditionally: the conditions that follow its "if" are cumulative, so the
-    prohibition reaches systems designed to attack outside meaningful human
-    control AND whose use does not comply with international humanitarian
-    law, while the rest of the instrument regulates. Quoting the verb list
-    without the "if" converts a two-tier instrument into a blanket ban and
-    overstates the author's position. This site quotes the trigger with the
-    prohibition, or quotes the condition as its own evidence entry beside it.
+    Always read the conditions with the verbs. That article prohibits
+    conditionally: the "if" that follows it lists conditions that must all
+    be met, so the ban reaches systems designed to attack outside meaningful
+    human control that also cannot comply with the laws of war, while the
+    rest of the treaty regulates. Quote the verbs without the "if" and a
+    two-tier treaty turns into a blanket ban, which overstates what its
+    authors wrote. This site quotes the condition with the prohibition.
   limits: >
-    This rule is narrow on purpose, and it is applied symmetrically: it
-    reads authorship the same way for a draft that prohibits and for a
-    draft that declines to. Three things it does not cover. Co-sponsoring a
-    resolution is not authorship, and sponsorship never produces a coding by
-    itself. Signing a joint statement is not authorship of an instrument.
-    An author who publicly departs from the text it co-authored is coded on
-    the later record, and the divergence is shown rather than resolved.
+    The rule is narrow on purpose, and it is applied the same way to every
+    draft, whether the draft bans something or declines to. Three things it
+    does not cover. Co-sponsoring a resolution is not co-writing a treaty,
+    and co-sponsoring never decides a position on its own. Signing a joint
+    statement is not co-writing a treaty. A state that later publicly
+    departs from a text it co-wrote is read on its later statement, and the
+    site shows the change rather than hiding it.
   the_text_is_the_evidence: >
-    Authorship evidences the position the text actually states, and nothing
-    further. Where a draft states an instrument preference on its face, its
-    authors are coded to that preference at EXPLICIT. Where a draft states no
-    instrument preference at all, this rule yields no Axis A category, and
-    the honest coding is AMBIG with both readings shown, or NONE where the
-    rest of the state's record is empty. It is not open to this site to
-    supply the missing preference by reading the venue the text was filed in
-    or what the text declines to ask for. Those are readings of a silence,
-    and a silence can be read in either direction, which is the definition
-    of AMBIG rather than a licence to pick one. The same reason the site
-    refuses to treat a missing endorsement as opposition applies here.
+    Co-writing only proves the position the text actually states. Where a
+    draft says what kind of treaty its authors want, they are read as
+    wanting that. Where a draft says nothing about that, this rule gives no
+    answer, and the honest reading is unclear, with both possibilities
+    shown, or no stated position if the state has said nothing else. This
+    site does not fill the gap by guessing from where the paper was filed or
+    from what it left out. Silence can be read either way, which is exactly
+    what "unclear" means. This is the same reason the site refuses to treat
+    a missing signature as opposition.
   tie_break_between_records: >
-    A statement in a state's own voice is not overturned by an inference
-    drawn from another document's silence. Directness ranks before recency:
-    an EXPLICIT record governs an INFERRED one whatever their dates. The
-    later-record rule decides between records of equal directness, and a
-    later record can only displace an earlier one by saying something.
+    A state's own direct statement is never overruled by a guess drawn from
+    another document's silence. Direct beats indirect, whatever the dates.
+    When two statements are equally direct, the later one wins, and only if
+    it actually says something.
   reader_check: >
-    Every coding made under this rule shows the draft text, the document
-    symbol, the date, and the state's name among the authors, so a reader
-    who thinks authorship should count for less can see exactly what the
-    coding rests on and discount it themselves.
+    Every reading made under this rule shows the draft text, the document
+    number, the date, and the state's name among the authors, so a reader
+    who thinks co-writing should count for less can see exactly what the
+    reading rests on and discount it.
 
 shift_event:
   description: >
@@ -180,29 +171,27 @@ evidence_entry:
 worked_examples:
   - state: USA
     why: >
-      An explicit-statement case, and the site's clearest coded shift. The
-      recorded vote arc runs Yes on 78/241, Yes on 79/62, No on 80/57, and
-      behind it the coding moves from support for non-binding measures to a
-      stated preference for keeping the work inside the CCW, dated to the
-      explanation of vote that says so.
+      The clearest case of a position changing, stated directly. The votes
+      ran Yes, Yes, No across the three resolutions. Behind them, the
+      position moved from wanting non-binding rules to wanting the work kept
+      inside the Geneva convention, dated to the statement in which the US
+      explained its No vote.
   - state: AUT
     why: >
-      A coded position that moved, and the clearest illustration of why
-      sponsorship is not evidence. Austria co-authored a 2018 paper calling
-      for negotiation of a binding instrument without committing to
-      prohibitions, which is LBI-OPEN, and by 2024 was stating in its own
-      submission that it would promote negotiations for an instrument
-      consisting of prohibitions and regulations, which is LBI-BAN. Austria
-      also sponsored all three resolutions, and none of that sponsorship
-      carries any weight in either coding. The statements do the work.
+      A position that moved, and the clearest example of why co-sponsoring
+      is not evidence. In 2018 Austria co-wrote a paper calling for a treaty
+      without saying what it should ban. By 2024 its own submission said it
+      would push for a treaty of prohibitions and regulations. That is a
+      move from "treaty, terms open" to "treaty with bans". Austria also co-
+      sponsored all three UN resolutions, and none of that counts toward
+      either reading. Only its statements do.
   - state: CHN
     why: >
-      The hard case, and the reason AMBIG exists. China's own written papers
-      hold two things at once: that general prohibitions would undermine
-      legitimate defence capabilities, and that a legal instrument
-      prohibiting a narrow class of systems could follow the precedent of
-      the Protocol on Blinding Laser Weapons. That narrow class is defined
-      by five characteristics a system must have in combination, so the
-      prohibition China entertains is far smaller than the word suggests.
-      China abstained on all three resolutions. The record supports two
-      readings, and the evidence entries show both rather than choosing.
+      The hard case, and the reason "unclear" exists as a category. China's
+      own papers say two things at once: that broad bans would undermine
+      legitimate defence, and that a treaty banning a narrow class of
+      systems could follow the model of the ban on blinding lasers. That
+      narrow class is defined by five features a weapon must have all at
+      once, so the ban China entertains is far smaller than the word "ban"
+      suggests. China abstained on all three resolutions. The evidence shows
+      both readings rather than picking one.
