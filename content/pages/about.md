@@ -14,7 +14,7 @@ Every coded position on this site traces to a quoted, dated, linked primary sour
 
 ## How it is made
 
-AI tooling was used to build this site, and it is worth being exact about where. Tooling drafts, checks, and formats. It never decides. Every coded position, every shift event, and every analyst sentence was read and approved by a person before it rendered, and the build refuses to ship anything that was not. There is no automated or model-assisted position classification, and the published pipeline makes no model calls.
+AI tooling was used to build this site. Here is exactly where. Tooling drafts, checks, and formats. It never decides. Every coded position, every shift event, and every analyst sentence was read and approved by a person before it rendered, and the build refuses to ship anything that was not. There is no automated or model-assisted position classification, and the published pipeline makes no model calls.
 
 $0 infrastructure. Static pages, no tracking, no ads, no accounts.
 

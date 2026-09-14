@@ -27,36 +27,40 @@ beats:
     title: One country, one vote
     copy: >
       In December 2023 the General Assembly voted on autonomous weapons for
-      the first time. Resolution 78/241 asked governments to state a view, and
-      for the first time the answers went on the record by name. Start with
-      one of them. The United States voted in favour.
+      the first time. Resolution 78/241 asked governments to state a view,
+      and the answers went on the record by name. Start with one of them.
+      The United States voted in favour.
   - id: the-glyphs
-    title: The mark teaches itself
+    title: Three votes, four marks
     copy: >
       Two more votes followed, one each year. The United States voted in
-      favour again in 2024, then against in 2025. A filled disc is a vote in
-      favour, a crossed ring is a vote against, a half-filled disc is an
-      abstention, and a faint dash is a state that did not vote. The shapes
-      sit beside the words that name them, so there is nothing to memorise
-      and no key to consult.
+      favour again in 2024, then against in 2025. On the board a filled disc
+      is a vote in favour, a crossed ring is a vote against, a half-filled
+      disc is an abstention, and a faint dash means the state did not vote.
   - id: the-canvas
-    title: The row persists
+    title: Every country has a row
     copy: >
-      Hold onto that row. Every country has one, running left to right
-      through the same decade. Nothing on this canvas is cleared or redrawn
-      from scratch as you read. What you have already learned to read stays
-      readable.
+      The United States is one row of 193. Each runs left to right through
+      the same years, and each state's three votes sit on its row at the
+      dates they were cast. Everything the board shows from here is added on
+      top of these rows.
   - id: the-coding
-    title: 'Color arrives: position, not vote'
+    title: The band is the position
     copy: >
-      A vote is an act on a single day. Behind it sits a stated position,
-      which this project codes from the public record and shows as a band
-      beneath the marks. The United States backed non-binding measures from
-      2023, and in November 2025 it set out a preference for keeping the work
-      inside the Convention on Certain Conventional Weapons. The band changes
-      color there. The red seam marks the moment the position moved. Red is
-      reserved on this site: it marks a change of position, or a correction
-      to this project's own record, and nothing else.
+      A vote is one day. Behind it is a position, which this project reads
+      from the public record and draws as a coloured band under the marks.
+      Each colour is a category. Blue supports a binding treaty that
+      includes prohibitions. Teal supports a binding treaty but has not said
+      what it should prohibit. Ochre supports new measures that are not
+      legally binding. Plum wants the work kept inside the Convention on
+      Certain Conventional Weapons. Brown opposes any new instrument. A
+      hatched band means the record supports more than one reading. Grey means this project reviewed the record and found no stated
+      position on it. The United
+      States backed non-binding measures from 2023, so its band is ochre. In
+      November 2025 it said the work should stay inside the Convention, and
+      the band turns plum. The red seam marks the day that changed. Red on
+      this site means only that a position changed or that this project
+      corrected its own record.
     # CORRECTION to the placeholder: the earlier copy narrated this shift as a
     # move to OPPOSE with a brown band, sourced provisionally from secondary
     # reporting. The content layer codes it REG-SOFT to CCW-ONLY, EXPLICIT,
@@ -65,12 +69,12 @@ beats:
     title: A second country, moving the other way
     copy: >
       India travelled the opposite road on the same three votes: against,
-      then an abstention, then in favour. Two states, two arcs, crossing in
-      the middle. What they do not show is two opposite positions. India's
-      coded position held steady throughout, because its argument was always
-      about which forum should do the work, and a change in how a state votes
-      is not by itself a change in what it wants. That gap between the act and
-      the position is the reason this site codes them separately.
+      then an abstention, then in favour. What they do not show is two
+      opposite positions. India's coded position held steady throughout,
+      because its argument was always about which forum should do the work,
+      and a change in how a state votes is not by itself a change in what it
+      wants. That gap between the act and the position is the reason this
+      site codes them separately.
     # CORRECTION to the placeholder: its FLAG said India had no coded position
     # in the content layer. India has been coded CCW-ONLY / EXPLICIT since the
     # 2026-07-17 ruling, so the mirror can now be drawn with bands, not marks
@@ -80,38 +84,36 @@ beats:
     copy: >
       They are not the only two that moved. Attendance changes are left out
       of this count, because missing a vote is not the same as changing your
-      mind. The rows arrive sorted by when each state last moved, so the
-      most recently unsettled sit at the top. Every glyph on screen was
-      taught in the beats above.
+      mind. The rows are sorted by when each state last moved, most recent
+      at the top.
   - id: the-camps
-    title: The camps resolve
+    title: The camps
     copy: >
-      Step back from the movement and structure appears. One group of states
-      wants a binding treaty with prohibitions in it. Another wants new
-      international measures that are not legally binding. A few want no new
-      law at all, and hold that the law of armed conflict already covers
-      this. Some are genuinely hard to read, and this site says so rather
-      than picking for them. The rows sort by coded position. They are
-      described in the order the axis runs, and never ranked.
+      One group of states wants a binding treaty with prohibitions in it.
+      Another wants new international measures that are not legally binding.
+      A few want no new law at all and say the existing law of armed
+      conflict is enough. Where a state's record supports more than one
+      reading, the board marks it ambiguous instead of choosing. Here the
+      rows are grouped by position, in the order the key lists them. That
+      order is a list, not a ranking.
   - id: the-board
     title: Every state, the full board
     copy: >
       Here is the whole record: every member state, every recorded vote, and
-      a position band wherever this project has coded one. Where no band
-      appears, the track is left honestly empty. That is not a finding about
-      the country. It is a statement about how far this project has read, and
-      it marks the work still open.
+      a position band wherever this project has coded one. An empty track
+      means this project has not yet read that state's statements. It says
+      nothing about the country.
   - id: the-clock
     title: The clock
     copy: >
-      A dated line runs down the right edge. The Seventh Review Conference of
-      the Convention on Certain Conventional Weapons opens in Geneva on 16
-      November 2026, and it is the next moment at which any of this can turn
-      into law. In September 2025, Brazil read a statement to the expert
-      group on behalf of thirty-nine parties saying they were ready to begin
-      negotiating. Everything to the left of that line is on the record.
-      Everything to the right is still being decided. The board is yours from
-      here: choose any row for the evidence behind it.
+      A dated line runs down the right edge. The Seventh Review Conference
+      of the Convention on Certain Conventional Weapons opens in Geneva on
+      16 November 2026, and it is the next moment at which any of this can
+      turn into law. In September 2025, Brazil read a statement to the
+      expert group on behalf of thirty-nine parties saying they were ready
+      to begin negotiating. Everything to the left of that line is on the
+      record. Everything to the right is still being decided. From here,
+      open any row for the evidence behind it.
     sources:
       - label: "Joint statement to the September 2025 session of the CCW GGE on LAWS (as delivered)"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2025)/Joint_statement_to_the_September_2025_session_of_the_CCW_GGE_LAWS_-_As_delivered.pdf"

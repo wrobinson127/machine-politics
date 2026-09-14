@@ -10,13 +10,13 @@ The site takes no position on whether autonomous weapons should be banned or reg
 
 ## Five signals, never a score
 
-The tracker records five separable signals per state: recorded votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy. They display side by side. They never merge into a rank, grade, or index. The site triangulates; it does not grade.
+The tracker records five separable signals per state: recorded votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy. They display side by side. They never merge into a rank, grade, or index. The site sets the signals side by side and leaves the weighing to the reader.
 
 **The no-inference rule:** endorsements, sponsorships, and doctrine never produce a position coding by themselves. Endorsing the US Political Declaration is not a position against a binding instrument; Austria endorses it and sponsors the treaty resolution in the same year. Codings derive from statements and votes, with the reasoning shown. The validator enforces this rule in code: a coding whose only evidence is an endorsement, a sponsorship, or a policy document fails the build.
 
 **Endorsement absence:** a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.
 
-## Coverage depth: the three signals that carry coded depth
+## Coverage depth, signal by signal
 
 Endorsements and sponsorships are recorded as membership facts, taken verbatim from the face of each instrument's own roster. They are never coded and never graded, so they have no coverage depth to report. The three signals below are the ones this project reads, weighs, and codes from, and each is covered to a different depth.
 
@@ -38,9 +38,9 @@ Axis A is instrument preference: what kind of international instrument, if any, 
 
 Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction, PROVISIONAL when the coding rests on secondary reporting of a primary record this project has not yet verified. A provisional coding says so on its face, carries a note stating exactly what is pending, and is upgraded or corrected once the primary record is reviewed.
 
-One rule inside Axis B is worth stating plainly, because it decides how a whole bloc of states is coded. When a state is a named author of a substantive draft treaty text, this site reads that authorship as an explicit statement of the position the text takes, and codes it EXPLICIT. A draft instrument is the most committing written form available to a state in a negotiation: not a speech about what should happen, but the operative language the state is asking others to sign. The rule is narrow and applies symmetrically to drafts that prohibit and drafts that do not. Co-sponsoring a resolution is not authorship. Signing a joint statement is not authorship. An author that later departs from its own text is coded on the later record. Every coding made this way shows the draft text, the document symbol, the date, and the state's name among the authors, so a reader who thinks authorship should count for less can see what the coding rests on and weigh it differently. The [rubric page](rubric.html) states the rule in full.
+One rule inside Axis B decides how a whole bloc of states is coded, so it is stated here in full. When a state is a named author of a substantive draft treaty text, this site reads that authorship as an explicit statement of the position the text takes, and codes it EXPLICIT. A draft instrument is the most committing written form available to a state in a negotiation: not a speech about what should happen, but the operative language the state is asking others to sign. The rule is narrow and applies symmetrically to drafts that prohibit and drafts that do not. Co-sponsoring a resolution is not authorship. Signing a joint statement is not authorship. An author that later departs from its own text is coded on the later record. Every coding made this way shows the draft text, the document symbol, the date, and the state's name among the authors, so a reader who thinks authorship should count for less can see what the coding rests on and weigh it differently. The [rubric page](rubric.html) states the rule in full.
 
-AMBIG is a first-class category, not a failure state. When a state's record supports two readings, the coding says so and the evidence shows both. China is the worked example.
+AMBIG is a category in its own right. When a state's record supports two readings, the coding says so and the evidence shows both. China is the worked example.
 
 A shift event records a state moving from one category to another on a dated record. Shift events are the point of this site. Each one carries the evidence that dates the move.
 
@@ -58,11 +58,11 @@ Absence is tiered, and the tiers never blend.
 
 For national policy, the site only ever makes a dated coverage statement: no published national policy identified by this project, as of a stated date, with a note recording where the project looked. The site never asserts that a state has nothing. The validator rejects that entire class of claim.
 
-## Secondary sources, used honestly
+## Secondary sources
 
 Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents.
 
-This is not a formality, and two counts on this site differ from the widely reported ones because of it. A September 2025 joint statement is usually described as carrying 42 parties. Its own text reads "on behalf of the following 39 High-Contracting Parties" and then names 39, listing Kiribati, Samoa and Thailand separately as observer states that associate themselves: 39 plus 3, reported as 42. A 2023 draft-articles paper is usually credited to seven states; the face of its first revision names six, and the seventh joins at the second revision two months later. Neither correction required special access. Both required opening the document and counting the names, which is what this project does instead of repeating a figure. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
+Two counts on this site differ from the widely reported ones because of it. A September 2025 joint statement is usually described as carrying 42 parties. Its own text reads "on behalf of the following 39 High-Contracting Parties" and then names 39, listing Kiribati, Samoa and Thailand separately as observer states that associate themselves: 39 plus 3, reported as 42. A 2023 draft-articles paper is usually credited to seven states; the face of its first revision names six, and the seventh joins at the second revision two months later. Neither correction required special access. Both required opening the document and counting the names, which is what this project does instead of repeating a figure. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
 
 ## Links that outlive administrations
 
