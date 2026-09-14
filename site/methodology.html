@@ -5,12 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Methodology · Machine Politics</title>
 <meta name="description" content="Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time.">
+<link rel="canonical" href="https://machinepolitics.walker-robinson.com/methodology.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Machine Politics">
+<meta property="og:url" content="https://machinepolitics.walker-robinson.com/methodology.html">
 <meta property="og:title" content="Methodology · Machine Politics">
 <meta property="og:description" content="Where every country stands on autonomous weapons, tracked as positions shift over time.">
-<meta property="og:image" content="https://machinepolitics.walker-robinson.com/assets/board-poster.svg">
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/site.css">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://machinepolitics.walker-robinson.com/assets/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology · Machine Politics">
+<meta name="twitter:description" content="Where every country stands on autonomous weapons, tracked as positions shift over time.">
+<meta name="twitter:image" content="https://machinepolitics.walker-robinson.com/assets/og-card.png">
+<link rel="stylesheet" href="css/tokens.css?v=f2275c32ff">
+<link rel="stylesheet" href="css/site.css?v=5140b46913">
+<link rel="icon" href="assets/favicon.svg?v=45271e5daa" type="image/svg+xml">
 </head>
 <body>
 <header class="masthead">
@@ -30,8 +38,53 @@
 </header>
 <main class="shell">
 <h1>Methodology</h1>
-<p>The full methodology write-up publishes after analyst approval.</p>
-<p>Until then: every coding on this site traces to a quoted, dated, linked primary source, and nothing renders without the analyst of record approving it. The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.</p>
+<h2>What this site does</h2>
+<p>Machine Politics records where every United Nations member state stands on autonomous weapons systems. It tracks five signals per state: recorded General Assembly votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy documents. Positions are trajectories, not snapshots. The site shows who moved, when, and on what record.</p>
+<p>The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.</p>
+<h2>Five signals, never a score</h2>
+<p>The tracker records five separable signals per state: recorded votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy. They display side by side. They never merge into a rank, grade, or index. The site triangulates; it does not grade.</p>
+<p><strong>The no-inference rule:</strong> endorsements, sponsorships, and doctrine never produce a position coding by themselves. Endorsing the US Political Declaration is not a position against a binding instrument; Austria endorses it and sponsors the treaty resolution in the same year. Codings derive from statements and votes, with the reasoning shown. The validator enforces this rule in code: a coding whose only evidence is an endorsement, a sponsorship, or a policy document fails the build.</p>
+<p><strong>Endorsement absence:</strong> a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.</p>
+<h2>Coverage depth: the three signals that carry coded depth</h2>
+<p>Endorsements and sponsorships are recorded as membership facts, taken verbatim from the face of each instrument&#x27;s own roster. They are never coded and never graded, so they have no coverage depth to report. The three signals below are the ones this project reads, weighs, and codes from, and each is covered to a different depth.</p>
+<p><strong>Votes:</strong> complete. All 193 member states, from the official UN General Assembly voting dataset published by the Dag Hammarskjöld Library. The extraction code, the reconciliation checks, and the committed extract are public in the repository. Nothing is scraped.</p>
+<p><strong>Statements:</strong> deep for a bounded launch set of states, selected by published criteria: vote changers, No votes and abstentions on the most recent resolution, resolution sponsors, states with major-power doctrine, and states that made individual submissions to the Secretary-General. Every other state shows its votes and an explicit coverage notice.</p>
+<p><strong>National policy:</strong> strict scope, major players only. A doctrine entry means a policy document specifically governing autonomy in weapons systems, like DoD Directive 3000.09. Military AI strategies, responsible-AI frameworks, and legislative bills are context notes, never coded evidence.</p>
+<p>Of the seven states on this list, three have a published policy specifically governing autonomy in weapon systems and four do not. That split is a finding about the public record, not a gap in this review: each of the four carries a dated note recording where the project looked. It says nothing about internal processes that are not published.</p>
+<div class="table-scroll"><table class="coverage-table"><caption>National-policy coverage: every state on the list, and what the review found.</caption><thead><tr><th scope="col">State</th><th scope="col">Finding</th><th scope="col">Record</th></tr></thead><tbody><tr><th scope="row"><a href="state/CHN.html">China</a></th><td>None identified</td><td>Reviewed 2026-08-31</td></tr>
+<tr><th scope="row"><a href="state/DEU.html">Germany</a></th><td>None identified</td><td>Reviewed 2026-07-17</td></tr>
+<tr><th scope="row"><a href="state/FRA.html">France</a></th><td>Published policy</td><td>Avis sur l&#x27;intégration de l&#x27;autonomie dans les systèmes d&#x27;armes létaux (Defence Ethics Committee opinion on autonomy in lethal weapon systems)</td></tr>
+<tr><th scope="row"><a href="state/GBR.html">United Kingdom</a></th><td>Published policy</td><td>Ambitious, Safe, Responsible: our approach to the delivery of AI-enabled capability in Defence</td></tr>
+<tr><th scope="row"><a href="state/IND.html">India</a></th><td>None identified</td><td>Reviewed 2026-07-17</td></tr>
+<tr><th scope="row"><a href="state/RUS.html">Russia</a></th><td>None identified</td><td>Reviewed 2026-07-17</td></tr>
+<tr><th scope="row"><a href="state/USA.html">United States</a></th><td>Published policy</td><td>DoD Directive 3000.09, Autonomy in Weapon Systems</td></tr></tbody></table></div>
+<h2>The rubric</h2>
+<p>Every coded position sits on two axes.</p>
+<p>Axis A is instrument preference: what kind of international instrument, if any, does the state support? Seven categories: LBI-BAN, LBI-OPEN, REG-SOFT, CCW-ONLY, OPPOSE, AMBIG, NONE. The <a href="rubric.html">rubric page</a> defines each in plain language. Categories are mutually exclusive at a dated point in time.</p>
+<p>Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction, PROVISIONAL when the coding rests on secondary reporting of a primary record this project has not yet verified. A provisional coding says so on its face, carries a note stating exactly what is pending, and is upgraded or corrected once the primary record is reviewed.</p>
+<p>One rule inside Axis B is worth stating plainly, because it decides how a whole bloc of states is coded. When a state is a named author of a substantive draft treaty text, this site reads that authorship as an explicit statement of the position the text takes, and codes it EXPLICIT. A draft instrument is the most committing written form available to a state in a negotiation: not a speech about what should happen, but the operative language the state is asking others to sign. The rule is narrow and applies symmetrically to drafts that prohibit and drafts that do not. Co-sponsoring a resolution is not authorship. Signing a joint statement is not authorship. An author that later departs from its own text is coded on the later record. Every coding made this way shows the draft text, the document symbol, the date, and the state&#x27;s name among the authors, so a reader who thinks authorship should count for less can see what the coding rests on and weigh it differently. The <a href="rubric.html">rubric page</a> states the rule in full.</p>
+<p>AMBIG is a first-class category, not a failure state. When a state&#x27;s record supports two readings, the coding says so and the evidence shows both. China is the worked example.</p>
+<p>A shift event records a state moving from one category to another on a dated record. Shift events are the point of this site. Each one carries the evidence that dates the move.</p>
+<h2>Evidence rules</h2>
+<p>Every coding traces to a quoted, dated, linked primary source. The validator enforces the schema: a verbatim quote of at most 25 words, the document date, a direct link, the source language, the translation status, and a confidence tier.</p>
+<p>Translation provenance is explicit. A quote from an official translation says so. A quote from an unofficial translation says so. A source with no translation yields no English quote at all: the entry describes and links the document, and the coding it supports is INFERRED at best.</p>
+<h2>What absence means</h2>
+<p>Absence is tiered, and the tiers never blend.</p>
+<p>&quot;No substantive position on record&quot; means this project reviewed the record and found no stated position. &quot;Not yet reviewed by this project&quot; means exactly that. Neither renders as a position.</p>
+<p>For national policy, the site only ever makes a dated coverage statement: no published national policy identified by this project, as of a stated date, with a note recording where the project looked. The site never asserts that a state has nothing. The validator rejects that entire class of claim.</p>
+<h2>Secondary sources, used honestly</h2>
+<p>Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents.</p>
+<p>This is not a formality, and two counts on this site differ from the widely reported ones because of it. A September 2025 joint statement is usually described as carrying 42 parties. Its own text reads &quot;on behalf of the following 39 High-Contracting Parties&quot; and then names 39, listing Kiribati, Samoa and Thailand separately as observer states that associate themselves: 39 plus 3, reported as 42. A 2023 draft-articles paper is usually credited to seven states; the face of its first revision names six, and the seventh joins at the second revision two months later. Neither correction required special access. Both required opening the document and counting the names, which is what this project does instead of repeating a figure. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.</p>
+<h2>Links that outlive administrations</h2>
+<p>Government URLs die when governments change. Every doctrine and endorsement source carries both its live link and an archived snapshot, and the build warns on any entry missing one. Where a live page blocks automated access, the archived capture is the verified record and the page says so.</p>
+<h2>Who codes, and how</h2>
+<p>Walker Robinson is the analyst of record. Tooling drafts, checks, and formats. It never decides. No coded position, shift event, doctrine claim, or analyst sentence publishes without explicit approval, and the site build refuses to ship unapproved content. There is no automated or model-assisted position classification, and the publishing pipeline makes no model calls. The site runs on $0 infrastructure.</p>
+<h2>Corrections</h2>
+<p>Errors get fixed in the open. A superseded coding stays visible with a data-integrity notice. Red on this site carries exactly two meanings: that notice, and the thin seam marking the moment a coded position changed. The <a href="corrections.html">corrections page</a> lists every correction with dates. If you find an error, open an issue in the repository. The <a href="about.html">about page</a> says who runs this.</p>
+<h2>Related work</h2>
+<p>Automated Decision Research, the monitoring arm of the Stop Killer Robots campaign, maintains a state-positions tracker at automatedresearch.org. It is the closest existing resource. This project differs in structure: time as a first-class axis, triangulation across votes, statements, and doctrine, and a published rubric with confidence tiers. ADR is consulted as a cross-check only, never as a coding source.</p>
+<h2>Sources and licensing</h2>
+<p>Two layers, two sets of terms, and the split is deliberate. The vote extracts are © United Nations, taken from the UN Digital Library with attribution and passed on for non-commercial use only. This project&#x27;s own coded data, meaning the codings, shift events, confidence tiers, rubric, and analyst notes, is CC BY 4.0 and free to reuse commercially with attribution. The CC BY grant does not reach the vote extracts. Any page showing both is a composite, and the stricter terms control the part they cover. Code: MIT. The full split, including the composite rule, is in the repository&#x27;s DATA_LICENSE.</p>
 </main>
 <footer class="colophon">
   <div class="shell">
@@ -39,6 +92,6 @@
     <p><span class="updated-through">Updated through 2026-02-06</span> · Every coding traces to a quoted, dated, linked source · <a href="corrections.html">Corrections</a></p>
   </div>
 </footer>
-<script src="js/board.js" defer></script>
+<script src="js/board.js?v=d289a51231" defer></script>
 </body>
 </html>

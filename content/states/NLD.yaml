@@ -14,4 +14,5 @@ shift_events: []
 flags:
   - "CODING NEEDS SOURCE: the research anchor list names the Netherlands LBI-OPEN, but the only captured basis is a 2022 parliamentary letter known through a secondary source; retrieve the letter and recent statements, then code. Divergence from the anchor is a flag, not a silent recode"
   - "Current GGE chair: roles annotation, enumeration bundle"
-  - "In the September 2025 42-state statement; US Political Declaration endorser: sponsorship and endorsement layers"
+  - "CORRECTED 2026-08-24: this flag previously recorded the Netherlands as being in the September 2025 joint statement. It is NOT. The face names 39 High Contracting Parties and the Netherlands is not among them, nor among the three observer States. Caught in the roster verification pass by diffing the flags against the verified membership. The Netherlands chaired the GGE in 2025, which is the likely source of the confusion"
+  - "US Political Declaration endorser: verified 2026-08-24 against the State Department list, where the Netherlands appears among the 58"

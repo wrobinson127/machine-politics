@@ -25,9 +25,9 @@ position_codings:
     evidence:
       - source: no-gge-statement-2024
         claim: Norway supports a legally binding instrument clarifying IHL application to autonomous weapons.
-        quote: "Norway supports the development of a legally binding instrument in order to clarify the application of IHL to autonomous weapons systems"
+        quote: "Norway supports the development of a legally binding instrument in order to clarify the application of international humanitarian law to autonomous weapons systems"
         date: 2024-08-26
-        url: https://docs-library.unoda.org/
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/2024-08-26_Norway_CCW_GGE_LAWS_2nd_session_general_statement.pdf
         lang: en
         translation: none
         confidence: EXPLICIT
@@ -35,8 +35,9 @@ position_codings:
 shift_events: []
 
 flags:
-  - "PROVENANCE (approved 2026-07-17, flag KEPT per ruling): the coding renders, but the quote is research-captured, not re-verified against the primary this pass, and the exact document URL is the documents-library root. Pin the 2024-08-26 GGE statement URL from UNODA or norway.no and re-verify the quote against the primary before launch; do not promote to verified-primary status until then"
+  - "PROVENANCE RESOLVED 2026-08-24: primary retrieved from the UNODA Documents Library and read in full. The document URL is pinned and the quote is now verified verbatim against the primary. The retrieval CORRECTED the quote: the research capture had compressed 'international humanitarian law' to 'IHL', which is not what the statement says. Verified-primary status granted"
+  - "DATE, for the analyst: the statement's own dateline reads 'Geneva, August 2024' with no day. The 2024-08-26 day comes from UNODA's filing of it as the second-session general statement. Kept as a dated day on publisher metadata; set date_precision: month if you would rather the site show only 'August 2024'"
   - "Seven-state elements paper co-authorship: sponsorship layer, enumeration bundle; never coding evidence by itself (no-inference rule)"
   - "Norway UNSG submission: retrieve for a second evidence card"
   - "Nordic joint-statement series (2022 to 2025, rotating deliverer): joint-statement layer entries plus statement evidence per member, enumeration bundle"
-  - "In the September 2025 42-state statement: sponsorship layer"
+  - "In the September 2025 39-party joint statement: sponsorship layer"

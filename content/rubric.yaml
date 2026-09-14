@@ -1,9 +1,9 @@
 # Machine Politics position-coding rubric.
 # Drafted by tooling, awaiting analyst review. Nothing here renders on the
 # public site until approved: true. The analyst of record is Walker Robinson.
-approved: false
-version: 0.1-draft
-updated: 2026-07-16
+approved: true
+version: 0.2-draft
+updated: 2026-08-24
 
 axis_a:
   name: Instrument preference
@@ -67,7 +67,9 @@ axis_b:
   tiers:
     EXPLICIT: >
       The state says it directly, in an official statement or document, in
-      words a careful reader cannot mistake.
+      words a careful reader cannot mistake. Authoring a draft instrument
+      counts, on the terms set out under "Authoring a draft instrument"
+      below.
     INFERRED: >
       The coding rests on interpretation: voting behavior, sponsorship,
       alignment statements, or untranslated sources described rather than
@@ -80,6 +82,63 @@ axis_b:
       project has not yet retrieved and verified. A provisional coding
       carries a note saying exactly what is pending, and it is upgraded or
       corrected once the primary record is reviewed.
+
+instrument_authorship:
+  name: Authoring a draft instrument
+  rule: >
+    When a state is a named author of a substantive draft treaty text, that
+    authorship is read as an explicit statement of the position the text
+    takes, and the coding is EXPLICIT. The text itself is the quoted
+    evidence.
+  why: >
+    A draft instrument is the most committing written form available to a
+    state in a negotiation. It is not a speech about what should happen; it
+    is the operative language the state is asking other states to sign. A
+    government that puts its name on an article beginning "It is prohibited
+    to develop, produce, possess, acquire, deploy, transfer, or use under any
+    circumstances autonomous weapons systems if:" has stated a position on
+    prohibition in terms no careful reader can mistake, and has done so more
+    concretely than most floor statements manage.
+  quote_the_scope: >
+    Read the conditions with the verbs, always. The article above prohibits
+    conditionally: the conditions that follow its "if" are cumulative, so the
+    prohibition reaches systems designed to attack outside meaningful human
+    control AND whose use does not comply with international humanitarian
+    law, while the rest of the instrument regulates. Quoting the verb list
+    without the "if" converts a two-tier instrument into a blanket ban and
+    overstates the author's position. This site quotes the trigger with the
+    prohibition, or quotes the condition as its own evidence entry beside it.
+  limits: >
+    This rule is narrow on purpose, and it is applied symmetrically: it
+    reads authorship the same way for a draft that prohibits and for a
+    draft that declines to. Three things it does not cover. Co-sponsoring a
+    resolution is not authorship, and sponsorship never produces a coding by
+    itself. Signing a joint statement is not authorship of an instrument.
+    An author who publicly departs from the text it co-authored is coded on
+    the later record, and the divergence is shown rather than resolved.
+  the_text_is_the_evidence: >
+    Authorship evidences the position the text actually states, and nothing
+    further. Where a draft states an instrument preference on its face, its
+    authors are coded to that preference at EXPLICIT. Where a draft states no
+    instrument preference at all, this rule yields no Axis A category, and
+    the honest coding is AMBIG with both readings shown, or NONE where the
+    rest of the state's record is empty. It is not open to this site to
+    supply the missing preference by reading the venue the text was filed in
+    or what the text declines to ask for. Those are readings of a silence,
+    and a silence can be read in either direction, which is the definition
+    of AMBIG rather than a licence to pick one. The same reason the site
+    refuses to treat a missing endorsement as opposition applies here.
+  tie_break_between_records: >
+    A statement in a state's own voice is not overturned by an inference
+    drawn from another document's silence. Directness ranks before recency:
+    an EXPLICIT record governs an INFERRED one whatever their dates. The
+    later-record rule decides between records of equal directness, and a
+    later record can only displace an earlier one by saying something.
+  reader_check: >
+    Every coding made under this rule shows the draft text, the document
+    symbol, the date, and the state's name among the authors, so a reader
+    who thinks authorship should count for less can see exactly what the
+    coding rests on and discount it themselves.
 
 shift_event:
   description: >
@@ -104,7 +163,12 @@ evidence_entry:
     url: direct link to the document
     lang: source language code
     translation: official, unofficial, or none
-    confidence: EXPLICIT, INFERRED, or AMBIGUOUS
+    confidence: >
+      EXPLICIT, INFERRED, or AMBIGUOUS. PROVISIONAL is deliberately absent
+      here. It is a coding-level tier only, because it describes the state
+      of this project's retrieval rather than the strength of a document,
+      and an evidence entry always has a document behind it. The validator
+      enforces the shorter list at this level.
   rules: >
     A source with no translation cannot yield an English quote. The entry
     describes and links the document instead, and the coding it supports is
@@ -116,15 +180,29 @@ evidence_entry:
 worked_examples:
   - state: USA
     why: >
-      An explicit-statement case with a recorded vote arc: Yes on 78/241 and
-      79/62, No on 80/57. Doctrine on record since 2012.
+      An explicit-statement case, and the site's clearest coded shift. The
+      recorded vote arc runs Yes on 78/241, Yes on 79/62, No on 80/57, and
+      behind it the coding moves from support for non-binding measures to a
+      stated preference for keeping the work inside the CCW, dated to the
+      explanation of vote that says so.
   - state: AUT
     why: >
-      The sponsor archetype. Austria initiated the resolution track in 2023
-      and sponsored all three resolutions, with explicit support for a
-      binding instrument with prohibitions.
+      A coded position that moved, and the clearest illustration of why
+      sponsorship is not evidence. Austria co-authored a 2018 paper calling
+      for negotiation of a binding instrument without committing to
+      prohibitions, which is LBI-OPEN, and by 2024 was stating in its own
+      submission that it would promote negotiations for an instrument
+      consisting of prohibitions and regulations, which is LBI-BAN. Austria
+      also sponsored all three resolutions, and none of that sponsorship
+      carries any weight in either coding. The statements do the work.
   - state: CHN
     why: >
-      The hard case. Stated support for a ban on use next to a narrow
-      definition of the systems covered, plus abstentions on all three
-      resolutions. Demonstrates honest AMBIG handling.
+      The hard case, and the reason AMBIG exists. China's own written papers
+      hold two things at once: that general prohibitions would undermine
+      legitimate defence capabilities, and that a legal instrument
+      prohibiting a narrow class of systems could follow the precedent of
+      the Protocol on Blinding Laser Weapons. That narrow class is defined
+      by five characteristics a system must have in combination, so the
+      prohibition China entertains is far smaller than the word suggests.
+      China abstained on all three resolutions. The record supports two
+      readings, and the evidence entries show both rather than choosing.

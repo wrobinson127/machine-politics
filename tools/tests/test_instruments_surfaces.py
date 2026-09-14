@@ -4,6 +4,7 @@ rows, hue discipline on the new outputs, the two era tokens, the doctrine
 timeline's marker classes, and deterministic rebuilds."""
 
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -40,10 +41,25 @@ def test_nav_places_instruments_between_votes_and_rubric(deploy):
     )
 
 
-def test_deploy_instruments_is_a_factual_shell(deploy):
-    """The instruments all carry approved: false today, so the deploy page
-    is the prose-shell pattern: no rows, no scripts, no surfaces."""
-    out, manifest = deploy
+def test_deploy_instruments_is_a_factual_shell(tmp_path, monkeypatch):
+    """The gate, tested on the mechanism rather than on today's editorial
+    state. The instruments were approved on 2026-08-24, so this no longer
+    holds for the live content and is exercised against an unapproved copy:
+    gated instruments produce the prose-shell pattern with no rows, no
+    scripts and no surfaces. The live-approved counterpart is the test
+    below."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    for name in ("endorsements.yaml", "sponsorships.yaml"):
+        path = work / name
+        text = path.read_text(encoding="utf-8")
+        assert "approved: true" in text, f"fixture expects {name} approved"
+        path.write_text(text.replace("approved: true", "approved: false"),
+                        encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
     html = (out / "instruments.html").read_text(encoding="utf-8")
     assert "analyst review" in html
     assert "maplibre" not in html.lower()
@@ -68,6 +84,31 @@ def test_deploy_instruments_is_a_factual_shell(deploy):
     # recorded in the launch-set coding pass (2026-07-17)
     assert len(recs) == 6
     assert all(not e["rendered"] and not e["approved"] for e in ends + recs)
+
+
+def test_deploy_instruments_render_once_approved(deploy):
+    """The other half of the gate, against the live content as approved on
+    2026-08-24: the rosters, the quadrant and the wave map now ship in the
+    deploy artifact, and the manifest records every record as approved and
+    rendered with nothing unapproved leaking through."""
+    out, manifest = deploy
+    html = (out / "instruments.html").read_text(encoding="utf-8")
+    assert manifest["unapproved_rendered"] == 0
+    assert "analyst review" not in html
+    assert "58 endorsers on the official list." in html
+    assert 'id="quadrant-svg"' in html
+    assert html.count('class="q-dot"') == 193
+    assert f"maplibre-gl/{bs.MAPLIBRE_VERSION}/maplibre-gl.min.js" in html
+    assert (out / "js" / "instruments.js").exists()
+    # The count-only Blueprint still renders its honest zero-row disclosure
+    # rather than a roster it does not have.
+    assert "61 supporting states" in html
+    ends = [e for e in manifest["entries"]
+            if str(e["kind"]).startswith("endorsement_instrument:")]
+    recs = [e for e in manifest["entries"]
+            if str(e["kind"]).startswith("sponsorship_record:")]
+    assert len(ends) == 4 and len(recs) == 6
+    assert all(e["rendered"] and e["approved"] for e in ends + recs)
 
 
 def test_preview_instruments_renders_everything(preview):
@@ -218,14 +259,44 @@ def test_era_tokens_exactly_two(deploy):
         assert max(r, g, b) - min(r, g, b) < 40, f"{hexval} is not a neutral shade"
 
 
-def test_doctrine_timeline_deploy_excludes_unapproved(deploy):
-    """The USA doctrine block is unapproved today: deploy keeps the
-    not-yet-reviewed card and renders no markers. Era bands are context
-    data and may stand."""
-    out, _ = deploy
+def _content_with_usa_doctrine_gated(tmp_path, monkeypatch):
+    """A copy of the live content with the USA doctrine forced unapproved.
+
+    The USA doctrine was approved on 2026-08-31, and it was the only state
+    carrying doctrine entries that were ever gated, so the gate can no longer
+    be exercised against live content at all. Testing the mechanism instead of
+    today's editorial state is also what keeps these tests from restaling the
+    next time something is approved.
+
+    STATES_DIR is bound at import from CONTENT_DIR, so it does not follow a
+    CONTENT_DIR monkeypatch and has to be redirected on its own.
+    """
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    usa = work / "states" / "USA.yaml"
+    text = usa.read_text(encoding="utf-8")
+    marker = "approved: true   # render-approved 2026-08-31"
+    assert text.count(marker) == 2, (
+        "fixture expects the USA doctrine block and its entry both approved")
+    usa.write_text(text.replace(marker, "approved: false"), encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+    monkeypatch.setattr(config, "STATES_DIR", work / "states")
+    return work
+
+
+def test_doctrine_timeline_deploy_excludes_unapproved(tmp_path, monkeypatch):
+    """The gate, tested on the mechanism: with the doctrine unapproved, deploy
+    keeps the not-yet-reviewed card, renders no markers, and leaks no quote.
+    Era bands are context data and may stand."""
+    _content_with_usa_doctrine_gated(tmp_path, monkeypatch)
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
+    assert manifest["unapproved_rendered"] == 0
+
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
     assert "Doctrine not yet reviewed by this project" in usa
     assert "DoD Directive" not in usa
+    assert "appropriate levels of human judgment" not in usa  # the quote
     assert "tl-core" not in usa
     assert "tl-context" not in usa
     assert "timeline-list" not in usa
@@ -238,6 +309,18 @@ def test_doctrine_timeline_deploy_excludes_unapproved(deploy):
     assert "doctrine-timeline" not in afg
 
 
+def test_doctrine_timeline_deploy_renders_approved_doctrine(deploy):
+    """The approved-side counterpart: the guarantee above must be the gate
+    doing its job, not the timeline being broken for everyone."""
+    out, _ = deploy
+    usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
+    assert "DoD Directive 3000.09" in usa
+    assert 'class="tl-core"' in usa
+    assert "2023-01-25" in usa
+    assert "timeline-list" in usa
+    assert "Doctrine not yet reviewed by this project" not in usa
+
+
 def test_doctrine_timeline_preview_renders_markers(preview):
     out, _ = preview
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
@@ -246,8 +329,17 @@ def test_doctrine_timeline_preview_renders_markers(preview):
     assert "core doctrine, filled marker" in usa
     assert "2023-01-25" in usa  # the dated list below the SVG
     assert "timeline-list" in usa
+
+
+def test_doctrine_timeline_preview_chips_unapproved_entries(tmp_path, monkeypatch):
+    """Preview renders gated doctrine, but has to say it is gated."""
+    _content_with_usa_doctrine_gated(tmp_path, monkeypatch)
+    out = tmp_path / "prev"
+    bs.build(out, preview=True)
+    usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
+    assert "DoD Directive" in usa, "preview should still render gated doctrine"
     m = re.search(r'<ul class="timeline-list">.*?</ul>', usa, re.S)
-    assert m and "draft-chip" in m.group(0)  # unapproved entries chip in preview
+    assert m and "draft-chip" in m.group(0)
 
 
 def test_rebuilds_are_byte_identical(tmp_path):

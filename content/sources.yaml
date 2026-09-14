@@ -111,6 +111,24 @@ sources:
     lang: en
     accessed: 2026-07-21
 
+  - id: ccw-gge1-2022-wp8-draftprotocol
+    title: "Draft Protocol VI (CCW/GGE.1/2022/WP.8)"
+    publisher: CCW Group of Governmental Experts, submitted by Argentina, Ecuador, Costa Rica, El Salvador, Guatemala, Kazakhstan, Nigeria, Panama, the Philippines, Sierra Leone and Uruguay
+    date: 2022-08-09
+    url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24. The eleven authors above are verbatim from the
+      document face, in the printed order. Article 3 Sec 1 prohibits on two
+      cumulative conditions joined by "and", and Sec 2 onward regulates: this
+      is a two-tier instrument, not a blanket ban. Quotations drawn from it
+      must carry the "if" and its condition, or the excerpt overstates the
+      authors' position. Article 2 Sec 1 defines autonomous weapon systems as
+      incorporating autonomy into the critical functions of selecting,
+      targeting and engaging to apply force without human intervention.
+
   # India
   - id: ccw-gge1-2025-wp3-india
     title: "Working Paper - Emerging Technologies in the area of Lethal Autonomous Weapons Systems (CCW/GGE.1/2025/WP.3)"
@@ -239,30 +257,37 @@ sources:
     title: "Statement by Norway to the CCW Group of Governmental Experts on LAWS, second 2024 session"
     publisher: Government of Norway, via UNODA Documents Library
     date: 2024-08-26
-    url: https://docs-library.unoda.org/
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/2024-08-26_Norway_CCW_GGE_LAWS_2nd_session_general_statement.pdf
     type: statement
     lang: en
-    accessed: 2026-07-17
+    accessed: 2026-08-24
     note: >
-      Quote captured verbatim by research pass 5e from the primary
-      statement; the exact document URL is not yet pinned (flagged;
-      research names UNODA and norway.no as hosts). URL here is the
-      documents-library root pending retrieval.
+      Primary retrieved and read 2026-08-24; the document URL is now pinned to
+      the UNODA Documents Library PDF. The retrieval corrected the
+      research-captured quote, which had compressed the statement's
+      "international humanitarian law" to "IHL"; the quote now matches the
+      primary word for word. The document's own dateline reads only "Geneva,
+      August 2024" - the day 26 August comes from UNODA's filing of it as the
+      second-session general statement, not from the face of the document.
   - id: in-eov-79-62
     title: "Explanation of vote by India on resolution 79/62 (L.77), Lethal autonomous weapons systems"
-    publisher: Permanent Mission of India to the United Nations, New York
+    publisher: Permanent Mission of India to the United Nations, New York; published in the India Geneva mission's statements archive
     date: 2024-11-01
-    url: https://pmindiaun.gov.in/
+    date_precision: month   # the primary itself carries only "November 2024"; renders as "November 2024", never a day
+    url: https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3
     type: statement
     lang: en
-    accessed: 2026-07-17
+    accessed: 2026-08-24
     note: >
-      Captured verbatim by research pass 5d from the mission's statements
-      archive (pmindiaun.gov.in, November 2024). The day is NOT
-      established by the research record: 2024-11-01 is a flagged
-      stand-in until the primary pins the real date. The statement
+      Primary retrieved and read 2026-08-24; the document URL is now pinned.
+      Both quoted fragments were checked against the primary and match it word
+      for word. The statement heads itself "India's Explanation of Vote
+      (POST-VOTING) Conventional Weapons Cluster 79 UNGA First Committee, New
+      York, November 2024" and carries no dateline of its own, so month
+      precision is a property of the primary record, not a gap in this
+      project's retrieval: the day does not exist on the document. It
       references L.77, the First Committee draft, so it predates the
-      2024-12-02 plenary vote. Exact URL also flagged for retrieval.
+      2024-12-02 plenary vote.
 
   # France retrieval returns (2026-07-19). approved:false throughout;
   # Walker approves per entry. Verbatim quotes captured by his research
@@ -302,6 +327,7 @@ sources:
     title: "Reponse a la question ecrite n. 8640 (Assemblee nationale)"
     publisher: Ministere de l'Europe et des affaires etrangeres (France), Journal Officiel
     date: 2025-01-01
+    date_precision: year   # only the year (2025) is established; renders as "2025", not a false day
     url: https://questions.assemblee-nationale.fr/q17/17-8640QE.htm
     type: parliamentary_answer
     lang: fr
@@ -339,3 +365,58 @@ sources:
       the honest, downgraded 2013 origin note: the mandate was adopted in
       2013 and France's ambassador chaired; "France initiated the debate" is
       not directly documented and is not asserted.
+
+  # The September 2025 joint statement is not registered here. It lives in the
+  # sponsorship layer (sponsorships.yaml, joint-statement-gge-sept-2025), which
+  # already carries the face-verified roster, the archived snapshot, and the
+  # Palestine handling. One record of truth per document, deliberately.
+
+  # Populate pass 2 (2026-08-24): the draft-articles series, the other camp's
+  # substantive written texts. All three faces were retrieved and read; the
+  # author lists below are verbatim from them, in printed order. The series
+  # shows a coalition growing: six authors in March 2023, seven in May 2023,
+  # eleven in September 2025.
+  - id: ccw-gge1-2023-wp4rev1-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2023/WP.4/Rev.1)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Japan, the Republic of Korea, the United Kingdom, and the United States
+    date: 2023-03-13
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24: six authors, not the seven some secondary
+      summaries report. Poland joins at Rev.2. This also closes the flag on
+      AUS.yaml doubting whether a March 2023 six-state paper existed and
+      suspecting a conflation with WP.7: it exists, and the research pass
+      was right.
+  - id: ccw-gge1-2023-wp4rev2-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2023/WP.4/Rev.2)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Japan, Poland, the Republic of Korea, the United Kingdom, and the United States
+    date: 2023-05-15
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24. Seven authors: Rev.1's six plus Poland, which
+      is why Poland's coding dates from this revision and not from March.
+  - id: ccw-gge1-2025-wp7-draftarticles
+    title: "Draft articles on autonomous weapon systems - prohibitions and other regulatory measures on the basis of international humanitarian law (CCW/GGE.1/2025/WP.7)"
+    publisher: CCW Group of Governmental Experts, submitted by Australia, Canada, Czechia, Estonia, Japan, Latvia, Lithuania, Poland, the Republic of Korea, the United Kingdom, and the United States
+    date: 2025-09-03
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+    type: working_paper
+    lang: en
+    accessed: 2026-08-24
+    note: >
+      Face-checked 2026-08-24. Eleven authors: Rev.2's seven plus Czechia,
+      Estonia, Latvia and Lithuania, whose codings date from here. Read
+      against Draft Protocol VI, the contrast is the point of the series.
+      Both are draft instrument texts; this one restates and operationalises
+      existing IHL rather than creating new treaty prohibitions, and its
+      Article 1 opens "IHL prohibits", describing law already in force. The
+      2025 agenda item under which it was filed speaks of elements of an
+      instrument "without prejudging its nature"; that is the Group's
+      mandate language, not the authors' own, and is not quoted as their
+      position.

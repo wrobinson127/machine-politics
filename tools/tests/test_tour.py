@@ -2,6 +2,7 @@
 first, and the animation stack is pinned with integrity hashes."""
 
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -29,17 +30,46 @@ def preview(tmp_path_factory):
     return out, manifest
 
 
-def test_deploy_has_no_tour_and_no_gsap(deploy):
-    """Unapproved beat copy never reaches the deploy artifact, and neither
-    do the animation scripts that exist only to serve it."""
-    out, manifest = deploy
+def test_deploy_has_no_tour_and_no_gsap(tmp_path, monkeypatch):
+    """Unapproved beat copy never reaches the deploy artifact, and neither do
+    the animation scripts that exist only to serve it. The tour was approved
+    on 2026-08-24, so the gate is exercised against an unapproved copy rather
+    than against today's editorial state; the approved counterpart is below.
+    Beat 1's opening line is the canary, not a placeholder marker, because a
+    placeholder check would now pass vacuously."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    tour = work / "tour.yaml"
+    text = tour.read_text(encoding="utf-8")
+    assert "\napproved: true" in text, "fixture expects the live tour approved"
+    tour.write_text(text.replace("\napproved: true", "\napproved: false", 1),
+                    encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
     index = (out / "index.html").read_text(encoding="utf-8")
-    assert "PLACEHOLDER BEAT" not in index
+    assert "Who should be allowed to decide" not in index
     assert 'class="tour"' not in index
     assert "gsap" not in index.lower()
     assert "tour.js" not in index
     tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
     assert tour_entries and tour_entries[0]["rendered"] is False
+
+
+def test_deploy_ships_the_tour_once_approved(deploy):
+    """The other half of the gate, against the live content as approved on
+    2026-08-24: the beats and the animation stack now ship."""
+    out, manifest = deploy
+    index = (out / "index.html").read_text(encoding="utf-8")
+    assert manifest["unapproved_rendered"] == 0
+    assert "Who should be allowed to decide" in index
+    assert index.count('class="beat"') == 10
+    assert re.search(r'<script defer src="js/tour\.js\?v=[0-9a-f]+"></script>', index)
+    assert f"gsap/{bs.GSAP_VERSION}/gsap.min.js" in index
+    assert "DRAFT" not in index  # the draft chip is a preview-only affordance
+    tour_entries = [e for e in manifest["entries"] if e["kind"] == "tour"]
+    assert tour_entries and tour_entries[0]["rendered"] is True
 
 
 def test_preview_tour_scaffold_renders(preview):
@@ -48,7 +78,11 @@ def test_preview_tour_scaffold_renders(preview):
     out, manifest = preview
     index = (out / "index.html").read_text(encoding="utf-8")
     assert index.count('class="beat"') == 10
-    assert "PLACEHOLDER BEAT 1" in index and "PLACEHOLDER BEAT 10" in index
+    # Every beat carries real prose. Checked structurally rather than against
+    # fixed strings so editing the copy does not break the scaffold gate.
+    beat_copy = re.findall(r'<div class="beat-copy">.*?<p>(.*?)</p>', index, re.S)
+    assert len(beat_copy) == 10
+    assert all(len(c.strip()) > 40 for c in beat_copy)
     positions = [index.find(f'id="beat-{bid}"') for bid in vc.TOUR_BEAT_SEQUENCE]
     assert all(p > -1 for p in positions)
     assert positions == sorted(positions)  # storyboard order preserved
@@ -89,7 +123,7 @@ def test_animation_stack_pinned_with_integrity(preview):
     )
     assert scrollama_tag and scrollama_tag.group(1) == bs.SCROLLAMA_SRI
     assert "ScrollTrigger" not in index
-    assert '<script defer src="js/tour.js">' in index
+    assert re.search(r'<script defer src="js/tour\.js\?v=[0-9a-f]+"></script>', index)
 
 
 def test_canvas_is_server_rendered_and_hidden(preview):

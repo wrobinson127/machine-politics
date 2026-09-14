@@ -186,11 +186,26 @@ position_codings:
 # ambiguity has changed and the dated codings above document how.
 
 doctrine:
-  status: not_yet_reviewed
-  approved: false
-  context:
-    - note: >
-        China is on this project's doctrine coverage list. The doctrine
-        review for China has not yet been performed; its international
-        position papers above are diplomatic instruments, not national
-        doctrine, and are recorded in the position layer only.
+  status: no_policy_identified
+  as_of: 2026-08-31
+  approved: true   # render-approved 2026-09-02
+  search_note: >
+    Reviewed for a published national policy specifically governing autonomy
+    in weapon systems: the State Council Information Office defence white
+    paper "China's National Defense in the New Era" (2019), publicly
+    available Central Military Commission regulations, and PLA doctrinal
+    publications and military strategic guidelines. The closest candidate is
+    the 2019 white paper (official English text, State Council Information
+    Office, https://english.www.gov.cn/atts/stream/files/5d3943eec6d0a15c923d2036),
+    which characterises intelligentised warfare as a
+    trend, stating that "intelligent warfare is on the horizon," but contains
+    no provision governing autonomy in weapon systems: no human-judgment
+    requirement, no review process, and no categories defined for national
+    use. Characterising a trend is not governing it. Export controls under
+    the Export Control Law, which require State Council and Central Military
+    Commission approval for military and dual-use items, govern transfer
+    rather than autonomy and fall outside this scope. China's position-layer
+    documents at the CCW and the United Nations are diplomatic instruments,
+    not national doctrine, and are recorded in the position layer. No
+    published national policy governing autonomy in weapon systems was
+    identified by this project as of this date.

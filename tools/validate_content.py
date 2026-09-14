@@ -612,6 +612,13 @@ def check_tour(errors, path):
         for ch, name in (("—", "em dash"), ("–", "en dash")):
             if ch in str(beat.get("copy", "")) + str(beat.get("title", "")):
                 errors.add(b_where, f"beat title or copy contains an {name}; voice rules forbid it")
+        # Beat citations are optional, but a half-written one is worse than
+        # none: it renders a "Source:" line that goes nowhere.
+        for j, src in enumerate(beat.get("sources") or []):
+            for field in ("label", "url"):
+                if not str(src.get(field, "")).strip():
+                    errors.add(f"{b_where}.sources[{j}]",
+                               f"beat source needs {field!r}")
     scan_prohibited_claims(errors, where, tour)
 
 

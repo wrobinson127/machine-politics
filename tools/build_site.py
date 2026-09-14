@@ -129,19 +129,37 @@ def parse_front_matter(text):
     return yaml.safe_load(m.group(1)) or {}, m.group(2)
 
 
+def _warn_missing(path):
+    """These files are expected. Absent them the build still succeeds and
+    silently drops a whole layer (the tour, the instrument rosters), which
+    reads as a clean build of a site that quietly lost its homepage
+    narrative. Say so on stderr rather than degrade in silence."""
+    print(f"WARNING: expected content file missing, layer will be empty: {path}",
+          file=sys.stderr)
+
+
 def load_tour():
     path = config.CONTENT_DIR / "tour.yaml"
-    return load_yaml(path) if path.exists() else None
+    if not path.exists():
+        _warn_missing(path)
+        return None
+    return load_yaml(path)
 
 
 def load_endorsements():
     path = config.CONTENT_DIR / "endorsements.yaml"
-    return (load_yaml(path).get("instruments") or []) if path.exists() else []
+    if not path.exists():
+        _warn_missing(path)
+        return []
+    return load_yaml(path).get("instruments") or []
 
 
 def load_sponsorships():
     path = config.CONTENT_DIR / "sponsorships.yaml"
-    return (load_yaml(path).get("records") or []) if path.exists() else []
+    if not path.exists():
+        _warn_missing(path)
+        return []
+    return load_yaml(path).get("records") or []
 
 
 def load_eras(iso3):
@@ -275,10 +293,11 @@ def canvas_row_html(iso3, entry, resolutions, cs, preview):
     codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
     shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
     parts = []
+    # Still needed below for the provisional note and the row's latest code.
     timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for i, c in enumerate(timeline):
-        left = canvas_x(c["as_of"])
-        right = canvas_x(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else 95.0
+    for c, start, end in coding_spans(codings):
+        left = canvas_x(start) if start else 5.0
+        right = canvas_x(end) if end else 95.0
         if right <= left:
             continue
         style, extra = band_style(c["code"], c.get("confidence"))
@@ -461,11 +480,21 @@ def tour_html(tour, votes, content_states, preview):
             if preview and not is_approved(tour)
             else ""
         )
+        # A hard number in the narration gets its document one click away,
+        # on the same standard the codings are held to. Prose is not exempt.
+        cites = ""
+        srcs = beat.get("sources") or []
+        if srcs:
+            links = " · ".join(
+                f'<a href="{esc(s["url"])}" rel="noopener">{esc(s["label"])}</a>'
+                for s in srcs
+            )
+            cites = f'\n      <p class="beat-cite">Source: {links}</p>'
         beats.append(f"""
   <section class="beat" id="beat-{esc(beat["id"])}" data-beat="{i}">
     <div class="beat-copy">
       <h2>{esc(beat["title"])}{chip}</h2>
-      <p>{esc(beat["copy"])}</p>
+      <p>{esc(beat["copy"])}</p>{cites}
     </div>
   </section>""")
     return (
@@ -523,9 +552,64 @@ def md_to_html(md):
     return "\n".join(out)
 
 
-def prose_page(key, pages, fallback_lines, preview, manifest):
+def doctrine_coverage_table(content_states, preview):
+    """The national-policy coverage list as a table, derived from the state
+    files rather than written out.
+
+    A hand-written list of which states have doctrine is the staleness failure
+    this repo keeps meeting: it reads as current and silently stops being so
+    the moment a review lands. Generating it means the page cannot disagree
+    with the records it describes.
+
+    Gated doctrine is absent entirely rather than listed as pending, because
+    its status is itself an unapproved claim.
+    """
+    rows = []
+    for iso3, cs in sorted(content_states.items()):
+        doctrine = cs.get("doctrine") or {}
+        status = doctrine.get("status")
+        if status not in ("policy_identified", "no_policy_identified"):
+            continue
+        if not (preview or is_approved(doctrine)):
+            continue
+        name = cs.get("display_name") or iso3
+        if status == "policy_identified":
+            titles = [e.get("title") for e in (doctrine.get("entries") or [])
+                      if preview or is_approved(e)]
+            detail = "; ".join(t for t in titles if t)
+            finding = "Published policy"
+        else:
+            detail = (f"Reviewed {iso(doctrine['as_of'])}"
+                      if doctrine.get("as_of") else "Reviewed")
+            finding = "None identified"
+        rows.append((iso3, name, finding, detail))
+
+    if not rows:
+        return ""
+    body = "\n".join(
+        f'<tr><th scope="row"><a href="state/{esc(iso3)}.html">{esc(name)}</a></th>'
+        f"<td>{esc(finding)}</td><td>{esc(detail)}</td></tr>"
+        for iso3, name, finding, detail in rows
+    )
+    return (
+        '<div class="table-scroll">'
+        '<table class="coverage-table">'
+        "<caption>National-policy coverage: every state on the list, and what "
+        "the review found.</caption>"
+        '<thead><tr><th scope="col">State</th><th scope="col">Finding</th>'
+        '<th scope="col">Record</th></tr></thead>'
+        f"<tbody>{body}</tbody></table></div>"
+    )
+
+
+def prose_page(key, pages, fallback_lines, preview, manifest, blocks=None):
     """A prose page renders only when approved (invariant 1 covers analyst
-    sentences); otherwise the factual shell stands in."""
+    sentences); otherwise the factual shell stands in.
+
+    `blocks` maps a {{marker}} in the markdown to generated HTML, so a page can
+    carry a table the markdown subset cannot express without the prose having
+    to restate data that lives in the content files.
+    """
     entry = pages.get(key)
     title = (entry or {}).get("meta", {}).get("title", key.capitalize())
     if entry:
@@ -540,9 +624,31 @@ def prose_page(key, pages, fallback_lines, preview, manifest):
                 if preview and not approved
                 else ""
             )
-            body = f"<h1>{esc(title)}{chip}</h1>\n" + md_to_html(entry["body"])
+            body = f"<h1>{esc(title)}{chip}</h1>\n" + _render_with_blocks(
+                entry["body"], blocks or {})
             return page(title, body, current=f"{key}.html", preview=preview)
     return shell_page(title, f"{key}.html", fallback_lines, preview)
+
+
+def _render_with_blocks(md, blocks):
+    """Render markdown, substituting {{name}} markers with generated HTML.
+
+    An unknown marker raises rather than rendering: a literal {{doctrine-
+    coverage}} shipped to readers is the silent-failure shape this project has
+    hit before, and it should stop the build instead of reaching a page.
+    """
+    parts = re.split(r"^\{\{([a-z0-9-]+)\}\}$", md, flags=re.M)
+    out = [md_to_html(parts[0])] if parts[0].strip() else []
+    for i in range(1, len(parts), 2):
+        name, rest = parts[i], parts[i + 1]
+        if name not in blocks:
+            raise SystemExit(
+                f"prose page references unknown block {{{{{name}}}}}; "
+                f"known blocks: {sorted(blocks) or 'none'}")
+        out.append(blocks[name])
+        if rest.strip():
+            out.append(md_to_html(rest))
+    return "\n".join(out)
 
 
 def is_approved(entry):
@@ -562,9 +668,9 @@ def is_approved(entry):
 GSAP_VERSION = "3.15.0"
 GSAP_SCRIPTS = (
     ("gsap.min.js",
-     "sha512-Qrpii3NEFZ02RN6ZqpTu6pS/5PEq7EzBYJLki3AKBd8IncrlAwQdZHzExYwS0+b1NM0/qfxI1GOhqWLVosocDA=="),
+     "sha512-oJ8QbaQThQoJZ7oEv+29jfPM6CcP+zUxh3PKJs1vyOhx0UraUrE7PQgeItu3dOuCJyrzWpoYMsVjkkPEBzbUqw=="),
     ("DrawSVGPlugin.min.js",
-     "sha512-AxhfgcJYY6BU9wEF3FLWSrBjzra6a0tIdNPZIG5mhdCCtrrvzkMDEARvWsTGR9FJG9z/t8l9g5gJqtMIt5Nf5w=="),
+     "sha512-egrFtAMXB/E3deN7qNirS2hUrVU9Y5HK12Fea4yzjtfZ5gVYPlsH+r3IxsQ4oOR2wfOAfeUv5pCIoSg58R1YoA=="),
 )
 
 
@@ -599,8 +705,58 @@ NAV = [
 ]
 
 
+# ---------------------------------------------------------------------------
+# Asset versioning.
+#
+# The stylesheets and scripts are served from stable paths, so a browser or CDN
+# that has cached one will keep serving it after a deploy. That is not a
+# theoretical risk: during the colour-vision work a stale site.css made a
+# working board render with transparent bands twice, and it looked exactly like
+# a bug in the build. On a live site the same thing hands returning readers a
+# page whose markup and stylesheet disagree.
+#
+# So every locally served asset is linked with a short content hash. Same bytes
+# means same URL, which keeps the build deterministic and the CI freshness gate
+# meaningful; changed bytes means a new URL, which no cache can answer from
+# stale storage. Hashes are filled in during build() after the assets are
+# written and before any page is rendered.
+#
+# Not covered: the font files, which are referenced from inside tokens.css by
+# name. A stale font is the same font, so it costs nothing.
+# ---------------------------------------------------------------------------
+
+_ASSET_HASHES = {}
+
+
+def _record_asset_hashes(out):
+    """Hash every asset the pages link, keyed by its site-relative path."""
+    _ASSET_HASHES.clear()
+    out = Path(out)
+    for rel in ("css/tokens.css", "css/site.css", "css/dossier.css",
+                "js/board.js", "js/dossier.js", "js/tour.js",
+                "js/instruments.js", "assets/favicon.svg"):
+        path = out / rel
+        if path.exists():  # tour.js and instruments.js are conditional
+            # Hash the normalised text, not the raw bytes. Every generated
+            # asset is written with newline="\n", but site.css is copied from
+            # the source tree, so on Windows it carries CRLF while a CI
+            # checkout has LF. Hashing bytes made the same stylesheet produce
+            # two different URLs by platform and broke the freshness gate.
+            text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
+            digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
+            _ASSET_HASHES[rel] = digest[:10]
+
+
+def asset(prefix, rel):
+    """Link an asset at `rel` with its content hash, so a deploy invalidates
+    any cached copy. Falls back to the bare path if the asset was not hashed,
+    which keeps preview builds and tests working."""
+    digest = _ASSET_HASHES.get(rel)
+    return f"{prefix}{rel}?v={digest}" if digest else f"{prefix}{rel}"
+
+
 def page(title, body, *, current, depth=0, preview=False, description="",
-         absolute=False, extra_scripts="", extra_head=""):
+         absolute=False, extra_scripts="", extra_head="", og_path=None):
     # Pages serves 404.html from any missing path, so its asset links must
     # be root-absolute; every real page stays relative and previewable
     prefix = "/" if absolute else "../" * depth
@@ -620,19 +776,38 @@ def page(title, body, *, current, depth=0, preview=False, description="",
         if preview
         else ""
     )
+    desc = description or ('Where every country stands on autonomous weapons: '
+                           'recorded votes, official statements, and national '
+                           'policy, tracked as they shift over time.')
+    og_desc = description or ('Where every country stands on autonomous weapons, '
+                              'tracked as positions shift over time.')
+    # Absolute URL for canonical + og:url. State pages pass og_path explicitly
+    # (their `current` is empty); others derive it from `current`.
+    _path = og_path if og_path is not None else (current or "")
+    canonical = f"https://{config.SITE_DOMAIN}/{_path}"
+    og_title = f"{esc(title)} · {esc(config.SITE_NAME)}"
+    og_image = f"https://{config.SITE_DOMAIN}/assets/og-card.png"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · {esc(config.SITE_NAME)}</title>
-<meta name="description" content="{esc(description or 'Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time.')}">
-<meta property="og:title" content="{esc(title)} · {esc(config.SITE_NAME)}">
-<meta property="og:description" content="{esc(description or 'Where every country stands on autonomous weapons, tracked as positions shift over time.')}">
-<meta property="og:image" content="https://{config.SITE_DOMAIN}/assets/board-poster.svg">
-<link rel="stylesheet" href="{prefix}css/tokens.css">
-<link rel="stylesheet" href="{prefix}css/site.css">
-<link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="{esc(desc)}">
+<link rel="canonical" href="{esc(canonical)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{esc(config.SITE_NAME)}">
+<meta property="og:url" content="{esc(canonical)}">
+<meta property="og:title" content="{og_title}">
+<meta property="og:description" content="{esc(og_desc)}">
+<meta property="og:image" content="{og_image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{og_title}">
+<meta name="twitter:description" content="{esc(og_desc)}">
+<meta name="twitter:image" content="{og_image}">
+<link rel="stylesheet" href="{asset(prefix, 'css/tokens.css')}">
+<link rel="stylesheet" href="{asset(prefix, 'css/site.css')}">
+<link rel="icon" href="{asset(prefix, 'assets/favicon.svg')}" type="image/svg+xml">
 {extra_head}</head>
 <body>
 {banner}<header class="masthead">
@@ -653,7 +828,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
     <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every coding traces to a quoted, dated, linked source · <a href="{prefix}corrections.html">Corrections</a></p>
   </div>
 </footer>
-<script src="{prefix}js/board.js" defer></script>
+<script src="{asset(prefix, 'js/board.js')}" defer></script>
 {extra_scripts}</body>
 </html>
 """
@@ -668,12 +843,20 @@ def pct(d):
 
 
 def band_style(code, confidence):
-    """Fill styling for a coded band. AMBIG is a designed hatch texture,
-    confidence modulates opacity, hue never changes."""
+    """Fill styling for a coded band. Every substantive position carries both a
+    hue and a texture, so the category survives colour-vision deficiency (see
+    config.POSITION_TEXTURES). AMBIG is texture only, over paper, because it
+    has no hue. Confidence modulates opacity, hue never changes."""
     opacity = "1" if confidence == "EXPLICIT" else "0.55"
-    if code == "AMBIG":
-        return f"opacity:{opacity}", " band-hatch"
-    return f"background:{config.PALETTE['positions'][code]};opacity:{opacity}", ""
+    texture = config.POSITION_TEXTURES.get(code, "")
+    color = config.PALETTE["positions"][code]
+    if color is None:
+        return f"opacity:{opacity}", texture
+    # The hue rides on a custom property rather than the background shorthand
+    # so the texture class can set background-image without being clobbered:
+    # an inline shorthand resets background-image to none and outranks the
+    # stylesheet, which would silently drop every texture.
+    return f"--fill:{color};opacity:{opacity}", texture
 
 
 def vote_glyph_svg(vote, size=12):
@@ -700,13 +883,39 @@ def vote_glyph_svg(vote, size=12):
     )
 
 
+def coding_spans(codings):
+    """Yield (coding, start, end) for each coding, as ISO dates or None for
+    the track edges, in drawing order.
+
+    A substantive coding starts on its as_of date and runs to the next one.
+    NONE is different in kind: it is a coverage statement, never a position
+    (config invariant 6), and its as_of is the date the record was reviewed,
+    not a date a position began. A band starting on the review date would
+    say "no position from July onward" when the finding is "no position
+    anywhere in the record, as reviewed in July". So NONE starts at the
+    origin and runs to the first substantive coding, or the end of the track
+    if there is none, and its review date goes in the label instead.
+
+    This is also what makes the axis end irrelevant to NONE: a review dated
+    after UPDATED_THROUGH used to clamp to the track edge and vanish.
+    """
+    substantive = sorted((c for c in codings if c["code"] != "NONE"),
+                         key=lambda c: iso(c["as_of"]))
+    first = iso(substantive[0]["as_of"]) if substantive else None
+    for coding in codings:
+        if coding["code"] == "NONE":
+            yield coding, None, first
+    for i, coding in enumerate(substantive):
+        nxt = iso(substantive[i + 1]["as_of"]) if i + 1 < len(substantive) else None
+        yield coding, iso(coding["as_of"]), nxt
+
+
 def compute_bands(codings):
     """Segment a coding timeline into bands in TRACK_W (0-1000) units."""
     bands = []
-    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for i, coding in enumerate(timeline):
-        left = x_of(coding["as_of"])
-        right = x_of(timeline[i + 1]["as_of"]) if i + 1 < len(timeline) else float(TRACK_W)
+    for coding, start, end in coding_spans(codings):
+        left = x_of(start) if start else 0.0
+        right = x_of(end) if end else float(TRACK_W)
         if right <= left:
             continue
         bands.append(
@@ -731,11 +940,21 @@ def row_track_html(iso3, entry, resolutions, codings, shifts):
     parts = ['<div class="row-track">']
     for band in compute_bands(codings):
         style, extra_class = band_style(band["code"], band["confidence"])
-        title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
+        if band["code"] == "NONE":
+            # A coverage statement, not a position: the date is when the
+            # record was reviewed, and the band covers the whole record.
+            title = (f"NONE: no substantive position on record, reviewed as of "
+                     f"{band['since']}, confidence {band['confidence']}")
+        else:
+            title = f"{band['code']} since {band['since']}, confidence {band['confidence']}"
         if band.get("note"):
             title += f". {band['note']}"
+        # role=img + aria-label gives the coding band an accessible name; the
+        # native title stays for pointer users. Without this the position (the
+        # board's core datum) has no name for assistive tech.
         parts.append(
-            f'<div class="band{extra_class}" style="left:{band["left"] / 10:.2f}%;'
+            f'<div class="band{extra_class}" role="img" aria-label="{esc(title)}" '
+            f'style="left:{band["left"] / 10:.2f}%;'
             f'width:{band["width"] / 10:.2f}%;{style}" title="{esc(title)}"></div>'
         )
     for shift in sorted(shifts, key=lambda s: iso(s["date"])):
@@ -850,11 +1069,11 @@ def board_rows(votes, content_states, preview):
 def legend_html():
     items = []
     for code, label in config.POSITION_CATEGORIES.items():
-        color = config.PALETTE["positions"][code]
-        if code == "AMBIG":
-            swatch = '<span class="swatch band-hatch" aria-hidden="true"></span>'
-        else:
-            swatch = f'<span class="swatch" style="background:{color}" aria-hidden="true"></span>'
+        # The legend swatch carries the same hue and the same texture as the
+        # band, so the reader learns both channels from one place.
+        style, texture = band_style(code, "EXPLICIT")
+        swatch = (f'<span class="swatch{texture}" style="{style}" '
+                  f'aria-hidden="true"></span>')
         items.append(f"<span>{swatch}{esc(code)}: {esc(label)}</span>")
     items.append(
         "<span><span class=\"swatch\" style=\"border:1px dashed "
@@ -878,7 +1097,8 @@ def index_page(votes, content_states, preview, tour=None):
     extra_scripts = ""
     if tour and (preview or is_approved(tour)):
         tour_block = tour_html(tour, votes, content_states, preview)
-        extra_scripts = gsap_script_tags() + '\n<script defer src="js/tour.js"></script>'
+        extra_scripts = (gsap_script_tags() +
+                         f'\n<script defer src="{asset("", "js/tour.js")}"></script>')
     body = f"""
 {tour_block}<div class="board-head" id="board-top">
   <div class="board-lede">
@@ -1286,9 +1506,10 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
     )
     return page(
         name, body, current="", depth=1, preview=preview,
+        og_path=f"state/{iso3}.html",
         description=f"{name}: recorded votes, coded position, framework signings, engagement record, and national policy on autonomous weapons systems.",
-        extra_head='<link rel="stylesheet" href="../css/dossier.css">',
-        extra_scripts='<script src="../js/dossier.js" defer></script>',
+        extra_head=f'<link rel="stylesheet" href="{asset("../", "css/dossier.css")}">',
+        extra_scripts=f'<script src="{asset("../", "js/dossier.js")}" defer></script>',
     )
 
 
@@ -1301,10 +1522,10 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
 # server-rendered lists and tables ARE the content; the map is enhancement.
 MAPLIBRE_VERSION = "5.12.0"
 MAPLIBRE_JS_SRI = (
-    "sha512-8zwkEbAPWRxEwazkrkQuxRX5rNuyQgoXdMNUnh6CU+Ch0peJ6m6nz505BMte989ZHUQD1R1Iwwz8VV9dYCPVKg=="
+    "sha512-0BWq+SR7EMt0191JMIlQk0jZxAQmrTvGFA4xzd/NukRhDKZvqfF7sxIq5m5tecR4OMaXRb+Ry52hmng5gTBaVQ=="
 )
 MAPLIBRE_CSS_SRI = (
-    "sha512-GT5+KstPNd/krQxWK1xI+fs/Pwlrekt9E+A9fOLGo2tvG/RsXz99dwH0mbB+zZWwA0gIb/ATWIO3/JIev0xwTA=="
+    "sha512-A+upg1UEqFAoCJJ4P5OFl2JXKybtcKh4qyhvPxTcusRMWf55btrRVY/1pOTE83R/oXzrRzwh1FakAtXfta62rg=="
 )
 MAP_STYLE_URL = "https://tiles.openfreemap.org/styles/positron"
 MAP_CREDIT = "Map data © OpenStreetMap contributors, tiles by OpenFreeMap."
@@ -1759,7 +1980,7 @@ def instruments_page(votes, content_states, endorsements, sponsorships,
             '<script defer '
             f'src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/{MAPLIBRE_VERSION}/maplibre-gl.min.js" '
             f'integrity="{MAPLIBRE_JS_SRI}" crossorigin="anonymous"></script>\n'
-            '<script defer src="js/instruments.js"></script>'
+            f'<script defer src="{asset("", "js/instruments.js")}"></script>'
         )
     body = f"""
 <h1>Instruments</h1>
@@ -1851,7 +2072,7 @@ def countries_geojson():
 # Rubric and prose shells
 # ---------------------------------------------------------------------------
 
-def rubric_page(rubric, preview):
+def rubric_page(rubric, preview, states=None):
     if not (preview or is_approved(rubric)):
         body = f"""
 <h1>The coding rubric</h1>
@@ -1872,6 +2093,48 @@ def rubric_page(rubric, preview):
         f"<h3>{esc(tier)}</h3><p>{esc(text)}</p>"
         for tier, text in (rubric.get("axis_b", {}).get("tiers") or {}).items()
     ]
+    # The authorship rule decides how a whole bloc of states is coded, and
+    # the confidence tiers cross-reference it by name, so it has to render or
+    # the tier text points at nothing. Fields are emitted in a fixed order
+    # and only when present, so the rubric stays the single source.
+    auth = rubric.get("instrument_authorship") or {}
+    auth_html = ""
+    if auth:
+        parts = [
+            f'<h2>{esc(auth.get("name", "Authoring a draft instrument"))}</h2>'
+        ]
+        # Every prose field in the block renders, in file order. An allowlist
+        # of key names was silently dropping fields added to the rubric later,
+        # which is how a load-bearing clause reached the YAML but never the
+        # page. The rubric file is the source; the renderer does not curate it.
+        for key, value in auth.items():
+            if key == "name" or not isinstance(value, str):
+                continue
+            parts.append(f"<p>{esc(value)}</p>")
+        auth_html = (
+            '<section class="signal" id="instrument-authorship">'
+            + chr(10).join(parts)
+            + "</section>"
+        )
+
+    # Worked examples are the "re-derive it yourself" promise made concrete,
+    # so each one links to the state page carrying the evidence.
+    examples = []
+    for ex in rubric.get("worked_examples") or []:
+        iso3 = str(ex.get("state", ""))
+        name = (states or {}).get(iso3, {}).get("display_name") or iso3
+        head = (f'<a href="state/{esc(iso3)}.html">{esc(name)}</a>'
+                if iso3 else "")
+        examples.append(f"<h3>{head}</h3><p>{esc(ex.get('why', ''))}</p>")
+    examples_html = ""
+    if examples:
+        examples_html = (
+            '<section class="signal"><h2>Worked examples</h2>'
+            "<p>Each of these is a coding you can check against its own "
+            "evidence. Follow the link and read the documents the coding "
+            "rests on.</p>" + chr(10).join(examples) + "</section>"
+        )
+
     chip = '<span class="draft-chip">DRAFT</span>' if preview and not is_approved(rubric) else ""
     body = f"""
 <h1>The coding rubric{chip}</h1>
@@ -1881,6 +2144,8 @@ def rubric_page(rubric, preview):
 <section class="signal"><h2>Axis B: confidence</h2>
 <p>{esc((rubric.get("axis_b") or {}).get("rules", ""))}</p>
 {chr(10).join(tiers)}</section>
+{auth_html}
+{examples_html}
 """
     return page("Rubric", body, current="rubric.html", preview=preview)
 
@@ -2020,6 +2285,11 @@ def poster_svg(votes, content_states):
         for band in r["bands"]:
             if band["code"] == "AMBIG":
                 continue  # the poster is a glance artifact; hatch needs defs
+            # Known gap: the poster encodes by hue alone, so it does not carry
+            # the texture channel the board uses to stay readable under
+            # colour-vision deficiency. Closing it means SVG pattern defs per
+            # category. Acceptable only while the poster stays a decorative
+            # preview and is never the artifact a reader is asked to read.
             color = config.PALETTE["positions"][band["code"]]
             if color is None:
                 continue
@@ -2369,9 +2639,13 @@ TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board
         pop.appendChild(line);
       });
       Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
+        var code = b.getAttribute("data-code");
+        // NONE is a coverage statement: its date is the review date, not a start.
+        var when = code === "NONE"
+          ? "NONE: no substantive position on record, reviewed as of " + b.getAttribute("data-since")
+          : code + " since " + b.getAttribute("data-since");
         pop.appendChild(el("span", "citation",
-          b.getAttribute("data-code") + " since " + b.getAttribute("data-since") +
-          " \\u00b7 confidence " + b.getAttribute("data-conf")));
+          when + " \\u00b7 confidence " + b.getAttribute("data-conf")));
       });
       var note = row.querySelector(".c-note");
       if (note) pop.appendChild(el("span", "citation", note.textContent));
@@ -2714,20 +2988,8 @@ def build(out_dir, preview=False):
         )
         if preview or is_approved(tour):
             (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
-    (out / "index.html").write_text(
-        index_page(votes, content_states, preview, tour=tour),
-        encoding="utf-8", newline="\n",
-    )
-    (out / "votes.html").write_text(
-        votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
-    )
     endorsements = load_endorsements()
     sponsorships = load_sponsorships()
-    (out / "instruments.html").write_text(
-        instruments_page(votes, content_states, endorsements, sponsorships,
-                         preview, manifest),
-        encoding="utf-8", newline="\n",
-    )
     if any(preview or is_approved(i) for i in endorsements):
         (out / "js" / "instruments.js").write_text(
             INSTRUMENTS_JS, encoding="utf-8", newline="\n"
@@ -2735,7 +2997,27 @@ def build(out_dir, preview=False):
         (out / "assets" / "countries.geojson").write_text(
             countries_geojson(), encoding="utf-8", newline="\n"
         )
-    (out / "rubric.html").write_text(rubric_page(rubric, preview), encoding="utf-8", newline="\n")
+
+    # Every asset a page can link now exists on disk. Hash them before
+    # rendering any page, so the links carry the version of the bytes actually
+    # shipped. Conditional assets are written above for this reason: a page
+    # rendered before its script exists would link an unversioned path.
+    _record_asset_hashes(out)
+
+    (out / "index.html").write_text(
+        index_page(votes, content_states, preview, tour=tour),
+        encoding="utf-8", newline="\n",
+    )
+    (out / "votes.html").write_text(
+        votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
+    )
+    (out / "instruments.html").write_text(
+        instruments_page(votes, content_states, endorsements, sponsorships,
+                         preview, manifest),
+        encoding="utf-8", newline="\n",
+    )
+    (out / "rubric.html").write_text(
+        rubric_page(rubric, preview, content_states), encoding="utf-8", newline="\n")
     pages = load_pages()
     (out / "methodology.html").write_text(
         prose_page(
@@ -2749,6 +3031,8 @@ def build(out_dir, preview=False):
                 "who says what.",
             ],
             preview, manifest,
+            blocks={"doctrine-coverage":
+                    doctrine_coverage_table(content_states, preview)},
         ),
         encoding="utf-8", newline="\n",
     )
@@ -2805,11 +3089,44 @@ def build(out_dir, preview=False):
     manifest["unapproved_rendered"] = sum(
         1 for e in manifest["entries"] if e["rendered"] and not e["approved"]
     )
+    manifest["codings_past_axis"] = report_codings_past_axis(content_states)
     (out / "build_manifest.json").write_text(
         json.dumps(manifest, indent=1, sort_keys=True), encoding="utf-8", newline="\n"
     )
     assert_deploy_clean(manifest, preview)
     return manifest
+
+
+def report_codings_past_axis(content_states):
+    """A coding dated after UPDATED_THROUGH clamps to the end of the track, so
+    its band computes zero width and compute_bands drops it. The coding is
+    real, its approval flag means something, and the board shows nothing: the
+    silent-absence failure mode this repo has shipped before.
+
+    This warns rather than refuses, because the fix is an editorial call
+    between moving the axis and re-dating the coding, and every case today is
+    still gated. The manifest count makes it checkable rather than a message
+    someone has to notice scrolling past."""
+    past = []
+    for iso3, cs in sorted(content_states.items()):
+        for coding in cs.get("position_codings") or []:
+            if coding["code"] == "NONE":
+                # NONE spans the record from the origin (coding_spans); its
+                # as_of is a review date and never places the band.
+                continue
+            if as_date(coding["as_of"]) > T1:
+                past.append({"iso3": iso3, "code": coding["code"],
+                             "as_of": iso(coding["as_of"]),
+                             "approved": bool(coding.get("approved"))})
+    if past:
+        listed = ", ".join(f"{p['iso3']} {p['code']} {p['as_of']}" for p in past)
+        print(
+            f"warning: {len(past)} coding(s) dated after UPDATED_THROUGH "
+            f"({config.UPDATED_THROUGH}) render no band at all: {listed}. "
+            "Either move the axis or re-date the coding.",
+            file=sys.stderr,
+        )
+    return past
 
 
 def assert_deploy_clean(manifest, preview):

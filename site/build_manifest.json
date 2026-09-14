@@ -1,88 +1,107 @@
 {
+ "codings_past_axis": [],
  "entries": [
   {
-   "approved": false,
+   "approved": true,
    "kind": "tour",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2023-call-to-action",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2024-blueprint",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "endorsement_instrument:reaim-2026-pathways",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-78-241-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-79-62-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:cosponsors-80-57-as-tabled",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:gge-2025-wp7-draft-articles",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:gge-2025-wp8-joint-statement",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "sponsorship_record:joint-statement-gge-sept-2025",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:methodology",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:about",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "page:corrections",
-   "rendered": false,
+   "rendered": true,
    "state": null
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ARG"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "ARG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "AUS"
   },
   {
    "approved": true,
@@ -109,46 +128,82 @@
    "state": "AUT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BDI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BLR"
   },
   {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
-   "state": "CHN"
-  },
-  {
-   "approved": true,
-   "kind": "position_codings",
-   "rendered": true,
-   "state": "CHN"
-  },
-  {
-   "approved": true,
-   "kind": "position_codings",
-   "rendered": true,
-   "state": "CHN"
-  },
-  {
-   "approved": true,
-   "kind": "position_codings",
-   "rendered": true,
-   "state": "CHN"
+   "state": "CAN"
   },
   {
    "approved": false,
    "kind": "doctrine",
    "rendered": false,
+   "state": "CAN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
+   "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CRI"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "CRI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CZE"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "CZE"
   },
   {
    "approved": true,
@@ -157,10 +212,34 @@
    "state": "DEU"
   },
   {
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
+   "state": "DEU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ECU"
+  },
+  {
    "approved": false,
    "kind": "doctrine",
    "rendered": false,
-   "state": "DEU"
+   "state": "ECU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "EST"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "EST"
   },
   {
    "approved": true,
@@ -190,25 +269,97 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
-   "state": "IND"
+   "state": "GTM"
   },
   {
    "approved": false,
    "kind": "doctrine",
    "rendered": false,
+   "state": "GTM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "IND"
   },
   {
-   "approved": false,
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
+   "state": "IND"
+  },
+  {
+   "approved": true,
    "kind": "position_codings",
+   "rendered": true,
+   "state": "JPN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KAZ"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
    "rendered": false,
+   "state": "KAZ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KOR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LTU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "LTU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LVA"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "LVA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "MLI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NER"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "NGA"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "NGA"
   },
   {
    "approved": true,
@@ -217,16 +368,88 @@
    "state": "NOR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
-   "state": "PRK"
+   "rendered": true,
+   "state": "PAN"
   },
   {
    "approved": false,
    "kind": "doctrine",
    "rendered": false,
+   "state": "PAN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PHL"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "PHL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "POL"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "POL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PRK"
+  },
+  {
+   "approved": true,
+   "kind": "doctrine",
+   "rendered": true,
    "state": "RUS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SLE"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "SLE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SLV"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "SLV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "URY"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "URY"
   },
   {
    "approved": true,
@@ -247,9 +470,9 @@
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "doctrine",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   }
  ],

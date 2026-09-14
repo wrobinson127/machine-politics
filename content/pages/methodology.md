@@ -1,10 +1,10 @@
 ---
-approved: false
+approved: true
 title: Methodology
 ---
 ## What this site does
 
-Machine Politics records where every United Nations member state stands on autonomous weapons systems. It tracks three signals per state: recorded General Assembly votes, official statements, and national policy documents. Positions are trajectories, not snapshots. The site shows who moved, when, and on what record.
+Machine Politics records where every United Nations member state stands on autonomous weapons systems. It tracks five signals per state: recorded General Assembly votes, endorsements of political-commitment instruments, sponsorships of resolutions and working papers, official statements, and national policy documents. Positions are trajectories, not snapshots. The site shows who moved, when, and on what record.
 
 The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
 
@@ -16,13 +16,19 @@ The tracker records five separable signals per state: recorded votes, endorsemen
 
 **Endorsement absence:** a state missing from an endorsement list renders as not listed, an absence tier. Not endorsing is not opposing, and the site never colors it as if it were.
 
-## Three signals, three coverage depths
+## Coverage depth: the three signals that carry coded depth
+
+Endorsements and sponsorships are recorded as membership facts, taken verbatim from the face of each instrument's own roster. They are never coded and never graded, so they have no coverage depth to report. The three signals below are the ones this project reads, weighs, and codes from, and each is covered to a different depth.
 
 **Votes:** complete. All 193 member states, from the official UN General Assembly voting dataset published by the Dag Hammarskjöld Library. The extraction code, the reconciliation checks, and the committed extract are public in the repository. Nothing is scraped.
 
 **Statements:** deep for a bounded launch set of states, selected by published criteria: vote changers, No votes and abstentions on the most recent resolution, resolution sponsors, states with major-power doctrine, and states that made individual submissions to the Secretary-General. Every other state shows its votes and an explicit coverage notice.
 
 **National policy:** strict scope, major players only. A doctrine entry means a policy document specifically governing autonomy in weapons systems, like DoD Directive 3000.09. Military AI strategies, responsible-AI frameworks, and legislative bills are context notes, never coded evidence.
+
+Of the seven states on this list, three have a published policy specifically governing autonomy in weapon systems and four do not. That split is a finding about the public record, not a gap in this review: each of the four carries a dated note recording where the project looked. It says nothing about internal processes that are not published.
+
+{{doctrine-coverage}}
 
 ## The rubric
 
@@ -31,6 +37,8 @@ Every coded position sits on two axes.
 Axis A is instrument preference: what kind of international instrument, if any, does the state support? Seven categories: LBI-BAN, LBI-OPEN, REG-SOFT, CCW-ONLY, OPPOSE, AMBIG, NONE. The [rubric page](rubric.html) defines each in plain language. Categories are mutually exclusive at a dated point in time.
 
 Axis B is confidence: EXPLICIT when the state says it directly, INFERRED when the coding rests on interpretation, AMBIGUOUS when the record points in more than one direction, PROVISIONAL when the coding rests on secondary reporting of a primary record this project has not yet verified. A provisional coding says so on its face, carries a note stating exactly what is pending, and is upgraded or corrected once the primary record is reviewed.
+
+One rule inside Axis B is worth stating plainly, because it decides how a whole bloc of states is coded. When a state is a named author of a substantive draft treaty text, this site reads that authorship as an explicit statement of the position the text takes, and codes it EXPLICIT. A draft instrument is the most committing written form available to a state in a negotiation: not a speech about what should happen, but the operative language the state is asking others to sign. The rule is narrow and applies symmetrically to drafts that prohibit and drafts that do not. Co-sponsoring a resolution is not authorship. Signing a joint statement is not authorship. An author that later departs from its own text is coded on the later record. Every coding made this way shows the draft text, the document symbol, the date, and the state's name among the authors, so a reader who thinks authorship should count for less can see what the coding rests on and weigh it differently. The [rubric page](rubric.html) states the rule in full.
 
 AMBIG is a first-class category, not a failure state. When a state's record supports two readings, the coding says so and the evidence shows both. China is the worked example.
 
@@ -52,7 +60,9 @@ For national policy, the site only ever makes a dated coverage statement: no pub
 
 ## Secondary sources, used honestly
 
-Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
+Reputable secondary sources serve three functions here: discovery (finding primary documents), context (citable background, attributed by name), and cross-check (did this project miss something). They are never coding sources. Every coding traces to primary documents.
+
+This is not a formality, and two counts on this site differ from the widely reported ones because of it. A September 2025 joint statement is usually described as carrying 42 parties. Its own text reads "on behalf of the following 39 High-Contracting Parties" and then names 39, listing Kiribati, Samoa and Thailand separately as observer states that associate themselves: 39 plus 3, reported as 42. A 2023 draft-articles paper is usually credited to seven states; the face of its first revision names six, and the seventh joins at the second revision two months later. Neither correction required special access. Both required opening the document and counting the names, which is what this project does instead of repeating a figure. Translations of official documents by research institutes are quoted as unofficial translations with the originals linked. Advocacy-affiliated trackers are consulted as cross-checks only and cited once as related work.
 
 ## Links that outlive administrations
 
@@ -72,4 +82,4 @@ Automated Decision Research, the monitoring arm of the Stop Killer Robots campai
 
 ## Sources and licensing
 
-Vote data: © United Nations, used with attribution under the UN Digital Library terms, non-commercial. This project's own coded data: CC BY 4.0. Code: MIT. Details in the repository's DATA_LICENSE.
+Two layers, two sets of terms, and the split is deliberate. The vote extracts are © United Nations, taken from the UN Digital Library with attribution and passed on for non-commercial use only. This project's own coded data, meaning the codings, shift events, confidence tiers, rubric, and analyst notes, is CC BY 4.0 and free to reuse commercially with attribution. The CC BY grant does not reach the vote extracts. Any page showing both is a composite, and the stricter terms control the part they cover. Code: MIT. The full split, including the composite rule, is in the repository's DATA_LICENSE.

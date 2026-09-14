@@ -1,17 +1,95 @@
-# Australia: launch-set coding pass, drafted 2026-07-17 from the
-# research passes. Anchor tier: the research passes ground facts and candidates but no primary
-# coding quote, so there is no coding here: flag, never invent.
+# Australia: launch-set coding pass, drafted 2026-07-17 from the research
+# passes, which grounded facts and candidates but no primary coding quote.
+# Populate pass 2 (2026-08-24) supplies one from Australia's own authored
+# text, the draft-articles series, face-checked. It codes AMBIG because that
+# text declines to state an instrument preference.
 # approved: false throughout; nothing renders without the analyst's flip.
 iso3: AUS
 un_name: AUSTRALIA
 display_name: Australia
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2023-03-13
+    approved: true   # render-approved 2026-09-14
+    scope_note: >
+      Coded from co-authorship of a substantive draft instrument, the same
+      rule the ban camp is coded under. Australia is a named author of CCW/GGE.1/2023/WP.4/Rev.1, CCW/GGE.1/2023/WP.4/Rev.2, CCW/GGE.1/2025/WP.7.
+      The rule reads the text, and this text declines to state an instrument
+      preference: searched on its face, it contains no occurrence of legally
+      binding, binding instrument, negotiation, or forum. That is a property
+      of the document, not a gap in this project's retrieval, so the rubric
+      yields AMBIG rather than a category picked out of the silence.
+    rationale: >
+      The draft-articles series supports two readings and settles neither.
+      It is drafted as articles, the form a treaty takes, and its authors
+      affirm them as such; that points toward a binding instrument. It also
+      asks for nothing new, specifying measures States are to implement to
+      satisfy international humanitarian law as it already stands, with
+      Article 1 opening by describing what IHL already prohibits rather than
+      creating a prohibition the instrument itself would impose; that points
+      toward the existing process being sufficient. Both readings rest on the
+      document; neither is stated by it. Coding CCW-ONLY would infer a forum
+      preference from where the paper was filed and what it omits, and
+      coding LBI-OPEN would infer a binding instrument from the genre of the
+      document. Both are readings of the same silence in opposite
+      directions, which is what AMBIG is for. The two evidence entries below
+      carry the tension rather than resolving it. Australia's own statements, if
+      and when retrieved, are what would resolve it.
+    evidence:
+      - source: ccw-gge1-2023-wp4rev1-draftarticles
+        claim: Australia is a named author of CCW/GGE.1/2023/WP.4/Rev.1, and affirms it in the form a treaty takes, as numbered draft articles.
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
+        date: 2023-03-13
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2023-wp4rev2-draftarticles
+        claim: Australia is a named author of CCW/GGE.1/2023/WP.4/Rev.2, and affirms it in the form a treaty takes, as numbered draft articles.
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
+        date: 2023-05-15
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2025-wp7-draftarticles
+        claim: Australia is a named author of CCW/GGE.1/2025/WP.7, and affirms it in the form a treaty takes, as numbered draft articles.
+        quote: "Affirm the following draft articles on the development, deployment, and use of autonomous weapon systems"
+        date: 2025-09-03
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2023-wp4rev1-draftarticles
+        claim: The same articles ask for nothing new, specifying measures States are to implement to satisfy international humanitarian law as it already stands.
+        quote: "which specify prohibitions and other regulatory measures for States to implement to effectively satisfy these IHL requirements in armed conflict"
+        date: 2023-03-13
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          This is the other side of the tension, and the reason the coding is
+          AMBIG: the entry above shows a text written in the form of a treaty,
+          and this one shows the same text asking only that existing law be
+          implemented. The purpose clause is quoted whole rather than cut
+          after "regulatory measures", because the truncated form reads as
+          though the articles create prohibitions and would overstate the
+          authors' position in the same way a cut excerpt of Draft Protocol VI
+          would understate the ban camp's. The wording is carried unchanged
+          through every revision of the series and is quoted once here, on the
+          earliest text this state authored.
+
 
 shift_events: []
 
 flags:
-  - "CODING NEEDS SOURCE: research pass 5d suggests REG-SOFT (responsible-use, existing frameworks) but the naming source is secondary (RCW); retrieve Australia's submission and EOV, then code. A yes-vote state coding cautious would be a useful votes-mislead example once grounded"
-  - "Co-author of BOTH CCW/GGE.1/2025/WP.7 (eleven-state draft articles) and WP.8 (ten-state joint statement), VERIFIED from document faces 2026-07-17; both in the sponsorship layer. The research passes' claimed March 2023 six-state paper is unverified and possibly a conflation of WP.7"
+  - "ANALYST RULING 2026-08-24: AMBIG, on the ground that the draft-articles text supports a treaty-shaped reading (they wrote articles) and a process-shaped reading (they filed inside the CCW and asked for nothing new) and refuses to choose between them. Both CCW-ONLY and LBI-OPEN were rejected as readings of the same silence in opposite directions. A face search returning zero occurrences of legally binding, binding instrument, negotiation and forum is a finding about the document, not a gap in retrieval: these states deliberately did not specify. Drafted first as CCW-ONLY at EXPLICIT, corrected to INFERRED in adversarial review, then ruled to AMBIG. Same shape as the China coding, and correct for the same reason"
+  - "RESOLVES ON RETRIEVAL: this state's own statements are what would settle the reading. Until they are retrieved the coding stays AMBIG. The coverage asymmetry against the ban camp is real and is the honest cost of not guessing"
+  - "RETRIEVAL TARGET, high value: research pass 5d suggests REG-SOFT (responsible-use, existing frameworks) but the naming source is secondary (RCW). Australia's own submission and EOV are exactly what would resolve the AMBIG above, and this is one of the three states (with JPN and KOR) whose retrieval paths are already known. A yes-vote state coding cautious would be a useful votes-mislead example once grounded"
+  - "RESOLVED 2026-08-24: the March 2023 six-state paper is real and is NOT a conflation of WP.7. CCW/GGE.1/2023/WP.4/Rev.1, 13 March 2023, face-checked: Australia, Canada, Japan, the Republic of Korea, the United Kingdom, the United States. The research pass was right. Rev.2 (15 May 2023) adds Poland; WP.7 (3 September 2025) adds Czechia, Estonia, Latvia and Lithuania"
+  - "Co-author of BOTH CCW/GGE.1/2025/WP.7 (eleven-state draft articles) and WP.8 (ten-state joint statement), VERIFIED from document faces 2026-07-17; both in the sponsorship layer"
   - "US Political Declaration endorser (on the captured 58 list)"

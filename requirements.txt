@@ -1,2 +1,5 @@
 PyYAML>=6.0
 pytest>=8.0
+# tools/gen_og_card.py renders the social card, and the test that checks the
+# committed card still matches the palette reads its pixels back.
+Pillow>=10.0

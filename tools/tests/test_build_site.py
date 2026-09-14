@@ -4,6 +4,7 @@ absence-tier rendering, and determinism."""
 import html
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -78,11 +79,12 @@ def test_deploy_renders_zero_unapproved(deploy):
 def test_deploy_states_show_absence_tiers_not_positions(deploy):
     out, _ = deploy
     usa = (out / "state" / "USA.html").read_text(encoding="utf-8")
-    # The USA is now coded (CCW-ONLY, approved 2026-07-21) so its position
-    # legitimately renders; but its DOCTRINE (DoDD 3000.09) stays unapproved
-    # and must not leak, and shows the absence tier. The vote waffle renders.
-    assert "not yet reviewed by this project" in usa  # doctrine absence tier
-    assert "appropriate levels of human judgment" not in usa  # unapproved doctrine quote
+    # The USA is coded (CCW-ONLY, approved 2026-07-21) and its doctrine was
+    # approved 2026-08-31, so both legitimately render. The gate itself is
+    # exercised against a forced-unapproved copy in test_instruments_surfaces,
+    # not here, so that approving real content never restales this test.
+    assert "DoD Directive 3000.09" in usa  # approved doctrine renders
+    assert "not yet reviewed by this project" not in usa
     assert "in favour of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
     # A genuinely uncoded state must show absence tiers and NOT be located in
@@ -167,10 +169,39 @@ def test_doctrine_absence_renders_exact_phrase(tmp_path):
     assert "has no" not in html_out
 
 
-def test_unapproved_doctrine_renders_as_not_reviewed(deploy):
+def test_unapproved_doctrine_renders_as_not_reviewed(tmp_path, monkeypatch):
+    """Gated doctrine falls back to the not-yet-reviewed card whatever its
+    status says, so an unapproved finding never reaches a reader.
+
+    Exercised against a forced-unapproved copy rather than whichever state is
+    gated today: China used to be the example here until its review landed,
+    and pinning to real editorial state is what restaled it."""
+    work = tmp_path / "content"
+    shutil.copytree(config.CONTENT_DIR, work)
+    chn = work / "states" / "CHN.yaml"
+    text = chn.read_text(encoding="utf-8")
+    marker = "approved: true   # render-approved 2026-09-02"
+    assert marker in text, "fixture expects the China doctrine approved"
+    chn.write_text(text.replace(marker, "approved: false"), encoding="utf-8")
+    monkeypatch.setattr(config, "CONTENT_DIR", work)
+    monkeypatch.setattr(config, "STATES_DIR", work / "states")
+
+    out = tmp_path / "dep"
+    manifest = bs.build(out, preview=False)
+    assert manifest["unapproved_rendered"] == 0
+    page = (out / "state" / "CHN.html").read_text(encoding="utf-8")
+    assert "Doctrine not yet reviewed by this project" in page
+    assert "No published national policy identified" not in page
+    assert "intelligent warfare is on the horizon" not in page  # the quote
+
+
+def test_approved_doctrine_absence_renders_its_finding(deploy):
+    """The approved-side counterpart, so the guarantee above cannot pass by
+    the absence card being broken for everyone."""
     out, _ = deploy
     chn = (out / "state" / "CHN.html").read_text(encoding="utf-8")
-    assert "Doctrine not yet reviewed by this project" in chn
+    assert "No published national policy identified by this project" in chn
+    assert "Doctrine not yet reviewed by this project" not in chn
 
 
 def test_build_is_deterministic(tmp_path):

@@ -5,12 +5,13 @@
 # not_listed is computed at display time and never rendered as opposition.
 instruments:
   - id: us-political-declaration
+    roster_verified: 2026-08-24   # live state.gov page read in-browser; 58 names and the as-of date match exactly
     name: Political Declaration on Responsible Military Use of Artificial Intelligence and Autonomy
     date: 2023-02-16
     list_source_url: https://www.state.gov/bureau-of-arms-control-deterrence-and-stability/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy
     list_source_archived: http://web.archive.org/web/20241219144554/https://www.state.gov/political-declaration-on-responsible-military-use-of-artificial-intelligence-and-autonomy/
     list_as_of: 2024-11-27
-    approved: false
+    approved: true
     list_note: >
       The live State Department page blocks tool fetches; the list was
       extracted from the archived capture, which prints Endorsing States as
@@ -83,12 +84,13 @@ instruments:
       - {iso3: USA, status: endorsed, name_as_listed: United States}
 
   - id: reaim-2023-call-to-action
+    roster_verified: 2026-08-24   # 58 names match; found and fixed a YAML flow-mapping bug that had split the Moldova mapping_note into a phantom key
     name: REAIM Call to Action
     date: 2023-02-16
     list_source_url: https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
     list_source_archived: http://web.archive.org/web/20260313021739/https://www.government.nl/documents/publications/2023/02/16/reaim-2023-endorsing-countries
     list_as_of: 2023-02-16
-    approved: false
+    approved: true
     list_note: >
       The official PDF is titled Endorsing Countries and Territories; the
       list itself is undated and the landing page publication date stands
@@ -131,7 +133,7 @@ instruments:
       - {iso3: LUX, status: endorsed, name_as_listed: Luxembourg}
       - {iso3: MYS, status: endorsed, name_as_listed: Malaysia}
       - {iso3: MLT, status: endorsed, name_as_listed: Malta}
-      - {iso3: MDA, status: endorsed, name_as_listed: Moldova, mapping_note: Mapped to MDA, Republic of Moldova}
+      - {iso3: MDA, status: endorsed, name_as_listed: Moldova, mapping_note: "Mapped to MDA, Republic of Moldova"}
       - {iso3: MNG, status: endorsed, name_as_listed: Mongolia}
       - {iso3: MNE, status: endorsed, name_as_listed: Montenegro}
       - {iso3: MAR, status: endorsed, name_as_listed: Morocco}
@@ -169,11 +171,12 @@ instruments:
       - {iso3: ZWE, status: endorsed, name_as_listed: Zimbabwe}
 
   - id: reaim-2024-blueprint
+    roster_verified: 2026-08-24   # ROK MOFA page confirms 61 supporting states and publishes no named list, exactly as this record states
     name: REAIM Blueprint for Action
     date: 2024-09-10
     list_source_url: https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322676
     list_as_of: 2024-09-10
-    approved: false
+    approved: true
     list_note: >
       STOP-FLAG. Official sources publish only a count: the ROK Foreign
       Ministry records 61 supporting states without naming them, the summit
@@ -190,12 +193,13 @@ instruments:
     states: []
 
   - id: reaim-2026-pathways
+    roster_verified: 2026-08-24   # 45 names match the Spanish MFA page
     name: REAIM 2026 Pathways to Action
     date: 2026-02-05
     list_source_url: https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
     list_source_archived: http://web.archive.org/web/20260306152504/https://www.exteriores.gob.es/en/REAIM2026/Paginas/default.aspx
     list_as_of: 2026-07-17
-    approved: false
+    approved: true
     list_note: >
       Rolling list; the page says as of today and remains open to further
       endorsements. 45 entries extracted 2026-07-17; the March archive

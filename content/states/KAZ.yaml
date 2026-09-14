@@ -1,0 +1,77 @@
+# Kazakhstan: co-author of Draft Protocol VI (CCW/GGE.1/2022/WP.8), the
+# Latin-American-led draft treaty that prohibits autonomous weapons on two
+# cumulative conditions and regulates the rest (a two-tier instrument, not a
+# blanket ban; excerpt scope verified against the document face 2026-08-24). Coded from draft-instrument authorship (statement-
+# class evidence, per the 2026-07-21 rule amendment). Nothing renders until the
+# analyst of record sets approved: true.
+iso3: KAZ
+un_name: KAZAKHSTAN
+display_name: Kazakhstan
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2022-08-09
+    approved: true
+    scope_note: >
+      Coded from co-authorship of a substantive draft instrument (Draft
+      Protocol VI) - a state speaking in the strongest written form. Under the
+      2026-07-21 rule, authorship of a draft treaty text is statement-class
+      evidence for each named author, distinct from mere co-sponsorship.
+      Stated openly, because it is a judgment call a reader may weigh
+      differently: this coding rests on the state being a named author of
+      the text, not on a separate statement in its own voice. What it rests
+      on is shown in full - the article, the document symbol, the date, and
+      the author list from the face - so a reader who thinks authorship
+      should count for less can discount it directly. The rule is applied
+      symmetrically to drafts that prohibit and drafts that do not.
+    rationale: >
+      Kazakhstan co-authored Draft Protocol VI (CCW/GGE.1/2022/WP.8, 9 August
+      2022), a proposed binding CCW protocol that prohibits autonomous weapon
+      systems whose autonomous functions are designed to attack outside
+      meaningful human control and whose use does not comply with
+      international humanitarian law, and regulates the rest - a two-tier
+      prohibit-and-regulate instrument.
+    evidence:
+      - source: ccw-gge1-2022-wp8-draftprotocol
+        claim: Kazakhstan co-authored a draft CCW protocol whose prohibition on autonomous weapons is conditional, and is paired with regulation of the rest.
+        quote: "It is prohibited to develop, produce, possess, acquire, deploy, transfer, or use under any circumstances autonomous weapons systems if:"
+        date: 2022-08-09
+        url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2022-wp8-draftprotocol
+        claim: The prohibition is conditional, and its first condition is that the system's autonomous functions are designed to attack outside meaningful human control.
+        quote: "its autonomous functions are designed to be used to conduct attacks outside meaningful human control"
+        date: 2022-08-09
+        url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Article 3 Sec 1 prohibits conditionally. This is the first of two
+          conditions, joined in the text by "and", so both must hold for the
+          prohibition to bite; the second is that the system's use does not
+          comply with international humanitarian law or the dictates of
+          public conscience. Quoted as a separate entry because the verb
+          list and the condition together exceed the 25-word quote limit.
+          Verified against the face of the document 2026-08-24.
+      - source: ccw-gge1-2022-wp8-draftprotocol
+        claim: The draft protocol pairs the prohibition with a meaningful-human-control regulation across the life cycle.
+        quote: "Each High Contracting Party shall institute measures to ensure that meaningful human control is retained in the entire life cycle"
+        date: 2022-08-09
+        url: https://undocs.org/en/CCW/GGE.1/2022/WP.8
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Kazakhstan is not yet doctrine-reviewed by this project; its international
+        position is recorded above.

@@ -95,7 +95,9 @@ LAWS_RESOLUTIONS = {
 # concrete values). No position renders red or green. Saturated red carries
 # exactly two reserved meanings (DESIGN v2.1 rule 10): data-integrity
 # notices, and the shift-seam marking the moment a coded position changes.
-# AMBIG is a hatch texture, not a hue.
+# AMBIG is a hatch texture over paper and carries no hue at all. Every other
+# substantive position pairs its hue with a texture from POSITION_TEXTURES
+# below, so no category depends on colour vision alone.
 # ---------------------------------------------------------------------------
 
 PALETTE = {
@@ -104,14 +106,57 @@ PALETTE = {
     "positions": {
         "LBI-BAN": "#3B5BA5",   # blue
         "LBI-OPEN": "#2E7F86",  # teal
-        "REG-SOFT": "#B07D2B",  # ochre
+        "REG-SOFT": "#A9741F",  # ochre (deepened from #B07D2B for WCAG 3:1 on era-b cream)
         "CCW-ONLY": "#7A5C99",  # plum
         "OPPOSE": "#7A5648",    # brown
         "AMBIG": None,           # hatch texture over neutral; no fill hue
-        "NONE": "#D8D3C8",      # light neutral (absence: on record, nothing substantive)
+        # Absence, on record: reviewed, nothing substantive found. Deepened
+        # from #D8D3C8, which sat at 1.18:1 on the era-b band and was very
+        # nearly invisible, collapsing "no substantive position on record"
+        # into "empty track: not yet reviewed" and contradicting the
+        # methodology's promise that the absence tiers never blend. Pinned at
+        # roughly 2.4:1: unmistakably a fill, and still quieter than every
+        # substantive position, the lowest of which is REG-SOFT at 3.18.
+        "NONE": "#9E9482",
     },
     "not_yet_reviewed": None,    # empty/paper with explicit label, never a fill
     "integrity_red": "#C0392B",  # data-integrity notices + shift-seams ONLY
+}
+
+# ---------------------------------------------------------------------------
+# Position textures. Hue alone cannot carry these categories: simulated under
+# deuteranopia, LBI-OPEN and CCW-ONLY separate by 30 on a scale where about 90
+# is the threshold for reading as different fills, and REG-SOFT collides with
+# integrity red at 32, which would silently break the promise that saturated
+# red means only a data-integrity notice. A palette search confirmed this is
+# structural rather than a bad choice of hex: the best available repalette
+# moves the worst pair from 30 to 32, because the binding constraint just
+# becomes ochre against red. So every substantive position also carries a
+# texture, extending the mechanism AMBIG already used. Texture, not a printed
+# label: bands can be a handful of pixels wide when a state moves twice in a
+# year, and text does not survive that.
+#
+# Orientation is the channel, because it survives at 16px and stays legible
+# when a band is narrow. Each value is a CSS class defined in site.css.
+# LBI-BAN is deliberately untextured: it is the largest category, and leaving
+# it plain keeps the board quiet.
+#
+# Two orientations are deliberately unused. Vertical rules are out because the
+# track already carries vertical year gridlines and the two would read as one
+# pattern. A 45 degree forward hatch is reserved for AMBIG alone, so CCW-ONLY
+# takes the opposite diagonal. REG-SOFT gets the crosshatch because it is the
+# category that collides with integrity red, and a two-axis texture is the
+# furthest thing on the board from a thin red vertical seam.
+# ---------------------------------------------------------------------------
+
+POSITION_TEXTURES = {
+    "LBI-BAN": "",                    # solid
+    "LBI-OPEN": " band-horizontal",   # horizontal rules
+    "REG-SOFT": " band-grid",         # crosshatch
+    "CCW-ONLY": " band-backslash",    # 135 degree diagonal
+    "OPPOSE": " band-dots",           # stipple
+    "AMBIG": " band-hatch",           # 45 degree hatch on paper, no hue
+    "NONE": "",                       # absence is flat by design
 }
 
 # ---------------------------------------------------------------------------
