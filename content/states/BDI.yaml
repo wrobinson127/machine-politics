@@ -11,7 +11,7 @@ position_codings:
   - code: NONE
     confidence: INFERRED
     as_of: 2026-07-17
-    approved: false
+    approved: true   # render-approved 2026-09-14
     search_note: >
       Research passes 5c and 5d (2026-07-17) reviewed the record and captured no substantive stated position for Burundi. Its votes (Yes in 2023 and 2024, No on 80/57) are from the UNDL dataset, not from any reviewed statement.
 
