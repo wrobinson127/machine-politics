@@ -89,7 +89,16 @@ li > .citation {
 }
 
 /* Ledger masthead: a thick rule over a thin one, like a ruled record book */
+/* Sticky, so the nav and wordmark are always one glance away on a 193-row
+   board. --masthead-h is measured by board.js at load and resize; the axis
+   and the tour canvas offset by it so nothing sticks underneath the bar. */
+:root { --masthead-h: 0px; }
+
 header.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--ground);
   border-bottom: 2px solid var(--ink);
   box-shadow: 0 5px 0 -4px var(--rule);
   padding: 0.9rem 0 0.8rem;
@@ -262,8 +271,8 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .scrolly-canvas {
   position: sticky;
-  top: 0;
-  height: 100dvh;
+  top: var(--masthead-h);
+  height: calc(100dvh - var(--masthead-h));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -595,7 +604,7 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .board-axis {
   position: sticky;
-  top: 0;
+  top: var(--masthead-h);
   z-index: 4;
   background: var(--ground);
   border-bottom: 1px solid var(--rule);
@@ -603,6 +612,67 @@ footer.colophon p { margin: 0.3rem 0; }
   grid-template-columns: var(--label-col) 1fr;
   align-items: end;
 }
+
+/* Compact key inside the sticky axis block, so the reader never has to
+   scroll back up to remember what a fill means. The full legend with
+   descriptions stays in the board head; this repeats it, so it is hidden
+   from assistive tech rather than announced twice. */
+.axis-key {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.45rem 0 0.35rem;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule-faint);
+  scrollbar-width: none;
+}
+.axis-key::-webkit-scrollbar { display: none; }
+
+/* On phones the masthead wraps to two rows and a sticky version would pin a
+   quarter of the screen. There, only the key and the axis stay put, and a
+   back-to-top control gives the return path the sticky nav gives on desktop. */
+@media (max-width: 720px) {
+  header.masthead { position: static; }
+}
+
+.to-top {
+  position: fixed;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  z-index: 35;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: var(--ground);
+  color: var(--ink);
+  font-size: 1.15rem;
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 -2px var(--rule);
+  cursor: pointer;
+  padding: 0;
+}
+.to-top.is-on { display: flex; }
+.to-top:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (min-width: 721px) {
+  .to-top { display: none; }
+}
+.axis-key .swatch {
+  display: inline-block;
+  width: 1.4em;
+  height: 0.8em;
+  vertical-align: -0.1em;
+  margin-right: 0.35em;
+  border-radius: 1px;
+}
+.axis-key .swatch-empty { border: 1px dashed rgba(26, 26, 26, 0.4); }
 
 .board-axis .axis-label {
   font-size: 0.78rem;
@@ -612,13 +682,15 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .axis-track { position: relative; height: 34px; }
 
+/* The tick line is half-strength ink via its colour, not via opacity: an
+   opacity on the tick would dim the year label inside it too (a child's
+   opacity cannot undo its parent's), which put the labels at 2.3:1. */
 .axis-tick {
   position: absolute;
   bottom: 0;
   width: 1px;
   height: 8px;
-  background: var(--ink);
-  opacity: 0.5;
+  background: rgba(26, 26, 26, 0.5);
 }
 
 .axis-tick > span {
@@ -746,6 +818,8 @@ footer.colophon p { margin: 0.3rem 0; }
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
+  min-width: 24px;
+  min-height: 24px;
   background: none;
   border: none;
   padding: 4px;

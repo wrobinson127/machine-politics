@@ -805,6 +805,8 @@ def page(title, body, *, current, depth=0, preview=False, description="",
 <meta name="twitter:title" content="{og_title}">
 <meta name="twitter:description" content="{esc(og_desc)}">
 <meta name="twitter:image" content="{og_image}">
+<link rel="preload" href="{prefix}assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{prefix}assets/fonts/newsreader-italic-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{asset(prefix, 'css/tokens.css')}">
 <link rel="stylesheet" href="{asset(prefix, 'css/site.css')}">
 <link rel="icon" href="{asset(prefix, 'assets/favicon.svg')}" type="image/svg+xml">
@@ -828,6 +830,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
     <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every coding traces to a quoted, dated, linked source · <a href="{prefix}corrections.html">Corrections</a></p>
   </div>
 </footer>
+<button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
 <script src="{asset(prefix, 'js/board.js')}" defer></script>
 {extra_scripts}</body>
 </html>
@@ -1066,6 +1069,22 @@ def board_rows(votes, content_states, preview):
     return ordered
 
 
+def axis_key_html():
+    """The compact key that rides inside the sticky axis block. Same hue and
+    texture as the band and the full legend, code only, description on hover.
+    Marked aria-hidden: the full legend already carries the accessible text,
+    and a second reading of it would be noise, not information."""
+    items = []
+    for code, label in config.POSITION_CATEGORIES.items():
+        style, texture = band_style(code, "EXPLICIT")
+        items.append(
+            f'<span title="{esc(label)}"><i class="swatch{texture}" style="{style}"></i>'
+            f"{esc(code)}</span>")
+    items.append('<span title="Not yet reviewed by this project">'
+                 '<i class="swatch swatch-empty"></i>Empty</span>')
+    return '    <div class="axis-key" aria-hidden="true">' + "".join(items) + "</div>"
+
+
 def legend_html():
     items = []
     for code, label in config.POSITION_CATEGORIES.items():
@@ -1119,6 +1138,7 @@ def index_page(votes, content_states, preview, tour=None):
 </div>
 <section class="board" aria-label="Trajectory board">
   <div class="board-axis">
+{axis_key_html()}
     <div class="axis-label">State</div>
     {axis_html()}
   </div>
@@ -2326,6 +2346,30 @@ def poster_svg(votes, content_states):
 BOARD_JS = """// Progressive enhancement only: the board is complete without JavaScript.
 (function () {
   "use strict";
+  // The masthead is sticky; the axis and the tour canvas offset by its real
+  // height, which wraps on narrow screens, so measure rather than assume.
+  function mastheadHeight() {
+    var m = document.querySelector("header.masthead");
+    // Below 720px the masthead is not sticky (see site.css), so nothing
+    // needs to offset by it.
+    var narrow = window.matchMedia("(max-width: 720px)").matches;
+    if (m) document.documentElement.style.setProperty("--masthead-h", narrow ? "0px" : m.offsetHeight + "px");
+  }
+  mastheadHeight();
+  window.addEventListener("resize", mastheadHeight);
+  // Back to top, phones only (CSS hides it on wider screens): appears once
+  // the reader is well into the page, scrolls smoothly unless motion is
+  // reduced.
+  var toTop = document.querySelector(".to-top");
+  if (toTop) {
+    var onScroll = function () { toTop.classList.toggle("is-on", window.scrollY > 600); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    toTop.addEventListener("click", function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    });
+  }
   var rowsBox = document.getElementById("board-rows");
   if (rowsBox) {
     document.querySelectorAll(".board-controls button").forEach(function (btn) {

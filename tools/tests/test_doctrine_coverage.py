@@ -102,7 +102,9 @@ def test_gated_doctrine_never_appears_in_the_table(tmp_path, monkeypatch):
     assert manifest["unapproved_rendered"] == 0
     html = (out / "methodology.html").read_text(encoding="utf-8")
     assert 'href="state/CHN.html"' not in html, "gated doctrine leaked a row"
-    assert "2026-08-31" not in html, "gated doctrine leaked its review date"
+    # The table cell, not the bare date: UPDATED_THROUGH is the same day and
+    # stamps the masthead on every page.
+    assert "Reviewed 2026-08-31" not in html, "gated doctrine leaked its review date"
     # and the sentence still agrees with the smaller table
     prose = re.search(
         r"Of the (\w+) states on this list, (\w+) have a published policy"

@@ -166,6 +166,11 @@ POSITION_TEXTURES = {
 SITE_NAME = "Machine Politics"
 SITE_DOMAIN = "machinepolitics.walker-robinson.com"
 TIMELINE_START_YEAR = 2013
-UPDATED_THROUGH = "2026-02-06"  # date of the UN dataset snapshot in use
+# The date the record is current to: the latest dated review or fact across
+# approved content. It ends the board axis and stamps every "as of" phrase.
+# It is not the vote-dataset snapshot date; that is UN_DATASET_DOWNLOADED_ON
+# and the dataset version named on the methodology page. A test holds this
+# at or after every approved as_of, so it cannot quietly fall behind.
+UPDATED_THROUGH = "2026-08-31"
 UN_DATASET_DOWNLOADED_ON = "2026-07-16"
 UN_DATASET_RECORD_URL = "https://digitallibrary.un.org/record/4060887"

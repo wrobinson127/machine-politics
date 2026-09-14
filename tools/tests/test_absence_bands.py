@@ -31,8 +31,8 @@ def test_none_alone_covers_the_whole_track():
 
 
 def test_none_dated_after_the_axis_still_renders():
-    """The failure this exists for. Five real states are dated 2026-07-17
-    against an axis ending 2026-02-06."""
+    """The failure this exists for: five real states were once dated after
+    the axis end and vanished from the board."""
     past = bs.iso(bs.T1 + timedelta(days=160))
     bands = bs.compute_bands([_none(past)])
     assert len(bands) == 1, "a NONE past the axis end was dropped"
