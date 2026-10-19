@@ -1,0 +1,33 @@
+# Liechtenstein: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LIE
+un_name: LIECHTENSTEIN
+display_name: Liechtenstein
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Liechtenstein has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (no national reply in
+      A/79/88; Liechtenstein associated itself with the Vienna 2024 chair's
+      summary printed there) and under 79/62 and 79/239 (none found in the
+      UNODA Eightieth session folder); CCW GGE statements 2023 to 2026 on the
+      UNODA portal (none by Liechtenstein); First Committee general debate
+      statements 2023 and 2024 (the October 2024 statement warns of the
+      impacts of lethal autonomous weapons and supports efforts to ensure
+      compliance with international law and to regulate such weapons where
+      necessary, with no instrument stated); no Liechtenstein First Committee
+      statements found for 2025 or 2026; no LAWS explanation of vote found.
+      Liechtenstein sponsored 79/62 and associated with the Vienna summary;
+      context only.
+
+shift_events: []
+
+flags:
+  - "Closest call in this batch. The October 2024 statement supports regulating these weapons where necessary but names no form of instrument; the analyst may prefer a different reading."
+  - "Could not open: a 2018 CCW Meeting of High Contracting Parties statement on LAWS on llv.li (20181121_ccw_hcp_laws_statement_li.pdf); the site served a bot challenge, which was not bypassed. A secondary search summary says it called machines deciding on human life morally unacceptable; it reportedly states no instrument preference."

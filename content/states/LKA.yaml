@@ -1,0 +1,64 @@
+# Sri Lanka: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LKA
+un_name: SRI LANKA
+display_name: Sri Lanka
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2023-03-06
+    approved: false
+    rationale: >
+      Sri Lanka told the Geneva expert group in March 2023 that a new treaty
+      with prohibitions and regulations is needed. Its 2024 submission to the
+      UN Secretary-General asks for negotiations on a legally binding
+      instrument that bans some autonomous weapons and strictly regulates the
+      rest, and it said the same in Geneva in 2026. On this site's scale, that
+      is a treaty with bans.
+    evidence:
+      - source: lka-gge-2023-03-06
+        claim: Sri Lanka says a new treaty setting out prohibitions and regulations is necessary.
+        quote: "a new international treaty stipulating the prohibitions and regulations on positive obligations is necessary for legal clarity, certainty and compliance"
+        date: 2023-03-06
+        url: https://live.lankamission.org/images/PDF-2023/6_march_2023_GGE_LAWS_Statement.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: unsg-report-a-79-88
+        claim: Sri Lanka's submission supports negotiating a legally binding instrument.
+        quote: "Sri Lanka strongly supports and advocates the negotiation of a legally binding instrument on autonomous weapons systems"
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: Sri Lanka's reply as reproduced in A/79/88, Annex I (pages 103 to 106), dated 25 May 2024. No separate national file was found on the UNODA library under the usual file name.
+      - source: unsg-report-a-79-88
+        claim: The same submission says the instrument should prohibit some systems and strictly regulate others.
+        quote: "should entail the prohibition of certain autonomous weapons systems that cannot be in compliance with international humanitarian law and the strict regulation of others"
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: lka-gge-2026-03
+        claim: In 2026 Sri Lanka still wants negotiations on a binding instrument that prohibits autonomous weapons.
+        quote: "future negotiation of a legally binding instrument to prohibit lethal autonomous weapons systems"
+        date: 2026-03-02
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Statement_by_Sri_Lanka_-_Box_1_&_3_-__2026_1st_Session_on_GGE_on_LAWS_-_02-06_March_2026.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "The 2023 mission PDF repeats several paragraphs in slightly different wording, as if two drafts were merged. The quoted sentence appears in both versions. It does not name Sri Lanka in the body; attribution rests on it being posted by Sri Lanka's Geneva mission. If the analyst prefers a UNODA-hosted first item, the 4 March 2024 GGE statement (UNODA) says 'Prohibition' of LAWS is the ultimate expectation and asks for 'Prohibition and Regulation'."
+  - "Further consistent primaries opened: First Committee 79th session cluster 5 (25 Oct 2024, docs-library Seventy-Ninth_session_(2024)/Sri_Lanka_0.pdf, 'begin negotiations on an international legally binding instrument on LAWS'), 80th session cluster 5 (27 Oct 2025), 81st session general debate (Oct 2026), and GGE interventions of 31 Aug to 3 Sep 2026 calling for an unconditional ban on anti-personnel autonomous weapons."
+  - "Sri Lanka also associated itself with the Vienna 2024 chair's summary (A/79/88) and the 2021 70-state joint statement; endorsements, context only."
+  - "Sri Lanka's call likely predates 2023; as_of is the earliest document opened."

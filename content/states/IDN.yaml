@@ -1,0 +1,44 @@
+# Indonesia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: IDN
+un_name: INDONESIA
+display_name: Indonesia
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2024-10-24
+    approved: false
+    rationale: >
+      In the UN First Committee's 2024 debate on conventional weapons,
+      Indonesia said it supports pursuing a legally binding instrument to
+      regulate autonomous weapons, with meaningful human control over the use
+      of force. It did not say the instrument should ban any systems, so on
+      this site's scale it wants a treaty with the terms left open.
+    evidence:
+      - source: idn-c1-79-cluster4-2024
+        claim: Indonesia states support for a legally binding instrument on autonomous weapons.
+        quote: "Indonesia supports pursuing a legally binding instrument to regulate autonomous weapons systems."
+        date: 2024-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Indonesia.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: idn-c1-79-cluster4-2024
+        claim: Indonesia ties the instrument to meaningful human control and strict respect for international law.
+        quote: "We believe that maintaining meaningful human control over the use of force are essential and that international law is strictly adhered to."
+        date: 2024-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Indonesia.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Indonesia posted an 'Explanation of Vote on L.60 and L.77' on 6 Nov 2024 (UNODA Meetings Place lists it, but no file is attached), and the official record of that meeting (A/C.1/79/PV.2x) was not retrievable from documents.un.org. That EOV may add detail (for example on prohibitions). Retrieval target."
+  - "Its 2023 EOV on L.56 (A/C.1/78/PV.28, 1 Nov 2023) supports the resolution as a 'crucial step for a comprehensive dialogue' including non-CCW states, with no instrument preference. Its 2025 general debate statement and its 79/239 submission (A/80/78, 11 April 2025) stress effective human control but deal with military AI other than LAWS. No contradiction with LBI-OPEN."
+  - "Indonesia is not a CCW High Contracting Party and filed no submission under 78/241 (not in the A/79/88 annex; 78-241-Indonesia-EN.pdf returns 403). Indonesia often speaks for NAM; NAM statements are corroboration only (R3) and were not used."
+  - "The ASEAN cluster 4 statement of Oct 2025 (delivered by Cambodia) calls for a 'legally-binding instrument'; corroboration only."

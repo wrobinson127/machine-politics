@@ -1,0 +1,21 @@
+# Rwanda: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: RWA
+un_name: RWANDA
+display_name: Rwanda
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Rwanda has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Rwanda (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Rwanda is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: 15 October 2025 and 12 October 2026 general debate statements read in full; both speak only of risks from emerging technologies in general. The 27 October 2025 statement is listed with no posted text; no 2023 or 2024 statements found. Rwanda endorsed the REAIM 2023 Call to Action, which is context only. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "Nothing beyond the search note."

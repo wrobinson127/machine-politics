@@ -1,0 +1,48 @@
+# Trinidad and Tobago: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: TTO
+un_name: TRINIDAD AND TOBAGO
+display_name: Trinidad and Tobago
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-31
+    approved: false
+    rationale: >
+      In its 2024 submission to the UN Secretary-General, Trinidad and Tobago
+      called for a legally binding treaty that bans uncontrollable autonomous
+      weapons and those designed to use force against people, and regulates
+      the rest. It hosted the 2023 Caribbean conference that adopted the
+      CARICOM declaration on autonomous weapons.
+    evidence:
+      - source: tto-submission-78-241
+        kind: submission
+        claim: Trinidad and Tobago calls for negotiating a legally binding instrument that prohibits uncontrollable autonomous weapons.
+        quote: "call for negotiations of an international legally binding instrument that prohibits unpredictable or uncontrollable autonomous weapons systems"
+        date: 2024-05-31
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Trinidad-and-Tobago-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          No date on the face; the date given is the PDF creation date. The
+          reply is not printed in the annex to A/79/88, so it likely arrived
+          after the report closed. The same sentence also prohibits systems
+          "designed or employed to apply force against persons".
+      - source: tto-submission-78-241
+        kind: submission
+        claim: The same sentence pairs the prohibitions with regulation of all other autonomous weapons, a two-tier instrument.
+        quote: "while implementing regulations for other forms of autonomous weapons systems"
+        date: 2024-05-31
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Trinidad-and-Tobago-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+flags:
+  - "The submission's operative sentence mirrors paragraph 2 of the CARICOM Declaration (Sept 2023), which Trinidad and Tobago hosted. The declaration is an endorsement and corroborates only, so as_of is the submission date, not 2023-09-06."
+  - "A secondary tracker reports national First Committee statements on 15 Oct 2024 (LBI call) and 15 Oct 2025 (LBI 'to regulate or prohibit'). Neither written text was found on docs-library (only a 2024 nuclear-cluster statement) and those 79th and 80th session meetings have no verbatim records available. Not cited."
+  - "Trinidad and Tobago did not speak on autonomous weapons in the general debate records checked (A/C.1/76/PV.2, 5, 7; A/C.1/77/PV.5; A/C.1/78/PV.2 to 30, where CARICOM statements were delivered by Jamaica)."

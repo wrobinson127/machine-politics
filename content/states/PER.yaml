@@ -1,0 +1,79 @@
+# Peru: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: PER
+un_name: PERU
+display_name: Peru
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2021-09-27
+    approved: false
+    rationale: >
+      In 2021 Peru co-wrote a working paper for the Geneva weapons convention
+      asking for negotiations on a legally binding instrument with specific
+      prohibitions and regulations. In 2023 it was a named author of the
+      revised Draft Protocol VI, which would ban autonomous weapons that cannot
+      be used with meaningful human control and regulate the rest. Peru
+      repeated the two-tier call in the First Committee in 2024 and 2025.
+    evidence:
+      - source: ccw-gge1-2021-wp7-group
+        claim: Peru co-authored a 2021 paper asking for a mandate to negotiate a legally binding instrument.
+        quote: "Recommend a new mandate for the GGE to initiate immediately an open-ended process to negotiate a legally binding instrument."
+        date: 2021-09-27
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: >
+          Face-checked 2026-10-19: "the Republic of Peru" is among ten authors.
+          "open-ended" breaks across a line in the original. The next item, (b),
+          asks that the new norm include "specific prohibitions and regulations
+          (i.e. positive obligations)". Under ruling R2 this co-written paper
+          counts because it states an instrument preference.
+      - source: ccw-gge1-2021-wp7-group
+        claim: The same paper says fully autonomous systems must be prohibited.
+        quote: "weapon systems or configurations within the scope of our discussions that are fully autonomous are unacceptable and must be prohibited under international law."
+        date: 2021-09-27
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: Paragraph 9(a); the sentence opens "Real or hypothetical".
+      - source: ccw-gge1-2023-wp6-draftprotocol
+        claim: Peru co-authored the revised Draft Protocol VI, whose Article 3 prohibits systems that cannot be used with meaningful human control.
+        quote: "autonomous weapon systems that cannot be used with meaningful human control in their critical functions of selecting, targeting, or engaging to apply force."
+        date: 2023-05-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: >
+          The sentence opens "It is prohibited to design, develop, produce,
+          possess, acquire, deploy, transfer, or use, under any circumstances,".
+          Article 4 regulates all other systems. Peru is on the face.
+      - source: per-c1-79-general-2024
+        claim: Peru's 2024 First Committee statement backs a legally binding two-tier instrument.
+        description: >
+          In the 2024 general debate Peru says the best way to deal with
+          autonomous weapon systems is a legally binding instrument based on
+          international law, with a two-level approach of prohibition and
+          regulation covering their design, development, production,
+          possession, acquisition, deployment, transfer and use.
+        date: 2024-10-07
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Peru.pdf
+        lang: es
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Peru is NOT on the face of the 2022 Draft Protocol VI (CCW/GGE.1/2022/WP.8; eleven authors per the existing source entry, re-checked 2026-10-19). Argentina's reply in A/79/88 (p.22) lists Peru among a 13-country group that submitted the July 2022 proposal; the face controls, so 2022-08-09 is not used."
+  - "Peru also co-signed the March 2022 'Written Commentary ... Calling for a Legally-Binding Instrument on Autonomous Weapon Systems' (documents.unoda.org/wp-content/uploads/2022/05/20220309-G13-Written-Submission.docx, read 2026-10-19), and the 2024 joint SG reply in A/79/88 (p.34). Both consistent; not added to keep the entry short."
+  - "Peru's 2025 general debate statement (Spanish, per-c1-80-general-2025) calls it indispensable to move toward a legally binding international instrument that prohibits and regulates autonomous weapon systems; its 2026 statement supports legally binding international norms. Consistent."
+  - "New source ids ccw-gge1-2021-wp7-group and ccw-gge1-2023-wp6-draftprotocol may also be added by other batches (Argentina, Costa Rica, Ecuador, El Salvador, Panama, Philippines, Sierra Leone, Uruguay are co-authors). Deduplicate before merge. The 2021 paper may affect as_of for those states too."

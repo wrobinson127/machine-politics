@@ -1,0 +1,46 @@
+# Bangladesh: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BGD
+un_name: BANGLADESH
+display_name: Bangladesh
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2026-09-07
+    approved: false
+    rationale: >
+      Bangladesh's own words point two ways. In September 2026 it asked
+      the Geneva weapons convention to decide to start negotiating an
+      effective international instrument to regulate autonomous weapons,
+      which points toward a treaty. It did not say the instrument should
+      be legally binding or what it should ban.
+    evidence:
+      - source: bgd-ccw-prepcom7-2026
+        claim: Bangladesh wants the Review Conference to start negotiations on an instrument to regulate autonomous weapons.
+        quote: "The Seventh Review Conference should therefore provide clear political decision towards commencement of negotiation on an effective international instrument to regulate LAWS."
+        date: 2026-09-07
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/DELIVERED-STATEMENT_BANGLADESH.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: The same statement describes the GGE mandate as formulating elements "without prejudging its legal nature".
+      - source: bgd-c1-81-gd-2026
+        claim: Bangladesh supports meaningful human control and continued multilateral work on autonomous weapons.
+        quote: "We therefore support meaningful human control over weapons systems and continued multilateral work on lethal autonomous weapons systems"
+        date: 2026-10-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bangladesh.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-OPEN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-OPEN."
+  - "Judgment call. 'Negotiation on an effective international instrument' under the CCW would ordinarily mean a protocol, hence LBI-OPEN; but Bangladesh does not say 'legally binding'. CCW-ONLY is the main alternative."
+  - "2023 First Committee statements (general debate 3 Oct, conventional weapons 23 Oct; also A/C.1/78/PV.3 and PV.18) only urge 'a comprehensive assessment of their compliance with international law'. 2024 and 2025 statements on UNODA mention LAWS only as a concern."
+  - "Lead not confirmed: a web search snippet attributes to the Bangladesh mission site (bdun.org) a call for 'new legally-binding provisions' on LAWS. bdun.org returned 403 or maintenance on every attempt, so the document and its date could not be opened. If found, it may support LBI-OPEN at EXPLICIT and move as_of earlier."
+  - "No 78/241 or 79/239 submission found."

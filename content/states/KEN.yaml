@@ -1,0 +1,46 @@
+# Kenya: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: KEN
+un_name: KENYA
+display_name: Kenya
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2025-10-13
+    approved: false
+    rationale: >
+      At the UN First Committee in October 2025, Kenya urged states to
+      negotiate a legally binding instrument with clear prohibitions and
+      robust regulations on autonomous weapons. A year earlier it had called
+      for a robust international regulatory framework. On this site's scale
+      that is a treaty with bans.
+    evidence:
+      - source: ken-c1-80-general-debate-2025
+        claim: Kenya calls for negotiating a legally binding instrument containing prohibitions and regulations.
+        quote: "Kenya urges the international community to move decisively towards the negotiation of a legally binding instrument with clear prohibitions and robust regulations"
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Kenya_English.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: ken-c1-79-general-debate-2024
+        claim: In 2024 Kenya called for a robust international regulatory framework for LAWS, without saying it must be binding.
+        quote: "We must act quickly to establish a robust international regulatory framework"
+        date: 2024-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Kenya_UNGA79_1C.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "The 2025 statement's face is dated 13 October 2025; the UNODA listing shows 14 October 2025. as_of uses the face date."
+  - "The brief said Kenya has spoken at the CCW. I could not find any Kenyan CCW statement: Kenya appears in none of the meetings.unoda.org statement listings for the GGE on LAWS 2023 to 2026 or the 2026 PrepCom, nor in the eight 2025 to 2026 GGE and PrepCom machine transcripts I checked. Secondary sources say Kenya is not a CCW High Contracting Party. If the analyst knows of a Kenyan CCW statement, it is the retrieval target."
+  - "The 2024 wording ('robust international regulatory framework') does not say binding. I did not treat 2024 to 2025 as a shift, because 2024 states no instrument type; the analyst could alternatively date an LBI-BAN reading only from 2025 and leave 2024 as context, which is what this draft does."
+  - "The 2026 general debate statement (9 October 2026, labelled DRAFT STATEMENT on its face) only says emerging technologies must not diminish meaningful human control; no retreat from the 2025 call, no new instrument language."
+  - "Kenya endorsed REAIM 2026 Pathways to Action (content/endorsements.yaml). Context only."
+  - "The 10 October 2023 First Committee statement is listed on meetings.unoda.org with no posted text; the 24 October 2023 cyber statement mentions only misuse of AI."

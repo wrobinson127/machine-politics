@@ -1,0 +1,39 @@
+# Haiti: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: HTI
+un_name: HAITI
+display_name: Haiti
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2023-10-10
+    approved: false
+    rationale: >
+      In the 2023 general debate of the UN First Committee, Haiti urged
+      meaningful human control over autonomous weapons and welcomed work on a
+      legally binding instrument to prohibit and regulate them. On this
+      site's scale, a binding instrument that prohibits as well as regulates
+      is a treaty with bans.
+    evidence:
+      - source: un-c1-78-pv8
+        kind: statement
+        claim: Haiti welcomes progress toward a legally binding instrument to prohibit and regulate autonomous weapons.
+        quote: "my delegation welcomes the progress made in drafting a legally binding international instrument to effectively prohibit and regulate those weapons"
+        date: 2023-10-10
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.8&l=E
+        lang: fr
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Official verbatim record; Haiti spoke in French and the English is
+          the UN's official text. "Those weapons" refers back to autonomous
+          weapons in the preceding sentence.
+
+shift_events: []
+
+flags:
+  - "One statement only. 'Welcomes the progress made in drafting' is support for the instrument rather than a direct call to negotiate; the analyst may prefer LBI-BAN at INFERRED. Kept EXPLICIT because the instrument it backs is named as binding and prohibitive."
+  - "Source id un-c1-78-pv8 is also proposed by batch 10; register once."
+  - "No Haiti reply in A/79/88 or A/80/78; no 78-241 national file found. Haiti spoke in A/C.1/77 (not checked beyond PV.2 to 9, no hit) and A/C.1/79/PV.9 (16 Oct 2024, no mention of autonomous weapons). A secondary tracker cites a 16 Oct 2024 written statement hosted only on a site excluded by this review's rules; not opened."
+  - "Haiti is a CARICOM member and, per a secondary tracker, signed the CARICOM Declaration (2023): corroboration only."

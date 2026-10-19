@@ -1,0 +1,69 @@
+# Cote d'Ivoire: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CIV
+un_name: COTE D'IVOIRE
+display_name: Côte d'Ivoire
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2025-10-14
+    approved: false
+    rationale: >
+      At the UN in October 2025, Côte d'Ivoire called for autonomous weapons
+      to be regulated and pointed to the 2024 West African meeting in
+      Freetown, which called for new binding rules. In 2026 it backed a
+      normative framework on these weapons. That reads as support for a
+      binding instrument without saying what it should ban. Both statements
+      come from machine transcripts of the English interpretation.
+    evidence:
+      - source: un-c1-80-transcript-6
+        claim: Cote d'Ivoire appeals for regulation of lethal autonomous weapon systems.
+        quote: "an appeal for regulation of lethal autonomous weapon systems and for their responsible use"
+        date: 2025-10-14
+        url: https://transcripts.un.org/en/ga/c1/80/6
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: Machine transcript of the English interpretation (Cote d'Ivoire spoke in French); speaker block at 1:28:34.
+      - source: un-c1-80-transcript-6
+        claim: Cote d'Ivoire presents the Freetown outcome as a call for new binding rules.
+        quote: "the need to strengthen existing governance mechanisms and to draft new binding rules to regulate these weapons"
+        date: 2025-10-14
+        url: https://transcripts.un.org/en/ga/c1/80/6
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: The sentence describes what the Freetown Communique "underscored"; Cote d'Ivoire introduces it by saying it favours such regional initiatives.
+      - source: un-c1-81-transcript-7
+        claim: In 2026 Cote d'Ivoire supports a normative framework on lethal autonomous weapons systems.
+        quote: "the crafting of a meaningful, normative framework on lethal autonomous weapons systems, guaranteeing respect for international law and appropriate human oversight"
+        date: 2026-10-13
+        url: https://transcripts.un.org/en/ga/c1/81/7
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: Machine transcript of the English interpretation; speaker block at 56:06.
+      - source: freetown-communique-2024
+        claim: Corroboration only. The ECOWAS communique Cote d'Ivoire cites supports a binding instrument with prohibitions and regulations.
+        quote: "To support the urgent negotiation of a legally binding instrument to regulate autonomous weapons systems, with specific prohibitions and regulations"
+        date: 2024-04-18
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-ECOWAS-EN.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: submission
+        note: Regional endorsement; cannot carry the reading on its own.
+
+shift_events: []
+
+flags:
+  - "LBI-OPEN rather than LBI-BAN: in its own (interpreted) words Cote d'Ivoire speaks of binding rules to regulate, not of prohibitions. The Freetown text it cites does include prohibitions; an analyst who treats the citation as adoption could move this to LBI-BAN."
+  - "The 2026 phrase 'normative framework' is vaguer than 2025's 'binding rules'. Not treated as a shift; AMBIG was considered and rejected because the two are compatible."
+  - "All instrument-level evidence is machine transcript (R1, INFERRED). The written 2025 and 2026 statements, if posted on the UN e-statements portal, would settle the wording; estatements.unmeetings.org did not resolve from this environment."
+  - "Not obtained: Cote d'Ivoire's 24 October 2024 First Committee statement (cited by Automated Decision Research; link on reachingcriticalwill.org, off-limits). A/C.1/79 verbatim records for that week are not yet issued."
+  - "Context: A/C.1/78/PV.18 (23 Oct 2023, official English) has Cote d'Ivoire urging the world to 'urgently mobilize to prevent the development and possible use' of weapons using lethal force without human intervention. Strong concern, no instrument named."
+  - "No submission under 78/241 or 79/239 found."

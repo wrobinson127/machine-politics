@@ -1,0 +1,21 @@
+# South Sudan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SSD
+un_name: SOUTH SUDAN
+display_name: South Sudan
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what South Sudan has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for South Sudan (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; South Sudan is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: no South Sudan statements for 2023 to 2026 found on meetings.unoda.org; no explanation of its 2023 abstention found. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "South Sudan abstained on 78/241 and did not vote on 79/62 or 80/57. No explanation of vote was found; that EOV, if one exists, is the retrieval target."

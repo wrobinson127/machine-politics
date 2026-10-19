@@ -1,0 +1,21 @@
+# Cabo Verde: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CPV
+un_name: CABO VERDE
+display_name: Cabo Verde
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Cabo Verde has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (not among the replies in A/79/88) and 79/239 (no national file at the UNODA Eightieth session paths); First Committee official records A/C.1/78/PV.2 to PV.12 and PV.18 to PV.31 (2023); the 79th session records issued so far; UN machine transcripts of every 80th (2025) and 81st (2026) session First Committee meeting that has one; national statements posted on the UNODA documents library for the 78th to 81st sessions; transcripts of the 2026 CCW GGE sessions; the Vienna 2024 conference statements page. Cabo Verde's First Committee statements for 2023 (Cabo_Verde_en.pdf), 2024 (Cabo_Verde.pdf) and 2025 (cabo_verde_eng.pdf), all in English, were read in full; none names autonomous weapons. The 2025 text and its transcript only encourage 'greater attention to emerging technologies'. Cabo Verde is an ECOWAS member (Freetown Communique, April 2024); that endorsement is context only.
+
+shift_events: []
+
+flags:
+  - "Automated Decision Research has no Cabo Verde page (404)."

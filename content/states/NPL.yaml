@@ -1,0 +1,35 @@
+# Nepal: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: NPL
+un_name: NEPAL
+display_name: Nepal
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Nepal has said on autonomous weapons and
+      found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (A/79/88 annex list
+      and the UNODA national-file path; none filed) and 79/239 (A/80/78
+      annex list and UNODA path; none filed); 79/62 created no new
+      submission call, and the May 2025 New York informal consultations
+      list no statement by this state; CCW GGE statements and working
+      papers 2023 to 2026 on meetings.unoda.org and docs-library (none by
+      this state); CCW Review Conference preparatory committee 2026
+      statements (none); First Committee statements on UNODA for the 78th
+      to 81st sessions (all opened); official records A/C.1/78/PV.2 to
+      PV.30; 80th session machine transcripts 2 to 30; web search. In the
+      2025 general debate Nepal said it is 'critical to regulate'
+      autonomous weapons, and in 2026 it supported 'continued multilateral
+      efforts', but it named no kind of instrument. No ministry or mission
+      page on autonomous weapons found.
+
+shift_events: []
+
+flags:
+  - "Closest to a position: 8 Oct 2025 general debate, 'It is critical to regulate Lethal Autonomous Weapons Systems (LAWS) by considering their ethical, legal, humanitarian, and technological aspects' (docs-library Eightieth_session_(2025)/nepal_eng.pdf). It names no binding or non-binding form, so it fits no category other than NONE; the analyst may weigh it differently."
+  - "UNODA also lists an EOV by Nepal on L.49 (80th session) without a working link; L.49 is not the LAWS resolution."

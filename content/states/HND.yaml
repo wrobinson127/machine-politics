@@ -1,0 +1,43 @@
+# Honduras: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: HND
+un_name: HONDURAS
+display_name: Honduras
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-05-24
+    approved: false
+    rationale: >
+      Honduras's own words point two ways. In its 2024 submission it
+      said prohibitions and regulations on autonomous weapons are needed
+      and that full human control must be kept, which points toward a
+      treaty with bans. It did not say whether those rules should be
+      legally binding. Regional statements it endorsed call for a
+      binding instrument, but an endorsement does not decide a position
+      on this site.
+    evidence:
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Honduras says prohibitions and regulations are needed for existing and future autonomous weapons, without naming the form.
+        quote: "prohibitions and regulations that are needed to ensure that a balanced and responsible approach is taken to existing and future autonomous weapons systems"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: es
+        translation: official
+        confidence: INFERRED
+        note: >
+          Official UN English text of Honduras's reply in the annex to A/79/88
+          (original Spanish, dated 24 May 2024). The reply also speaks of
+          "consensus-based decisions about the regulations that are needed to
+          maintain full human control". National Spanish file:
+          78-241-Honduras-SP.pdf in the Seventy-Ninth session folder.
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Judgment call. Honduras's own words name prohibitions and regulations but never say 'legally binding'. LBI-BAN at INFERRED rests on reading them with endorsements that do say binding: the Ibero-American Summit special communique (Santo Domingo, March 2023), which Honduras co-submitted in A/79/88, and the Belen communique (2023). Endorsements corroborate only. Alternatives: AMBIG, or NONE if the analyst holds that a form must be stated."
+  - "Honduras spoke in the First Committee general debate in 2021 (A/C.1/76/PV.4), 2022 (A/C.1/77/PV.6), 2023 (A/C.1/78/PV.4) and 2024 (A/C.1/79/PV.4). Only 2024 mentions autonomous weapons, saying humans must stay accountable for the use of force; no instrument preference."
+  - "Honduras filed a 79/239 national file (79-239-Honduras-SP.pdf, Spanish) that does not address autonomous weapons; it is not in A/80/78."

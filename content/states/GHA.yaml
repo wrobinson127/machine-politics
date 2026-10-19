@@ -1,0 +1,64 @@
+# Ghana: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GHA
+un_name: GHANA
+display_name: Ghana
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2024-10-24
+    approved: false
+    rationale: >
+      At the UN in October 2024, Ghana said autonomous weapons need clear
+      regulation and, echoing the joint call by the UN Secretary-General and
+      the Red Cross, new prohibitions and restrictions. In October 2026 it
+      said it supports negotiating a legally binding instrument and asked the
+      Geneva weapons convention to agree a mandate for one in November. Read
+      together, that is support for a treaty with bans.
+    evidence:
+      - source: gha-c1-79-conventional-2024
+        claim: Ghana says autonomous weapons must be addressed through clear regulations.
+        quote: "These systems raise serious humanitarian, legal, and ethical questions, which must be addressed through clear regulations."
+        date: 2024-10-24
+        url: https://www.ghanamissionun.org/10242024/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: gha-c1-79-conventional-2024
+        claim: Ghana, citing the Secretary-General and ICRC joint call, says new prohibitions and restrictions are needed.
+        quote: "new prohibitions and restrictions on autonomous weapons are needed to mitigate the risks they pose to international security"
+        date: 2024-10-24
+        url: https://www.ghanamissionun.org/10242024/
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          The sentence opens "As highlighted in the joint call of the UN
+          Secretary-General and the ICRC". That joint call (5 October 2023)
+          asks states to conclude a legally binding instrument by 2026.
+      - source: gha-c1-81-general-2026
+        claim: Ghana supports negotiating a legally binding instrument on lethal autonomous weapons systems.
+        quote: "My delegation supports the negotiation of a legally binding instrument on lethal autonomous weapons systems"
+        date: 2026-10-12
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Ghana.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          The sentence continues "and encourages the Seventh Review Conference
+          of the Convention on Certain Conventional Weapons, in November, to
+          adopt a mandate to that effect."
+
+shift_events: []
+
+flags:
+  - "Why INFERRED and not EXPLICIT: each document is explicit on half of the reading. 2024 says prohibitions and restrictions but not 'legally binding'; 2026 says 'legally binding instrument' but not prohibitions. Joining them is interpretation. Strict alternative: EXPLICIT LBI-OPEN as of 2026-10-12. Generous alternative: EXPLICIT LBI-BAN as of 2024-10-24, reading the joint-call reference as adopting its binding instrument."
+  - "Not obtained: Ghana's statement at the CCW GGE, 6 March 2026 (9th meeting, 1st session; UN Web TV asset k1s/k1s1ptn9sq). transcripts.un.org has no transcript for that meeting and no written copy was found. Automated Decision Research reports Ghana said it supports 'a robust and legally grounded instrument' with 'clear prohibition' on some systems. A written copy would likely settle this as EXPLICIT LBI-BAN."
+  - "Not obtained: Ghana's April 2015 and April 2016 CCW expert-meeting statements (reported calls to proscribe fully autonomous weapons). The only links found were on reachingcriticalwill.org, which is off-limits; probing docs-library.unoda.org file names found nothing."
+  - "Ghana is not a CCW High Contracting Party; it attends as an observer."
+  - "Context, not evidence: A/C.1/78/PV.5 (5 Oct 2023, official record) has Ghana calling machines making life-and-death decisions 'a chilling prospect that the international community must prevent'. The 2025 general debate statement (docs-library Eightieth session Ghana.pdf) records concern only."
+  - "No submission under 78/241 (absent from A/79/88) or 79/239 (no file at the expected UNODA paths). The brief's suggestion of draft-paper authorship does not hold: Ghana is not among the eleven authors of CCW/GGE.1/2022/WP.8, and no CCW working paper naming Ghana was found."

@@ -1,0 +1,71 @@
+# New Zealand: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: NZL
+un_name: NEW ZEALAND
+display_name: New Zealand
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2021-11-16
+    approved: false
+    rationale: >
+      In November 2021 the New Zealand Cabinet decided that the country would
+      push for a legally binding instrument that bans autonomous weapons that
+      cannot be predicted or controlled and sets controls on the rest. New
+      Zealand repeated this two-tier aim in its 2024 submission to the UN
+      Secretary-General and in its statements to the Geneva expert group.
+    evidence:
+      - source: nzl-cabinet-minute-ers-21-min-0046
+        claim: The Cabinet decided New Zealand will advocate for a legally binding instrument on autonomous weapons.
+        quote: "Aotearoa New Zealand will advocate for a legally-binding instrument to articulate these rules or limits"
+        date: 2021-11-16
+        url: https://www.mfat.govt.nz/assets/OIA/OIA-2021-22/AWS-New-Zealand-Policy-Position.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          Cabinet External Relations and Security Committee minute ERS-21-MIN-0046,
+          proactively released by the Minister for Disarmament and Arms Control. A
+          release watermark overlays the text; the quoted words read cleanly.
+      - source: nzl-cabinet-minute-ers-21-min-0046
+        claim: The same decision commits New Zealand to seek an express prohibition on some systems, alongside controls on others.
+        quote: "pursue an express prohibition on autonomous weapons systems that are not sufficiently predictable or controllable to meet legal or ethical requirements"
+        date: 2021-11-16
+        url: https://www.mfat.govt.nz/assets/OIA/OIA-2021-22/AWS-New-Zealand-Policy-Position.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: nzl-submission-78-241
+        claim: The 2024 submission to the Secretary-General restates the aim of binding prohibitions and regulation.
+        quote: "New Zealand continues to seek binding international prohibitions and regulation of AWS."
+        date: 2024-05-21
+        url: https://www.mfat.govt.nz/assets/Peace-Rights-and-Security/Disarmament/New-Zealand-submission-to-the-UN-Secretary-General-on-autonomous-weapon-systems.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          The PDF is dated "May 2024"; the day comes from the summary in A/79/88
+          (unsg-report-a-79-88), which reproduces the same sentence with "autonomous
+          weapon systems" in place of "AWS".
+      - source: nzl-gge-2024-03-statement
+        claim: At the March 2024 expert group session New Zealand backed the two-tier approach with a specific prohibition.
+        quote: "Our ambition is for a new, specific prohibition on weapons that cannot operate in compliance with IHL"
+        date: 2024-03-04
+        url: https://www.mfat.govt.nz/en/media-and-resources/ccw-group-of-governmental-experts-on-lethal-autonomous-weapon-systems
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "as_of rests on a Cabinet minute (ERS-21-MIN-0046, 16 Nov 2021) that was proactively released, not a statement delivered abroad. If the analyst prefers delivered statements only, the next earliest primary documents read here are the 4 March 2024 GGE statement and the May 2024 submission."
+  - "The submission also says a blanket ban would not be constructive 'at this time' and supports non-binding interim measures and the US Political Declaration as steps toward a binding instrument. This is the two-tier model, not a softer position, so AMBIG was rejected."
+  - "26 August 2024 GGE general statement (mfat.govt.nz/en/media-and-resources/ccw-group-of-governmental-experts-on-lethal-autonomous-weapon-systems-general-statement) repeats the prohibition-plus-regulation aim; read but not cited, to avoid padding."
+  - "A/80/78 (79/239 report) carries a New Zealand submission that refers back to its 2024 AWS position; corroborates continuity."
+  - "2025 and 2026 national CCW statements were not located on meetings.unoda.org (script-rendered pages). Joint statements New Zealand signed in 2025 corroborate only."

@@ -1,0 +1,33 @@
+# Oman: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: OMN
+un_name: OMAN
+display_name: Oman
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Oman has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed); Oman's national First Committee statements 2023, 2025 and 2026
+      (Arabic, read); UN transcripts of the 2025 and 2026 general debates;
+      CCW meeting pages and sampled 2025 and 2026 GGE transcripts (no Omani
+      statement found). The 2026 national general debate statement says AI
+      and emerging technologies should be developed and used in line with
+      international law, keeping human responsibility and control over
+      decisions to use force; it names no instrument and does not mention
+      autonomous weapons. Group texts, context only: as Arab Group chair in
+      2025, Oman delivered a statement welcoming the two LAWS resolutions and
+      supporting a UN track on military AI that would discuss a possible
+      legally binding instrument.
+
+shift_events: []
+
+flags:
+  - "Corroboration only (R3): the 27 October 2025 Arab Group statement Oman delivered (arb_group_oth_arb.pdf, Arabic) calls autonomous weapons among the most dangerous military AI applications and backs a UN track including discussion of a possible legally binding instrument. It speaks for the group, so it cannot carry Oman's own reading. The 2026 national line on human control is the nearest Oman comes in its own words."
+  - "Four 2024 Oman statements are indexed on UNODA without files; not read."

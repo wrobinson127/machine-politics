@@ -1,0 +1,66 @@
+# Spain: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ESP
+un_name: SPAIN
+display_name: Spain
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2024-05-23
+    approved: false
+    rationale: >
+      In its 2024 submission to the UN Secretary-General, Spain said it favours
+      a two-tier approach of prohibition and regulation. In Spanish-language
+      statements to the UN First Committee in 2023 and 2024, it said the goal
+      of the Geneva expert group should be a legally binding, or legal,
+      instrument. Read together, that is a treaty with bans, but the binding
+      part rests on statements this site describes rather than quotes.
+    evidence:
+      - source: unsg-report-a-79-88
+        claim: Spain's submission favours a two-tier approach of prohibition and regulation.
+        quote: "Spain, together with other like-minded countries, favours a two-tiered approach based on prohibition and regulation."
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          Annex I of A/79/88, marked "Original: Spanish". The quote is from the
+          UN's official English version of the report. The submission does not
+          say whether the instrument should be binding.
+      - source: esp-c1-78-cluster4-2023
+        claim: Spain supports a new GGE mandate leading toward negotiating a legally binding instrument.
+        description: >
+          In the conventional weapons debate on 23 October 2023, Spain said it
+          strongly supports a new mandate for the expert group that sets the
+          steps toward the final goal of negotiating a legally binding
+          instrument ("jurídicamente vinculante").
+        date: 2023-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Spain_es.pdf
+        lang: es
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: esp-c1-79-general-2024
+        claim: Spain says its aim in the expert group is a legal instrument that regulates the use of these weapons.
+        description: >
+          In the general debate on 15 October 2024, Spain said it takes part in
+          the expert group on lethal autonomous weapons with the basic aim of
+          drafting a legal instrument ("instrumento legal") that regulates their
+          use.
+        date: 2024-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Spain.pdf
+        lang: es
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Why LBI-BAN and not AMBIG: Spain's own words supply both halves (two-tier prohibition and regulation in English; legally binding in Spanish). The brief's rule against reading two-tier alone as LBI-BAN is met because Spain separately names a binding instrument. Confidence is INFERRED because that half is Spanish only, with no official English version."
+  - "Drift to watch: the binding language softens over time. 2023: 'jurídicamente vinculante' (legally binding). 2024: 'instrumento legal' (legal instrument). 2025 general debate (Statement_Spain_Spanish.pdf, 80th session folder, 14 October 2025): 'instrumento internacional que regule su uso' (international instrument). 2026 general debate (Spain.pdf, 81st session): an instrument based on human control, IHL and accountability, with a mandate hoped for at the November 2026 Review Conference. None of these retreats from binding in words, but none after 2023 repeats it. If the analyst reads the 2025 and 2026 wording as a step back, AMBIG from 2025 is the alternative."
+  - "Corroboration only: co-signer of the Ibero-American special communique (Santo Domingo, 2023) filed in A/79/88; co-author of CCW/GGE.1/2025/WP.4 (human element paper, no instrument preference); March 2023 GGE joint statement of 11 states."
+  - "Spain's 79/239 submission (79-239-Spain-sp.pdf, Spanish) covers military AI and human oversight; nothing on the instrument question."

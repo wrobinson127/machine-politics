@@ -1,0 +1,45 @@
+# Georgia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GEO
+un_name: GEORGIA
+display_name: Georgia
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: EXPLICIT
+    as_of: 2021-12-13
+    approved: false
+    rationale: >
+      At the 2021 review conference of the Geneva weapons convention (the
+      CCW), Georgia said the convention offers a unique chance to deal with
+      autonomous weapons, and it backed the expert group's work there. It
+      welcomed that work again in 2022. Georgia has not said what the talks
+      should produce. It voted Yes on all three UN resolutions.
+    evidence:
+      - source: geo-ccw-revcon6-2021
+        claim: Georgia names the CCW as the place to address autonomous weapons.
+        quote: "CCW offers a unique opportunity to address current and future trends in autonomous weapons development"
+        date: 2021-12-13
+        url: https://documents.unoda.org/wp-content/uploads/2022/02/Georgia-General-statement-CCW-6th-Rev-Con.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: geo-ccw-msp-2022
+        claim: Georgia again welcomes the CCW expert group's work, naming no outcome.
+        quote: "Georgia welcomes the work by the Group of Governmental Experts on Emerging Technologies in the Area of Lethal Autonomous Weapons Systems"
+        date: 2022-11-16
+        url: https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2022)/Statement_Georgia_MSP_CCW_FINAL.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Possible pull toward AMBIG: Georgia co-submitted CCW/MSP/2025/WP.1 (24 Nov 2025) with the EU and seven others. It calls the CCW 'the relevant international forum', expects 'concrete results by the end of 2026' and recalls support for the two-tier approach. It is an EU general-exchange paper, not an elements paper with an instrument preference (R2), so it is treated as corroboration and not cited. If the analyst counts it as Georgia's own paper, AMBIG on the Sweden ruling."
+  - "The 2021 statement is dated 13-17 December 2021 on its face; UNODA indexes it under both 13 and 14 December. 13 December used."
+  - "First Committee statements 2023, 2024, 2025 and 2026 (English) were read: none addresses autonomous weapons beyond a 2026 line on unmanned systems and AI in hybrid strategies. No SG submission under 78/241 or 79/239. A 'Reply received from Georgia' dated 2024-02-28 is indexed with no file; the 78/237 reply is on a different subject."
+  - "Context only: endorsed the US Political Declaration, the REAIM 2023 call to action and REAIM 2026 pathways. Georgia aligns with EU statements at the CCW."
+  - "The evidence is from 2021 and 2022; nothing newer in Georgia's own words was found."

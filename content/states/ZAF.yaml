@@ -1,0 +1,56 @@
+# South Africa: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ZAF
+un_name: SOUTH AFRICA
+display_name: South Africa
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2021-12-13
+    approved: false
+    rationale: >
+      South Africa wants the Geneva expert group's work to end in a legally
+      binding instrument, and said in 2021 that a political document alone
+      would count as failure. In 2025 it said the group's draft text should
+      lead to negotiations on a legally binding instrument. It has not said
+      what that instrument should ban, and it wants the work kept inside the
+      Geneva convention.
+    evidence:
+      - source: zaf-ccw-revcon6-2021
+        claim: South Africa says a purely political outcome with no path to a binding instrument would be a failure.
+        quote: "with no prospect of elevating further work to the level of a legally binding instrument, SA would regard the process as having been a failure."
+        date: 2021-12-13
+        url: https://documents.unoda.org/wp-content/uploads/2022/02/South-Africa-CCW-RevCon-General-Statement-.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The document is headed "XX December 2021"; the date is the Review Conference's opening day.
+      - source: zaf-c1-80-cluster4-2025
+        claim: South Africa says the expert group's elements should lead to negotiations on a legally binding instrument.
+        quote: "formulate elements that will serve as a basis for the commencement of negotiations for a legally binding instrument."
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/ClfPAohnnl_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: zaf-c1-79-eov-l77-2024
+        claim: South Africa wants the Geneva expert group to finish its work without parallel processes in New York.
+        quote: "South Africa is of the view that we should allow the GGE processes to be completed without prejudging the outcome"
+        date: 2024-11-06
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_South_Africa.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: eov
+
+shift_events: []
+
+flags:
+  - "The 2021 Review Conference statement is headed 'XX December 2021'. as_of uses the conference's opening day (13 December 2021); the analyst may prefer to anchor as_of on the dated 2025-10-23 statement instead."
+  - "Forum tension: in its 2024 EOV on L.77 South Africa abstained on several paragraphs, objected to PP13 ('negotiations for a legally binding instrument outside the CCW') and to New York consultations. In its 2023 EOV on L.56 (A/C.1/78/PV.28, 1 Nov 2023) it abstained on OP2 (the SG report) while supporting the text as a whole. This is a forum preference, not a retreat from a binding instrument, so LBI-OPEN rather than CCW-ONLY or AMBIG."
+  - "No South African text found that asks for prohibitions or a two-tier structure in its own words. The African Group GGE statement of 31 Aug 2026 (delivered for the group, R3 corroboration only) refers to 'prohibitions with restrictions'; South Africa is not on the Brazil-led joint statement lists."
+  - "Secondary sources (ADR) cite a 6 March 2023 GGE statement supporting a 'legally binding instrument'; it exists only as a UNOG audio recording and was not opened. A 2025 Parliament of South Africa news item reports an MP at the IPU calling for a binding ban; that is a parliamentary delegation, not the government, so it is not used."
+  - "No submission under 78/241 (78-241-South-Africa-EN.pdf returns 403; not in A/79/88 annex). Not listed among statements at the 2023 to 2026 GGE sessions on UNODA Meetings Place."

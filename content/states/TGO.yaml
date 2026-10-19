@@ -1,0 +1,21 @@
+# Togo: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: TGO
+un_name: TOGO
+display_name: Togo
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Togo has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (not among the replies in A/79/88) and 79/239 (no national file at the UNODA Eightieth session paths); First Committee official records A/C.1/78/PV.2 to PV.12 and PV.18 to PV.31 (2023); the 79th session records issued so far; UN machine transcripts of every 80th (2025) and 81st (2026) session First Committee meeting that has one; national statements posted on the UNODA documents library for the 78th to 81st sessions; transcripts of the 2026 CCW GGE sessions; the Vienna 2024 conference statements page. Togo's First Committee statements were read: 2023 (A/C.1/78/PV.19 and PV.21; ICT and small arms texts), 2024 (nuclear, conventional weapons and other measures texts, French) and 2025 (conventional weapons text, French, and transcript of the 18th meeting); none mentions autonomous weapons. Togo is a CCW High Contracting Party and an ECOWAS member (Freetown Communique, April 2024); the group and regional texts are context only.
+
+shift_events: []
+
+flags:
+  - "Togo voted Yes on all three resolutions but no national words on autonomous weapons were found."

@@ -1,0 +1,22 @@
+# Liberia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LBR
+un_name: LIBERIA
+display_name: Liberia
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Liberia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (not among the replies in A/79/88) and 79/239 (no national file at the UNODA Eightieth session paths); First Committee official records A/C.1/78/PV.2 to PV.12 and PV.18 to PV.31 (2023); the 79th session records issued so far; UN machine transcripts of every 80th (2025) and 81st (2026) session First Committee meeting that has one; national statements posted on the UNODA documents library for the 78th to 81st sessions; transcripts of the 2026 CCW GGE sessions; the Vienna 2024 conference statements page. Liberia's 2024 First Committee conventional weapons statement (English) does not mention autonomous weapons. In 2026 Security Council debates (10228th meeting on AI, 23 Sept 2026, and an Arria-formula meeting, 16 Sept 2026; machine transcripts) Liberia said decisions on lethal force must never be left to autonomous algorithms and backed a Council working group on AI, but named no instrument on autonomous weapons. Liberia is a CCW High Contracting Party named in the 2026 African CCW states statement delivered by Sierra Leone, and an ECOWAS member (Freetown Communique); both are context only.
+
+shift_events: []
+
+flags:
+  - "Closest statement: Security Council transcript, 23 Sept 2026: 'Decisions involving the use of lethal force, the deprivation of human life, and the escalation of conflict must never be abdicated to autonomous algorithms.' A principle, not an instrument preference."
+  - "Did not vote on 78/241; Yes on 79/62 and 80/57."

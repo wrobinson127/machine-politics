@@ -1,0 +1,21 @@
+# Sao Tome and Principe: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: STP
+un_name: SAO TOME AND PRINCIPE
+display_name: Sao Tome and Principe
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Sao Tome and Principe has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission filed. The UNODA documents index holds no statement by Sao Tome and Principe in any forum for 2023 to 2026.
+
+shift_events: []
+
+flags:
+  - "Did not vote on any of the three resolutions and has no statements on the index."

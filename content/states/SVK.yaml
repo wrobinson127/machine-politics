@@ -1,0 +1,38 @@
+# Slovakia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SVK
+un_name: SLOVAKIA
+display_name: Slovakia
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2023-10-04
+    approved: false
+    rationale: >
+      Slovakia's own words point two ways. In October 2023 it told the
+      UN First Committee it supports the two-tier approach, which bans
+      some autonomous weapons and regulates the rest, and a stronger
+      mandate for the Geneva expert group. That points toward a treaty
+      with bans, but it did not say whether the result should be legally
+      binding.
+    evidence:
+      - source: svk-c1-78-gd-2023
+        claim: Slovakia supports the two-tier approach and a stronger mandate for the expert group.
+        quote: "Slovakia supports the so called \"two tier\" approach and strengthening the next GGE mandate respectively."
+        date: 2023-10-04
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovakia_en.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: The official record A/C.1/78/PV.4 (4 October 2023) renders it as support for the GGE "within the Convention on Certain Conventional Weapons, as well as the so-called two-tier approach".
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Coded LBI-BAN only because the brief maps 'two-tier approach' to LBI-BAN. The statement is one line, says nothing about a binding instrument, and follows EU language. The DNK precedent (two-tier without a stated instrument form went to AMBIG when paired with contrary words) is close; Slovakia has no contrary words on record, but CCW-ONLY is a real alternative."
+  - "80th session general debate (16 Oct 2025, UN machine transcript only, ga/c1/80/8): Slovakia 'supports ongoing discussion, including within the CCW framework'. Transcript, INFERRED at most and cannot drive a change (R1). It reads closer to CCW-ONLY."
+  - "UNODA lists one Slovakia statement for the 80th session but no PDF link was found; 79th session: none listed. Slovakia did not file under 78/241 or 79/239 (no file found)."
+  - "EU statements Slovakia aligned with corroborate only (R3)."

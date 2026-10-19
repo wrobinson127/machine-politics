@@ -1,0 +1,45 @@
+# Qatar: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: QAT
+un_name: QATAR
+display_name: Qatar
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2021-12-13
+    approved: false
+    rationale: >
+      At the 2021 review conference of the Geneva weapons convention (the
+      CCW), Qatar called autonomous weapons the biggest challenge before the
+      meeting, stressed the convention's central role, and urged states to
+      take the expert group's report forward. It did not say what the talks
+      should produce. The statement is in Arabic only, so this reading is a
+      description. Qatar voted Yes on all three UN resolutions.
+    evidence:
+      - source: qat-ccw-revcon6-2021
+        claim: Qatar puts autonomous weapons at the centre of the CCW's agenda without naming an outcome.
+        description: >
+          Arabic statement to the Sixth CCW Review Conference, headed as a
+          draft text of Qatar's delegation. Qatar says the biggest challenge
+          before the conference is how to deal with autonomous weapons,
+          given the challenges they pose to international humanitarian law,
+          while noting civilian uses of the technology; says states must deal
+          positively with the GGE report; affirms the pivotal role of the
+          convention as a key instrument serving humanitarian law; and
+          stresses addressing and stopping the destructive effects of
+          autonomous weapons development, especially in AI, which adds
+          destruction without clear responsibility.
+        date: 2021-12-13
+        url: https://documents.unoda.org/wp-content/uploads/2022/02/Qatar-CCW-RevCon-General-statement.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "UNODA indexes this file under both English and Arabic, but the PDF is Arabic only."
+  - "Only one piece of Qatar's own words, from 2021. A secondary lead (Automated Decision Research) cites a March 2023 CCW GGE statement on behalf of the Arab Group calling for a legally binding instrument (video only, not opened). Even if confirmed it is a group statement and corroborates only (R3)."
+  - "Read and silent on LAWS: Qatar's First Committee statements 2023, 2024 and 2025, its 2024 statement for the Gulf Cooperation Council, and its 2026 general debate statement (all Arabic). No SG submission under 78/241 or 79/239. Endorsed the REAIM 2023 call to action (context only)."

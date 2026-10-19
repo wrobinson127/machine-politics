@@ -1,0 +1,21 @@
+# Morocco: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MAR
+un_name: MOROCCO
+display_name: Morocco
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Morocco has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission under 78/241. Morocco's 79/239 submission on AI in the military domain (English) states that its scope deliberately excludes lethal autonomous weapons systems and takes no position on regulating or banning them. First Committee general debate statements for 2024 and 2026 (French) and 2025 (English) mention military AI and responsible use in line with international law, but not autonomous weapons. Disarmament Commission statements of 2024 and 2025 (French) are silent.
+
+shift_events: []
+
+flags:
+  - "Morocco's 79/239 submission notes that the international community 'is actively debating whether to regulate or ban such systems' but takes no side. It mentions the US Political Declaration and the Paris Declaration as other processes without saying Morocco endorses them; endorsement status was not checked and would be context only."

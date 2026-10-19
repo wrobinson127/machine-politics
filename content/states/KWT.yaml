@@ -1,0 +1,31 @@
+# Kuwait: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: KWT
+un_name: KUWAIT
+display_name: Kuwait
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Kuwait has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed); First Committee national statements 2023, 2024 and 2025
+      (Arabic, read), including the 2024 conventional weapons statement
+      (small arms, the Arms Trade Treaty and Israel, nothing on autonomous
+      weapons); UN transcripts of the 2025 general debate, where Kuwait
+      spoke for the Gulf Cooperation Council (no mention); CCW meeting pages
+      and sampled 2025 and 2026 GGE transcripts (no Kuwaiti statement
+      found). A 2024 Kuwaiti statement voices grave concern at irresponsible
+      military use of AI and cites its use in Gaza, without naming
+      autonomous weapons or any instrument. Endorsed the REAIM 2023 call to
+      action (context only).
+
+shift_events: []
+
+flags:
+  - "A secondary lead (Automated Decision Research) lists Kuwait as supporting a legally binding instrument only through NAM and Arab Group alignment, and says Kuwait has issued no independent statement. Group alignment corroborates only (R3)."

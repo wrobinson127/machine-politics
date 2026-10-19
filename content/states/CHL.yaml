@@ -1,0 +1,106 @@
+# Chile: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CHL
+un_name: CHILE
+display_name: Chile
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2018-08-30
+    approved: false
+    rationale: >
+      Chile, with Austria and Brazil, proposed in 2018 that the Geneva weapons
+      convention start negotiating a legally binding instrument to keep
+      meaningful human control over autonomous weapons. The proposal did not
+      say what the instrument should ban. This is the same document that
+      grounds Austria's and Brazil's 2018 readings.
+    evidence:
+      - source: ccw-gge2-2018-wp7-aut-bra-chl
+        kind: working_paper
+        claim: The 2018 working paper, with Chile among its three authors, proposes a mandate to negotiate a legally binding instrument.
+        quote: "negotiate a legally-binding instrument to ensure meaningful human control over critical functions in lethal autonomous weapon systems"
+        date: 2018-08-30
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.2/2018/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: Face re-checked 2026-10-19. The header reads "Submitted by Austria, Brazil and Chile".
+
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2021-06-28
+    approved: false
+    rationale: >
+      In 2021 Chile, with Brazil and Mexico, set out an outline for a legally
+      binding instrument, preferably a new protocol to the Geneva weapons
+      convention, made of prohibitions and regulations. In 2024 Chile joined a
+      group submission to the UN Secretary-General calling for legally binding
+      rules with prohibitions and regulations, and for treaty negotiations to
+      start as soon as possible.
+    evidence:
+      - source: ccw-gge-2021-bra-chl-mex-elements
+        kind: working_paper
+        claim: The 2021 paper by Brazil, Chile and Mexico says the normative framework should be a legally binding instrument.
+        quote: "the normative framework is the priority and should take the form of a legally binding instrument."
+        date: 2021-06-28
+        url: https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: No date on its face; the date is the PDF creation date, as in the existing source entry.
+      - source: ccw-gge-2021-bra-chl-mex-elements
+        kind: working_paper
+        claim: The same paper proposes an instrument made of prohibitions and regulations.
+        quote: "propose the following outline of a normative framework, conducive to an instrument establishing prohibitions and regulations"
+        date: 2021-06-28
+        url: https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: The outline's first items say States shall prohibit the development and use of AWS that cannot be controlled by humans or used in compliance with IHL.
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Chile co-signed a 2024 group submission to the Secretary-General calling for binding rules with regulations and prohibitions.
+        quote: "require the development of legally binding rules and principles, including regulations and prohibitions"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          A/79/88, annex I, page 34: joint reply by Chile, Colombia, Costa Rica,
+          the Dominican Republic, Ecuador, El Salvador, Guatemala, Kazakhstan,
+          Nigeria, Panama, Peru, the Philippines, Sierra Leone and the State of
+          Palestine. Its recommendation (d) calls for "the initiation of
+          negotiations on a legally binding treaty to regulate autonomous weapons
+          systems as soon as possible."
+
+shift_events:
+  - state: CHL
+    date: 2021-06-28
+    from: LBI-OPEN
+    to: LBI-BAN
+    approved: false
+    rationale: >
+      The earliest verified Chilean text naming prohibitions within the
+      instrument it seeks is the 2021 elements paper with Brazil and Mexico.
+      The 2018 proposal asked only for a binding instrument. Chilean support
+      for prohibitions may predate 2021; the date marks the earliest verified
+      document.
+    evidence:
+      - source: ccw-gge-2021-bra-chl-mex-elements
+        kind: working_paper
+        claim: First verified Chile-authored text proposing an instrument of prohibitions and regulations.
+        quote: "propose the following outline of a normative framework, conducive to an instrument establishing prohibitions and regulations"
+        date: 2021-06-28
+        url: https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+flags:
+  - "Chile is NOT a named author of Draft Protocol VI: not on the face of CCW/GGE.1/2022/WP.8 (eleven authors) nor of the revised CCW/GGE.1/2023/WP.6 (fourteen authors). The 2024 joint SG reply says Chile, Colombia and the Dominican Republic later gave the group their 'support'."
+  - "The 2024 joint SG reply is a co-written submission, not one delivered by another state; it is used here as corroboration of the 2021 reading. The analyst may treat it as R3-type corroboration only; the coding stands on the 2021 paper either way."
+  - "Chile's October 2023 First Committee conventional weapons statement (Spanish only, UNODA file Chile.pdf) calls the creation of a binding legal mechanism on LAWS an advance and urges a Yes vote on the LAWS draft, which it numbers L.59. Consistent, not quotable. The file name Chile.pdf is reused across several 2023 portal entries, so the date is uncertain."
+  - "The 2018 and 2021 legs mirror BRA.yaml (analyst-approved 2026-10-19), from the same co-written documents; quotes re-verified against the documents 2026-10-19."

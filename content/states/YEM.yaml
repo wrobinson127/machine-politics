@@ -1,0 +1,26 @@
+# Yemen: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: YEM
+un_name: YEMEN
+display_name: Yemen
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Yemen has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed); First Committee general debate statements 2023, 2024 and 2026
+      (Arabic, read, no mention of autonomous weapons; the 2025 statement is
+      indexed without a file); UN transcripts of the 2025 and 2026 general
+      debates (no Yemeni mention); no Yemeni CCW statement found. Endorsed
+      the REAIM 2023 call to action (context only).
+
+shift_events: []
+
+flags:
+  - "Yemen's only First Committee appearances found are general debate statements; it has no conventional weapons or CCW record on UNODA."

@@ -1,0 +1,56 @@
+# Kiribati: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: KIR
+un_name: KIRIBATI
+display_name: Kiribati
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-04-30
+    approved: false
+    rationale: >
+      At the Vienna conference in April 2024, Kiribati said a new treaty is the
+      only way to keep people safe from autonomous weapons and that it should
+      include prohibitions. A month later its submission to the UN
+      Secretary-General called for a legally binding treaty to prohibit these
+      weapons, including a ban on systems that target people.
+    evidence:
+      - source: kir-vienna-statement-2024
+        claim: Kiribati said a new treaty is needed and that it should contain prohibitions.
+        quote: "We contend that a new treaty is the only way for humanity to be safe from these weapons."
+        date: 2024-04-30
+        url: https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Kiribati_National_Statement.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          The same statement says "the treaty should address a series of prohibitions
+          that include autonomous weapons" that hinder human understanding and prediction.
+      - source: kir-submission-78-241
+        claim: Kiribati's submission calls for a legally binding treaty to prohibit autonomous weapons.
+        quote: "we are calling for a new legally binding treaty to prohibit these weapons"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Kiribati-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: kir-submission-78-241
+        claim: The submission names a specific ban on anti-personnel autonomous weapons.
+        quote: "Kiribati also agrees that the instrument should ban anti-personnel autonomous weapon systems."
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Kiribati-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "Submission text also appears in A/79/88 (unsg-report-a-79-88) in the third person ('Kiribati is calling for a new legally binding treaty to prohibit these weapons')."
+  - "The submission's call reads as a broad prohibition, with ICRC-style specific bans; LBI-BAN either way."
+  - "Later record corroborates: 23 Oct 2025 First Committee cluster 3 statement (docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Kiribati_4.pdf) welcomes the GGE rolling text as a basis for negotiations and co-sponsorship of 80/57; no instrument preference stated there. Kiribati endorsed the Vienna Chair's Summary and the Sept 2025 GGE joint statement (context only)."
+  - "Oct 2024 First Committee statement (Statement_by_Kiribati_UNGA79_1C.pdf on docs-library.unoda.org) found by search but not opened."

@@ -1,0 +1,28 @@
+# Laos: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LAO
+un_name: LAO PEOPLE'S DEMOCRATIC REPUBLIC
+display_name: "Lao People's Democratic Republic"
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Laos has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Lao-EN.pdf returns 403) and 79/239 (none in A/80/78).
+      CCW GGE statement lists 2023 to 2026 (no Lao statement). First
+      Committee statements on UNODA Meetings Place 2023 to 2026: two 2023
+      files, two 2024 files (including conventional weapons), two 2025 files
+      (including conventional weapons) and the 2026 general debate, none
+      mentioning autonomous weapons. Official record A/C.1/79/PV.2 searched,
+      no mention. ASEAN group statements are context only.
+
+shift_events: []
+
+flags:
+  - "2026 general debate speaks of AI generally ('developing appropriate norms and frameworks to promote their peaceful, responsible and secure use'), not of autonomous weapons. Not read as a position."

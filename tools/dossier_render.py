@@ -10,6 +10,7 @@ module imports only `config` and reimplements the two tiny helpers it needs, so
 there is no circular import.
 """
 import html as _html
+import json
 
 from config import config
 
@@ -41,6 +42,11 @@ ALPHA2 = {
     "SLE": "SL", "SLV": "SV", "SWE": "SE", "TUR": "TR", "UKR": "UA", "URY": "UY",
     "USA": "US",
 }
+# Every other member state takes its ISO alpha-2 code from the Natural
+# Earth label points the world map already uses (unique by test).
+ALPHA2.update({k: v["a2"] for k, v in json.loads(
+    (config.REPO_ROOT / "data" / "source" / "ne_labels.json").read_text(encoding="utf-8")
+)["states"].items() if k not in ALPHA2})
 
 
 def esc(v):

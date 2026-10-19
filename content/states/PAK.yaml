@@ -1,0 +1,76 @@
+# Pakistan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: PAK
+un_name: PAKISTAN
+display_name: Pakistan
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2023-03-06
+    approved: false
+    rationale: >
+      At the Geneva expert group in March 2023, Pakistan called for a new
+      legal instrument with prohibitions and regulations, and that month it
+      tabled its own proposal for a legally binding framework listing what
+      should be banned. It has repeated this in its 2024 and 2025 submissions
+      to the UN Secretary-General, asking for a binding protocol that bans
+      autonomous weapons operating without human control. On this site's
+      scale, that is a treaty with bans.
+    evidence:
+      - source: pak-gge-2023-03-06
+        claim: Pakistan calls for a new legal instrument that contains prohibitions and regulations.
+        quote: "there is a clear case for developing an international legal instrument envisaging prohibitions and regulations on the development, deployment and use of LAWS"
+        date: 2023-03-06
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/Statement_of_Pakistan_at_GGE_(06_March_2023).pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: ccw-gge1-2023-wp3rev1-pak
+        claim: Pakistan's own working paper proposes elements of a legally binding framework, opening with prohibitions.
+        quote: "Pakistan proposes the following elements for the development of an international legally binding framework on Lethal Autonomous Weapons Systems (LAWS)"
+        date: 2023-03-08
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.3_REv.1_0.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: The proposed elements begin with "(a) Prohibitions on development, deployment and use in all circumstances" of listed systems.
+      - source: pak-submission-78-241
+        claim: Pakistan's 2024 submission wants a new CCW protocol with prohibitions and restrictions.
+        quote: "Such a Protocol will need to clearly spell out prohibitions and restrictions governing LAWS"
+        date: 2024-05-03
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Pakistan-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: The same submission proposes draft prohibitions (paragraph 25) and restrictions (paragraph 26) for a Protocol VI, and calls this a two-tier approach.
+      - source: pak-eov-79-62
+        claim: Explaining its Yes vote on the 2024 resolution, Pakistan restated the goal of a new protocol with prohibitions and regulations.
+        quote: "continue in the GGEs of the CCW with an aim to develop international rules through a new Protocol spelling out prohibitions and regulations"
+        date: 2024-11-06
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_Pakistan.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: eov
+      - source: pak-submission-79-239
+        claim: In 2025 Pakistan asks for a legally binding CCW protocol that prohibits certain autonomous weapons.
+        quote: "Pakistan advocates concluding negotiations on a legally binding CCW protocol prohibiting LAWS operating without human control or incapable of complying with International Humanitarian Law"
+        date: 2025-04-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Pakistan-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "as_of is the earliest document opened in this review. Pakistan's call for prohibitions very likely predates 2023 (it spoke at the CCW from 2013); the analyst may move as_of on an earlier primary."
+  - "Pakistan always places the instrument inside the CCW (a Protocol VI). That fits LBI-BAN; it is not CCW-ONLY because the outcome is stated."
+  - "Pakistan's mission site (pakungeneva.pk) links for 2023 and 2024 GGE statements returned 'page not found'. The UNODA copies were used instead."
+  - "Also opened and consistent: CCW/GGE.1/2024/WP.7 (Pakistan's elements paper, 14 May 2024) and the First Committee record A/C.1/78/PV.19 and PV.28 (2023 cluster statement and EOV on L.56)."
+  - "pak-eov-79-62 date is the UNODA posting date (2024-11-06); the vote itself may be a day earlier."

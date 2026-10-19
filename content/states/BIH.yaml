@@ -1,0 +1,27 @@
+# Bosnia and Herzegovina: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BIH
+un_name: BOSNIA AND HERZEGOVINA
+display_name: Bosnia and Herzegovina
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Bosnia and Herzegovina has said on autonomous
+      weapons and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG report A/79/88 under 78/241 (no submission); SG
+      report A/80/78 under 79/239 (no submission); 2025 New York informal
+      consultations under 79/62 (no statement posted); CCW GGE statements and
+      working papers 2023 to 2026 on the UNODA meetings portal (none); First
+      Committee statements on the UNODA portal for the 78th to 81st sessions
+      (no statements listed for Bosnia and Herzegovina); web search for a
+      national statement (none found). No endorsements on this topic found.
+
+shift_events: []
+
+flags:
+  - "Nothing found beyond votes. Low priority for further retrieval."

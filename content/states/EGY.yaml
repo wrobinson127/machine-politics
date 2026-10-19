@@ -1,0 +1,64 @@
+# Egypt: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: EGY
+un_name: EGYPT
+display_name: Egypt
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-04-01
+    approved: false
+    rationale: >
+      Egypt says the best course is a two-tier approach: a legally binding
+      ban on fully autonomous weapons that work without human control, plus
+      rules for other military uses of AI. It has said this at the UN
+      Disarmament Commission, in two submissions to the UN Secretary-General
+      and in the First Committee. On this site's scale that is a treaty with
+      bans.
+    evidence:
+      - source: egy-undc-2024-statement
+        claim: Egypt asks the Disarmament Commission to recommend a two-tier approach that prohibits fully autonomous weapons.
+        quote: "recommendations on the next steps, including on a two-tiered approach by the prohibition of the fully autonomous weapons"
+        date: 2024-04-01
+        url: https://docs-library.unoda.org/United_Nations_Disarmament_Commission_-_(2024)/egypt_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: egy-submission-78-241
+        claim: Egypt's submission calls the two-tier approach, banning fully autonomous weapons and regulating the rest, the most realistic course.
+        quote: "Egypt is of the view that pursuing a two-tiered approach, comprising the prohibition of fully autonomous weapons while regulating other military applications of AI"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Egypt-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: egy-c1-79-cluster5-2024
+        claim: In the First Committee Egypt ties the two-tier approach to a legally binding instrument.
+        quote: "Egypt supports a two tier approach that aims at concluding a legally binding instrument on Fully Autonomous Lethal Weapons Systems"
+        date: 2024-10-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Egypt_0.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: egy-submission-79-239
+        claim: Egypt restates in 2025 that a legally binding prohibition is the most effective course.
+        quote: "Agreeing on a legally binding prohibition of LAWS that function without human control or oversight"
+        date: 2025-04-11
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Egypt-en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "as_of is the Disarmament Commission statement of 1 April 2024, the earliest primary text found. It asks the UNDC to recommend a two-tier approach with a prohibition but does not itself say 'legally binding'. The 78/241 submission (24 May 2024) is the first text found with both 'legally binding' and 'prohibition'. Move as_of to 2024-05-24 if the first fully explicit text is preferred."
+  - "Egypt's older CCW-era statements (2014 to 2022) were not reviewed: the only index found was reachingcriticalwill.org, which the brief forbids, and Egypt is a CCW signatory, not a High Contracting Party, so few appear on meetings.unoda.org. Earlier support for a ban likely exists."
+  - "Egypt's 2025 Disarmament Commission statement (7 April 2025) restates the two-tier approach and calls for 'a proper mix of both non-binding and legally binding instruments' for military AI. Read, consistent, not cited to avoid padding."
+  - "Egypt prefers a UN-led process over the CCW alone: its 79/239 submission says the GGE 'cannot serve as a substitute' for a UN process. Does not change the code."
+  - "The 2024 First Committee cluster 4 statement (also two-tier language) shares one URL, Statement_by_Egypt.pdf, with two other Egypt statements on the UNODA index, so its date could not be pinned. The cluster 5 statement cited here has its own URL and date."

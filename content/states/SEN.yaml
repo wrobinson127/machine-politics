@@ -1,0 +1,70 @@
+# Senegal: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SEN
+un_name: SENEGAL
+display_name: Senegal
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2025-10-27
+    approved: false
+    rationale: >
+      At the UN in October 2025, speaking about artificial intelligence and
+      lethal autonomous weapons, Senegal said it supports every effort to
+      develop legally binding norms that keep all weapons subject to
+      principles of responsibility and humanity. It has not said what those
+      norms should ban. The statement is in French, so this site describes it
+      rather than quoting it.
+    evidence:
+      - source: sen-c1-80-conventional-2025
+        claim: Senegal supports initiatives to develop legally binding norms, in a paragraph on AI and lethal autonomous weapons systems.
+        description: >
+          In its third point, Senegal says the rapid development of artificial
+          intelligence and of lethal autonomous weapons systems (SALA) poses
+          new challenges, given how slowly inclusive governance is negotiated.
+          It then says Senegal supports all initiatives to develop legally
+          binding norms ensuring that all weapons, whatever their form or
+          technology, remain subject to universal principles of
+          responsibility and humanity.
+        date: 2025-10-27
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Senegal_4_FR.pdf
+        lang: fr
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: French only, so described rather than quoted.
+      - source: un-c1-80-transcript-18
+        claim: The interpreted delivery records the same support for binding norms.
+        quote: "Senegal supports all initiatives that aim to develop equally binding norms, guaranteeing responsible use of AI in the military domain"
+        date: 2025-10-27
+        url: https://transcripts.un.org/en/ga/c1/80/18
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: >
+          Machine transcript of the English interpretation. "equally binding"
+          is very likely a mishearing of "legally binding" (the French text
+          reads "juridiquement contraignantes"). The spoken version frames it
+          around AI in the military domain; the written text names lethal
+          autonomous weapons systems.
+      - source: ccw-gge-2026-joint-statement-aug-sep
+        claim: Corroboration only. Senegal associated itself with a 2026 joint statement backing the GGE rolling text as a basis for negotiating an instrument.
+        quote: "serve as basis for negotiations within the CCW on an instrument on lethal autonomous weapons systems"
+        date: 2026-08-31
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Updated_JST_for_GGE_LAWS_Aug-Sep_2026_session.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: Delivered by Brazil; footnote 1 lists Senegal among states that associated after delivery. R3, corroboration only.
+
+shift_events: []
+
+flags:
+  - "The binding-norms sentence is broad ('all weapons, whatever their form or technology') rather than a call for a LAWS-specific treaty. It sits in the LAWS paragraph, which is why it is read as LBI-OPEN; an analyst could reasonably hold it at NONE as too general."
+  - "Automated Decision Research quotes an English version dated 16 October 2025 (reachingcriticalwill.org link, off-limits). The UNODA file is the thematic statement with a 21 to 30 October window; the delivery the transcript shows is 27 October. The 16 October general debate transcript (80th session, 8th meeting) has no LAWS passage."
+  - "Earlier record, not instrument-level: A/C.1/78/PV.18 (23 Oct 2023) has no LAWS passage from Senegal; the 2024 thematic statement (French) lists LAWS among new threats needing global governance; the 2026 general debate (French, and transcript of 12 Oct 2026) names growing automation of weapons as a threat."
+  - "CCW GGE 2026 second session (transcript, 31 Aug 2026, 2nd meeting): Senegal intervened on the characterisation text only, opposing narrowing the scope to systems 'with lethal force'."
+  - "No submission under 78/241 or 79/239 found. Freetown Communique (ECOWAS) is context only."

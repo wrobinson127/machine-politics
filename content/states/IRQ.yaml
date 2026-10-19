@@ -1,0 +1,46 @@
+# Iraq: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: IRQ
+un_name: IRAQ
+display_name: Iraq
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2023-10-23
+    approved: false
+    rationale: >
+      In the First Committee's 2023 debate on conventional weapons, Iraq
+      called for legally binding rules to deal with lethal autonomous
+      weapons, pointing to the risk that they spread or fall into the hands
+      of terrorist groups. It did not say the rules should ban anything.
+      The statement is in Arabic only, so this reading is a description.
+      Iraq voted Yes on all three UN resolutions.
+    evidence:
+      - source: irq-c1-78-conventional-2023
+        claim: Iraq calls for legally binding provisions on lethal autonomous weapons, without naming prohibitions.
+        description: >
+          Arabic-only national statement in the conventional weapons debate,
+          delivered by First Secretary Hamza Habib al-Sadr. After a passage
+          on illicit arms trafficking and the ammunition working group, Iraq
+          says its delegation calls for establishing legally binding
+          provisions to address the challenges of emerging technologies in
+          the area of lethal autonomous weapons systems, taking into account
+          the risks of their proliferation and of their falling into the
+          hands of terrorist groups.
+        date: 2023-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Iraq.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Date: UNODA indexes the statement under the thematic debate on 23 October 2023. The Arabic header reads 23 Tishrin al-Thani (November) 2023, which looks like a typo for October. 23 October used."
+  - "The URL filename Iraq.pdf is also indexed for Iraq's 16 October 2023 statement. The file served on 2026-10-19 is the conventional weapons statement quoted here; the content could change if UNODA re-uploads."
+  - "Missing document: Iraq's 24 October 2024 conventional weapons statement. A secondary lead (Automated Decision Research) says it addresses LAWS, but the only copy it links is on a forbidden domain, and the UNODA file it should sit at (Statement_by_Iraq.pdf, 79th session) now holds Iraq's outer space statement. Iraq's 24 October 2025 thematic statement is indexed with no file, and UN transcripts for those 2025 meetings are not available."
+  - "CCW GGE statements by Iraq (3 August 2021, 2 December 2021, 6 March 2023) exist as audio only, per the same lead; not opened."
+  - "Iraq delivered Arab Group statements (conventional weapons debate 2022; CCW/MSP/2024/WP.24 on behalf of Arab states parties, which concerns Israeli violations, not LAWS). Corroboration only under R3."
+  - "Iraq's general debate statements 2023 to 2026 (Arabic) were read and say nothing on autonomous weapons. No SG submission under 78/241 or 79/239. Endorsed the REAIM 2023 call to action (context only)."

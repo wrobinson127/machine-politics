@@ -1,0 +1,54 @@
+# San Marino: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SMR
+un_name: SAN MARINO
+display_name: San Marino
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-10-16
+    approved: false
+    rationale: >
+      At the UN First Committee in October 2024, San Marino backed the
+      Secretary-General's call to negotiate a legally binding instrument by
+      2026, and said autonomous weapons that break international law or are
+      ethically unacceptable should be banned while the rest are regulated.
+      It repeated the call for a two-tier binding instrument in 2025. On this
+      site's scale that is a treaty with bans.
+    evidence:
+      - source: smr-c1-79-general-2024
+        claim: San Marino supports negotiating a new legally binding instrument by 2026.
+        quote: "San Marino supports the Secretary-General's call for the negotiation of a new legally binding instrument on autonomous weapon systems by 2026."
+        date: 2024-10-16
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/San_Marino.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: smr-c1-79-general-2024
+        claim: San Marino says some autonomous weapons should be prohibited and the rest regulated.
+        quote: "autonomous weapons systems that cannot be used in accordance with international law or that are ethically unacceptable should be prohibited"
+        date: 2024-10-16
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/San_Marino.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The sentence continues "while all other autonomous weapons systems should be properly regulated."
+      - source: smr-c1-80-general-2025
+        claim: In 2025 San Marino backs negotiating a binding two-tier instrument.
+        quote: "support the starting of negotiations for a legally binding instrument, which should be based on the two-tier approach, to set clear prohibitions and restrictions"
+        date: 2025-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/San_Marino.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Earlier record: 2023 general debate (san_marino.pdf, 78th session, 6 October 2023) says 'there is an urgent need to adopt international legal regulations on autonomous weapons' and recalls the Secretary-General's call for a treaty to prohibit and regulate. That fits the same direction but is less specific about bans in San Marino's own words, so as_of uses 2024."
+  - "Context only: San Marino is listed among states associating with the Vienna chair's summary in A/79/88 (endorsement, corroboration only). No national submission under 78/241 found."
+  - "San_Marino.pdf and Statement_by_San_Marino.pdf in the 80th session folder are the same statement."

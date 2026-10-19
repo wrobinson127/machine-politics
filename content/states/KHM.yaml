@@ -1,0 +1,43 @@
+# Cambodia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: KHM
+un_name: CAMBODIA
+display_name: Cambodia
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2025-10-24
+    approved: false
+    rationale: >
+      Cambodia says autonomous weapons must strictly follow international law,
+      and in 2025 it pledged to support the Geneva expert group and asked all
+      states to complete that group's mandate. It has not said in its own
+      name what the group should produce, which puts it in the "keep it in
+      Geneva" group on this site's scale.
+    evidence:
+      - source: khm-c1-80-cluster4-2025
+        claim: Cambodia backs the Geneva expert group and asks states to complete its mandate.
+        quote: "actively support the work of the GGE and calls upon all members to continue working towards the full implementation of its mandate."
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/eYt-DskVvj_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: khm-c1-79-general-debate-2024
+        claim: Cambodia says any development or use of autonomous weapons must strictly follow international law.
+        quote: "Cambodia stresses that any development, deployment, or use of AWS must strictly adhere to international law"
+        date: 2024-10-08
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Cambodia.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Cambodia delivered the ASEAN cluster 4 statement in October 2025 (https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/sMPsnFecpj_nyc_en.pdf), which calls for 'a robust, future-proof, and legally-binding instrument'. Under R3 a group statement corroborates only, so it does not move Cambodia to LBI-OPEN, but it sits uneasily with CCW-ONLY. INFERRED for that reason; AMBIG or LBI-OPEN at INFERRED are alternatives."
+  - "The same 2025 national statement frames LAWS partly as a transfer issue ('the responsible transfer of Lethal Autonomous Weapons Systems')."
+  - "No submission under 78/241 (not in A/79/88). Not listed at the 2023 to 2026 GGE sessions."

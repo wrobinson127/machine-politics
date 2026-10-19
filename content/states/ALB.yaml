@@ -1,0 +1,38 @@
+# Albania: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ALB
+un_name: ALBANIA
+display_name: Albania
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2024-11-14
+    approved: false
+    rationale: >
+      At the November 2024 meeting of the Geneva weapons convention, the CCW,
+      Albania said the expert group's mandate should be strengthened with the
+      aim of concluding a new legally binding instrument on autonomous weapons.
+      It did not say what that instrument should ban. On this site's scale
+      that is a treaty with its terms left open.
+    evidence:
+      - source: alb-ccw-mhcp-2024
+        claim: Albania wants the GGE mandate strengthened toward a new legally binding instrument on LAWS.
+        quote: "mandate of the GGE should be further strengthened aiming the conclusion of a new legally binding instrument on LAWS in compliance with International Humanitarian Law"
+        date: 2024-11-14
+        url: https://ambasadat.gov.al/geneva/?p=1006
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          Statement posted in English on the newsroom of Albania's Permanent
+          Mission in Geneva (page title in Albanian). Canonical address:
+          https://ambasadat.gov.al/geneva/newsroom/deklarate-gjate-takimit-te-paleve-te-larta-kontraktuese-te-konventes-per-ndalimin-ose-kufizimet-e-perdorimit-te-disa-armeve-konvencionale/
+
+shift_events: []
+
+flags:
+  - "Prohibition direction is endorsement-only: Albania is listed in A/79/88 among states associating with the Vienna chair's summary, which says unacceptable AWS should be explicitly prohibited. Under the brief that corroborates and cannot by itself lift the code to LBI-BAN."
+  - "First Committee: the portal lists two Albanian statements in 2024 and one each in 2025 and 2026, but none has a file link, so none could be read. No 78/241 or 79/239 national submission found."
+  - "A secondary search summary also attributed this LBI language to Albania's Foreign Ministry site (punetejashtme.gov.al/en/?p=2712); the page returned no content and was not used."

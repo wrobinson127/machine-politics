@@ -1,0 +1,30 @@
+# Syria: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SYR
+un_name: SYRIAN ARAB REPUBLIC
+display_name: "Syrian Arab Republic"
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Syria has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed); the official record of the 2023 vote on draft A/C.1/78/L.56
+      (A/C.1/78/PV.28: Syria spoke only on the ammunition drafts L.41 and
+      L.42, not on L.56); UNODA's index of Syrian explanations of vote in
+      2024 (L.1, L.14, L.22, L.25, L.34, L.38, L.65, L.68, L.70, none on the
+      LAWS draft L.77) and 2025 (L.62, not the LAWS draft); Syria's First
+      Committee statements 2023 to 2026 (Arabic, read, no mention of
+      autonomous weapons); UN transcripts of the 2025 and 2026 general
+      debates (no mention). No endorsements on file.
+
+shift_events: []
+
+flags:
+  - "Syria abstained on 78/241 and 79/62 and did not vote on 80/57, with no explanation found. Official verbatim records for the 79th session stop at A/C.1/79/PV.12, so the November 2024 vote meeting has no official record, and UN transcripts for that session are not online. The UN press release for that meeting (GA/DIS/3756) records no Syrian remarks on L.77."
+  - "Syria is reported not to be a CCW party (secondary lead, not checked), which would explain no CCW record."

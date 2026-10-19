@@ -1,0 +1,21 @@
+# Eritrea: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ERI
+un_name: ERITREA
+display_name: Eritrea
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Eritrea has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Eritrea (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Eritrea is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: 16 October 2024 general debate statement read in full, silent on autonomous weapons; statements of 11 October 2023 and 14 October 2025 are listed with no posted text. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "Two of three First Committee statements have no posted text; a transcript check could close the gap."

@@ -1,0 +1,34 @@
+# Zambia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ZMB
+un_name: ZAMBIA
+display_name: Zambia
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2025-10-16
+    approved: false
+    rationale: >
+      At the UN First Committee in October 2025, Zambia said it supports
+      efforts to develop a legally binding international instrument that
+      keeps meaningful human control over the use of force. It did not say
+      what the treaty should ban. That is a treaty with its terms left open.
+    evidence:
+      - source: zmb-c1-80-general-debate-2025
+        claim: Zambia supports developing a legally binding international instrument on lethal autonomous weapons systems.
+        quote: "We support ongoing efforts to develop a legally binding international instrument that ensures meaningful human control"
+        date: 2025-10-16
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/VzDbNoBBRnlK_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "The statement's face says only 'October 2025' (general debate, delivered by Ms. Ireen Musonda, Ministry of Defence). The date 16 October 2025 comes from the UNODA Meetings Place listing."
+  - "The document is a scanned image with no text layer; the quote was read from the page image. Worth a second look at the exact wording before approval."
+  - "The full sentence continues: 'compliance with international humanitarian law, and accountability for any use of force.' It was cut to stay under 25 words."
+  - "No Zambian submission under 78/241, 79/62 or 79/239 was found, and Zambia appears in no CCW GGE 2023 to 2026 statement listing. The 2026 general debate statement (14 October 2026) does not mention autonomous weapons."

@@ -1,0 +1,58 @@
+# Luxembourg: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LUX
+un_name: LUXEMBOURG
+display_name: Luxembourg
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-25
+    approved: false
+    rationale: >
+      In its May 2024 submission to the UN Secretary-General, Luxembourg said
+      the two-tier approach, banning some autonomous weapons and regulating the
+      rest, is the right answer. It spoke of negotiating a legally binding
+      instrument and wants the Geneva weapons convention to move to a mandate
+      for a new protocol. On this site's scale that is a treaty with bans.
+    evidence:
+      - source: lux-submission-78-241
+        claim: Luxembourg names the two-tier approach of prohibitions and regulations as the right response.
+        quote: "Luxembourg considers the “two-tier approach”, which distinguishes between prohibitions and regulations of LAWS, to be the appropriate way"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Luxembourg-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          Tier 1 in the submission is the prohibition of development and use of
+          LAWS that cannot be deployed in compliance with international law; Tier
+          2 regulates all other LAWS.
+      - source: lux-submission-78-241
+        claim: Luxembourg treats the instrument to be negotiated as legally binding.
+        quote: "a definition is not necessary to start to process of negotiation of a legally binding instrument on LAWS"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Luxembourg-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: "\"to start to process\" is as printed in the original."
+      - source: lux-submission-78-241
+        claim: Luxembourg wants a negotiating mandate for a new CCW protocol on LAWS.
+        quote: "move towards a negotiation mandate for an additional Protocol regarding LAWS under the Convention."
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Luxembourg-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "Luxembourg co-wrote CCW/GGE.1/2024/WP.3 (4 March 2024, existing id ccw-gge1-2024-wp3), which lists prohibitions but does not state the instrument's nature; DNK.yaml codes it AMBIGUOUS. Not used as the start date for that reason; the analyst could consider 2024-03-04 read together with this submission."
+  - "Luxembourg's October 2025 First Committee general debate statement (French only, Statement_Luxembourg_French.pdf) says it will keep promoting a double approach to ban fully autonomous systems and regulate the rest, and calls the CCW GGE the most appropriate framework. Consistent, but not quotable under the language rule, so not cited."
+  - "Luxembourg also signed the 2025 joint statement led by Australia and others at the May 2025 New York consultations, and CCW/MSP/2025/WP.5; context only."
+  - "Date 2024-05-25 is from A/79/88's listing; the file itself is undated (PDF created 28 May 2024)."

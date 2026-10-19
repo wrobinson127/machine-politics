@@ -1,0 +1,59 @@
+# Ireland: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: IRL
+un_name: IRELAND
+display_name: Ireland
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: false
+    rationale: >
+      In its May 2024 submission to the UN Secretary-General, Ireland said it
+      supports legally binding rules and a two-tier approach: ban some
+      autonomous weapons outright and regulate all the others. In October 2025
+      it told the First Committee it wants urgent progress on a legally binding
+      instrument. On this site's scale that is a treaty with bans.
+    evidence:
+      - source: irl-submission-78-241
+        claim: Ireland supports legally binding rules on autonomous weapons.
+        quote: "Ireland supports calls for legally-binding rules, and guidelines to address AWS"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Ireland-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: irl-submission-78-241
+        claim: Ireland backs the two-tier approach, with some systems banned outright and the rest regulated.
+        quote: "certain AWS must be prohibited outright, with all other AWS subject to multilaterally agreed regulation."
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Ireland-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          The sentence opens "Ireland supports the 'two-tier approach' developed in
+          the GGE on LAWS, whereby". The submission then lists three grounds for
+          prohibition: systems that cannot comply with IHL, that are not
+          sufficiently predictable or controllable, or that engage targets without
+          the necessary human control.
+      - source: irl-c1-80-conventional-2025
+        claim: Ireland restates its call for a legally binding instrument in 2025.
+        quote: "Ireland calls for urgent progress on a legally binding instrument on autonomous weapons systems."
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Ireland.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Earliest verified date is the May 2024 submission. Ireland likely supported a binding instrument earlier (CCW GGE statements from 2021 to 2023 were not posted on the UNODA portal and were not found); the analyst may move as_of on better evidence."
+  - "Ireland's October 2023 conventional weapons statement (A/C.1/78, UNODA file Ireland_0.pdf) speaks of full human control and supports the Austrian resolution but states no instrument preference."
+  - "The 2025 statement file URL is shared by three portal entries; the day (24 October 2025) is approximate. Ireland's 2026 general debate statement (81st session, Ireland.pdf) says it supports growing calls for a legally binding instrument; consistent, not cited."
+  - "Ireland associated its submission with the Vienna 2024 chair's summary and co-sponsored the LAWS resolutions; context only."

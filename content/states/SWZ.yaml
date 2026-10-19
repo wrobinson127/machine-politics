@@ -1,0 +1,27 @@
+# Eswatini: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SWZ
+un_name: ESWATINI
+display_name: Eswatini
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Eswatini has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Eswatini-EN.pdf returns 403) and 79/239 (none in
+      A/80/78). CCW GGE statement lists 2023 to 2026 (no Eswatini
+      statement). First Committee statements on UNODA Meetings Place: one
+      2023 statement, read, with no mention of autonomous weapons; no
+      Eswatini statements or EOVs listed for 2024, 2025 or 2026. African
+      Group statements are context only.
+
+shift_events: []
+
+flags:
+  - "Did not vote on 78/241 or 80/57; Yes on 79/62. No EOV found for any of the three. Very thin record."

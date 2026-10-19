@@ -1,0 +1,45 @@
+# Croatia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: HRV
+un_name: CROATIA
+display_name: Croatia
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-10-24
+    approved: false
+    rationale: >
+      At the UN First Committee in October 2024, Croatia called for work toward
+      an effective international instrument on autonomous weapons, based on
+      the laws of war and human control. It did not say whether that
+      instrument should be binding or what it should ban. Its 2025 statement
+      only said these weapons must follow the laws of war. So its words leave
+      the kind of instrument open.
+    evidence:
+      - source: hrv-c1-79-cluster4-2024
+        claim: Croatia wants work toward an effective international instrument based on IHL.
+        quote: "We must reduce our differences and intensify our work in order to produce an effective international instrument based on IHL."
+        date: 2024-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Croatia_0.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+        note: The paragraph also says states "need to recognise the centrality of human control".
+      - source: hrv-c1-80-general-2025
+        claim: In 2025 Croatia says only that these weapons must comply with IHL, ethics and democratic values.
+        quote: "lethal autonomous weapons systems (LAWS) must comply with international humanitarian law, ethical standards, and democratic values"
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/croatia_eng.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Weighing: Croatia asks for a new instrument with no stated form, no forum named and no prohibitions. LBI-OPEN needs the word binding; REG-SOFT needs a stated preference for non-binding; CCW-ONLY needs support for the Geneva process without an outcome, and Croatia names an outcome (an instrument) but not the Geneva forum in this passage. AMBIG is used for 'instrument, nature open'. NONE is the fallback if the analyst thinks this is too thin to be a position."
+  - "Croatia co-sponsored resolution 78/241 (sponsorships layer). No national submission under 78/241 or 79/239 found. 2023 First Committee statements (Croatia_en.pdf, Croatia_nPyP1WbAnDBG_en.pdf) do not mention autonomous weapons."
+  - "The 2026 First Committee (81st session) portal lists one Croatian statement, but no file link was available when checked."

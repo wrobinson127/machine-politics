@@ -1,0 +1,62 @@
+# Switzerland: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CHE
+un_name: SWITZERLAND
+display_name: Switzerland
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-05-25
+    approved: false
+    rationale: >
+      Switzerland's own words point two ways. In its 2024 submission it
+      backs the two-tier approach of specific prohibitions and
+      regulations and supports negotiating an international instrument,
+      and in 2025 it backed launching negotiations in the Geneva weapons
+      convention. That points toward a treaty with bans. In the records
+      opened here, it never says the instrument should be legally
+      binding.
+    evidence:
+      - source: che-submission-78-241
+        claim: Switzerland supports the two-tier approach of prohibitions plus regulations as the centre of any instrument.
+        quote: "Switzerland sees strong value in, and has been supportive of, the so-called two-tier approach consisting of specific prohibitions and regulations"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Switzerland-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          The sentence continues that the approach "should be at the center of any
+          instrument". The next paragraph lists systems the instrument should
+          prevent: those not reliable or predictable, whose effects cannot be
+          limited, or that cannot otherwise be used lawfully.
+      - source: che-submission-78-241
+        claim: Switzerland supports negotiating an international instrument.
+        quote: "Switzerland is actively supporting the negotiation of an international instrument to prevent, above all, the emergence of systems"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Switzerland-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: che-c1-80-conventional-2025
+        claim: In 2025 Switzerland backs launching negotiations in the CCW once the expert group's mandate ends.
+        quote: "Switzerland underlines its support for launching negotiations following the completion of the GGE’s mandate and considers the CCW the most suitable forum for this purpose."
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qRYqeekPsQ_nyc_m.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN EXPLICIT to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Main doubt: Switzerland never says 'legally binding' in the documents read. It speaks of 'an international instrument' and only 'takes note' of the SG and ICRC call for a legally binding instrument by 2026. Coded LBI-BAN because the brief treats a two-tier approach as LBI-BAN; the analyst may prefer AMBIG or a scope note on binding nature."
+  - "Switzerland was a lead sponsor of 78/241 and a sponsor of 79/62; context only."
+  - "Could not open: Switzerland's 2024 CCW GGE general debate statement (fdfa.admin.ch URL now redirects to a publications index). Its May 2023 GGE statement on the UNODA portal is French only and was not used."
+  - "Switzerland's 2026 First Committee general debate statement says the GGE elements are a solid basis for the Review Conference to agree a negotiating mandate; consistent, not cited."
+  - "Date 2024-05-25 is from A/79/88's listing; the file is undated (PDF created 28 May 2024)."

@@ -1,0 +1,61 @@
+# Italy: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ITA
+un_name: ITALY
+display_name: Italy
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: false
+    rationale: >
+      In its May 2024 submission to the UN Secretary-General, Italy said the
+      future instrument should set clear prohibitions and regulations and be
+      adopted as an additional protocol to the Geneva weapons convention, the
+      CCW. A CCW protocol is a binding treaty. Italy has repeated this at the
+      UN First Committee in 2024 and 2025, so on this site's scale it wants a
+      treaty with bans.
+    evidence:
+      - source: unsg-report-a-79-88
+        claim: Italy's submission says the instrument should prohibit and regulate, and be adopted as an additional CCW protocol.
+        quote: "This instrument should set clear prohibitions and regulations, so as to be eventually adopted as an additional protocol to the Convention on Certain Conventional Weapons."
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: >
+          Italy's submission in Annex I of A/79/88 (Original: English, dated
+          24 May 2024). The same submission sets out the two tiers: systems that
+          cannot be used in line with IHL "would be ipso facto prohibited", the
+          rest regulated. The national file 78-241-Italy-EN.pdf exists on the
+          UNODA library but was not opened; the quote is from the report text.
+      - source: ita-c1-79-cluster4-2024
+        claim: At the First Committee, Italy restates its goal of a new CCW protocol that sets out prohibitions and regulations.
+        quote: "we reiterate our commitment to the establishment of a future instrument, ideally a new Protocol to the CCW, which clearly sets out prohibitions and regulations"
+        date: 2024-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Italy.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: ita-c1-80-general-2025
+        claim: In 2025 Italy keeps a CCW protocol as the goal of the process.
+        quote: "The eventual goal of this process should be the adoption of a Protocol to the CCW."
+        date: 2025-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Italy.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Italy never uses the words 'legally binding'. The LBI reading rests on Italy naming an additional protocol to the CCW as the form, which is a treaty by definition. 'Ideally' (2024) and 'eventually' (2024 submission) hedge timing and preference, not the form. If the analyst wants the words 'legally binding' for EXPLICIT, drop to INFERRED; the code would stay LBI-BAN."
+  - "Earlier record: First Committee general debate, 4 October 2023 (Statement_by_H.E._Ambassador_Leonardo_Bencini,_en.pdf, 78th session folder) backs 'a two-tier, ban-or-regulate approach' without naming a form. Read as a less detailed version of the same position, not a different code, so no shift is drafted."
+  - "Corroboration only: co-author of CCW/GGE.1/2024/WP.3 (already in sources as ccw-gge1-2024-wp3; states the instrument should prohibit four classes but not its nature) and of CCW/GGE.1/2025/WP.4 (human element paper, no instrument preference). Joint statement of 11 states at the March 2023 GGE (delivered by Germany). EU statements. US Political Declaration endorser (Italy's own 2024 cluster V statement says so)."
+  - "Italy's 79/239 submission (79-239-Italy-en.pdf, dated 11 April 2025 per A/80/78) repeats the protocol language verbatim; not added as a fourth evidence item."
+  - "Italy's 2025 First Committee conventional weapons cluster file (Italy_2.pdf, 80th session folder) returned no extractable text; not read."

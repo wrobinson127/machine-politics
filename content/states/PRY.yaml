@@ -1,0 +1,33 @@
+# Paraguay: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: PRY
+un_name: PARAGUAY
+display_name: Paraguay
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Paraguay has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (no national reply in
+      A/79/88; Paraguay appears only as a signatory of the Ibero-American
+      summit communique printed there) and under 79/62 and 79/239 (none found
+      in the UNODA Eightieth session folder); not a named author of Draft
+      Protocol VI (not on the face of CCW/GGE.1/2022/WP.8 or
+      CCW/GGE.1/2023/WP.6); CCW GGE statements 2023 to 2026 on the UNODA
+      portal (none by Paraguay); First Committee statements on the UNODA
+      portal for 2023, 2024 and 2025 (general debate and thematic statements
+      read; none mentions autonomous weapons; the outer space statements
+      mention artificial intelligence only in that context); no LAWS
+      explanation of vote found. Paraguay co-sponsored 79/62 and signed the
+      Ibero-American communique; context only.
+
+shift_events: []
+
+flags:
+  - "The brief suggested Paraguay might be a Draft Protocol VI co-author; it is not on the face of either the 2022 or the 2023 text."
+  - "Paraguay's October 2026 First Committee statement (Paraguay_SP.pdf, Eighty-First session folder) is a scanned image with no text layer and was not read; it may mention autonomous weapons."

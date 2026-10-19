@@ -1,0 +1,48 @@
+# Gambia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GMB
+un_name: GAMBIA
+display_name: "Gambia"
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-04-29
+    approved: false
+    rationale: >
+      The Gambia's own words point two ways. At the Vienna conference in
+      April 2024 its defence chief said it will advocate international
+      regulation that prohibits autonomous weapons where meaningful
+      human control cannot be guaranteed, which points toward a treaty
+      with bans. The statement never says those rules should be legally
+      binding.
+    evidence:
+      - source: gmb-vienna-2024-statement
+        claim: The Gambia advocates international regulation that prohibits autonomous weapons lacking meaningful human control.
+        quote: "an international regulation of autonomous weapons systems that prohibits systems where meaningful human control (MHC) cannot be guaranteed"
+        date: 2024-04-29
+        url: https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Gambia_National_Statement.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: The sentence opens "The Gambia will joint civilized nations to advocates for" (spelling as in the original).
+      - source: gmb-vienna-2024-statement
+        claim: The Gambia stresses progress on the legal regulation of autonomous weapons.
+        quote: "to underscore the urgency of progress on the legal regulation of autonomous weapons systems to conform with International Humanitarian Law (IHL)"
+        date: 2024-04-29
+        url: https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Gambia_National_Statement.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If prohibition wording alone should count, restore LBI-BAN."
+  - "Confidence INFERRED because the text says 'international regulation' and 'legal regulation' with a prohibition, but never 'legally binding' or 'treaty'. It also speaks of 'new normative frameworks' and 'internationally agreed constraints'. REG-SOFT was considered and rejected: nothing in the text prefers a non-binding outcome. AMBIG is a possible alternative."
+  - "Speaker is the Chief of Defence Staff of the Gambia Armed Forces, not the foreign ministry. The Austrian ministry lists it as the Gambia national statement."
+  - "Date: the text is headed for the conference 'to be held on 29-30 April 2024'; delivery day not stated. 2024-04-29 is the opening day."
+  - "No other national statement found: no submission under 78/241 or 79/239; no Gambian speaker found in the A/C.1/78 records or the 2025 and 2026 First Committee transcripts. The Gambia is not a CCW High Contracting Party."
+  - "Automated Decision Research lists The Gambia as not yet having declared a position; its page does not cite this Vienna statement."

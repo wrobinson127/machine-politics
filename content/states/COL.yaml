@@ -1,0 +1,75 @@
+# Colombia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: COL
+un_name: COLOMBIA
+display_name: Colombia
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2023-05-11
+    approved: false
+    rationale: >
+      Colombia is a named author of the revised Draft Protocol VI of May 2023,
+      a proposed treaty for the Geneva weapons convention. It would ban
+      autonomous weapons that cannot be used with meaningful human control and
+      regulate the rest. In October 2023 Colombia told the First Committee
+      that a binding instrument should ban fully autonomous weapons and
+      regulate all others.
+    evidence:
+      - source: ccw-gge1-2023-wp6-draftprotocol
+        claim: Colombia co-authored a draft CCW protocol whose Article 3 prohibits a class of autonomous weapons.
+        quote: "It is prohibited to design, develop, produce, possess, acquire, deploy, transfer, or use, under any circumstances, autonomous weapon systems"
+        date: 2023-05-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: >
+          Face-checked 2026-10-19: Colombia is among the fourteen authors. The
+          prohibition is not a blanket ban; the sentence continues with the
+          condition quoted in the next entry, and Article 4 regulates all other
+          systems.
+      - source: ccw-gge1-2023-wp6-draftprotocol
+        claim: The prohibition covers systems that cannot be used with meaningful human control.
+        quote: "autonomous weapon systems that cannot be used with meaningful human control in their critical functions of selecting, targeting, or engaging to apply force."
+        date: 2023-05-11
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+      - source: col-c1-78-general-2023
+        claim: Colombia says autonomous weapons should be governed by a binding instrument that bans fully autonomous weapons and regulates the rest.
+        description: >
+          In its First Committee general debate statement, Colombia says it is
+          urgent to continue discussing autonomous weapon systems, and that they
+          should be regulated by a binding international instrument that
+          prohibits the development of fully autonomous weapons and regulates
+          all other autonomous weapon systems so that they remain under
+          meaningful human control.
+        date: 2023-10-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/STATEMENT_OF_COLOMBIA_-_GENERAL_DEBATE_FIRST_COMMITTEE_-_(OCT._9_2023).pdf
+        lang: es
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: unsg-report-a-79-88
+        claim: Colombia co-signed a 2024 group submission to the Secretary-General calling for binding rules with regulations and prohibitions.
+        quote: "require the development of legally binding rules and principles, including regulations and prohibitions"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: A/79/88, annex I, page 34, joint reply of fourteen States including Colombia.
+
+shift_events: []
+
+flags:
+  - "Authorship discrepancy: the face of CCW/GGE.1/2023/WP.6 lists Colombia as an author, but the 2024 joint SG reply (A/79/88 p.34) says the group of 13 that submitted the revised draft 'has since received support from three more, namely Chile, Colombia and the Dominican Republic'. The face of the document controls here; the analyst may want to confirm against the official UN-symbol version."
+  - "New source id ccw-gge1-2023-wp6-draftprotocol is also needed by PER; other batches (for example batch 1 or the Central America batch) may add the same document under a different id. Deduplicate before merge."
+  - "Colombia's October 2026 First Committee general debate statement (Spanish only) stresses human control and asks the Review Conference to turn the agreed elements into concrete decisions; it does not restate a binding instrument. Not a change of position on its face, but the analyst may want to watch it."
+  - "Colombia was not a named author of the 2022 Draft Protocol VI (CCW/GGE.1/2022/WP.8)."

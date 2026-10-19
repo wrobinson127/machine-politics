@@ -1,0 +1,55 @@
+# Lesotho: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LSO
+un_name: LESOTHO
+display_name: Lesotho
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2023-10-23
+    approved: false
+    rationale: >
+      Lesotho's own words point two ways. In 2023 it told the UN First
+      Committee that autonomous weapons do not comply with the laws of
+      war and should not be developed or used, which points toward a
+      ban. Since then it has called for human control and urgent
+      negotiations to regulate them, without saying whether the rules
+      should be legally binding.
+    evidence:
+      - source: lso-c1-78-cluster4-2023
+        claim: Lesotho says autonomous weapons should not be developed or used.
+        quote: "It is our considered view that such autonomous weapons systems do not comply with humanitarian law, and they should not be developed or used."
+        date: 2023-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Lesotho_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: lso-c1-79-general-debate-2024
+        claim: Lesotho says LAWS must stay under direct, meaningful human control at all times.
+        quote: "We are of the view that Lethal Autonomous Weapons Systems must remain under the direct, meaningful control and supervision of humans at all times."
+        date: 2024-10-16
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Lesotho.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: lso-c1-80-general-debate-2025
+        claim: Lesotho calls for prioritising negotiations on regulating emerging technologies, especially LAWS.
+        quote: "reaching urgent consensus on the regulation of the use of emerging technologies including artificial intelligence in the military domain, especially in lethal autonomous weapons systems"
+        date: 2025-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_the_Kingdom_of_Lesotho.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Own words give a prohibition ('should not be developed or used') and a call for negotiations on regulation, but never 'legally binding' or 'treaty'. The binding element is supported only by corroboration: Lesotho is a named High Contracting Party on the Brazil-led GGE joint statements of September 2025 and August-September 2026 (ccw-gge-2026-joint-statement-aug-sep), which back the rolling text as a basis for negotiating a CCW instrument under the two-tier approach. Joint statements corroborate only (R3/rule 4)."
+  - "Possible AMBIG pull: the 2025 statement also 'supports dialogue and further research aimed at developing guidelines and compliance standards' for military AI generally. That sentence is about AI in the military domain, not LAWS specifically, so it was not read as a REG-SOFT preference."
+  - "The 2024 statement calls the CCW the 'Autonomous Weapons Convention', a slip in the original. Dates for the 2023 and 2024 statements are UNODA Meetings Place posting dates; the headers say only 'October'."
+  - "No submission under 78/241 (not in A/79/88). African Group statements (Nigeria or another state for the group) corroborate only."

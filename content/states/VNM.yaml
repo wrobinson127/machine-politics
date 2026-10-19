@@ -1,0 +1,29 @@
+# Viet Nam: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: VNM
+un_name: VIET NAM
+display_name: "Viet Nam"
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Vietnam has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Viet-Nam-EN.pdf and 78-241-Vietnam-EN.pdf return 403)
+      and 79/239 (none in A/80/78). CCW GGE statement lists 2023 to 2026 (no
+      Vietnamese statement). First Committee statements on UNODA Meetings
+      Place: 2023 general debate (two files), 2024 conventional weapons
+      cluster, 2026 general debate read, none mentioning autonomous weapons;
+      the 2024 and 2025 EOVs and 2025 statements are listed without files.
+      Official records A/C.1/79/PV.3 and PV.12 searched, no mention. ASEAN
+      group statements are context only.
+
+shift_events: []
+
+flags:
+  - "Unread items: EOV on L.11 and L.60/Rev.1 (2023), EOV on L.76 (2024), an untitled EOV posted 2025-11-03, and the 2025 general debate statement (posted 2025-10-14) have no files on UNODA Meetings Place. None is on a LAWS L-document by title except the 2025 one, whose subject is unknown. Low priority retrieval target."

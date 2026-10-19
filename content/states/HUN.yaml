@@ -1,0 +1,34 @@
+# Hungary: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: HUN
+un_name: HUNGARY
+display_name: Hungary
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: EXPLICIT
+    as_of: 2025-10-13
+    approved: false
+    rationale: >
+      At the UN First Committee in October 2025, Hungary said it remains
+      committed to advancing the work of the Geneva expert group on
+      autonomous weapons. It did not say what that work should produce, so on
+      this site's scale it backs the Geneva process without a stated outcome.
+    evidence:
+      - source: hun-c1-80-gd-2025
+        claim: Hungary commits to advancing the work of the CCW expert group, with no stated outcome.
+        quote: "remain committed to advancing work within the Group of Governmental Experts on Lethal Autonomous Weapons Systems"
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/hungary_eng.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The sentence opens "We support discussions on the responsible military use of artificial intelligence and".
+
+shift_events: []
+
+flags:
+  - "Thin record: a single sentence. Hungary's 78th and 79th session statements on UNODA (general debate, nuclear, other WMD, outer space) were opened and do not mention LAWS. No 78/241 or 79/239 submission found."
+  - "Hungary associated itself with the Vienna 2024 chair's summary (A/79/88), which seeks an 'international legal instrument'. That is an endorsement and cannot set the code, but it points beyond CCW-ONLY. The analyst may prefer NONE or AMBIG."
+  - "EU statements Hungary aligns with (two-tier approach) corroborate only (R3)."

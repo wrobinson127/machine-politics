@@ -1,0 +1,54 @@
+# Burkina Faso: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BFA
+un_name: BURKINA FASO
+display_name: Burkina Faso
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2024-10-23
+    approved: false
+    rationale: >
+      In a French-language statement to the UN in October 2024, Burkina Faso
+      said it is urgent to draw up a legally binding instrument on lethal
+      autonomous weapons. It did not say what the instrument should ban. In
+      2025 it added that human control must stay central. That is support
+      for a treaty with its terms left open.
+    evidence:
+      - source: bfa-c1-79-conventional-2024
+        claim: Burkina Faso calls it urgent to develop a legally binding instrument on lethal autonomous weapons systems.
+        description: >
+          In paragraph 5, Burkina Faso says it shares the Non-Aligned
+          Movement's view that lethal autonomous weapons systems raise many
+          ethical, legal, moral and technical questions, and that it considers
+          it urgent to develop a legally binding instrument on these systems
+          to meet the humanitarian and international security challenges they
+          pose. No prohibitions are mentioned.
+        date: 2024-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Burkina_Faso.pdf
+        lang: fr
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: French only, so described rather than quoted. Thematic debate on conventional weapons.
+      - source: un-c1-80-transcript-4
+        claim: In 2025 Burkina Faso says human control must be central to autonomous weapon systems.
+        quote: "Regarding artificial intelligence and autonomous weapon systems, Burkina Faso considers that human control must be a central feature."
+        date: 2025-10-10
+        url: https://transcripts.un.org/en/ga/c1/80/4
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: Machine transcript of the English interpretation (speaker block at 50:08). The French written text (Eightieth session Burkina_Faso_FR.pdf) matches in substance.
+
+shift_events: []
+
+flags:
+  - "Confidence is capped at INFERRED because the only instrument-level text is French with no official English version. An official English rendering may exist in A/C.1/79/PV.x for 23 or 24 October 2024 once issued; the 79th session records for that week were not yet available on documents.un.org."
+  - "Automated Decision Research dates this statement 24 October 2024; the document face says 23 October 2024. The face date is used."
+  - "Earlier record: A/C.1/78/PV.6 (6 Oct 2023, official English) asks only that 'special attention' be paid to autonomous weapons 'so as to better understand the potential issues'. Not treated as a shift, since it states no instrument preference."
+  - "2026 First Committee (transcript, 16 Oct 2026, 12th meeting) speaks of clear standards for human control in the nuclear context only."
+  - "Burkina Faso announced withdrawal from ECOWAS in 2024; whether it took part in the April 2024 Freetown conference is not established."
+  - "No submission under 78/241 or 79/239 found. Burkina Faso is a CCW High Contracting Party; no national CCW GGE statement was found."

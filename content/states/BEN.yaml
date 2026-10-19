@@ -1,0 +1,22 @@
+# Benin: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BEN
+un_name: BENIN
+display_name: Benin
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Benin has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (not among the replies in A/79/88) and 79/239 (no national file at the UNODA Eightieth session paths); First Committee official records A/C.1/78/PV.2 to PV.12 and PV.18 to PV.31 (2023); the 79th session records issued so far; UN machine transcripts of every 80th (2025) and 81st (2026) session First Committee meeting that has one; national statements posted on the UNODA documents library for the 78th to 81st sessions; transcripts of the 2026 CCW GGE sessions; the Vienna 2024 conference statements page. No national statement by Benin on autonomous weapons was found in any of these. Benin is a CCW High Contracting Party and is named in the 2026 statement delivered by Sierra Leone for African CCW states, and is an ECOWAS member (Freetown Communique, April 2024). Both are group texts and context only. Benin delivered the African Group statement at the April 2018 GGE (reported by Automated Decision Research; source on reachingcriticalwill.org, not opened); a group statement corroborates only.
+
+shift_events: []
+
+flags:
+  - "Benin spoke for the African Group at the CCW GGE in April 2018; the group text reportedly called for a ban on fully autonomous weapons. Under R3 that is corroboration only, and the document was not opened (reachingcriticalwill.org)."
+  - "Benin did not vote on 78/241 or 79/62, and voted Yes on 80/57."

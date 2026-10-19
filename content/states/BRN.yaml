@@ -1,0 +1,45 @@
+# Brunei Darussalam: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BRN
+un_name: BRUNEI DARUSSALAM
+display_name: "Brunei Darussalam"
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2024-10-15
+    approved: false
+    rationale: >
+      In the UN First Committee's 2024 general debate, Brunei said autonomous
+      weapons should not operate without strict regulation and oversight. It
+      took note of the Secretary-General's call for a legally binding
+      instrument to prohibit them by 2026 and urged other states to back
+      global efforts. Brunei did not say outright that it wants that treaty,
+      so this reading is an interpretation.
+    evidence:
+      - source: brn-c1-79-general-debate-2024
+        claim: Brunei points to the Secretary-General's call for a binding instrument to prohibit LAWS by 2026.
+        quote: "Brunei Darussalam takes note of the recommendation made by the Secretary-General in 2023 to develop a legally binding instrument to prohibit LAWS by 2026"
+        date: 2024-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Brunei_Darussalam.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: brn-c1-79-general-debate-2024
+        claim: Brunei warns against LAWS operating without strict regulatory frameworks.
+        quote: "We have much more to lose than we stand to gain if we allow LAWS to operate without strict regulatory frameworks and oversight"
+        date: 2024-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Brunei_Darussalam.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "'Takes note' is weaker than 'supports'. The sentence goes on: 'and further calls upon other member states to solidify global efforts', which reads as endorsement, hence LBI-BAN at INFERRED. Alternatives: LBI-OPEN at INFERRED, or NONE if the analyst treats 'takes note' as neutral."
+  - "Statement date: header gives only the debate period (7 to 16 October 2024); 2024-10-15 is the UNODA Meetings Place posting date."
+  - "Later statements are softer: 2025 general debate calls for 'human oversight and responsible governance' of AI, including misuse in autonomous weapons; 2026 general debate speaks only of responsible AI use under international law. Neither contradicts the 2024 reading. 2023 general debate (posted 2023-10-09) was not retrieved as a file."
+  - "No submission under 78/241 (not in A/79/88; 78-241-Brunei-EN.pdf returns 403). Brunei is absent from the 2023 to 2026 GGE statement lists on UNODA Meetings Place."

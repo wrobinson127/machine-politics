@@ -1,0 +1,23 @@
+# Mozambique: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MOZ
+un_name: MOZAMBIQUE
+display_name: Mozambique
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: false
+    rationale: >
+      This site reviewed what Mozambique has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Mozambique (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Mozambique is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom, except as a co-signer of a joint statement noted below. First Committee: 16 October 2024 general debate, 2025 thematic statements on nuclear weapons (21 Oct), conventional weapons (23 Oct) and others (22, 24 Oct), and the 14 October 2026 general debate read in full. Mozambique stresses human control and accountability and calls for renewed global dialogue, but states no preferred instrument. The 9 October 2025 general debate file (estatements portal) could not be downloaded. CCW: Mozambique joined the Brazil-led joint statement at the second 2026 GGE session supporting the two-tier rolling text as a basis for negotiations, and spoke on draft paragraphs on 2 September 2026 (UN machine transcript); both are corroboration only. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "Closest call in the batch. Mozambique is a named co-signer of the Brazil-led joint statement (GGE 2026, second session, read out at meeting 1 on 31 August 2026 per the UN machine transcript) that backs the two-tier approach and calls the rolling text a basis for negotiations. Under R3 that corroborates only, and its own words (2025 conventional weapons statement: renewed global dialogue, human control and accountability) name no instrument. If a national Mozambican statement with instrument language turns up, LBI-BAN would likely follow."
+  - "Its 2 September 2026 GGE intervention (transcript, INFERRED at most) comments on paragraphs 39 to 48 and says responsibility cannot be transferred to machines; no instrument preference."
+  - "Could not fetch the 9 October 2025 general debate statement at estatements.unmeetings.org; worth a retry."
