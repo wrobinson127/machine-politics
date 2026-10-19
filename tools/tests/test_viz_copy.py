@@ -56,6 +56,23 @@ def test_a_prohibited_absence_claim_fails(tmp_path):
     assert any("prohibited claim" in i for i in items)
 
 
+def test_the_assembly_position_caption_is_true_of_the_data():
+    """The caption is fixed text, so the data must keep it true: in every
+    year the Yes block holds every position read except No new rules. If a
+    new reading breaks that, this fails and the caption is rewritten."""
+    from tools import build_site as bs
+    viz = yaml.safe_load(SRC.read_text(encoding="utf-8"))
+    if "except No new rules" not in viz["captions"]["assembly_position"]:
+        return
+    states = {p.stem: bs.load_yaml(p) for p in config.CONTENT_DIR.joinpath("states").glob("*.yaml")}
+    rows = bs.viz.payload(bs.load_votes(), states, False, bs.current_position,
+                          lambda i, e, c: i, bs.iso)
+    read = {r["p"] for r in rows if r["p"] and r["p"] != "NONE"}
+    for y in range(len(config.LAWS_RESOLUTIONS)):
+        yes = {r["p"] for r in rows if r["p"] and r["p"] != "NONE" and r["v"][y] == "Y"}
+        assert yes == read - {"OPPOSE"}, (y, sorted(read - yes))
+
+
 def test_a_missing_approval_flag_fails(tmp_path):
     def m(v):
         del v["approved"]

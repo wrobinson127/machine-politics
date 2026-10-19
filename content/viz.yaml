@@ -5,7 +5,7 @@
 #
 # {braced} words are filled in by the figure from the data at that moment:
 # counts, the year, the resolution symbol. They are never typed by hand.
-approved: false
+approved: true
 world_heading: The world
 strands_heading: Paths to the 2025 vote
 strands_intro: >
@@ -39,8 +39,8 @@ captions:
     and none was found, and {nr} have not been reviewed yet. The order is a
     list, not a ranking.
   matrix: >
-    Each state sits where its position (across) meets its {vote2025} vote
-    (down). Read down the Yes column to see how many different positions vote
+    Each state sits where its position (down) meets its {vote2025} vote
+    (across). Read down the Yes column to see how many different positions vote
     the same way.
   strands: >
     {n} threads, one per state. {straight} run straight through Yes, Yes, Yes.
@@ -55,6 +55,5 @@ captions:
   assembly_moved: >
     {moved} states changed their vote from the year before.
   assembly_position: >
-    The same seats, coloured by position. Inside the Yes block sit states that
-    want a treaty with bans, states whose record points both ways, and states
-    that want new rules but not a treaty.
+    The same seats, coloured by position. In every year, the Yes block holds
+    every position this site has read except No new rules.

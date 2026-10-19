@@ -2,9 +2,9 @@
  "codings_past_axis": [],
  "entries": [
   {
-   "approved": false,
+   "approved": true,
    "kind": "viz_copy",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
