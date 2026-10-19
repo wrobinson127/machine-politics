@@ -410,6 +410,18 @@
    "state": "LVA"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "MDG"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "MDG"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
