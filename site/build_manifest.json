@@ -434,6 +434,12 @@
    "state": "NOR"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "NOR"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
