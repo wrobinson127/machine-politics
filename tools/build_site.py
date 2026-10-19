@@ -708,7 +708,12 @@ def conference_page(conference, content_states, votes, preview, manifest):
             + "</ol>")
     sections.append(f'<h2>{esc(conference.get("during_heading", "During the conference"))}</h2>')
     d0 = as_date(start)
-    for i in range((as_date(end) - d0).days + 1):
+    during = [e for e in events if start <= iso(e["date"]) <= end]
+    if not during:
+        first = f"{d0.day} {d0.strftime('%B')}"
+        sections.append(f'<p class="cf-empty">Daily entries begin on {esc(first)}, '
+                        "the first day of the conference.</p>")
+    for i in range((as_date(end) - d0).days + 1 if during else 0):
         day = d0 + timedelta(days=i)
         todays = [e for e in events if iso(e["date"]) == day.isoformat()]
         label = f"{day.strftime('%A')} {day.day} {day.strftime('%B')}"
@@ -937,6 +942,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
   <div class="shell">
     <p>Vote data from the UN General Assembly voting dataset. © United Nations, 2026, <a href="https://digitallibrary.un.org">digitallibrary.un.org</a>. Reuse terms in <a href="https://github.com/wrobinson127/machine-politics">the repository</a>.</p>
     <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every position links to a quoted, dated source · <a href="{prefix}corrections.html">Corrections</a></p>
+    <p>Machine Politics is researched and written by <a href="https://walker-robinson.com">Walker Robinson</a>. <a href="{prefix}about.html">About</a></p>
     <p>Download the positions: <a href="{prefix}data/positions.csv">CSV</a>, <a href="{prefix}data/positions.json">JSON</a>. CC BY 4.0.</p>
   </div>
 </footer>

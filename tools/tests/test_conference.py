@@ -108,3 +108,12 @@ def test_validator_accepts_a_good_log(tmp_path):
 def test_validator_rejects_bad_entries(tmp_path, bad, needle):
     errors = _validate(tmp_path, _conf(False, [_entry("bad", "2026-11-16", False, **bad)]))
     assert any(needle in e for e in errors.items), errors.items
+
+
+def test_before_the_conference_one_line_replaces_five_empty_days(tmp_path, monkeypatch):
+    conf = _conf(True, [_entry("background-only", "2026-09-04", True)])
+    out, _ = _build(tmp_path, monkeypatch, conf, preview=False)
+    page = (out / "conference.html").read_text(encoding="utf-8")
+    assert "Daily entries begin on 16 November" in page
+    assert 'id="day-2026-11-16"' not in page
+    assert "This site has not added entries for this day yet." not in page

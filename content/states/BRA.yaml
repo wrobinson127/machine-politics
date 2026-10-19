@@ -159,10 +159,8 @@ shift_events:
     approved: true    # analyst approval 2026-10-19, packet item 2
     rationale: 'The earliest verified record of Brazil naming prohibitions within
       the instrument it seeks is the 2021 elements paper with Chile and Mexico.
-      The date is the PDF creation date, since the paper carries none. If the analyst
-      rules that a co-written elements paper does not count the way a co-written
-      mandate proposal does, the earliest record in Brazil''s own sole voice is
-      its 2024 submission (dated 2024-06-12 by PDF metadata).
+      The date is the PDF creation date, since the paper carries none. Brazil''s
+      own 2024 submission to the Secretary-General says the same.
 
       '
     evidence:
