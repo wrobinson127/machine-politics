@@ -530,6 +530,18 @@
    "state": "PRK"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "ROU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "ROU"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
