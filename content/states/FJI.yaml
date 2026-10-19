@@ -1,0 +1,81 @@
+# Fiji: coverage batch 2, drafted 2026-10-19 from the official record.
+# In scope because its recorded vote changed (Abstain on 79/62, Yes on 80/57).
+# Coded from Fiji's own reply to the Secretary-General under 78/241, printed
+# in A/79/88. approved: false throughout; nothing renders until the analyst of
+# record sets approved: true.
+iso3: FJI
+un_name: FIJI
+display_name: Fiji
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-25
+    approved: false
+    rationale: >
+      In its 2024 reply to the UN Secretary-General, Fiji called for
+      negotiations to start at once on a legally binding treaty. It asked
+      the treaty to ban systems that would target people and systems that
+      cannot be used with meaningful human control, and to regulate all
+      others. It named the General Assembly as the forum and said the
+      existing laws of war are not enough.
+    evidence:
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Fiji calls for the immediate start of negotiations on a legally binding instrument.
+        quote: "we call for the immediate start of negotiations for a legally binding instrument on autonomous weapons."
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Fiji's reply, Annex I of A/79/88, pages 44 to 45, dated 25 May 2024,
+          English original. The mission's own copy on UNODA
+          (78-241-Fiji-EN.pdf, headed "Draft", 24 May 2024) carries the same
+          sentence.
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: The instrument Fiji asks for would prohibit systems that cannot be used with meaningful human control.
+        quote: "(b) Prohibitions on weapons systems that cannot be used with meaningful human control;"
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: The same list asks for "(a) Prohibitions on weapons systems that would target people;" and "(c) Regulations on all other weapons systems", a two-tier instrument.
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Fiji says existing international humanitarian law is not adequate.
+        quote: "Existing international humanitarian law is inadequate to address the challenges posed by autonomous weapons."
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-80-transcript-7
+        kind: statement
+        claim: In the October 2025 general debate Fiji repeats its support for a legally binding instrument.
+        quote: "We support the Secretary-General's call for a legally binding instrument to regulate autonomous weapons."
+        date: 2025-10-15
+        url: https://transcripts.un.org/en/ga/c1/80/7
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: ASR transcript, speaker the Permanent Representative of Fiji, 1:55:33. Corroboration only (ruling R1).
+
+shift_events: []
+
+flags:
+  - "VOTES: non-voting on 78/241, Abstain on 79/62 (plenary A/79/PV.44, 2 Dec 2024: Fiji abstained on every separately voted LAWS paragraph and on the whole, with no explanation of vote and no correction note), Yes on 80/57. The 2024 abstention sits against a May 2024 call for a treaty and is unexplained. The 2024 First Committee record for L.77 (A/C.1/79/PV.13 onward) is not issued; a SafeGround lead says Fiji voted Yes in committee. Votes do not decide the reading."
+  - "Fiji is not a CCW High Contracting Party (UN Treaty Collection, XXVI-2), which fits its call to take the talks to the General Assembly."
+  - "Search gaps: May 2025 New York informal consultations statements are indexed only on a barred site, so unchecked. No Pacific regional communique on autonomous weapons was found."
+  - "Search record, 2026-10-19: A/C.1/78/PV.1-30; issued A/C.1/79 records; transcripts ga/c1/80/1-30 and ga/c1/81/1-13; A/79/PV.44; A/80/78; six 2026 GGE and PrepCom transcripts; Fiji MFA; web searches for a Pacific communique."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Fiji is not yet doctrine-reviewed by this project; its international
+        position is recorded above.

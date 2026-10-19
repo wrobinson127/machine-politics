@@ -744,3 +744,16 @@ sources:
     type: statement
     lang: en
     accessed: 2026-10-19
+
+  # Coverage batch 2 (drafted 2026-10-19)
+  - id: un-c1-80-transcript-7
+    title: General Assembly First Committee, 80th session, 7th meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-15
+    url: https://transcripts.un.org/en/ga/c1/80/7
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Not an official record; A/C.1/80/PV.7 was not yet issued
+      when checked.

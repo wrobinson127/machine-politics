@@ -290,6 +290,18 @@
    "state": "FIN"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "FJI"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "FJI"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
