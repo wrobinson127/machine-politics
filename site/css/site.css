@@ -568,8 +568,79 @@ footer.colophon p { margin: 0.3rem 0; }
   margin-top: 2.2rem;
 }
 
-.board-lede h1 { margin-top: 0; }
-.board-lede h1 em { font-style: italic; }
+.board-lede h1, .board-lede .board-title { margin-top: 0; }
+.board-lede .board-title { font-size: clamp(1.6rem, 3.6vw, 2.5rem); }
+.board-lede h1 em, .board-lede .board-title em { font-style: italic; }
+
+/* ------------------------------------------------------------------ */
+/* Opener: the first screen. Says what this is, gives the date that   */
+/* matters, and shows the whole field as one mark per member state.   */
+/* ------------------------------------------------------------------ */
+
+.opener {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  padding: 0.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.opener h1 { font-size: clamp(2rem, 3.6vw, 2.6rem); margin-bottom: 0.45em; }
+.opener-dek { font-size: 1.08rem; margin: 0 0 1rem; }
+.opener-clock {
+  font-size: 0.95rem;
+  border-left: 2px solid var(--ink);
+  padding-left: 0.8rem;
+  margin: 0 0 1.4rem;
+}
+
+.opener-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; align-items: center; }
+.opener-actions .skip-board { margin: 0; }
+
+.opener-go {
+  display: inline-block;
+  font-size: 0.88rem;
+  background: var(--ink);
+  color: var(--ground);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  padding: 0.35rem 0.9rem;
+  text-decoration: none;
+}
+.opener-go:hover { background: var(--ground); color: var(--ink); }
+
+.opener-field { margin: 0; }
+.opener-field figcaption {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+  max-width: 60ch;
+}
+
+.og-grid { display: grid; gap: 0.75rem; }
+.og-label { font-size: 0.86rem; margin: 0 0 0.3rem; max-width: none; }
+.og-label b { font-variant-numeric: tabular-nums; display: inline-block; min-width: 1.9em; }
+
+.og-units { display: flex; flex-wrap: wrap; gap: 3px; min-height: 2px; }
+/* Coverage, not positions: set apart by a rule (NONE is never a position) */
+.og-coverage { border-top: 1px solid var(--rule); padding-top: 0.75rem; }
+
+.unit {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 1px;
+  background-color: var(--fill, var(--ground));
+}
+/* AMBIG carries no hue: its hatch needs an edge to read as a mark */
+.unit[class~="band-hatch"] { box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.55); }
+.unit-empty { box-shadow: inset 0 0 0 1px rgba(26, 26, 26, 0.4); }
+
+@media (max-width: 860px) {
+  .opener { grid-template-columns: 1fr; }
+  .unit { width: 11px; height: 11px; }
+}
 
 .board-key {
   border: 1px solid var(--rule);

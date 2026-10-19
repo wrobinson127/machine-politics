@@ -508,8 +508,8 @@ def tour_html(tour, votes, content_states, preview):
       {tour_copy_html(beat["copy"])}{cites}
     </div>
   </section>""")
+    # The skip link lives in the opener, above this section.
     return (
-        '<a class="skip-board" href="#board-top">Skip to the board</a>\n'
         '<section class="tour" id="tour" aria-label="Guided tour">\n'
         '  <div class="scrolly">\n'
         '    <div class="scrolly-steps">'
@@ -1121,6 +1121,110 @@ def legend_html():
     return '<div class="board-legend">' + "\n".join(items) + "</div>"
 
 
+def current_position(cs, preview):
+    """The state's position today, for the opener's unit field: the latest
+    substantive reading, else NONE if the record was reviewed and nothing
+    found, else None (not yet reviewed). Same approval filter as the board."""
+    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
+    substantive = sorted((c for c in codings if c["code"] != "NONE"),
+                         key=lambda c: iso(c["as_of"]))
+    if substantive:
+        return substantive[-1]
+    none = [c for c in codings if c["code"] == "NONE"]
+    return max(none, key=lambda c: iso(c["as_of"])) if none else None
+
+
+# The opener's sentences are taken from text the analyst has already approved
+# for the live site: the site meta description, the footer, and the tour's
+# clock beat. New claim-bearing prose does not belong in this file; it goes
+# through content/ and the approval gate.
+OPENER_HEADLINE = "Where every country stands on autonomous weapons."
+OPENER_DEK = ("Recorded votes, official statements, and national policy, tracked "
+              "as they shift over time. Every position links to a quoted, dated "
+              "source.")
+OPENER_CLOCK = ("The Geneva weapons convention holds its Seventh Review Conference "
+                "on 16 November 2026, and that is the next moment any of this can "
+                "turn into law.")
+
+
+def opener_html(votes, content_states, preview, coverage_line, has_tour):
+    """The first screen: what this is, how much of it has been read, the date
+    that matters, and the whole field at a glance. One mark per member state,
+    grouped by its position today in the key's order, with the same hue and
+    texture as the board. The marks are aria-hidden; each group's label
+    carries its count in text."""
+    groups = {code: [] for code in config.POSITION_CATEGORIES}
+    unreviewed = []
+    for iso3, entry in votes["states"].items():
+        cs = content_states.get(iso3, {})
+        name = cs.get("display_name") or display_from_un_name(entry["un_name"])
+        pos = current_position(cs, preview)
+        if pos is None:
+            unreviewed.append(name)
+        else:
+            groups[pos["code"]].append((name, pos))
+
+    def group_html(label, count, units, extra=""):
+        return (
+            f'<div class="og{extra}">'
+            f'<p class="og-label"><b>{count}</b> {esc(label)}</p>'
+            f'<div class="og-units" aria-hidden="true">{units}</div>'
+            "</div>"
+        )
+
+    # Positions first. NONE is a coverage statement, never a position
+    # (CLAUDE.md), so it sits with "not yet reviewed" below a rule, and its
+    # label carries the review date the same way the board's band does.
+    parts = []
+    for code, members in groups.items():
+        if code == "NONE":
+            continue
+        units = ""
+        for name, pos in sorted(members, key=lambda m: m[0]):
+            style, texture = band_style(code, pos.get("confidence"))
+            units += (f'<i class="unit{texture}" style="{style}" '
+                      f'title="{esc(name)}: {esc(config.POSITION_PLAIN[code])}"></i>')
+        parts.append(group_html(config.POSITION_PLAIN[code], len(members), units))
+    none_members = groups["NONE"]
+    if none_members:
+        dates = sorted({iso(p["as_of"]) for _, p in none_members})
+        reviewed = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
+        style, texture = band_style("NONE", "EXPLICIT")
+        units = "".join(
+            f'<i class="unit{texture}" style="{style}" title="{esc(n)}: '
+            f'{esc(config.POSITION_PLAIN["NONE"])}, reviewed {iso(p["as_of"])}"></i>'
+            for n, p in sorted(none_members, key=lambda m: m[0]))
+        parts.append(group_html(f'{config.POSITION_PLAIN["NONE"]}, reviewed {reviewed}',
+                                len(none_members), units, " og-coverage"))
+    units = "".join(f'<i class="unit unit-empty" title="{esc(n)}: not yet reviewed"></i>'
+                    for n in sorted(unreviewed))
+    parts.append(group_html("Not yet reviewed by this site", len(unreviewed), units,
+                            " og-empty" + ("" if none_members else " og-coverage")))
+
+    tour_link = ('<a class="opener-go" href="#tour">Take the tour</a>\n      '
+                 if has_tour else "")
+    return f"""
+<section class="opener" aria-labelledby="opener-h">
+  <div class="opener-text">
+    <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
+    <p class="opener-dek">{esc(OPENER_DEK)}</p>
+    <p class="opener-clock">{esc(OPENER_CLOCK)}</p>
+    <div class="opener-actions">
+      {tour_link}<a class="skip-board" href="#board-top">Skip to the board</a>
+    </div>
+  </div>
+  <figure class="opener-field">
+    <figcaption>One mark per member state. {esc(coverage_line)}
+    Grouped in the order the key lists them. That order is a list, not a
+    ranking.</figcaption>
+    <div class="og-grid">
+{chr(10).join(parts)}
+    </div>
+  </figure>
+</section>
+"""
+
+
 def index_page(votes, content_states, preview, tour=None):
     rows = board_rows(votes, content_states, preview)
     n_reviewed = sum(1 for r in rows if r["reviewed"])
@@ -1130,14 +1234,16 @@ def index_page(votes, content_states, preview, tour=None):
     )
     tour_block = ""
     extra_scripts = ""
-    if tour and (preview or is_approved(tour)):
+    has_tour = bool(tour and (preview or is_approved(tour)))
+    if has_tour:
         tour_block = tour_html(tour, votes, content_states, preview)
         extra_scripts = (gsap_script_tags() +
                          f'\n<script defer src="{asset("", "js/tour.js")}"></script>')
+    opener = opener_html(votes, content_states, preview, coverage_line, has_tour)
     body = f"""
-{tour_block}<div class="board-head" id="board-top">
+{opener}{tour_block}<div class="board-head" id="board-top">
   <div class="board-lede">
-    <h1>Who moved, when, and <em>on what record</em>.</h1>
+    <h2 class="board-title">Who moved, when, and <em>on what record</em>.</h2>
     <p>UN votes, official statements, and national policy on autonomous
     weapons, for every state, over time. Positions are trajectories, not
     snapshots.</p>
