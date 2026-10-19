@@ -703,12 +703,11 @@ def legend_html():
         items.append(f'<span>{swatch}{esc(plain)} <small class="code">({esc(code)})</small>: '
                      f"{esc(desc)}</span>")
     items.append(
-        "<span><span class=\"swatch\" style=\"border:1px dashed "
-        f"{config.PALETTE['ink']}66\" aria-hidden=\"true\"></span>"
-        "Empty track: not yet reviewed by this site</span>"
+        '<span><i class="swatch swatch-empty" aria-hidden="true"></i>'
+        "Not yet reviewed: this site has not read this state's record yet</span>"
     )
     items.append(
-        "<span>Vote marks: filled disc Yes, crossed ring No, half disc Abstain, faint dash did not vote</span>"
+        "<span>Vote marks: filled disc Yes, crossed ring No, half disc Abstain, dash Non-voting</span>"
     )
     return '<div class="board-legend">' + "\n".join(items) + "</div>"
 
@@ -862,10 +861,12 @@ def states_table_html(rows, coverage_line, copy):
             + f'<td class="pos">{pos}</td><td class="since">{since}</td></tr>'
         )
     years = [k for k in config.LAWS_RESOLUTIONS]
+    res = load_votes()["resolutions"]
+    head = [f'{res[k]["date"][:4]}<span class="th-sub">{esc(k)}</span>' for k in years]
     return f"""
 <section class="states" id="states" aria-labelledby="states-h">
   <h2 id="states-h">{esc(copy["states_heading"])}</h2>
-  <p class="citation">{esc(coverage_line)}</p>
+  <p class="viz-intro">{esc(coverage_line)}</p>
   <div class="states-tools">
     <label for="states-find">Find a state</label>
     <input class="states-find" id="states-find" type="search" autocomplete="off" placeholder="India">
@@ -876,8 +877,8 @@ def states_table_html(rows, coverage_line, copy):
   <table class="states-table">
     <thead><tr>
       <th scope="col"><button type="button" data-sort="name">State</button></th>
-      <th scope="col">{esc(years[0])}</th><th scope="col">{esc(years[1])}</th>
-      <th scope="col"><button type="button" data-sort="v2025">{esc(years[2])}</button></th>
+      <th scope="col">{head[0]}</th><th scope="col">{head[1]}</th>
+      <th scope="col"><button type="button" data-sort="v2025">{head[2]}</button></th>
       <th scope="col"><button type="button" data-sort="pos">Position</button></th>
       <th scope="col">As of</th>
     </tr></thead>
@@ -909,7 +910,7 @@ def world_figure_html(rows, copy):
     <div class="seg" role="group" aria-label="View">
       {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "globe").lower()}">{esc(label)}</button>' for k, label in views)}
     </div>
-    <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
+    <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
   </div>
   <div class="viz-controls viz-yearbar" hidden>
     <div class="seg" role="group" aria-label="Resolution">
@@ -934,7 +935,7 @@ def strands_figure_html(copy):
     <div class="viz-controls">
       <label><input class="viz-movers" type="checkbox"> Only the states that changed a vote</label>
       <label><input class="viz-reviewed" type="checkbox"> Only the reviewed states</label>
-      <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="United States"></label>
+      <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="United States"></label>
     </div>
     <p class="viz-caption" aria-live="polite"></p>
     <div class="viz-stage"></div>
@@ -957,12 +958,14 @@ def index_page(votes, content_states, preview, manifest=None):
   <div class="opener-text">
     <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
     <p class="opener-dek">{esc(OPENER_DEK)}</p>
-    <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
     <div class="opener-actions">
       <a class="opener-go" href="#viz-world">Explore the globe</a>
       <a class="skip-board" href="#states">Find a state</a>
     </div>
   </div>
+  <aside class="opener-aside">
+    <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
+  </aside>
 </section>
 {world_figure_html(rows, copy)}
 {strands_figure_html(copy)}
@@ -996,7 +999,7 @@ def assembly_figure_html(copy):
       <button type="button" data-colour="vote" aria-pressed="true">Colour by vote</button>
       <button type="button" data-colour="position" aria-pressed="false">Colour by position</button>
     </div>
-    <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="Russia"></label>
+    <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="Russia"></label>
   </div>
   <p class="viz-caption" aria-live="polite"></p>
   <div class="viz-key"></div>
