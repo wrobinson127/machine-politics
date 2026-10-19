@@ -921,7 +921,10 @@ def world_figure_html(rows, copy):
   <p class="viz-caption" id="viz-world-cap" aria-live="polite">{esc(first)}</p>
   <div class="viz-key">{"".join(f"<span>{_swatch(k)}{esc(config.POSITION_PLAIN[k] if k else 'Not yet reviewed')}</span>" for k in [*config.POSITION_CATEGORIES, ""])}</div>
   <div class="viz-stage">{viz.static_map_svg(rows)}</div>
-  <figcaption class="credit">Shapes: Natural Earth via world-atlas (public domain). Equal Earth projection when flat. States under about 20,000 km² are drawn as dots at their Natural Earth label point. The table below lists every state.</figcaption>
+  <figcaption class="info">
+    <button type="button" class="info-btn" aria-describedby="map-sources"><span class="info-i" aria-hidden="true">i</span>Map sources</button>
+    <span class="info-tip" role="tooltip" id="map-sources">Shapes: Natural Earth via world-atlas (public domain). Equal Earth projection when flat. States under about 20,000 km² are drawn as dots at their Natural Earth label point. The table below lists every state.</span>
+  </figcaption>
 </figure>"""
 
 

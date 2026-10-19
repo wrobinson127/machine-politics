@@ -96,7 +96,7 @@
       function posFill(d) { return !d || !d.p ? null : (pat[d.p] || C.hue[d.p]); }
 
       DATA.forEach(function (d) { d._x = CX; d._y = CY; d._r = 0; d._a = 0; });
-      var view = "globe", year = 2, movers = false, mapA = 1, labels = [], labA = 0, hover = null, found = null, drag = null, tween = null, spinning = !reduce;
+      var view = "globe", year = 2, movers = false, mapA = 1, labels = [], labA = 0, hover = null, found = null, drag = null, tween = null, spinning = !reduce, pendingVH = null;
       // Dot layouts are computed for the space the reader actually has. The
       // canvas works in a 1100-unit-wide frame; on a phone that frame is
       // scaled down three times, so every size is scaled up by the same k
@@ -142,7 +142,14 @@
         var from = {alpha: alpha, rot: rot.slice(), mapA: mapA, labA: labA};
         view = next; var gl = geo() ? [null, [], MAPH] : groupLayout(); labels = gl[1];
         // The canvas is as tall as the view needs: the map, or the stacked groups.
-        if (gl[2] !== VH) { VH = gl[2]; size(); }
+        var nh = gl[2];
+        if (reduce) { pendingVH = null; wrap.classList.remove("h-anim"); wrap.style.height = ""; if (nh !== VH) { VH = nh; size(); } }
+        else if (nh !== VH || pendingVH !== null) {
+          var cur = wrap.getBoundingClientRect().height;
+          VH = Math.max(VH, nh); size();
+          wrap.classList.remove("h-anim"); wrap.style.height = cur + "px"; void wrap.offsetHeight;
+          wrap.classList.add("h-anim"); wrap.style.height = nh * scale + "px"; pendingVH = nh;
+        }
         DATA.forEach(function (d) { d._fx = d._x; d._fy = d._y; d._fr = d._r; d._fa = d._a; d._grp = gl[0] ? gl[0].get(d) : null; });
         tween = {t0: performance.now(), dur: reduce ? 0 : 950, from: from,
           toAlpha: view === "globe" ? 0 : view === "map" ? 1 : alpha,
@@ -165,7 +172,8 @@
           if (tween) { d._x = d._fx + (tx - d._fx) * e; d._y = d._fy + (ty - d._fy) * e; d._r = d._fr + (tr - d._fr) * e; d._a = d._fa + (ta - d._fa) * e; }
           else { d._x = tx; d._y = ty; d._r = tr; d._a = ta; }
         });
-        if (tween && k >= 1) tween = null;
+        if (tween && k >= 1) { tween = null;
+          if (pendingVH !== null) { VH = pendingVH; pendingVH = null; size(); wrap.classList.remove("h-anim"); wrap.style.height = ""; } }
         draw();
       }
       var scale = 1;
@@ -232,10 +240,13 @@
           A: count(function (d) { return d.v[year] === "A"; }), X: count(function (d) { return d.v[year] === "X"; }), movers: NMOVERS,
           reviewed: count(function (d) { return d.p; }), stated: count(function (d) { return d.p && d.p !== "NONE"; }), none: count(function (d) { return d.p === "NONE"; }), nr: count(function (d) { return !d.p; }), vote2025: YEARS[2]};
       }
-      function describe() {
-        var t = CAP[view] + (view === "vote" && movers ? " " + CAP.movers : "");
-        caption.textContent = fill(t, vars()); setKey(key, view === "vote" ? "vote" : "pos");
-        if (yearbar) yearbar.hidden = view !== "vote";
+      function describe(now) {
+        var t = CAP[view] + (view === "vote" && movers ? " " + CAP.movers : ""), kind = view === "vote" ? "vote" : "pos";
+        function apply() { caption.textContent = fill(t, vars()); if (key.dataset.kind !== kind) { setKey(key, kind); key.dataset.kind = kind; } caption.style.opacity = key.style.opacity = ""; }
+        if (now || reduce) apply();
+        else { if (key.dataset.kind !== kind) key.style.opacity = 0; if (caption.textContent !== fill(t, vars())) caption.style.opacity = 0; setTimeout(apply, 170); }
+        fig.classList.toggle("is-geo", geo());
+        if (yearbar) { yearbar.hidden = false; yearbar.classList.toggle("open", view === "vote"); yearbar.inert = view !== "vote"; }
       }
       fig.querySelectorAll("[data-view]").forEach(function (b) { b.addEventListener("click", function () { pressed("#" + fig.id + " [data-view]", b); go(b.dataset.view); }); });
       fig.querySelectorAll("[data-year]").forEach(function (b) { b.addEventListener("click", function () { year = +b.dataset.year; pressed("#" + fig.id + " [data-year]", b); go("vote"); }); });
@@ -248,7 +259,7 @@
         setTimeout(function () { if (!found) return; var b = canvas.getBoundingClientRect(); tip.show(found, b.left + found._x * scale, b.top + found._y * scale, true); }, reduce ? 0 : 960);
       });
       size(); var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { if (geo()) { size(); draw(); } else { var keep = reduce; reduce = true; go(view); reduce = keep; } }, 150); });
-      setProj(); describe(); d3.timer(step);
+      setProj(); describe(true); d3.timer(step);
     }
     // Before the globe loads (or without d3), the static flat map keeps its own caption.
     if (caption) caption.textContent = fill(CAP.map, {reviewed: count(function (d) { return d.p; })});
@@ -261,7 +272,7 @@
     var svg = document.createElementNS(NS, "svg"); svg.setAttribute("class", "viz-strands"); svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", "Each state's vote in " + YEARS.join(", ") + " and its position, as one thread per state. The table below has every value.");
     var scroller = document.createElement("div"); scroller.className = "viz-scroll"; scroller.appendChild(svg); wrap.insertBefore(scroller, wrap.firstChild); fig.classList.add("viz-live");
-    var W = 1160, H = 640, TOP = 46, GAP = 10, BW = 14, X = [140, 390, 640, 890];
+    var W = 1200, H = 860, TOP = 46, GAP = 12, BW = 16, X = [150, 420, 690, 960];
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     var AX = [YEARS[0] + " vote", YEARS[1] + " vote", YEARS[2] + " vote", "Position"], cats = [VORDER, VORDER, VORDER, ROWS_ALL];
     var HUE = {"LBI-BAN": "var(--pos-lbiban)", "LBI-OPEN": "var(--pos-lbiopen)", "REG-SOFT": "var(--pos-regsoft)", "CCW-ONLY": "var(--pos-ccwonly)", "OPPOSE": "var(--pos-oppose)", "AMBIG": "var(--ink-soft)", "NONE": "var(--pos-none)"};
