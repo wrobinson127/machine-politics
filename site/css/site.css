@@ -34,7 +34,8 @@ h1 { font-size: clamp(1.9rem, 4.5vw, 3.1rem); }
 h2 { font-size: clamp(1.3rem, 2.6vw, 1.8rem); margin-top: 2.2em; }
 h3 { font-size: 1.1rem; margin-top: 1.6em; }
 
-p { max-width: 62ch; }
+:root { --measure: 40rem; }
+p { max-width: var(--measure); }
 
 a {
   color: inherit;
@@ -185,8 +186,9 @@ footer.colophon p { margin: 0.3rem 0; }
   margin: 1.2rem 0 0;
   font-size: 0.88rem;
   border: 1px solid var(--ink);
-  border-radius: 3px;
-  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
   text-decoration: none;
 }
 
@@ -237,12 +239,12 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .opener-go {
   display: inline-block;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   background: var(--ink);
   color: var(--ground);
   border: 1px solid var(--ink);
-  border-radius: 3px;
-  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
   text-decoration: none;
 }
 .opener-go:hover { background: var(--ground); color: var(--ink); }
@@ -1084,24 +1086,41 @@ footer.colophon p { margin: 0.3rem 0; }
 
 :root { --strand: rgba(26, 26, 26, 0.16); }
 
-.opener-wide { grid-template-columns: 1fr; border-bottom: none; padding-bottom: 1rem; }
-.opener-wide .opener-text { max-width: 44rem; }
+/* Hero: text left, the conference note right, both on the first screen */
+.opener-wide { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: end; border-bottom: none; padding: 0.5rem 0 2.2rem; }
+.opener-wide .opener-text { max-width: var(--measure); }
+.opener-wide .opener-dek { margin-bottom: 1.4rem; }
+.opener-aside .opener-clock { border: 1px solid var(--rule); border-left: 3px solid var(--ink); border-radius: 0 6px 6px 0; background: var(--ground-raise); padding: 1rem 1.2rem; margin: 0; font-size: 0.95rem; }
+@media (max-width: 860px) { .opener-wide { grid-template-columns: 1fr; gap: 1.4rem; } }
 
-.viz { margin: 0 0 3rem; border-top: 2px solid var(--ink); padding-top: 1rem; }
-.viz-h { margin: 0 0 .6rem; }
-.viz-controls { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; margin-bottom: .7rem; font-size: .88rem; }
+/* Every section on a figure page has the same anatomy: a rule, the heading,
+   one intro at the reading width, one toolbar, the caption, the key, the
+   figure. Captions are chart subtitles, quieter than the intro above. */
+#viz-world, .viz-section, .states { border-top: 1px solid var(--ink); padding-top: 1.6rem; margin: 0 0 3.5rem; }
+.viz-section > h2, .states > h2, .viz-h { margin: 0 0 .6rem; }
+.viz { margin: 0; }
+.viz-intro { max-width: var(--measure); margin: 0 0 1.2rem; }
+.viz-controls { display: flex; flex-wrap: wrap; gap: .6rem .8rem; align-items: center; margin-bottom: .9rem; font-size: .88rem; }
 .viz-controls[hidden] { display: none; }
-.viz-controls label { display: inline-flex; gap: .4rem; align-items: center; }
+.viz-controls label { display: inline-flex; gap: .45rem; align-items: center; }
+.viz-controls label.find { margin-left: auto; }
+@media (max-width: 700px) {
+  .viz-controls label.find { margin-left: 0; width: 100%; }
+  .viz-controls label.find .viz-find { flex: 1; width: auto; }
+}
+.viz-controls label:has(> input[type="checkbox"]) { border: 1px solid var(--rule); border-radius: 6px; padding: .34rem .7rem; cursor: pointer; min-height: 34px; box-sizing: border-box; }
+.viz-controls label:has(> input:checked) { border-color: var(--ink); background: var(--ground-raise); }
+.viz-controls input[type="checkbox"] { accent-color: var(--ink); margin: 0; }
 /* Controls only do something once the figure is live; before that the
    static map and the table stand on their own. */
 .viz:not(.viz-live) .viz-controls { display: none; }
-.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); border-radius: 3px; overflow: hidden; }
-.seg button { font: inherit; font-size: .86rem; background: transparent; color: var(--ink); border: 0; border-right: 1px solid var(--ink); padding: .38rem .8rem; cursor: pointer; min-height: 32px; }
+.seg { display: inline-flex; flex-wrap: nowrap; max-width: 100%; overflow-x: auto; border: 1px solid var(--ink-soft); border-radius: 6px; scrollbar-width: none; }
+.seg button { font: inherit; font-size: .86rem; white-space: nowrap; background: transparent; color: var(--ink); border: 0; border-right: 1px solid var(--rule); padding: .38rem .85rem; cursor: pointer; min-height: 34px; }
+.seg button:hover { background: var(--ground-raise); }
 .seg button:last-child { border-right: 0; }
-.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
-.viz-find, .states-find { font: inherit; font-size: .88rem; padding: .32rem .6rem; border: 1px solid var(--rule); background: var(--ground); color: var(--ink); border-radius: 3px; width: 11rem; max-width: 100%; }
-.viz-caption { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.4; max-width: 46rem; margin: 0 0 .5rem; min-height: 2.8em; }
-.viz-intro { max-width: 46rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-right-color: var(--ink); }
+.viz-find, .states-find { font: inherit; font-size: .88rem; padding: .32rem .6rem; border: 1px solid var(--rule); background: var(--ground); color: var(--ink); border-radius: 6px; width: 11rem; max-width: 100%; min-height: 34px; box-sizing: border-box; }
+.viz-caption { font-size: .95rem; line-height: 1.5; color: var(--ink-soft); max-width: var(--measure); margin: 0 0 .6rem; min-height: 3em; font-variant-numeric: tabular-nums; }
 .viz-key { display: flex; flex-wrap: wrap; gap: .35rem 1rem; font-size: .8rem; color: var(--ink-soft); margin-bottom: .7rem; }
 .viz-key span { display: inline-flex; align-items: center; gap: .4rem; }
 .viz-key .swatch { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
@@ -1178,15 +1197,20 @@ footer.colophon p { margin: 0.3rem 0; }
 .lbl { font-size: 13px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--ground); stroke-width: 4px; stroke-linejoin: round; }
 
 /* Every state: the table that is also the keyboard and screen-reader path */
-.states { margin-top: 1rem; }
 .states-tools { display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center; margin: .6rem 0; font-size: .9rem; }
 .states-status { color: var(--ink-soft); font-size: .85rem; }
-.states-key { margin: .4rem 0 .8rem; }
+.states-key { margin: .6rem 0 1rem; }
+.states-key.board-key { border: 0; background: none; padding: 0; }
+.states-key .board-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 0 2rem; font-size: .84rem; color: var(--ink-soft); }
+.states-key.board-key .board-legend > span + span { border-top: 0; }
+.states-key.board-key .board-legend > span { padding: .2rem 0; }
+.states-key .swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; vertical-align: -0.1em; margin-right: .45rem; }
+.states-table .th-sub { display: block; font-size: .72rem; letter-spacing: 0; text-transform: none; font-weight: 400; }
 .table-scroll { overflow-x: auto; }
 .states-table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
 .states-table th, .states-table td { text-align: left; padding: .38rem .9rem .38rem 0; border-bottom: 1px solid var(--rule-faint); vertical-align: middle; }
 .states-table thead th { font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; border-bottom: 1px solid var(--rule); }
-.states-table thead button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.states-table thead button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: .25em; text-align: left; }
 .states-table tbody th { font-weight: 500; }
 .states-table td.vt { white-space: nowrap; }
 .states-table td.vt svg { vertical-align: -0.12em; margin-right: .3rem; }
@@ -1201,7 +1225,8 @@ footer.colophon p { margin: 0.3rem 0; }
 }
 
 /* Text pages: one centred reading column */
-.prose-page { max-width: 44rem; margin-left: auto; margin-right: auto; }
+.prose-page { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+.prose-page p, .prose-page li { max-width: none; }
 .prose-page table { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {

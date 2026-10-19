@@ -19,7 +19,7 @@
 <link rel="preload" href="assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/newsreader-italic-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/tokens.css?v=1a8b55aec9">
-<link rel="stylesheet" href="css/site.css?v=19c58620b6">
+<link rel="stylesheet" href="css/site.css?v=255ef93bbe">
 <link rel="icon" href="assets/favicon.svg?v=45271e5daa" type="image/svg+xml">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dataset", "creator": {"@type": "Person", "name": "Walker Robinson", "url": "https://walker-robinson.com"}, "dateModified": "2026-10-13", "description": "Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time.", "distribution": [{"@type": "DataDownload", "contentUrl": "https://machinepolitics.walker-robinson.com/data/positions.csv", "encodingFormat": "text/csv"}, {"@type": "DataDownload", "contentUrl": "https://machinepolitics.walker-robinson.com/data/positions.json", "encodingFormat": "application/json"}], "isAccessibleForFree": true, "license": "https://creativecommons.org/licenses/by/4.0/", "name": "Machine Politics", "spatialCoverage": "UN member states", "url": "https://machinepolitics.walker-robinson.com/"}</script>
 </head>
@@ -47,12 +47,14 @@
   <div class="opener-text">
     <h1 id="opener-h">Where every country stands on autonomous weapons.</h1>
     <p class="opener-dek">Recorded votes, official statements, and national policy, tracked as they shift over time. Every position links to a quoted, dated source.</p>
-    <p class="opener-clock">The Geneva weapons convention holds its Seventh Review Conference on 16 November 2026, and that is the next moment any of this can turn into law. <a href="conference.html">Follow the conference</a>.</p>
     <div class="opener-actions">
       <a class="opener-go" href="#viz-world">Explore the globe</a>
       <a class="skip-board" href="#states">Find a state</a>
     </div>
   </div>
+  <aside class="opener-aside">
+    <p class="opener-clock">The Geneva weapons convention holds its Seventh Review Conference on 16 November 2026, and that is the next moment any of this can turn into law. <a href="conference.html">Follow the conference</a>.</p>
+  </aside>
 </section>
 
 <figure class="viz" id="viz-world" aria-labelledby="viz-world-cap">
@@ -61,7 +63,7 @@
     <div class="seg" role="group" aria-label="View">
       <button type="button" data-view="globe" aria-pressed="true">Globe</button><button type="button" data-view="map" aria-pressed="false">Flat map</button><button type="button" data-view="vote" aria-pressed="false">The vote</button><button type="button" data-view="position" aria-pressed="false">Positions</button><button type="button" data-view="matrix" aria-pressed="false">Vote against position</button>
     </div>
-    <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
+    <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
   </div>
   <div class="viz-controls viz-yearbar" hidden>
     <div class="seg" role="group" aria-label="Resolution">
@@ -82,7 +84,7 @@
     <div class="viz-controls">
       <label><input class="viz-movers" type="checkbox"> Only the states that changed a vote</label>
       <label><input class="viz-reviewed" type="checkbox"> Only the reviewed states</label>
-      <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="United States"></label>
+      <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="United States"></label>
     </div>
     <p class="viz-caption" aria-live="polite"></p>
     <div class="viz-stage"></div>
@@ -92,7 +94,7 @@
 
 <section class="states" id="states" aria-labelledby="states-h">
   <h2 id="states-h">Every state</h2>
-  <p class="citation">Votes cover all 193 member states. Positions have been reviewed for 42 states so far.</p>
+  <p class="viz-intro">Votes cover all 193 member states. Positions have been reviewed for 42 states so far.</p>
   <div class="states-tools">
     <label for="states-find">Find a state</label>
     <input class="states-find" id="states-find" type="search" autocomplete="off" placeholder="India">
@@ -105,14 +107,14 @@
 <span><span class="swatch band-dots" style="--fill:#7A5648;opacity:1" aria-hidden="true"></span>No new rules <small class="code">(OPPOSE)</small>: opposes any new international rules on autonomous weapons</span>
 <span><span class="swatch band-hatch" style="opacity:1" aria-hidden="true"></span>Unclear or shifting <small class="code">(AMBIG)</small>: has said things that point in more than one direction</span>
 <span><span class="swatch" style="--fill:#9E9482;opacity:1" aria-hidden="true"></span>No stated position <small class="code">(NONE)</small>: this site looked and found no stated position</span>
-<span><span class="swatch" style="border:1px dashed #1A1A1A66" aria-hidden="true"></span>Empty track: not yet reviewed by this site</span>
-<span>Vote marks: filled disc Yes, crossed ring No, half disc Abstain, faint dash did not vote</span></div></div>
+<span><i class="swatch swatch-empty" aria-hidden="true"></i>Not yet reviewed: this site has not read this state's record yet</span>
+<span>Vote marks: filled disc Yes, crossed ring No, half disc Abstain, dash Non-voting</span></div></div>
   <div class="table-scroll">
   <table class="states-table">
     <thead><tr>
       <th scope="col"><button type="button" data-sort="name">State</button></th>
-      <th scope="col">78/241</th><th scope="col">79/62</th>
-      <th scope="col"><button type="button" data-sort="v2025">80/57</button></th>
+      <th scope="col">2023<span class="th-sub">78/241</span></th><th scope="col">2024<span class="th-sub">79/62</span></th>
+      <th scope="col"><button type="button" data-sort="v2025">2025<span class="th-sub">80/57</span></button></th>
       <th scope="col"><button type="button" data-sort="pos">Position</button></th>
       <th scope="col">As of</th>
     </tr></thead>
