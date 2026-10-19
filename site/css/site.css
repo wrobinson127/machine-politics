@@ -1135,6 +1135,22 @@ footer.colophon p { margin: 0.3rem 0; }
 .viz-stage .viz-poster[hidden] { display: none; }
 .viz-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 .credit { font-size: .78rem; color: var(--ink-soft); margin-top: .7rem; }
+/* The stage height eases with the dots (same curve as d3.easeCubicInOut). */
+.viz-stage.h-anim { overflow: hidden; transition: height .95s cubic-bezier(.65, 0, .35, 1); }
+.viz-caption, .viz-key { transition: opacity .17s linear; }
+#viz-world .viz-key { min-height: 2.9em; align-content: flex-start; }
+.viz-yearbar { max-height: 0; opacity: 0; overflow: hidden; margin-bottom: 0; transition: max-height .45s cubic-bezier(.65, 0, .35, 1), opacity .3s linear, margin-bottom .45s cubic-bezier(.65, 0, .35, 1); }
+.viz-yearbar.open { max-height: 9rem; opacity: 1; margin-bottom: .9rem; }
+/* Sources behind a small info button: hover, focus or tap to read */
+.info { position: relative; margin-top: .5rem; transition: opacity .3s linear; }
+#viz-world.viz-live:not(.is-geo) .info { opacity: 0; pointer-events: none; }
+.info-btn { font: inherit; font-size: .8rem; color: var(--ink-soft); background: none; border: 0; padding: .3rem 0; cursor: help; display: inline-flex; gap: .45rem; align-items: center; }
+.info-btn:hover { color: var(--ink); }
+.info-i { width: 16px; height: 16px; box-sizing: border-box; border: 1px solid currentColor; border-radius: 50%; display: inline-grid; place-items: center; font-size: .7rem; font-weight: 600; line-height: 1; }
+.info-tip { position: absolute; left: 0; bottom: calc(100% + 6px); width: min(28rem, 100%); background: var(--ink); color: var(--ground); padding: .65rem .85rem; border-radius: 6px; font-size: .8rem; line-height: 1.5; opacity: 0; visibility: hidden; transition: opacity .15s linear, visibility .15s; z-index: 20; }
+.info:hover .info-tip, .info-btn:focus + .info-tip { opacity: 1; visibility: visible; }
+@media (max-width: 700px) { #viz-world .viz-key { min-height: 5.6em; } }
+@media (prefers-reduced-motion: reduce) { .viz-stage.h-anim, .viz-yearbar, .viz-caption, .viz-key { transition: none; } }
 
 /* The static map: first paint and the no-JS form */
 .viz-sphere { fill: var(--ground-raise); stroke: var(--rule); }
