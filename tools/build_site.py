@@ -1131,7 +1131,7 @@ def current_position(cs, preview):
     if substantive:
         return substantive[-1]
     none = [c for c in codings if c["code"] == "NONE"]
-    return none[-1] if none else None
+    return max(none, key=lambda c: iso(c["as_of"])) if none else None
 
 
 # The opener's sentences are taken from text the analyst has already approved
@@ -1172,18 +1172,34 @@ def opener_html(votes, content_states, preview, coverage_line, has_tour):
             "</div>"
         )
 
+    # Positions first. NONE is a coverage statement, never a position
+    # (CLAUDE.md), so it sits with "not yet reviewed" below a rule, and its
+    # label carries the review date the same way the board's band does.
     parts = []
     for code, members in groups.items():
+        if code == "NONE":
+            continue
         units = ""
         for name, pos in sorted(members, key=lambda m: m[0]):
             style, texture = band_style(code, pos.get("confidence"))
             units += (f'<i class="unit{texture}" style="{style}" '
                       f'title="{esc(name)}: {esc(config.POSITION_PLAIN[code])}"></i>')
         parts.append(group_html(config.POSITION_PLAIN[code], len(members), units))
+    none_members = groups["NONE"]
+    if none_members:
+        dates = sorted({iso(p["as_of"]) for _, p in none_members})
+        reviewed = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
+        style, texture = band_style("NONE", "EXPLICIT")
+        units = "".join(
+            f'<i class="unit{texture}" style="{style}" title="{esc(n)}: '
+            f'{esc(config.POSITION_PLAIN["NONE"])}, reviewed {iso(p["as_of"])}"></i>'
+            for n, p in sorted(none_members, key=lambda m: m[0]))
+        parts.append(group_html(f'{config.POSITION_PLAIN["NONE"]}, reviewed {reviewed}',
+                                len(none_members), units, " og-coverage"))
     units = "".join(f'<i class="unit unit-empty" title="{esc(n)}: not yet reviewed"></i>'
                     for n in sorted(unreviewed))
     parts.append(group_html("Not yet reviewed by this site", len(unreviewed), units,
-                            " og-empty"))
+                            " og-empty" + ("" if none_members else " og-coverage")))
 
     tour_link = ('<a class="opener-go" href="#tour">Take the tour</a>\n      '
                  if has_tour else "")
@@ -1198,7 +1214,7 @@ def opener_html(votes, content_states, preview, coverage_line, has_tour):
     </div>
   </div>
   <figure class="opener-field">
-    <figcaption>One mark per member state, by position. {esc(coverage_line)}
+    <figcaption>One mark per member state. {esc(coverage_line)}
     Grouped in the order the key lists them. That order is a list, not a
     ranking.</figcaption>
     <div class="og-grid">

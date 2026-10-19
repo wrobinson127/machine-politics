@@ -64,3 +64,16 @@ def test_none_yields_to_a_later_substantive_reading():
         {"code": "LBI-BAN", "confidence": "EXPLICIT", "as_of": "2022-08-09", "approved": True},
     ]}
     assert bs.current_position(cs, preview=False)["code"] == "LBI-BAN"
+
+
+def test_none_is_shown_as_dated_coverage_not_as_a_position(deploy):
+    """NONE is a coverage statement: it sits below the positions with
+    "not yet reviewed", and its label carries the review date."""
+    index = _index(deploy)
+    opener = index[index.find('class="opener"'):index.find('class="tour"')]
+    m = re.search(r'<div class="og og-coverage"><p class="og-label"><b>\d+</b> '
+                  r'No stated position, reviewed (\d{4}-\d{2}-\d{2})', opener)
+    assert m, "NONE group missing its review date or its coverage placement"
+    positions = opener[:m.start()]
+    assert "No stated position" not in positions
+    assert "by position" not in opener
