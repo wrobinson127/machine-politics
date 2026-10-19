@@ -54,7 +54,7 @@
    "iso3": "AUT",
    "page": "https://machinepolitics.walker-robinson.com/state/AUT.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Austria-en.pdf https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Humanity-Crossroads-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Austria-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Austria-en.pdf https://www.bmeia.gv.at/en/european-foreign-policy/disarmament/conventional-arms/autonomous-weapons-systems https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_Main_Committee_II_8_September.pdf",
    "state": "Austria"
   },
   {
@@ -78,6 +78,28 @@
    "position": "No stated position",
    "sources": "",
    "state": "Belarus"
+  },
+  {
+   "as_of": "2018-08-30",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": false,
+   "iso3": "BRA",
+   "page": "https://machinepolitics.walker-robinson.com/state/BRA.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.2/2018/WP.7&l=E",
+   "state": "Brazil"
+  },
+  {
+   "as_of": "2021-06-28",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "BRA",
+   "page": "https://machinepolitics.walker-robinson.com/state/BRA.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Brazil-EN.pdf https://transcripts.un.org/en/ga/c1/81/7",
+   "state": "Brazil"
   },
   {
    "as_of": "2023-03-13",
@@ -164,8 +186,19 @@
    "iso3": "DEU",
    "page": "https://machinepolitics.walker-robinson.com/state/DEU.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Germany-EN.pdf https://transcripts.un.org/en/asset/k18/k1856vomjr https://transcripts.un.org/en/asset/k1y/k1ywe5vjyq",
    "state": "Germany"
+  },
+  {
+   "as_of": "2024-03-04",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "DNK",
+   "page": "https://machinepolitics.walker-robinson.com/state/DNK.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/CCW-GGE.1-2024-WP.3.pdf https://transcripts.un.org/en/asset/k17/k179utoxqf https://transcripts.un.org/en/asset/k1j/k1jgb18wkv",
+   "state": "Denmark"
   },
   {
    "as_of": "2022-08-09",
@@ -190,6 +223,17 @@
    "state": "Estonia"
   },
   {
+   "as_of": "2024-05-16",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "FIN",
+   "page": "https://machinepolitics.walker-robinson.com/state/FIN.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Finland-EN.pdf https://transcripts.un.org/en/ga/c1/80/24 https://transcripts.un.org/en/ga/c1/81/4",
+   "state": "Finland"
+  },
+  {
    "as_of": "2024-05-24",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -197,7 +241,7 @@
    "iso3": "FRA",
    "page": "https://machinepolitics.walker-robinson.com/state/FRA.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf https://www.diplomatie.gouv.fr/en/presse-et-ressources/decouvrir-et-informer/actualites/organisations-internationales-reunion-du-groupe-d-experts-gouvernementaux-sur-les-systemes-d-armes",
    "state": "France"
   },
   {
@@ -208,7 +252,7 @@
    "iso3": "GBR",
    "page": "https://machinepolitics.walker-robinson.com/state/GBR.html",
    "position": "Wants new rules, not a treaty",
-   "sources": "https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf",
+   "sources": "https://assets.publishing.service.gov.uk/media/62a9b1d1e90e07039e31b8cb/20220614-Ambitious_Safe_and_Responsible.pdf https://docs.un.org/en/CCW/MSP/2025/WP.7 https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/20260831.Opening_Statement_0.pdf",
    "state": "United Kingdom"
   },
   {
@@ -230,8 +274,19 @@
    "iso3": "IND",
    "page": "https://machinepolitics.walker-robinson.com/state/IND.html",
    "position": "Keep it in Geneva",
-   "sources": "https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3 https://undocs.org/en/CCW/GGE.1/2025/WP.3",
+   "sources": "https://pmindiaun.gov.in/Cdgeneva/statement_content/NTA3 https://undocs.org/en/CCW/GGE.1/2025/WP.3 https://transcripts.un.org/en/asset/k18/k1856vomjr",
    "state": "India"
+  },
+  {
+   "as_of": "2023-11-01",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "ISR",
+   "page": "https://machinepolitics.walker-robinson.com/state/ISR.html",
+   "position": "Unclear or shifting",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf https://transcripts.un.org/en/ga/c1/80/26",
+   "state": "Israel"
   },
   {
    "as_of": "2023-03-13",
@@ -322,6 +377,17 @@
    "state": "Nigeria"
   },
   {
+   "as_of": "2024-04-26",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "NLD",
+   "page": "https://machinepolitics.walker-robinson.com/state/NLD.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Netherlands-EN.pdf",
+   "state": "Netherlands"
+  },
+  {
    "as_of": "2024-08-26",
    "code": "LBI-OPEN",
    "confidence": "EXPLICIT",
@@ -377,6 +443,17 @@
    "state": "Democratic People's Republic of Korea"
   },
   {
+   "as_of": "2023-11-01",
+   "code": "OPPOSE",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "RUS",
+   "page": "https://machinepolitics.walker-robinson.com/state/RUS.html",
+   "position": "No new rules",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E https://docs.un.org/en/A/79/88 https://transcripts.un.org/en/ga/c1/80/24 https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Russia_(ENG).pdf",
+   "state": "Russia"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -397,6 +474,39 @@
    "position": "Wants a treaty with bans",
    "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "El Salvador"
+  },
+  {
+   "as_of": "2024-05-15",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "SWE",
+   "page": "https://machinepolitics.walker-robinson.com/state/SWE.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Sweden-EN.pdf https://transcripts.un.org/en/ga/c1/80/24 https://transcripts.un.org/en/asset/k17/k179utoxqf",
+   "state": "Sweden"
+  },
+  {
+   "as_of": "2023-11-01",
+   "code": "REG-SOFT",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "TUR",
+   "page": "https://machinepolitics.walker-robinson.com/state/TUR.html",
+   "position": "Wants new rules, not a treaty",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Turkiye-EN.pdf https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf https://transcripts.un.org/en/asset/k17/k179utoxqf https://transcripts.un.org/en/ga/c1/80/24",
+   "state": "Türkiye"
+  },
+  {
+   "as_of": "2026-08-31",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "UKR",
+   "page": "https://machinepolitics.walker-robinson.com/state/UKR.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://transcripts.un.org/en/asset/k17/k179utoxqf https://transcripts.un.org/en/asset/k1j/k1jgb18wkv https://transcripts.un.org/en/ga/80/7",
+   "state": "Ukraine"
   },
   {
    "as_of": "2022-08-09",
@@ -428,9 +538,9 @@
    "iso3": "USA",
    "page": "https://machinepolitics.walker-robinson.com/state/USA.html",
    "position": "Keep it in Geneva",
-   "sources": "https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/ https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf https://undocs.org/en/CCW/GGE.1/2025/WP.6",
+   "sources": "https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/ https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf https://undocs.org/en/CCW/GGE.1/2025/WP.6 https://transcripts.un.org/en/asset/k1t/k1tjdugbhy https://transcripts.un.org/en/asset/k18/k1856vomjr",
    "state": "United States"
   }
  ],
- "updated_through": "2026-08-31"
+ "updated_through": "2026-10-13"
 }

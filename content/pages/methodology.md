@@ -44,6 +44,8 @@ Every position links to a quoted, dated primary source. The build enforces it: a
 
 Translation is always stated. A quote from an official translation says so. A quote from an unofficial one says so. A document with no translation yields no English quote at all: the entry describes and links it, and any reading it supports is INFERRED at best.
 
+Some statements exist only as the UN's automatic transcripts of a meeting, which the UN says are not official records. A quote from one is marked as a transcript, counts as INFERRED at most, and is never the only evidence for a change of position.
+
 ## What absence means
 
 There are two kinds of absence, and they are never mixed.
@@ -51,6 +53,10 @@ There are two kinds of absence, and they are never mixed.
 "No stated position" means this site read what the state has said and found nothing. "Not yet reviewed" means exactly that. Neither is shown as a position.
 
 For national policy, the site only ever says: no published policy found by this site, as of a stated date, with a note on where it looked. The site never says a state has nothing. The build rejects that kind of claim.
+
+## What this site cannot see
+
+This site reads what governments say in public. It cannot see what they say in closed negotiations, positions that are never published, or documents it can only describe because no official translation exists. Most member states have not been reviewed yet; their pages show votes and say so. Every reading is one analyst's, made by the published rubric, and any of them can be challenged on the corrections page.
 
 ## Secondary sources
 

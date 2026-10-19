@@ -87,6 +87,29 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: un-asr-ccw-prepcom7-m3-2026
+        claim: India holds that the CCW is the right forum for work on LAWS.
+        quote: We continue to believe that CCW, bringing together major military powers
+          alongside a wider membership, is the appropriate forum for this endeavour.
+        date: 2026-09-08
+        url: https://transcripts.un.org/en/asset/k18/k1856vomjr
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: ASR transcript, speaker India, 43:07. Not an official record.
+      - source: un-asr-ccw-prepcom7-m3-2026
+        claim: India supports a mandate for the Group to continue deliberations, not a
+          named instrument.
+        quote: India would support a mandate for the Group, allowing sufficient time for
+          it to continue deliberations in a structured and systematic manner.
+        date: 2026-09-08
+        url: https://transcripts.un.org/en/asset/k18/k1856vomjr
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: Same speech. India also asks the Review Conference to endorse the elements
+          and "decide by consensus on the future modalities".
 
 shift_events: []
 

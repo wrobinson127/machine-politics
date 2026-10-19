@@ -110,6 +110,43 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: un-asr-ccw-prepcom7-m1-2026
+        claim: The United States names the CCW as the forum for work on LAWS.
+        quote: The CCW remains, in our view, the best and most credible forum for continuing
+          to advance international efforts on laws.
+        date: 2026-09-07
+        url: https://transcripts.un.org/en/asset/k1t/k1tjdugbhy
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: ASR transcript, speaker United States of America, 53:30. "laws" is the ASR
+          rendering of LAWS.
+      - source: un-asr-ccw-prepcom7-m1-2026
+        claim: The United States wants a new CCW mandate that builds on the GGE outcome.
+        quote: For us, that means adopting a new mandate that carries forward and builds
+          upon the successful outcome of the laws GGE.
+        date: 2026-09-07
+        url: https://transcripts.un.org/en/asset/k1t/k1tjdugbhy
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: Same speech.
+      - source: un-asr-ccw-prepcom7-m3-2026
+        claim: The United States describes the future mandate's work as developing an
+          instrument.
+        quote: To develop an instrument, work on legal and technical issues would be needed
+          in even more detail than in the past.
+        date: 2026-09-08
+        url: https://transcripts.un.org/en/asset/k18/k1856vomjr
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'ASR transcript, speaker United States of America, 53:29. The same speech
+          asks for "almost certainly a multi-year mandate" and says "we should prioritize
+          advancement of substantive dialogue within the CCW framework".
+      
+          '
 
 shift_events:
   - state: USA

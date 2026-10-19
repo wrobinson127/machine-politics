@@ -11,7 +11,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2018-08-30
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 2
     rationale: 'Brazil, with Austria and Chile, proposed that the Geneva convention
       open negotiations on a legally binding instrument to ensure meaningful human
       control. The proposal did not say what the instrument should prohibit. This
@@ -37,7 +37,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2021-06-28
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 2
     rationale: 'In 2021 Brazil, with Chile and Mexico, set out an outline of a legally
       binding instrument, preferably a new protocol to the Geneva convention, made
       of prohibitions and regulations. Its own 2024 submission to the Secretary-General
@@ -140,7 +140,7 @@ position_codings:
         url: https://transcripts.un.org/en/ga/c1/81/7
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED   # ruling R1: transcript
         note: 'UN automatic speech recognition transcript, not an official record.
           The statement was delivered in English by Brazil''s Permanent Representative
           to the Conference on Disarmament. The next sentence in the transcript
@@ -156,7 +156,7 @@ shift_events:
     date: 2021-06-28
     from: LBI-OPEN
     to: LBI-BAN
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 2
     rationale: 'The earliest verified record of Brazil naming prohibitions within
       the instrument it seeks is the 2021 elements paper with Chile and Mexico.
       The date is the PDF creation date, since the paper carries none. If the analyst
@@ -190,9 +190,9 @@ shift_events:
         confidence: EXPLICIT
 
 flags:
-  - 'DRAFT 2026-10-19, analyst question: Does a co-written elements paper (2021, Brazil, Chile and Mexico) count the way the co-written 2018 mandate proposal counts for Austria and Brazil? It is not a draft treaty, but it sets out treaty-style operative text (''States shall: Prohibit ...''). If yes, the shift dates to 2021-06-28. If no, the 2021 paper drops out and the shift dates to Brazil''s 2024 submission (2024-06-12).'
-  - 'DRAFT 2026-10-19, analyst question: Brazil chaired the expert group in 2022 and 2023. Its official 2023 explanation of vote says ''Without trying to be overly prescriptive, Brazil believes that we should wait for the deliberations in the November meeting of the CCW'' (A/C.1/78/PV.28). It states no instrument preference either way. Under the tie-break, a later record wins only if it says something, so this draft does not treat it as a move. Confirm.'
-  - 'DRAFT 2026-10-19, analyst question: Brazil delivered both the September 2025 and the 2026 joint statements. Delivering is not authoring a national position; this draft keeps them out of the evidence. Confirm, or rule that delivery on behalf of a group is recorded as an annotation.'
-  - 'DRAFT 2026-10-19, analyst question: Undated documents: both the 2021 paper and the 2024 submission are dated here by PDF metadata. Accept, or use the session dates instead.'
+  - 'ANSWERED 2026-10-19 by the packet rulings (R1 transcripts capped at INFERRED; R2 co-written elements papers count when they state a preference; R3 joint statements corroborate only): Does a co-written elements paper (2021, Brazil, Chile and Mexico) count the way the co-written 2018 mandate proposal counts for Austria and Brazil? It is not a draft treaty, but it sets out treaty-style operative text (''States shall: Prohibit ...''). If yes, the shift dates to 2021-06-28. If no, the 2021 paper drops out and the shift dates to Brazil''s 2024 submission (2024-06-12).'
+  - 'ANSWERED 2026-10-19 by the packet rulings (R1 transcripts capped at INFERRED; R2 co-written elements papers count when they state a preference; R3 joint statements corroborate only): Brazil chaired the expert group in 2022 and 2023. Its official 2023 explanation of vote says ''Without trying to be overly prescriptive, Brazil believes that we should wait for the deliberations in the November meeting of the CCW'' (A/C.1/78/PV.28). It states no instrument preference either way. Under the tie-break, a later record wins only if it says something, so this draft does not treat it as a move. Confirm.'
+  - 'ANSWERED 2026-10-19 by the packet rulings (R1 transcripts capped at INFERRED; R2 co-written elements papers count when they state a preference; R3 joint statements corroborate only): Brazil delivered both the September 2025 and the 2026 joint statements. Delivering is not authoring a national position; this draft keeps them out of the evidence. Confirm, or rule that delivery on behalf of a group is recorded as an annotation.'
+  - 'ANSWERED 2026-10-19 by the packet rulings (R1 transcripts capped at INFERRED; R2 co-written elements papers count when they state a preference; R3 joint statements corroborate only): Undated documents: both the 2021 paper and the 2024 submission are dated here by PDF metadata. Accept, or use the session dates instead.'
   - "CODING NEEDS SOURCE: research pass 5d names LBI-OPEN/LBI-BAN as the candidate range; Brazil DELIVERED the September 2025 39-party joint statement, but joint-statement membership is sponsorship-class and never grounds a coding alone (no-inference rule); retrieve Brazil's own submission and statements, then code"
   - "Ruling queued (research pass 6): promote Brazil toward near-deep treatment as a leadership node"

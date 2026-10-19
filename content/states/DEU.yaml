@@ -41,6 +41,30 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: un-asr-ccw-prepcom7-m3-2026
+        claim: Germany looks to the next mandate to advance work on an instrument on LAWS.
+        quote: advancing and deepening our collective work on a meaningful instrument
+          regarding the lethal autonomous weapon systems
+        date: 2026-09-08
+        url: https://transcripts.un.org/en/asset/k18/k1856vomjr
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'ASR transcript, speaker Germany, 1:21:23. Consistent with the reading but
+          silent on bans and on binding form, so INFERRED.
+      
+          '
+      - source: un-asr-ccw-gge-2026-s1m4
+        claim: Germany refers to future negotiations of an instrument.
+        quote: we would have rather seen any provisions regarding exceptions in the context
+          of actual negotiations of an instrument rather than in the rolling text.
+        date: 2026-03-03
+        url: https://transcripts.un.org/en/asset/k1y/k1ywe5vjyq
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: ASR transcript, speaker Germany, 2:23:00.
 
 shift_events: []
 
