@@ -1,0 +1,59 @@
+# Captions and section copy for the home page figures (the globe, Strands)
+# and the Votes page assembly. Drafted 2026-10-19 by tooling for the analyst
+# of record. Nothing here renders until approved: true; until then the build
+# uses the plain count-only labels in build_site.VIZ_FALLBACK.
+#
+# {braced} words are filled in by the figure from the data at that moment:
+# counts, the year, the resolution symbol. They are never typed by hand.
+approved: true
+world_heading: The world
+strands_heading: Paths to the 2025 vote
+strands_intro: >
+  Every state is one thread running left to right: its vote in 2023, 2024
+  and 2025, then its position. States that held still run straight; states
+  that moved cross between blocks. At the right edge each thread takes its
+  position's colour, so a colour can be traced back to see how those states
+  voted.
+states_heading: Every state
+assembly_intro: >
+  The General Assembly as a hemicycle of 193 seats, one per member state,
+  filled from the left by vote. Step through the three resolutions and the
+  seats rearrange, so the states that changed their vote travel across the
+  room. Colour the seats by position to see who sits inside each block.
+captions:
+  globe: >
+    Every UN member state, coloured by the position this site has read for
+    {reviewed} of them. Pale states are not yet reviewed. Drag to turn the
+    globe.
+  map: >
+    The same world, flattened to an equal-area map. States too small to see
+    are drawn as dots, so all 193 members are on it.
+  vote: >
+    Each dot is one state. In {year}, on resolution {res}, {Y} voted Yes, {N}
+    No, {A} abstained and {X} did not vote. Step through the years to see who
+    moved.
+  movers: >
+    Highlighted: the {movers} states that changed a recorded vote.
+  position: >
+    {stated} states have a stated position on record, {none} were reviewed
+    and none was found, and {nr} have not been reviewed yet. The order is a
+    list, not a ranking.
+  matrix: >
+    Each state sits where its position (down) meets its {vote2025} vote
+    (across). Read down the Yes column to see how many different positions vote
+    the same way.
+  strands: >
+    {n} threads, one per state. {straight} run straight through Yes, Yes, Yes.
+    The rest cross between blocks; at the right edge each takes the colour of
+    its position.
+  strands_movers: >
+    The {n} states that changed a recorded vote between 2023 and 2025, each
+    traced to the position this site has read for it.
+  assembly: >
+    One seat per member state, filled from the left: Yes, abstain, No, then
+    states that did not vote.
+  assembly_moved: >
+    {moved} states changed their vote from the year before.
+  assembly_position: >
+    The same seats, coloured by position. In every year, the Yes block holds
+    every position this site has read except No new rules.

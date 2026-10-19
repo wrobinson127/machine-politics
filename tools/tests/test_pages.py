@@ -139,7 +139,7 @@ def test_deploy_never_renders_unapproved_prose(tmp_path, monkeypatch):
     copy of the page, point the loader at it, and prove the prose does not
     reach the deploy artifact while the shell's neutrality line still does."""
     # Copy the whole content tree, not just pages/. Everything else that
-    # resolves through CONTENT_DIR (tour, endorsements, sponsorships, eras)
+    # resolves through CONTENT_DIR (viz copy, endorsements, sponsorships, eras)
     # returns empty when its file is missing, so a partial copy silently
     # builds a degenerate site and makes the unapproved_rendered assertion
     # below vacuous.
@@ -154,10 +154,10 @@ def test_deploy_never_renders_unapproved_prose(tmp_path, monkeypatch):
 
     manifest = bs.build(tmp_path / "dep", preview=False)
     assert manifest["unapproved_rendered"] == 0
-    # Guard the vacuity directly: the instrument and tour layers must be
+    # Guard the vacuity directly: the instrument and figure-copy layers must be
     # present in this build, or the gate assertions below prove nothing.
     kinds = {str(e["kind"]).split(":")[0] for e in manifest["entries"]}
-    assert {"tour", "endorsement_instrument", "sponsorship_record"} <= kinds
+    assert {"viz_copy", "endorsement_instrument", "sponsorship_record"} <= kinds
     meth = (tmp_path / "dep" / "methodology.html").read_text(encoding="utf-8")
     assert "Walker Robinson makes every judgment call" not in meth
     assert "takes no position" in meth

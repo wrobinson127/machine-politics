@@ -131,7 +131,7 @@ def test_no_valence_hues_in_generated_output(deploy):
     out, _ = deploy
     sources = {
         "index": (out / "index.html").read_text(encoding="utf-8"),
-        "poster": (out / "assets" / "board-poster.svg").read_text(encoding="utf-8"),
+        "viz": (out / "js" / "viz.js").read_text(encoding="utf-8"),
         "tokens": (out / "css" / "tokens.css").read_text(encoding="utf-8"),
     }
     # preview renders position bands; scan those too (banner red excepted)
@@ -209,7 +209,7 @@ def test_build_is_deterministic(tmp_path):
     b = tmp_path / "b"
     bs.build(a, preview=False)
     bs.build(b, preview=False)
-    for rel in ("index.html", "votes.html", "state/USA.html", "assets/board-poster.svg"):
+    for rel in ("index.html", "votes.html", "state/USA.html", "assets/world.json"):
         assert (a / rel).read_bytes() == (b / rel).read_bytes(), rel
 
 

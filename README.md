@@ -10,7 +10,7 @@ Machine Politics is researched and written by [Walker Robinson](https://walker-r
 
 ![Machine Politics: where every country stands on lethal autonomous weapons](site/assets/og-card.png)
 
-Positions are trajectories, not snapshots. This repository builds a static site whose home page is a trajectory board: 193 states as rows, time as the axis, position bands with visible breaks where states moved. Every coding traces to a quoted, dated, linked primary source. The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
+Positions are trajectories, not snapshots. This repository builds a static site whose home page is a globe of the 193 member states, coloured by position, that flattens into an equal-area world map; the same 193 states then lift off the map as dots to show how they voted and what they want. A second figure traces each state's three votes to its position, and the Votes page seats the General Assembly as a hemicycle. Every coding traces to a quoted, dated, linked primary source. The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
 
 ## How it fits together
 

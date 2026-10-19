@@ -70,28 +70,31 @@ def test_substantive_codings_are_unchanged():
                               "confidence": "EXPLICIT", "approved": True}]) == []
 
 
-def _real_entry():
-    """A real vote entry: the row renderers read a vote for every resolution,
-    so a minimal stub raises before it reaches the band."""
+def test_the_figures_carry_none_with_its_review_date():
+    """The board and the tour canvas that used to draw NONE are retired
+    (2026-10-19). The figures that replaced them read one payload: NONE must
+    reach it as a coverage code with its review date, so the tooltip can say
+    "reviewed", never "since"."""
     votes = bs.load_votes()
-    return votes["states"]["PRK"], votes["resolutions"]
+    states = {"PRK": {"position_codings": [_none("2026-07-17")]}}
+    rows = bs.viz.payload(votes, states, False, bs.current_position,
+                          lambda i, e, c: i, bs.iso)
+    (row,) = [r for r in rows if r["i"] == "PRK"]
+    assert row["p"] == "NONE" and row["s"] == "2026-07-17"
 
 
-def test_the_board_labels_none_as_a_review_not_a_start():
-    entry, resolutions = _real_entry()
-    html = bs.row_track_html("PRK", entry, resolutions, [_none("2026-07-17")], [])
-    assert "No stated position (NONE), reviewed 2026-07-17" in html
-    assert "NONE since" not in html
-    assert "left:0.00%;width:100.00%" in html
-
-
-def test_the_tour_canvas_anchors_none_at_the_origin():
-    entry, resolutions = _real_entry()
-    html = bs.canvas_row_html(
-        "PRK", entry, resolutions,
-        {"position_codings": [_none("2026-07-17")]}, preview=False)
-    assert 'data-code="NONE"' in html
-    assert "left:5.0%;width:90.00%" in html  # the canvas margins, edge to edge
+def test_the_states_table_labels_none_as_no_stated_position():
+    votes = bs.load_votes()
+    states = {"PRK": {"position_codings": [_none("2026-07-17")]}}
+    rows = bs.viz.payload(votes, states, False, bs.current_position,
+                          lambda i, e, c: i, bs.iso)
+    html = bs.states_table_html(rows, "", bs.VIZ_FALLBACK)
+    prk = html[html.index('state/PRK.html'):]
+    prk = prk[:prk.index("</tr>")]
+    assert "No stated position" in prk and "Not yet reviewed" not in prk
+    # The date is a review date, never a "since" for a position NONE is not.
+    since = prk[prk.index('class="since"'):]
+    assert since.startswith('class="since">reviewed 2026-07-17<'), since[:60]
 
 
 def test_the_past_axis_warning_ignores_none():

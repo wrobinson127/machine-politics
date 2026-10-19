@@ -1,7 +1,9 @@
-"""The home page's first screen: one h1 that says what the site is, the
-review-conference date, and a unit field whose counts add up to the whole
-membership and never show an unapproved reading."""
+"""The home page (redesign, 2026-10-19): one h1 that says what the site is,
+the Review Conference date, the globe figure with a static map as its first
+paint, Strands, and every member state in a table. The figures read one
+payload, built from approved content only."""
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -26,31 +28,55 @@ def _index(deploy):
     return (out / "index.html").read_text(encoding="utf-8")
 
 
+def _payload(index):
+    m = re.search(r'<script type="application/json" id="viz-data">(.*?)</script>', index, re.S)
+    assert m, "no figure payload on the page"
+    return json.loads(m.group(1))
+
+
 def test_one_h1_and_it_is_the_opener(deploy):
     index = _index(deploy)
     h1s = re.findall(r"<h1\b[^>]*>(.*?)</h1>", index, re.S)
-    assert len(h1s) == 1
-    assert "autonomous weapons" in h1s[0]
-    assert index.find('class="opener"') < index.find('class="tour"') < index.find('id="board-top"')
+    assert len(h1s) == 1 and "autonomous weapons" in h1s[0]
+    assert (index.find('class="opener') < index.find('id="viz-world"')
+            < index.find('id="viz-strands"') < index.find('id="states"'))
 
 
 def test_opener_states_the_conference_date(deploy):
     assert "16 November 2026" in _index(deploy)
 
 
-def test_unit_field_counts_cover_every_member_state(deploy):
+def test_the_retired_tour_and_board_are_gone(deploy):
     index = _index(deploy)
-    opener = index[index.find('class="opener"'):index.find('class="tour"')]
-    counts = [int(n) for n in re.findall(r'<p class="og-label"><b>(\d+)</b>', opener)]
-    assert len(counts) == len(config.POSITION_CATEGORIES) + 1
-    assert sum(counts) == len(bs.load_votes()["states"])
-    units = re.findall(r'<i class="unit[ "]', opener)
-    assert len(units) == sum(counts)
+    for gone in ('class="tour"', "scrollama", "gsap", "board-row", "tour.js"):
+        assert gone not in index, gone
 
 
-def test_unit_field_respects_the_approval_gate():
-    """A reading that is not approved must not move a state out of the
-    not-yet-reviewed group in the deploy build."""
+def test_the_static_map_is_the_first_paint(deploy):
+    """Without JavaScript the figure is a real map, not an empty box."""
+    index = _index(deploy)
+    stage = index[index.find('id="viz-world"'):index.find('id="viz-strands"')]
+    assert 'class="viz-poster"' in stage
+    assert stage.count('class="viz-p p-') >= 30  # reviewed states, filled
+
+
+def test_payload_covers_every_member_state_once(deploy):
+    rows = _payload(_index(deploy))["rows"]
+    assert len(rows) == len(bs.load_votes()["states"])
+    assert len({r["i"] for r in rows}) == len(rows)
+    assert all(len(r["v"]) == len(config.LAWS_RESOLUTIONS) for r in rows)
+    assert all(r["p"] == "" or r["p"] in config.POSITION_CATEGORIES for r in rows)
+
+
+def test_table_lists_every_state_and_matches_the_payload(deploy):
+    index = _index(deploy)
+    table = index[index.find('class="states-table"'):]
+    assert table.count('<tr data-name="') == len(bs.load_votes()["states"])
+    reviewed = sum(1 for r in _payload(index)["rows"] if r["p"])
+    assert f"Positions have been reviewed for {reviewed} states" in index
+
+
+def test_payload_respects_the_approval_gate():
     cs = {"position_codings": [
         {"code": "OPPOSE", "confidence": "EXPLICIT", "as_of": "2026-01-01", "approved": False}
     ]}
@@ -58,7 +84,7 @@ def test_unit_field_respects_the_approval_gate():
     assert bs.current_position(cs, preview=True)["code"] == "OPPOSE"
 
 
-def test_none_yields_to_a_later_substantive_reading():
+def test_none_yields_to_a_substantive_reading():
     cs = {"position_codings": [
         {"code": "NONE", "confidence": "INFERRED", "as_of": "2026-07-17", "approved": True},
         {"code": "LBI-BAN", "confidence": "EXPLICIT", "as_of": "2022-08-09", "approved": True},
@@ -66,17 +92,19 @@ def test_none_yields_to_a_later_substantive_reading():
     assert bs.current_position(cs, preview=False)["code"] == "LBI-BAN"
 
 
-def test_none_is_shown_as_dated_coverage_not_as_a_position(deploy):
-    """NONE is a coverage statement: it sits below the positions with
-    "not yet reviewed", and its label carries the review date."""
-    index = _index(deploy)
-    opener = index[index.find('class="opener"'):index.find('class="tour"')]
-    m = re.search(r'<div class="og og-coverage"><p class="og-label"><b>\d+</b> '
-                  r'No stated position, reviewed (\d{4}-\d{2}-\d{2})', opener)
-    assert m, "NONE group missing its review date or its coverage placement"
-    positions = opener[:m.start()]
-    assert "No stated position" not in positions
-    assert "by position" not in opener
+def test_unapproved_captions_fall_back_to_plain_labels(deploy):
+    """Caption prose is gated. Until it is approved the figures show the
+    count-only labels, and the drafted sentences never reach the page."""
+    _, manifest = deploy
+    copy = bs.load_yaml(config.CONTENT_DIR / "viz.yaml")
+    entry = next(e for e in manifest["entries"] if e["kind"] == "viz_copy")
+    caps = _payload(_index(deploy))["captions"]
+    if bs.is_approved(copy):
+        assert entry["rendered"] is True
+    else:
+        assert entry["rendered"] is False
+        assert caps == bs.VIZ_FALLBACK["captions"]
+        assert "Drag to turn the globe" not in _index(deploy)
 
 
 def test_every_state_with_a_file_has_an_alpha2_mark_label():
@@ -87,3 +115,11 @@ def test_every_state_with_a_file_has_an_alpha2_mark_label():
         assert path.stem in dossier_render.ALPHA2, path.stem
     labels = list(dossier_render.ALPHA2.values())
     assert len(labels) == len(set(labels))
+
+
+def test_every_member_state_has_a_label_point_and_code():
+    path = config.REPO_ROOT / "data" / "source" / "ne_labels.json"
+    labels = json.loads(path.read_text(encoding="utf-8"))["states"]
+    assert set(labels) == set(bs.load_votes()["states"])
+    codes = [v["a2"] for v in labels.values()]
+    assert len(codes) == len(set(codes)) and all(len(c) == 2 for c in codes)

@@ -9,7 +9,7 @@ It refuses to execute the script, logs nothing the page can see, and the site
 degrades to its no-JS fallback while looking deliberate.
 
 That is exactly what happened. Four of five pinned hashes were wrong, so the
-home-page tour never ran and the instruments map never loaded, on a build
+home-page figures never ran and the instruments map never loaded, on a build
 whose gates were all green.
 
 Usage:  python tools/check_sri.py

@@ -74,21 +74,6 @@ def test_integrity_red_is_never_a_position_fill():
     assert not clashing, f"integrity red used as a position fill: {clashing}"
 
 
-def test_the_shift_seam_stays_visible_when_its_hue_collides():
-    """The seam marks when a position changed. Against a REG-SOFT band a
-    deuteranope cannot see it by colour, so it must carry a non-colour cue."""
-    css = SITE_CSS.read_text(encoding="utf-8")
-    # Anchored to the start of a line so this finds the standalone `.c-seam`
-    # rule and not the `#c-board .c-seam` animation rule, which sets only
-    # opacity and would make this assertion fail no matter what.
-    rule = re.search(r"^\.c-seam\s*\{([^}]*)\}", css, re.M)
-    assert rule, "no standalone .c-seam rule found"
-    body = rule.group(1)
-    assert re.search(r"^\s*(box-shadow|outline|border)\s*:", body, re.M), (
-        "the shift seam is a bare red fill with no shape cue, so it "
-        "disappears into any band whose hue it collides with")
-
-
 def test_every_category_declares_a_texture():
     missing = set(config.POSITION_CATEGORIES) - set(config.POSITION_TEXTURES)
     assert not missing, f"categories with no texture decision: {sorted(missing)}"

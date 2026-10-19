@@ -7,7 +7,7 @@ Two modes:
 - --preview: writes .scratch/preview/ (gitignored, localhost only) rendering
   unapproved entries behind an unmistakable DRAFT banner.
 
-The board and every page are fully server-rendered: no content is gated on
+Every page is fully server-rendered: no content is gated on
 JavaScript. Output is deterministic; rebuilding without input changes
 produces byte-identical files.
 """
@@ -31,6 +31,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from config import config
 from tools import dossier_render
+from tools import viz
 
 T0 = date(config.TIMELINE_START_YEAR, 1, 1)
 T1 = date.fromisoformat(config.UPDATED_THROUGH)
@@ -140,14 +141,6 @@ def _warn_missing(path):
           file=sys.stderr)
 
 
-def load_tour():
-    path = config.CONTENT_DIR / "tour.yaml"
-    if not path.exists():
-        _warn_missing(path)
-        return None
-    return load_yaml(path)
-
-
 def load_endorsements():
     path = config.CONTENT_DIR / "endorsements.yaml"
     if not path.exists():
@@ -185,17 +178,6 @@ def state_display_name(iso3, votes, content_states):
     return cs.get("display_name") or display_from_un_name(entry["un_name"])
 
 
-def substantive_changers(votes):
-    """States whose cast vote (Y/N/A) changed across the three resolutions.
-    Moves between voting and non-voting are attendance, not position."""
-    out = []
-    for iso3, entry in votes["states"].items():
-        cast = {entry["votes"][k] for k in config.LAWS_RESOLUTIONS} - {"X"}
-        if len(cast) > 1:
-            out.append(iso3)
-    return sorted(out)
-
-
 def tally_bar_html(tally):
     non_voting = 193 - tally["yes"] - tally["no"] - tally["abstain"]
     segments = []
@@ -215,315 +197,6 @@ def tally_bar_html(tally):
         f'aria-label="{tally["yes"]} yes, {tally["no"]} no, '
         f'{tally["abstain"]} abstain, {non_voting} non-voting">'
         + "".join(segments) + "</div>"
-    )
-
-
-# Tour figures. The board earns its legibility from its shared year axis
-# and reading key; inside the tour neither exists, so every figure is
-# purpose-built and carries its own numbers and labels. The resolutions
-# cluster after mid-2023, so the tour figures use a zoomed domain.
-MOVE_T0 = date(2023, 6, 1)
-
-
-def move_x(d, w=1000.0):
-    """Map a date into the tour's zoomed domain, with 4% margins."""
-    span = (T1 - MOVE_T0).days
-    frac = max(0.0, min(1.0, (as_date(d) - MOVE_T0).days / span))
-    return round((0.04 + 0.92 * frac) * w, 1)
-
-
-# ---------------------------------------------------------------------------
-# The persistent canvas (P2c). ONE server-rendered board that the tour
-# reveals progressively: it is complete markup at build time (the end
-# state), hidden until JS enhances, so the no-JS and reduced-motion paths
-# read the stacked prose above the classic board and lose nothing.
-# The canvas uses a zoomed domain: the resolutions cluster after mid-2023
-# and the story ends at the Review Conference.
-# ---------------------------------------------------------------------------
-
-CANVAS_T0 = date(2023, 6, 1)
-CANVAS_T1 = date(2027, 1, 15)
-REVCON_START = date.fromisoformat(config.REVCON_DATES[0])
-
-
-def canvas_x(d):
-    """Percent position in the canvas domain, with 5%/95% margins."""
-    span = (CANVAS_T1 - CANVAS_T0).days
-    frac = max(0.0, min(1.0, (as_date(d) - CANVAS_T0).days / span))
-    return round((0.05 + 0.90 * frac) * 100, 2)
-
-
-def canvas_stats(votes, content_states, preview):
-    """Stat-row values: sourced counts only (handoff II.3). Tallies come
-    from the dataset's reconciled tally block; non-voting is counted from
-    the dataset's X values, never back-computed. Disagreement between the
-    two is a build failure, not a rounding choice."""
-    per_res = {}
-    for key in config.LAWS_RESOLUTIONS:
-        res = votes["resolutions"][key]
-        t = res["tally"]
-        nv = sum(1 for e in votes["states"].values() if e["votes"][key] == "X")
-        if t["yes"] + t["no"] + t["abstain"] + nv != len(votes["states"]):
-            raise SystemExit(
-                f"stat-row reconciliation failed for {key}: tally block and "
-                "per-state non-voting count disagree"
-            )
-        per_res[key] = dict(t, non_voting=nv, year=res["date"][:4], date=res["date"])
-    coded = sum(
-        1 for iso3 in votes["states"]
-        if any(preview or is_approved(c)
-               for c in content_states.get(iso3, {}).get("position_codings", []))
-    )
-    return {
-        "res": per_res,
-        "coded": coded,
-        "movers": len(substantive_changers(votes)),
-        "states": len(votes["states"]),
-    }
-
-
-def _last_move_year(entry):
-    """Year of the state's most recent cast-vote change, or None."""
-    prev, year = None, None
-    for key in config.LAWS_RESOLUTIONS:
-        vote = entry["votes"][key]
-        if vote == "X":
-            continue
-        if prev is not None and vote != prev:
-            year = config.LAWS_RESOLUTIONS[key]["year"]
-        prev = vote
-    return year
-
-
-def canvas_row_html(iso3, entry, resolutions, cs, preview):
-    name = cs.get("display_name") or display_from_un_name(entry["un_name"])
-    codings = [c for c in cs.get("position_codings", []) if preview or is_approved(c)]
-    shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
-    parts = []
-    # Still needed below for the provisional note and the row's latest code.
-    timeline = sorted(codings, key=lambda c: iso(c["as_of"]))
-    for c, start, end in coding_spans(codings):
-        left = canvas_x(start) if start else 5.0
-        right = canvas_x(end) if end else 95.0
-        if right <= left:
-            continue
-        style, extra = band_style(c["code"], c.get("confidence"))
-        parts.append(
-            f'<i class="c-band{extra}" data-code="{esc(c["code"])}" '
-            f'data-plain="{esc(config.POSITION_PLAIN[c["code"]])}" '
-            f'data-conf-plain="{esc(config.CONFIDENCE_PLAIN.get(c.get("confidence", ""), ""))}" '
-            f'data-since="{esc(iso(c["as_of"]))}" '
-            f'data-conf="{esc(c.get("confidence", ""))}" '
-            f'style="left:{left}%;width:{right - left:.2f}%;{style}"></i>'
-        )
-    for s in shifts:
-        # The seam is one of red's two reserved meanings (DESIGN v2.1 rule
-        # 10): the moment a coded position changes, direction-neutral.
-        parts.append(f'<i class="c-seam" style="left:{canvas_x(s["date"])}%"></i>')
-    for key in config.LAWS_RESOLUTIONS:
-        vote = entry["votes"][key]
-        parts.append(
-            f'<span class="c-mark c-mark-{vote}" '
-            f'style="left:{canvas_x(resolutions[key]["date"])}%">'
-            + vote_glyph_svg(vote, 12) + "</span>"
-        )
-    note = next(
-        (str(c["provisional_note"]).strip() for c in timeline
-         if c.get("provisional_note")), None,
-    )
-    note_html = (
-        f'<span class="c-note citation">{esc(note)}</span>' if note else ""
-    )
-    move_year = _last_move_year(entry)
-    votes_csv = ",".join(entry["votes"][k] for k in config.LAWS_RESOLUTIONS)
-    attrs = [
-        f'data-iso3="{esc(iso3)}"',
-        f'data-name="{esc(name)}"',
-        f'data-votes="{esc(votes_csv)}"',
-    ]
-    if move_year:
-        attrs.append(f'data-move-year="{move_year}"')
-    if timeline:
-        attrs.append(f'data-code="{esc(timeline[-1]["code"])}"')
-    return (
-        f'<div class="c-row" {" ".join(attrs)}>'
-        f'<span class="c-label">{esc(name)}</span>'
-        f'<span class="c-track">{"".join(parts)}</span>'
-        f"{note_html}</div>"
-    )
-
-
-def canvas_teach_sets(stats):
-    """The teaching sentences: plain lines naming unit and count above the
-    mark-field (the craft standard's highest-value rule). Factual chart
-    furniture computed from the dataset, never analyst prose."""
-    r = stats["res"]
-    keys = list(config.LAWS_RESOLUTIONS)
-    r1, r2, r3 = (r[k] for k in keys)
-    return {
-        "b1": "",
-        "b2": f"One state. One recorded vote, adopted {r1['date']}.",
-        "b3": "One state. Three recorded votes, 2023 to 2025.",
-        "b4": "One state. Three recorded votes, 2023 to 2025.",
-        "b5": "The band is the position. The seam marks the change.",
-        "b6": "Two states. Three recorded votes each.",
-        "b7": f"{stats['movers']} states changed a recorded vote. One row per state.",
-        "b8": f"{stats['coded']} states with a reviewed position, one row per state.",
-        "b9": f"{stats['states']} member states. One row per state, three recorded votes each.",
-        "b10": (f"{stats['states']} member states. Seventh Review Conference: "
-                "16 to 20 November 2026. Click or tap any row for its record."),
-    }
-
-
-def canvas_stat_sets(stats):
-    """Stat-row variants per beat: always hard numbers, never adjectives."""
-    r = stats["res"]
-    keys = list(config.LAWS_RESOLUTIONS)
-
-    def tally_chip(k):
-        t = r[k]
-        return (
-            f'<span class="c-stat"><strong>{t["year"]}</strong> '
-            f'{t["yes"]} Y · {t["no"]} N · {t["abstain"]} A · '
-            f'{t["non_voting"]} NV</span>'
-        )
-
-    first = r[keys[0]]
-    all_three = "".join(tally_chip(k) for k in keys)
-    full = (
-        f'<span class="c-stat"><strong>{stats["states"]}</strong> states</span>'
-        '<span class="c-stat"><strong>3</strong> recorded votes</span>'
-        f'<span class="c-stat"><strong>{stats["coded"]}</strong> positions reviewed</span>'
-    )
-    # Beat 2's stat-row is a single figure (the storyboard's one-unit
-    # start); the full tallies arrive with the third vote at beat 3.
-    return {
-        "b1": "",
-        "b2": (
-            '<span class="c-stat"><strong>1</strong> recorded vote shown · '
-            f'{first["yes"]} in favour, {first["no"]} against, '
-            f'{first["abstain"]} abstentions</span>'
-        ),
-        "b3": all_three,
-        "b4": all_three,
-        "b5": all_three,
-        "b6": all_three,
-        "b7": f'<span class="c-stat"><strong>{stats["movers"]}</strong> states changed a recorded vote</span>',
-        "b8": (
-            f'<span class="c-stat"><strong>{stats["coded"]}</strong> reviewed</span>'
-            f'<span class="c-stat"><strong>{stats["states"] - stats["coded"]}</strong> not yet reviewed</span>'
-        ),
-        "b9": full,
-        "b10": full,
-    }
-
-
-def canvas_html(votes, content_states, preview):
-    """The whole canvas, server-rendered in its end state: 193 rows, every
-    mark, band, and seam, the stat-row sets, the teaching sentences, and
-    the deadline line. JS only reveals and transforms; it never builds."""
-    resolutions = votes["resolutions"]
-    stats = canvas_stats(votes, content_states, preview)
-    ordered = sorted(
-        votes["states"].items(),
-        key=lambda kv: (
-            content_states.get(kv[0], {}).get("display_name")
-            or display_from_un_name(kv[1]["un_name"])
-        ),
-    )
-    rows = "\n".join(
-        canvas_row_html(iso3, entry, resolutions, content_states.get(iso3, {}), preview)
-        for iso3, entry in ordered
-    )
-    teach = "".join(
-        f'<p class="c-teach" data-set="{k}"{" hidden" if k != "b9" else ""}>{esc(v)}</p>'
-        for k, v in canvas_teach_sets(stats).items() if v
-    )
-    stat_sets = "".join(
-        f'<div class="c-statset" data-set="{k}"{" hidden" if k != "b9" else ""}>{v}</div>'
-        for k, v in canvas_stat_sets(stats).items() if v
-    )
-    dx = canvas_x(REVCON_START)
-    deadline = (
-        f'<div class="c-deadline" style="left:{dx}%">'
-        '<svg viewBox="0 0 10 100" preserveAspectRatio="none" aria-hidden="true">'
-        '<line id="deadline-line" x1="5" y1="0" x2="5" y2="100" '
-        f'stroke="{config.PALETTE["ink"]}" stroke-width="2" '
-        'stroke-dasharray="6 5"/></svg>'
-        '<span class="c-deadline-label citation">16 to 20 Nov 2026</span></div>'
-    )
-    # One metadata payload for the whole canvas: the row telemetry readout
-    # (P4c) resolves votes against this, instead of repeating the record
-    # on 579 marks.
-    res_meta = json.dumps(
-        [
-            {"key": k, "year": resolutions[k]["date"][:4],
-             "date": resolutions[k]["date"], "url": resolutions[k]["undl_link"]}
-            for k in config.LAWS_RESOLUTIONS
-        ],
-        ensure_ascii=False,
-    )
-    return f"""
-    <div class="scrolly-canvas" id="scrolly-canvas" hidden>
-      <div class="c-teach-slot" aria-live="polite">{teach}</div>
-      <div class="c-board-wrap">
-        <div class="c-board" id="c-board" data-beat="9" data-resolutions="{esc(res_meta)}">
-{rows}
-        </div>
-        {deadline}
-      </div>
-      <div class="c-stats" aria-live="polite">{stat_sets}</div>
-      <a class="c-release skip-board" href="#board-top" hidden>Explore the full board</a>
-    </div>"""
-
-
-def tour_copy_html(copy):
-    """A beat's copy as paragraphs: blank lines separate paragraphs, single
-    newlines inside a paragraph become line breaks (the colour key in beat 5
-    is one item per line)."""
-    paras = [p.strip() for p in str(copy).strip().split("\n\n") if p.strip()]
-    return "".join("<p>" + "<br>".join(esc(ln.strip()) for ln in p.split("\n")) + "</p>"
-                   for p in paras)
-
-
-def tour_html(tour, votes, content_states, preview):
-    """The scrollytelling scaffold: ten stacked prose beats (the no-JS and
-    reduced-motion path) beside the hidden server-rendered canvas. JS
-    enhances into the two-column sticky layout; nothing here depends on
-    script to be readable."""
-    beats = []
-    for i, beat in enumerate(tour.get("beats", []), 1):
-        chip = (
-            '<span class="draft-chip">DRAFT</span>'
-            if preview and not is_approved(tour)
-            else ""
-        )
-        # A hard number in the narration gets its document one click away,
-        # on the same standard the codings are held to. Prose is not exempt.
-        cites = ""
-        srcs = beat.get("sources") or []
-        if srcs:
-            links = " · ".join(
-                f'<a href="{esc(s["url"])}" rel="noopener">{esc(s["label"])}</a>'
-                for s in srcs
-            )
-            cites = f'\n      <p class="beat-cite">Source: {links}</p>'
-        beats.append(f"""
-  <section class="beat" id="beat-{esc(beat["id"])}" data-beat="{i}">
-    <div class="beat-copy">
-      <h2>{esc(beat["title"])}{chip}</h2>
-      {tour_copy_html(beat["copy"])}{cites}
-    </div>
-  </section>""")
-    # The skip link lives in the opener, above this section.
-    return (
-        '<section class="tour" id="tour" aria-label="Guided tour">\n'
-        '  <div class="scrolly">\n'
-        '    <div class="scrolly-steps">'
-        + "".join(beats)
-        + "\n    </div>"
-        + canvas_html(votes, content_states, preview)
-        + "\n  </div>\n</section>\n"
     )
 
 
@@ -644,7 +317,7 @@ def prose_page(key, pages, fallback_lines, preview, manifest, blocks=None):
             )
             body = f"<h1>{esc(title)}{chip}</h1>\n" + _render_with_blocks(
                 entry["body"], blocks or {})
-            return page(title, body, current=f"{key}.html", preview=preview)
+            return page(title, '<article class="prose-page">' + body + '</article>', current=f"{key}.html", preview=preview)
     return shell_page(title, f"{key}.html", fallback_lines, preview)
 
 
@@ -727,7 +400,7 @@ def conference_page(conference, content_states, votes, preview, manifest):
         + md_to_html(str(conference.get("intro", "")).strip())
         + "\n".join(sections)
     )
-    return page(conference.get("title", "The Review Conference"), body,
+    return page(conference.get("title", "The Review Conference"), '<article class="prose-page">' + body + '</article>',
                 current="conference.html", preview=preview,
                 description=conference.get("description", ""))
 
@@ -761,43 +434,8 @@ def is_approved(entry):
 # Page shell
 # ---------------------------------------------------------------------------
 
-# Animation stack: pinned version + SRI from cdnjs, loaded deferred and only
-# on pages that render the tour. The tour is enhancement; the scaffold and
-# the board are complete without it (DESIGN v2, binding).
-# Division of labor (craft standard): Scrollama says WHEN, CSS sticky
-# HOLDS, GSAP DRAWS. ScrollTrigger is deliberately absent: one scroll
-# driver, not two.
-GSAP_VERSION = "3.15.0"
-GSAP_SCRIPTS = (
-    ("gsap.min.js",
-     "sha512-oJ8QbaQThQoJZ7oEv+29jfPM6CcP+zUxh3PKJs1vyOhx0UraUrE7PQgeItu3dOuCJyrzWpoYMsVjkkPEBzbUqw=="),
-    ("DrawSVGPlugin.min.js",
-     "sha512-egrFtAMXB/E3deN7qNirS2hUrVU9Y5HK12Fea4yzjtfZ5gVYPlsH+r3IxsQ4oOR2wfOAfeUv5pCIoSg58R1YoA=="),
-)
-
-
-# Scrollama (MIT): step enter/exit triggering only, per the craft-standard
-# division of labor (Scrollama says WHEN, CSS sticky HOLDS, GSAP DRAWS).
-# License notes for the whole stack: docs/THIRD_PARTY.md.
-SCROLLAMA_VERSION = "3.2.0"
-SCROLLAMA_SRI = "sha512-YE2BOLTLBOkZ10ahg304yD425ncH98QTjdCgfsjzAJB1tMHWeruT4BBrHL2FXfXLjFJqfsB7I7qhqxubPsT/dw=="
-
-
-def gsap_script_tags():
-    tags = [
-        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/{GSAP_VERSION}/{name}" '
-        f'integrity="{sri}" crossorigin="anonymous"></script>'
-        for name, sri in GSAP_SCRIPTS
-    ]
-    tags.append(
-        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/{SCROLLAMA_VERSION}/scrollama.min.js" '
-        f'integrity="{SCROLLAMA_SRI}" crossorigin="anonymous"></script>'
-    )
-    return "\n".join(tags)
-
-
 NAV = [
-    ("index.html", "Board"),
+    ("index.html", "Home"),
     ("votes.html", "Votes"),
     ("instruments.html", "Instruments"),
     ("rubric.html", "Rubric"),
@@ -847,10 +485,10 @@ def _record_asset_hashes(out):
     _ASSET_HASHES.clear()
     out = Path(out)
     for rel in ("css/tokens.css", "css/site.css", "css/dossier.css",
-                "js/board.js", "js/dossier.js", "js/tour.js",
+                "js/board.js", "js/dossier.js", "js/viz.js",
                 "js/instruments.js", "assets/favicon.svg"):
         path = out / rel
-        if path.exists():  # tour.js and instruments.js are conditional
+        if path.exists():  # instruments.js is conditional
             # Hash the normalised text, not the raw bytes. Every generated
             # asset is written with newline="\n", but site.css is copied from
             # the source tree, so on Windows it carries CRLF while a CI
@@ -979,8 +617,8 @@ def band_style(code, confidence):
 
 
 def vote_glyph_svg(vote, size=12):
-    """Monochrome ink shapes; meaning never carried by hue. The tour
-    renders them larger, the board at 12px."""
+    """Monochrome ink shapes; meaning never carried by hue. 12px in the
+    table of member states."""
     ink = config.PALETTE["ink"]
     if vote == "Y":
         shape = f'<circle cx="6" cy="6" r="4.2" fill="{ink}"/>'
@@ -1052,157 +690,6 @@ def compute_bands(codings):
     return bands
 
 
-def row_track_html(iso3, entry, resolutions, codings, shifts):
-    """One state's track: coded bands where approved, vote marks always.
-    Everything is percent-positioned HTML, so nothing distorts at any
-    viewport width and every trigger is a real button."""
-    parts = ['<div class="row-track">']
-    for band in compute_bands(codings):
-        style, extra_class = band_style(band["code"], band["confidence"])
-        conf = band["confidence"] or ""
-        conf_plain = config.CONFIDENCE_PLAIN.get(conf, "")
-        if band["code"] == "NONE":
-            # A coverage statement, not a position: the date is when the
-            # record was reviewed, and the band covers the whole record.
-            title = f"No stated position (NONE), reviewed {band['since']}, {conf_plain}"
-        else:
-            title = (f"{config.POSITION_PLAIN[band['code']]} ({band['code']}), since "
-                     f"{band['since']}, {conf_plain} ({conf})")
-        if band.get("note"):
-            title += f". {band['note']}"
-        # role=img + aria-label gives the coding band an accessible name; the
-        # native title stays for pointer users. Without this the position (the
-        # board's core datum) has no name for assistive tech.
-        parts.append(
-            f'<div class="band{extra_class}" role="img" aria-label="{esc(title)}" '
-            f'style="left:{band["left"] / 10:.2f}%;'
-            f'width:{band["width"] / 10:.2f}%;{style}" title="{esc(title)}"></div>'
-        )
-    for shift in sorted(shifts, key=lambda s: iso(s["date"])):
-        parts.append(
-            f'<button type="button" class="shift-node" style="left:{pct(shift["date"])}" '
-            f'data-shift="{esc(json.dumps(_shift_payload(shift), ensure_ascii=False))}" '
-            f'aria-label="Shift from {esc(shift["from"])} to {esc(shift["to"])} on {esc(iso(shift["date"]))}">'
-            "<span></span></button>"
-        )
-    for key in config.LAWS_RESOLUTIONS:
-        vote = entry["votes"][key]
-        res = resolutions[key]
-        parts.append(
-            f'<button type="button" class="vote-mark" style="left:{pct(res["date"])}" '
-            f'data-vote="{esc(json.dumps(_vote_payload(iso3, key, vote, res), ensure_ascii=False))}" '
-            f'aria-label="{esc(VOTE_GLYPHS[vote])} on {esc(key)}, {esc(res["date"])}">'
-            + vote_glyph_svg(vote)
-            + "</button>"
-        )
-    parts.append("</div>")
-    return "".join(parts)
-
-
-def _vote_payload(iso3, key, vote, res):
-    return {
-        "kind": "vote",
-        "state": iso3,
-        "resolution": f"A/RES/{key}",
-        "vote": VOTE_GLYPHS[vote],
-        "date": res["date"],
-        "url": res["undl_link"],
-    }
-
-
-def _shift_payload(shift):
-    ev = []
-    for e in shift.get("evidence", []):
-        ev.append(
-            {
-                "quote": e.get("quote"),
-                "date": iso(e["date"]),
-                "url": e.get("url"),
-                "confidence": e.get("confidence"),
-            }
-        )
-    payload = {
-        "kind": "shift",
-        "from": shift["from"],
-        "to": shift["to"],
-        "date": iso(shift["date"]),
-        "evidence": ev,
-    }
-    if shift.get("provisional_note"):
-        payload["provisional"] = str(shift["provisional_note"]).strip()
-    return payload
-
-
-def axis_html():
-    parts = ['<div class="axis-track" aria-hidden="true">']
-    for year in range(config.TIMELINE_START_YEAR, T1.year + 1, 2):
-        parts.append(
-            f'<span class="axis-tick" style="left:{pct(date(year, 1, 1))}">'
-            f"<span>{year}</span></span>"
-        )
-    parts.append("</div>")
-    return "".join(parts)
-
-
-def board_rows(votes, content_states, preview):
-    resolutions = votes["resolutions"]
-    rows = []
-    for iso3, entry in votes["states"].items():
-        cs = content_states.get(iso3, {})
-        codings = [
-            c for c in cs.get("position_codings", []) if preview or is_approved(c)
-        ]
-        shifts = [s for s in cs.get("shift_events", []) if preview or is_approved(s)]
-        latest_shift = max((iso(s["date"]) for s in shifts), default="")
-        name = cs.get("display_name") or display_from_un_name(entry["un_name"])
-        rows.append(
-            {
-                "iso3": iso3,
-                "name": name,
-                "latest_shift": latest_shift,
-                "reviewed": bool(codings),
-                "bands": compute_bands(codings),
-                "html": (
-                    f'<div class="board-row" id="{iso3}" data-name="{esc(name)}" '
-                    f'data-shift="{latest_shift}">'
-                    f'<div class="row-label"><a href="state/{iso3}.html">{esc(name)}</a>'
-                    + (
-                        f'<span class="draft-chip">DRAFT</span>'
-                        if preview and (codings or shifts) and not all(
-                            map(is_approved, codings + shifts)
-                        )
-                        else ""
-                    )
-                    + "</div>"
-                    + row_track_html(iso3, entry, resolutions, codings, shifts)
-                    + "</div>"
-                ),
-            }
-        )
-    # Default order: most recent shift first, then coded, then name
-    rows.sort(key=lambda r: (r["latest_shift"] == "", not r["reviewed"], r["name"]))
-    rows_with_shifts = [r for r in rows if r["latest_shift"]]
-    rows_with_shifts.sort(key=lambda r: r["latest_shift"], reverse=True)
-    ordered = rows_with_shifts + [r for r in rows if not r["latest_shift"]]
-    return ordered
-
-
-def axis_key_html():
-    """The compact key that rides inside the sticky axis block. Same hue and
-    texture as the band and the full legend, code only, description on hover.
-    Marked aria-hidden: the full legend already carries the accessible text,
-    and a second reading of it would be noise, not information."""
-    items = []
-    for code, label in config.POSITION_CATEGORIES.items():
-        style, texture = band_style(code, "EXPLICIT")
-        items.append(
-            f'<span title="{esc(label)}"><i class="swatch{texture}" style="{style}"></i>'
-            f"{esc(config.POSITION_PLAIN[code])}</span>")
-    items.append('<span title="Not yet reviewed by this site">'
-                 '<i class="swatch swatch-empty"></i>Empty</span>')
-    return '    <div class="axis-key" aria-hidden="true">' + "".join(items) + "</div>"
-
-
 def legend_html():
     items = []
     for code, label in config.POSITION_CATEGORIES.items():
@@ -1239,10 +726,14 @@ def current_position(cs, preview):
     return max(none, key=lambda c: iso(c["as_of"])) if none else None
 
 
+# ---------------------------------------------------------------------------
+# Home page: the globe, Strands, and every state in a table
+# ---------------------------------------------------------------------------
+
 # The opener's sentences are taken from text the analyst has already approved
-# for the live site: the site meta description, the footer, and the tour's
-# clock beat. New claim-bearing prose does not belong in this file; it goes
-# through content/ and the approval gate.
+# for the live site: the site meta description, the footer, and the clock
+# line. New claim-bearing prose does not belong in this file; it goes through
+# content/ and the approval gate.
 OPENER_HEADLINE = "Where every country stands on autonomous weapons."
 OPENER_DEK = ("Recorded votes, official statements, and national policy, tracked "
               "as they shift over time. Every position links to a quoted, dated "
@@ -1251,148 +742,275 @@ OPENER_CLOCK = ("The Geneva weapons convention holds its Seventh Review Conferen
                 "on 16 November 2026, and that is the next moment any of this can "
                 "turn into law.")
 
+D3_VERSION = "7.8.5"
+D3_SRI = "sha512-M7nHCiNUOwFt6Us3r8alutZLm9qMt4s9951uo8jqO4UwJ1hziseL6O3ndFyigx6+LREfZqnhHxYjKRJ8ZQ69DQ=="
+TOPOJSON_VERSION = "3.0.2"
+TOPOJSON_SRI = "sha512-4UKI/XKm3xrvJ6pZS5oTRvIQGIzZFoXR71rRBb1y2N+PbwAsKa5tPl2J6WvbEvwN3TxQCm8hMzsl/pO+82iRlg=="
 
-def opener_html(votes, content_states, preview, coverage_line, has_tour):
-    """The first screen: what this is, how much of it has been read, the date
-    that matters, and the whole field at a glance. One mark per member state,
-    grouped by its position today in the key's order, with the same hue and
-    texture as the board. The marks are aria-hidden; each group's label
-    carries its count in text."""
-    groups = {code: [] for code in config.POSITION_CATEGORIES}
-    unreviewed = []
-    for iso3, entry in votes["states"].items():
-        cs = content_states.get(iso3, {})
-        name = cs.get("display_name") or display_from_un_name(entry["un_name"])
-        pos = current_position(cs, preview)
-        if pos is None:
-            unreviewed.append(name)
-        else:
-            groups[pos["code"]].append((name, pos))
+# Plain labels the figures use until the analyst approves content/viz.yaml.
+# Counts and names only: chart furniture, the same standard the board's
+# teaching sentences were held to.
+VIZ_FALLBACK = {
+    "world_heading": "", "strands_heading": "Votes and positions", "strands_intro": "",
+    "states_heading": "Every state", "assembly_intro": "",
+    "captions": {
+        "globe": "Colour: the position this site has read, {reviewed} states. Pale: not yet reviewed.",
+        "map": "Colour: the position this site has read, {reviewed} states. Small states are drawn as dots.",
+        "vote": "{year}, resolution {res}: {Y} Yes, {N} No, {A} abstained, {X} did not vote.",
+        "movers": "Highlighted: {movers} states that changed a recorded vote.",
+        "position": "{stated} with a stated position, {none} reviewed with none found, {nr} not yet reviewed.",
+        "matrix": "Rows: position. Columns: {vote2025} vote.",
+        "strands": "{n} states. Left to right: the 2023, 2024 and 2025 votes, then position.",
+        "strands_movers": "{n} states that changed a recorded vote.",
+        "assembly": "One seat per member state, ordered by vote.",
+        "assembly_moved": "{moved} changed their vote from the year before.",
+        "assembly_position": "Seats coloured by position.",
+    },
+}
 
-    def group_html(label, count, units, extra=""):
-        return (
-            f'<div class="og{extra}">'
-            f'<p class="og-label"><b>{count}</b> {esc(label)}</p>'
-            f'<div class="og-units" aria-hidden="true">{units}</div>'
-            "</div>"
+
+def load_viz_copy(preview, manifest=None):
+    path = config.CONTENT_DIR / "viz.yaml"
+    copy = load_yaml(path) if path.exists() else None
+    ok = bool(copy and (preview or is_approved(copy)))
+    if manifest is not None and copy is not None:
+        manifest["entries"].append({"state": None, "kind": "viz_copy",
+                                    "approved": is_approved(copy), "rendered": ok})
+    if not ok:
+        return VIZ_FALLBACK
+    out = {k: " ".join(str(copy.get(k) or "").split()) for k in VIZ_FALLBACK if k != "captions"}
+    out["captions"] = {k: " ".join(str((copy.get("captions") or {}).get(k) or v).split())
+                       for k, v in VIZ_FALLBACK["captions"].items()}
+    return out
+
+
+def viz_scripts():
+    return (
+        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/{D3_VERSION}/d3.min.js" '
+        f'integrity="{D3_SRI}" crossorigin="anonymous"></script>\n'
+        f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/topojson/{TOPOJSON_VERSION}/topojson.min.js" '
+        f'integrity="{TOPOJSON_SRI}" crossorigin="anonymous"></script>\n'
+        f'<script defer src="{asset("", "js/viz.js")}"></script>'
+    )
+
+
+def viz_textures_svg():
+    """SVG patterns for the position textures, shared by every inline SVG on
+    the page (the static map, the assembly, Strands). Hue paired with texture:
+    no category depends on colour alone."""
+    pos = config.PALETTE["positions"]
+    tex = "rgba(255,255,255,.45)"
+    return (
+        f'<pattern id="tx-open" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="{pos["LBI-OPEN"]}"/><rect y="4" width="6" height="1.4" fill="{tex}"/></pattern>'
+        f'<pattern id="tx-soft" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="{pos["REG-SOFT"]}"/><rect x="5.5" width="1.4" height="7" fill="{tex}"/><rect y="5.5" width="7" height="1.4" fill="{tex}"/></pattern>'
+        f'<pattern id="tx-ccw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="6" height="6" fill="{pos["CCW-ONLY"]}"/><rect x="4.4" width="1.6" height="6" fill="{tex}"/></pattern>'
+        f'<pattern id="tx-oppose" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="{pos["OPPOSE"]}"/><circle cx="3" cy="3" r="1.15" fill="{tex}"/></pattern>'
+        f'<pattern id="tx-ambig" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="{config.PALETTE["ground"]}"/><rect x="4.4" width="1.6" height="6" fill="rgba(26,26,26,.55)"/></pattern>'
+    )
+
+
+def _swatch(code):
+    if not code:
+        return '<i class="swatch swatch-empty" aria-hidden="true"></i>'
+    style, texture = band_style(code, "EXPLICIT")
+    return f'<i class="swatch{texture}" style="{style}" aria-hidden="true"></i>'
+
+
+def viz_payload(votes, content_states, preview, copy):
+    rows = viz.payload(
+        votes, content_states, preview, current_position,
+        lambda iso3, entry, cs: cs.get("display_name") or display_from_un_name(entry["un_name"]),
+        iso,
+    )
+    keys = list(config.LAWS_RESOLUTIONS)
+    pack = {
+        "rows": rows,
+        "captions": copy["captions"],
+        "plain": dict(config.POSITION_PLAIN),
+        "conf": {"EXPLICIT": "stated directly", "INFERRED": "inferred",
+                 "AMBIGUOUS": "the record points both ways", "PROVISIONAL": "provisional"},
+        "years": [votes["resolutions"][k]["date"][:4] for k in keys],
+        "resolutions": keys,
+        "base": "",
+        "view": [viz.VIEW_W, viz.VIEW_H],
+        "flatScale": viz.FLAT_SCALE,
+        "swatch": {k: _swatch(k) for k in [*config.POSITION_CATEGORIES, ""]},
+    }
+    # </script> cannot appear inside the JSON: escape the slash.
+    data = json.dumps(pack, ensure_ascii=False, sort_keys=True).replace("</", "<\\/")
+    return rows, f'<script type="application/json" id="viz-data">{data}</script>'
+
+
+def _vote_cell(v):
+    return (f'<td class="vt" data-v="{v}">{vote_glyph_svg(v)}'
+            f'<span>{esc(VOTE_GLYPHS[v])}</span></td>')
+
+
+def states_table_html(rows, coverage_line, copy):
+    order = {c: i for i, c in enumerate([*config.POSITION_CATEGORIES, ""])}
+    body = []
+    for r in sorted(rows, key=lambda r: r["n"]):
+        pos = (f'{_swatch(r["p"])}{esc(config.POSITION_PLAIN[r["p"]])}' if r["p"]
+               else f'{_swatch("")}<span class="muted">Not yet reviewed</span>')
+        since = (f"reviewed {esc(r['s'])}" if r["p"] == "NONE"
+                 else esc(r["s"]) if r["p"] else "")
+        body.append(
+            f'<tr data-name="{esc(r["n"])}" data-v2025="{"YANX".index(r["v"][2])}" '
+            f'data-pos="{order[r["p"]]:02d}">'
+            f'<th scope="row"><a href="state/{r["i"]}.html">{esc(r["n"])}</a></th>'
+            + "".join(_vote_cell(v) for v in r["v"])
+            + f'<td class="pos">{pos}</td><td class="since">{since}</td></tr>'
         )
+    years = [k for k in config.LAWS_RESOLUTIONS]
+    return f"""
+<section class="states" id="states" aria-labelledby="states-h">
+  <h2 id="states-h">{esc(copy["states_heading"])}</h2>
+  <p class="citation">{esc(coverage_line)}</p>
+  <div class="states-tools">
+    <label for="states-find">Find a state</label>
+    <input class="states-find" id="states-find" type="search" autocomplete="off" placeholder="India">
+    <span class="states-status" aria-live="polite"></span>
+  </div>
+  <div class="board-key states-key">{legend_html()}</div>
+  <div class="table-scroll">
+  <table class="states-table">
+    <thead><tr>
+      <th scope="col"><button type="button" data-sort="name">State</button></th>
+      <th scope="col">{esc(years[0])}</th><th scope="col">{esc(years[1])}</th>
+      <th scope="col"><button type="button" data-sort="v2025">{esc(years[2])}</button></th>
+      <th scope="col"><button type="button" data-sort="pos">Position</button></th>
+      <th scope="col">As of</th>
+    </tr></thead>
+    <tbody>
+{chr(10).join(body)}
+    </tbody>
+  </table>
+  </div>
+</section>"""
 
-    # Positions first. NONE is a coverage statement, never a position
-    # (CLAUDE.md), so it sits with "not yet reviewed" below a rule, and its
-    # label carries the review date the same way the board's band does.
-    parts = []
-    for code, members in groups.items():
-        if code == "NONE":
-            continue
-        units = ""
-        for name, pos in sorted(members, key=lambda m: m[0]):
-            style, texture = band_style(code, pos.get("confidence"))
-            units += (f'<i class="unit{texture}" style="{style}" '
-                      f'title="{esc(name)}: {esc(config.POSITION_PLAIN[code])}"></i>')
-        parts.append(group_html(config.POSITION_PLAIN[code], len(members), units))
-    none_members = groups["NONE"]
-    if none_members:
-        dates = sorted({iso(p["as_of"]) for _, p in none_members})
-        reviewed = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
-        style, texture = band_style("NONE", "EXPLICIT")
-        units = "".join(
-            f'<i class="unit{texture}" style="{style}" title="{esc(n)}: '
-            f'{esc(config.POSITION_PLAIN["NONE"])}, reviewed {iso(p["as_of"])}"></i>'
-            for n, p in sorted(none_members, key=lambda m: m[0]))
-        parts.append(group_html(f'{config.POSITION_PLAIN["NONE"]}, reviewed {reviewed}',
-                                len(none_members), units, " og-coverage"))
-    units = "".join(f'<i class="unit unit-empty" title="{esc(n)}: not yet reviewed"></i>'
-                    for n in sorted(unreviewed))
-    parts.append(group_html("Not yet reviewed by this site", len(unreviewed), units,
-                            " og-empty" + ("" if none_members else " og-coverage")))
 
+def _res_label(key):
+    """A resolution button reads as its year and symbol: "2025 · 80/57"."""
+    return f"{load_votes()['resolutions'][key]['date'][:4]} · {key}"
+
+
+def world_figure_html(rows, copy):
+    reviewed = sum(1 for r in rows if r["p"])
+    first = copy["captions"]["map"].replace("{reviewed}", str(reviewed))
+    views = [("globe", "Globe"), ("map", "Flat map"), ("vote", "The vote"),
+             ("position", "Positions"), ("matrix", "Vote against position")]
+    keys = list(config.LAWS_RESOLUTIONS)
+    years = [k for k in keys]
+    head = f'<h2 class="viz-h">{esc(copy["world_heading"])}</h2>' if copy["world_heading"] else ""
+    return f"""
+<figure class="viz" id="viz-world" aria-labelledby="viz-world-cap">
+  {head}
+  <div class="viz-controls">
+    <div class="seg" role="group" aria-label="View">
+      {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "globe").lower()}">{esc(label)}</button>' for k, label in views)}
+    </div>
+    <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
+  </div>
+  <div class="viz-controls viz-yearbar" hidden>
+    <div class="seg" role="group" aria-label="Resolution">
+      {"".join(f'<button type="button" data-year="{i}" aria-pressed="{str(i == 2).lower()}">{esc(_res_label(k))}</button>' for i, k in enumerate(years))}
+    </div>
+    <label><input class="viz-movers" type="checkbox"> Only the states that changed a vote</label>
+  </div>
+  <p class="viz-caption" id="viz-world-cap" aria-live="polite">{esc(first)}</p>
+  <div class="viz-key">{"".join(f"<span>{_swatch(k)}{esc(config.POSITION_PLAIN[k] if k else 'Not yet reviewed')}</span>" for k in [*config.POSITION_CATEGORIES, ""])}</div>
+  <div class="viz-stage">{viz.static_map_svg(rows)}</div>
+  <figcaption class="credit">Shapes: Natural Earth via world-atlas (public domain). Equal Earth projection when flat. States under about 20,000 km² are drawn as dots at their Natural Earth label point. The table below lists every state.</figcaption>
+</figure>"""
+
+
+def strands_figure_html(copy):
+    intro = f'<p class="viz-intro">{esc(copy["strands_intro"])}</p>' if copy["strands_intro"] else ""
+    return f"""
+<section class="viz-section" aria-labelledby="strands-h">
+  <h2 id="strands-h">{esc(copy["strands_heading"])}</h2>
+  {intro}
+  <figure class="viz" id="viz-strands">
+    <div class="viz-controls">
+      <label><input class="viz-movers" type="checkbox"> Only the states that changed a vote</label>
+      <label><input class="viz-reviewed" type="checkbox"> Only the reviewed states</label>
+      <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="United States"></label>
+    </div>
+    <p class="viz-caption" aria-live="polite"></p>
+    <div class="viz-stage"></div>
+    <noscript><p class="citation">This figure needs JavaScript. The table below has the same votes and positions.</p></noscript>
+  </figure>
+</section>"""
+
+
+def index_page(votes, content_states, preview, manifest=None):
+    copy = load_viz_copy(preview, manifest)
+    rows, data_tag = viz_payload(votes, content_states, preview, copy)
+    n_reviewed = sum(1 for r in rows if r["p"])
+    coverage_line = (f"Votes cover all {len(rows)} member states. "
+                     f"Positions have been reviewed for {n_reviewed} states so far.")
     conf_link = (' <a href="conference.html">Follow the conference</a>.'
                  if _conference_live else "")
-    tour_link = ('<a class="opener-go" href="#tour">Take the tour</a>\n      '
-                 if has_tour else "")
-    return f"""
-<section class="opener" aria-labelledby="opener-h">
+    body = f"""
+<svg class="viz-defs" width="0" height="0" aria-hidden="true"><defs>{viz_textures_svg()}</defs></svg>
+<section class="opener opener-wide" aria-labelledby="opener-h">
   <div class="opener-text">
     <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
     <p class="opener-dek">{esc(OPENER_DEK)}</p>
     <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
     <div class="opener-actions">
-      {tour_link}<a class="skip-board" href="#board-top">Skip to the board</a>
+      <a class="opener-go" href="#viz-world">Explore the globe</a>
+      <a class="skip-board" href="#states">Find a state</a>
     </div>
   </div>
-  <figure class="opener-field">
-    <figcaption>One mark per member state. {esc(coverage_line)}
-    Grouped in the order the key lists them. That order is a list, not a
-    ranking.</figcaption>
-    <div class="og-grid">
-{chr(10).join(parts)}
-    </div>
-  </figure>
 </section>
-"""
-
-
-def index_page(votes, content_states, preview, tour=None):
-    rows = board_rows(votes, content_states, preview)
-    n_reviewed = sum(1 for r in rows if r["reviewed"])
-    coverage_line = (
-        f"Votes cover all {len(rows)} member states. "
-        f"Positions have been reviewed for {n_reviewed} states so far."
-    )
-    tour_block = ""
-    extra_scripts = ""
-    has_tour = bool(tour and (preview or is_approved(tour)))
-    if has_tour:
-        tour_block = tour_html(tour, votes, content_states, preview)
-        extra_scripts = (gsap_script_tags() +
-                         f'\n<script defer src="{asset("", "js/tour.js")}"></script>')
-    opener = opener_html(votes, content_states, preview, coverage_line, has_tour)
-    body = f"""
-{opener}{tour_block}<div class="board-head" id="board-top">
-  <div class="board-lede">
-    <h2 class="board-title">Who moved, when, and <em>on what record</em>.</h2>
-    <p>UN votes, official statements, and national policy on autonomous
-    weapons, for every state, over time. Positions are trajectories, not
-    snapshots.</p>
-    <p class="citation">{esc(coverage_line)}</p>
-  </div>
-  <aside class="board-key" aria-label="How to read the board">
-{legend_html()}
-  </aside>
-</div>
-<div class="board-controls">
-  <span id="sort-label">Sort rows:</span>
-  <button type="button" data-sort="shift" aria-pressed="true">Most recent shift</button>
-  <button type="button" data-sort="name" aria-pressed="false">By name</button>
-</div>
-<section class="board" aria-label="Trajectory board">
-  <div class="board-axis">
-{axis_key_html()}
-    <div class="axis-label">State</div>
-    {axis_html()}
-  </div>
-  <div id="board-rows">
-{chr(10).join(r["html"] for r in rows)}
-  </div>
-</section>
+{world_figure_html(rows, copy)}
+{strands_figure_html(copy)}
+{states_table_html(rows, coverage_line, copy)}
+{data_tag}
 """
     return page(
-        "Trajectory board",
+        "Where every country stands",
         body,
         current="index.html",
         preview=preview,
-        extra_scripts=extra_scripts,
+        extra_scripts=viz_scripts(),
         extra_head=dataset_jsonld(),
         og_path="",
         description="Where every country stands on autonomous weapons, tracked as positions shift over time.",
     )
 
 
+def assembly_figure_html(copy):
+    keys = list(config.LAWS_RESOLUTIONS)
+    intro = f'<p class="viz-intro">{esc(copy["assembly_intro"])}</p>' if copy["assembly_intro"] else ""
+    return f"""
+<svg class="viz-defs" width="0" height="0" aria-hidden="true"><defs>{viz_textures_svg()}</defs></svg>
+{intro}
+<figure class="viz" id="viz-assembly">
+  <div class="viz-controls">
+    <div class="seg" role="group" aria-label="Resolution">
+      {"".join(f'<button type="button" data-year="{i}" aria-pressed="{str(i == 2).lower()}">{esc(_res_label(k))}</button>' for i, k in enumerate(keys))}
+    </div>
+    <div class="seg" role="group" aria-label="Colour">
+      <button type="button" data-colour="vote" aria-pressed="true">Colour by vote</button>
+      <button type="button" data-colour="position" aria-pressed="false">Colour by position</button>
+    </div>
+    <label>Find <input class="viz-find" type="search" autocomplete="off" placeholder="Russia"></label>
+  </div>
+  <p class="viz-caption" aria-live="polite"></p>
+  <div class="viz-key"></div>
+  <div class="viz-stage"></div>
+  <noscript><p class="citation">The seating chart needs JavaScript. The rosters below list every state's vote.</p></noscript>
+</figure>"""
+
 # ---------------------------------------------------------------------------
 # Votes page
 # ---------------------------------------------------------------------------
 
 def votes_page(votes, content_states, preview):
+    copy = load_viz_copy(preview)
+    _, data_tag = viz_payload(votes, content_states, preview, copy)
     resolutions = votes["resolutions"]
     states = votes["states"]
     sections = []
@@ -1435,9 +1053,12 @@ def votes_page(votes, content_states, preview):
 <p>The three UN General Assembly resolutions on lethal autonomous weapons, with
 every member state's vote. Taken from the official UN voting dataset. The
 extraction and the checks are in the open repository.</p>
+{assembly_figure_html(copy)}
 {chr(10).join(sections)}
+{data_tag}
 """
-    return page("Votes", body, current="votes.html", preview=preview)
+    return page("Votes", body, current="votes.html", preview=preview,
+                extra_scripts=viz_scripts())
 
 
 # ---------------------------------------------------------------------------
@@ -2248,6 +1869,16 @@ decides a state's position on its own.</p>
     )
 
 
+
+def world_topology():
+    """world-atlas 1:110m with each country's ISO alpha-3 in its properties,
+    so the globe can match shapes to states without a lookup at runtime."""
+    topo = json.loads(COUNTRIES_TOPOJSON.read_text(encoding="utf-8"))
+    table = json.loads(ISO_NUMERIC_TABLE.read_text(encoding="utf-8"))
+    for g in topo["objects"]["countries"]["geometries"]:
+        g["properties"] = {"i": table.get(str(g.get("id")), "")}
+    return json.dumps(topo, separators=(",", ":"), sort_keys=True)
+
 def countries_geojson():
     """Deterministic TopoJSON to GeoJSON conversion for the wave map. IDs in
     world-atlas are ISO 3166-1 numeric; the committed pycountry-generated
@@ -2333,7 +1964,7 @@ def rubric_page(rubric, preview, states=None):
   As of {esc(config.UPDATED_THROUGH)}, codings are in analyst review.</p>
 </div>
 """
-        return page("Rubric", body, current="rubric.html", preview=preview)
+        return page("Rubric", '<article class="prose-page">' + body + '</article>', current="rubric.html", preview=preview)
     cats = []
     for code, cat in (rubric.get("axis_a", {}).get("categories") or {}).items():
         cats.append(
@@ -2399,12 +2030,12 @@ def rubric_page(rubric, preview, states=None):
 {auth_html}
 {examples_html}
 """
-    return page("Rubric", body, current="rubric.html", preview=preview)
+    return page("Rubric", '<article class="prose-page">' + body + '</article>', current="rubric.html", preview=preview)
 
 
 def shell_page(title, current, lines, preview):
     body = f"<h1>{esc(title)}</h1>\n" + "\n".join(f"<p>{line}</p>" for line in lines)
-    return page(title, body, current=current, preview=preview)
+    return page(title, '<article class="prose-page">' + body + '</article>', current=current, preview=preview)
 
 
 # ---------------------------------------------------------------------------
@@ -2485,100 +2116,10 @@ def favicon_svg():
 """
 
 
-def poster_svg(votes, content_states):
-    """Condensed pre-rendered board poster: the whole wall at a glance.
-    Zoomed to the voting era (the tour's MOVE_T0 domain) so the 193-row
-    wall reads as a record, not empty runway, with each vote column
-    labeled with its symbol, year, and recorded tally."""
-    rows = board_rows(votes, content_states, preview=False)
-    rh = 4
-    top = 66
-    height = top + rh * len(rows) + 8
-    ink = config.PALETTE["ink"]
-
-    def zx(d):
-        return move_x(d, TRACK_W)
-
-    def conv(track_units):
-        """Track units (x_of domain) back to a date, then into the zoom."""
-        d = T0 + timedelta(days=track_units / TRACK_W * (T1 - T0).days)
-        return zx(d)
-
-    parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {TRACK_W} {height}" '
-        f'font-family="Georgia, serif">',
-        f'<rect width="{TRACK_W}" height="{height}" fill="{config.PALETTE["ground"]}"/>',
-        f'<text x="12" y="26" font-size="18" fill="{ink}">'
-        f"{esc(config.SITE_NAME)}: the recorded votes, one row per member state</text>",
-    ]
-    # Faint year rules make the sparse span read as ledger paper, and give
-    # the three vote columns their time context.
-    for year in range(2024, T1.year + 1):
-        gx = zx(date(year, 1, 1))
-        parts.append(
-            f'<line x1="{gx}" y1="36" x2="{gx}" y2="{height - 4}" '
-            f'stroke="{ink}" stroke-opacity="0.08" stroke-width="1"/>'
-        )
-    for key in config.LAWS_RESOLUTIONS:
-        res = votes["resolutions"][key]
-        x = zx(res["date"])
-        t = res["tally"]
-        parts.append(
-            f'<text x="{x}" y="47" font-size="13" text-anchor="middle" '
-            f'fill="{ink}">{esc(key)} · {esc(res["date"][:4])}</text>'
-        )
-        parts.append(
-            f'<text x="{x}" y="61" font-size="10" text-anchor="middle" '
-            f'fill="{ink}" fill-opacity="0.65">'
-            f'{t["yes"]} Y · {t["no"]} N · {t["abstain"]} A</text>'
-        )
-    y = top
-    for r in rows:
-        for band in r["bands"]:
-            if band["code"] == "AMBIG":
-                continue  # the poster is a glance artifact; hatch needs defs
-            # Known gap: the poster encodes by hue alone, so it does not carry
-            # the texture channel the board uses to stay readable under
-            # colour-vision deficiency. Closing it means SVG pattern defs per
-            # category. Acceptable only while the poster stays a decorative
-            # preview and is never the artifact a reader is asked to read.
-            color = config.PALETTE["positions"][band["code"]]
-            if color is None:
-                continue
-            left = conv(band["left"])
-            right = conv(band["left"] + band["width"])
-            if right - left < 1:
-                continue
-            parts.append(
-                f'<rect x="{left:.1f}" y="{y}" '
-                f'width="{right - left:.1f}" height="{rh - 1}" fill="{color}" '
-                f'fill-opacity="{band["opacity"]}"/>'
-            )
-        for key in config.LAWS_RESOLUTIONS:
-            # Wide marks: a 3px needle vanishes at poster scale; 22 units
-            # is about three weeks of timeline, visually a vote column.
-            x = zx(votes["resolutions"][key]["date"]) - 11
-            vote = votes["states"][r["iso3"]]["votes"][key]
-            if vote == "N":  # outline, echoing the crossed-ring glyph
-                parts.append(
-                    f'<rect x="{x:.1f}" y="{y}" width="22" height="{rh - 1}" '
-                    f'fill="none" stroke="{ink}" stroke-width="0.9" stroke-opacity="0.9"/>'
-                )
-            else:
-                op = {"Y": "0.9", "A": "0.5", "X": "0.15"}[vote]
-                parts.append(
-                    f'<rect x="{x:.1f}" y="{y}" width="22" height="{rh - 1}" '
-                    f'fill="{ink}" fill-opacity="{op}"/>'
-                )
-        y += rh
-    parts.append("</svg>")
-    return "".join(parts)
-
-
-BOARD_JS = """// Progressive enhancement only: the board is complete without JavaScript.
+BOARD_JS = """// Progressive enhancement only: every page is complete without JavaScript.
 (function () {
   "use strict";
-  // The masthead is sticky; the axis and the tour canvas offset by its real
+  // The masthead is sticky; anchored content offsets by its real
   // height, which wraps on narrow screens, so measure rather than assume.
   function mastheadHeight() {
     var m = document.querySelector("header.masthead");
@@ -2601,441 +2142,6 @@ BOARD_JS = """// Progressive enhancement only: the board is complete without Jav
       var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
     });
-  }
-  var rowsBox = document.getElementById("board-rows");
-  if (rowsBox) {
-    document.querySelectorAll(".board-controls button").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var mode = btn.getAttribute("data-sort");
-        var rows = Array.prototype.slice.call(rowsBox.children);
-        rows.sort(function (a, b) {
-          if (mode === "name") {
-            return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"));
-          }
-          var sa = a.getAttribute("data-shift") || "";
-          var sb = b.getAttribute("data-shift") || "";
-          if (sa !== sb) return sb.localeCompare(sa);
-          return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"));
-        });
-        rows.forEach(function (r) { rowsBox.appendChild(r); });
-        document.querySelectorAll(".board-controls button").forEach(function (b) {
-          b.setAttribute("aria-pressed", String(b === btn));
-        });
-      });
-    });
-  }
-
-  var open = null;
-  function close() {
-    if (open) { open.remove(); open = null; }
-  }
-  // Popovers are built with textContent, never markup injection, because
-  // quote and url values come from the content layer.
-  function el(tag, cls, text) {
-    var node = document.createElement(tag);
-    if (cls) node.className = cls;
-    if (text) node.textContent = text;
-    return node;
-  }
-  function link(url, label) {
-    var a = el("a", null, label);
-    a.href = url;
-    return a;
-  }
-  function show(trigger, data) {
-    close();
-    var pop = el("div", "popover");
-    pop.setAttribute("role", "dialog");
-    if (data.kind === "vote") {
-      pop.appendChild(el("strong", null, data.vote));
-      pop.appendChild(document.createTextNode(" on " + data.resolution));
-      var cite = el("span", "citation", data.date + " · ");
-      cite.appendChild(link(data.url, "UN record"));
-      pop.appendChild(cite);
-    } else {
-      pop.appendChild(el("strong", null, data.from + " → " + data.to));
-      pop.appendChild(el("span", "citation", data.date));
-      if (data.provisional) pop.appendChild(el("span", "citation", data.provisional));
-      (data.evidence || []).forEach(function (e) {
-        var row = el("span", "citation", (e.quote ? "“" + e.quote + "” · " : "") + e.date);
-        if (e.url) {
-          row.appendChild(document.createTextNode(" · "));
-          row.appendChild(link(e.url, "source"));
-        }
-        if (e.confidence) row.appendChild(document.createTextNode(" · " + e.confidence));
-        pop.appendChild(row);
-      });
-    }
-    document.body.appendChild(pop);
-    var r = trigger.getBoundingClientRect();
-    if (window.matchMedia("(min-width: 641px)").matches) {
-      pop.style.left = Math.min(window.scrollX + r.left, window.scrollX + window.innerWidth - pop.offsetWidth - 16) + "px";
-      pop.style.top = (window.scrollY + r.bottom + 8) + "px";
-    }
-    open = pop;
-  }
-  // Coarse pointers get one sheet per row: adjacent marks are too close
-  // together for separate 44px targets, so the track is the target.
-  function showRow(track) {
-    close();
-    var pop = el("div", "popover");
-    pop.setAttribute("role", "dialog");
-    var row = track.closest ? track.closest(".board-row") : null;
-    var label = row ? row.getAttribute("data-name") : "";
-    if (label) pop.appendChild(el("strong", null, label));
-    track.querySelectorAll("[data-shift]").forEach(function (node) {
-      var d = JSON.parse(node.getAttribute("data-shift"));
-      var line = el("span", "citation", "Shift " + d.from + " → " + d.to + ", " + d.date);
-      (d.evidence || []).forEach(function (e) {
-        if (e.url) {
-          line.appendChild(document.createTextNode(" · "));
-          line.appendChild(link(e.url, "source"));
-        }
-      });
-      pop.appendChild(line);
-    });
-    track.querySelectorAll("[data-vote]").forEach(function (node) {
-      var d = JSON.parse(node.getAttribute("data-vote"));
-      var line = el("span", "citation", d.vote + " on " + d.resolution + ", " + d.date + " · ");
-      line.appendChild(link(d.url, "UN record"));
-      pop.appendChild(line);
-    });
-    document.body.appendChild(pop);
-    if (window.matchMedia("(min-width: 641px)").matches) {
-      var r = track.getBoundingClientRect();
-      pop.style.left = Math.min(window.scrollX + r.left, window.scrollX + window.innerWidth - pop.offsetWidth - 16) + "px";
-      pop.style.top = (window.scrollY + r.bottom + 8) + "px";
-    }
-    open = pop;
-  }
-
-  document.addEventListener("click", function (ev) {
-    var t = ev.target.closest ? ev.target.closest("[data-vote],[data-shift]") : null;
-    if (t && t.hasAttribute("data-vote")) { show(t, JSON.parse(t.getAttribute("data-vote"))); ev.stopPropagation(); return; }
-    if (t && t.hasAttribute("data-shift") && t.classList.contains("shift-node")) { show(t, JSON.parse(t.getAttribute("data-shift"))); ev.stopPropagation(); return; }
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      var track = ev.target.closest ? ev.target.closest(".row-track") : null;
-      if (track) { showRow(track); ev.stopPropagation(); return; }
-    }
-    close();
-  });
-  // Triggers are real <button> elements, so Enter and Space already fire
-  // click; only Escape needs handling.
-  document.addEventListener("keydown", function (ev) {
-    if (ev.key === "Escape") close();
-  });
-})();
-"""
-
-
-TOUR_JS = """// Scrollytelling behavior. The stacked prose and the classic board ARE
-// the page; everything here is enhancement behind guards. Division of
-// labor per the craft standard: Scrollama says WHEN, CSS sticky HOLDS,
-// GSAP DRAWS; state application is CSS-transition-driven so it lands on
-// final values even if rendering stalls. Motion is one tempo in every
-// direction (neutrality in motion, DESIGN v2).
-(function () {
-  "use strict";
-  var tour = document.querySelector(".tour");
-  if (!tour) return;
-
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var mobile = window.matchMedia("(max-width: 720px), (pointer: coarse)").matches;
-
-  var canvas = document.getElementById("scrolly-canvas");
-  var board = document.getElementById("c-board");
-
-  // ---- Canvas machinery, shared by the scroll and stepper modes ----
-  var setBeat = null;
-  if (canvas && board) setBeat = initCanvas();
-
-  function initCanvas() {
-    var gsap = window.gsap;
-    // Reduced-motion users get instant states everywhere: the CSS media
-    // query zeroes the transitions, and the flag below turns off the one
-    // GSAP draw (which would not otherwise honor the preference).
-    var hasDraw = !reduced && gsap && typeof window.DrawSVGPlugin !== "undefined";
-    if (hasDraw) gsap.registerPlugin(window.DrawSVGPlugin);
-
-    var rows = Array.prototype.slice.call(board.querySelectorAll(".c-row"));
-    var ALL = rows.map(function (r) { return r.getAttribute("data-iso3"); });
-
-    function byName(a, b) {
-      return a.getAttribute("data-name").localeCompare(b.getAttribute("data-name"));
-    }
-    // The movers, sorted by when each state last moved (beat 7).
-    var MOVERS = rows.filter(function (r) { return r.hasAttribute("data-move-year"); })
-      .sort(function (a, b) {
-        var ya = a.getAttribute("data-move-year"), yb = b.getAttribute("data-move-year");
-        if (ya !== yb) return ya < yb ? -1 : 1;
-        return byName(a, b);
-      })
-      .map(function (r) { return r.getAttribute("data-iso3"); });
-    // The coded states, grouped into camps by category (beat 8). The
-    // order is the rubric's own category order: a listing, never a rank.
-    var CODE_ORDER = ["LBI-BAN", "LBI-OPEN", "REG-SOFT", "CCW-ONLY", "OPPOSE", "AMBIG", "NONE"];
-    var CODED = rows.filter(function (r) { return r.hasAttribute("data-code"); })
-      .sort(function (a, b) {
-        var ca = CODE_ORDER.indexOf(a.getAttribute("data-code"));
-        var cb = CODE_ORDER.indexOf(b.getAttribute("data-code"));
-        if (ca !== cb) return ca - cb;
-        return byName(a, b);
-      })
-      .map(function (r) { return r.getAttribute("data-iso3"); });
-
-    var SCALES = { xl: 88, m: 26, s: 13, xs: 3.4 };
-    // The full wall must fit the stage: at poster scale the row height
-    // shrinks to fill at most 58% of the viewport.
-    function rowHeight(st) {
-      var h = SCALES[st.scale];
-      if (st.scale === "xs" && st.order.length) {
-        h = Math.max(2, Math.min(h, (window.innerHeight * 0.58) / st.order.length));
-      }
-      return h;
-    }
-
-    // One entry per storyboard beat: what is on the canvas, at what
-    // scale, which marks and layers have been taught so far. Color
-    // arrives as an event at beat 5 and never leaves; the movers keep
-    // the two known rows saturated as anchors (muting is focus, not
-    // valence); beat 10 unlocks the board (c-live: telemetry on, the
-    // release affordance appears).
-    var STATES = [null,
-      { order: [], scale: "xl", set: "b1", deadline: "faint", marks: 0 },
-      { order: ["USA"], scale: "xl", set: "b2", marks: 1 },
-      { order: ["USA"], scale: "xl", set: "b3", marks: 3, draw: "no-ring" },
-      { order: ["USA"], scale: "xl", set: "b4", marks: 3 },
-      { order: ["USA"], scale: "xl", set: "b5", marks: 3, bands: true },
-      { order: ["USA", "IND"], scale: "xl", set: "b6", marks: 3, bands: true },
-      { order: MOVERS, scale: "m", set: "b7", marks: 3, bands: true, anchors: ["USA", "IND"] },
-      { order: CODED, scale: "m", set: "b8", marks: 3, bands: true },
-      { order: ALL, scale: "xs", set: "b9", marks: 3, bands: true },
-      { order: ALL, scale: "xs", set: "b10", marks: 3, bands: true, deadline: "draw", live: true }
-    ];
-
-    function showSet(cls, set) {
-      Array.prototype.forEach.call(canvas.querySelectorAll("." + cls), function (el) {
-        el.hidden = el.getAttribute("data-set") !== set;
-      });
-    }
-
-    var lastBeat = 0;
-    function apply(n) {
-      var st = STATES[n];
-      if (!st) return;
-      board.setAttribute("data-beat", String(n));
-      board.setAttribute("data-scale", st.scale);
-      board.classList.toggle("c-marks-0", st.marks === 0);
-      board.classList.toggle("c-marks-1", st.marks === 1);
-      board.classList.toggle("c-bands-on", !!st.bands);
-      canvas.classList.toggle("c-live", !!st.live);
-      var release = canvas.querySelector(".c-release");
-      if (release) release.hidden = !st.live;
-      var h = rowHeight(st);
-      var pos = {};
-      st.order.forEach(function (iso, i) { pos[iso] = i; });
-      rows.forEach(function (row) {
-        var iso = row.getAttribute("data-iso3");
-        row.classList.toggle("c-dim",
-          !!st.anchors && iso in pos && st.anchors.indexOf(iso) === -1);
-        if (iso in pos) {
-          row.style.transform = "translateY(" + (pos[iso] * h).toFixed(2) + "px)";
-          row.style.height = Math.max(h - (h > 10 ? 2 : 0.6), 2).toFixed(2) + "px";
-          row.classList.remove("c-off");
-        } else {
-          row.classList.add("c-off");
-        }
-      });
-      board.style.height = (Math.max(st.order.length, 4) * h).toFixed(1) + "px";
-      showSet("c-teach", st.set);
-      showSet("c-statset", st.set);
-      // The one within-beat GSAP draw so far: the crossed ring draws
-      // itself as the word arrives (beat 3, forward entries only). Same
-      // tempo as every other reveal; motion teaches the glyph, never a
-      // verdict.
-      if (st.draw === "no-ring" && hasDraw && lastBeat < n) {
-        var ring = board.querySelectorAll('.c-row[data-iso3="USA"] .c-mark-N svg *');
-        if (ring.length) {
-          gsap.fromTo(ring, { drawSVG: "0%" },
-            { drawSVG: "100%", duration: 0.7, ease: "none", stagger: 0.15 });
-        }
-      }
-      // The deadline draws by CSS clip reveal keyed off data-state, so
-      // the stroke keeps its dashed identity.
-      var dl = canvas.querySelector(".c-deadline");
-      if (dl) dl.setAttribute("data-state", st.deadline || "off");
-      lastBeat = n;
-    }
-
-    initTelemetry();
-    rows.forEach(function (row) { row.classList.add("c-off"); });
-    return apply;
-  }
-
-  // ---- Row telemetry (Shift5 mechanic, P4c): once the board is live,
-  // tapping or clicking a row surfaces its record: every vote with its
-  // resolution, date, and UN record link; the coded position with its
-  // since-date, confidence, and any provisional note; the state page.
-  // Built with textContent, never markup injection. The keyboard path
-  // to the same record is the release link into the classic board,
-  // where every mark is a real button.
-  function initTelemetry() {
-    var pop = null;
-    var hideTimer = null;
-    function close() { if (pop) { pop.remove(); pop = null; } }
-    function scheduleClose() {
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(close, 300);
-    }
-    function cancelClose() {
-      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
-    }
-    function el(tag, cls, text) {
-      var node = document.createElement(tag);
-      if (cls) node.className = cls;
-      if (text) node.textContent = text;
-      return node;
-    }
-    var RES = [];
-    try { RES = JSON.parse(board.getAttribute("data-resolutions") || "[]"); }
-    catch (e) { RES = []; }
-    var WORDS = { Y: "voted Yes", N: "voted No", A: "abstained", X: "non-voting" };
-    function showFor(row) {
-      close();
-      pop = el("div", "popover");
-      pop.setAttribute("data-for", row.getAttribute("data-iso3"));
-      pop.appendChild(el("strong", null, row.getAttribute("data-name")));
-      var votes = (row.getAttribute("data-votes") || "").split(",");
-      RES.forEach(function (r, i) {
-        var line = el("span", "citation",
-          (WORDS[votes[i]] || votes[i]) + " on " + r.key + " \\u00b7 " + r.date + " \\u00b7 ");
-        var a = el("a", null, "UN record");
-        a.href = r.url;
-        line.appendChild(a);
-        pop.appendChild(line);
-      });
-      Array.prototype.forEach.call(row.querySelectorAll(".c-band"), function (b) {
-        var code = b.getAttribute("data-code");
-        // NONE is a coverage statement: its date is the review date, not a start.
-        var plain = b.getAttribute("data-plain") || code;
-        var confPlain = b.getAttribute("data-conf-plain") || "";
-        var when = code === "NONE"
-          ? "No stated position (NONE), reviewed " + b.getAttribute("data-since") + ", " + confPlain
-          : plain + " (" + code + "), since " + b.getAttribute("data-since") + ", " + confPlain + " (" + b.getAttribute("data-conf") + ")";
-        pop.appendChild(el("span", "citation", when));
-      });
-      var note = row.querySelector(".c-note");
-      if (note) pop.appendChild(el("span", "citation", note.textContent));
-      var more = el("a", null, "Full record: state page");
-      more.href = "state/" + row.getAttribute("data-iso3") + ".html";
-      pop.appendChild(more);
-      pop.addEventListener("mouseenter", cancelClose);
-      pop.addEventListener("mouseleave", scheduleClose);
-      document.body.appendChild(pop);
-      var r = row.getBoundingClientRect();
-      pop.style.top = (window.scrollY + r.bottom + 6) + "px";
-      pop.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 330)) + "px";
-    }
-    function liveRow(ev) {
-      if (!canvas.classList.contains("c-live")) return null;
-      var row = ev.target.closest ? ev.target.closest(".c-row") : null;
-      if (!row || row.classList.contains("c-off")) return null;
-      return row;
-    }
-    board.addEventListener("click", function (ev) {
-      var row = liveRow(ev);
-      if (!row) return;
-      showFor(row);
-      ev.stopPropagation();
-    });
-    // Hover surfaces the same readout for fine pointers (the storyboard's
-    // hover telemetry); a short grace period lets the pointer travel into
-    // the popover to reach its links.
-    board.addEventListener("mouseover", function (ev) {
-      if (!window.matchMedia("(hover: hover)").matches) return;
-      var row = liveRow(ev);
-      if (!row) return;
-      cancelClose();
-      if (pop && pop.getAttribute("data-for") === row.getAttribute("data-iso3")) return;
-      showFor(row);
-    });
-    board.addEventListener("mouseleave", function () {
-      if (pop) scheduleClose();
-    });
-    document.addEventListener("click", function (ev) {
-      if (pop && !pop.contains(ev.target)) close();
-    });
-    document.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape") close();
-    });
-  }
-
-  // ---- Mobile contract: tap-through stepper driving the same canvas
-  // states, never scroll-driven. Reduced-motion users get the same
-  // stepper with instant state changes (the transition media query
-  // zeroes every canvas transition).
-  if (mobile) {
-    var beats = Array.prototype.slice.call(tour.querySelectorAll(".beat"));
-    if (beats.length < 2) return;
-    var index = 0;
-    var nav = document.createElement("div");
-    nav.className = "tour-stepper";
-    var prev = document.createElement("button");
-    prev.type = "button";
-    prev.textContent = "Back";
-    var counter = document.createElement("span");
-    counter.setAttribute("aria-live", "polite");
-    var next = document.createElement("button");
-    next.type = "button";
-    next.textContent = "Next";
-    nav.appendChild(prev); nav.appendChild(counter); nav.appendChild(next);
-    tour.classList.add("tour-stepped");
-    tour.appendChild(nav);
-    if (canvas && setBeat) canvas.hidden = false;
-    function show(i) {
-      index = Math.max(0, Math.min(beats.length - 1, i));
-      beats.forEach(function (b, j) { b.hidden = j !== index; });
-      counter.textContent = "Beat " + (index + 1) + " of " + beats.length;
-      prev.disabled = index === 0;
-      next.textContent = index === beats.length - 1 ? "To the board" : "Next";
-      if (setBeat) {
-        setBeat(index + 1);
-        // keep the canvas card in view as the reader taps through
-        if (index > 0 && !canvas.hidden) canvas.scrollIntoView({ block: "start" });
-      }
-    }
-    prev.addEventListener("click", function () { show(index - 1); });
-    next.addEventListener("click", function () {
-      if (index === beats.length - 1) {
-        document.getElementById("board-top").scrollIntoView();
-        return;
-      }
-      show(index + 1);
-    });
-    show(0);
-    return;
-  }
-
-  // ---- Reduced motion (desktop): instant states; the stacked scaffold
-  // with the classic board below IS the designed static path ----
-  if (reduced) return;
-  if (typeof window.scrollama === "undefined" || typeof window.gsap === "undefined") return;
-  if (!canvas || !board || !setBeat) return;
-
-  tour.classList.add("tour-enhanced");
-  canvas.hidden = false;
-
-  var scroller = window.scrollama();
-  scroller.setup({ step: ".scrolly-steps .beat", offset: 0.55 })
-    .onStepEnter(function (r) { setBeat(r.index + 1); });
-  window.addEventListener("resize", function () { scroller.resize(); });
-
-  setBeat(1);
-
-  // Positions depend on the serif loading; recalc offsets once it
-  // settles.
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(function () { scroller.resize(); });
   }
 })();
 """
@@ -3256,18 +2362,13 @@ def build(out_dir, preview=False):
     (out / "css" / "dossier.css").write_text(dossier_render.dossier_css(), encoding="utf-8", newline="\n")
     (out / "js" / "dossier.js").write_text(dossier_render.dossier_js(), encoding="utf-8", newline="\n")
     (out / "assets" / "favicon.svg").write_text(favicon_svg(), encoding="utf-8", newline="\n")
-    (out / "assets" / "board-poster.svg").write_text(
-        poster_svg(votes, content_states), encoding="utf-8", newline="\n"
-    )
 
-    tour = load_tour()
-    if tour:
-        manifest["entries"].append(
-            {"state": None, "kind": "tour", "approved": is_approved(tour),
-             "rendered": bool(preview or is_approved(tour))}
-        )
-        if preview or is_approved(tour):
-            (out / "js" / "tour.js").write_text(TOUR_JS, encoding="utf-8", newline="\n")
+    # The figures: viz.js is a source file (like site.css), the topology is
+    # world-atlas 1:110m with each shape tagged by ISO alpha-3.
+    src_viz = config.SITE_DIR / "js" / "viz.js"
+    if src_viz.resolve() != (out / "js" / "viz.js").resolve():
+        shutil.copyfile(src_viz, out / "js" / "viz.js")
+    (out / "assets" / "world.json").write_text(world_topology(), encoding="utf-8", newline="\n")
     endorsements = load_endorsements()
     sponsorships = load_sponsorships()
     if any(preview or is_approved(i) for i in endorsements):
@@ -3285,7 +2386,7 @@ def build(out_dir, preview=False):
     _record_asset_hashes(out)
 
     (out / "index.html").write_text(
-        index_page(votes, content_states, preview, tour=tour),
+        index_page(votes, content_states, preview, manifest),
         encoding="utf-8", newline="\n",
     )
     (out / "votes.html").write_text(
@@ -3359,7 +2460,7 @@ def build(out_dir, preview=False):
             "<h1>Not on the record.</h1>\n"
             "<p>No page exists at this address. Nothing was removed; corrections "
             "and superseded material stay visible by policy.</p>\n"
-            '<p><a href="/index.html">The trajectory board</a> lists every state.</p>',
+            '<p><a href="/index.html#states">The table of member states</a> lists every state.</p>',
             current="", preview=preview, absolute=True,
         ),
         encoding="utf-8", newline="\n",
@@ -3535,7 +2636,7 @@ def write_discovery_files(out, votes, content_states, preview):
         "time. Every position links to a quoted, dated source.\n\n"
         "The site takes no position on whether autonomous weapons should be "
         "banned or regulated. It records who says what.\n\n"
-        f"## Pages\n\n- [Board]({SITE_URL})\n"
+        f"## Pages\n\n- [Home: world map, vote paths and the table of member states]({SITE_URL})\n"
         + listing + "\n"
         f"- State pages: {SITE_URL}state/ISO3.html (ISO 3166-1 alpha-3 code, for example USA)\n\n"
         "## Data\n\n"

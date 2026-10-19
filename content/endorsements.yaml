@@ -52,7 +52,7 @@ instruments:
         name_as_listed: Kosovo
         non_member_note: >
           Not a UN member state; no official ISO-3166 code. XKX is the
-          user-assigned code in wide institutional use. No board row exists;
+          user-assigned code in wide institutional use. It has no row in the table of member states;
           endorsement surfaces list non-members in a labeled section.
       - {iso3: LVA, status: endorsed, name_as_listed: Latvia}
       - {iso3: LBR, status: endorsed, name_as_listed: Liberia}
@@ -150,7 +150,7 @@ instruments:
         non_member_note: >
           Not a UN member state; UN non-member observer state (State of
           Palestine), consistent with the PDF's countries-and-territories
-          framing. No board row exists.
+          framing. It has no row in the table of member states.
       - {iso3: POL, status: endorsed, name_as_listed: Poland}
       - {iso3: PRT, status: endorsed, name_as_listed: Portugal}
       - {iso3: QAT, status: endorsed, name_as_listed: Qatar}
