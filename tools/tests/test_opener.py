@@ -77,3 +77,13 @@ def test_none_is_shown_as_dated_coverage_not_as_a_position(deploy):
     positions = opener[:m.start()]
     assert "No stated position" not in positions
     assert "by position" not in opener
+
+
+def test_every_state_with_a_file_has_an_alpha2_mark_label():
+    """Marks label states with ISO alpha-2. Truncated alpha-3 collides
+    (UKR as "UK") and must never be the fallback for a state with a file."""
+    from tools import dossier_render
+    for path in config.CONTENT_DIR.joinpath("states").glob("*.yaml"):
+        assert path.stem in dossier_render.ALPHA2, path.stem
+    labels = list(dossier_render.ALPHA2.values())
+    assert len(labels) == len(set(labels))

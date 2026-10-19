@@ -7,10 +7,98 @@ un_name: UKRAINE
 display_name: Ukraine
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2026-08-31
+    approved: false
+    rationale: 'At the final 2026 session of the expert group, Ukraine said the
+      rolling text was a solid basis for the outcome, that the instrument would
+      only be effective if states were ready to accept it, and that the priority
+      was to send the text to the Review Conference. It did not say whether the
+      instrument should be binding or should ban anything. In 2025 the President
+      called for global rules on how AI is used in weapons, without naming a forum
+      or a form. The reading is inferred because it rests on what Ukraine left open
+      as much as on what it said.
+
+      '
+    evidence:
+      - source: un-gge-2026-s2-m1-transcript
+        kind: statement
+        claim: Ukraine calls the rolling text a solid basis for the expert group's
+          outcome.
+        quote: It is the position of Ukraine that the rolling text offers a solid
+          basis for the outcome
+        date: 2026-08-31
+        url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'UN automatic speech recognition transcript, not an official record.
+          Ukraine''s first intervention of the session. The transcript gives no
+          sign of interpretation; the analyst may confirm against the webcast.
+
+          '
+      - source: un-gge-2026-s2-m1-transcript
+        kind: statement
+        claim: Ukraine ties the instrument's effectiveness to how many states accept
+          it.
+        quote: eventually the effectiveness of the instrument will depend on the
+          readiness of states to accept it
+        date: 2026-08-31
+        url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+        lang: en
+        translation: none
+        confidence: INFERRED
+      - source: un-gge-2026-s2-m8-transcript
+        kind: statement
+        claim: Ukraine says the priority is to send the text to the Review Conference
+          without reopening it.
+        quote: it is now time to prioritize the submission of the text to the Review
+          Conference
+        date: 2026-09-03
+        url: https://transcripts.un.org/en/asset/k1j/k1jgb18wkv
+        lang: en
+        translation: none
+        confidence: INFERRED
+      - source: un-gge-2026-s2-m8-transcript
+        kind: statement
+        claim: Ukraine refers to future legal regulation of LAWS without saying
+          what form it should take.
+        quote: these principles form a minimal basis for future legal regulation
+          of the laws
+        date: 2026-09-03
+        url: https://transcripts.un.org/en/asset/k1j/k1jgb18wkv
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: '"the laws" is the transcript''s rendering of the acronym LAWS. The
+          principles meant are humanity and military necessity, per the preceding
+          sentence.
+
+          '
+      - source: un-ga-80-7-transcript
+        kind: statement
+        claim: In his 2025 General Assembly address, the President of Ukraine called
+          for global rules on AI in weapons, naming no forum and no instrument type.
+        quote: We need global rules now for how AI can be used in weapons
+        date: 2025-09-24
+        url: https://transcripts.un.org/en/ga/80/7
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'UN automatic speech recognition transcript. The delivery language
+          is not confirmed (see analyst questions). The same passage warns of drones
+          "targeting people all by themselves, fully autonomous, and no human involved".
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: CCW-ONLY or AMBIG? Ukraine''s own words support the expert group''s text and its transfer to the Review Conference, and name no instrument type. The President''s call for ''global rules'' points toward new rules but names no form or forum. This draft reads that as CCW-ONLY at INFERRED, since nothing Ukraine said points away from the Geneva process. If the analyst reads the call for global rules as a second direction, the honest alternative is AMBIG.'
+  - 'DRAFT 2026-10-19, analyst question: Votes Yes, Abstain, non-voting. No explanation found for the 2024 abstention or the 2025 non-vote, and this draft draws nothing from them. Confirm that the votes stay a separate signal.'
+  - 'DRAFT 2026-10-19, analyst question: Delivery language of the President''s 2025 address: if delivered in Ukrainian, the transcript is ASR of the UN interpretation; set lang uk and translation unofficial, and keep the entry at INFERRED.'
+  - 'DRAFT 2026-10-19, analyst question: All Ukraine quotes here come from ASR transcripts. Accept as INFERRED-tier evidence pending official text, or hold the coding until a written record is found?'
   - "CODING NEEDS SOURCE: the research anchor list names Ukraine AMBIG/INFERRED given the security context, but no statement is captured; the dataset records Yes (2023), Abstain (2024), non-voting (2025). Handle the votes honestly, do not over-read; retrieve any statement, then code"
   - "US Political Declaration endorser (on the captured 58 list)"

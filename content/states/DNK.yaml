@@ -7,11 +7,84 @@ un_name: DENMARK
 display_name: Denmark
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-03-04
+    approved: false
+    rationale: 'In March 2024 Denmark co-wrote, with six other states, a paper saying
+      the future instrument should prohibit four classes of autonomous weapons and
+      regulate the rest. The paper does not say whether that instrument should be
+      binding. In its own words at the expert group, Denmark backed the text as
+      a basis in line with a mandate that does not prejudge the instrument''s nature,
+      and said it appreciated that the report''s recommendations are not binding
+      treaty texts. It has not said, in any record opened here, that it wants a
+      binding instrument. So the record shows prohibitions on one side and an open
+      form on the other. Denmark voted Yes on all three UN resolutions.
+
+      '
+    evidence:
+      - source: ccw-gge1-2024-wp3
+        kind: working_paper
+        claim: The 2024 paper co-written by Denmark says the future instrument should
+          prohibit listed classes of LAWS.
+        quote: 'The future instrument should prohibit the following weapons systems:'
+        date: 2024-03-04
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/CCW-GGE.1-2024-WP.3.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        note: 'Authors on the face: Bulgaria, Denmark, France, Germany, Italy, Luxembourg
+          and Norway. The four classes: LAWS that are inherently indiscriminate,
+          whose effects cannot be limited and controlled as IHL requires, that operate
+          completely outside human control and a responsible chain of command, or
+          that cause superfluous injury. The paper does not state the instrument''s
+          nature. Its agenda heading repeats the mandate words "without prejudging
+          its nature"; that is the group''s mandate, not the authors'' own position,
+          and is not quoted as such. Not a draft treaty, so the authorship rule
+          does not make this EXPLICIT.
+
+          '
+      - source: un-gge-2026-s2-m1-transcript
+        kind: statement
+        claim: Denmark backs the characterization text as sufficient in line with
+          the mandate, which does not prejudge the instrument's nature.
+        quote: consider the text to provide a sound and sufficient basis for a characterization
+          on laws in line with our mandate
+        date: 2026-08-31
+        url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        note: 'UN automatic speech recognition transcript. The sentence goes on:
+          "that is to consider and formulate by consensus instead of elements of
+          an instrument without prejudging its nature" ("instead of" is the transcript''s
+          rendering, likely "a set of").
+
+          '
+      - source: un-gge-2026-s2-m8-transcript
+        kind: statement
+        claim: Denmark welcomes that the draft report's recommendations are not
+          binding treaty texts.
+        quote: We appreciate that the recommendations in the draft report does not
+          constitute binding treaty texts
+        date: 2026-09-03
+        url: https://transcripts.un.org/en/asset/k1j/k1jgb18wkv
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        note: 'UN automatic speech recognition transcript. The sentence continues
+          "but are intended to provide a set of elements of an instrument". It speaks
+          to the report''s status at this stage, not to the form of a final instrument;
+          read with care.
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: AMBIG or CCW-ONLY? The prohibition direction rests only on a co-written elements paper, which is not a draft treaty. If co-written elements papers do not count as the state''s words, Denmark''s own record is support for the Geneva text with the form left open, and the honest reading is CCW-ONLY at INFERRED. This draft shows both and reads AMBIG, consistent with how the 2025 draft-articles series is treated for its authors.'
+  - 'DRAFT 2026-10-19, analyst question: The existing flag cites a secondary tracker suggesting Denmark''s LBI position firmed in 2024 to 2025. No Danish record opened here says Denmark wants a legally binding instrument. The candidate shift is not drafted.'
   - "CODING NEEDS SOURCE: co-author of the seven-state elements paper and in the September 2025 39-party joint statement (both sponsorship-class, never coding evidence alone); a secondary tracker's late-2024 note suggests the explicit LBI position firmed during 2024-2025, which would be a candidate shift once grounded in Denmark's OWN statements; retrieve the October 2025 national statement, then code"
   - "Nordic joint-statement series member (delivered the 2023-10-02 statement): joint-statement layer plus statement evidence, enumeration bundle"
   - "US Political Declaration endorser (on the captured 58 list)"

@@ -10,7 +10,203 @@ un_name: RUSSIAN FEDERATION
 display_name: Russia
 coverage_tier: deep
 
-position_codings: []
+position_codings:
+  - code: OPPOSE
+    confidence: EXPLICIT
+    as_of: 2023-11-01
+    approved: false
+    scope_note: 'Two separate facts, each sourced. First, the legal view: Russia
+      says existing international law, including IHL, fully applies and needs no
+      update, and it opposes a legally binding instrument, a moratorium, and new
+      limitations or restrictions. In 2024 it also called talks on non-binding "rules"
+      premature. Second, the forum preference: Russia says the CCW expert group
+      is the right place for the subject and that moving it elsewhere, including
+      to the UN, is counterproductive. The coding rests on the first fact. The second
+      is shown, not used to explain the first.
+
+      '
+    rationale: 'In its November 2023 explanation of vote, Russia said it opposes
+      any legally binding instrument and any moratorium. It said international law
+      already applies in full and does not need updating. Its 2024 working paper
+      and its 2024 submission to the Secretary-General said there are no grounds
+      for new restrictions, and that talks on rules of conduct are premature. In
+      2025 it said it has always opposed bans. Separately, in each of these records,
+      Russia names the CCW expert group as the place to discuss the subject. It
+      voted No on all three UN resolutions.
+
+      '
+    evidence:
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: In its explanation of vote on draft resolution L.56, Russia states
+          opposition to a legally binding instrument and to a moratorium.
+        quote: We oppose the establishment of any international legally binding
+          instrument on lethal autonomous systems and the imposition of a moratorium
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: ru
+        translation: official
+        confidence: EXPLICIT
+        note: 'Official UN verbatim record. The delegate spoke in Russian; the English
+          is the UN''s official translation in the record.
+
+          '
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Russia states that existing international law, including IHL, applies
+          in full and needs no update.
+        quote: We believe that international law, including international humanitarian
+          law, fully applies to LAWS and does not need to be updated
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: ru
+        translation: official
+        confidence: EXPLICIT
+      - source: ccw-gge1-2024-wp2-rus
+        kind: working_paper
+        claim: The 2024 working paper says IHL needs no modernization or adaptation
+          for LAWS.
+        quote: We believe that norms and principles of international law, including
+          IHL, do not need to be modernized or adapted to the specific features
+          of LAWS.
+        date: 2024-05-14
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'The document states "Original: English and Russian only", so the
+          English text is an original. Submitted for the March 2024 session; the
+          UN issue date on its face is 14 May 2024.
+
+          '
+      - source: ccw-gge1-2024-wp2-rus
+        kind: working_paper
+        claim: The 2024 working paper sees no reason for restrictions or bans.
+        quote: At the moment, we do not see any convincing reasons requiring immediate
+          restrictions and bans against such type of weapons.
+        date: 2024-05-14
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2024-wp2-rus
+        kind: working_paper
+        claim: The 2024 working paper calls talks on non-binding rules of behaviour
+          premature.
+        quote: We believe the discussions aiming at negotiation of certain "rules
+          of behavior" in relation to LAWS to be premature.
+        date: 2024-05-14
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Russia's submission to the Secretary-General sees no grounds for
+          new limitations or restrictions.
+        quote: The Russian Federation believes that there are currently no convincing
+          grounds for imposing any new limitations or restrictions on lethal autonomous
+          weapons systems
+        date: 2024-05-08
+        url: https://docs.un.org/en/A/79/88
+        lang: ru
+        translation: official
+        confidence: EXPLICIT
+        note: 'A/79/88 annex, headed "[Original: Russian] [8 May 2024]". The English
+          is the UN''s official translation. Russia''s own English copy on the UNODA
+          library is marked "Unofficial translation" and words the same passage
+          differently (see research_log); the official text is quoted here.
+
+          '
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: The same submission calls talks on rules of conduct premature.
+        quote: The discussions towards agreeing on some kind of "rules of conduct"
+          for lethal autonomous weapons systems are also premature.
+        date: 2024-05-08
+        url: https://docs.un.org/en/A/79/88
+        lang: ru
+        translation: official
+        confidence: EXPLICIT
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: Before the 2025 vote, Russia says it has always opposed bans on LAWS.
+        quote: We have unswervingly spoken out against artificial bans on the use
+          and development of LAAWS.
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: ru
+        translation: unofficial
+        confidence: INFERRED
+        note: 'UN automatic speech recognition transcript of the English interpretation
+          of a statement given in Russian. Not an official record. "LAAWS" is the
+          transcript''s own spelling. INFERRED because the text is machine-transcribed
+          interpretation, not the state''s text.
+
+          '
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: Russia states it categorically opposes the content of resolutions
+          78/241 and 79/62.
+        quote: We categorically oppose the content of these resolutions.
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: ru
+        translation: unofficial
+        confidence: INFERRED
+        note: 'Same transcript caveat. Russia repeated the explanation on 2025-11-06
+          before the vote (transcripts.un.org/en/ga/c1/80/26).
+
+          '
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Forum preference (separate fact) - Russia names the CCW expert group
+          as the only forum for LAWS.
+        quote: We believe that the Group of Governmental Experts is the only and
+          best forum for discussing all issues concerning lethal autonomous weapons
+          systems.
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: ru
+        translation: official
+        confidence: EXPLICIT
+      - source: ccw-gge1-2024-wp2-rus
+        kind: working_paper
+        claim: Forum preference (separate fact) - moving the subject to another
+          platform is counterproductive.
+        quote: Transferring this issue to any other international platform, including
+          the UN, seems counterproductive.
+        date: 2024-05-14
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: rus-c1-80-cluster4-statement
+        kind: statement
+        claim: Forum preference (separate fact) - in October 2025 Russia calls the
+          GGE the best suited platform.
+        quote: We consider the GGE on LAWS to be the best suited platform for discussing
+          these matters
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Russia_(ENG).pdf
+        lang: ru
+        translation: unofficial
+        confidence: EXPLICIT
+        note: 'Russia''s own English text, headed "Unofficial translation". Delivered
+          by Konstantin Vorontsov in the Cluster IV debate, New York.
+
+          '
+      - source: rus-c1-80-cluster4-statement
+        kind: statement
+        claim: Forum preference (separate fact) - moving the discussion to other
+          fora, including the UN, is counterproductive.
+        quote: Moving the discussion of this topic to other international fora (including
+          the UN) is counterproductive.
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Russia_(ENG).pdf
+        lang: ru
+        translation: unofficial
+        confidence: EXPLICIT
 
 shift_events: []
 
@@ -23,6 +219,10 @@ doctrine:
     on the subject, but it is a diplomatic submission, not a domestic rule.
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: Neutral-display check: the coding is OPPOSE on the legal view, with the CCW forum preference held in scope_note and in evidence entries labelled ''Forum preference (separate fact)''. Is this split how you want the rule applied, or should forum-preference entries move to a separate dated statement block once the schema has one?'
+  - 'DRAFT 2026-10-19, analyst question: Translation fields: A/79/88 and the PV are official UN translations from Russian (lang ru, translation official). Russia''s own English PDFs are self-labelled ''Unofficial translation'' (lang ru, translation unofficial). The transcripts are ASR of UN interpretation (lang ru, translation unofficial, confidence INFERRED). Confirm these settings.'
+  - 'DRAFT 2026-10-19, analyst question: as_of 2023-11-01 is the earliest record read in this pass. Do you want an earlier anchor (2018 to 2022 working papers) before approval, or is the 2023 to 2025 run enough for v1?'
+  - 'DRAFT 2026-10-19, analyst question: Source type ''meeting_record'' is new to sources.yaml (for the official PV). Keep it, or reuse ''transcript''?'
   - "CODING NEEDS SOURCE: the research passes support OPPOSE at EXPLICIT confidence (existing IHL suffices; no new treaty; GGE the right forum), but the quotes are secondary-sourced (RCW CCW Report vol.10 no.6; Lieber 2026). Retrieve the March 2024 working paper and the October 2025 First Committee statement from UNODA, then code. Votes alone (No, No, No) underdetermine the category: India voted No in 2023 and codes CCW-ONLY."
   - "March 2022 GGE session boycott: capture a primary or strong contemporaneous record for the procedural-history entry"
   - "REAIM CTA endorsement status: verify Russia's absence against the government.nl 2023 list"
