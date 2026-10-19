@@ -496,7 +496,7 @@ def state_body(iso3, name, un_name, entry, votes, cs, sources,
     body = [
         f'<section class="hero"><p class="doc-label">State dossier</p>'
         f'<h1>{esc(name)}</h1>'
-        f'<p class="sub"><b>{esc(iso3)}</b> &middot; {esc(un_name)} &middot; on the board</p></section>',
+        f'<p class="sub"><b>{esc(iso3)}</b> &middot; {esc(un_name)} &middot; <a href="../index.html#viz-world">on the world map</a></p></section>',
         band("What does it want?", _plain_position(cs, preview),
              spectrum(coded, iso3, name)
              + own_coding(iso3, name, cs, sources, preview, updated_through),
