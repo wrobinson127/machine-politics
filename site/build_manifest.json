@@ -104,6 +104,18 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "ARE"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "ARE"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,

@@ -32,7 +32,7 @@ MARK_HUE_OVERRIDE = {"REG-SOFT": ";--markhue:#8F6119"}
 # ISO 3166-1 alpha-2 for the marks' two-letter labels. Truncating alpha-3
 # misleads: UKR would read "UK" beside the United Kingdom's mark.
 ALPHA2 = {
-    "ARG": "AR", "AUS": "AU", "AUT": "AT", "BDI": "BI", "BLR": "BY", "BRA": "BR",
+    "ARE": "AE", "ARG": "AR", "AUS": "AU", "AUT": "AT", "BDI": "BI", "BLR": "BY", "BRA": "BR",
     "CAN": "CA", "CHN": "CN", "CRI": "CR", "CZE": "CZ", "DEU": "DE", "DNK": "DK",
     "ECU": "EC", "EST": "EE", "FJI": "FJ", "FIN": "FI", "FRA": "FR", "GBR": "GB", "GTM": "GT",
     "IND": "IN", "IRN": "IR", "ISL": "IS", "ISR": "IL", "JPN": "JP", "KAZ": "KZ", "KOR": "KR",

@@ -775,3 +775,21 @@ sources:
     type: secondary_report
     lang: en
     accessed: 2026-10-19
+  - id: un-gge-2026-s2-m5-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2026 second session, 5th meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-09-02
+    url: https://transcripts.un.org/en/asset/k12/k12hptpwu5
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-gge-2025-s1-m6-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2025 first session, 6th meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-03-05
+    url: https://transcripts.un.org/en/asset/k1l/k1lt3n3xwv
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
