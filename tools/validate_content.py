@@ -458,7 +458,76 @@ def validate(content_dir=None):
     eras_dir = content_dir / "eras"
     if eras_dir.exists():
         check_eras(errors, eras_dir, vote_states)
+    conference = content_dir / "conference.yaml"
+    if conference.exists():
+        check_conference(errors, conference, vote_states)
     return errors
+
+
+CONFERENCE_EVENT_KINDS = ("background", "decision", "statement", "vote", "document")
+CONFERENCE_TEXT_MAX = 600
+_QUOTED_RE = re.compile(r"[\"“]([^\"”]+)[\"”]")
+
+
+def _check_prose(errors, where, text):
+    for ch, name in (("—", "em dash"), ("–", "en dash")):
+        if ch in text:
+            errors.add(where, f"prose contains an {name}; voice rules forbid it")
+    for quoted in _QUOTED_RE.findall(text):
+        if len(quoted.split()) > 25:
+            errors.add(where, "a quotation in site copy runs past 25 words")
+
+
+def check_conference(errors, path, vote_states):
+    """The Review Conference log. Every entry is a dated, linked fact, gated
+    on its own approved flag; the page copy is gated separately. Entries are
+    never evidence for a position: they point at documents, they do not
+    code anyone."""
+    where = "conference.yaml"
+    conf = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    if not _check_entry_dict(errors, where, conf):
+        return
+    _check_approved(errors, where, conf)
+    for key in ("title", "intro"):
+        if not str(conf.get(key) or "").strip():
+            errors.add(where, f"needs a non-empty {key}")
+    _check_prose(errors, f"{where}.intro", str(conf.get("intro") or ""))
+    seen = set()
+    for i, ev in enumerate(conf.get("events") or []):
+        ew = f"{where}.events[{i}]"
+        if not _check_entry_dict(errors, ew, ev):
+            continue
+        _check_approved(errors, ew, ev)
+        eid = ev.get("id")
+        if not eid or not re.match(r"^[a-z0-9-]+$", str(eid)):
+            errors.add(ew, "id must be lowercase letters, digits and hyphens")
+        elif eid in seen:
+            errors.add(ew, f"duplicate id {eid!r}")
+        seen.add(eid)
+        _check_date(errors, ew, ev.get("date"))
+        if ev.get("kind") not in CONFERENCE_EVENT_KINDS:
+            errors.add(ew, f"kind must be one of {CONFERENCE_EVENT_KINDS}")
+        if ev.get("state") is not None and vote_states is not None and ev.get("state") not in vote_states:
+            errors.add(ew, f"state {ev.get('state')!r} is not a member-state code")
+        for key in ("title", "text"):
+            if not str(ev.get(key) or "").strip():
+                errors.add(ew, f"needs a non-empty {key}")
+        text = str(ev.get("text") or "")
+        if len(text) > CONFERENCE_TEXT_MAX:
+            errors.add(ew, f"text runs past {CONFERENCE_TEXT_MAX} characters; link the document instead")
+        _check_prose(errors, ew, text + " " + str(ev.get("title") or ""))
+        links = ev.get("links") or []
+        if not links:
+            errors.add(ew, "every entry links at least one official document")
+        for j, link in enumerate(links):
+            lw = f"{ew}.links[{j}]"
+            if not isinstance(link, dict) or not link.get("label"):
+                errors.add(lw, "link needs a label and a url")
+                continue
+            _check_url(errors, lw, link.get("url"))
+            if link.get("archived"):
+                _check_url(errors, lw, link.get("archived"))
+    scan_prohibited_claims(errors, where, conf)
 
 
 def check_endorsements(errors, path, vote_states):

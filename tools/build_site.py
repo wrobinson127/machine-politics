@@ -162,6 +162,11 @@ def load_sponsorships():
     return load_yaml(path).get("records") or []
 
 
+def load_conference():
+    path = config.CONTENT_DIR / "conference.yaml"
+    return load_yaml(path) if path.exists() else None
+
+
 def load_eras(iso3):
     """Government eras are context data (invariant 14): factual labels and
     dates, no approval gate because nothing in them is a claim about a
@@ -236,7 +241,7 @@ def move_x(d, w=1000.0):
 
 CANVAS_T0 = date(2023, 6, 1)
 CANVAS_T1 = date(2027, 1, 15)
-REVCON_START = date(2026, 11, 16)
+REVCON_START = date.fromisoformat(config.REVCON_DATES[0])
 
 
 def canvas_x(d):
@@ -641,6 +646,85 @@ def prose_page(key, pages, fallback_lines, preview, manifest, blocks=None):
     return shell_page(title, f"{key}.html", fallback_lines, preview)
 
 
+def _conference_entry_html(ev, preview):
+    chip = ('<span class="draft-chip">DRAFT</span>'
+            if preview and not is_approved(ev) else "")
+    links = " · ".join(
+        f'<a href="{esc(l["url"])}" rel="noopener">{esc(l["label"])}</a>'
+        + (f' (<a href="{esc(l["archived"])}" rel="noopener">archived</a>)'
+           if l.get("archived") else "")
+        for l in ev.get("links") or []
+    )
+    who = ""
+    if ev.get("state"):
+        who = (f'<a class="cf-state" href="state/{esc(ev["state"])}.html">'
+               f'{esc(ev.get("state_name") or ev["state"])}</a> ')
+    return (
+        f'<li class="cf-entry" id="{esc(ev["id"])}">'
+        f'<p class="cf-date citation">{esc(iso(ev["date"]))}</p>'
+        f'<h3>{who}{esc(ev["title"])}{chip}</h3>'
+        f'{md_to_html(str(ev["text"]).strip())}'
+        f'<p class="citation">Source: {links}</p>'
+        "</li>"
+    )
+
+
+def conference_page(conference, content_states, votes, preview, manifest):
+    """The Review Conference page: what the conference starts from, then one
+    section per conference day. Entries are link-only facts (date, what
+    happened, the official document), each approval-gated on its own; the
+    page shell renders only when its own copy is approved. A day with no
+    entries says that this site has added none, never that nothing
+    happened."""
+    approved_page = is_approved(conference)
+    manifest["entries"].append({"state": None, "kind": "page:conference",
+                                "approved": approved_page,
+                                "rendered": bool(preview or approved_page)})
+    events = []
+    for ev in conference.get("events") or []:
+        ok = is_approved(ev)
+        manifest["entries"].append({"state": ev.get("state"),
+                                    "kind": f"conference:{ev.get('id')}",
+                                    "approved": ok, "rendered": bool(preview or ok)})
+        if preview or ok:
+            ev = dict(ev)
+            if ev.get("state"):
+                cs = content_states.get(ev["state"], {})
+                un = votes["states"].get(ev["state"], {}).get("un_name", ev["state"])
+                ev["state_name"] = cs.get("display_name") or display_from_un_name(un)
+            events.append(ev)
+    events.sort(key=lambda e: (iso(e["date"]), e["id"]))
+    start, end = config.REVCON_DATES
+    before = [e for e in events if iso(e["date"]) < start]
+    chip = ('<span class="draft-chip">DRAFT</span>'
+            if preview and not approved_page else "")
+    sections = []
+    if before:
+        sections.append(
+            f'<h2>{esc(conference.get("before_heading", "Before the conference"))}</h2>'
+            '<ol class="cf-list">' + "".join(_conference_entry_html(e, preview) for e in before)
+            + "</ol>")
+    sections.append(f'<h2>{esc(conference.get("during_heading", "During the conference"))}</h2>')
+    d0 = as_date(start)
+    for i in range((as_date(end) - d0).days + 1):
+        day = d0 + timedelta(days=i)
+        todays = [e for e in events if iso(e["date"]) == day.isoformat()]
+        label = f"{day.strftime('%A')} {day.day} {day.strftime('%B')}"
+        body = ('<ol class="cf-list">' + "".join(_conference_entry_html(e, preview) for e in todays)
+                + "</ol>") if todays else (
+            '<p class="cf-empty">This site has not added entries for this day yet.</p>')
+        sections.append(f'<section class="cf-day" id="day-{day.isoformat()}">'
+                        f"<h3>{esc(label)}</h3>{body}</section>")
+    body = (
+        f'<h1>{esc(conference.get("title", "The Review Conference"))}{chip}</h1>\n'
+        + md_to_html(str(conference.get("intro", "")).strip())
+        + "\n".join(sections)
+    )
+    return page(conference.get("title", "The Review Conference"), body,
+                current="conference.html", preview=preview,
+                description=conference.get("description", ""))
+
+
 def _render_with_blocks(md, blocks):
     """Render markdown, substituting {{name}} markers with generated HTML.
 
@@ -715,6 +799,18 @@ NAV = [
     ("corrections.html", "Corrections"),
 ]
 
+# The Review Conference page joins the nav only in a build where it renders
+# (approved, or preview). build() sets this before any page is written, so no
+# page ever links a conference page that the same build did not produce.
+CONFERENCE_NAV = ("conference.html", "Conference")
+_conference_live = False
+
+
+def nav_items():
+    if not _conference_live:
+        return NAV
+    return NAV[:1] + [CONFERENCE_NAV] + NAV[1:]
+
 
 # ---------------------------------------------------------------------------
 # Asset versioning.
@@ -779,7 +875,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
         f'      <a href="{prefix}{href}"'
         + (' aria-current="page"' if href == current else "")
         + f">{esc(label)}</a>"
-        for href, label in NAV
+        for href, label in nav_items()
     )
     banner = (
         '<div class="draft-banner" role="status">DRAFT PREVIEW: unapproved '
@@ -1201,6 +1297,8 @@ def opener_html(votes, content_states, preview, coverage_line, has_tour):
     parts.append(group_html("Not yet reviewed by this site", len(unreviewed), units,
                             " og-empty" + ("" if none_members else " og-coverage")))
 
+    conf_link = (' <a href="conference.html">Follow the conference</a>.'
+                 if _conference_live else "")
     tour_link = ('<a class="opener-go" href="#tour">Take the tour</a>\n      '
                  if has_tour else "")
     return f"""
@@ -1208,7 +1306,7 @@ def opener_html(votes, content_states, preview, coverage_line, has_tour):
   <div class="opener-text">
     <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
     <p class="opener-dek">{esc(OPENER_DEK)}</p>
-    <p class="opener-clock">{esc(OPENER_CLOCK)}</p>
+    <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
     <div class="opener-actions">
       {tour_link}<a class="skip-board" href="#board-top">Skip to the board</a>
     </div>
@@ -3127,6 +3225,9 @@ def build(out_dir, preview=False):
     votes = load_votes()
     rubric, sources, content_states = load_content()
     manifest = {"mode": "preview" if preview else "deploy", "entries": []}
+    global _conference_live
+    conference = load_conference()
+    _conference_live = bool(conference and (preview or is_approved(conference)))
 
     (out / "state").mkdir(parents=True, exist_ok=True)
     (out / "css").mkdir(exist_ok=True)
@@ -3179,6 +3280,17 @@ def build(out_dir, preview=False):
     (out / "votes.html").write_text(
         votes_page(votes, content_states, preview), encoding="utf-8", newline="\n"
     )
+    conf_path = out / "conference.html"
+    if _conference_live:
+        conf_path.write_text(
+            conference_page(conference, content_states, votes, preview, manifest),
+            encoding="utf-8", newline="\n")
+    else:
+        if conference:
+            # Still recorded in the manifest, so the gate is auditable.
+            conference_page(conference, content_states, votes, preview, manifest)
+        if conf_path.exists():
+            conf_path.unlink()
     (out / "instruments.html").write_text(
         instruments_page(votes, content_states, endorsements, sponsorships,
                          preview, manifest),
