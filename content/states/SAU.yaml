@@ -1,0 +1,66 @@
+# Saudi Arabia: coverage batch 2, drafted 2026-10-19. In scope because it
+# abstained on the latest resolution (80/57; it abstained on all three). The
+# only words on autonomous weapons found are one sentence in the Foreign
+# Minister's September 2025 General Assembly address, read from a machine
+# transcript and a press report; the official record was not yet issued.
+# approved: false throughout; nothing renders until the analyst of record sets
+# approved: true.
+iso3: SAU
+un_name: SAUDI ARABIA
+display_name: Saudi Arabia
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: PROVISIONAL
+    as_of: 2025-09-27
+    approved: false
+    provisional_note: >
+      Read from the UN machine transcript of the English interpretation and
+      from a press report of the speech. The official record of the meeting
+      (A/80/PV.13) and the Arabic text were not available to check. This
+      reading is confirmed or corrected once either is read, since the
+      Arabic word behind "laws" decides whether binding rules are meant.
+    rationale: >
+      In its September 2025 address to the UN General Assembly, Saudi Arabia
+      warned of the dangers of military uses of artificial intelligence and
+      autonomous weapons and called for international laws to regulate
+      them. It did not say where such laws should be made or what they
+      should ban. It abstained on all three UN resolutions on autonomous
+      weapons and did not explain those votes.
+    evidence:
+      - source: un-ga-80-13-transcript
+        kind: statement
+        claim: The Saudi Foreign Minister calls for international laws regulating autonomous weapons and military AI.
+        quote: "warns of the dangers of the military uses of artificial intelligence applications and autonomous weapons. and the need to enact international laws regulating them"
+        date: 2025-09-27
+        url: https://transcripts.un.org/en/ga/80/13
+        lang: ar
+        translation: unofficial
+        confidence: INFERRED
+        note: ASR transcript of the English interpretation, speaker Saudi Arabia, Minister for Foreign Affairs, 7:21:34. The subject of the sentence is "The Kingdom". Delivered in Arabic.
+      - source: sau-riyadhdaily-2025-09-28
+        kind: statement
+        claim: A Saudi Press Agency account of the same speech reports the same call.
+        quote: "warned of the dangers of the military use of AI applications and autonomous weapons, and the need to enact international laws to regulate them"
+        date: 2025-09-28
+        url: https://alriyadhdaily.com/article/8c01c0e640a64a26a39f267d5b51f063
+        lang: ar
+        translation: unofficial
+        confidence: INFERRED
+        note: Reported speech, not the speech text. The ministry's own copy (mofa.gov.sa statement N674) could not be fetched.
+
+shift_events: []
+
+flags:
+  - "RETRIEVAL TARGETS: A/80/PV.13 on documents.un.org (not issued when checked, API errors for A/80/PV.5-17); the Arabic original on gadebate.un.org (behind a bot check); mofa.gov.sa/en/ministry/statements/Pages/N674.aspx (connection failed). Any of these confirms or corrects the PROVISIONAL tier."
+  - "READING CHOICE: one sentence in a general debate speech, bundled with military AI. 'International laws' is an interpreter's rendering; if the Arabic means frameworks or legislation in a looser sense, REG-SOFT or AMBIG would fit better. Fallback if the analyst requires an official source before coding: NONE with the review date."
+  - "CONTEXT, NOT EVIDENCE ON LAWS: at the Security Council AI debate (S/PV.10005 (Resumption 2), 26 Sep 2025, official record, spoke in Arabic) Saudi Arabia said 'we must shield our citizens at the international and national levels from the risks of these technologies being developed in a regulatory vacuum'. General AI, no autonomous weapons, no instrument. The machine transcript of that speech renders the same passage as 'without binding regulatory frameworks', which the official translation does not say: a reason not to lean on transcript wording for instrument type."
+  - "VOTES: Abstain on 78/241, 79/62 and 80/57. No explanation of vote in A/C.1/78/PV.28, A/78/PV.50 (Resumption 1), A/79/PV.44 or the 2025 First Committee transcripts (ga/c1/80/24, 26). Saudi Arabia is a CCW High Contracting Party (since 7 Dec 2007) but no GGE statement was found in the transcribed 2025-2026 meetings; no reply under 78/241 or 79/239."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Saudi Arabia is not yet doctrine-reviewed by this project; its
+        international position is recorded above.

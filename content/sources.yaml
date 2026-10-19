@@ -757,3 +757,21 @@ sources:
     accessed: 2026-10-19
     note: General debate. Not an official record; A/C.1/80/PV.7 was not yet issued
       when checked.
+  - id: un-ga-80-13-transcript
+    title: General Assembly, 80th session, general debate, 12th and 13th plenary
+      meetings, automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-09-27
+    url: https://transcripts.un.org/en/ga/80/13
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: Not an official record; A/80/PV.13 was not yet issued when checked.
+  - id: sau-riyadhdaily-2025-09-28
+    title: Foreign Minister Delivers Saudi Arabia's Speech at 80th UN General Assembly
+    publisher: Riyadh Daily (Saudi Press Agency report)
+    date: 2025-09-28
+    url: https://alriyadhdaily.com/article/8c01c0e640a64a26a39f267d5b51f063
+    type: secondary_report
+    lang: en
+    accessed: 2026-10-19

@@ -554,6 +554,18 @@
    "state": "RUS"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "SAU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "SAU"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
