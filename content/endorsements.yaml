@@ -176,6 +176,7 @@ instruments:
     name: REAIM Blueprint for Action
     date: 2024-09-10
     list_source_url: https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322676
+    list_source_archived: http://web.archive.org/web/20241012012141/https://www.mofa.go.kr/eng/brd/m_5676/view.do?seq=322676   # nearest capture to list_as_of
     list_as_of: 2024-09-10
     approved: true
     list_note: >

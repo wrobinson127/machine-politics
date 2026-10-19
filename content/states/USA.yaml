@@ -153,6 +153,7 @@ doctrine:
     - title: "DoD Directive 3000.09, Autonomy in Weapon Systems"
       approved: true   # render-approved 2026-08-31
       url: https://www.esd.whs.mil/portals/54/documents/dd/issuances/dodd/300009p.pdf
+      archived: http://web.archive.org/web/20260725110040/https://www.esd.whs.mil/Portals/54/Documents/DD/issuances/dodd/300009p.pdf   # pre-NSPM-11-deadline capture of the 2023 text
       note: >
         Current version issued 25 January 2023; first issued November 2012.
         Quotes checked against official reproductions in the US submission
