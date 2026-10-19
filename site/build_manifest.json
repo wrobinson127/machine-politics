@@ -2,9 +2,9 @@
  "codings_past_axis": [],
  "entries": [
   {
-   "approved": true,
-   "kind": "tour",
-   "rendered": true,
+   "approved": false,
+   "kind": "viz_copy",
+   "rendered": false,
    "state": null
   },
   {

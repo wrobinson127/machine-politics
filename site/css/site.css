@@ -192,372 +192,6 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .skip-board:hover { background: var(--ink); color: var(--ground); }
 
-/* P1c scaffold: beats are a stacked prose column. P2c adds the sticky
-   canvas beside them; this layout IS the no-JS and reduced-motion path. */
-.tour .beat {
-  padding: 3rem 0;
-  border-bottom: 1px solid var(--rule-faint);
-}
-
-.tour .beat:last-child { border-bottom: none; }
-
-.beat-copy { max-width: 34rem; }
-
-.beat-copy h2 { margin-top: 0; }
-
-.beat-copy p { font-size: 1.05rem; }
-
-/* Citation line under a beat: present and checkable, never louder than the
-   narration it supports. */
-.beat-copy p.beat-cite {
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: var(--ink-soft);
-  margin-top: 0.75rem;
-}
-
-.beat-copy p.beat-cite a { color: inherit; }
-
-@media (max-width: 860px) {
-  .tour .beat { padding: 2.2rem 0; }
-}
-
-/* Mobile stepper: tap-through beats, one at a time. The display rule on
-   .beat outranks the UA [hidden] default, so restate it explicitly. */
-.tour .beat[hidden] { display: none; }
-
-.tour-stepper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.8rem 0 0.4rem;
-  font-size: 0.88rem;
-}
-
-.tour-stepper button {
-  font: inherit;
-  background: none;
-  border: 1px solid var(--ink);
-  border-radius: 3px;
-  padding: 0.55rem 1.1rem;
-  min-height: 44px;
-  cursor: pointer;
-  color: var(--ink);
-}
-
-.tour-stepper button:disabled {
-  border-color: var(--rule);
-  color: var(--ink-soft);
-  cursor: default;
-}
-
-/* ------------------------------------------------------------------ */
-/* The persistent canvas (P2c). Server-rendered end state, hidden until
-   JS enhances; the sticky stage centers in the viewport (craft
-   standard), never hugs the top.                                      */
-/* ------------------------------------------------------------------ */
-
-.tour-enhanced .scrolly {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-  gap: 3rem;
-  align-items: start;
-}
-
-.tour-enhanced .beat {
-  min-height: 110vh;
-  border-bottom: none;
-  display: flex;
-  align-items: center;
-}
-
-.scrolly-canvas {
-  position: sticky;
-  top: var(--masthead-h);
-  height: calc(100dvh - var(--masthead-h));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.8rem;
-  min-width: 0;
-}
-
-/* display rules on these outrank the UA [hidden] default; restate it */
-.scrolly-canvas[hidden],
-.c-teach[hidden],
-.c-statset[hidden] { display: none; }
-
-.c-teach-slot { min-height: 2.4em; }
-
-.c-teach { margin: 0; font-size: 0.92rem; max-width: none; }
-
-.c-board-wrap { position: relative; }
-
-.c-board {
-  position: relative;
-  height: 320px;
-}
-
-/* Row state is CSS-transition-driven: setBeat writes target transform,
-   height, and the c-off class; the browser interpolates. One tempo in
-   every direction (neutrality in motion). */
-.c-row {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 62px;
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0.55s ease-in-out, height 0.55s ease-in-out,
-    opacity 0.35s linear, visibility 0s 0.35s;
-}
-
-.tour-enhanced .c-row:not(.c-off),
-.tour-stepped .c-row:not(.c-off) {
-  opacity: 1;
-  visibility: visible;
-  transition: transform 0.55s ease-in-out, height 0.55s ease-in-out,
-    opacity 0.35s linear, visibility 0s;
-}
-
-.c-board { transition: height 0.55s ease-in-out; }
-
-.c-deadline { transition: opacity 0.4s linear, visibility 0s 0.4s; }
-
-/* The line draws down by clip reveal, so the stroke keeps its dashed
-   identity (DrawSVG would rewrite the dash pattern to draw). */
-.c-deadline svg {
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 0.9s linear;
-}
-
-.c-deadline[data-state="faint"] svg,
-.c-deadline[data-state="draw"] svg { clip-path: inset(0 0 0 0); }
-
-.c-deadline[data-state="draw"] { opacity: 1; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
-
-.c-deadline[data-state="faint"] { opacity: 0.15; visibility: visible; transition: opacity 0.4s linear, visibility 0s; }
-
-.c-deadline[data-state="faint"] .c-deadline-label { opacity: 0; }
-
-@media (prefers-reduced-motion: reduce) {
-  .c-row, .c-board, .c-deadline, .c-deadline svg, .c-band, .c-seam,
-  .c-mark, .c-note, .c-track, .c-label { transition: none; }
-}
-
-.c-label {
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* xl rows reserve a caption line beneath the track so the provisional
-   note never runs into the band */
-.c-track { position: absolute; left: 0; right: 0; top: 26px; bottom: 38px; }
-
-.c-note {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  font-size: 0.7rem;
-  line-height: 1.25;
-}
-
-/* Mid scale (movers, camps): label as a left column, track beside it,
-   so early-starting bands never run under the state name */
-#c-board[data-scale="m"] .c-label,
-#c-board[data-scale="s"] .c-label {
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.78rem;
-  font-weight: 400;
-  max-width: 10rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-#c-board[data-scale="m"] .c-track,
-#c-board[data-scale="s"] .c-track { left: 10.5rem; top: 0; bottom: 0; }
-
-#c-board[data-scale="s"] .c-label { font-size: 0.68rem; }
-
-/* Poster scale: no labels, full-width tracks, compact marks */
-#c-board[data-scale="xs"] .c-label { display: none; }
-#c-board[data-scale="xs"] .c-track { left: 0; top: 0; bottom: 0; }
-#c-board:not([data-scale="xl"]) .c-note { display: none; }
-
-/* Progressive reveal (P3c): marks appear per beat; color arrives as an
-   event at beat 5 (bands, then the seam); the provisional note rides
-   with the band. All reveals are opacity/transform transitions at one
-   tempo; nothing is ever rebuilt. */
-.c-band {
-  position: absolute;
-  top: 50%;
-  height: 58%;
-  transform: translateY(-50%) scaleX(0);
-  transform-origin: left center;
-  border-radius: 2px;
-  transition: transform 0.7s ease-in-out;
-}
-
-#c-board.c-bands-on .c-band { transform: translateY(-50%) scaleX(1); }
-
-#c-board .c-seam {
-  opacity: 0;
-  transition: opacity 0.35s linear 0.55s;
-}
-
-#c-board.c-bands-on .c-seam { opacity: 1; }
-
-.c-mark { transition: opacity 0.4s linear; }
-
-#c-board.c-marks-1 .c-mark:nth-of-type(n+2) { opacity: 0; }
-#c-board.c-marks-0 .c-mark { opacity: 0; }
-
-.c-note { opacity: 0; transition: opacity 0.4s linear 0.7s; }
-
-#c-board.c-bands-on[data-scale="xl"] .c-note { opacity: 1; }
-
-/* Muting is focus, never judgment: the focal rows keep full contrast,
-   the rest drop together, and every element gets its turn. */
-.c-row.c-dim .c-track,
-.c-row.c-dim .c-label { opacity: 0.42; transition: opacity 0.4s linear; }
-
-.c-row .c-track,
-.c-row .c-label { transition: opacity 0.4s linear; }
-
-/* The seam: red's second reserved meaning, the moment a position
-   changes. Direction-neutral by construction. */
-/* The seam marks the moment a coded position changed, and is one of red's two
-   reserved meanings. Red alone cannot carry it: simulated under deuteranopia
-   the seam separates from a REG-SOFT band by 32 on a scale where about 90 is
-   the threshold, so it would vanish into exactly the band it is meant to cut.
-   The hairline edge makes the seam's position legible as a shape, so the datum
-   survives without spending a second colour on it. */
-.c-seam {
-  position: absolute;
-  top: 6%;
-  height: 88%;
-  width: 2.5px;
-  margin-left: -1.25px;
-  background: var(--integrity-red);
-  box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.55);
-}
-
-.c-mark {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 0;
-}
-
-.c-mark svg { display: block; }
-
-#c-board[data-scale="s"] .c-mark svg,
-#c-board[data-scale="xs"] .c-mark svg { display: none; }
-
-#c-board[data-scale="s"] .c-mark,
-#c-board[data-scale="xs"] .c-mark {
-  width: 4px;
-  height: 92%;
-  border-radius: 0.5px;
-  background: var(--ink);
-}
-
-#c-board[data-scale="s"] .c-mark-N,
-#c-board[data-scale="xs"] .c-mark-N {
-  background: none;
-  border: 1px solid var(--ink);
-}
-
-#c-board[data-scale="s"] .c-mark-A,
-#c-board[data-scale="xs"] .c-mark-A { opacity: 0.55; }
-
-#c-board[data-scale="s"] .c-mark-X,
-#c-board[data-scale="xs"] .c-mark-X { opacity: 0.18; }
-
-.c-deadline {
-  position: absolute;
-  top: -6px;
-  bottom: -6px;
-  width: 10px;
-  margin-left: -5px;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.c-deadline svg { width: 100%; height: 100%; display: block; }
-
-.c-deadline-label {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  margin-top: 0.5rem;
-}
-
-.c-stats {
-  display: flex;
-  gap: 1.6rem;
-  flex-wrap: wrap;
-  min-height: 3.2em;
-}
-
-.c-statset { display: flex; gap: 1.6rem; flex-wrap: wrap; }
-
-.c-stat { font-size: 0.8rem; color: var(--ink-soft); }
-
-.c-stat strong {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.6rem;
-  line-height: 1.15;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-
-@media (max-width: 860px) {
-  .tour-enhanced .scrolly { display: block; }
-}
-
-/* The release affordance appears only at beat 10; skip-board's display
-   rule outranks the UA [hidden] default, so restate it */
-.c-release { align-self: flex-start; }
-.c-release[hidden] { display: none; }
-
-/* Once the board is live (beat 10), rows advertise their telemetry */
-.c-live .c-row:not(.c-off) { cursor: pointer; }
-
-@media (hover: hover) {
-  .c-live .c-row:not(.c-off):hover { background: var(--ground-raise); }
-}
-
-/* Stepper mode (mobile, P4c): the canvas is a card above the prose,
-   driven by the same beat states as the scroll mode */
-.tour-stepped .scrolly { display: flex; flex-direction: column-reverse; }
-
-.tour-stepped .scrolly-canvas {
-  position: static;
-  height: auto;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: var(--ground-raise);
-  padding: 0.9rem 1rem 1.1rem;
-  margin-bottom: 1rem;
-  scroll-margin-top: 3.6rem; /* clears the preview banner on step taps */
-}
-
-.tour-stepped .c-teach-slot { min-height: 3.2em; }
-
 /* ------------------------------------------------------------------ */
 /* Trajectory board                                                    */
 /* ------------------------------------------------------------------ */
@@ -1444,3 +1078,134 @@ footer.colophon p { margin: 0.3rem 0; }
 .cf-day { border-top: 1px solid var(--rule); padding-top: 0.4rem; }
 .cf-day > h3 { margin-top: 0.8rem; }
 .cf-empty { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* ------------------------------------------------------------------ */
+/* Figures: the globe, Strands, the assembly. One system: the same     */
+/* marks, hues, textures and tooltip on every page.                    */
+/* ------------------------------------------------------------------ */
+
+:root { --strand: rgba(26, 26, 26, 0.16); }
+
+.opener-wide { grid-template-columns: 1fr; border-bottom: none; padding-bottom: 1rem; }
+.opener-wide .opener-text { max-width: 44rem; }
+
+.viz { margin: 0 0 3rem; border-top: 2px solid var(--ink); padding-top: 1rem; }
+.viz-h { margin: 0 0 .6rem; }
+.viz-controls { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center; margin-bottom: .7rem; font-size: .88rem; }
+.viz-controls[hidden] { display: none; }
+.viz-controls label { display: inline-flex; gap: .4rem; align-items: center; }
+/* Controls only do something once the figure is live; before that the
+   static map and the table stand on their own. */
+.viz:not(.viz-live) .viz-controls { display: none; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--ink); border-radius: 3px; overflow: hidden; }
+.seg button { font: inherit; font-size: .86rem; background: transparent; color: var(--ink); border: 0; border-right: 1px solid var(--ink); padding: .38rem .8rem; cursor: pointer; min-height: 32px; }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.viz-find, .states-find { font: inherit; font-size: .88rem; padding: .32rem .6rem; border: 1px solid var(--rule); background: var(--ground); color: var(--ink); border-radius: 3px; width: 11rem; max-width: 100%; }
+.viz-caption { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.4; max-width: 46rem; margin: 0 0 .5rem; min-height: 2.8em; }
+.viz-intro { max-width: 46rem; }
+.viz-key { display: flex; flex-wrap: wrap; gap: .35rem 1rem; font-size: .8rem; color: var(--ink-soft); margin-bottom: .7rem; }
+.viz-key span { display: inline-flex; align-items: center; gap: .4rem; }
+.viz-key .swatch { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.swatch-empty { border: 1px solid var(--ink-soft); background: var(--ground); }
+.vk { width: 14px; height: 14px; border-radius: 50%; display: inline-block; box-sizing: border-box; }
+.vk-Y { background: var(--ink-soft); }
+.vk-A { background: linear-gradient(var(--ink-soft) 50%, var(--ground) 50%); border: 1.5px solid var(--ink-soft); }
+.vk-N { background: var(--ground); border: 2.5px solid var(--ink); }
+.vk-X { background: var(--ground); border: 1px solid var(--rule); }
+.viz-stage { position: relative; width: 100%; }
+.viz-stage svg, .viz-canvas { display: block; width: 100%; height: auto; }
+.viz-stage .viz-poster[hidden] { display: none; }
+.viz-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.credit { font-size: .78rem; color: var(--ink-soft); margin-top: .7rem; }
+
+/* The static map: first paint and the no-JS form */
+.viz-sphere { fill: var(--ground-raise); stroke: var(--rule); }
+.viz-land { fill: var(--rule-faint); stroke: var(--rule); stroke-width: .5; }
+.viz-nr { fill: var(--ground); stroke: var(--rule); stroke-width: .5; }
+.viz-p { stroke: var(--ground); stroke-width: .6; }
+.viz-dot { stroke: var(--ground); stroke-width: 1.4; }
+.viz-dot-nr { fill: var(--ground); stroke: var(--ink-soft); stroke-width: 1; }
+.p-LBI-BAN { fill: var(--pos-lbiban); }
+.p-LBI-OPEN { fill: url(#tx-open); }
+.p-REG-SOFT { fill: url(#tx-soft); }
+.p-CCW-ONLY { fill: url(#tx-ccw); }
+.p-OPPOSE { fill: url(#tx-oppose); }
+.p-AMBIG { fill: url(#tx-ambig); }
+.p-NONE { fill: var(--pos-none); }
+
+/* Tooltip shared by every figure */
+.viz-tip { position: absolute; z-index: 20; background: var(--ink); color: var(--ground); border-radius: 4px; padding: .6rem .8rem; font-size: .82rem; line-height: 1.45; width: 17.5rem; max-width: calc(100% - 8px); }
+.viz-tip[hidden] { display: none; }
+.viz-tip strong { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; display: block; }
+.viz-tip-r { display: block; opacity: .75; }
+.viz-tip a { color: inherit; }
+
+/* Strands */
+.strand { fill: none; stroke: var(--strand); cursor: pointer; transition: opacity .3s linear; }
+.strand.lit { stroke-width: 3 !important; opacity: 1 !important; }
+.strands.focus .strand:not(.lit) { opacity: .2; }
+.block { stroke: var(--ground); stroke-width: 2; cursor: pointer; }
+.axis-t { font-family: var(--font-display); font-size: 16px; fill: var(--ink); text-anchor: middle; }
+.blk-t { font-size: 12px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--ground); stroke-width: 4px; stroke-linejoin: round; }
+.blk-t .n, .lbl .n { font-weight: 600; fill: var(--ink); }
+
+/* Assembly */
+.seat { cursor: pointer; transition: transform .75s cubic-bezier(.77, 0, .175, 1); }
+.seat text { font-size: 8.5px; font-weight: 600; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.seat circle { stroke-width: 1.4; }
+.sv-Y circle { fill: var(--ink-soft); stroke: none; }
+.sv-Y text { fill: var(--ground); }
+.sv-A circle { fill: var(--ground); stroke: var(--ink-soft); }
+.sv-A text, .sv-N text { fill: var(--ink); }
+.sv-N circle { fill: var(--ground); stroke: var(--ink); stroke-width: 2.6; }
+.sv-X circle { fill: var(--ground); stroke: var(--rule); }
+.sv-X text { fill: var(--ink-soft); }
+.sp circle { stroke: var(--ground); }
+.sp text { fill: #fff; }
+.sp.p-LBI-BAN circle { fill: var(--pos-lbiban); }
+.sp.p-LBI-OPEN circle { fill: url(#tx-open); }
+.sp.p-REG-SOFT circle { fill: url(#tx-soft); }
+.sp.p-CCW-ONLY circle { fill: url(#tx-ccw); }
+.sp.p-OPPOSE circle { fill: url(#tx-oppose); }
+.sp.p-AMBIG circle { fill: url(#tx-ambig); stroke: var(--ink-soft); }
+.sp.p-AMBIG text { fill: var(--ink); }
+.sp.p-NONE circle { fill: var(--pos-none); }
+.sp.nr circle { fill: var(--ground); stroke: var(--rule); }
+.sp.nr text { fill: var(--ink-soft); }
+.sp.soft circle { opacity: .62; }
+.seat.hit circle { stroke: var(--ink); stroke-width: 2.6; }
+.hero-n { font-family: var(--font-display); font-size: 54px; fill: var(--ink); text-anchor: middle; }
+.hero-l { font-size: 14px; fill: var(--ink-soft); text-anchor: middle; }
+.lbl { font-size: 13px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--ground); stroke-width: 4px; stroke-linejoin: round; }
+
+/* Every state: the table that is also the keyboard and screen-reader path */
+.states { margin-top: 1rem; }
+.states-tools { display: flex; flex-wrap: wrap; gap: .5rem .8rem; align-items: center; margin: .6rem 0; font-size: .9rem; }
+.states-status { color: var(--ink-soft); font-size: .85rem; }
+.states-key { margin: .4rem 0 .8rem; }
+.table-scroll { overflow-x: auto; }
+.states-table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.states-table th, .states-table td { text-align: left; padding: .38rem .9rem .38rem 0; border-bottom: 1px solid var(--rule-faint); vertical-align: middle; }
+.states-table thead th { font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; border-bottom: 1px solid var(--rule); }
+.states-table thead button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
+.states-table tbody th { font-weight: 500; }
+.states-table td.vt { white-space: nowrap; }
+.states-table td.vt svg { vertical-align: -0.12em; margin-right: .3rem; }
+.states-table td.pos .swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; vertical-align: -0.1em; margin-right: .45rem; }
+.states-table .muted { color: var(--ink-soft); }
+.states-table tr[hidden] { display: none; }
+/* On a phone the vote glyph carries the vote; the word and the date go. */
+@media (max-width: 600px) {
+  .states-table td.vt span, .states-table .since, .states-table th:last-child { display: none; }
+  .states-table th, .states-table td { padding-right: .5rem; }
+  .states-table td.pos { font-size: .82rem; }
+}
+
+/* Text pages: one centred reading column */
+.prose-page { max-width: 44rem; margin-left: auto; margin-right: auto; }
+.prose-page table { max-width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seat, .strand { transition: none; }
+}

@@ -479,9 +479,9 @@ def validate(content_dir=None):
     if pages_dir.exists():
         for path in sorted(pages_dir.glob("*.md")):
             check_page_file(errors, path)
-    tour_path = content_dir / "tour.yaml"
-    if tour_path.exists():
-        check_tour(errors, tour_path)
+    viz_path = content_dir / "viz.yaml"
+    if viz_path.exists():
+        check_viz(errors, viz_path)
     endorsements = content_dir / "endorsements.yaml"
     if endorsements.exists():
         check_endorsements(errors, endorsements, vote_states)
@@ -680,48 +680,32 @@ def check_eras(errors, eras_dir, vote_states):
         scan_prohibited_claims(errors, where, data)
 
 
-# The storyboard's beat sequence is authoritative (P3c): ten beats, these
-# ids, this order. A reordered or truncated tour fails the build.
-TOUR_BEAT_SEQUENCE = (
-    "the-question", "one-vote", "the-glyphs", "the-canvas", "the-coding",
-    "the-mirror", "the-movers", "the-camps", "the-board", "the-clock",
-)
+VIZ_CAPTION_KEYS = ("globe", "map", "vote", "movers", "position", "matrix", "strands",
+                    "strands_movers", "assembly", "assembly_moved", "assembly_position")
+VIZ_TOKENS = {"reviewed", "year", "res", "Y", "N", "A", "X", "movers", "stated", "none",
+              "nr", "vote2025", "n", "straight", "moved"}
 
 
-def check_tour(errors, path):
-    where = "tour.yaml"
-    tour = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    _check_approved(errors, where, tour)
-    beats = tour.get("beats") or []
-    if len(beats) != len(TOUR_BEAT_SEQUENCE):
-        errors.add(
-            where,
-            f"the tour has exactly {len(TOUR_BEAT_SEQUENCE)} beats "
-            f"(the storyboard sequence), found {len(beats)}",
-        )
-    ids = tuple(beat.get("id") for beat in beats)
-    if ids != TOUR_BEAT_SEQUENCE and len(beats) == len(TOUR_BEAT_SEQUENCE):
-        errors.add(
-            where,
-            f"beat ids must match the storyboard sequence {TOUR_BEAT_SEQUENCE}, "
-            f"found {ids}",
-        )
-    for i, beat in enumerate(beats):
-        b_where = f"{where}.beats[{i}]"
-        for field in ("id", "title", "copy"):
-            if not beat.get(field):
-                errors.add(b_where, f"beat needs {field!r}")
-        for ch, name in (("—", "em dash"), ("–", "en dash")):
-            if ch in str(beat.get("copy", "")) + str(beat.get("title", "")):
-                errors.add(b_where, f"beat title or copy contains an {name}; voice rules forbid it")
-        # Beat citations are optional, but a half-written one is worse than
-        # none: it renders a "Source:" line that goes nowhere.
-        for j, src in enumerate(beat.get("sources") or []):
-            for field in ("label", "url"):
-                if not str(src.get(field, "")).strip():
-                    errors.add(f"{b_where}.sources[{j}]",
-                               f"beat source needs {field!r}")
-    scan_prohibited_claims(errors, where, tour)
+def check_viz(errors, path):
+    """Captions for the globe, Strands and the assembly. Claim-bearing copy:
+    gated, dash-free, and only the placeholders the figures can fill."""
+    where = "viz.yaml"
+    viz = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    if not _check_entry_dict(errors, where, viz):
+        return
+    _check_approved(errors, where, viz)
+    caps = viz.get("captions") or {}
+    for k in VIZ_CAPTION_KEYS:
+        if not str(caps.get(k) or "").strip():
+            errors.add(f"{where}.captions", f"missing caption {k!r}")
+    texts = {k: str(v) for k, v in viz.items() if isinstance(v, str)}
+    texts.update({f"captions.{k}": str(v) for k, v in caps.items()})
+    for k, t in texts.items():
+        _check_prose(errors, f"{where}.{k}", t)
+        for tok in re.findall(r"[{]([^}]*)[}]", t):
+            if tok not in VIZ_TOKENS:
+                errors.add(f"{where}.{k}", f"unknown placeholder {{{tok}}}")
+    scan_prohibited_claims(errors, where, viz)
 
 
 def main():

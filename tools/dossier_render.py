@@ -839,14 +839,18 @@ def own_coding(iso3, name, cs, sources, preview, updated_through):
                 f"state's statements, as of {esc(updated_through)}. Its votes above are "
                 'complete.</p></div>')
     parts = []
-    for c in sorted(codings, key=lambda c: iso(c.get("as_of"))):
-        cat = config.POSITION_CATEGORIES.get(c["code"], "")
+    ordered = sorted(codings, key=lambda c: iso(c.get("as_of")))
+    for c in ordered:
+        # The current reading's description already answers "What does it
+        # want?" at the top of the page; repeat it only for past readings.
+        cat = "" if c is ordered[-1] else config.POSITION_CATEGORIES.get(c["code"], "")
+        cat_html = f'<p class="oc-cat">{esc(cat)}.</p>' if cat else ""
         draft = ' <span class="dchip">DRAFT</span>' if (preview and not _approved(c)) else ''
         rat = f'<p class="cv-b">{esc(c.get("rationale", ""))}</p>' if c.get("rationale") else ''
         ev = "".join(_evi(e, sources) for e in c.get("evidence") or [])
         parts.append(
             f'<div class="own-coding"><h3 class="oc-h">{esc(_coding_heading(c))}'
-            f'{draft}</h3><p class="oc-cat">{esc(cat)}.</p>{rat}{ev}</div>')
+            f'{draft}</h3>{cat_html}{rat}{ev}</div>')
     for s in sorted(shifts, key=lambda s: iso(s.get("date"))):
         draft = ' <span class="dchip">DRAFT</span>' if (preview and not _approved(s)) else ''
         ev = "".join(_evi(e, sources) for e in s.get("evidence") or [])

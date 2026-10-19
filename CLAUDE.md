@@ -32,8 +32,9 @@ Serve locally: `python -m http.server 8080 --bind 127.0.0.1 --directory .scratch
 ## Where things are
 
 - `content/` is the claim-bearing layer: `rubric.yaml`, `states/{iso3}.yaml`, `sources.yaml` (every evidence source resolves here), `pages/*.md` (prose with front matter).
-- `tools/build_site.py` renders everything under `site/` except `site/css/site.css`, `site/assets/og-card.png` (regenerate with `tools/gen_og_card.py`) and the font files in `site/assets/fonts/`.
+- `tools/build_site.py` renders everything under `site/` except `site/css/site.css`, `site/js/viz.js` (the globe, Strands and the assembly; copied and content-hashed like the stylesheet), `site/assets/og-card.png` (regenerate with `tools/gen_og_card.py`) and the font files in `site/assets/fonts/`.
 - `docs/METHODOLOGY.md` is the write-up behind the site's methodology page.
 - `content/conference.yaml` drives `conference.html`, the Seventh CCW Review Conference log (16 to 20 Nov 2026). Daily path: draft each day's entries as link-only facts (date, what happened, official link) from https://meetings.unoda.org/meeting/79323/statements, `approved: false`, for the analyst to approve as a batch. No reading changes during the conference week.
+- The home page is the globe (`#viz-world`), Strands and the table of every state; the Votes page leads with the assembly. All three figures read one payload built by `tools/viz.py` from approved content only. Their captions live in `content/viz.yaml` (approval-gated; until approved the figures use the count-only labels in `build_site.VIZ_FALLBACK`). The flat map is also rendered as static SVG at build time: it is the first paint and the no-JS figure. The scroll tour and the trajectory board were retired on 2026-10-19.
 - The build also writes `sitemap.xml`, `robots.txt`, `llms.txt`, and `data/positions.{csv,json}` (every rendered reading, CC BY 4.0; votes stay out under UN terms).
 - Working notes for the October 2026 finish run (state, audit, plan, decisions, approval packet, ship verdict) live on branch `finish` of the private `machine-politics-dev` repo, never here.

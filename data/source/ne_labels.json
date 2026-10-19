@@ -1,0 +1,1168 @@
+{
+ "_provenance": {
+  "source": "Natural Earth 1:50m Admin 0 Countries, v5 (public domain), naturalearthdata.com, via github.com/nvkelso/natural-earth-vector geojson/ne_50m_admin_0_countries.geojson",
+  "fields": "LABEL_X, LABEL_Y (label point, degrees), ISO_A2 (fallback ISO_A2_EH), SUBREGION",
+  "fetched": "2026-10-19",
+  "tool": "manual extract; regenerate by re-running the extract in tools/viz.py docstring"
+ },
+ "states": {
+  "AFG": {
+   "lon": 66.4966,
+   "lat": 34.1643,
+   "a2": "AF",
+   "region": "Southern Asia"
+  },
+  "AGO": {
+   "lon": 17.9842,
+   "lat": -12.1828,
+   "a2": "AO",
+   "region": "Middle Africa"
+  },
+  "ALB": {
+   "lon": 20.1138,
+   "lat": 40.6549,
+   "a2": "AL",
+   "region": "Southern Europe"
+  },
+  "AND": {
+   "lon": 1.5394,
+   "lat": 42.5476,
+   "a2": "AD",
+   "region": "Southern Europe"
+  },
+  "ARE": {
+   "lon": 54.5473,
+   "lat": 23.4663,
+   "a2": "AE",
+   "region": "Western Asia"
+  },
+  "ARG": {
+   "lon": -64.1733,
+   "lat": -33.5012,
+   "a2": "AR",
+   "region": "South America"
+  },
+  "ARM": {
+   "lon": 44.8006,
+   "lat": 40.4591,
+   "a2": "AM",
+   "region": "Western Asia"
+  },
+  "ATG": {
+   "lon": -61.7906,
+   "lat": 17.3522,
+   "a2": "AG",
+   "region": "Caribbean"
+  },
+  "AUS": {
+   "lon": 134.0497,
+   "lat": -24.1295,
+   "a2": "AU",
+   "region": "Australia and New Zealand"
+  },
+  "AUT": {
+   "lon": 14.1305,
+   "lat": 47.5189,
+   "a2": "AT",
+   "region": "Western Europe"
+  },
+  "AZE": {
+   "lon": 47.211,
+   "lat": 40.4024,
+   "a2": "AZ",
+   "region": "Western Asia"
+  },
+  "BDI": {
+   "lon": 29.9171,
+   "lat": -3.3328,
+   "a2": "BI",
+   "region": "Eastern Africa"
+  },
+  "BEL": {
+   "lon": 4.8004,
+   "lat": 50.7854,
+   "a2": "BE",
+   "region": "Western Europe"
+  },
+  "BEN": {
+   "lon": 2.352,
+   "lat": 10.3248,
+   "a2": "BJ",
+   "region": "Western Africa"
+  },
+  "BFA": {
+   "lon": -1.3639,
+   "lat": 12.673,
+   "a2": "BF",
+   "region": "Western Africa"
+  },
+  "BGD": {
+   "lon": 89.685,
+   "lat": 24.215,
+   "a2": "BD",
+   "region": "Southern Asia"
+  },
+  "BGR": {
+   "lon": 25.1571,
+   "lat": 42.5088,
+   "a2": "BG",
+   "region": "Eastern Europe"
+  },
+  "BHR": {
+   "lon": 50.5548,
+   "lat": 26.056,
+   "a2": "BH",
+   "region": "Western Asia"
+  },
+  "BHS": {
+   "lon": -77.1467,
+   "lat": 26.4018,
+   "a2": "BS",
+   "region": "Caribbean"
+  },
+  "BIH": {
+   "lon": 18.0684,
+   "lat": 44.0911,
+   "a2": "BA",
+   "region": "Southern Europe"
+  },
+  "BLR": {
+   "lon": 28.4177,
+   "lat": 53.8219,
+   "a2": "BY",
+   "region": "Eastern Europe"
+  },
+  "BLZ": {
+   "lon": -88.713,
+   "lat": 17.2021,
+   "a2": "BZ",
+   "region": "Central America"
+  },
+  "BOL": {
+   "lon": -64.5934,
+   "lat": -16.666,
+   "a2": "BO",
+   "region": "South America"
+  },
+  "BRA": {
+   "lon": -49.5594,
+   "lat": -12.0987,
+   "a2": "BR",
+   "region": "South America"
+  },
+  "BRB": {
+   "lon": -59.569,
+   "lat": 13.1637,
+   "a2": "BB",
+   "region": "Caribbean"
+  },
+  "BRN": {
+   "lon": 114.5519,
+   "lat": 4.4483,
+   "a2": "BN",
+   "region": "South-Eastern Asia"
+  },
+  "BTN": {
+   "lon": 90.0403,
+   "lat": 27.5367,
+   "a2": "BT",
+   "region": "Southern Asia"
+  },
+  "BWA": {
+   "lon": 24.1792,
+   "lat": -22.1026,
+   "a2": "BW",
+   "region": "Southern Africa"
+  },
+  "CAF": {
+   "lon": 20.9069,
+   "lat": 6.9897,
+   "a2": "CF",
+   "region": "Middle Africa"
+  },
+  "CAN": {
+   "lon": -101.9107,
+   "lat": 60.3243,
+   "a2": "CA",
+   "region": "Northern America"
+  },
+  "CHE": {
+   "lon": 7.464,
+   "lat": 46.7191,
+   "a2": "CH",
+   "region": "Western Europe"
+  },
+  "CHL": {
+   "lon": -72.3189,
+   "lat": -38.1518,
+   "a2": "CL",
+   "region": "South America"
+  },
+  "CHN": {
+   "lon": 106.3373,
+   "lat": 32.4982,
+   "a2": "CN",
+   "region": "Eastern Asia"
+  },
+  "CIV": {
+   "lon": -5.5686,
+   "lat": 7.4914,
+   "a2": "CI",
+   "region": "Western Africa"
+  },
+  "CMR": {
+   "lon": 12.4735,
+   "lat": 4.585,
+   "a2": "CM",
+   "region": "Middle Africa"
+  },
+  "COD": {
+   "lon": 23.4588,
+   "lat": -1.8582,
+   "a2": "CD",
+   "region": "Middle Africa"
+  },
+  "COG": {
+   "lon": 15.9005,
+   "lat": 0.1423,
+   "a2": "CG",
+   "region": "Middle Africa"
+  },
+  "COL": {
+   "lon": -73.1743,
+   "lat": 3.3731,
+   "a2": "CO",
+   "region": "South America"
+  },
+  "COM": {
+   "lon": 43.3181,
+   "lat": -11.7277,
+   "a2": "KM",
+   "region": "Eastern Africa"
+  },
+  "CPV": {
+   "lon": -23.6394,
+   "lat": 15.0748,
+   "a2": "CV",
+   "region": "Western Africa"
+  },
+  "CRI": {
+   "lon": -84.0779,
+   "lat": 10.0651,
+   "a2": "CR",
+   "region": "Central America"
+  },
+  "CUB": {
+   "lon": -77.9759,
+   "lat": 21.334,
+   "a2": "CU",
+   "region": "Caribbean"
+  },
+  "CYP": {
+   "lon": 33.0842,
+   "lat": 34.9133,
+   "a2": "CY",
+   "region": "Western Asia"
+  },
+  "CZE": {
+   "lon": 15.3776,
+   "lat": 49.8824,
+   "a2": "CZ",
+   "region": "Eastern Europe"
+  },
+  "DEU": {
+   "lon": 9.6783,
+   "lat": 50.9617,
+   "a2": "DE",
+   "region": "Western Europe"
+  },
+  "DJI": {
+   "lon": 42.4988,
+   "lat": 11.9763,
+   "a2": "DJ",
+   "region": "Eastern Africa"
+  },
+  "DMA": {
+   "lon": -61.345,
+   "lat": 15.4588,
+   "a2": "DM",
+   "region": "Caribbean"
+  },
+  "DNK": {
+   "lon": 9.0182,
+   "lat": 55.967,
+   "a2": "DK",
+   "region": "Northern Europe"
+  },
+  "DOM": {
+   "lon": -70.654,
+   "lat": 19.1041,
+   "a2": "DO",
+   "region": "Caribbean"
+  },
+  "DZA": {
+   "lon": 2.8082,
+   "lat": 27.3974,
+   "a2": "DZ",
+   "region": "Northern Africa"
+  },
+  "ECU": {
+   "lon": -78.1884,
+   "lat": -1.2591,
+   "a2": "EC",
+   "region": "South America"
+  },
+  "EGY": {
+   "lon": 29.4458,
+   "lat": 26.1862,
+   "a2": "EG",
+   "region": "Northern Africa"
+  },
+  "ERI": {
+   "lon": 38.2856,
+   "lat": 15.7874,
+   "a2": "ER",
+   "region": "Eastern Africa"
+  },
+  "ESP": {
+   "lon": -3.4647,
+   "lat": 40.091,
+   "a2": "ES",
+   "region": "Southern Europe"
+  },
+  "EST": {
+   "lon": 25.8671,
+   "lat": 58.7249,
+   "a2": "EE",
+   "region": "Northern Europe"
+  },
+  "ETH": {
+   "lon": 39.0886,
+   "lat": 8.0328,
+   "a2": "ET",
+   "region": "Eastern Africa"
+  },
+  "FIN": {
+   "lon": 27.2764,
+   "lat": 63.2524,
+   "a2": "FI",
+   "region": "Northern Europe"
+  },
+  "FJI": {
+   "lon": 177.9754,
+   "lat": -17.8261,
+   "a2": "FJ",
+   "region": "Melanesia"
+  },
+  "FRA": {
+   "lon": 2.5523,
+   "lat": 46.6961,
+   "a2": "FR",
+   "region": "Western Europe"
+  },
+  "FSM": {
+   "lon": 158.234,
+   "lat": 6.8876,
+   "a2": "FM",
+   "region": "Micronesia"
+  },
+  "GAB": {
+   "lon": 11.8359,
+   "lat": -0.4377,
+   "a2": "GA",
+   "region": "Middle Africa"
+  },
+  "GBR": {
+   "lon": -2.1163,
+   "lat": 54.4027,
+   "a2": "GB",
+   "region": "Northern Europe"
+  },
+  "GEO": {
+   "lon": 43.7357,
+   "lat": 41.8701,
+   "a2": "GE",
+   "region": "Western Asia"
+  },
+  "GHA": {
+   "lon": -1.0369,
+   "lat": 7.7176,
+   "a2": "GH",
+   "region": "Western Africa"
+  },
+  "GIN": {
+   "lon": -10.0164,
+   "lat": 10.6185,
+   "a2": "GN",
+   "region": "Western Africa"
+  },
+  "GMB": {
+   "lon": -14.9983,
+   "lat": 13.6417,
+   "a2": "GM",
+   "region": "Western Africa"
+  },
+  "GNB": {
+   "lon": -14.5241,
+   "lat": 12.1637,
+   "a2": "GW",
+   "region": "Western Africa"
+  },
+  "GNQ": {
+   "lon": 8.9902,
+   "lat": 2.333,
+   "a2": "GQ",
+   "region": "Middle Africa"
+  },
+  "GRC": {
+   "lon": 21.7257,
+   "lat": 39.4928,
+   "a2": "GR",
+   "region": "Southern Europe"
+  },
+  "GRD": {
+   "lon": -61.6805,
+   "lat": 12.1132,
+   "a2": "GD",
+   "region": "Caribbean"
+  },
+  "GTM": {
+   "lon": -90.4971,
+   "lat": 14.9821,
+   "a2": "GT",
+   "region": "Central America"
+  },
+  "GUY": {
+   "lon": -58.9426,
+   "lat": 5.1243,
+   "a2": "GY",
+   "region": "South America"
+  },
+  "HND": {
+   "lon": -86.8876,
+   "lat": 14.7948,
+   "a2": "HN",
+   "region": "Central America"
+  },
+  "HRV": {
+   "lon": 16.3724,
+   "lat": 45.8058,
+   "a2": "HR",
+   "region": "Southern Europe"
+  },
+  "HTI": {
+   "lon": -72.2241,
+   "lat": 19.2638,
+   "a2": "HT",
+   "region": "Caribbean"
+  },
+  "HUN": {
+   "lon": 19.4479,
+   "lat": 47.0868,
+   "a2": "HU",
+   "region": "Eastern Europe"
+  },
+  "IDN": {
+   "lon": 101.8929,
+   "lat": -0.9544,
+   "a2": "ID",
+   "region": "South-Eastern Asia"
+  },
+  "IND": {
+   "lon": 79.3581,
+   "lat": 22.6869,
+   "a2": "IN",
+   "region": "Southern Asia"
+  },
+  "IRL": {
+   "lon": -7.7986,
+   "lat": 53.0787,
+   "a2": "IE",
+   "region": "Northern Europe"
+  },
+  "IRN": {
+   "lon": 54.9315,
+   "lat": 32.1662,
+   "a2": "IR",
+   "region": "Southern Asia"
+  },
+  "IRQ": {
+   "lon": 43.2618,
+   "lat": 33.094,
+   "a2": "IQ",
+   "region": "Western Asia"
+  },
+  "ISL": {
+   "lon": -18.6737,
+   "lat": 64.7793,
+   "a2": "IS",
+   "region": "Northern Europe"
+  },
+  "ISR": {
+   "lon": 34.8479,
+   "lat": 30.9111,
+   "a2": "IL",
+   "region": "Western Asia"
+  },
+  "ITA": {
+   "lon": 11.0769,
+   "lat": 44.7325,
+   "a2": "IT",
+   "region": "Southern Europe"
+  },
+  "JAM": {
+   "lon": -77.3188,
+   "lat": 18.1371,
+   "a2": "JM",
+   "region": "Caribbean"
+  },
+  "JOR": {
+   "lon": 36.376,
+   "lat": 30.805,
+   "a2": "JO",
+   "region": "Western Asia"
+  },
+  "JPN": {
+   "lon": 138.4422,
+   "lat": 36.1425,
+   "a2": "JP",
+   "region": "Eastern Asia"
+  },
+  "KAZ": {
+   "lon": 68.6855,
+   "lat": 49.0541,
+   "a2": "KZ",
+   "region": "Central Asia"
+  },
+  "KEN": {
+   "lon": 37.9076,
+   "lat": 0.549,
+   "a2": "KE",
+   "region": "Eastern Africa"
+  },
+  "KGZ": {
+   "lon": 74.5326,
+   "lat": 41.6685,
+   "a2": "KG",
+   "region": "Central Asia"
+  },
+  "KHM": {
+   "lon": 104.5049,
+   "lat": 12.6476,
+   "a2": "KH",
+   "region": "South-Eastern Asia"
+  },
+  "KIR": {
+   "lon": -157.3846,
+   "lat": 1.8204,
+   "a2": "KI",
+   "region": "Micronesia"
+  },
+  "KNA": {
+   "lon": -62.758,
+   "lat": 17.3366,
+   "a2": "KN",
+   "region": "Caribbean"
+  },
+  "KOR": {
+   "lon": 128.1295,
+   "lat": 36.3849,
+   "a2": "KR",
+   "region": "Eastern Asia"
+  },
+  "KWT": {
+   "lon": 47.314,
+   "lat": 29.4136,
+   "a2": "KW",
+   "region": "Western Asia"
+  },
+  "LAO": {
+   "lon": 102.5339,
+   "lat": 19.4318,
+   "a2": "LA",
+   "region": "South-Eastern Asia"
+  },
+  "LBN": {
+   "lon": 35.9929,
+   "lat": 34.1334,
+   "a2": "LB",
+   "region": "Western Asia"
+  },
+  "LBR": {
+   "lon": -9.4604,
+   "lat": 6.4472,
+   "a2": "LR",
+   "region": "Western Africa"
+  },
+  "LBY": {
+   "lon": 18.011,
+   "lat": 26.6389,
+   "a2": "LY",
+   "region": "Northern Africa"
+  },
+  "LCA": {
+   "lon": -60.9801,
+   "lat": 13.8924,
+   "a2": "LC",
+   "region": "Caribbean"
+  },
+  "LIE": {
+   "lon": 9.5594,
+   "lat": 47.1114,
+   "a2": "LI",
+   "region": "Western Europe"
+  },
+  "LKA": {
+   "lon": 80.7048,
+   "lat": 7.5811,
+   "a2": "LK",
+   "region": "Southern Asia"
+  },
+  "LSO": {
+   "lon": 28.2466,
+   "lat": -29.4802,
+   "a2": "LS",
+   "region": "Southern Africa"
+  },
+  "LTU": {
+   "lon": 24.0899,
+   "lat": 55.1037,
+   "a2": "LT",
+   "region": "Northern Europe"
+  },
+  "LUX": {
+   "lon": 6.0776,
+   "lat": 49.7337,
+   "a2": "LU",
+   "region": "Western Europe"
+  },
+  "LVA": {
+   "lon": 25.4587,
+   "lat": 57.0669,
+   "a2": "LV",
+   "region": "Northern Europe"
+  },
+  "MAR": {
+   "lon": -7.1873,
+   "lat": 31.6507,
+   "a2": "MA",
+   "region": "Northern Africa"
+  },
+  "MCO": {
+   "lon": 7.3983,
+   "lat": 43.7397,
+   "a2": "MC",
+   "region": "Western Europe"
+  },
+  "MDA": {
+   "lon": 28.4879,
+   "lat": 47.435,
+   "a2": "MD",
+   "region": "Eastern Europe"
+  },
+  "MDG": {
+   "lon": 46.7042,
+   "lat": -18.6283,
+   "a2": "MG",
+   "region": "Eastern Africa"
+  },
+  "MDV": {
+   "lon": 73.5076,
+   "lat": 4.1744,
+   "a2": "MV",
+   "region": "Southern Asia"
+  },
+  "MEX": {
+   "lon": -102.2894,
+   "lat": 23.92,
+   "a2": "MX",
+   "region": "Central America"
+  },
+  "MHL": {
+   "lon": 171.1936,
+   "lat": 7.0826,
+   "a2": "MH",
+   "region": "Micronesia"
+  },
+  "MKD": {
+   "lon": 21.5558,
+   "lat": 41.5582,
+   "a2": "MK",
+   "region": "Southern Europe"
+  },
+  "MLI": {
+   "lon": -2.0385,
+   "lat": 18.6927,
+   "a2": "ML",
+   "region": "Western Africa"
+  },
+  "MLT": {
+   "lon": 14.433,
+   "lat": 35.8929,
+   "a2": "MT",
+   "region": "Southern Europe"
+  },
+  "MMR": {
+   "lon": 95.8045,
+   "lat": 21.5739,
+   "a2": "MM",
+   "region": "South-Eastern Asia"
+  },
+  "MNE": {
+   "lon": 19.1437,
+   "lat": 42.8031,
+   "a2": "ME",
+   "region": "Southern Europe"
+  },
+  "MNG": {
+   "lon": 104.1504,
+   "lat": 45.9975,
+   "a2": "MN",
+   "region": "Eastern Asia"
+  },
+  "MOZ": {
+   "lon": 37.8379,
+   "lat": -13.9432,
+   "a2": "MZ",
+   "region": "Eastern Africa"
+  },
+  "MRT": {
+   "lon": -9.7403,
+   "lat": 19.5871,
+   "a2": "MR",
+   "region": "Western Africa"
+  },
+  "MUS": {
+   "lon": 57.5658,
+   "lat": -20.2995,
+   "a2": "MU",
+   "region": "Eastern Africa"
+  },
+  "MWI": {
+   "lon": 33.6081,
+   "lat": -13.3867,
+   "a2": "MW",
+   "region": "Eastern Africa"
+  },
+  "MYS": {
+   "lon": 113.8371,
+   "lat": 2.5287,
+   "a2": "MY",
+   "region": "South-Eastern Asia"
+  },
+  "NAM": {
+   "lon": 17.1082,
+   "lat": -20.5753,
+   "a2": "NA",
+   "region": "Southern Africa"
+  },
+  "NER": {
+   "lon": 9.5044,
+   "lat": 17.4462,
+   "a2": "NE",
+   "region": "Western Africa"
+  },
+  "NGA": {
+   "lon": 7.5032,
+   "lat": 9.4398,
+   "a2": "NG",
+   "region": "Western Africa"
+  },
+  "NIC": {
+   "lon": -85.0693,
+   "lat": 12.6707,
+   "a2": "NI",
+   "region": "Central America"
+  },
+  "NLD": {
+   "lon": 5.6114,
+   "lat": 52.4222,
+   "a2": "NL",
+   "region": "Western Europe"
+  },
+  "NOR": {
+   "lon": 9.68,
+   "lat": 61.3571,
+   "a2": "NO",
+   "region": "Northern Europe"
+  },
+  "NPL": {
+   "lon": 83.6399,
+   "lat": 28.2979,
+   "a2": "NP",
+   "region": "Southern Asia"
+  },
+  "NRU": {
+   "lon": 166.9326,
+   "lat": -0.5203,
+   "a2": "NR",
+   "region": "Micronesia"
+  },
+  "NZL": {
+   "lon": 172.787,
+   "lat": -39.759,
+   "a2": "NZ",
+   "region": "Australia and New Zealand"
+  },
+  "OMN": {
+   "lon": 57.3366,
+   "lat": 22.1204,
+   "a2": "OM",
+   "region": "Western Asia"
+  },
+  "PAK": {
+   "lon": 68.5456,
+   "lat": 29.3284,
+   "a2": "PK",
+   "region": "Southern Asia"
+  },
+  "PAN": {
+   "lon": -80.3521,
+   "lat": 8.722,
+   "a2": "PA",
+   "region": "Central America"
+  },
+  "PER": {
+   "lon": -72.9002,
+   "lat": -12.9767,
+   "a2": "PE",
+   "region": "South America"
+  },
+  "PHL": {
+   "lon": 122.465,
+   "lat": 11.198,
+   "a2": "PH",
+   "region": "South-Eastern Asia"
+  },
+  "PLW": {
+   "lon": 134.5802,
+   "lat": 7.5183,
+   "a2": "PW",
+   "region": "Micronesia"
+  },
+  "PNG": {
+   "lon": 143.9102,
+   "lat": -5.6953,
+   "a2": "PG",
+   "region": "Melanesia"
+  },
+  "POL": {
+   "lon": 19.4905,
+   "lat": 51.9903,
+   "a2": "PL",
+   "region": "Eastern Europe"
+  },
+  "PRK": {
+   "lon": 126.4445,
+   "lat": 39.8853,
+   "a2": "KP",
+   "region": "Eastern Asia"
+  },
+  "PRT": {
+   "lon": -8.2718,
+   "lat": 39.6067,
+   "a2": "PT",
+   "region": "Southern Europe"
+  },
+  "PRY": {
+   "lon": -60.1464,
+   "lat": -21.6745,
+   "a2": "PY",
+   "region": "South America"
+  },
+  "QAT": {
+   "lon": 51.1435,
+   "lat": 25.2374,
+   "a2": "QA",
+   "region": "Western Asia"
+  },
+  "ROU": {
+   "lon": 24.9726,
+   "lat": 45.7332,
+   "a2": "RO",
+   "region": "Eastern Europe"
+  },
+  "RUS": {
+   "lon": 44.6865,
+   "lat": 58.2494,
+   "a2": "RU",
+   "region": "Eastern Europe"
+  },
+  "RWA": {
+   "lon": 30.1039,
+   "lat": -1.8972,
+   "a2": "RW",
+   "region": "Eastern Africa"
+  },
+  "SAU": {
+   "lon": 44.6996,
+   "lat": 23.8069,
+   "a2": "SA",
+   "region": "Western Asia"
+  },
+  "SDN": {
+   "lon": 29.2607,
+   "lat": 16.3307,
+   "a2": "SD",
+   "region": "Northern Africa"
+  },
+  "SEN": {
+   "lon": -14.7786,
+   "lat": 15.1381,
+   "a2": "SN",
+   "region": "Western Africa"
+  },
+  "SGP": {
+   "lon": 103.8169,
+   "lat": 1.3666,
+   "a2": "SG",
+   "region": "South-Eastern Asia"
+  },
+  "SLB": {
+   "lon": 159.1705,
+   "lat": -8.0295,
+   "a2": "SB",
+   "region": "Melanesia"
+  },
+  "SLE": {
+   "lon": -11.7637,
+   "lat": 8.6174,
+   "a2": "SL",
+   "region": "Western Africa"
+  },
+  "SLV": {
+   "lon": -88.8901,
+   "lat": 13.6854,
+   "a2": "SV",
+   "region": "Central America"
+  },
+  "SMR": {
+   "lon": 12.4412,
+   "lat": 43.9339,
+   "a2": "SM",
+   "region": "Southern Europe"
+  },
+  "SOM": {
+   "lon": 45.1924,
+   "lat": 3.5689,
+   "a2": "SO",
+   "region": "Eastern Africa"
+  },
+  "SRB": {
+   "lon": 20.788,
+   "lat": 44.1899,
+   "a2": "RS",
+   "region": "Southern Europe"
+  },
+  "SSD": {
+   "lon": 30.3902,
+   "lat": 7.2305,
+   "a2": "SS",
+   "region": "Eastern Africa"
+  },
+  "STP": {
+   "lon": 7.021,
+   "lat": 0.9709,
+   "a2": "ST",
+   "region": "Middle Africa"
+  },
+  "SUR": {
+   "lon": -55.9109,
+   "lat": 4.144,
+   "a2": "SR",
+   "region": "South America"
+  },
+  "SVK": {
+   "lon": 19.0499,
+   "lat": 48.734,
+   "a2": "SK",
+   "region": "Eastern Europe"
+  },
+  "SVN": {
+   "lon": 14.9153,
+   "lat": 46.0608,
+   "a2": "SI",
+   "region": "Southern Europe"
+  },
+  "SWE": {
+   "lon": 19.0171,
+   "lat": 65.8592,
+   "a2": "SE",
+   "region": "Northern Europe"
+  },
+  "SWZ": {
+   "lon": 31.4673,
+   "lat": -26.5337,
+   "a2": "SZ",
+   "region": "Southern Africa"
+  },
+  "SYC": {
+   "lon": 55.4802,
+   "lat": -4.6767,
+   "a2": "SC",
+   "region": "Eastern Africa"
+  },
+  "SYR": {
+   "lon": 38.2778,
+   "lat": 35.0066,
+   "a2": "SY",
+   "region": "Western Asia"
+  },
+  "TCD": {
+   "lon": 18.645,
+   "lat": 15.143,
+   "a2": "TD",
+   "region": "Middle Africa"
+  },
+  "TGO": {
+   "lon": 1.0581,
+   "lat": 8.8072,
+   "a2": "TG",
+   "region": "Western Africa"
+  },
+  "THA": {
+   "lon": 101.0732,
+   "lat": 15.4597,
+   "a2": "TH",
+   "region": "South-Eastern Asia"
+  },
+  "TJK": {
+   "lon": 72.5873,
+   "lat": 38.1998,
+   "a2": "TJ",
+   "region": "Central Asia"
+  },
+  "TKM": {
+   "lon": 58.6766,
+   "lat": 39.8552,
+   "a2": "TM",
+   "region": "Central Asia"
+  },
+  "TLS": {
+   "lon": 125.8547,
+   "lat": -8.8037,
+   "a2": "TL",
+   "region": "South-Eastern Asia"
+  },
+  "TON": {
+   "lon": -175.163,
+   "lat": -21.21,
+   "a2": "TO",
+   "region": "Polynesia"
+  },
+  "TTO": {
+   "lon": -60.9184,
+   "lat": 10.9989,
+   "a2": "TT",
+   "region": "Caribbean"
+  },
+  "TUN": {
+   "lon": 9.0079,
+   "lat": 33.6873,
+   "a2": "TN",
+   "region": "Northern Africa"
+  },
+  "TUR": {
+   "lon": 34.5083,
+   "lat": 39.3454,
+   "a2": "TR",
+   "region": "Western Asia"
+  },
+  "TUV": {
+   "lon": 179.2096,
+   "lat": -8.5137,
+   "a2": "TV",
+   "region": "Polynesia"
+  },
+  "TZA": {
+   "lon": 34.9592,
+   "lat": -6.0519,
+   "a2": "TZ",
+   "region": "Eastern Africa"
+  },
+  "UGA": {
+   "lon": 32.9486,
+   "lat": 1.9726,
+   "a2": "UG",
+   "region": "Eastern Africa"
+  },
+  "UKR": {
+   "lon": 32.1409,
+   "lat": 49.7247,
+   "a2": "UA",
+   "region": "Eastern Europe"
+  },
+  "URY": {
+   "lon": -55.9669,
+   "lat": -32.9611,
+   "a2": "UY",
+   "region": "South America"
+  },
+  "USA": {
+   "lon": -97.4826,
+   "lat": 39.5385,
+   "a2": "US",
+   "region": "Northern America"
+  },
+  "UZB": {
+   "lon": 64.0054,
+   "lat": 41.6936,
+   "a2": "UZ",
+   "region": "Central Asia"
+  },
+  "VCT": {
+   "lon": -61.3359,
+   "lat": 13.0879,
+   "a2": "VC",
+   "region": "Caribbean"
+  },
+  "VEN": {
+   "lon": -64.5994,
+   "lat": 7.1825,
+   "a2": "VE",
+   "region": "South America"
+  },
+  "VNM": {
+   "lon": 105.3873,
+   "lat": 21.7154,
+   "a2": "VN",
+   "region": "South-Eastern Asia"
+  },
+  "VUT": {
+   "lon": 166.9088,
+   "lat": -15.3715,
+   "a2": "VU",
+   "region": "Melanesia"
+  },
+  "WSM": {
+   "lon": -172.4382,
+   "lat": -13.6391,
+   "a2": "WS",
+   "region": "Polynesia"
+  },
+  "YEM": {
+   "lon": 45.8744,
+   "lat": 15.3282,
+   "a2": "YE",
+   "region": "Western Asia"
+  },
+  "ZAF": {
+   "lon": 23.6657,
+   "lat": -29.7088,
+   "a2": "ZA",
+   "region": "Southern Africa"
+  },
+  "ZMB": {
+   "lon": 26.3953,
+   "lat": -14.6608,
+   "a2": "ZM",
+   "region": "Eastern Africa"
+  },
+  "ZWE": {
+   "lon": 29.9254,
+   "lat": -18.9116,
+   "a2": "ZW",
+   "region": "Eastern Africa"
+  }
+ }
+}
