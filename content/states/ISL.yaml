@@ -64,6 +64,7 @@ position_codings:
 shift_events: []
 
 flags:
+  - "HELD 2026-10-19 (packet item 10): one machine-transcript sentence is too thin for a reading. The page keeps not yet reviewed. Revisit when Iceland publishes a written statement."
   - 'DRAFT 2026-10-19, analyst question: CCW-ONLY at INFERRED, or NONE? Iceland''s one national passage backs work within the CCW and names no instrument type. That matches CCW-ONLY. It rests on a single short ASR passage, which is why the tier is INFERRED. If the analyst wants a written record before coding, the fallback is NONE with this search note.'
   - 'DRAFT 2026-10-19, analyst question: Should a Nordic statement delivered by Iceland appear as evidence at all? It is shown here as context only, at INFERRED, and the reading does not rest on it.'
   - "CODING NEEDS SOURCE: the smallest record in the Nordic set (no armed forces); Iceland's positions ride the Nordic joint statements (it delivered the 2025-10-08 statement); research pass 5e advises honest thin coverage, do not over-profile; code only if a national statement surfaces"

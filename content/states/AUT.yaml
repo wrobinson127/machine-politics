@@ -86,6 +86,37 @@ position_codings:
         note: >
           Ministry topic page, undated; the date given is the access date. The
           ministry's own official English text, so no translation applies.
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: at-prepcom7-mc2-2026
+        claim: Austria wants a negotiating mandate at the Review Conference, built on
+          the agreed elements.
+        quote: It is therefore vital for our efforts` credibility that the set of elements
+          agreed by consensus now serves as a basis for a negotiation mandate.
+        date: 2026-09-08
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_Main_Committee_II_8_September.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: The backtick after "efforts" is in the original.
+      - source: at-prepcom7-mc2-2026
+        claim: Austria's goal is a protocol that draws a line between acceptable and unacceptable
+          systems.
+        quote: finalize work on a protocol to draw the line between the acceptable and
+          the unacceptable
+        date: 2026-09-08
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_Main_Committee_II_8_September.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: at-prepcom7-mc2-2026
+        claim: Austria restates that humans must stay in control of autonomous weapon
+          systems.
+        quote: Humans must always remain in control over autonomous weapon systems.
+        date: 2026-09-08
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_Main_Committee_II_8_September.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
 
 shift_events:
   - state: AUT

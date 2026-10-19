@@ -20,12 +20,25 @@ def _approved_dates():
         for c in cs.get("position_codings") or []:
             if bs.is_approved(c):
                 out.append((f"{iso3} coding", bs.iso(c["as_of"])))
+                # A dated statement quoted under an approved reading is a
+                # fact the record reaches (config: "the latest dated review
+                # or fact across approved content"), added 2026-10-19 when
+                # approved evidence first ran past the latest as_of.
+                for e in c.get("evidence") or []:
+                    out.append((f"{iso3} evidence", bs.iso(e["date"])))
         for s in cs.get("shift_events") or []:
             if bs.is_approved(s):
                 out.append((f"{iso3} shift", bs.iso(s["date"])))
+                for e in s.get("evidence") or []:
+                    out.append((f"{iso3} shift evidence", bs.iso(e["date"])))
         d = cs.get("doctrine") or {}
         if bs.is_approved(d) and d.get("as_of"):
             out.append((f"{iso3} doctrine review", bs.iso(d["as_of"])))
+    conf = bs.load_conference()
+    if conf and bs.is_approved(conf):
+        for ev in conf.get("events") or []:
+            if bs.is_approved(ev):
+                out.append((f"conference {ev['id']}", bs.iso(ev["date"])))
     return out
 
 

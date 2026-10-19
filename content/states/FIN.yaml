@@ -11,7 +11,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-05-16
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 8
     rationale: 'Finland''s 2024 submission wants a two-tier approach that combines
       prohibitions and regulations. That points toward a treaty with bans. The same
       submission says the instrument could be either politically or legally binding,
@@ -98,15 +98,15 @@ position_codings:
         url: https://transcripts.un.org/en/ga/c1/81/4
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED   # ruling R1: transcript
         note: UN automatic speech recognition transcript, not an official record.
 
 shift_events: []
 
 flags:
-  - 'DRAFT 2026-10-19, analyst question: AMBIG, or a different reading? Finland explicitly says the instrument ''could be either politically or legally binding'' while wanting prohibitions. That is not LBI-BAN (no binding commitment), not REG-SOFT (it does not prefer non-binding), and not CCW-ONLY (it has said what the process should produce). This draft reads AMBIG. The research anchor named LBI-OPEN; that divergence is flagged here, not silently recoded.'
-  - 'DRAFT 2026-10-19, analyst question: The UK-delivered joint explanation of position (4 Nov 2025) names Finland. Rule whether it may be cited at all; it is shown at AMBIGUOUS tier only.'
-  - 'DRAFT 2026-10-19, analyst question: NATO accession (2023-04-04) era band: the submission postdates accession. No pre-accession national record was opened in this pass, so this draft says nothing about continuity across accession.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): AMBIG, or a different reading? Finland explicitly says the instrument ''could be either politically or legally binding'' while wanting prohibitions. That is not LBI-BAN (no binding commitment), not REG-SOFT (it does not prefer non-binding), and not CCW-ONLY (it has said what the process should produce). This draft reads AMBIG. The research anchor named LBI-OPEN; that divergence is flagged here, not silently recoded.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): The UK-delivered joint explanation of position (4 Nov 2025) names Finland. Rule whether it may be cited at all; it is shown at AMBIGUOUS tier only.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): NATO accession (2023-04-04) era band: the submission postdates accession. No pre-accession national record was opened in this pass, so this draft says nothing about continuity across accession.'
   - "CODING NEEDS SOURCE: research pass 5e names LBI-OPEN as the candidate but captured no Finland-specific primary quote; retrieve the national statement or submission, then code"
   - "In the September 2025 39-party joint statement; Nordic joint-statement series member"
   - "NATO accession (2023-04-04) era band: ruling queued (research recommends a band; no causal claim about the LAWS position, which held)"

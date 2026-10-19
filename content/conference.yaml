@@ -10,7 +10,7 @@
 #
 # Facts and quotes below were checked on 2026-10-19 against the documents
 # linked; see .scratch/finish/drafts/GGE2026.md for the verbatim extracts.
-approved: false
+approved: true    # analyst approval 2026-10-19, packet item 15
 title: The Review Conference
 description: >-
   The Seventh Review Conference of the Geneva weapons convention, 16 to 20
@@ -41,7 +41,7 @@ events:
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-3-Advance_copy.pdf"
       - label: "Expert group 2026 session documents and statements"
         url: "https://meetings.unoda.org/meeting/79329"
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 15
 
   - id: revcon-provisional-agenda
     date: 2026-09-17
@@ -61,4 +61,4 @@ events:
         url: "https://docs.un.org/en/CCW/CONF.VII/2"
       - label: "Preparatory committee final report, CCW/CONF.VII/PC/3 (advance copy)"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/CCW-CONF.VII-PC-3-Advance_copy.pdf"
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 15

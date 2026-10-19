@@ -39,6 +39,30 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: ccw-msp-2025-wp7-gbr
+        claim: The UK holds that the CCW is the best forum for further discussion of LAWS.
+        quote: we continue to believe the CCW remains the best forum to advance any further
+          discussion
+        date: 2025-11-21
+        url: https://docs.un.org/en/CCW/MSP/2025/WP.7
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'Forum statement, not an instrument preference. Attached as a record of
+          what the UK said, not as support for the non-binding reading.
+      
+          '
+      - source: uk-gge-2026-08-31
+        claim: The UK calls the CCW the right forum for the LAWS work.
+        quote: The CCW is the right forum for this work.
+        date: 2026-08-31
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/20260831.Opening_Statement_0.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: The posted file is headed "Draft Opening UK Statement - LAWS GGE - Mon 31st
+          Aug, 2026".
 
 shift_events: []
 

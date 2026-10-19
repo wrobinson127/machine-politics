@@ -11,7 +11,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2026-08-31
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 5
     rationale: 'At the final 2026 session of the expert group, Ukraine said the
       rolling text was a solid basis for the outcome, that the instrument would
       only be effective if states were ready to accept it, and that the priority
@@ -96,9 +96,9 @@ position_codings:
 shift_events: []
 
 flags:
-  - 'DRAFT 2026-10-19, analyst question: CCW-ONLY or AMBIG? Ukraine''s own words support the expert group''s text and its transfer to the Review Conference, and name no instrument type. The President''s call for ''global rules'' points toward new rules but names no form or forum. This draft reads that as CCW-ONLY at INFERRED, since nothing Ukraine said points away from the Geneva process. If the analyst reads the call for global rules as a second direction, the honest alternative is AMBIG.'
-  - 'DRAFT 2026-10-19, analyst question: Votes Yes, Abstain, non-voting. No explanation found for the 2024 abstention or the 2025 non-vote, and this draft draws nothing from them. Confirm that the votes stay a separate signal.'
-  - 'DRAFT 2026-10-19, analyst question: Delivery language of the President''s 2025 address: if delivered in Ukrainian, the transcript is ASR of the UN interpretation; set lang uk and translation unofficial, and keep the entry at INFERRED.'
-  - 'DRAFT 2026-10-19, analyst question: All Ukraine quotes here come from ASR transcripts. Accept as INFERRED-tier evidence pending official text, or hold the coding until a written record is found?'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): CCW-ONLY or AMBIG? Ukraine''s own words support the expert group''s text and its transfer to the Review Conference, and name no instrument type. The President''s call for ''global rules'' points toward new rules but names no form or forum. This draft reads that as CCW-ONLY at INFERRED, since nothing Ukraine said points away from the Geneva process. If the analyst reads the call for global rules as a second direction, the honest alternative is AMBIG.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): Votes Yes, Abstain, non-voting. No explanation found for the 2024 abstention or the 2025 non-vote, and this draft draws nothing from them. Confirm that the votes stay a separate signal.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): Delivery language of the President''s 2025 address: if delivered in Ukrainian, the transcript is ASR of the UN interpretation; set lang uk and translation unofficial, and keep the entry at INFERRED.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): All Ukraine quotes here come from ASR transcripts. Accept as INFERRED-tier evidence pending official text, or hold the coding until a written record is found?'
   - "CODING NEEDS SOURCE: the research anchor list names Ukraine AMBIG/INFERRED given the security context, but no statement is captured; the dataset records Yes (2023), Abstain (2024), non-voting (2025). Handle the votes honestly, do not over-read; retrieve any statement, then code"
   - "US Political Declaration endorser (on the captured 58 list)"

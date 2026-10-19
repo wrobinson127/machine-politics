@@ -57,6 +57,35 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+      # 2026 evidence, analyst approval 2026-10-19 (packet items 12 and 13)
+      - source: fr-mfa-gge-laws-2026-09-10
+        claim: France wants the Review Conference to give the Group a negotiating mandate
+          built on the agreed elements.
+        quote: France would like it to adopt a new negotiating mandate for the Group of
+          Experts, based on all the elements agreed last week.
+        date: 2026-09-10
+        url: https://www.diplomatie.gouv.fr/en/presse-et-ressources/decouvrir-et-informer/actualites/organisations-internationales-reunion-du-groupe-d-experts-gouvernementaux-sur-les-systemes-d-armes
+        lang: fr
+        translation: official
+        confidence: EXPLICIT
+        note: English page of the ministry's own site. Original language assumed French;
+          confirm a French version exists.
+      - source: fr-mfa-gge-laws-2026-09-10
+        claim: France's stated goal is an instrument that bans fully autonomous systems
+          and regulates others.
+        quote: to begin discussions for establishing a future international instrument,
+          which bans completely autonomous weapons systems and regulates systems with
+          autonomous functions.
+        date: 2026-09-10
+        url: https://www.diplomatie.gouv.fr/en/presse-et-ressources/decouvrir-et-informer/actualites/organisations-internationales-reunion-du-groupe-d-experts-gouvernementaux-sur-les-systemes-d-armes
+        lang: fr
+        translation: official
+        confidence: EXPLICIT
+        note: 'The communiqué says "instrument", not "treaty" or "legally binding". The
+          binding element of the reading still rests on the 2024 submission ("Additional
+          Protocol to the CCW"). This entry supports the ban-and-regulate scope.
+      
+          '
 
 shift_events: []
 

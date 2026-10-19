@@ -29,6 +29,7 @@ position_codings:
         lang: en
         translation: none
         confidence: EXPLICIT
+  # HELD 2026-10-19 (packet item 11): candidate reading kept unapproved. Its shift is not drafted: ruling R1 bars a shift resting on transcripts alone.
   - code: LBI-BAN
     confidence: PROVISIONAL
     as_of: 2026-09-08
@@ -48,12 +49,6 @@ position_codings:
       Norway''s written statement has not been found.
 
       '
-    provisional_note: 'Norway''s written statement to the Preparatory Committee, Main Committee
-      II segment, 8 September 2026. Not posted on the PrepCom statements tab as
-      of 2026-10-19 (only Austria, Bangladesh and Brazil posted). Alternative: check
-      the quotes against the UN Web TV audio at 1:29:53 of the 3rd meeting.
-
-      '
     evidence:
       - source: un-asr-ccw-prepcom7-m3-2026
         claim: Norway asked the Review Conference to set up a negotiating mandate
@@ -64,7 +59,7 @@ position_codings:
         url: https://transcripts.un.org/en/asset/k18/k1856vomjr
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED
         note: Automatic speech recognition transcript, speaker Norway, timestamp
           1:29:53. Not an official record.
       - source: un-asr-ccw-prepcom7-m3-2026
@@ -76,7 +71,7 @@ position_codings:
         url: https://transcripts.un.org/en/asset/k18/k1856vomjr
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED
         note: Same speech, 1:29:53.
       - source: un-asr-ccw-prepcom7-m3-2026
         claim: Norway names a legally binding instrument as an aim of the negotiations.
@@ -86,7 +81,7 @@ position_codings:
         url: https://transcripts.un.org/en/asset/k18/k1856vomjr
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED
         note: 'Same speech. The sentence continues that the mandate should not exclude
           other practical measures and guidelines. Quote the hedge with the aim.
 
@@ -100,7 +95,7 @@ position_codings:
         url: https://transcripts.un.org/en/asset/k1y/k1ylkonhpq
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED
         note: Automatic speech recognition transcript, 8th meeting of the first
           2026 session, speaker Norway, timestamp 16:04.
       - source: un-asr-ccw-prepcom7-m1-2026
@@ -110,36 +105,19 @@ position_codings:
         url: https://transcripts.un.org/en/asset/k1t/k1tjdugbhy
         lang: en
         translation: none
-        confidence: EXPLICIT
+        confidence: INFERRED
         note: General exchange of views, speaker Norway, timestamp 2:27:12.
-
-shift_events:
-  - state: NOR
-    date: 2026-09-08
-    from: LBI-OPEN
-    to: LBI-BAN
-    approved: false
-    rationale: 'In 2024 Norway backed a treaty to clarify how the laws of war apply,
-      without framing it around bans. In September 2026 it asked for a negotiating
-      mandate that covers prohibitions, regulations and guidelines, with a legally
-      binding instrument as an aim. The date is its Main Committee II statement
-      at the Preparatory Committee. The record is a machine transcript; confirm
-      against Norway''s text or the audio before approval.
+    provisional_note: 'Norway''s written statement to the Preparatory Committee,
+      Main Committee II segment, 8 September 2026. Not posted on the PrepCom statements
+      tab as of 2026-10-19 (only Austria, Bangladesh and Brazil posted). Alternative:
+      check the quotes against the UN Web TV audio at 1:29:53 of the 3rd meeting.
 
       '
-    evidence:
-      - source: un-asr-ccw-prepcom7-m3-2026
-        claim: Norway wants the mandate to cover prohibitions as well as regulations
-          and guidelines.
-        quote: we believe that the mandate should open for a combination of prohibitions,
-          regulations and guidelines, as well as other understandings.
-        date: 2026-09-08
-        url: https://transcripts.un.org/en/asset/k18/k1856vomjr
-        lang: en
-        translation: none
-        confidence: EXPLICIT
+
+shift_events: []
 
 flags:
+  - "HELD 2026-10-19 (packet item 11): the candidate LBI-BAN reading below stays approved: false; its evidence is machine transcripts, and ruling R1 bars a shift on transcripts alone, so the shift is not drafted. Revisit when Norway's written statement is posted."
   - "PROVENANCE RESOLVED 2026-08-24: primary retrieved from the UNODA Documents Library and read in full. The document URL is pinned and the quote is now verified verbatim against the primary. The retrieval CORRECTED the quote: the research capture had compressed 'international humanitarian law' to 'IHL', which is not what the statement says. Verified-primary status granted"
   - "DATE, for the analyst: the statement's own dateline reads 'Geneva, August 2024' with no day. The 2024-08-26 day comes from UNODA's filing of it as the second-session general statement. Kept as a dated day on publisher metadata; set date_precision: month if you would rather the site show only 'August 2024'"
   - "Seven-state elements paper co-authorship: sponsorship layer, enumeration bundle; never coding evidence by itself (no-inference rule)"

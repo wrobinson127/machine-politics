@@ -11,7 +11,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-03-04
-    approved: false
+    approved: true    # analyst approval 2026-10-19, packet item 9
     rationale: 'In March 2024 Denmark co-wrote, with six other states, a paper saying
       the future instrument should prohibit four classes of autonomous weapons and
       regulate the rest. The paper does not say whether that instrument should be
@@ -83,8 +83,8 @@ position_codings:
 shift_events: []
 
 flags:
-  - 'DRAFT 2026-10-19, analyst question: AMBIG or CCW-ONLY? The prohibition direction rests only on a co-written elements paper, which is not a draft treaty. If co-written elements papers do not count as the state''s words, Denmark''s own record is support for the Geneva text with the form left open, and the honest reading is CCW-ONLY at INFERRED. This draft shows both and reads AMBIG, consistent with how the 2025 draft-articles series is treated for its authors.'
-  - 'DRAFT 2026-10-19, analyst question: The existing flag cites a secondary tracker suggesting Denmark''s LBI position firmed in 2024 to 2025. No Danish record opened here says Denmark wants a legally binding instrument. The candidate shift is not drafted.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): AMBIG or CCW-ONLY? The prohibition direction rests only on a co-written elements paper, which is not a draft treaty. If co-written elements papers do not count as the state''s words, Denmark''s own record is support for the Geneva text with the form left open, and the honest reading is CCW-ONLY at INFERRED. This draft shows both and reads AMBIG, consistent with how the 2025 draft-articles series is treated for its authors.'
+  - 'ANSWERED 2026-10-19 (approval packet, all recommendations accepted; see rulings R1 to R3 and the item notes): The existing flag cites a secondary tracker suggesting Denmark''s LBI position firmed in 2024 to 2025. No Danish record opened here says Denmark wants a legally binding instrument. The candidate shift is not drafted.'
   - "CODING NEEDS SOURCE: co-author of the seven-state elements paper and in the September 2025 39-party joint statement (both sponsorship-class, never coding evidence alone); a secondary tracker's late-2024 note suggests the explicit LBI position firmed during 2024-2025, which would be a candidate shift once grounded in Denmark's OWN statements; retrieve the October 2025 national statement, then code"
   - "Nordic joint-statement series member (delivered the 2023-10-02 statement): joint-statement layer plus statement evidence, enumeration bundle"
   - "US Political Declaration endorser (on the captured 58 list)"

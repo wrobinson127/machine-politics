@@ -195,6 +195,11 @@ def check_evidence(errors, where, entry, source_ids):
     kind = entry.get("kind")
     if kind is not None and kind not in EVIDENCE_KINDS:
         errors.add(where, f"evidence kind must be one of {EVIDENCE_KINDS}")
+    # Analyst ruling R1 (2026-10-19): the UN's automatic meeting transcripts
+    # are not official records. A quote from one counts as INFERRED at most.
+    if (source_ids.get(entry.get("source")) or {}).get("type") == "transcript"             and confidence == "EXPLICIT":
+        errors.add(where, "a machine transcript caps evidence confidence at "
+                          "INFERRED (ruling R1)")
 
 
 def check_no_inference(errors, where, coding, source_ids):
@@ -270,6 +275,13 @@ def check_shift_event(errors, where, event, iso3, source_ids):
     for i, entry in enumerate(evidence):
         check_evidence(errors, f"{where}.evidence[{i}]", entry, source_ids)
     check_no_inference(errors, where, event, source_ids)
+    # Ruling R1: a transcript is never the only evidence for a change of
+    # position.
+    types = {(source_ids.get(e.get("source")) or {}).get("type")
+             for e in evidence if isinstance(e, dict)}
+    if types == {"transcript"}:
+        errors.add(where, "a shift cannot rest on machine transcripts alone "
+                          "(ruling R1)")
 
 
 def check_doctrine(errors, where, doctrine, source_ids):

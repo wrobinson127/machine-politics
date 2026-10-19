@@ -1,18 +1,5 @@
 {
- "codings_past_axis": [
-  {
-   "approved": false,
-   "as_of": "2026-10-08",
-   "code": "CCW-ONLY",
-   "iso3": "ISL"
-  },
-  {
-   "approved": false,
-   "as_of": "2026-09-08",
-   "code": "LBI-BAN",
-   "iso3": "NOR"
-  }
- ],
+ "codings_past_axis": [],
  "entries": [
   {
    "approved": true,
@@ -21,21 +8,21 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference_page",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:gge-final-report-2026",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-provisional-agenda",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
@@ -171,21 +158,21 @@
    "state": "BLR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "shift_events",
-   "rendered": false,
+   "rendered": true,
    "state": "BRA"
   },
   {
@@ -267,9 +254,9 @@
    "state": "DEU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DNK"
   },
   {
@@ -297,9 +284,9 @@
    "state": "EST"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "FIN"
   },
   {
@@ -357,9 +344,9 @@
    "state": "ISL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ISR"
   },
   {
@@ -435,9 +422,9 @@
    "state": "NGA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NLD"
   },
   {
@@ -449,12 +436,6 @@
   {
    "approved": false,
    "kind": "position_codings",
-   "rendered": false,
-   "state": "NOR"
-  },
-  {
-   "approved": false,
-   "kind": "shift_events",
    "rendered": false,
    "state": "NOR"
   },
@@ -501,9 +482,9 @@
    "state": "PRK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "RUS"
   },
   {
@@ -537,21 +518,21 @@
    "state": "SLV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SWE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TUR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "UKR"
   },
   {
