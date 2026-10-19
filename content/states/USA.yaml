@@ -28,6 +28,18 @@ position_codings:
           Verified against the Lieber Institute reproduction; state.gov served
           an error page to this project's tooling. The declaration launched
           2023-02-16 at REAIM; a revised version circulated October 2023.
+      # Added 2026-10-19, SHIP call S1 (analyst approval): the 2023 explanation
+      # of vote, verbatim from the official record, speaker Ms. Storsve
+      # (United States of America).
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: In its November 2023 explanation of vote, the United States says it is not the time to negotiate a legally binding instrument.
+        quote: "the United States believes that the time is not right to begin negotiating a legally binding instrument on LAWS"
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
 
   - code: CCW-ONLY
     confidence: EXPLICIT
