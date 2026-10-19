@@ -175,7 +175,7 @@ footer.colophon p { margin: 0.3rem 0; }
 }
 
 /* ------------------------------------------------------------------ */
-/* Guided tour (scaffold; scroll choreography is enhancement)          */
+/* Opener: the skip link to the table of member states                */
 /* ------------------------------------------------------------------ */
 
 /* The skip link is a designed element visible from first paint,
@@ -193,11 +193,9 @@ footer.colophon p { margin: 0.3rem 0; }
 .skip-board:hover { background: var(--ink); color: var(--ground); }
 
 /* ------------------------------------------------------------------ */
-/* Trajectory board                                                    */
+/* Shared table and key styles (band textures, legend)                */
 /* ------------------------------------------------------------------ */
 
-/* Board head: thesis left, reading key right; stacks on mobile */
-#board-top { scroll-margin-top: calc(var(--masthead-h) + 0.75rem); }
 
 .board-head {
   display: grid;
@@ -1208,4 +1206,11 @@ footer.colophon p { margin: 0.3rem 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .seat, .strand { transition: none; }
+}
+
+/* Strands and the assembly hold a legible size on phones and scroll sideways
+   inside their own box; the page itself never scrolls horizontally. */
+@media (max-width: 700px) {
+  .viz-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .viz-scroll .viz-strands, .viz-scroll .viz-assembly { min-width: 680px; }
 }

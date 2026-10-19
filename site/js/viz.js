@@ -260,7 +260,7 @@
     var wrap = fig.querySelector(".viz-stage"), tip = makeTip(wrap), NS = "http://www.w3.org/2000/svg";
     var svg = document.createElementNS(NS, "svg"); svg.setAttribute("class", "viz-strands"); svg.setAttribute("role", "img");
     svg.setAttribute("aria-label", "Each state's vote in " + YEARS.join(", ") + " and its position, as one thread per state. The table below has every value.");
-    wrap.appendChild(svg); fig.classList.add("viz-live");
+    var scroller = document.createElement("div"); scroller.className = "viz-scroll"; scroller.appendChild(svg); wrap.insertBefore(scroller, wrap.firstChild); fig.classList.add("viz-live");
     var W = 1160, H = 640, TOP = 46, GAP = 10, BW = 14, X = [140, 390, 640, 890];
     svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     var AX = [YEARS[0] + " vote", YEARS[1] + " vote", YEARS[2] + " vote", "Position"], cats = [VORDER, VORDER, VORDER, ROWS_ALL];
@@ -272,8 +272,8 @@
     function layout() {
       gS.innerHTML = ""; gB.innerHTML = ""; tip.hide();
       var set = DATA.filter(function (d) { return (!onlyMovers || mover(d)) && (!onlyRev || d.p); });
-      var unit = (H - TOP - 20 - GAP * 7) / set.length;
-      var blocks = cats.map(function (cs, a) { var y = TOP, out = {}; cs.forEach(function (c) { var m = set.filter(function (d) { return keyOf(d, a) === c; }).length; out[c] = {y0: y, n: m}; if (m) y += m * unit + GAP; }); return out; });
+      var unit = (H - TOP - 20 - GAP * 9) / set.length;
+      var blocks = cats.map(function (cs, a) { var y = TOP, out = {}; cs.forEach(function (c) { if (a === 3 && c === "NONE") y += GAP * 2; var m = set.filter(function (d) { return keyOf(d, a) === c; }).length; out[c] = {y0: y, n: m}; if (m) y += m * unit + GAP; }); return out; });
       var slot = cats.map(function () { return new Map(); });
       cats.forEach(function (cs, a) { cs.forEach(function (c) {
         set.filter(function (d) { return keyOf(d, a) === c; }).sort(function (p, q) {
@@ -286,14 +286,14 @@
         var ys = [0, 1, 2, 3].map(function (a) { return slot[a].get(d); }), p = "M" + (X[0] + BW / 2) + "," + ys[0];
         for (var a = 1; a < 4; a++) { var x0 = X[a - 1] + BW / 2, x1 = X[a] - BW / 2, mx = (x0 + x1) / 2; p += " L" + x0 + "," + ys[a - 1] + " C" + mx + "," + ys[a - 1] + " " + mx + "," + ys[a] + " " + x1 + "," + ys[a] + " L" + (x1 + BW) + "," + ys[a]; }
         var path = el("path", {d: p, "class": "strand"}, gS); path._d = d;
-        path.style.stroke = d.p ? HUE[d.p] : "var(--strand)";
+        path.style.stroke = d.p ? HUE[d.p] : "var(--strand)"; if (d.p === "AMBIG") path.style.strokeDasharray = "4 3";
         path.style.strokeWidth = d.p ? Math.max(1.2, Math.min(2.4, unit * .8)) : Math.max(.8, Math.min(1.4, unit * .55));
       });
       cats.forEach(function (cs, a) {
         el("text", {x: X[a], y: 22, "class": "axis-t"}, gB).textContent = AX[a];
         cs.forEach(function (c) { var b = blocks[a][c]; if (!b.n) return;
           var r = el("rect", {x: X[a] - BW / 2, y: b.y0, width: BW, height: Math.max(2, b.n * unit), "class": "block"}, gB);
-          r.style.fill = a < 3 ? "var(--ink-soft)" : (c ? HUE[c] : "var(--rule)"); r._a = a; r._c = c;
+          if (a < 3) r.style.fill = "var(--ink-soft)"; else if (c) r.setAttribute("class", "block p-" + c); else r.style.fill = "var(--rule)"; r._a = a; r._c = c;
           var left = a === 0, t = el("text", {x: left ? X[a] - BW / 2 - 8 : X[a] + BW / 2 + 8, y: b.y0 + Math.max(2, b.n * unit) / 2 + 4, "class": "blk-t", "text-anchor": left ? "end" : "start"}, gB);
           t.innerHTML = "<tspan class=\"n\">" + b.n + "</tspan> " + esc(a < 3 ? VWORD[c] : PLAIN[c]);
           if (a > 0 && a < 3 && b.n * unit < 12) t.setAttribute("opacity", "0");
@@ -328,7 +328,7 @@
     var N = DATA.length, RINGS = 8, R0 = 150, DR = 26, W = 2 * (R0 + RINGS * DR) + 300, CXa = W / 2, CYa = R0 + RINGS * DR + 20, H = CYa + 60;
     var svg = document.createElementNS(NS, "svg"); svg.setAttribute("class", "viz-assembly"); svg.setAttribute("viewBox", "0 0 " + W + " " + H);
     svg.setAttribute("role", "img"); svg.setAttribute("aria-label", "Hemicycle of 193 seats, one per member state, arranged by vote. The rosters below list every state.");
-    wrap.appendChild(svg); fig.classList.add("viz-live");
+    var scroller = document.createElement("div"); scroller.className = "viz-scroll"; scroller.appendChild(svg); wrap.insertBefore(scroller, wrap.firstChild); fig.classList.add("viz-live");
     function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
     var radii = [], tot = 0; for (var i = 0; i < RINGS; i++) { radii.push(R0 + (i + .5) * DR); tot += radii[i]; }
     var per = radii.map(function (r) { return Math.round(N * r / tot); }); per[RINGS - 1] += N - per.reduce(function (a, b) { return a + b; }, 0);
@@ -341,7 +341,7 @@
     function pord(k) { return k ? ROWS_ALL.indexOf(k) : 99; }
     function style(g) {
       var d = g._d, c = g._c, t = g._t; c.removeAttribute("style"); t.removeAttribute("style");
-      g.setAttribute("class", "seat " + (colour === "vote" ? "sv-" + d.v[year] : (d.p ? "sp p-" + d.p + (d.c && d.c !== "EXPLICIT" && d.p !== "AMBIG" ? " soft" : "") : "sp nr")));
+      g.setAttribute("class", "seat " + (colour === "vote" ? "sv-" + d.v[year] : (d.p ? "sp p-" + d.p + (d.c && d.c !== "EXPLICIT" && d.p !== "AMBIG" && d.p !== "NONE" ? " soft" : "") : "sp nr")));
     }
     var caption = fig.querySelector(".viz-caption"), key = fig.querySelector(".viz-key");
     function render() {

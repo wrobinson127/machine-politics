@@ -7,7 +7,7 @@ Two modes:
 - --preview: writes .scratch/preview/ (gitignored, localhost only) rendering
   unapproved entries behind an unmistakable DRAFT banner.
 
-The board and every page are fully server-rendered: no content is gated on
+Every page is fully server-rendered: no content is gated on
 JavaScript. Output is deterministic; rebuilding without input changes
 produces byte-identical files.
 """
@@ -617,8 +617,8 @@ def band_style(code, confidence):
 
 
 def vote_glyph_svg(vote, size=12):
-    """Monochrome ink shapes; meaning never carried by hue. The tour
-    renders them larger, the board at 12px."""
+    """Monochrome ink shapes; meaning never carried by hue. 12px in the
+    table of member states."""
     ink = config.PALETTE["ink"]
     if vote == "Y":
         shape = f'<circle cx="6" cy="6" r="4.2" fill="{ink}"/>'
@@ -751,7 +751,7 @@ TOPOJSON_SRI = "sha512-4UKI/XKm3xrvJ6pZS5oTRvIQGIzZFoXR71rRBb1y2N+PbwAsKa5tPl2J6
 # Counts and names only: chart furniture, the same standard the board's
 # teaching sentences were held to.
 VIZ_FALLBACK = {
-    "world_heading": "", "strands_heading": "Paths to the 2025 vote", "strands_intro": "",
+    "world_heading": "", "strands_heading": "Votes and positions", "strands_intro": "",
     "states_heading": "Every state", "assembly_intro": "",
     "captions": {
         "globe": "Colour: the position this site has read, {reviewed} states. Pale: not yet reviewed.",
@@ -796,7 +796,7 @@ def viz_scripts():
 
 def viz_textures_svg():
     """SVG patterns for the position textures, shared by every inline SVG on
-    the page (the static map, the assembly). Hue and texture as on the board:
+    the page (the static map, the assembly, Strands). Hue paired with texture:
     no category depends on colour alone."""
     pos = config.PALETTE["positions"]
     tex = "rgba(255,255,255,.45)"
@@ -852,7 +852,8 @@ def states_table_html(rows, coverage_line, copy):
     for r in sorted(rows, key=lambda r: r["n"]):
         pos = (f'{_swatch(r["p"])}{esc(config.POSITION_PLAIN[r["p"]])}' if r["p"]
                else f'{_swatch("")}<span class="muted">Not yet reviewed</span>')
-        since = esc(r["s"]) if r["p"] else ""
+        since = (f"reviewed {esc(r['s'])}" if r["p"] == "NONE"
+                 else esc(r["s"]) if r["p"] else "")
         body.append(
             f'<tr data-name="{esc(r["n"])}" data-v2025="{"YANX".index(r["v"][2])}" '
             f'data-pos="{order[r["p"]]:02d}">'
@@ -878,7 +879,7 @@ def states_table_html(rows, coverage_line, copy):
       <th scope="col">{esc(years[0])}</th><th scope="col">{esc(years[1])}</th>
       <th scope="col"><button type="button" data-sort="v2025">{esc(years[2])}</button></th>
       <th scope="col"><button type="button" data-sort="pos">Position</button></th>
-      <th scope="col">Since</th>
+      <th scope="col">As of</th>
     </tr></thead>
     <tbody>
 {chr(10).join(body)}
@@ -2115,10 +2116,10 @@ def favicon_svg():
 """
 
 
-BOARD_JS = """// Progressive enhancement only: the board is complete without JavaScript.
+BOARD_JS = """// Progressive enhancement only: every page is complete without JavaScript.
 (function () {
   "use strict";
-  // The masthead is sticky; the axis and the tour canvas offset by its real
+  // The masthead is sticky; anchored content offsets by its real
   // height, which wraps on narrow screens, so measure rather than assume.
   function mastheadHeight() {
     var m = document.querySelector("header.masthead");
@@ -2459,7 +2460,7 @@ def build(out_dir, preview=False):
             "<h1>Not on the record.</h1>\n"
             "<p>No page exists at this address. Nothing was removed; corrections "
             "and superseded material stay visible by policy.</p>\n"
-            '<p><a href="/index.html">The trajectory board</a> lists every state.</p>',
+            '<p><a href="/index.html#states">The table of member states</a> lists every state.</p>',
             current="", preview=preview, absolute=True,
         ),
         encoding="utf-8", newline="\n",
@@ -2635,7 +2636,7 @@ def write_discovery_files(out, votes, content_states, preview):
         "time. Every position links to a quoted, dated source.\n\n"
         "The site takes no position on whether autonomous weapons should be "
         "banned or regulated. It records who says what.\n\n"
-        f"## Pages\n\n- [Board]({SITE_URL})\n"
+        f"## Pages\n\n- [Home: world map, vote paths and the table of member states]({SITE_URL})\n"
         + listing + "\n"
         f"- State pages: {SITE_URL}state/ISO3.html (ISO 3166-1 alpha-3 code, for example USA)\n\n"
         "## Data\n\n"

@@ -92,6 +92,9 @@ def test_the_states_table_labels_none_as_no_stated_position():
     prk = html[html.index('state/PRK.html'):]
     prk = prk[:prk.index("</tr>")]
     assert "No stated position" in prk and "Not yet reviewed" not in prk
+    # The date is a review date, never a "since" for a position NONE is not.
+    since = prk[prk.index('class="since"'):]
+    assert since.startswith('class="since">reviewed 2026-07-17<'), since[:60]
 
 
 def test_the_past_axis_warning_ignores_none():

@@ -6,7 +6,7 @@ The site takes no position on whether autonomous weapons should be banned or reg
 
 ## Pages
 
-- [Board](https://machinepolitics.walker-robinson.com/)
+- [Home: world map, vote paths and the table of member states](https://machinepolitics.walker-robinson.com/)
 - [Conference](https://machinepolitics.walker-robinson.com/conference.html)
 - [Votes](https://machinepolitics.walker-robinson.com/votes.html)
 - [Instruments](https://machinepolitics.walker-robinson.com/instruments.html)

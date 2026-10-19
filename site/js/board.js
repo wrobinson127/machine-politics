@@ -1,7 +1,7 @@
-// Progressive enhancement only: the board is complete without JavaScript.
+// Progressive enhancement only: every page is complete without JavaScript.
 (function () {
   "use strict";
-  // The masthead is sticky; the axis and the tour canvas offset by its real
+  // The masthead is sticky; anchored content offsets by its real
   // height, which wraps on narrow screens, so measure rather than assume.
   function mastheadHeight() {
     var m = document.querySelector("header.masthead");
