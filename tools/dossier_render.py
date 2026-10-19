@@ -36,7 +36,7 @@ ALPHA2 = {
     "CAN": "CA", "CHN": "CN", "CRI": "CR", "CZE": "CZ", "DEU": "DE", "DNK": "DK",
     "ECU": "EC", "EST": "EE", "FJI": "FJ", "FIN": "FI", "FRA": "FR", "GBR": "GB", "GTM": "GT",
     "IND": "IN", "ISL": "IS", "ISR": "IL", "JPN": "JP", "KAZ": "KZ", "KOR": "KR",
-    "LTU": "LT", "LVA": "LV", "MDG": "MG", "MLI": "ML", "NER": "NE", "NGA": "NG", "NLD": "NL",
+    "LTU": "LT", "LVA": "LV", "MDG": "MG", "MLI": "ML", "NER": "NE", "NGA": "NG", "NIC": "NI", "NLD": "NL",
     "NOR": "NO", "PAN": "PA", "PHL": "PH", "POL": "PL", "PRK": "KP", "RUS": "RU",
     "SLE": "SL", "SLV": "SV", "SWE": "SE", "TUR": "TR", "UKR": "UA", "URY": "UY",
     "USA": "US",

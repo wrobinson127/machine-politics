@@ -1,0 +1,76 @@
+# Nicaragua: coverage batch 2, drafted 2026-10-19. In scope on two published
+# criteria: it abstained on the latest resolution (80/57), and its recorded
+# vote changed (Yes on 78/241, Abstain on 79/62 and 80/57). The only stated
+# instrument preference in the record is a joint reply to the Secretary-
+# General that Nicaragua submitted with 21 other states. approved: false
+# throughout; nothing renders until the analyst of record sets approved: true.
+iso3: NIC
+un_name: NICARAGUA
+display_name: Nicaragua
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2024-05-24
+    approved: false
+    scope_note: >
+      This reading rests on a joint reply, not on a statement in
+      Nicaragua's voice alone. Nicaragua is one of 22 states that sent the
+      UN Secretary-General, as their reply under resolution 78/241, the
+      Ibero-American Summit's March 2023 communique on autonomous weapons.
+      That text asks for a legally binding instrument with prohibitions and
+      regulations. Because the words are shared, the reading is marked
+      inferred.
+    rationale: >
+      In May 2024 Nicaragua and 21 other states sent the UN Secretary-
+      General a joint reply calling for urgent negotiation of a legally
+      binding instrument with prohibitions and regulations. Nicaragua then
+      abstained on the 2024 and 2025 resolutions without explaining why. In
+      2024 it still voted for the paragraph noting the Secretary-General's
+      call for such a treaty. In October 2026 it warned against autonomous
+      systems that reduce human control over the use of force.
+    evidence:
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Nicaragua co-submitted a reply calling for urgent negotiation of a legally binding instrument with prohibitions and regulations.
+        quote: "Collaborate to promote the urgent negotiation of a legally binding international instrument containing prohibitions and regulations on autonomy in weapons systems"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: es
+        translation: official
+        confidence: INFERRED
+        note: >
+          A/79/88, Annex I, pages 20 to 21: joint reply of Andorra,
+          Argentina, Bolivia, Brazil, Colombia, Costa Rica, Cuba, Chile,
+          Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras,
+          Mexico, Nicaragua, Panama, Paraguay, Peru, Portugal, Spain, Uruguay
+          and Venezuela, dated 24 May 2024, Spanish original. It reproduces
+          the special communique of the twenty-eighth Ibero-American Summit
+          (Santo Domingo, 25 March 2023). Quoted from the official UN
+          English translation.
+      - source: un-c1-81-transcript-4
+        kind: statement
+        claim: In October 2026 Nicaragua warns against autonomous systems reducing human control over the use of force; it names no instrument.
+        quote: "AI, increasingly more autonomous systems and other emerging technologies reduce human control over decisions related to the use of force"
+        date: 2026-10-08
+        url: https://transcripts.un.org/en/ga/c1/81/4
+        lang: es
+        translation: unofficial
+        confidence: INFERRED
+        note: ASR transcript of the English interpretation, speaker Nicaragua, 1:31:22. Delivered in Spanish. Corroboration only (ruling R1).
+
+shift_events: []
+
+flags:
+  - "ANALYST QUESTION: does a summit communique that a state formally submits as its own reply to the Secretary-General count as the state's words (like a co-written submission that states an instrument preference, R2) or only as a joint text that corroborates (R3)? If R3, nothing else states an instrument preference and the reading falls to NONE. Drafted as LBI-BAN at INFERRED to surface the question, not to settle it. The same reply is the only A/79/88 text for several other unreviewed Latin American states (Bolivia, Colombia, Cuba, Dominican Republic, Honduras, Paraguay, Peru, Venezuela, Andorra, Portugal, Spain), so one ruling applies to all."
+  - "VOTES: Yes on 78/241, Abstain on 79/62 and 80/57. No explanation of vote found for 2024 or 2025. In the 2 Dec 2024 plenary (A/79/PV.44) Nicaragua abstained on PP2, PP11 and PP12 (human rights law, stakeholder dimensions incl. human rights, New Agenda for Peace) and on the whole, but voted Yes on PP13 (the Secretary-General's calls for a legally binding instrument) and on the operative paragraphs voted separately. In 2023 (A/C.1/78/PV.28) it voted Yes on L.56 and abstained on PP6 (Human Rights Council 51/22) and PP7. Read from votes only: the objection looks like wording, not the instrument. Votes do not decide the reading."
+  - "Search gaps: A/C.1/79/PV.13 onward (incl. the 30th meeting, 5 Nov 2024, action on L.77) not issued and not transcribed; A/C.1/80/PV.24-26 and A/80/PV.52 not issued (transcripts checked: no Nicaragua EOV). Belen Communique endorsement by Nicaragua not confirmed. May 2025 New York consultation statements unchecked (index on a barred site). Pre-2023 CCW statements (ADR cites 2016 and 2018) not retrieved."
+  - "Nicaragua is a CCW High Contracting Party (ratified 5 Dec 2000)."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Nicaragua is not yet doctrine-reviewed by this project; its
+        international position is recorded above.

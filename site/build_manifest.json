@@ -446,6 +446,18 @@
    "state": "NGA"
   },
   {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
+   "state": "NIC"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "NIC"
+  },
+  {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
