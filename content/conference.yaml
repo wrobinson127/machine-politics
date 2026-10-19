@@ -1,0 +1,64 @@
+# The Seventh CCW Review Conference, Geneva, 16 to 20 November 2026.
+# Drafted 2026-10-19 by tooling for the analyst of record. Nothing renders
+# until approved: true, the page and each entry separately.
+#
+# Daily update path (decision D1): during the conference, each day's entries
+# are drafted as link-only facts (date, what happened, the official record),
+# approved: false, and the analyst approves the day's batch. No state's
+# position changes during the week; a new reading goes through the usual
+# review in content/states/.
+#
+# Facts and quotes below were checked on 2026-10-19 against the documents
+# linked; see .scratch/finish/drafts/GGE2026.md for the verbatim extracts.
+approved: false
+title: The Review Conference
+description: >-
+  The Seventh Review Conference of the Geneva weapons convention, 16 to 20
+  November 2026: the documents it starts from and what happens each day,
+  linked to the official record.
+intro: |
+  The Convention on Certain Conventional Weapons (the CCW) is the Geneva treaty under which states have discussed autonomous weapons in an expert group since 2017. Its parties review the treaty every five years. The Seventh Review Conference meets at the Palais des Nations in Geneva from 16 to 20 November 2026, presided over by Ambassador Julien Thöni of Switzerland. Statements will be posted on the [official conference page](https://meetings.unoda.org/meeting/79323/statements).
+
+  This page lists the documents the conference starts from, then what happens each day, each linked to the official record. It records what was said and decided. It does not change any state's position during the week: a new reading goes through the same review as every other one on this site.
+before_heading: What the conference starts from
+during_heading: During the conference
+
+events:
+  - id: gge-final-report-2026
+    date: 2026-09-04
+    kind: decision
+    title: The expert group adopts its final report
+    text: >
+      The expert group on lethal autonomous weapons systems adopted its
+      final report. The report sets out "a set of elements of an
+      instrument, without prejudging its nature, and other possible
+      measures". It says international humanitarian law "applies fully"
+      and that "control and human judgement" are needed. It recommends that
+      the Review Conference consider and endorse the elements, and decide
+      by consensus on the group's future work.
+    links:
+      - label: "Final report, CCW/GGE.1/2026/3 (advance copy, 14 September 2026), paras 23, 29, 34, 45 and 46"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-3-Advance_copy.pdf"
+      - label: "Expert group 2026 session documents and statements"
+        url: "https://meetings.unoda.org/meeting/79329"
+    approved: false
+
+  - id: revcon-provisional-agenda
+    date: 2026-09-17
+    kind: document
+    title: The conference agenda and programme of work
+    text: >
+      The preparatory committee endorsed the conference's provisional
+      agenda. The expert group's report is item 10, proposals for additional
+      protocols are item 14, and the final document is item 20. Under the
+      programme of work, the committee that covers autonomous weapons meets
+      on 17, 18 and 19 November, and the final document is due on Friday
+      20 November.
+    links:
+      - label: "Provisional agenda, CCW/CONF.VII/1"
+        url: "https://docs.un.org/en/CCW/CONF.VII/1"
+      - label: "Provisional programme of work, CCW/CONF.VII/2"
+        url: "https://docs.un.org/en/CCW/CONF.VII/2"
+      - label: "Preparatory committee final report, CCW/CONF.VII/PC/3 (advance copy)"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/CCW-CONF.VII-PC-3-Advance_copy.pdf"
+    approved: false

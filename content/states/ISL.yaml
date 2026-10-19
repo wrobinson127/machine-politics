@@ -7,11 +7,65 @@ un_name: ICELAND
 display_name: Iceland
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2026-10-08
+    approved: false
+    rationale: 'In national capacity at the First Committee in October 2026, Iceland
+      welcomed the expert group''s consensus on elements of an instrument without
+      prejudging its nature, and looked forward to advancing the work within the
+      CCW framework. It did not say what the instrument should be. The year before,
+      Iceland delivered the Nordic statement calling the rolling text a sufficient
+      basis for negotiating an instrument at the CCW; that statement spoke for five
+      states and does not decide this reading. Iceland voted Yes on all three UN
+      resolutions.
+
+      '
+    evidence:
+      - source: un-c1-81-transcript-4
+        kind: statement
+        claim: In national capacity, Iceland looks forward to advancing the work
+          within the CCW framework, naming no instrument type.
+        quote: We look forward to the upcoming review conference and to continued
+          constructive engagement by all States Parties to advance this work within
+          the CCW framework.
+        date: 2026-10-08
+        url: https://transcripts.un.org/en/ga/c1/81/4
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'UN automatic speech recognition transcript, not an official record.
+          The preceding sentence welcomes "the consensus reached at the CCW Group
+          of Governmental Experts on Lethal Autonomous Weapon Systems" on elements
+          of an instrument "without prejudging its nature". Iceland opened by referring
+          to the Nordic statement and then spoke "in my national capacity".
+
+          '
+      - source: un-c1-80-transcript-2
+        kind: statement
+        claim: Delivering the Nordic statement, Iceland called the rolling text
+          a sufficient basis for negotiations on an instrument at the CCW.
+        quote: We find the chair's rolling text to be a sufficient basis to move
+          towards negotiations of an instrument on laws at the CCW
+        date: 2025-10-08
+        url: https://transcripts.un.org/en/ga/c1/80/2
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'Joint statement on behalf of Denmark, Finland, Iceland, Norway and
+          Sweden, delivered by Iceland''s Permanent Representative. Shown as context
+          for the forum preference only; not the state''s sole voice. The speaker
+          said the full version was posted on the Committee''s website. UN automatic
+          speech recognition transcript.
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: CCW-ONLY at INFERRED, or NONE? Iceland''s one national passage backs work within the CCW and names no instrument type. That matches CCW-ONLY. It rests on a single short ASR passage, which is why the tier is INFERRED. If the analyst wants a written record before coding, the fallback is NONE with this search note.'
+  - 'DRAFT 2026-10-19, analyst question: Should a Nordic statement delivered by Iceland appear as evidence at all? It is shown here as context only, at INFERRED, and the reading does not rest on it.'
   - "CODING NEEDS SOURCE: the smallest record in the Nordic set (no armed forces); Iceland's positions ride the Nordic joint statements (it delivered the 2025-10-08 statement); research pass 5e advises honest thin coverage, do not over-profile; code only if a national statement surfaces"
   - "Nordic joint-statement series member and rotating deliverer: joint-statement layer"
   - "US Political Declaration endorser (on the captured 58 list)"

@@ -7,11 +7,184 @@ un_name: TÜRKİYE
 display_name: Türkiye
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: REG-SOFT
+    confidence: EXPLICIT
+    as_of: 2023-11-01
+    approved: false
+    scope_note: 'Türkiye asks for non-binding measures (a code of conduct, confidence-
+      building measures, standards for responsible use) and says the expert group''s
+      work should not lead to a legally binding instrument. It also says weapons
+      not under meaningful human control conflict with existing IHL; that is a statement
+      about current law, not a call for new prohibitions. In 2023 its objection
+      to a binding text was tied to the lack of an agreed definition. In 2026 the
+      objection carries no such condition.
+
+      '
+    rationale: 'In its 2023 explanation of vote, Türkiye asked for priority to a
+      code of conduct and confidence-building measures, and said a binding text
+      without an agreed definition would not serve its purpose. In 2025 it said
+      it supports efforts to develop standards for responsible use of autonomous
+      weapons systems. In September 2026, joining consensus on the expert group''s
+      report, it said that work should not be a step toward a legally binding instrument,
+      and that any outcome should be a framework rather than a source of new obligations.
+      It abstained on all three UN resolutions.
+
+      '
+    evidence:
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Türkiye asks for priority to a code of conduct and confidence-building
+          measures.
+        quote: give priority to a code of conduct, confidence-building measures
+          and mechanisms in order to create a conducive environment to move forward
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: Explanation of vote on draft resolution L.56 (Türkiye abstained).
+          Official UN verbatim record; the delegate (Mr. Cetin) spoke in English.
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Türkiye says a binding text without an agreed definition would not
+          serve its purpose.
+        quote: a legally binding document developed in the absence of an agreed
+          definition would not serve its intended purpose and might be open to abuse
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Türkiye's legal view - LAWS outside meaningful human control conflict
+          with existing IHL.
+        quote: lethal autonomous weapon systems (LAWS) that are not under meaningful
+          human control are undesirable and are in conflict with international humanitarian
+          law
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Türkiye's legal view - existing law is sufficient to address concerns.
+        quote: international law and international humanitarian law would be sufficient
+          to alleviate concerns regarding the use of LAWS
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Türkiye names the CCW as the right forum.
+        quote: the Convention on Certain Conventional Weapons (CCW) is the right
+          forum in which to address the matters related to emerging technologies
+          and LAWS
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: tur-submission-79-239
+        kind: submission
+        claim: Türkiye supports developing standards for responsible use of military
+          AI and autonomous weapons systems.
+        quote: We will continue to support efforts to develop standards for the
+          responsible use of military AI and autonomous weapons systems.
+        date: 2025-04-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Turkiye-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'Submission under resolution 79/239 on AI in the military domain,
+          not the LAWS resolutions; the sentence names autonomous weapons systems
+          directly. Undated on its face; the date is the PDF creation date (metadata)
+          and should be checked against the Secretary-General''s report on 79/239.
+
+          '
+      - source: ccw-gge1-2026-wp5-tur
+        kind: working_paper
+        claim: Türkiye says the GGE's work should not be a step toward a legally
+          binding instrument.
+        quote: the Group's work should neither serve as a step towards nor constitute
+          the basis for a legally binding instrument on lethal autonomous weapons
+          systems
+        date: 2026-09-14
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'Türkiye''s explanation of position on the 2024-2025-2026 GGE report
+          (CCW/GGE.1/2026/3), filed as a working paper. The paper calls this its
+          "consistent position". Issue date 14 September 2026; the report was adopted
+          on 5 September 2026.
+
+          '
+      - source: ccw-gge1-2026-wp5-tur
+        kind: working_paper
+        claim: Türkiye wants any outcome to be a framework, not a source of new
+          obligations.
+        quote: any outcome document should retain the character of a framework capturing
+          areas of convergence among States rather than a source of new international
+          obligations
+        date: 2026-09-14
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge1-2026-wp5-tur
+        kind: working_paper
+        claim: Türkiye prefers the CCW consensus process.
+        quote: the discussions are most productively pursued within the framework
+          of the Convention on Certain Conventional Weapons, on the basis of consensus
+        date: 2026-09-14
+        url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: ccw-gge-2026-s2-m1-transcript
+        kind: statement
+        claim: At the opening of the final GGE session, Türkiye calls the elements
+          a non-binding reference.
+        quote: We continue to view this set of elements as a technical, non-binding
+          reference reflecting the current state of discussion among high contracting
+          parties
+        date: 2026-08-31
+        url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: UN automatic speech recognition transcript, not an official record.
+          The delegate spoke in English.
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: Joint explanation of position on L.41, delivered by the United Kingdom
+          on behalf of 15 states including Türkiye, keeps any negotiations in the
+          CCW.
+        quote: any future negotiations must take place within the framework of the
+          CCW and must not prejudge the nature of their outcome
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'Joint statement, not Türkiye''s own text, and an ASR transcript;
+          the transcript lists the state as "Turkey". Shown for context. A joint
+          statement does not decide a position by rule.
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: Category: REG-SOFT rests on the 2023 call for a code of conduct and CBMs, the 2025 support for standards, and the 2026 ''framework rather than new obligations'' line, together with explicit rejection of a binding instrument in 2026. The alternative is CCW-ONLY (Türkiye also states a CCW consensus preference). Rule REG-SOFT or CCW-ONLY?'
+  - 'DRAFT 2026-10-19, analyst question: The 2023 objection to a binding text was conditional (''in the absence of an agreed definition''); the 2026 objection is not. Is that a shift worth recording (no category change under REG-SOFT), or context only?'
+  - 'DRAFT 2026-10-19, analyst question: The 2025 support for standards comes from a submission on AI in the military domain (79/239), not the LAWS track. Keep it as coding evidence (it names autonomous weapons systems), or move it to context?'
+  - 'DRAFT 2026-10-19, analyst question: The legal-view statement (LAWS outside meaningful human control conflict with IHL; already prohibited) is shown as context inside the REG-SOFT coding. Confirm it does not pull the reading toward LBI-BAN, since Türkiye frames it as existing law, not new prohibitions.'
   - "CODING NEEDS SOURCE: the 2022 First Committee statement is captured and quotable (autonomous systems without meaningful human control are undesirable and conflict with IHL; humans bear ultimate life-and-death responsibility) but its URL is unpinned and the research leaves the category unresolved (REG-SOFT/LBI-OPEN); pin the primary, then code"
   - "Dataset note: abstained on all three resolutions (research pass 5d recorded only the 80/57 abstention)"
   - "US Political Declaration endorser (on the captured 58 list)"

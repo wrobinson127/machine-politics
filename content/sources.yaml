@@ -420,3 +420,327 @@ sources:
       instrument "without prejudging its nature"; that is the Group's
       mandate language, not the authors' own, and is not quoted as their
       position.
+
+  # Added 2026-10-19 from the finish-run research drafts.
+  - id: un-c1-78-pv28
+    title: General Assembly First Committee, 78th session, 28th meeting, official
+      verbatim record (A/C.1/78/PV.28)
+    publisher: United Nations General Assembly
+    date: 2023-11-01
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+    type: meeting_record
+    lang: en
+    accessed: 2026-10-19
+    note: 'Official record of the meeting at which the First Committee voted on
+      draft resolution A/C.1/78/L.56. Contains the explanations of vote of the Russian
+      Federation (spoke in Russian; official translation), Israel and Turkiye (spoke
+      in English). Shared by the RUS, ISR and TUR drafts.
+  
+      '
+  - id: ccw-gge1-2024-wp2-rus
+    title: Approaches of the Russian Federation to the issue of emerging technologies
+      in the area of lethal autonomous weapons systems (CCW/GGE.1/2024/WP.2)
+    publisher: Russian Federation, via United Nations Office at Geneva
+    date: 2024-05-14
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: 'Original in English and Russian. Submitted for the 4-8 March 2024 session
+      (the "March 2024 working paper" in the RUS flags); issue date on the face
+      is 14 May 2024. Also filed on the UNODA library as https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/CCW-GGE.1-2024-WP.2.pdf
+  
+      '
+  - id: rus-c1-80-cluster4-statement
+    title: Statement by the Deputy Head of the Delegation of the Russian Federation,
+      Konstantin Vorontsov, Thematic Debate on Cluster IV Conventional weapons,
+      First Committee, 80th session
+    publisher: Ministry of Foreign Affairs of the Russian Federation, via UNODA
+      Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Russia_(ENG).pdf
+    type: statement
+    lang: ru
+    accessed: 2026-10-19
+    note: The English text is headed "Unofficial translation".
+  - id: un-c1-80-transcript-26
+    title: General Assembly First Committee, 80th session, 26th meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-11-06
+    url: https://transcripts.un.org/en/ga/c1/80/26
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: 'Meeting at which the First Committee voted on draft resolution A/C.1/80/L.41.
+      Not an official record. Holds Russia''s repeated explanation before the vote
+      and Israel''s explanation after the vote.
+  
+      '
+  - id: isr-submission-78-241
+    title: 'Israel''s remarks: Secretary-General Implementation Report (L.56: Lethal
+      Autonomous Weapons Systems)'
+    publisher: Government of Israel, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Undated on its face. Date from the A/79/88 annex header (24 May 2024).
+      The PDF metadata shows creation on 28 May 2024.
+  
+      '
+  - id: tur-submission-79-239
+    title: 'Türkiye: Submission of views on the Opportunities and Challenges Posed
+      to International Peace and Security by the Application of Artificial Intelligence
+      in the Military Domain (pursuant to UNGA resolution 79/239)'
+    publisher: Government of Türkiye, via UNODA Documents Library
+    date: 2025-04-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Turkiye-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: Undated on its face; date from PDF metadata.
+  - id: ccw-gge1-2026-wp5-tur
+    title: Türkiye's explanation of position on Report of 2024-2025-2026 sessions
+      of the Group of Governmental Experts on Emerging Technologies in the Area
+      of Lethal Autonomous Weapons System (CCW/GGE.1/2026/WP.5)
+    publisher: Türkiye, via United Nations Office at Geneva
+    date: 2026-09-14
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: English only. Also at https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2026/WP.5&l=E
+      (the copy read for this draft).
+  - id: ccw-gge-2026-s2-m1-transcript
+    title: CCW Group of Governmental Experts on LAWS 2026, second session, 1st meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-08-31
+    url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: ccw-gge-2021-bra-chl-mex-elements
+    title: Elements for a Future Normative Framework Conducive to a Legally Binding
+      Instrument to Address the Ethical, Humanitarian and Legal Concerns posed by
+      Emerging Technologies in the Area of (Lethal) Autonomous Weapons (LAWS). Submitted
+      by Brazil, Chile and Mexico
+    publisher: CCW Group of Governmental Experts, submitted by Brazil, Chile and
+      Mexico, via UNODA
+    date: 2021-06-28
+    url: https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: 'No date or document symbol on its face; the date is the PDF creation
+      date. Ten pages. The title words "ETHICAL HUMANITARIAN" appear without a comma
+      on the face.
+  
+      '
+  - id: bra-submission-78-241
+    title: Brazil's Submission on Autonomous Weapon Systems in Response to the Request
+      Pursuant to Resolution 78/241
+    publisher: Government of Brazil, via UNODA Documents Library
+    date: 2024-06-12
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Brazil-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Undated on its face; the date is the PDF creation date (12 June 2024).
+      Not printed as an individual reply in A/79/88.
+  
+      '
+  - id: un-c1-81-transcript-7
+    title: General Assembly First Committee, 81st session, 7th meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-10-13
+    url: https://transcripts.un.org/en/ga/c1/81/7
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-gge-2026-s2-m1-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2026 second session, 1st meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-08-31
+    url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-gge-2026-s2-m8-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2026 second session, 8th meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-09-03
+    url: https://transcripts.un.org/en/asset/k1j/k1jgb18wkv
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-ga-80-7-transcript
+    title: General Assembly, 80th session, general debate, 7th plenary meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-09-24
+    url: https://transcripts.un.org/en/ga/80/7
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: nld-submission-78-241
+    title: 'Kingdom of the Netherlands: Submission in accordance with resolution
+      78/241 on autonomous weapons systems'
+    publisher: Government of the Kingdom of the Netherlands, via UNODA Documents
+      Library
+    date: 2024-04-26
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Netherlands-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Dated 26 April 2024 at the foot of the text. The same text, lightly edited,
+      is printed in A/79/88, Annex I.
+  
+      '
+  - id: swe-submission-78-241
+    title: Swedish input to the Report of the Secretary General of the United Nations
+      in accordance with resolution 78/241 'Lethal autonomous weapons systems'
+    publisher: Government of Sweden, via UNODA Documents Library
+    date: 2024-05-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Sweden-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: fin-submission-78-241
+    title: Submission by Finland concerning United Nations General Assembly resolution
+      78/241 of 22 December 2023 on Lethal Autonomous Weapons Systems
+    publisher: Government of Finland, via UNODA Documents Library
+    date: 2024-05-16
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Finland-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: un-c1-81-transcript-4
+    title: General Assembly First Committee, 81st session, 4th meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-10-08
+    url: https://transcripts.un.org/en/ga/c1/81/4
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: Also proposed in the ISL draft; register once.
+  - id: ccw-gge1-2024-wp3
+    title: Working paper submitted by Bulgaria, Denmark, France, Germany, Italy,
+      Luxembourg and Norway (CCW/GGE.1/2024/WP.3)
+    publisher: CCW Group of Governmental Experts, submitted by Bulgaria, Denmark,
+      France, Germany, Italy, Luxembourg and Norway
+    date: 2024-03-04
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/CCW-GGE.1-2024-WP.3.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: 'Face-checked 2026-10-19: seven authors, dated 4 March 2024. Likely the
+      "seven-state elements paper" named in the existing DNK flag. It has no entry
+      in content/sponsorships.yaml as of 2026-10-19.
+  
+      '
+  - id: un-c1-80-transcript-2
+    title: General Assembly First Committee, 80th session, 2nd meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-08
+    url: https://transcripts.un.org/en/ga/c1/80/2
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-asr-ccw-prepcom7-m3-2026
+    title: Preparatory Committee of the Seventh CCW Review Conference, 3rd meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-09-08
+    url: https://transcripts.un.org/en/asset/k18/k1856vomjr
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-asr-ccw-prepcom7-m1-2026
+    title: Preparatory Committee of the Seventh CCW Review Conference, 1st meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-09-07
+    url: https://transcripts.un.org/en/asset/k1t/k1tjdugbhy
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-asr-ccw-gge-2026-s1m8
+    title: CCW GGE on LAWS 2026, first session, 8th meeting, automatic speech recognition
+      transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-03-05
+    url: https://transcripts.un.org/en/asset/k1y/k1ylkonhpq
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-asr-ccw-gge-2026-s1m5
+    title: CCW GGE on LAWS 2026, first session, 5th meeting, automatic speech recognition
+      transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-03-04
+    url: https://transcripts.un.org/en/asset/k1x/k1xo2svfg9
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: ccw-msp-2025-wp7-gbr
+    title: Working paper submitted by the United Kingdom of Great Britain and Northern
+      Ireland (CCW/MSP/2025/WP.7)
+    publisher: CCW Meeting of High Contracting Parties, submitted by the United
+      Kingdom
+    date: 2025-11-21
+    url: https://docs.un.org/en/CCW/MSP/2025/WP.7
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+  - id: uk-gge-2026-08-31
+    title: Opening UK Statement, LAWS GGE, 31 August 2026
+    publisher: United Kingdom delegation (posted by UNODA)
+    date: 2026-08-31
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/20260831.Opening_Statement_0.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: fr-mfa-gge-laws-2026-09-10
+    title: 'International organizations: Meeting of the Group of Governmental Experts
+      on Lethal Autonomous Weapons Systems (communiqué)'
+    publisher: Ministry for Europe and Foreign Affairs, France
+    date: 2026-09-10
+    url: https://www.diplomatie.gouv.fr/en/presse-et-ressources/decouvrir-et-informer/actualites/organisations-internationales-reunion-du-groupe-d-experts-gouvernementaux-sur-les-systemes-d-armes
+    type: press_release
+    lang: fr
+    accessed: 2026-10-19
+  - id: un-asr-ccw-gge-2026-s1m4
+    title: CCW GGE on LAWS 2026, first session, 4th meeting, automatic speech recognition
+      transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-03-03
+    url: https://transcripts.un.org/en/asset/k1y/k1ywe5vjyq
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: at-prepcom7-mc2-2026
+    title: 'Preparatory Committee, 7th Review Conference CCW: Statement on behalf
+      of Austria, Preparation for Main Committee II'
+    publisher: Permanent Mission of Austria (posted by UNODA)
+    date: 2026-09-08
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_Main_Committee_II_8_September.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: at-prepcom7-general-2026
+    title: 'Preparatory Committee, 7th Review Conference CCW: Statement on behalf
+      of Austria, general exchange of views'
+    publisher: Permanent Mission of Austria (posted by UNODA)
+    date: 2026-09-07
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/PrepCom_CCW_AT_Statement_General_Exchange_7_September.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19

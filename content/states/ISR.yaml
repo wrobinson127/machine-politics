@@ -7,11 +7,144 @@ un_name: ISRAEL
 display_name: Israel
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2023-11-01
+    approved: false
+    scope_note: 'Two directions, both in Israel''s own words, shown side by side.
+      One points to "no new rules": Israel says IHL is a sufficient legal framework
+      for any future use of LAWS, and in 2025 it objected to text suggesting the
+      expert group''s work will lead to a legal framework. The other points to "keep
+      it in Geneva": Israel supports further work in the CCW expert group toward
+      consensus outcomes, under a mandate it describes as elements of an instrument
+      without prejudging its nature. Israel has not said, in the records read here,
+      whether it opposes or accepts a non-binding outcome.
+
+      '
+    rationale: 'Israel says the existing laws of war are a sufficient legal framework
+      for these weapons. It also says the Geneva expert group should keep working
+      toward consensus outcomes, and it opposes a parallel process. In 2025 it voted
+      No and said the resolution wrongly suggested the group''s work would lead
+      to a legal framework. These records fit both "no new rules" and "keep it in
+      Geneva". Both are shown.
+
+      '
+    evidence:
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Direction 1 - Israel states that IHL is a sufficient legal framework
+          for LAWS.
+        quote: international humanitarian law fully applies to lethal autonomous
+          weapons systems and, in our view, is a sufficient legal framework for
+          any future use of LAWS
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: Explanation of vote on draft resolution L.56 (Israel abstained). Official
+          UN verbatim record; the delegate spoke in English.
+      - source: isr-submission-78-241
+        kind: submission
+        claim: Direction 1 - the 2024 submission repeats that existing law is a
+          sufficient legal framework.
+        quote: fully applies to LAWS and, in Israel's view, provides a sufficient
+          legal framework for any future use of LAWS in the context of armed conflicts
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'The UNODA copy carries no date on its face; 24 May 2024 is the date
+          in the A/79/88 annex header ("[Original: English] [24 May 2024]"). The
+          A/79/88 text is lightly edited (it spells out "lethal autonomous weapons
+          systems"); Israel''s own wording is quoted here.
+
+          '
+      - source: un-c1-80-transcript-26
+        kind: eov
+        claim: Direction 1 - in 2025 Israel objects to text suggesting the GGE will
+          lead to a legal framework.
+        quote: in our view, insinuates that the GGE's work will lead to discussions
+          on a legal framework, clearly not the mandate of the current group
+        date: 2025-11-06
+        url: https://transcripts.un.org/en/ga/c1/80/26
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: 'UN automatic speech recognition transcript, not an official record.
+          The delegate spoke in English. INFERRED because the text is machine transcription.
+
+          '
+      - source: un-c1-80-transcript-26
+        kind: eov
+        claim: Israel explains its No vote on L.41 (resolution 80/57).
+        quote: For these reasons, Israel chose to vote no on resolution L41.
+        date: 2025-11-06
+        url: https://transcripts.un.org/en/ga/c1/80/26
+        lang: en
+        translation: none
+        confidence: INFERRED
+      - source: isr-submission-78-241
+        kind: submission
+        claim: Direction 2 - Israel names the CCW as the most suitable forum.
+        quote: the CCW remains the most suitable forum for addressing the challenges
+          and opportunities presented by emerging technologies in the area of LAWS
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: isr-submission-78-241
+        kind: submission
+        claim: Direction 2 - Israel describes the GGE mandate as elements of an
+          instrument, nature not prejudged.
+        quote: The GGE has a robust mandate to further consider and formulate, by
+          consensus, a set of elements of an instrument, without prejudging its
+          nature
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: isr-submission-78-241
+        kind: submission
+        claim: Direction 2 - Israel warns that initiatives outside the CCW risk
+          duplication and fragmentation.
+        quote: External initiatives that lack such characteristics risk not only
+          duplication but fragmentation of approaches.
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Direction 2 - Israel opposes a parallel forum to the CCW.
+        quote: Israel calls for the important work done in the CCW not to be undermined
+          by the creation of a parallel forum for that subject matter.
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-80-transcript-26
+        kind: eov
+        claim: Direction 2 - Israel opposes the resolution's prejudgment language.
+        quote: Israel opposes the prejudgment language in this year's draft resolution.
+        date: 2025-11-06
+        url: https://transcripts.un.org/en/ga/c1/80/26
+        lang: en
+        translation: none
+        confidence: INFERRED
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: Category: drafted AMBIG at AMBIGUOUS under brief rule 8. The two single-category alternatives are (a) CCW-ONLY, on the US precedent (venue position, no stated opposition to new instruments as such), and (b) OPPOSE, on the ''sufficient legal framework'' line plus the 2025 objection to a legal-framework track. Israel''s words do not say whether it opposes a non-binding outcome. Which reading do you rule?'
+  - 'DRAFT 2026-10-19, analyst question: Vote change without a category change: Israel moved from Abstain (2023, 2024) to No (2025). Its stated reasons are the same in 2023 and 2025 (CCW forum, existing IHL sufficient), with the 2025 objection aimed at the resolution''s prejudgment language. No shift event is drafted. Confirm.'
+  - 'DRAFT 2026-10-19, analyst question: The flags list a US Political Declaration endorsement and non-endorsement of the 2024 Blueprint (as the existing ISR flags put it). Neither can feed the coding by rule; they stay as endorsement-layer facts.'
   - "DATASET CORRECTION: research pass 5d recorded Israel's 2023 vote as Yes; the reconciled UNDL dataset records Abstain, Abstain, No (2023, 2024, 2025). The dataset is authoritative; the research doc is wrong on this cell"
   - "CODING NEEDS SOURCE: candidate range OPPOSE/REG-SOFT (developer state resisting new instruments); the move to No on 80/57 is a candidate shift event; retrieve Israel's EOVs, then code"
   - "US Political Declaration endorser (on the captured 58 list); documented non-endorsement of the 2024 Blueprint (attended without signing, sourced)"

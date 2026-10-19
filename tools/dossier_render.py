@@ -26,6 +26,19 @@ FAMILY_BLURB = {code: config.POSITION_PLAIN[code]
 
 PACK_AFTER = 7
 
+# ISO 3166-1 alpha-2 for the marks' two-letter labels. Truncating alpha-3
+# misleads: UKR would read "UK" beside the United Kingdom's mark.
+ALPHA2 = {
+    "ARG": "AR", "AUS": "AU", "AUT": "AT", "BDI": "BI", "BLR": "BY", "BRA": "BR",
+    "CAN": "CA", "CHN": "CN", "CRI": "CR", "CZE": "CZ", "DEU": "DE", "DNK": "DK",
+    "ECU": "EC", "EST": "EE", "FIN": "FI", "FRA": "FR", "GBR": "GB", "GTM": "GT",
+    "IND": "IN", "ISL": "IS", "ISR": "IL", "JPN": "JP", "KAZ": "KZ", "KOR": "KR",
+    "LTU": "LT", "LVA": "LV", "MLI": "ML", "NER": "NE", "NGA": "NG", "NLD": "NL",
+    "NOR": "NO", "PAN": "PA", "PHL": "PH", "POL": "PL", "PRK": "KP", "RUS": "RU",
+    "SLE": "SL", "SLV": "SV", "SWE": "SE", "TUR": "TR", "UKR": "UA", "URY": "UY",
+    "USA": "US",
+}
+
 
 def esc(v):
     return _html.escape("" if v is None else str(v), quote=True)
@@ -90,7 +103,7 @@ def spectrum(coded, self_iso, self_name):
         for i, c in enumerate(members):
             me = c["iso3"] == self_iso
             left = (i + 1) / (n + 1) * 100
-            code2 = c["iso3"][:2].upper()
+            code2 = ALPHA2.get(c["iso3"], c["iso3"][:2])
             info = (f"<b>{esc(c['name'])}</b>: {esc(FAMILY_BLURB.get(c['code'], ''))} "
                     f"({esc(c['code'])})."
                     + (" This page's state." if me else ""))

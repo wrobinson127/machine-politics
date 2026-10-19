@@ -7,11 +7,74 @@ un_name: NETHERLANDS (KINGDOM OF THE)
 display_name: Netherlands
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-04-26
+    approved: false
+    rationale: 'In its 2024 submission to the Secretary-General, the Netherlands
+      said that autonomous weapons that cannot be used in line with international
+      law must be prohibited by a legally binding instrument, preferably a new protocol
+      to the Geneva convention, and that other types need further regulation. That
+      is a treaty with bans in a two-tier form. The submission says the 2022 government
+      letter to parliament is the basis of this policy, so the position likely predates
+      the submission; the date marks the earliest record opened. The Netherlands
+      voted Yes on all three UN resolutions.
+
+      '
+    evidence:
+      - source: nld-submission-78-241
+        kind: submission
+        claim: The Netherlands says AWS that cannot comply with international law
+          must be prohibited through a legally binding instrument, preferably a
+          new CCW protocol.
+        quote: must be explicitly prohibited through a legally binding instrument,
+          preferably by adding a new protocol to the Convention on Certain Conventional
+          Weapons (CCW).
+        date: 2024-04-26
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Netherlands-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'Scope, read with the subject: the sentence opens "AWS that cannot
+          be designed, developed or used in accordance with international law, in
+          particular international humanitarian law (IHL)". The ban is conditional
+          on that test; it is not a blanket ban. The date is the one printed at
+          the end of the submission.
+
+          '
+      - source: nld-submission-78-241
+        kind: submission
+        claim: The submission places all other AWS under regulation, the second
+          tier.
+        quote: Other types of AWS require further regulation.
+        date: 2024-04-26
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Netherlands-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: nld-submission-78-241
+        kind: submission
+        claim: The submission asks a new legally binding instrument to define the
+          categories the prohibition covers.
+        quote: a new international legally binding instrument, such as a new protocol
+          to the CCW, should clearly delineate the types of AWS
+        date: 2024-04-26
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Netherlands-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'The categories listed are AWS designed to apply force against civilians,
+          AWS that are inherently indiscriminate or cause superfluous injury, and
+          AWS whose effects a human cannot reasonably predict and control.
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: The existing flag records an anchor-list candidate of LBI-OPEN. The 2024 submission reads as LBI-BAN (prohibitions inside a legally binding instrument, two-tier). This is a divergence from the anchor, flagged rather than silently recoded. Rule which stands.'
+  - 'DRAFT 2026-10-19, analyst question: As_of: the submission itself says the 2022 letter is the basis of the policy. Keep 2024-04-26 (earliest record opened) or move to the 2022 letter once retrieved?'
   - "CODING NEEDS SOURCE: the research anchor list names the Netherlands LBI-OPEN, but the only captured basis is a 2022 parliamentary letter known through a secondary source; retrieve the letter and recent statements, then code. Divergence from the anchor is a flag, not a silent recode"
   - "Current GGE chair: roles annotation, enumeration bundle"
   - "CORRECTED 2026-08-24: this flag previously recorded the Netherlands as being in the September 2025 joint statement. It is NOT. The face names 39 High Contracting Parties and the Netherlands is not among them, nor among the three observer States. Caught in the roster verification pass by diffing the flags against the verified membership. The Netherlands chaired the GGE in 2025, which is the likely source of the confusion"

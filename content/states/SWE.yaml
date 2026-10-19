@@ -7,11 +7,105 @@ un_name: SWEDEN
 display_name: Sweden
 coverage_tier: anchor
 
-position_codings: []
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-05-15
+    approved: false
+    rationale: 'Sweden''s own words point two ways. In its 2024 submission it backs
+      the two-tier approach: weapons that cannot be used lawfully should be expressly
+      prohibited, and the rest regulated. That points toward a treaty with bans.
+      The same submission says the form of regulation still needs thought, that
+      what states can agree on remains to be seen, and that parallel processes and
+      instruments without key states would not help. Sweden has never said, in a
+      record opened here, that the instrument should be legally binding. In November
+      2025 it joined a statement saying future negotiations must not prejudge the
+      nature of their outcome. Sweden voted Yes on all three UN resolutions.
+
+      '
+    evidence:
+      - source: swe-submission-78-241
+        kind: submission
+        claim: Sweden says systems that cannot be used lawfully should be expressly
+          prohibited, and the rest regulated, with the form left open.
+        quote: While the former ones should be expressly prohibited the latter ones
+          would benefit from regulation, the form of which needs further thought
+          and elaboration
+        date: 2024-05-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Sweden-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: '"The former" are weapon systems "that cannot be used in accordance
+          with international law, in particular IHL"; "the latter" are systems with
+          autonomous features. The sentence follows "Sweden supports the so-called
+          two-tier approach". Dated 15 May 2024 on its face.
+
+          '
+      - source: swe-submission-78-241
+        kind: submission
+        claim: Sweden leaves open what type of regulation states can agree on.
+        quote: What type of regulation HCP can agree upon remains to be seen
+        date: 2024-05-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Sweden-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'The sentence continues: "but even an agreement that might fall short
+          of expectations of some delegations, would still amount to a step forward."
+
+          '
+      - source: swe-submission-78-241
+        kind: submission
+        claim: Sweden objects to parallel processes and instruments without key
+          stakeholders.
+        quote: This problem will not be resolved by creating parallel processes
+          and instruments which are not supported by key stakeholders
+        date: 2024-05-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Sweden-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: Sweden is among fifteen states on whose behalf the UK said future
+          negotiations must stay in the CCW and not prejudge their outcome.
+        quote: any future negotiations must take place within the framework of the
+          CCW and must not prejudge the nature of their outcome
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        note: 'A joint explanation of position on L.41, delivered by the United
+          Kingdom "on behalf of Australia, Bulgaria, Canada, Czechia, Estonia, Finland,
+          Japan, Poland, the Republic of Korea, Latvia, Lithuania, Romania, Sweden,
+          Turkey" and itself. Not Sweden''s own delivery. UN automatic speech recognition
+          transcript. See analyst questions.
+
+          '
+      - source: un-gge-2026-s2-m1-transcript
+        kind: statement
+        claim: At the final 2026 session Sweden supported the draft report and called
+          the CCW the appropriate forum.
+        quote: The draft report demonstrates that this group is capable of meeting
+          its mandate and that the CCW remains the appropriate forum for laws.
+        date: 2026-08-31
+        url: https://transcripts.un.org/en/asset/k17/k179utoxqf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'UN automatic speech recognition transcript; "laws" is the acronym
+          LAWS.
+
+          '
 
 shift_events: []
 
 flags:
+  - 'DRAFT 2026-10-19, analyst question: AMBIG or LBI-BAN? Sweden wants express prohibitions in a two-tier approach but has not said, in any record opened here, that the instrument should be legally binding, and it says the form of regulation needs further thought. Under the rubric, prohibitions without a stated binding form do not reach LBI-BAN. This draft reads AMBIG, both directions shown.'
+  - 'DRAFT 2026-10-19, analyst question: The UK-delivered joint explanation of position (4 Nov 2025) names Sweden. A joint statement does not decide a coding on its own. It is shown here as AMBIGUOUS-tier support for the second direction only. Rule whether a joint explanation of vote that names the state may be cited at all.'
+  - 'DRAFT 2026-10-19, analyst question: The existing flag queues a NATO accession era band (2024-03-07). Nothing in the records opened here links the LAWS position to accession, and this draft draws no such link. The submission (May 2024) postdates accession; no pre-accession national record was opened, so no before/after comparison is possible from this pass.'
   - "CODING NEEDS SOURCE: research pass 5e warns against assuming bloc uniformity; Sweden's non-aligned arms-control tradition may place it softer than Norway; retrieve Sweden's GGE statement and submission for the precise line, then code"
   - "In the September 2025 39-party joint statement; Nordic joint-statement series member"
   - "NATO accession (2024-03-07) era band: ruling queued, same terms as Finland"

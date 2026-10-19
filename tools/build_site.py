@@ -679,7 +679,7 @@ def conference_page(conference, content_states, votes, preview, manifest):
     entries says that this site has added none, never that nothing
     happened."""
     approved_page = is_approved(conference)
-    manifest["entries"].append({"state": None, "kind": "page:conference",
+    manifest["entries"].append({"state": None, "kind": "conference_page",
                                 "approved": approved_page,
                                 "rendered": bool(preview or approved_page)})
     events = []
