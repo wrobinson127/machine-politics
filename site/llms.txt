@@ -1,0 +1,22 @@
+# Machine Politics
+
+> Where every country stands on autonomous weapons: recorded votes, official statements, and national policy, tracked as they shift over time. Every position links to a quoted, dated source.
+
+The site takes no position on whether autonomous weapons should be banned or regulated. It records who says what.
+
+## Pages
+
+- [Board](https://machinepolitics.walker-robinson.com/)
+- [Votes](https://machinepolitics.walker-robinson.com/votes.html)
+- [Instruments](https://machinepolitics.walker-robinson.com/instruments.html)
+- [Rubric](https://machinepolitics.walker-robinson.com/rubric.html)
+- [Methodology](https://machinepolitics.walker-robinson.com/methodology.html)
+- [About](https://machinepolitics.walker-robinson.com/about.html)
+- [Corrections](https://machinepolitics.walker-robinson.com/corrections.html)
+- State pages: https://machinepolitics.walker-robinson.com/state/ISO3.html (ISO 3166-1 alpha-3 code, for example USA)
+
+## Data
+
+- [Positions, CSV](https://machinepolitics.walker-robinson.com/data/positions.csv) (CC BY 4.0)
+- [Positions, JSON](https://machinepolitics.walker-robinson.com/data/positions.json) (CC BY 4.0)
+- Votes: https://github.com/wrobinson127/machine-politics (UN terms, non-commercial)
