@@ -196,4 +196,6 @@ TIMELINE_START_YEAR = 2013
 # at or after every approved as_of, so it cannot quietly fall behind.
 UPDATED_THROUGH = "2026-08-31"
 UN_DATASET_DOWNLOADED_ON = "2026-07-16"
+# The Seventh Review Conference of the CCW, Geneva. First and last day.
+REVCON_DATES = ("2026-11-16", "2026-11-20")
 UN_DATASET_RECORD_URL = "https://digitallibrary.un.org/record/4060887"
