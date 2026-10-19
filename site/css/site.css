@@ -143,6 +143,9 @@ nav.primary { display: flex; gap: 1.1rem; flex-wrap: wrap; }
     scrollbar-width: none;
     max-width: 100%;
     padding-bottom: 0.2rem;
+    padding-right: 2.2rem;
+    -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent);
+    mask-image: linear-gradient(90deg, #000 82%, transparent);
   }
   nav.primary::-webkit-scrollbar { display: none; }
   nav.primary a { white-space: nowrap; }
@@ -560,6 +563,8 @@ footer.colophon p { margin: 0.3rem 0; }
 /* ------------------------------------------------------------------ */
 
 /* Board head: thesis left, reading key right; stacks on mobile */
+#board-top { scroll-margin-top: calc(var(--masthead-h) + 0.75rem); }
+
 .board-head {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 1fr);

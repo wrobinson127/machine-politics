@@ -174,7 +174,7 @@ def waffles(iso3, name, entry, votes):
         grids.append(
             f'<div class="waffle"><h4>Resolution {esc(res["symbol"])}</h4>'
             f'<div class="res">{esc(res["date"])} &middot; '
-            f'<a class="reslink" href="{esc(res["undl_link"])}">A/RES/{esc(res["symbol"])} &nearr;</a></div>'
+            f'<a class="reslink" href="{esc(res["undl_link"])}">{esc(res["symbol"])} &nearr;</a></div>'
             f'<div class="grid">{"".join(cells)}</div>'
             f'<div class="tally"><span class="big">{tally["y"]}</span>'
             f'<span class="of">in favour of 193</span></div></div>'

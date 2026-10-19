@@ -234,7 +234,27 @@ def _check_provisional(errors, where, entry):
         )
 
 
+# Working-note phrasing that must never reach a rendered field of an
+# approved entry (gauntlet, 2026-10-19: a conditional about a pending ruling
+# reached Brazil's shift rationale). Method statements stay allowed.
+WORKING_NOTE_RE = re.compile(
+    r"\b(?:if the analyst|analyst rul\w*|approval packet|research pass|tooling|TODO|FIXME)\b",
+    re.I)
+RENDERED_FIELDS = ("rationale", "scope_note", "provisional_note")
+
+
+def _check_no_working_notes(errors, where, entry):
+    if entry.get("approved") is not True:
+        return
+    for key in RENDERED_FIELDS:
+        m = WORKING_NOTE_RE.search(str(entry.get(key) or ""))
+        if m:
+            errors.add(where, f"{key} carries working-note phrasing {m.group(0)!r}; "
+                              "rendered text speaks to the reader")
+
+
 def check_coding(errors, where, coding, source_ids):
+    _check_no_working_notes(errors, where, coding)
     if coding.get("code") not in config.POSITION_CATEGORIES:
         errors.add(where, f"unknown Axis A code {coding.get('code')!r}")
     if coding.get("confidence") not in config.CONFIDENCE_TIERS:
@@ -254,6 +274,7 @@ def check_coding(errors, where, coding, source_ids):
 
 
 def check_shift_event(errors, where, event, iso3, source_ids):
+    _check_no_working_notes(errors, where, event)
     if event.get("state") != iso3:
         errors.add(where, f"shift event state {event.get('state')!r} != file state {iso3}")
     _check_date(errors, where, event.get("date"))

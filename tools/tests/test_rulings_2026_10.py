@@ -63,3 +63,13 @@ def test_validator_rejects_a_shift_resting_on_transcripts_alone(tmp_path):
 
 def test_live_content_obeys_r1():
     assert vc.validate().items == []
+
+
+def test_validator_rejects_working_notes_in_rendered_text(tmp_path):
+    work = _work(tmp_path)
+    p = work / "states" / "BRA.yaml"
+    data = yaml.safe_load(p.read_text(encoding="utf-8"))
+    data["shift_events"][0]["rationale"] += " If the analyst rules otherwise, the date moves."
+    p.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")
+    errors = vc.validate(work).items
+    assert any("working-note phrasing" in e for e in errors), errors
