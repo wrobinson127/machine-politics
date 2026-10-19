@@ -13,9 +13,11 @@ produces byte-identical files.
 """
 
 import argparse
+import csv
 import gzip
 import hashlib
 import html
+import io
 import json
 import re
 import shutil
@@ -363,10 +365,10 @@ def canvas_teach_sets(stats):
         "b2": f"One state. One recorded vote, adopted {r1['date']}.",
         "b3": "One state. Three recorded votes, 2023 to 2025.",
         "b4": "One state. Three recorded votes, 2023 to 2025.",
-        "b5": "The band is the coded position. The seam marks the change.",
+        "b5": "The band is the position. The seam marks the change.",
         "b6": "Two states. Three recorded votes each.",
         "b7": f"{stats['movers']} states changed a recorded vote. One row per state.",
-        "b8": f"{stats['coded']} states with a coded position, one row per state.",
+        "b8": f"{stats['coded']} states with a reviewed position, one row per state.",
         "b9": f"{stats['states']} member states. One row per state, three recorded votes each.",
         "b10": (f"{stats['states']} member states. Seventh Review Conference: "
                 "16 to 20 November 2026. Click or tap any row for its record."),
@@ -391,7 +393,7 @@ def canvas_stat_sets(stats):
     full = (
         f'<span class="c-stat"><strong>{stats["states"]}</strong> states</span>'
         '<span class="c-stat"><strong>3</strong> recorded votes</span>'
-        f'<span class="c-stat"><strong>{stats["coded"]}</strong> positions coded</span>'
+        f'<span class="c-stat"><strong>{stats["coded"]}</strong> positions reviewed</span>'
     )
     # Beat 2's stat-row is a single figure (the storyboard's one-unit
     # start); the full tallies arrive with the third vote at beat 3.
@@ -408,8 +410,8 @@ def canvas_stat_sets(stats):
         "b6": all_three,
         "b7": f'<span class="c-stat"><strong>{stats["movers"]}</strong> states changed a recorded vote</span>',
         "b8": (
-            f'<span class="c-stat"><strong>{stats["coded"]}</strong> coded</span>'
-            f'<span class="c-stat"><strong>{stats["states"] - stats["coded"]}</strong> not yet coded</span>'
+            f'<span class="c-stat"><strong>{stats["coded"]}</strong> reviewed</span>'
+            f'<span class="c-stat"><strong>{stats["states"] - stats["coded"]}</strong> not yet reviewed</span>'
         ),
         "b9": full,
         "b10": full,
@@ -935,6 +937,7 @@ def page(title, body, *, current, depth=0, preview=False, description="",
   <div class="shell">
     <p>Vote data from the UN General Assembly voting dataset. © United Nations, 2026, <a href="https://digitallibrary.un.org">digitallibrary.un.org</a>. Reuse terms in <a href="https://github.com/wrobinson127/machine-politics">the repository</a>.</p>
     <p><span class="updated-through">Updated through {esc(config.UPDATED_THROUGH)}</span> · Every position links to a quoted, dated source · <a href="{prefix}corrections.html">Corrections</a></p>
+    <p>Download the positions: <a href="{prefix}data/positions.csv">CSV</a>, <a href="{prefix}data/positions.json">JSON</a>. CC BY 4.0.</p>
   </div>
 </footer>
 <button class="to-top" type="button" aria-label="Back to top">&uarr;</button>
@@ -1373,6 +1376,8 @@ def index_page(votes, content_states, preview, tour=None):
         current="index.html",
         preview=preview,
         extra_scripts=extra_scripts,
+        extra_head=dataset_jsonld(),
+        og_path="",
         description="Where every country stands on autonomous weapons, tracked as positions shift over time.",
     )
 
@@ -1747,7 +1752,7 @@ def state_page(iso3, entry, votes, cs, sources, preview, manifest, eras=None,
     return page(
         name, body, current="", depth=1, preview=preview,
         og_path=f"state/{iso3}.html",
-        description=f"{name}: recorded votes, coded position, framework signings, engagement record, and national policy on autonomous weapons systems.",
+        description=f"{name}: recorded votes, position, framework signings, engagement record, and national policy on autonomous weapons systems.",
         extra_head=f'<link rel="stylesheet" href="{asset("../", "css/dossier.css")}">',
         extra_scripts=f'<script src="{asset("../", "js/dossier.js")}" defer></script>',
     )
@@ -3366,6 +3371,8 @@ def build(out_dir, preview=False):
             encoding="utf-8", newline="\n",
         )
 
+    write_discovery_files(out, votes, content_states, preview)
+
     manifest["unapproved_rendered"] = sum(
         1 for e in manifest["entries"] if e["rendered"] and not e["approved"]
     )
@@ -3407,6 +3414,129 @@ def report_codings_past_axis(content_states):
             file=sys.stderr,
         )
     return past
+
+
+SITE_URL = f"https://{config.SITE_DOMAIN}/"
+STATIC_PAGES = ["", "votes.html", "instruments.html", "rubric.html",
+                "methodology.html", "about.html", "corrections.html"]
+
+
+def dataset_jsonld():
+    """schema.org Dataset for the home page, so search engines and agents can
+    cite the record. The text reuses the approved site description."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": config.SITE_NAME,
+        "description": ("Where every country stands on autonomous weapons: recorded "
+                        "votes, official statements, and national policy, tracked "
+                        "as they shift over time."),
+        "url": SITE_URL,
+        "creator": {"@type": "Person", "name": "Walker Robinson",
+                    "url": "https://walker-robinson.com"},
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "isAccessibleForFree": True,
+        "spatialCoverage": "UN member states",
+        "dateModified": config.UPDATED_THROUGH,
+        "distribution": [
+            {"@type": "DataDownload", "encodingFormat": "text/csv",
+             "contentUrl": SITE_URL + "data/positions.csv"},
+            {"@type": "DataDownload", "encodingFormat": "application/json",
+             "contentUrl": SITE_URL + "data/positions.json"},
+        ],
+    }
+    return ('<script type="application/ld+json">'
+            + json.dumps(data, ensure_ascii=False, sort_keys=True) + "</script>")
+
+
+def position_rows(votes, content_states, preview):
+    """Every position reading that renders, one row per reading, oldest first
+    per state. Votes are left out: they are UN data under the UN's own terms,
+    and the repository's data/ directory carries them."""
+    rows = []
+    for iso3 in sorted(votes["states"]):
+        cs = content_states.get(iso3, {})
+        name = cs.get("display_name") or display_from_un_name(votes["states"][iso3]["un_name"])
+        codings = sorted((c for c in cs.get("position_codings", [])
+                          if preview or is_approved(c)), key=lambda c: iso(c["as_of"]))
+        current = current_position(cs, preview)
+        for c in codings:
+            rows.append({
+                "iso3": iso3,
+                "state": name,
+                "code": c["code"],
+                "position": config.POSITION_PLAIN[c["code"]],
+                "confidence": c.get("confidence") or "",
+                "as_of": iso(c["as_of"]),
+                "current": c is current,
+                "page": f"{SITE_URL}state/{iso3}.html",
+                "sources": " ".join(dict.fromkeys(
+                    e["url"] for e in c.get("evidence") or [] if e.get("url"))),
+            })
+    return rows
+
+
+def write_discovery_files(out, votes, content_states, preview):
+    """sitemap.xml, robots.txt, llms.txt and the CC BY position download.
+    Deterministic, with no build timestamps, so the freshness gate holds."""
+    out = Path(out)
+    pages = list(STATIC_PAGES)
+    if (out / "conference.html").exists():
+        pages.insert(1, "conference.html")
+    pages += [f"state/{iso3}.html" for iso3 in sorted(votes["states"])]
+    urls = "".join(
+        f"  <url><loc>{SITE_URL}{p}</loc><lastmod>{config.UPDATED_THROUGH}</lastmod></url>\n"
+        for p in pages)
+    (out / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + urls + "</urlset>\n", encoding="utf-8", newline="\n")
+    (out / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n",
+        encoding="utf-8", newline="\n")
+
+    rows = position_rows(votes, content_states, preview)
+    (out / "data").mkdir(exist_ok=True)
+    cols = ["iso3", "state", "code", "position", "confidence", "as_of", "current",
+            "page", "sources"]
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\n")
+    w.writeheader()
+    for r in rows:
+        w.writerow({**r, "current": "yes" if r["current"] else "no"})
+    (out / "data" / "positions.csv").write_text(buf.getvalue(), encoding="utf-8", newline="\n")
+    payload = {
+        "name": f"{config.SITE_NAME}: position readings",
+        "license": "CC BY 4.0, https://creativecommons.org/licenses/by/4.0/",
+        "credit": f"{config.SITE_NAME}, Walker Robinson, {SITE_URL}",
+        "updated_through": config.UPDATED_THROUGH,
+        "note": ("Positions as read by this site from each state's own words. "
+                 "A state with no row has not been reviewed yet. Vote data is "
+                 "not included; it is UN data under the UN's terms."),
+        "codes": config.POSITION_CATEGORIES,
+        "rows": rows,
+    }
+    (out / "data" / "positions.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
+        encoding="utf-8", newline="\n")
+
+    listing = "\n".join(f"- [{label}]({SITE_URL}{href})" for href, label in nav_items()
+                        if href != "index.html")
+    (out / "llms.txt").write_text(
+        f"# {config.SITE_NAME}\n\n"
+        "> Where every country stands on autonomous weapons: recorded votes, "
+        "official statements, and national policy, tracked as they shift over "
+        "time. Every position links to a quoted, dated source.\n\n"
+        "The site takes no position on whether autonomous weapons should be "
+        "banned or regulated. It records who says what.\n\n"
+        f"## Pages\n\n- [Board]({SITE_URL})\n"
+        + listing + "\n"
+        f"- State pages: {SITE_URL}state/ISO3.html (ISO 3166-1 alpha-3 code, for example USA)\n\n"
+        "## Data\n\n"
+        f"- [Positions, CSV]({SITE_URL}data/positions.csv) (CC BY 4.0)\n"
+        f"- [Positions, JSON]({SITE_URL}data/positions.json) (CC BY 4.0)\n"
+        "- Votes: https://github.com/wrobinson127/machine-politics (UN terms, non-commercial)\n",
+        encoding="utf-8", newline="\n")
 
 
 def assert_deploy_clean(manifest, preview):

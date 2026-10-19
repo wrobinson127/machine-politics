@@ -1069,6 +1069,15 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .vote-glyph { font-size: 1rem; }
 
+/* On a phone the row header stacks above its roster, so 152 names get the
+   full width instead of a column beside a short label */
+@media (max-width: 560px) {
+  .vote-table, .vote-table tbody, .vote-table tr,
+  .vote-table th, .vote-table td { display: block; }
+  .vote-table th { padding-bottom: 0.1rem; border-bottom: none; }
+  .vote-table td { padding-right: 0; }
+}
+
 /* ------------------------------------------------------------------ */
 /* Instruments page: endorsement record, quadrant view, wave map       */
 /* ------------------------------------------------------------------ */
