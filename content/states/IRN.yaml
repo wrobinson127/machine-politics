@@ -1,0 +1,84 @@
+# Iran: coverage batch 2, drafted 2026-10-19. In scope because it abstained
+# on the latest resolution (80/57; it abstained on all three). Iran is not a
+# CCW High Contracting Party; it attends the expert group as an observer.
+# approved: false throughout; nothing renders until the analyst of record sets
+# approved: true.
+iso3: IRN
+un_name: IRAN (ISLAMIC REPUBLIC OF)
+display_name: Iran
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2025-11-04
+    approved: false
+    scope_note: >
+      Forum position only. Iran's explanations of vote object to the
+      resolutions' wording and scope and send the issue to the Geneva expert
+      group. They never say what that group should produce. Iran is not
+      itself a party to the Geneva convention.
+    rationale: >
+      Iran abstained on all three UN resolutions and explained why in 2023
+      and 2025. It objected to how the resolutions define the weapons, to
+      their references to human rights and regional conferences, and to
+      widening the subject from lethal autonomous weapons to autonomous
+      weapons in general. In 2025 it called the Geneva expert group the most
+      appropriate forum. It has not said what kind of rules, if any, it
+      wants.
+    evidence:
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Iran abstained in 2023 in part because the resolution does not define its terms.
+        quote: "the definition and scope of the terminology \"lethal autonomous weapons\" in the draft resolution are not clearly defined."
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: Mr. Ghourbanpour (Islamic Republic of Iran), page 5. The same explanation objects to the human rights reference (sixth preambular paragraph) and to the reference to regional events (seventh).
+      - source: un-c1-78-pv28
+        kind: eov
+        claim: Iran wants the Geneva expert group kept within the convention's scope.
+        quote: "the Group of Governmental Experts operating under the scope of the Convention on Certain Conventional Weapons should focus on member States of the Convention."
+        date: 2023-11-01
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: In 2025 Iran calls the CCW expert group the most appropriate forum for the issue.
+        quote: "the Group of Governmental Experts established under the framework of the CCW CCW remains the most appropriate forum"
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: ASR transcript, speaker Iran, 1:08:08, explanation before the vote on L.41. The doubled "CCW" is the transcript's. Official record A/C.1/80/PV.24 not yet issued when checked. Delivery language assumed English (English channel); unconfirmed.
+      - source: un-c1-80-transcript-24
+        kind: eov
+        claim: Iran objects to widening the subject from lethal autonomous weapons to autonomous weapons.
+        quote: "attempt to broaden the scope of the resolution from lethal autonomous weapons to the more general category of autonomous weapons gives rise to serious concerns."
+        date: 2025-11-04
+        url: https://transcripts.un.org/en/ga/c1/80/24
+        lang: en
+        translation: none
+        confidence: INFERRED
+        note: Same speech, 1:07:56.
+
+shift_events: []
+
+flags:
+  - "READING CHOICE: CCW-ONLY fits loosely. Iran is a non-party observer at the CCW, and its 2023 line that the GGE 'should focus on member States of the Convention' leaves Iran itself out, so this reads more as an argument against the General Assembly track than as a commitment to the Geneva process. The only explicit 'most appropriate forum' wording is in a machine transcript (INFERRED). Alternatives: AMBIG, or NONE if forum preference alone is not judged a position."
+  - "CONTEXT, NOT EVIDENCE ON LAWS: Iran's 79/239 submission on AI in the military domain (A/80/78, pp. 42-43; 79-239-Iran-EN.pdf, dated 12 Mar 2025) says it covers areas 'other than lethal autonomous weapons' and that Iran 'supports the establishment of legally binding arrangements between Member States as its preferred course of action, as opposed to norm-setting or political instruments', while calling it 'premature to assert the full applicability of international law' to AI. Not used for the LAWS reading; worth weighing if the analyst prefers AMBIG."
+  - "VOTES: Abstain on 78/241, 79/62 and 80/57. The 2024 explanation, if any, is not retrievable: A/C.1/79/PV.30 (action on L.77, 5 Nov 2024) is not issued and was not transcribed; GA/DIS/3756 notes no Iran EOV; Iran did not speak on LAWS in A/79/PV.44."
+  - "NAM working papers calling for a legally binding instrument (e.g. CCW/GGE.1/2022/WP.10) are by NAM States Parties to the CCW, which excludes Iran. Not corroboration."
+  - "Search record 2026-10-19: A/C.1/78/PV.28; issued A/C.1/79 records; A/79/PV.43, 44, 51; transcripts ga/c1/80/10-26 and ga/c1/81/1-13 (no LAWS content from Iran yet in 2026); A/79/88 (no Iran reply); A/80/78; CCW/GGE.1/2023/2; CCW/MSP/2023/7 and 2024/7; six 2026 GGE and PrepCom transcripts (no Iran). Mission websites unreachable."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Iran is not yet doctrine-reviewed by this project; its international
+        position is recorded above.

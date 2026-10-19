@@ -353,6 +353,18 @@
    "approved": false,
    "kind": "position_codings",
    "rendered": false,
+   "state": "IRN"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "IRN"
+  },
+  {
+   "approved": false,
+   "kind": "position_codings",
+   "rendered": false,
    "state": "ISL"
   },
   {
