@@ -5,6 +5,10 @@ on:
     branches: ["**"]
   pull_request:
 
+# Tests and a build only; the token never needs to write.
+permissions:
+  contents: read
+
 jobs:
   test-and-build:
     runs-on: ubuntu-latest

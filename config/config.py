@@ -188,6 +188,9 @@ POSITION_TEXTURES = {
 
 SITE_NAME = "Machine Politics"
 SITE_DOMAIN = "machinepolitics.walker-robinson.com"
+# IndexNow (Bing, Yandex and others): a public key, not a secret. The build
+# publishes it at /<key>.txt so search engines can verify URL submissions.
+INDEXNOW_KEY = "39351f175f42fa8a022328174c9e337d"
 TIMELINE_START_YEAR = 2013
 # The date the record is current to: the latest dated review or fact across
 # approved content. It ends the board axis and stamps every "as of" phrase.
