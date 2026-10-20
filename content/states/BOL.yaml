@@ -1,0 +1,34 @@
+# Bolivia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BOL
+un_name: BOLIVIA (PLURINATIONAL STATE OF)
+display_name: "Bolivia"
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Bolivia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (no national reply in
+      A/79/88; Bolivia appears only as a signatory of the Ibero-American summit
+      communique printed there) and under 79/62 and 79/239 (no national file
+      found in the UNODA Eightieth session folder); CCW GGE statements 2023 to
+      2026 on the UNODA portal (none by Bolivia); First Committee statements
+      2023 to 2026 on the UNODA portal (the October 2024 statement lists
+      autonomous weapon systems among new technologies that raise concerns for
+      peace and security, with no instrument stated); no LAWS explanation of
+      vote found; not a named author of Draft Protocol VI (2022 or 2023).
+      Endorsements found: the 2023 Ibero-American special communique calling
+      for a legally binding instrument with prohibitions and regulations;
+      context only.
+
+shift_events: []
+
+flags:
+  - "Bolivia did not vote on 80/57. No explanation found."
+  - "The Ibero-American communique (A/79/88 annex I) is an endorsement, not Bolivia's own words; it would point to LBI-BAN if a national statement echoing it turned up."
+  - "A 2023 UNODA portal entry for Bolivia links a file named Austria_en.pdf; apparently misfiled, not used."

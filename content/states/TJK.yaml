@@ -1,0 +1,32 @@
+# Tajikistan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: TJK
+un_name: TAJIKISTAN
+display_name: Tajikistan
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Tajikistan has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (A/79/88 annex list
+      and the UNODA national-file path; none filed) and 79/239 (A/80/78
+      annex list and UNODA path; none filed); 79/62 created no new
+      submission call, and the May 2025 New York informal consultations
+      list no statement by this state; CCW GGE statements and working
+      papers 2023 to 2026 on meetings.unoda.org and docs-library (none by
+      this state); CCW Review Conference preparatory committee 2026
+      statements (none); First Committee general debate statements on
+      UNODA for 2023 and 2025 (opened; no LAWS mention); official records
+      A/C.1/78/PV.2 to PV.30 and 80th session machine transcripts (no LAWS
+      mention); web search (none). No ministry or mission page on
+      autonomous weapons found.
+
+shift_events: []
+
+flags:
+  - "No record found beyond votes."

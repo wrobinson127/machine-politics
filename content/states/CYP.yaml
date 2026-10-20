@@ -1,0 +1,33 @@
+# Cyprus: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CYP
+un_name: CYPRUS
+display_name: Cyprus
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Cyprus has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed: not in the A/79/88 or A/80/78 annexes, no national file in the
+      UNODA library); First Committee national statements and explanations
+      of vote 2023 to 2026 (none found on UNODA; Cyprus speaks through the
+      EU); CCW meeting pages, CCW/MSP/2025 working papers, and sampled 2025
+      and 2026 GGE and Preparatory Committee transcripts (no national
+      statement on LAWS found). Group texts, context only: Cyprus associated
+      itself after delivery with the joint statement Brazil delivered at the
+      Aug-Sep 2026 GGE (two-tier approach, rolling text as basis for
+      negotiating an instrument in the CCW), and co-submitted CCW/MSP/2025/WP.16
+      and WP.19, which do not address LAWS. Endorsed the US Political
+      Declaration, the REAIM 2023 call to action and REAIM 2026 pathways.
+
+shift_events: []
+
+flags:
+  - "The Aug-Sep 2026 GGE joint statement (source ccw-gge-2026-joint-statement-aug-sep, batch 6) lists Cyprus as associating after delivery. Under R3 it corroborates only, so NONE stands; a national Cypriot text would be needed to move this."
+  - "UNODA indexes a 'Reply received from Cyprus' dated 2024-02-28 with no file and no resolution named. It is not in the A/79/88 annex, so it is probably not a 78/241 reply, but it was not opened."

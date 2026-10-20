@@ -1,0 +1,48 @@
+# Sudan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SDN
+un_name: SUDAN
+display_name: Sudan
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2025-10-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Sudan welcomed the Geneva expert group's work in 2025, and in 2026
+      said it supports inclusive UN processes to keep autonomous weapons
+      under meaningful human control. It has not said what kind of
+      instrument those processes should produce, which is closest to
+      supporting the Geneva process on this site's scale.
+    evidence:
+      - source: sdn-c1-80-cluster4-2025
+        claim: Sudan welcomes the GGE session and says international humanitarian law applies fully to these weapons.
+        description: >
+          Arabic-only statement in the conventional weapons debate. Sudan
+          closes by welcoming the second session of the GGE on lethal
+          autonomous weapons systems and affirming that international
+          humanitarian law remains fully applicable to all weapon systems,
+          including the possible development and use of these weapons.
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Sudan_4_AR.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: sdn-c1-81-general-debate-2026
+        claim: Sudan supports UN processes on human control and welcomes the GGE's consensus report, naming no instrument.
+        quote: "Sudan supports inclusive processes under the auspices of the United Nations aimed at ensuring that Lethal autonomous weapons systems remain subject to meaningful human control"
+        date: 2026-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Sudan.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Weak reading. Sudan names a goal (meaningful human control) and welcomes the GGE report, but says 'processes under the auspices of the United Nations', not the CCW specifically. NONE is a real alternative if CCW-ONLY is read as requiring explicit support for the CCW process."
+  - "The 2025 Arabic statement's line that IHL 'remains fully applicable' is standard language and is not read as OPPOSE: it does not say no new rules are needed."
+  - "The 2026 quote is English and in Sudan's own words; confidence is INFERRED because the mapping to CCW-ONLY is interpretation. The UNODA index labels the 2025 Arabic file as EN; it is Arabic."

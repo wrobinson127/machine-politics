@@ -1,0 +1,63 @@
+# Cuba: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CUB
+un_name: CUBA
+display_name: Cuba
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2018-10-10
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Since at least 2018 Cuba has told the UN First Committee that it wants a
+      legally binding instrument that bans fully autonomous weapons and
+      regulates weapons with some autonomy, such as armed drones. Its 2024
+      submission to the UN Secretary-General says the same. On this site's
+      scale that is a treaty with bans.
+    evidence:
+      - source: un-c1-73-pv4
+        kind: statement
+        claim: In 2018 Cuba supports negotiating a legally binding instrument that prohibits lethal autonomous weapons and regulates attack drones.
+        quote: "Cuba supports the initiation of negotiations on a legally binding instrument prohibiting autonomous lethal weapons or killer robots and on regulations for military attack drones"
+        date: 2018-10-10
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/73/PV.4&l=E
+        lang: es
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Official verbatim record; Cuba spoke in Spanish and the English is
+          the UN's official text as printed in the record. The same sentence
+          names the CCW as "the ideal forum".
+      - source: un-c1-78-pv6
+        kind: statement
+        claim: In 2023 Cuba again calls for a legally binding instrument that prohibits autonomous weapons and regulates semi-autonomous ones.
+        quote: "We advocate for the negotiation and adoption of a legally binding instrument prohibiting autonomous weapons and regulating semi-autonomous weapons."
+        date: 2023-10-06
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.6&l=E
+        lang: es
+        translation: official
+        confidence: EXPLICIT
+        note: Cuba spoke in Spanish; official English record.
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Cuba's 2024 submission supports a legally binding instrument that prohibits fully autonomous weapons.
+        quote: "Cuba supports the urgent adoption of a legally binding international instrument that prohibits the manufacture, possession and use of fully autonomous weapons"
+        date: 2024-05-25
+        url: https://docs.un.org/en/A/79/88
+        lang: es
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Official UN English text of Cuba's reply in the annex to A/79/88
+          (original Spanish, dated 25 May 2024). The sentence continues "and
+          regulates the use of semi-autonomous weapons, including drones".
+          National Spanish file: 78-241-Cuba-SP.pdf in the Seventy-Ninth
+          session folder.
+
+shift_events: []
+
+flags:
+  - "Earliest verified: A/C.1/73/PV.4 (10 Oct 2018). Cuba very likely said this earlier (CCW meetings from 2014, HRC 2013); A/C.1/72 and earlier were not checked. The analyst may move as_of on better evidence."
+  - "Same position also verified in A/C.1/74/PV.5 (14 Oct 2019, CCW named as the ideal forum), A/C.1/76/PV.4 (6 Oct 2021, 'a protocol banning autonomous lethal weapons'), A/C.1/77/PV.7 (11 Oct 2022) and A/C.1/78/PV.19 (23 Oct 2023)."
+  - "Cuba's March 2026 CCW GGE remarks (reported by a secondary tracker from UN Web TV) were not read; transcript evidence would be INFERRED only. No 79-62 or 79-239 national file for Cuba found."

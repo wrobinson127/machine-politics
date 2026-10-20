@@ -744,3 +744,1056 @@ sources:
     type: statement
     lang: en
     accessed: 2026-10-19
+
+  # Coverage batch 2 (drafted 2026-10-19)
+  - id: un-c1-80-transcript-7
+    title: General Assembly First Committee, 80th session, 7th meeting, automatic
+      speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-15
+    url: https://transcripts.un.org/en/ga/c1/80/7
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Not an official record; A/C.1/80/PV.7 was not yet issued
+      when checked.
+  - id: un-ga-80-13-transcript
+    title: General Assembly, 80th session, general debate, 12th and 13th plenary
+      meetings, automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-09-27
+    url: https://transcripts.un.org/en/ga/80/13
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: Not an official record; A/80/PV.13 was not yet issued when checked.
+  - id: sau-riyadhdaily-2025-09-28
+    title: Foreign Minister Delivers Saudi Arabia's Speech at 80th UN General Assembly
+    publisher: Riyadh Daily (Saudi Press Agency report)
+    date: 2025-09-28
+    url: https://alriyadhdaily.com/article/8c01c0e640a64a26a39f267d5b51f063
+    type: secondary_report
+    lang: en
+    accessed: 2026-10-19
+  - id: un-gge-2026-s2-m5-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2026 second session, 5th meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2026-09-02
+    url: https://transcripts.un.org/en/asset/k12/k12hptpwu5
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+  - id: un-gge-2025-s1-m6-transcript
+    title: CCW Group of Governmental Experts on LAWS, 2025 first session, 6th meeting,
+      automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-03-05
+    url: https://transcripts.un.org/en/asset/k1l/k1lt3n3xwv
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+
+    # Bulk review, drafted 2026-10-19 (approved: false in every state file)
+  - id: unsg-report-a-80-78
+    title: 'Artificial intelligence in the military domain and its implications for international peace and security: report of the Secretary-General (A/80/78)'
+    publisher: United Nations General Assembly
+    date: 2025-06-05
+    url: https://documents.un.org/api/symbol/access?s=A/80/78&l=E
+    type: report
+    lang: en
+    accessed: 2026-10-19
+    note: Report under resolution 79/239. Reissued for technical reasons on 4 February 2026 (face). Annex I prints national replies, including Mexico's (original Spanish, 10 April 2025).
+  - id: tto-submission-78-241
+    title: Input by Trinidad and Tobago to the Report of the Secretary-General on UNGA resolution 78/241
+    publisher: Government of Trinidad and Tobago, via UNODA Documents Library
+    date: 2024-05-31
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Trinidad-and-Tobago-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: No date on the face; date is the PDF creation date. Not printed in the annex to A/79/88.
+  - id: jam-c1-80-other-measures-2025
+    title: Statement by Jamaica, thematic debate on other disarmament measures, First Committee, 80th session
+    publisher: Permanent Mission of Jamaica to the United Nations, via UNODA Documents Library
+    date: 2025-10-28
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Jamaica.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Delivered by Ms. Allele Reid, Deputy Permanent Representative; date from the face.
+  - id: un-c1-73-pv4
+    title: General Assembly First Committee, 73rd session, 4th meeting, official verbatim record (A/C.1/73/PV.4)
+    publisher: United Nations General Assembly
+    date: 2018-10-10
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/73/PV.4&l=E
+    type: meeting_record
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Contains Cuba's statement (spoke in Spanish; official English).
+  - id: un-c1-78-pv6
+    title: General Assembly First Committee, 78th session, 6th meeting, official verbatim record (A/C.1/78/PV.6)
+    publisher: United Nations General Assembly
+    date: 2023-10-06
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.6&l=E
+    type: meeting_record
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Contains Cuba's statement (spoke in Spanish; official English).
+  - id: un-c1-78-pv8
+    title: 'A/C.1/78/PV.8: First Committee, 8th meeting, general debate'
+    publisher: United Nations General Assembly
+    date: 2023-10-10
+    url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.8&l=E
+    type: meeting_record
+    lang: en
+    accessed: 2026-10-19
+    note: Also proposed by batch 10 with the same id and values; register once. Cited here for Haiti (spoke in French; official English).
+  - id: nzl-cabinet-minute-ers-21-min-0046
+    title: 'Autonomous Weapons Systems: New Zealand Policy Position and Approach for International Engagement (Cabinet minute ERS-21-MIN-0046)'
+    publisher: New Zealand Cabinet External Relations and Security Committee, proactively released via Ministry of Foreign Affairs and Trade
+    date: 2021-11-16
+    url: https://www.mfat.govt.nz/assets/OIA/OIA-2021-22/AWS-New-Zealand-Policy-Position.pdf
+    type: position_paper
+    lang: en
+    accessed: 2026-10-19
+  - id: nzl-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by New Zealand'
+    publisher: Government of New Zealand, Ministry of Foreign Affairs and Trade
+    date: 2024-05-21
+    url: https://www.mfat.govt.nz/assets/Peace-Rights-and-Security/Disarmament/New-Zealand-submission-to-the-UN-Secretary-General-on-autonomous-weapon-systems.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: nzl-gge-2024-03-statement
+    title: 'CCW Group of Governmental Experts on Lethal Autonomous Weapon Systems: New Zealand statement, March 2024 session'
+    publisher: Government of New Zealand, Ministry of Foreign Affairs and Trade
+    date: 2024-03-04
+    url: https://www.mfat.govt.nz/en/media-and-resources/ccw-group-of-governmental-experts-on-lethal-autonomous-weapon-systems
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: kir-vienna-statement-2024
+    title: 'Statement by Kiribati at Humanity at the Crossroads: Autonomous Weapons Systems and the Challenge of Regulation, Vienna'
+    publisher: Permanent Mission of Kiribati to the United Nations, via Austrian Federal Ministry for European and International Affairs
+    date: 2024-04-30
+    url: https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Kiribati_National_Statement.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: kir-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Kiribati'
+    publisher: Government of Kiribati, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Kiribati-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: vut-c1-80-general-debate-2025
+    title: Statement by Vanuatu to the First Committee, 80th session general debate
+    publisher: Permanent Mission of Vanuatu to the United Nations, via UNODA Documents Library
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/SxfFjblhlD_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: ccw-gge1-2021-wp7-group
+    title: Joint Working Paper (CCW/GGE.1/2021/WP.7), submitted by Argentina, Costa Rica, Ecuador, El Salvador, Panama, the State of Palestine, Peru, the Philippines, Sierra Leone and Uruguay
+    publisher: CCW Group of Governmental Experts, submitted by Argentina, Costa Rica, Ecuador, El Salvador, Panama, the State of Palestine, Peru, the Philippines, Sierra Leone and Uruguay
+    date: 2021-09-27
+    url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: 'Face-checked 2026-10-19. Ten authors as printed on the face; dated 27 September 2021, English only. Paragraph 17 asks for a mandate to negotiate a legally binding instrument with specific prohibitions and regulations.
+
+      '
+  - id: ccw-gge1-2023-wp6-draftprotocol
+    title: Draft Protocol on Autonomous Weapon Systems (Protocol VI) (CCW/GGE.1/2023/WP.6)
+    publisher: CCW Group of Governmental Experts, submitted by Argentina, Ecuador, El Salvador, Colombia, Costa Rica, Guatemala, Kazakhstan, Nigeria, Palestine, Panama, Peru, Philippines, Sierra Leone and Uruguay
+    date: 2023-05-11
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+    note: 'Face-checked 2026-10-19. The revised Draft Protocol VI. Fourteen authors in the printed order above; dated 11 May 2023, English only. Unlike the 2022 draft (WP.8), this face lists Colombia and Peru. Article 3 prohibits autonomous weapon systems that cannot be used with meaningful human control; Article 4 regulates the rest. Chile, Paraguay and Bolivia are not on the face. The URL is the one footnoted in A/79/88.
+
+      '
+  - id: irl-submission-78-241
+    title: Ireland National Submission, UNGA Resolution 78/241 on Lethal Autonomous Weapons Systems (LAWS)
+    publisher: Government of Ireland, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Ireland-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: Dated 24 May 2024 on its face. Printed in A/79/88, pages 57 to 61.
+  - id: lux-submission-78-241
+    title: 'Resolution 78/241 Lethal Autonomous Weapons Systems: Contribution of Luxembourg'
+    publisher: Government of Luxembourg, via UNODA Documents Library
+    date: 2024-05-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Luxembourg-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Undated on its face; the date is the one A/79/88 prints for Luxembourg''s reply (25 May 2024). The PDF creation date is 28 May 2024. Annexes the seven-state elements paper (CCW/GGE.1/2024/WP.3).
+
+      '
+  - id: che-submission-78-241
+    title: Views of Switzerland on lethal autonomous weapons systems in response to the request of the UN Secretary-General (resolution 78/241)
+    publisher: Swiss Federal Department of Foreign Affairs, via UNODA Documents Library
+    date: 2024-05-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Switzerland-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Undated on its face; the date is the one A/79/88 prints for Switzerland''s reply (25 May 2024). The PDF creation date is 28 May 2024.
+
+      '
+  - id: che-c1-80-conventional-2025
+    title: '80th session of the General Assembly, First Committee, thematic debate on conventional weapons: statement by Switzerland (23 October 2025)'
+    publisher: Permanent Mission of Switzerland to the United Nations, via UNODA Documents Library
+    date: 2025-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qRYqeekPsQ_nyc_m.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Bilingual file, French text then the official English text. Dated 23 October 2025 on its face.
+  - id: irl-c1-80-conventional-2025
+    title: 'UNGA80 First Committee, Thematic Debate on Conventional Weapons: Statement by Ireland'
+    publisher: Permanent Mission of Ireland to the United Nations, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Ireland.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: 'Undated on its face. The UNODA portal lists this same file URL under three Irish statements (21, 22 and 24 October 2025); the file read on 2026-10-19 is the conventional weapons statement, and 24 October is the portal date closest to that debate. Treat the day as approximate.
+
+      '
+  - id: bel-c1-79-general-2024
+    title: Belgium, Statement for the General Debate, UN General Assembly 79, First Committee (14 October 2024)
+    publisher: Permanent Mission of Belgium to the United Nations, via UNODA Documents Library
+    date: 2024-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Belgium_UNGA79_1C.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: bel-c1-80-conventional-2025
+    title: 'Belgium, Statements for debates in thematic clusters, Cluster IV: Conventional Weapons, First Committee of the 80th UN General Assembly'
+    publisher: Permanent Mission of Belgium to the United Nations, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Belgium_4.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Face reads "New York, October 2025"; the day is the UNODA portal date.
+  - id: bel-c1-81-general-2026
+    title: Belgium, 81st UN General Assembly, First Committee, Statement for the General Debate
+    publisher: Permanent Mission of Belgium to the United Nations, via UNODA Documents Library
+    date: 2026-10-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Belgium.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Face reads "New York, October 2026"; the day is the UNODA portal date.
+  - id: col-c1-78-general-2023
+    title: Intervención de Colombia, Debate General, Primera Comisión, 78 Período de Sesiones (9 de octubre de 2023)
+    publisher: Permanent Mission of Colombia to the United Nations, via UNODA Documents Library
+    date: 2023-10-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/STATEMENT_OF_COLOMBIA_-_GENERAL_DEBATE_FIRST_COMMITTEE_-_(OCT._9_2023).pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+    note: Spanish only; no official English version found. Described, not quoted.
+  - id: per-c1-79-general-2024
+    title: Intervención del Representante Permanente del Perú, Debate General de la Primera Comisión, 79 período de sesiones (7 de octubre de 2024)
+    publisher: Permanent Mission of Peru to the United Nations, via UNODA Documents Library
+    date: 2024-10-07
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Peru.pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+    note: 'Spanish only; no official English version found. Described, not quoted. Dated 7 October 2024 on its face; the portal lists it under 9 October 2024.
+
+      '
+  - id: per-c1-80-general-2025
+    title: 'Debate general de la Primera Comisión de la Asamblea General: intervención del Perú (8 de octubre de 2025)'
+    publisher: Permanent Mission of Peru to the United Nations, via UNODA Documents Library
+    date: 2025-10-08
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Peru_Spanish.pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+    note: Spanish only; no official English version found. Described, not quoted.
+  - id: ita-c1-79-cluster4-2024
+    title: 'UNGA First Committee, 79th session, Cluster IV (Conventional Weapons): Statement by Italy'
+    publisher: Permanent Mission of Italy to the Conference on Disarmament, via UNODA Documents Library
+    date: 2024-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Italy.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: ita-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement by Italy'
+    publisher: Permanent Mission of Italy to the Conference on Disarmament, via UNODA Documents Library
+    date: 2025-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Italy.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: prt-c1-79-general-2024
+    title: 'UNGA First Committee, 79th session, General Debate: Statement by Portugal'
+    publisher: Permanent Mission of Portugal to the United Nations, via UNODA Documents Library
+    date: 2024-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Portugal_UNGA79_1C.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: prt-c1-80-cluster4-2025
+    title: 'UNGA First Committee, 80th session, Cluster 4 (Conventional Weapons): Statement by Portugal'
+    publisher: Permanent Mission of Portugal to the United Nations, via UNODA Documents Library
+    date: 2025-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qacaJjoYnU_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: prt-c1-81-general-2026
+    title: 'UNGA First Committee, 81st session, General Debate: Statement by Portugal'
+    publisher: Permanent Mission of Portugal to the United Nations, via UNODA Documents Library
+    date: 2026-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Portugal.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: smr-c1-79-general-2024
+    title: 'UNGA First Committee, 79th session, General Debate: Statement by San Marino'
+    publisher: Permanent Mission of San Marino to the United Nations, via UNODA Documents Library
+    date: 2024-10-16
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/San_Marino.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: smr-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement by San Marino'
+    publisher: Permanent Mission of San Marino to the United Nations, via UNODA Documents Library
+    date: 2025-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/San_Marino.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: esp-c1-78-cluster4-2023
+    title: 'UNGA First Committee, 78th session, thematic debate on conventional weapons (Cluster IV): Statement by Spain (Spanish)'
+    publisher: Permanent Mission of Spain to the United Nations, via UNODA Documents Library
+    date: 2023-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Spain_es.pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+  - id: esp-c1-79-general-2024
+    title: 'UNGA First Committee, 79th session, General Debate: Statement by Spain (Spanish)'
+    publisher: Permanent Mission of Spain to the United Nations, via UNODA Documents Library
+    date: 2024-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Spain.pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+  - id: grc-c1-78-cluster4-2023
+    title: 'UNGA First Committee, 78th session, thematic debate on conventional weapons: Statement of Greece'
+    publisher: Permanent Mission of Greece to the United Nations, via UNODA Documents Library
+    date: 2023-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Greece_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: grc-c1-80-cluster3-2025
+    title: 'UNGA First Committee, 80th session, Cluster 3 (Conventional Weapons): Statement of Greece'
+    publisher: Permanent Mission of Greece to the United Nations, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Greece_4.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: mlt-c1-79-general-2024
+    title: 'UNGA First Committee, 79th session, General Debate: Statement by Malta'
+    publisher: Permanent Mission of Malta to the United Nations, via UNODA Documents Library
+    date: 2024-10-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Malta.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Statement text is undated; the date is the posting date shown on the UNODA meetings portal.
+  - id: mlt-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement by Malta'
+    publisher: Permanent Mission of Malta to the United Nations, via UNODA Documents Library
+    date: 2025-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Malta_(English)_0.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: hrv-c1-79-cluster4-2024
+    title: 'UNGA First Committee, 79th session, Conventional Weapons: Statement by Croatia'
+    publisher: Permanent Mission of Croatia to the United Nations, via UNODA Documents Library
+    date: 2024-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Croatia_0.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: hrv-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement by Croatia'
+    publisher: Permanent Mission of Croatia to the United Nations, via UNODA Documents Library
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/croatia_eng.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: svn-c1-78-cluster4-2023
+    title: 'UNGA First Committee, 78th session, thematic debate on conventional arms: Statement of Slovenia'
+    publisher: Permanent Mission of Slovenia to the United Nations, via UNODA Documents Library
+    date: 2023-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovenia_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Statement text is dated only "October 2023"; the date is the posting date shown on the UNODA meetings portal.
+  - id: svn-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement of Slovenia'
+    publisher: Permanent Mission of Slovenia to the United Nations, via UNODA Documents Library
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/slovenia_eng.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: alb-ccw-mhcp-2024
+    title: Statement by Albania at the 2024 Meeting of High Contracting Parties to the CCW
+    publisher: Permanent Mission of Albania to the United Nations Office at Geneva
+    date: 2024-11-14
+    url: https://ambasadat.gov.al/geneva/?p=1006
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: English statement text on a page titled in Albanian. Canonical address https://ambasadat.gov.al/geneva/newsroom/deklarate-gjate-takimit-te-paleve-te-larta-kontraktuese-te-konventes-per-ndalimin-ose-kufizimet-e-perdorimit-te-disa-armeve-konvencionale/
+  - id: mne-c1-80-general-2025
+    title: 'UNGA First Committee, 80th session, General Debate: Statement by Montenegro'
+    publisher: Permanent Mission of Montenegro to the United Nations, via UNODA Documents Library
+    date: 2025-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Montenegro_(English).pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Statement text is undated; the date is the posting date shown on the UNODA meetings portal.
+  - id: bgr-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Bulgaria'
+    publisher: Government of Bulgaria, via UNODA Documents Library
+    date: 2024-05-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Bulgaria-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: The national file is undated; the date is the one A/79/88 gives for Bulgaria's reply.
+  - id: bgr-c1-80-cluster4-2025
+    title: Statement by Bulgaria, First Committee, 80th session, thematic debate on conventional weapons
+    publisher: Permanent Mission of Bulgaria to the UN, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Bulgaria.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: bgr-c1-81-gd-2026
+    title: Statement by Bulgaria, First Committee, 81st session, general debate
+    publisher: Permanent Mission of Bulgaria to the UN, via UNODA Documents Library
+    date: 2026-10-12
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bulgaria.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: pak-gge-2023-03-06
+    title: Remarks by Pakistan at the CCW GGE on LAWS, 6 March 2023
+    publisher: Permanent Mission of Pakistan in Geneva, via UNODA Documents Library
+    date: 2023-03-06
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/Statement_of_Pakistan_at_GGE_(06_March_2023).pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: ccw-gge1-2023-wp3rev1-pak
+    title: Proposal for an international legal instrument on Lethal Autonomous Weapons Systems (LAWS), submitted by Pakistan (CCW/GGE.1/2023/WP.3/Rev.1)
+    publisher: CCW Group of Governmental Experts, submitted by Pakistan
+    date: 2023-03-08
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.3_REv.1_0.pdf
+    type: working_paper
+    lang: en
+    accessed: 2026-10-19
+  - id: pak-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Pakistan'
+    publisher: Government of Pakistan, via UNODA Documents Library
+    date: 2024-05-03
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Pakistan-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: The national file is undated; the date is the one A/79/88 gives for Pakistan's reply.
+  - id: pak-eov-79-62
+    title: Explanation of vote by Pakistan on draft resolutions L.30, L.71 and L.77, First Committee, 79th session
+    publisher: Permanent Mission of Pakistan to the UN, via UNODA Documents Library
+    date: 2024-11-06
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_Pakistan.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: L.77 became resolution 79/62. The document is undated; the date is the UNODA posting date.
+  - id: pak-submission-79-239
+    title: 'UNGA Resolution 79/239: Submission by Pakistan'
+    publisher: Government of Pakistan, via UNODA Documents Library
+    date: 2025-04-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Pakistan-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: Date is the one A/80/78 gives for Pakistan's reply.
+  - id: lka-gge-2023-03-06
+    title: Sri Lanka general statement, first session of the 2023 CCW GGE on LAWS, 6 March 2023
+    publisher: Permanent Mission of Sri Lanka in Geneva
+    date: 2023-03-06
+    url: https://live.lankamission.org/images/PDF-2023/6_march_2023_GGE_LAWS_Statement.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Posted on the mission's own site. The file repeats several paragraphs in slightly different wording, as if two drafts were merged.
+  - id: lka-gge-2026-03
+    title: Statement by Sri Lanka, first session of the 2026 CCW GGE on LAWS (Boxes I and III)
+    publisher: Permanent Mission of Sri Lanka in Geneva, via UNODA Documents Library
+    date: 2026-03-02
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Statement_by_Sri_Lanka_-_Box_1_&_3_-__2026_1st_Session_on_GGE_on_LAWS_-_02-06_March_2026.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Session ran 2 to 6 March 2026; the date is the UNODA posting date.
+  - id: mda-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by the Republic of Moldova'
+    publisher: Government of the Republic of Moldova, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Moldova-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'The national file is undated; the date is the one A/79/88 gives for Moldova''s reply ("Original: English").'
+  - id: svk-c1-78-gd-2023
+    title: Statement by Slovakia, First Committee, 78th session, general debate
+    publisher: Permanent Mission of Slovakia to the UN, via UNODA Documents Library
+    date: 2023-10-04
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovakia_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Delivery date confirmed by the official record A/C.1/78/PV.4 (4 October 2023).
+  - id: hun-c1-80-gd-2025
+    title: Statement by Hungary, First Committee, 80th session, general debate
+    publisher: Ministry of Foreign Affairs and Trade of Hungary, via UNODA Documents Library
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/hungary_eng.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: mdv-c1-81-gd-2026
+    title: Statement by the Maldives, First Committee, 81st session, general debate
+    publisher: Permanent Mission of the Maldives to the UN, via UNODA Documents Library
+    date: 2026-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Maldives.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Undated document; the date is the UNODA listing date.
+  - id: bgd-ccw-prepcom7-2026
+    title: Statement by Bangladesh, Preparatory Committee for the Seventh CCW Review Conference, 7 September 2026
+    publisher: Permanent Mission of Bangladesh in Geneva, via UNODA Documents Library
+    date: 2026-09-07
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/DELIVERED-STATEMENT_BANGLADESH.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: bgd-c1-81-gd-2026
+    title: Statement by Bangladesh, First Committee, 81st session, general debate
+    publisher: Permanent Mission of Bangladesh to the UN, via UNODA Documents Library
+    date: 2026-10-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bangladesh.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: UNODA lists the file as AR; the text is English.
+  - id: arm-c1-80-conventional-2025
+    title: Statement by Armenia, First Committee thematic discussion on conventional weapons, 80th session
+    publisher: Delegation of Armenia, via UNODA Documents Library
+    date: 2025-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/tUBYaQEhVK_AY_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: geo-ccw-revcon6-2021
+    title: Statement of Georgia, Sixth Review Conference of the CCW, general debate
+    publisher: Government of Georgia, via UNODA Documents Library
+    date: 2021-12-13
+    url: https://documents.unoda.org/wp-content/uploads/2022/02/Georgia-General-statement-CCW-6th-Rev-Con.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: geo-ccw-msp-2022
+    title: Statement of Georgia, Meeting of the High Contracting Parties to the CCW, 2022
+    publisher: Government of Georgia, via UNODA Documents Library
+    date: 2022-11-16
+    url: https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2022)/Statement_Georgia_MSP_CCW_FINAL.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: irq-c1-78-conventional-2023
+    title: Statement by Iraq, First Committee thematic debate on conventional weapons, 78th session (Arabic)
+    publisher: Permanent Mission of Iraq to the United Nations, via UNODA Documents Library
+    date: 2023-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Iraq.pdf
+    type: statement
+    lang: ar
+    accessed: 2026-10-19
+  - id: jor-submission-79-239
+    title: 'UNGA Resolution 79/239: Submission by Jordan (Arabic)'
+    publisher: Government of Jordan, via UNODA Documents Library
+    date: 2025-06-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Jordan-AR.pdf
+    type: submission
+    lang: ar
+    accessed: 2026-10-19
+  - id: lbn-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Lebanon (Arabic, Note Ref. 940/24)'
+    publisher: Permanent Mission of Lebanon to the United Nations, via UNODA Documents Library
+    date: 2024-06-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Lebanon-AR.pdf
+    type: submission
+    lang: ar
+    accessed: 2026-10-19
+  - id: lbn-c1-78-general-debate-2023
+    title: Statement by Lebanon, First Committee general debate, 78th session
+    publisher: Permanent Mission of Lebanon to the United Nations, via UNODA Documents Library
+    date: 2023-10-06
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/lebanon.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: lbn-c1-80-general-debate-2025
+    title: Statement by Lebanon, First Committee general debate, 80th session (Arabic)
+    publisher: Permanent Mission of Lebanon to the United Nations, via UNODA Documents Library
+    date: 2025-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/lebanon_16.10.pdf
+    type: statement
+    lang: ar
+    accessed: 2026-10-19
+  - id: qat-ccw-revcon6-2021
+    title: Statement by Qatar, Sixth Review Conference of the CCW (Arabic)
+    publisher: Government of Qatar, via UNODA Documents Library
+    date: 2021-12-13
+    url: https://documents.unoda.org/wp-content/uploads/2022/02/Qatar-CCW-RevCon-General-statement.pdf
+    type: statement
+    lang: ar
+    accessed: 2026-10-19
+  - id: egy-undc-2024-statement
+    title: Statement by Egypt, United Nations Disarmament Commission 2024 substantive session
+    publisher: Government of Egypt, via UNODA Documents Library
+    date: 2024-04-01
+    url: https://docs-library.unoda.org/United_Nations_Disarmament_Commission_-_(2024)/egypt_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: egy-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Egypt'
+    publisher: Government of Egypt, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Egypt-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: egy-c1-79-cluster5-2024
+    title: Statement by Egypt, UNGA 79 First Committee thematic debate, cluster 5
+    publisher: Government of Egypt, via UNODA Documents Library
+    date: 2024-10-25
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Egypt_0.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: egy-submission-79-239
+    title: 'UNGA Resolution 79/239: Submission by Egypt'
+    publisher: Government of Egypt, via UNODA Documents Library
+    date: 2025-04-11
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Egypt-en.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: dza-c1-76-thematic-2021
+    title: Statement by Algeria, UNGA 76 First Committee thematic discussion
+    publisher: Permanent Mission of Algeria to the UN, via UNODA
+    date: 2021-10-12
+    url: https://documents.unoda.org/wp-content/uploads/2021/10/ga-76-fc-td-algeria-fr.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: 'File name ends in -fr but the document is in English.
+
+      '
+  - id: dza-c1-80-cluster4-2025
+    title: Statement by Algeria, UNGA 80 First Committee thematic debate, conventional weapons (Arabic)
+    publisher: Government of Algeria, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Algeria_4_AR.pdf
+    type: statement
+    lang: ar
+    accessed: 2026-10-19
+  - id: dza-c1-81-general-debate-2026
+    title: Statement of Algeria, UNGA 81 First Committee general debate
+    publisher: Government of Algeria, via UNODA Documents Library
+    date: 2026-10-08
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Algeria.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: ccw-gge-2026-joint-statement-aug-sep
+    title: Joint Statement to the GGE on LAWS, August-September 2026 session (delivered by Brazil)
+    publisher: Brazil on behalf of a group of High Contracting Parties, via UNODA Documents Library
+    date: 2026-08-31
+    url: https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Updated_JST_for_GGE_LAWS_Aug-Sep_2026_session.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: 'Delivery date within the 31 August to 4 September 2026 session not stated on the face; 2026-08-31 is the session start. Corroboration only (R3). Named HCPs include Algeria and Cameroon; Algeria associated after delivery.
+
+      '
+  - id: cod-c1-80-general-debate-2025
+    title: Declaration de la Republique Democratique du Congo, UNGA 80 First Committee general debate (French)
+    publisher: Government of the DRC, via UNODA Documents Library
+    date: 2025-10-16
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/nwCGu-_PolwuT_nyc_fr.pdf
+    type: statement
+    lang: fr
+    accessed: 2026-10-19
+  - id: gnq-c1-78-general-debate-2023
+    title: Declaracion de la Republica de Guinea Ecuatorial, UNGA 78 First Committee general debate (Spanish)
+    publisher: Government of Equatorial Guinea, via UNODA Documents Library
+    date: 2023-10-11
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/EQUATORIAL_GUINEA_es_0.pdf
+    type: statement
+    lang: es
+    accessed: 2026-10-19
+  - id: cmr-c1-80-cluster7-2025
+    title: Declaration du Cameroun, UNGA 80 First Committee thematic debate 7, disarmament machinery (French)
+    publisher: Government of Cameroon, via UNODA Documents Library
+    date: 2025-10-28
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Cameroon_French.pdf
+    type: statement
+    lang: fr
+    accessed: 2026-10-19
+  - id: cmr-c1-81-general-debate-2026
+    title: Declaration du Cameroun, UNGA 81 First Committee general debate (French)
+    publisher: Government of Cameroon, via UNODA Documents Library
+    date: 2026-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Cameroon.pdf
+    type: statement
+    lang: fr
+    accessed: 2026-10-19
+  - id: sdn-c1-80-cluster4-2025
+    title: Statement by Sudan, UNGA 80 First Committee thematic debate, conventional weapons (Arabic)
+    publisher: Government of Sudan, via UNODA Documents Library
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Sudan_4_AR.pdf
+    type: statement
+    lang: ar
+    accessed: 2026-10-19
+  - id: sdn-c1-81-general-debate-2026
+    title: Sudan First Committee Statement, UNGA 81 general debate
+    publisher: Government of Sudan, via UNODA Documents Library
+    date: 2026-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Sudan.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: mar-submission-79-239
+    title: 'UNGA Resolution 79/239: Submission by Morocco (AI in the military domain, excluding LAWS)'
+    publisher: Government of Morocco, via UNODA Documents Library
+    date: 2025-04-18
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Morocco-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: 'Cited only in Morocco''s search note; date is the UNODA index posting date.
+
+      '
+  - id: gha-c1-79-conventional-2024
+    title: 'Ghana: statement at the First Committee thematic debate on conventional weapons, 79th session'
+    publisher: Permanent Mission of Ghana to the United Nations
+    date: 2024-10-24
+    url: https://www.ghanamissionun.org/10242024/
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Delivered by Linda Kesse Antwi, Counsellor. Mission web page, read in full.
+  - id: gha-c1-81-general-2026
+    title: 'Ghana: statement at the First Committee general debate, 81st session'
+    publisher: Permanent Mission of Ghana to the United Nations, via UNODA Documents Library
+    date: 2026-10-12
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Ghana.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: 'Delivered by Ambassador Samuel Yao Kumah. The face gives only the debate window "12th-16th October 2026"; 2026-10-12 is the delivery date shown by the UN transcript of the 6th meeting (transcripts.un.org/en/ga/c1/81/6).
+
+      '
+  - id: bfa-c1-79-conventional-2024
+    title: 'Burkina Faso: statement at the First Committee thematic debate on conventional weapons, 79th session (French)'
+    publisher: Permanent Mission of Burkina Faso to the United Nations, via UNODA Documents Library
+    date: 2024-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Burkina_Faso.pdf
+    type: statement
+    lang: fr
+    accessed: 2026-10-19
+    note: French only; no official English version found. Dated "New York, 23 octobre 2024" on the face (Automated Decision Research dates it 24 October).
+  - id: un-c1-80-transcript-4
+    title: General Assembly First Committee, 80th session, 4th meeting, automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-10
+    url: https://transcripts.un.org/en/ga/c1/80/4
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Burkina Faso spoke in French; the transcript is of the English interpretation.
+  - id: un-c1-80-transcript-6
+    title: General Assembly First Committee, 80th session, 6th meeting, automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-14
+    url: https://transcripts.un.org/en/ga/c1/80/6
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: General debate. Cote d'Ivoire spoke in French; the transcript is of the English interpretation.
+  - id: sen-c1-80-conventional-2025
+    title: 'Senegal: statement at the First Committee thematic debate on conventional weapons, 80th session (French)'
+    publisher: Permanent Mission of Senegal to the United Nations, via UNODA Documents Library
+    date: 2025-10-27
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Senegal_4_FR.pdf
+    type: statement
+    lang: fr
+    accessed: 2026-10-19
+    note: 'French only. The face gives the debate window "du 21 au 30 octobre 2025"; 2025-10-27 is the delivery date in the UN transcript of the 18th meeting.
+
+      '
+  - id: un-c1-80-transcript-18
+    title: General Assembly First Committee, 80th session, 18th meeting, automatic speech recognition transcript
+    publisher: United Nations (transcripts.un.org)
+    date: 2025-10-27
+    url: https://transcripts.un.org/en/ga/c1/80/18
+    type: transcript
+    lang: en
+    accessed: 2026-10-19
+    note: Thematic debate. Senegal spoke in French; the transcript is of the English interpretation (speaker block at 1:53:54).
+  - id: gmb-vienna-2024-statement
+    title: 'Statement of the Chief of Defence Staff of the Gambia Armed Forces at the Vienna Conference ''Humanity at the Crossroads: Autonomous Weapons Systems and the Challenge of Regulation'''
+    publisher: Government of The Gambia, via Austrian Federal Ministry for European and International Affairs
+    date: 2024-04-29
+    url: https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Gambia_National_Statement.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Undated text headed for the conference "to be held on 29-30 April 2024"; 2024-04-29 is the opening day, not a confirmed delivery date. Listed by the ministry as the Gambia national statement.
+  - id: freetown-communique-2024
+    title: 'Communique of the Regional Conference on the Peace and Security Aspects of Autonomous Weapons Systems: An ECOWAS Perspective (Freetown), as submitted under resolution 78/241'
+    publisher: ECOWAS Member States, via UNODA Documents Library
+    date: 2024-04-18
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-ECOWAS-EN.pdf
+    type: position_paper
+    lang: en
+    accessed: 2026-10-19
+    note: Regional endorsement; corroboration only. The face does not list which ECOWAS states attended or endorsed.
+  - id: mwi-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Malawi (Note No. 51/24)'
+    publisher: Government of Malawi, via UNODA Documents Library
+    date: 2024-05-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Malawi-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+  - id: ken-c1-79-general-debate-2024
+    title: Statement by Kenya, First Committee general debate, 79th session
+    publisher: Permanent Mission of Kenya to the United Nations, via UNODA Meetings Place
+    date: 2024-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Kenya_UNGA79_1C.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: ken-c1-80-general-debate-2025
+    title: Statement by Kenya, First Committee general debate, 80th session
+    publisher: Permanent Mission of Kenya to the United Nations, via UNODA Meetings Place
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Kenya_English.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zwe-ccw-mhcp-2015
+    title: Statement by Zimbabwe, Meeting of High Contracting Parties to the CCW, 12-13 November 2015
+    publisher: Government of Zimbabwe, via UNODA Documents Library
+    date: 2015-11-12
+    url: https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2015)/zimbabwe.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zwe-c1-79-general-debate-2024
+    title: Statement by Zimbabwe, First Committee general debate, 79th session
+    publisher: Permanent Mission of Zimbabwe to the United Nations, via UNODA Meetings Place
+    date: 2024-10-14
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Zimbabwe_UNGA79_1C.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zwe-c1-80-general-debate-2025
+    title: Statement by Zimbabwe, First Committee general debate, 80th session
+    publisher: Permanent Mission of Zimbabwe to the United Nations, via UNODA Meetings Place
+    date: 2025-10-10
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Zimbabwe.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zwe-c1-81-general-debate-2026
+    title: Statement by Zimbabwe, First Committee general debate, 81st session
+    publisher: Permanent Mission of Zimbabwe to the United Nations, via UNODA Meetings Place
+    date: 2026-10-08
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Zimbabwe.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zmb-c1-80-general-debate-2025
+    title: Statement by Zambia, First Committee general debate, 80th session
+    publisher: Permanent Mission of Zambia to the United Nations, via UNODA Meetings Place
+    date: 2025-10-16
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/VzDbNoBBRnlK_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: sgp-submission-78-241
+    title: 'UNGA Resolution 78/241: Submission by Singapore'
+    publisher: Government of Singapore, via UNODA Documents Library
+    date: 2024-05-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Singapore-EN.pdf
+    type: submission
+    lang: en
+    accessed: 2026-10-19
+    note: Undated on its face. Date from the A/79/88 annex header (9 May 2024).
+  - id: sgp-c1-80-cluster4-2025
+    title: Statement by Singapore, First Committee thematic debate on conventional weapons, 80th session
+    publisher: Permanent Mission of Singapore to the United Nations, via UNODA Meetings Place
+    date: 2025-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Singapore_4.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: idn-c1-79-cluster4-2024
+    title: Statement by Indonesia, First Committee thematic debate on conventional weapons (cluster 4), 79th session
+    publisher: Permanent Mission of Indonesia to the United Nations, via UNODA Meetings Place
+    date: 2024-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Indonesia.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: zaf-ccw-revcon6-2021
+    title: South African statement to the Sixth Review Conference of the High Contracting Parties to the CCW
+    publisher: Government of South Africa, via UNODA
+    date: 2021-12-13
+    url: https://documents.unoda.org/wp-content/uploads/2022/02/South-Africa-CCW-RevCon-General-Statement-.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: The document is headed "XX December 2021". The date given is the opening day of the Sixth Review Conference (13 to 17 December 2021), not a date printed on the text.
+  - id: zaf-c1-79-eov-l77-2024
+    title: South African explanation of vote on A/C.1/79/L.77, Lethal Autonomous Weapons Systems
+    publisher: Government of South Africa, via UNODA Meetings Place
+    date: 2024-11-06
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_South_Africa.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Undated on its face. The date is the posting date shown on UNODA Meetings Place.
+  - id: zaf-c1-80-cluster4-2025
+    title: Statement by South Africa, First Committee thematic debate on conventional weapons (cluster 4), 80th session
+    publisher: Government of South Africa, via UNODA Meetings Place
+    date: 2025-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/ClfPAohnnl_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: brn-c1-79-general-debate-2024
+    title: National statement by Brunei Darussalam, First Committee general debate, 79th session
+    publisher: Permanent Mission of Brunei Darussalam to the United Nations, via UNODA Meetings Place
+    date: 2024-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Brunei_Darussalam.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: The header gives only the debate period (7 to 16 October 2024). The date is the posting date shown on UNODA Meetings Place.
+  - id: lso-c1-78-cluster4-2023
+    title: Statement by Lesotho, First Committee thematic debate on conventional weapons, 78th session
+    publisher: Permanent Mission of Lesotho to the United Nations, via UNODA Meetings Place
+    date: 2023-10-23
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Lesotho_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: The header says only "October 2023". The date is the posting date shown on UNODA Meetings Place.
+  - id: lso-c1-79-general-debate-2024
+    title: Statement by Lesotho, First Committee general debate, 79th session
+    publisher: Permanent Mission of Lesotho to the United Nations, via UNODA Meetings Place
+    date: 2024-10-16
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Lesotho.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: The header says only "October 2024". The date is the posting date shown on UNODA Meetings Place.
+  - id: lso-c1-80-general-debate-2025
+    title: Statement by Lesotho, First Committee general debate, 80th session
+    publisher: Permanent Mission of Lesotho to the United Nations, via UNODA Meetings Place
+    date: 2025-10-15
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_the_Kingdom_of_Lesotho.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: khm-c1-79-general-debate-2024
+    title: Remarks by Cambodia, First Committee general debate, 79th session
+    publisher: Government of Cambodia, via UNODA Meetings Place
+    date: 2024-10-08
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Cambodia.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: Undated on its face. Date from the official record A/C.1/79/PV.3 (8 October 2024), which lists Cambodia among that day's speakers.
+  - id: khm-c1-80-cluster4-2025
+    title: Statement by Cambodia, First Committee thematic debate on conventional weapons, 80th session
+    publisher: Permanent Mission of Cambodia to the United Nations, via UNODA Meetings Place
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/eYt-DskVvj_nyc_en.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: tha-c1-80-cluster4-2025
+    title: Statement by Thailand, First Committee thematic discussion on conventional weapons, 80th session
+    publisher: Permanent Mission of Thailand to the United Nations, via UNODA Meetings Place
+    date: 2025-10-24
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Thailand.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+    note: The file is headed "Draft".
+  - id: tha-c1-81-general-debate-2026
+    title: Statement by Thailand, First Committee general debate, 81st session
+    publisher: Permanent Mission of Thailand to the United Nations, via UNODA Meetings Place
+    date: 2026-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Thailand.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19
+  - id: tls-c1-80-general-debate-2025
+    title: Statement by Timor-Leste, First Committee general debate, 80th session
+    publisher: Permanent Mission of Timor-Leste to the United Nations, via UNODA Meetings Place
+    date: 2025-10-13
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/timor-leste_eng.pdf
+    type: statement
+    lang: en
+    accessed: 2026-10-19

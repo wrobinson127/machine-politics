@@ -1,0 +1,49 @@
+# Slovenia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SVN
+un_name: SLOVENIA
+display_name: Slovenia
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2023-10-23
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the UN First Committee in 2023, Slovenia backed a stronger mandate for
+      the expert group of the Geneva weapons convention, the CCW, one that may
+      lead to negotiations on a new international instrument. In 2025 it
+      welcomed the group's progress. It has not said whether the instrument
+      should be binding or what it should ban, so on this site's scale its
+      stated position is support for the Geneva process.
+    evidence:
+      - source: svn-c1-78-cluster4-2023
+        claim: Slovenia supports a stronger CCW expert group mandate that may lead to negotiating a new instrument.
+        quote: "Slovenia supports a stronger mandate that may lead to negotiations for a new international instrument on this matter."
+        date: 2023-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovenia_en.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: >
+          The statement text is dated only "October 2023"; 2023-10-23 is the
+          date the UNODA meetings portal shows. The paragraph frames this
+          around the CCW meeting of states parties and the GGE mandate.
+      - source: svn-c1-80-general-2025
+        claim: In 2025 Slovenia acknowledges the expert group's progress without naming an outcome.
+        quote: "Slovenia acknowledges the limited but meaningful progress achieved in the Group of Governmental Experts on Lethal Autonomous Weapons Systems (GGE LAWS)"
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/slovenia_eng.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Weighing: CCW-ONLY vs AMBIG vs LBI-OPEN. Slovenia supports negotiating 'a new international instrument' under a stronger CCW mandate, form unstated. Chose CCW-ONLY because every statement is framed around the Geneva mandate; AMBIG ('instrument, nature open', as drafted for HRV) is the close alternative. Not LBI-OPEN: the word binding never appears in a document opened here."
+  - "Not opened: a secondary tracker cites a Slovenian statement at the 2021 CCW Sixth Review Conference hoping for 'a legal instrument to prohibit or regulate'. Its only source is an unofficial speech-to-text page. If an official record exists it could move Slovenia to LBI-BAN or AMBIG; that reading would be PROVISIONAL until the document is obtained."
+  - "No 78/241 or 79/239 national submission for Slovenia found in A/79/88 or A/80/78, contrary to the batch note. The 2024 general debate statement (15 October 2024) could not be retrieved: the portal links it to the same file as a later thematic statement."
+  - "Corroboration only: Slovenia delivered a First Committee statement on behalf of multiple states in 2025 (subject not checked) and joined GGE joint statements in 2023, 2025 and 2026 calling to begin negotiations on the basis of the rolling text."

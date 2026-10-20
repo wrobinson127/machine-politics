@@ -1,0 +1,61 @@
+# Belgium: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BEL
+un_name: BELGIUM
+display_name: Belgium
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2026-10-09
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In October 2026 Belgium told the First Committee that the Geneva weapons
+      convention's Review Conference should give the expert group a mandate to
+      negotiate a legally binding instrument, possibly a new Protocol VI. In
+      2024 it backed the UN Secretary-General's call for a legal framework by
+      2026. In the statements read, Belgium has not said what the treaty should
+      ban, so this is a treaty with terms open.
+    evidence:
+      - source: bel-c1-81-general-2026
+        claim: Belgium calls for a mandate to negotiate a legally binding instrument, possibly a CCW Protocol VI.
+        quote: "a mandate to negotiate a legally binding instrument, potentially in the form of a Protocol VI to the CCW."
+        date: 2026-10-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Belgium.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          The sentence opens "We therefore call on the Review Conference to
+          provide the Group of Governmental Experts on Lethal Autonomous Weapon
+          Systems with". The same statement says "the time has come to move from
+          exploration to negotiation."
+      - source: bel-c1-79-general-2024
+        claim: In 2024 Belgium supported the Secretary-General's call for a legal framework on autonomous weapons by 2026.
+        quote: "asked the member States to provide a legal framework for autonomous weapon systems by 2026, a call which Belgium supports"
+        date: 2024-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Belgium_UNGA79_1C.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The subject of "asked" is the UN Secretary-General.
+      - source: bel-c1-80-conventional-2025
+        claim: In 2025 Belgium expected remaining differences to be settled in negotiations on an instrument.
+        quote: "we are convinced that any remaining differences can be resolved in the context of subsequent negotiations on an instrument."
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Belgium_4.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "as_of is the first statement read that says 'legally binding' in Belgium's own words (October 2026). The October 2024 statement backs a 'legal framework' by 2026, which the analyst may judge enough to date the reading to 2024-10-14."
+  - "Possible LBI-BAN: Belgium aligns with EU statements that back the two-tier approach, and it associated with the Vienna 2024 chair's summary (prohibitions plus regulations). Both corroborate only (R3, endorsement rule). No Belgian national text stating prohibitions was found."
+  - "Belgium did not file a national reply under 78/241 (not in A/79/88's list; the EU replied). Co-author of CCW/GGE.1/2024/WP.5 (bias paper, no instrument preference) and co-submitter of CCW/MSP/2025/WP.5 (rolling text is a sufficient basis); context only."
+  - "Belgium's October 2023 general debate statement backs efforts in the CCW to foster consensus on a normative framework; no instrument stated. CCW GGE statements by Belgium for 2023 to 2026 were not found on the UNODA portal."
+  - "Statement days (2024-10-14 on the face; 2025-10-24 and 2026-10-09 from the UNODA portal) should be checked; the 2025 and 2026 faces say only 'October'."

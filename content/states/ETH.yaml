@@ -1,0 +1,21 @@
+# Ethiopia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ETH
+un_name: ETHIOPIA
+display_name: Ethiopia
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Ethiopia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Ethiopia (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Ethiopia is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: 2023 nuclear and other-disarmament-measures thematic statements and the 15 October 2025 general debate statement read in full; the 2025 statement only speaks of harnessing AI within globally agreed frameworks. The 16 October 2024 statement is listed with no posted text. Ethiopia endorsed the US Political Declaration on military AI, which is context only. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "Nothing beyond the search note."

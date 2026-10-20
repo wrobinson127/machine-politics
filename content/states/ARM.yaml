@@ -1,0 +1,55 @@
+# Armenia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ARM
+un_name: ARMENIA
+display_name: Armenia
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2025-10-23
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the First Committee in October 2025, Armenia said it fully supports
+      the two-tier approach: autonomous weapons that cannot be used lawfully
+      must be prohibited, and other systems brought in line with the laws of
+      war. That points toward a treaty with bans. Armenia did not say the
+      rules should be legally binding, and its own focus was on controlling
+      transfers of these weapons. Armenia voted Yes on all three UN
+      resolutions.
+    evidence:
+      - source: arm-c1-80-conventional-2025
+        claim: Armenia endorses the two-tier approach of prohibitions plus regulation.
+        quote: "Armenia fully supports the two-tiered approach"
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/tUBYaQEhVK_AY_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: arm-c1-80-conventional-2025
+        claim: Armenia says systems that cannot comply with the laws of war must be prohibited.
+        quote: "weapon systems that are inherently indiscriminate and cannot be employed in compliance with international humanitarian law must be prohibited"
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/tUBYaQEhVK_AY_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: arm-c1-80-conventional-2025
+        claim: Armenia notes there is no dedicated instrument yet, without saying what form one should take.
+        quote: "At a time when there is no dedicated international instrument regulating this domain"
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/tUBYaQEhVK_AY_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "AMBIG vs LBI-BAN. The brief maps two-tier to LBI-BAN, but the Sweden ruling (packet item 7) held that prohibitions with no stated binding form read AMBIG. Armenia never says legally binding in any record opened here, so AMBIG is proposed on that precedent. If the analyst treats two-tier alone as enough, LBI-BAN EXPLICIT as of 2025-10-23."
+  - "Armenia's 79/239 submission on AI in the military domain (16 April 2025, 79-239-Armenia-EN.pdf) was read: it stresses IHL compliance, human control and judgment, accountability and responsible transfers, but names no instrument. Not cited."
+  - "No submission under 78/241 (not in the A/79/88 annex; no national file on UNODA). First Committee general debate statements 2023, 2024, 2025 and 2026 (English) were read: none addresses autonomous weapons beyond a 2026 line on AI risks. The 2023 EOV on L.42 concerns ammunition, not LAWS. No Armenian CCW statement on LAWS found."
+  - "Context only: endorsed the US Political Declaration, the REAIM 2023 call to action and REAIM 2026 pathways."

@@ -107,6 +107,42 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "AFG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "AGO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ALB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "AND"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ARE"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "ARE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "ARG"
   },
   {
@@ -114,6 +150,18 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "ARG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ARM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ATG"
   },
   {
    "approved": true,
@@ -149,13 +197,79 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "AZE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "BDI"
   },
   {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "BEL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BEN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BFA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BGD"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BGR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BHR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BHS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BIH"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "BLR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BLZ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BOL"
   },
   {
    "approved": true,
@@ -179,6 +293,36 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "BRB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BRN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BTN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "BWA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CAF"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "CAN"
   },
   {
@@ -191,6 +335,30 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "CHE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CHL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CHL"
+  },
+  {
+   "approved": true,
+   "kind": "shift_events",
+   "rendered": true,
+   "state": "CHL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "CHN"
   },
   {
@@ -216,6 +384,48 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "CHN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CIV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CMR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "COD"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "COG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "COL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "COM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CPV"
   },
   {
    "approved": true,
@@ -228,6 +438,18 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "CRI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CUB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "CYP"
   },
   {
    "approved": true,
@@ -252,6 +474,18 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "DEU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "DJI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "DMA"
   },
   {
    "approved": true,
@@ -263,6 +497,18 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "DOM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "DZA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "ECU"
   },
   {
@@ -275,6 +521,24 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "EGY"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ERI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ESP"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "EST"
   },
   {
@@ -282,6 +546,12 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "EST"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ETH"
   },
   {
    "approved": true,
@@ -293,6 +563,18 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "FJI"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "FJI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "FRA"
   },
   {
@@ -305,6 +587,18 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "FSM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GAB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "GBR"
   },
   {
@@ -312,6 +606,54 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "GBR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GEO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GHA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GIN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GMB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GNB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GNQ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GRC"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "GRD"
   },
   {
    "approved": true,
@@ -329,6 +671,42 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "GUY"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "HND"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "HRV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "HTI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "HUN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "IDN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "IND"
   },
   {
@@ -336,6 +714,30 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "IND"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "IRL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "IRN"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "IRN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "IRQ"
   },
   {
    "approved": false,
@@ -348,6 +750,24 @@
    "kind": "position_codings",
    "rendered": true,
    "state": "ISR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ITA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "JAM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "JOR"
   },
   {
    "approved": true,
@@ -371,12 +791,96 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "KEN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KGZ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KHM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KIR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "KNA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "KOR"
   },
   {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "KWT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LAO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LBN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LBR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LBY"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LCA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LIE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LKA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "LSO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "LTU"
   },
   {
@@ -389,6 +893,12 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "LUX"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "LVA"
   },
   {
@@ -396,12 +906,126 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "LVA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MAR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MCO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MDA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MDG"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "MDG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MDV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MEX"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MHL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MKD"
   },
   {
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
    "state": "MLI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MLT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MMR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MNE"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MNG"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MOZ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MRT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MUS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MWI"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "MYS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "NAM"
   },
   {
    "approved": true,
@@ -425,6 +1049,18 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "NIC"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "NIC"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "NLD"
   },
   {
@@ -443,6 +1079,36 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "NPL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "NRU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "NZL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "OMN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PAK"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "PAN"
   },
   {
@@ -455,6 +1121,12 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "PER"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "PHL"
   },
   {
@@ -462,6 +1134,18 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "PHL"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PLW"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PNG"
   },
   {
    "approved": true,
@@ -485,6 +1169,36 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "PRT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "PRY"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "QAT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ROU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "ROU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "RUS"
   },
   {
@@ -492,6 +1206,48 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "RUS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "RWA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SAU"
+  },
+  {
+   "approved": false,
+   "kind": "doctrine",
+   "rendered": false,
+   "state": "SAU"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SDN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SEN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SGP"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SLB"
   },
   {
    "approved": true,
@@ -516,6 +1272,54 @@
    "kind": "doctrine",
    "rendered": false,
    "state": "SLV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SMR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SOM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SRB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SSD"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "STP"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SUR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SVK"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SVN"
   },
   {
    "approved": true,
@@ -527,7 +1331,97 @@
    "approved": true,
    "kind": "position_codings",
    "rendered": true,
+   "state": "SWZ"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SYC"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "SYR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TCD"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TGO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "THA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TJK"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TKM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TLS"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TON"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TTO"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TUN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
    "state": "TUR"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TUV"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "TZA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "UGA"
   },
   {
    "approved": true,
@@ -570,6 +1464,66 @@
    "kind": "doctrine",
    "rendered": true,
    "state": "USA"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "UZB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "VCT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "VEN"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "VNM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "VUT"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "WSM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "YEM"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ZAF"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ZMB"
+  },
+  {
+   "approved": true,
+   "kind": "position_codings",
+   "rendered": true,
+   "state": "ZWE"
   }
  ],
  "mode": "deploy",

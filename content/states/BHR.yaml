@@ -1,0 +1,30 @@
+# Bahrain: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BHR
+un_name: BAHRAIN
+display_name: Bahrain
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Bahrain has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed); First Committee national statements 2024 and 2025 (Arabic,
+      read: cyber security and civilian AI only, nothing on autonomous
+      weapons); UN transcripts of the 2025 and 2026 general debates (no
+      mention); CCW meeting pages and sampled 2025 and 2026 GGE transcripts
+      (no Bahraini statement found). Bahrain delivered the 2026 Gulf
+      Cooperation Council general debate statement, which stresses
+      responsible use of emerging technologies including military AI; that
+      is a group statement (context only). Endorsed the US Political
+      Declaration (context only).
+
+shift_events: []
+
+flags:
+  - "Three 2023 Bahrain First Committee statements are indexed on UNODA without files; not read."

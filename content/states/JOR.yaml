@@ -1,0 +1,56 @@
+# Jordan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: JOR
+un_name: JORDAN
+display_name: Jordan
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2025-06-23
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its 2025 submission to the UN Secretary-General on military uses
+      of AI, Jordan said it rejects any system able to make lethal decisions
+      without direct human involvement. The same paper calls for a binding
+      international agreement on military AI. Read together, that points to
+      a treaty with bans. The paper is in Arabic only, so this reading is a
+      description. Jordan voted Yes on all three UN resolutions.
+    evidence:
+      - source: jor-submission-79-239
+        claim: Jordan rejects autonomous combat systems that make lethal decisions without direct human involvement.
+        description: >
+          Arabic-only submission under resolution 79/239. One point is headed
+          as rejecting fully autonomous combat systems: it affirms Jordan's
+          position rejecting the use of any systems able to take lethal
+          decisions without direct human intervention, because of serious
+          legal and humanitarian risks. Another point says military AI must
+          rest on full human control over decisions to use force.
+        date: 2025-06-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Jordan-AR.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: submission
+      - source: jor-submission-79-239
+        claim: Jordan calls for a binding international convention on the use of AI in the military domain.
+        description: >
+          Same submission. Under strengthening international cooperation,
+          Jordan calls for developing a binding international convention
+          that regulates the use of artificial intelligence in the military
+          domain, including transparency, exchange of expertise and capacity
+          building between states.
+        date: 2025-06-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Jordan-AR.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "The binding convention Jordan asks for covers military AI broadly, not autonomous weapons by name; the rejection of lethal systems without human intervention is a separate point in the same paper. LBI-BAN rests on reading the two together. Alternatives: LBI-OPEN if the analyst reads the binding call alone, AMBIG if the two are kept apart."
+  - "Date is the UNODA posting date (23 June 2025); the paper carries no date of its own in the text read. Not listed in the A/80/78 annex, so it arrived after the report."
+  - "Missing document: Jordan's national statement at the CCW GGE in March 2023 (media.un.org video only, per an Automated Decision Research lead that quotes it as saying weapons should not decide without human control). Not opened."
+  - "Read and silent on LAWS: Jordan's 2023 CCW MHCP statement (Arabic), its 2024 and 2025 First Committee statements (the 2024 conventional weapons text extracts partly garbled; legible parts cover small arms and Israel), and its 2025 general debate (AI in nuclear command only). Jordan delivered Arab Group statements in 2023 (corroboration only under R3); none read mentions LAWS. No SG submission under 78/241. Endorsed the REAIM 2023 call to action (context only)."

@@ -1,0 +1,52 @@
+# Dominican Republic: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: DOM
+un_name: DOMINICAN REPUBLIC
+display_name: Dominican Republic
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In 2024 the Dominican Republic and thirteen other states sent the UN
+      Secretary-General a joint submission saying autonomous weapons need new
+      legally binding rules, including prohibitions and regulations, and
+      calling for treaty negotiations as soon as possible. The group backs
+      Draft Protocol VI, a proposed treaty that bans some systems and
+      regulates the rest.
+    evidence:
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: The joint submission the Dominican Republic co-signed says autonomous weapons require legally binding rules with prohibitions and regulations.
+        quote: "require the development of legally binding rules and principles, including regulations and prohibitions"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Joint reply in the annex to A/79/88 headed "Chile, Colombia, Costa
+          Rica, Dominican Republic, Ecuador, El Salvador, Guatemala,
+          Kazakhstan, Nigeria, Panama, Peru, Philippines, Sierra Leone and
+          State of Palestine", original English, dated 24 May 2024. The text
+          says the Draft Protocol VI group "has since received support from
+          three more, namely Chile, Colombia and the Dominican Republic".
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: The same joint submission calls for treaty negotiations to start as soon as possible.
+        quote: "Call for the initiation of negotiations on a legally binding treaty to regulate autonomous weapons systems as soon as possible."
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+
+shift_events: []
+
+flags:
+  - "NEEDS RULING: the only evidence is a co-written joint submission. Treated here like a co-written elements paper under ruling R2 (it states an instrument preference and the Dominican Republic is a named author on its face). If the analyst instead treats it as a joint statement (corroboration only), the reading falls to NONE, since no national Dominican statement with an instrument preference was verified."
+  - "The Dominican Republic is not an author on the face of Draft Protocol VI (2022 WP.8 or 2023 WP.6); it is named only as a later supporter in the joint submission text."
+  - "A secondary tracker reports a March 2023 CCW GGE statement (video only, media.un.org) calling for a legally binding instrument with restrictions; no written text found. Not cited."
+  - "General debate statements A/C.1/76/PV.7, A/C.1/77/PV.2, A/C.1/78/PV.9 and A/C.1/79/PV.4, and the Spanish 24 Oct 2024 conventional weapons statement on docs-library, do not mention autonomous weapons. Host of the 2023 Ibero-American Summit whose special communique calls for a binding instrument (endorsement, corroboration only)."

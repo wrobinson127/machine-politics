@@ -1,0 +1,22 @@
+# Micronesia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: FSM
+un_name: MICRONESIA (FEDERATED STATES OF)
+display_name: "Micronesia"
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Micronesia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (A/79/88 table of contents and the UNODA national files; none filed) and the 79/239 report A/80/78 (none filed; no 79/62 national files for this state found in the UNODA Eightieth session folder); the 2024 Vienna conference statements page (no statement); the Philippine 78/241 submission's account of the December 2023 Manila meeting (no state-attributed view; the full meeting report annex was not opened); First Committee general debate official records A/C.1/78/PV.6 to PV.9 and A/C.1/79/PV.2 to PV.4, PV.9 and PV.10 (Micronesia: no statement by this state in those records). Not checked: the 2025 First Committee official records (documents.un.org stopped serving the PV files mid-check), statements to the May 2025 New York informal consultations (meetings.unoda.org pages are script-rendered; the known copies are on a site this review does not use), and the 2026 GGE and Review Conference preparatory meetings. Web searches by state name for a national statement on autonomous weapons, and the Automated Decision Research and SafeGround pages as leads, turned up none. Not a CCW party, so no GGE statements. Automated Decision Research lists Micronesia as supporting a legally binding instrument, but the basis it gives is endorsement of the 2024 Vienna Chair's Summary, which is context only.
+
+shift_events: []
+
+flags:
+  - "ADR codes FSM as 'supports negotiation of a legally binding instrument' on the strength of the Vienna Chair's Summary endorsement only; under R3/rule 4 that does not count."
+  - "Pacific regional context (Manila 2023 report, SafeGround outreach) records Pacific Island concern about marine and ecological harm, without naming this state; context only."

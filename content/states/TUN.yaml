@@ -1,0 +1,21 @@
+# Tunisia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: TUN
+un_name: TUNISIA
+display_name: Tunisia
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Tunisia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission on autonomous weapons filed. The 2023 First Committee general debate statement (French) lists lethal autonomous weapons systems among worrying developments, and the 2026 general debate statement (English) refers to the continuous amplification of lethal autonomous weapons systems; neither states what rules Tunisia wants. Tunisia's 2024 and 2025 First Committee statements (Arabic and English), its 2025 Disarmament Commission statement and its 2023 CCW Meeting of High Contracting Parties statement (Arabic) do not address autonomous weapons.
+
+shift_events: []
+
+flags:
+  - "Concern only. The 2026 English line is 'continuous amplification of lethal autonomous weapons system'."

@@ -1,0 +1,44 @@
+# Thailand: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: THA
+un_name: THAILAND
+display_name: Thailand
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2025-10-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Thailand told the UN First Committee in 2025 that autonomous weapons
+      show an urgent need for effective regulation, and in 2026 it said it
+      supports the Geneva expert group's work. It has not said in its own
+      words whether that regulation should be a treaty or what it should
+      ban, so it sits in the "keep it in Geneva" group for now.
+    evidence:
+      - source: tha-c1-80-cluster4-2025
+        claim: Thailand says AI-enabled systems including LAWS show an urgent need for effective regulation.
+        quote: "underscores the urgent need for effective regulation and constructive and inclusive discussions to meet this challenge head-on."
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Thailand.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: tha-c1-81-general-debate-2026
+        claim: Thailand supports the Geneva expert group on LAWS.
+        quote: "Thailand supports the work of the Group of Governmental Experts on lethal autonomous weapons systems (LAWS) under the CCW."
+        date: 2026-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Thailand.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Strong corroboration pointing higher: Thailand associated itself, as an observer state, with the Brazil-led GGE joint statements of September 2025 and August-September 2026 (ccw-gge-2026-joint-statement-aug-sep), which call the rolling text a basis for negotiations on a CCW instrument under the two-tier approach of prohibitions and regulations. Under rule 4 and R3 that corroborates only. If the analyst finds a Thai national statement to the GGE or to the May 2025 New York informal consultations saying the same, LBI-BAN would follow."
+  - "'Effective regulation' (2025) is an outcome, which strains CCW-ONLY's 'no stated outcome'. INFERRED for that reason. The 2025 file is headed 'Draft'."
+  - "May 2025 informal consultations statements (resolution 79/62) are not posted on UNODA Meetings Place (meeting 74871 shows none); the main public archive is reachingcriticalwill.org, which is off limits. Not checked."
+  - "2023 EOV on L.34, L.47, L.52 and 2023 and 2024 conventional weapons statements do not mention LAWS. No submission under 78/241. The joint statements list Thailand as an observer state, not a High Contracting Party."

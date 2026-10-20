@@ -1,0 +1,64 @@
+# Greece: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GRC
+un_name: GREECE
+display_name: Greece
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2023-10-23
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Greece has said since 2023 that it supports the two-tier approach, which
+      bans some autonomous weapons and regulates the rest, and that the Geneva
+      weapons convention, the CCW, is the right place for it. It has spoken of
+      shaping an international instrument and of further codifying
+      international law, but it has never said whether that instrument should
+      be binding. So its words point toward prohibitions while leaving the
+      form open.
+    evidence:
+      - source: grc-c1-78-cluster4-2023
+        claim: Greece supports the two-tier approach discussed in the Geneva expert group.
+        quote: "Greece supports the two-tier approach expressed by many countries during the deliberations of the GGE on LAWS in Geneva"
+        date: 2023-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Greece_en.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+        note: >
+          The same statement says the CCW "remains the appropriate forum to
+          continue discussing the prohibitions and restrictions" of these
+          weapons. The 2024 submission (A/79/88) repeats both points almost word
+          for word.
+      - source: unsg-report-a-79-88
+        claim: Greece will help shape an international instrument but does not say what kind.
+        quote: "Greece will actively participate in future deliberations on this complex issue and in the shaping of an international instrument"
+        date: 2024-05-23
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: submission
+        note: >
+          Annex I of A/79/88 (Original: English, 23 May 2024). The same
+          submission welcomes both resolution 78/241 and the US Political
+          Declaration on military AI and autonomy.
+      - source: grc-c1-80-cluster3-2025
+        claim: Greece calls for further codification of international law under the CCW.
+        quote: "fulfil the mandate of the GGE on LAWS in a timely manner and to work towards the further codification of international law under the CCW"
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Greece_4.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Weighing: two-tier with prohibitions but no stated legal form, the same pattern as the approved DNK reading, so AMBIG rather than LBI-BAN. CCW-ONLY was considered and rejected because Greece does say what the process should contain (prohibitions and regulations). REG-SOFT was rejected because Greece never says the outcome should be non-binding."
+  - "Strongest pull toward LBI: 'further codification of international law under the CCW' (2025). Codification usually means binding rules, which with the two-tier support would give LBI-BAN at INFERRED. Held at AMBIG because 'codification' can also mean restating existing IHL, as the 2025 draft-articles authors do. Analyst call."
+  - "History: a 2015 Greek statement at the CCW informal experts meeting (mfa.gr Geneva mission page, 15 April 2015) doubted that ethical concerns could lead to 'a new set of legally binding rules' and called weapons reviews the only practical solution 'at the present stage'. Not coded (old, pre-dates the two-tier support), but it shows Greece moving toward prohibitions."
+  - "Greece's 79/239 submission (79-239-Greece-en.pdf) says it endorsed both the US Political Declaration and the Paris Declaration on human control; context only."

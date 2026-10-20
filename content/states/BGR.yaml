@@ -1,0 +1,66 @@
+# Bulgaria: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BGR
+un_name: BULGARIA
+display_name: Bulgaria
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-25
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its 2024 submission to the UN Secretary-General, Bulgaria called
+      itself a strong supporter of the two-tier approach: ban the systems that
+      cannot comply with the laws of war and regulate the rest. It said it is
+      ready to negotiate and adopt a new protocol to the Geneva weapons
+      convention on that basis. A new protocol is a binding treaty, so on this
+      site's scale this is a treaty with bans.
+    evidence:
+      - source: bgr-submission-78-241
+        claim: Bulgaria backs the two-tier approach, which aims to prohibit systems that cannot comply with international humanitarian law.
+        quote: "that should aim at prohibition of weapons systems that could not ensure conformity with IHL"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Bulgaria-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: The sentence opens "The application of IHL lies at the heart of the two-tier approach". The submission also says "Being a strong proponent of the two-tier approach".
+      - source: bgr-submission-78-241
+        claim: On the form of the instrument, Bulgaria supports negotiating and adopting a new CCW protocol.
+        quote: "stands ready to support start of negotiations and adoption of an Additional Protocol (VI) to CCW"
+        date: 2024-05-25
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Bulgaria-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: Full sentence begins "Regarding the form of an instrument on LAWS, Bulgaria" and ends "on the basis of the two-tier approach".
+      - source: bgr-c1-80-cluster4-2025
+        claim: In 2025 Bulgaria wants to move to negotiations on an instrument inside the CCW.
+        quote: "move ahead towards negotiations of an instrument on LAWS within the CCW framework"
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Bulgaria.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: bgr-c1-81-gd-2026
+        claim: In 2026 Bulgaria wants the Review Conference to give a negotiating mandate for an instrument.
+        quote: "to adopt a negotiating mandate for the GGE to take forward its work on a multilateral instrument on LAWS"
+        date: 2026-10-12
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bulgaria.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "LBI-BAN rests on the 2024 submission's explicit choice of a CCW Protocol VI plus the two-tier approach. The 2025 and 2026 statements say 'an instrument' without repeating 'binding' or 'prohibit'; they corroborate but would read LBI-OPEN or CCW-ONLY on their own."
+  - "Bulgaria co-wrote CCW/GGE.1/2024/WP.3 (4 March 2024, two-tier elements, nature of instrument not stated). Under R2 it does not by itself set the date, so as_of is the submission date."
+  - "Bulgaria's 79/239 submission (AI in the military domain, April 2025) lists support for the US Political Declaration, REAIM and the Paris Declaration. Endorsements of non-binding texts; context only, and not in tension with a CCW protocol on LAWS."
+  - "The Sofia-related 2025 record was not used; endorsements corroborate only. EU statements Bulgaria aligned with (First Committee 2023 to 2025) also corroborate only (R3)."
+  - "In the national PDF the words 'two-tier' in the protocol sentence break across a line ('twotier' in extracted text), so the quote stops before them."

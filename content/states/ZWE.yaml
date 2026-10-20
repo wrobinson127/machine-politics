@@ -1,0 +1,55 @@
+# Zimbabwe: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ZWE
+un_name: ZIMBABWE
+display_name: Zimbabwe
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2015-11-12
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the Geneva weapons convention in 2015, Zimbabwe joined calls for a
+      pre-emptive ban on lethal autonomous weapons. Since 2024 it has called
+      at the UN First Committee for a legally binding treaty, saying life and
+      death decisions must never be left to machines. On this site's scale
+      that is a treaty with bans.
+    evidence:
+      - source: zwe-ccw-mhcp-2015
+        claim: Zimbabwe calls for a pre-emptive ban on lethal autonomous weapons systems at the CCW.
+        quote: "we join like-minded delegations in calling for a pre-emptive ban on lethal autonomous weapons systems"
+        date: 2015-11-12
+        url: https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2015)/zimbabwe.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: zwe-c1-79-general-debate-2024
+        claim: Zimbabwe calls for early negotiation of a legally binding treaty on autonomous weapons.
+        quote: "we call for early negotiations of an international legally binding treaty on autonomous weapons systems"
+        date: 2024-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Zimbabwe_UNGA79_1C.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: zwe-c1-80-general-debate-2025
+        claim: Zimbabwe says life and death decisions must never be handed to machines, in the same passage that calls for urgent treaty negotiations.
+        quote: "Decisions over life and death must never be delegated to machines or algorithms."
+        date: 2025-10-10
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Zimbabwe.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Strongest doubt: the only explicit ban language is from 2015. Since 2024 Zimbabwe's words are a treaty 'regulating' or 'to regulate' autonomous weapons, plus the principle that machines must not decide over life and death. I read that principle as a prohibition, which keeps LBI-BAN. A stricter reading would make the current position LBI-OPEN from 2024-10-14, with a shift event from LBI-BAN. Analyst's call."
+  - "Wording drift worth noting: 2025 says decisions 'must never be delegated to machines or algorithms'; 2026 (8 October 2026 general debate) says 'must never be delegated entirely to machines or algorithms' and 'support binding international legal instruments to regulate autonomous weapons systems'. The word 'entirely' is new in 2026."
+  - "The 2015 statement says Zimbabwe was not yet a CCW party when it spoke. The meeting ran 12 to 13 November 2015; the UNODA listing shows 11 November. as_of uses 12 November, the first day on the face; the exact day of delivery is not on the document."
+  - "The 2024 statement's face gives the session dates 07 to 16 October 2024; the UNODA listing date 14 October 2024 is used."
+  - "Zimbabwe endorsed the REAIM 2023 Call to Action (content/endorsements.yaml). Context only."
+  - "Zimbabwe's 2025 explanation of vote on L.56 concerns AI in nuclear command and control, not LAWS; not used."

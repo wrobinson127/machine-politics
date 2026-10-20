@@ -1,0 +1,77 @@
+# United Arab Emirates: coverage batch 2, drafted 2026-10-19. In scope because
+# its recorded vote changed (Abstain on 78/241, Yes on 79/62 and 80/57). No
+# record found explains the change. Its words on autonomous weapons are
+# interventions inside the CCW expert group, read from machine transcripts.
+# approved: false throughout; nothing renders until the analyst of record sets
+# approved: true.
+iso3: ARE
+un_name: UNITED ARAB EMIRATES
+display_name: United Arab Emirates
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2026-09-03
+    approved: true    # analyst approval 2026-10-19, bulk review
+    scope_note: >
+      Read from the UAE's drafting work in the Geneva expert group in 2025
+      and 2026. It backs a consensus outcome there and wants the agreed
+      measures framed as carrying out existing law, not as new obligations.
+      It has not said what kind of instrument the work should become. All
+      of this rests on machine transcripts, several of them of Arabic
+      interpretation.
+    rationale: >
+      The United Arab Emirates abstained on the 2023 UN resolution and voted
+      for the 2024 and 2025 ones, without explaining either vote. In the
+      Geneva expert group it worked line by line on the draft text, asked
+      for stronger language on human control and accountability, and said
+      the measures should implement existing legal obligations rather than
+      create new ones. Before the group adopted its report in September
+      2026, it urged consensus. It has not said whether it wants a treaty.
+    evidence:
+      - source: un-gge-2026-s2-m5-transcript
+        kind: statement
+        claim: The UAE wants a paragraph of the expert group's text framed as implementing existing law, not as a new commitment.
+        quote: "in order to clarify that this paragraph aims at implementing existing legal obligations and do not create a new commitment or a separate obligations"
+        date: 2026-09-02
+        url: https://transcripts.un.org/en/asset/k12/k12hptpwu5
+        lang: ar
+        translation: unofficial
+        confidence: INFERRED
+        note: ASR transcript, speaker United Arab Emirates, 54:04, on paragraph 47 of the rolling text. Delivered in Arabic is likely, not confirmed. The same turn asks that exchanges of practice stay voluntary.
+      - source: un-gge-2026-s2-m8-transcript
+        kind: statement
+        claim: The UAE urges consensus on the expert group's text before adoption.
+        quote: "The United Arab Emirates believes that consensus would send an important message concerning the capacity of this group to tackle complex aspects of new technologies"
+        date: 2026-09-03
+        url: https://transcripts.un.org/en/asset/k1j/k1jgb18wkv
+        lang: ar
+        translation: unofficial
+        confidence: INFERRED
+        note: ASR transcript, speaker United Arab Emirates, 9:11. Delivery language not confirmed.
+      - source: un-gge-2025-s1-m6-transcript
+        kind: statement
+        claim: In 2025 the UAE asks for meaningful human control and compliance with international law to be written more clearly into the text.
+        quote: "adding meaningful human control is very important, and this should reflect also in a clearer manner observance of international law"
+        date: 2025-03-05
+        url: https://transcripts.un.org/en/asset/k1l/k1lt3n3xwv
+        lang: ar
+        translation: unofficial
+        confidence: INFERRED
+        note: ASR transcript of the English interpretation, speaker United Arab Emirates, 1:11:23; the delegate says "Allow me to address you in Arabic". Same turn proposes adding "sanction" for violations of international law.
+
+shift_events: []
+
+flags:
+  - "READING CHOICE: CCW-ONLY at INFERRED. Alternative AMBIG: a cabinet minister (Omar Al Olama, Minister of State for AI) told The National on 14 Oct 2026 that autonomous systems 'used in the military to kill people' are among 'fronts of AI that need to be regulated', which points toward new rules but names no instrument and is a press report outside any UN forum. The UAE's general AI line in official Security Council records (S/PV.9381, 18 Jul 2023: 'we must avoid overregulating AI in a way that hinders innovation'; S/PV.10005 (Resumption 1), 25 Sep 2025: 'strong guardrails') is about AI in general and is not used."
+  - "VOTES: the Abstain-to-Yes change has no stated reason in any record found. The one place an explanation could still sit is the First Committee action meeting of 5 Nov 2024 (A/C.1/79/PV.30), not issued and not transcribed. The only dated policy act between the votes is the Cabinet's international AI policy (approved 11 Oct 2024, MOFA news 28 Oct 2024), which supports 'international regulations that hold countries accountable for developing AI tools that could cause harm' and does not mention weapons."
+  - "Raising confidence needs an official UAE text: a written CCW statement posted by UNODA, or an official record. None found."
+  - "The UAE is a CCW High Contracting Party (since 26 Feb 2009). No reply under 78/241 or 79/239 found."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        The United Arab Emirates is not yet doctrine-reviewed by this
+        project; its international position is recorded above.

@@ -1,0 +1,73 @@
+# Lebanon: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LBN
+un_name: LEBANON
+display_name: Lebanon
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: INFERRED
+    as_of: 2024-06-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its 2024 submission to the UN Secretary-General, Lebanon called for
+      a new protocol to the Geneva weapons convention to regulate autonomous
+      weapons, and said they should be banned for now, until an international
+      agreement regulates them. That is a treaty with bans. The submission is
+      in Arabic only, so this reading is a description. In English in 2023,
+      Lebanon asked states for commitments that keep meaningful human control.
+      Lebanon voted Yes on all three UN resolutions.
+    evidence:
+      - source: lbn-submission-78-241
+        claim: Lebanon wants a new CCW protocol on autonomous weapons and a ban on them until one is agreed.
+        description: >
+          Arabic-only submission under resolution 78/241, sent with an English
+          cover note dated 24 June 2024. Six points: the weapons can adapt
+          and learn through AI; humans have no role in choosing the target,
+          time and place once deployed; responsibility is lost; they cannot
+          be relied on to distinguish combatants from civilians or to respect
+          proportionality; giving a machine freedom to kill threatens human
+          life and dignity. Point 6 says their use may conflict with Article
+          36 of Additional Protocol I, so new texts are needed to regulate
+          their use through a sixth protocol to the 1980 Convention on
+          Certain Conventional Weapons, consistent with international
+          humanitarian law, and that this type of weapon must be prohibited
+          for now until it is regulated through an international agreement.
+        date: 2024-06-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Lebanon-AR.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: submission
+      - source: lbn-c1-78-general-debate-2023
+        claim: Lebanon asks states for commitments that keep meaningful human control over autonomous weapons.
+        quote: "requires a more thorough and targeted discussions and commitments by member states to insure meaningful human control over them"
+        date: 2023-10-06
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/lebanon.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+      - source: lbn-c1-80-general-debate-2025
+        claim: Lebanon repeats in 2025 that states need fuller commitments to keep effective human control.
+        description: >
+          Arabic statement in the 2025 general debate by Ambassador Ahmad
+          Arafa. Lebanon says integrating AI into military systems is likely
+          to speed the shift toward more complex autonomous weapons, which
+          requires more comprehensive and targeted discussions and
+          commitments from member states to ensure effective human control
+          over these weapons.
+        date: 2025-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/lebanon_16.10.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "The submission is scanned and stored upside down in the PDF; it was read from the page images. It is not in the A/79/88 annex (posted 1 July 2024, after the report closed). The Arabic text is undated; 24 June 2024 is the date on the signed English cover note."
+  - "The ban Lebanon names is interim ('for now, until regulated through an international agreement'), joined to a call for a binding CCW protocol. LBI-BAN fits the rubric; the analyst may prefer to note that the ban is framed as a stopgap rather than a permanent prohibition."
+  - "UNODA indexes the 2025 statement on 16 October; the text is dated 15 October 2025 on its face. The UN transcript of the 2025 general debate (meeting 8) carries the same passage in English interpretation. The 2023 English statement uses 'insure' as in the original."
+  - "Read and silent on LAWS: Lebanon's First Committee statements of 9 and 25 October 2024 and its 2026 general debate statement. Lebanon delivered Arab Group EOVs in 2024 (L.14, L.40, L.41, L.63), none on LAWS; corroboration only under R3 in any case."

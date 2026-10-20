@@ -33,7 +33,7 @@ The analyst of record approves every coded position, shift event, doctrine claim
 - **Readable without colour vision.** Six of the position hues collide under simulated colour-vision deficiency, and a palette search proved no repalette fixes it, so every category carries a texture as well as a hue. The guarantee is a test, not a design note.
 - **Nothing silently absent.** Content-hashed asset URLs, pinned subresource-integrity hashes checked against the CDN, and a build that warns when a record would render nothing: each exists because an earlier version shipped with every gate green and a feature quietly missing.
 
-As of October 2026: all 193 member states' votes on the three resolutions, 42 states reviewed (37 with a stated position, 5 where none was found), the national-policy record reviewed for all seven major powers on the coverage list, and a dated log for the Seventh Review Conference of the CCW (16 to 20 November 2026).
+As of October 2026: all 193 member states' votes on the three resolutions, 192 states reviewed (107 with a stated position, 85 where none was found; Iceland is held pending its written statements), the national-policy record reviewed for all seven major powers on the coverage list, and a dated log for the Seventh Review Conference of the CCW (16 to 20 November 2026).
 
 ## Commands
 

@@ -1,0 +1,55 @@
+# Singapore: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SGP
+un_name: SINGAPORE
+display_name: Singapore
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-05-09
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Singapore's own words point two ways. In its 2024 submission it
+      backs the two-tier approach: prohibit autonomous weapons that
+      cannot be used in line with the laws of war, and limit the rest.
+      That points toward a treaty with bans. It wants this worked out in
+      the Geneva weapons convention's expert group and has not said the
+      result should be legally binding.
+    evidence:
+      - source: sgp-submission-78-241
+        claim: Singapore supports the two-tier approach of prohibitions and regulations.
+        quote: 'Singapore supports the "two-tier approach" on the prohibition and regulation of LAWS as agreed at the GGE in 2023.'
+        date: 2024-05-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Singapore-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: sgp-submission-78-241
+        claim: Singapore says systems that cannot comply with the laws of war should be prohibited.
+        quote: "We believe that the use of LAWS that are incapable of being used in compliance with IHL should be prohibited"
+        date: 2024-05-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Singapore-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: sgp-c1-80-cluster4-2025
+        claim: Singapore restates that the Geneva expert group is the right forum.
+        quote: "which is the appropriate forum for practical, multi-disciplinary discussions on LAWS."
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Singapore_4.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN EXPLICIT to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Coded LBI-BAN under the brief's rule that support for the two-tier approach is LBI-BAN. Singapore never says 'legally binding'; it speaks of 'elements of an instrument to govern LAWS' and a 'governance framework' inside the CCW GGE. A stricter reading would be CCW-ONLY with a note on prohibitions, or LBI-BAN at INFERRED. Analyst call."
+  - "The A/79/88 annex prints the same text with IHL spelled out ('international humanitarian law'); the quotes above follow the national file, which abbreviates."
+  - "2023 EOV (A/C.1/78/PV.28, 1 Nov 2023) covers mines and cluster munitions only. 2024 cluster 4 statement and 2026 general debate statement add nothing on the instrument (2026 welcomes the GGE consensus report). Singapore's 79/239 submission (A/80/78) covers military AI generally and REAIM; Singapore endorsed the US Political Declaration (context only)."
+  - "Singapore delivered ASEAN statements in 2025; group statements are corroboration only (R3)."

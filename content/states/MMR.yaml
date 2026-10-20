@@ -1,0 +1,29 @@
+# Myanmar: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MMR
+un_name: MYANMAR
+display_name: Myanmar
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Myanmar has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Myanmar-EN.pdf returns 403) and 79/239 (none in
+      A/80/78). CCW GGE statement lists 2023 to 2026 (no Myanmar
+      statement). First Committee statements on UNODA Meetings Place: 2023
+      general debate, three 2024 files (including conventional weapons and
+      outer space), three 2025 files (including conventional weapons) and
+      the 2026 general debate, none mentioning autonomous weapons. The 2023
+      general debate mentions AI only to welcome the Secretary-General's
+      advisory body. ASEAN group statements are context only.
+
+shift_events: []
+
+flags:
+  - "Myanmar's First Committee statements in this period were delivered by Ambassador Kyaw Moe Tun, whose credentials remain contested between the military authorities and the National Unity Government. The analyst may want a site-wide rule on whose words count for Myanmar; it does not change this NONE."

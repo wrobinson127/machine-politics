@@ -1,0 +1,43 @@
+# Madagascar: coverage batch 2, drafted 2026-10-19. In scope because its
+# recorded vote changed (Abstain on 78/241, Yes on 79/62). A full search of
+# the official record found nothing in Madagascar's own words on autonomous
+# weapons, so the coding is NONE with the review date. approved: false
+# throughout; nothing renders until the analyst of record sets approved: true.
+iso3: MDG
+un_name: MADAGASCAR
+display_name: Madagascar
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Madagascar has said on autonomous weapons and
+      found no stated position.
+    search_note: >
+      Reviewed 2026-10-19. Searched the official First Committee records
+      A/C.1/78/PV.1 to PV.30 (2023) and every issued 2024 record, the
+      machine transcripts of the 2025 and 2026 First Committee meetings
+      (ga/c1/80/1 to 30, ga/c1/81/1 to 13), the 2024 plenary record
+      A/79/PV.44, the Secretary-General's reports A/79/88 and A/80/78, the
+      2026 CCW expert group and Preparatory Committee transcripts, and
+      English and French web searches for statements by its government. No
+      statement in Madagascar's own words was found. Its votes (Abstain on
+      78/241, Yes on 79/62, not voting on 80/57) come from the UN dataset,
+      not from any reviewed statement.
+
+shift_events: []
+
+flags:
+  - "CORROBORATION ONLY: Madagascar is one of the states associated with the Chair's Summary of the Vienna conference (April 2024), annexed to Austria's reply in A/79/88. The summary commits to work 'for an international legal instrument to regulate autonomous weapons systems' but says it is 'without prejudice to the positions of States'. A Chair's text cannot set a reading (rule R3 spirit); it points to LBI-OPEN if Madagascar's own words are found."
+  - "VOTES: in First Committee 2023 Madagascar voted Yes on L.56 (A/C.1/78/PV.28); the Abstain in the dataset is the plenary vote of 22 Dec 2023, whose record was not located. Not voting on 80/57. No explanation of vote or correction note found for any year."
+  - "Search gaps: A/C.1/79/PV.13 onward (incl. the L.77 vote meeting) not issued; 2025 official records not issued; May 2025 New York consultation statements indexed only on a barred site, so unchecked; African Group CCW statements not retrieved (corroboration only in any case)."
+  - "Madagascar is a CCW High Contracting Party (acceded 14 Mar 2008)."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Madagascar is not yet doctrine-reviewed by this project.

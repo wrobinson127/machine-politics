@@ -1,0 +1,47 @@
+# Malta: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MLT
+un_name: MALTA
+display_name: Malta
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-10-09
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the UN First Committee in 2024 and 2025, Malta said autonomous weapons
+      that cannot comply with the laws of war should be banned and that human
+      control must be kept. It has not said what kind of instrument should do
+      the banning, or whether it should be binding. So its words point toward
+      prohibitions while leaving the form open.
+    evidence:
+      - source: mlt-c1-79-general-2024
+        claim: Malta says autonomous weapons that cannot comply with IHL should be banned.
+        quote: "LAWS that would not comply with international humanitarian law should be banned."
+        date: 2024-10-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Malta.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+        note: >
+          The statement text is undated; 2024-10-09 is the date the UNODA
+          meetings portal shows for it. The preceding sentence: "human control
+          must be retained over autonomous weapons systems".
+      - source: mlt-c1-80-general-2025
+        claim: Malta repeats its call to prohibit fully autonomous weapons that do not comply with IHL.
+        quote: "has advocated for the prohibition of fully autonomous weapons, which are not in compliance with IHL"
+        date: 2025-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Malta_(English)_0.pdf
+        lang: en
+        translation: none
+        confidence: AMBIGUOUS
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Weighing: Malta calls for a ban but names no instrument and no legal form. That matches the DNK pattern (prohibitions plus open form), so AMBIG. A ban is hard to picture without a binding rule, which argues for LBI-BAN at INFERRED; the brief says not to fill the form gap, so it is held at AMBIG. Analyst call."
+  - "2023 general debate (78th session, Malta_0.pdf) only says LAWS must comply with international law, in particular IHL."
+  - "No national submission under 78/241 or 79/239 found. No CCW GGE national statements found on the UNODA meetings portal."

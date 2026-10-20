@@ -1,0 +1,30 @@
+# Suriname: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SUR
+un_name: SURINAME
+display_name: Suriname
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Suriname has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (no national reply in
+      A/79/88) and under 79/62 and 79/239 (none found in the UNODA Eightieth
+      session folder); CCW GGE statements 2023 to 2026 on the UNODA portal
+      (none by Suriname); First Committee statements in 2024 (regional
+      disarmament) and the October 2026 general debate (says increasingly
+      autonomous weapons raise questions of accountability and human control
+      and that human responsibility must stay central, with no instrument
+      stated); no LAWS explanation of vote found; not a named author of Draft
+      Protocol VI. Endorsements, if any (for example the 2023 CARICOM
+      declaration), are context only.
+
+shift_events: []
+
+flags:
+  - "The 2026 statement stresses human responsibility and consistency with international law but names no instrument. A Suriname national statement at the 2023 CARICOM conference could exist and was not found."

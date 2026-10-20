@@ -1,0 +1,46 @@
+# Moldova: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MDA
+un_name: REPUBLIC OF MOLDOVA
+display_name: "Moldova"
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2024-05-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Moldova's own words point two ways. In its 2024 submission it said
+      an international framework is needed to limit and prohibit
+      autonomous weapons, which points toward a treaty with bans. It did
+      not say that framework should be legally binding.
+    evidence:
+      - source: mda-submission-78-241
+        claim: Moldova calls for an international framework that limits and prohibits military use of autonomous weapons.
+        quote: "it is necessary to create and review the international normative framework to limit and prohibit the military use of LAWS"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Moldova-EN.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: submission
+      - source: mda-submission-78-241
+        claim: Moldova wants the circumstances of partial or total prohibition defined and regulated internationally.
+        quote: "it is necessary to define and regulate internationally and nationally the circumstances of partial or total prohibition of the use of LAWS"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Moldova-EN.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: submission
+        note: The sentence continues "in accordance with the principles of the UN Charter, international humanitarian law, and in accordance with international treaties". The submission also asks for international monitoring, control and accountability mechanisms.
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "INFERRED because the submission never says 'legally binding' or 'treaty' as the outcome it wants; 'international normative framework' plus prohibitions plus monitoring mechanisms reads as a binding regime, but LBI-OPEN or AMBIG are defensible alternatives."
+  - "The submission reads like a translation (it switches to the acronym SAAL in places). The UNODA file is the English version Moldova filed; A/79/88 marks it Original: English."
+  - "Later own words are milder: 81st session general debate (Oct 2026) 'supports continued international discussions aimed at ensuring meaningful and fully functional human control'. Not contradictory, but no instrument preference."
+  - "Moldova associated itself with the Vienna 2024 chair's summary (A/79/88) and aligns with EU First Committee statements. Context only (R3 and endorsement rule)."
+  - "Moldova's 80th session statements (general debate, cluster 5) were opened; no LAWS instrument language."

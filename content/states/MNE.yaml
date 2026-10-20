@@ -1,0 +1,38 @@
+# Montenegro: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MNE
+un_name: MONTENEGRO
+display_name: Montenegro
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2025-10-15
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the UN First Committee in October 2025, Montenegro restated firm
+      support for the Geneva weapons convention, the CCW, and praised the work
+      of its expert group on lethal autonomous weapons. It did not say what
+      that work should produce. On this site's scale that is support for the
+      Geneva process with the outcome left unstated.
+    evidence:
+      - source: mne-c1-80-general-2025
+        claim: Montenegro supports the CCW and commends the work of its expert group on LAWS.
+        quote: "We also commend the ongoing work of the Group of Governmental Experts on Emerging Technologies in the Area of LAWS."
+        date: 2025-10-15
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Montenegro_(English).pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: >
+          The preceding sentence: "We reiterate firm support for the Convention
+          on Certain Conventional Weapons and its Protocols". The statement
+          text is undated; 2025-10-15 is the date the UNODA meetings portal
+          shows.
+
+shift_events: []
+
+flags:
+  - "Thin: one sentence of praise for the GGE inside a general debate. INFERRED because commending the GGE is read as support for the Geneva process. NONE is the alternative if the analyst wants more than a commendation."
+  - "Montenegro co-sponsored resolution 78/241 (sponsorships layer). The 2026 First Committee portal lists one Montenegrin statement, but no file link was available when checked. No 78/241 or 79/239 national submission found."

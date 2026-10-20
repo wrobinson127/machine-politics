@@ -1,0 +1,31 @@
+# Azerbaijan: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: AZE
+un_name: AZERBAIJAN
+display_name: Azerbaijan
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Azerbaijan has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 and 79/239 (none
+      filed: not in the A/79/88 or A/80/78 annexes, no national file in the
+      UNODA library); First Committee thematic statements on conventional
+      weapons 2023, 2024 and 2025 and general debate statements 2023 and
+      2025 (all English, read in full, no mention of autonomous weapons; a
+      2025 statement mentions only Azerbaijan's national AI strategy); UN
+      transcripts of the 2025 and 2026 general debates (no mention); CCW
+      meeting pages and sampled 2025 and 2026 GGE and Preparatory Committee
+      transcripts (no Azerbaijani statement on LAWS found). No explanation
+      of vote: Azerbaijan did not vote on any of the three resolutions.
+      Endorsed the REAIM 2023 call to action (context only).
+
+shift_events: []
+
+flags:
+  - "Did not vote on 78/241, 79/62 or 80/57. No explanation found in A/C.1/78/PV.28 (the 2023 vote meeting). Official verbatim records for the 79th session are issued only up to A/C.1/79/PV.12, so the 2024 vote meeting has no official record to check."

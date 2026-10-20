@@ -1,0 +1,37 @@
+# Belize: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: BLZ
+un_name: BELIZE
+display_name: Belize
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Belize has said on autonomous weapons and
+      found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: Belize spoke in A/C.1/78/PV.11 (2023) without
+      mentioning autonomous weapons, and delivered the 2025 CARICOM general
+      debate statement, which supports a legally binding instrument on
+      behalf of the group. SG submissions: none filed under 78/241 (not in
+      the annex to A/79/88; no 78-241 national file found in the UNODA
+      documents library) and none under 79/239 (A/80/78); no separate 79/62
+      submission round or national files were found. First Committee
+      official records searched for national statements: A/C.1/76/PV.2 to 9,
+      A/C.1/77/PV.2 to 9, A/C.1/78/PV.2 to 30, A/C.1/79/PV.2 to 4 and 9 to
+      12 (80th session verbatim records not issued; 79/PV.5 to 8
+      unavailable). UNODA documents library probed for national First
+      Committee statement files, 2023 to 2025. No national CCW GGE statement
+      or working paper found. The May 2025 New York informal consultations
+      page could not be opened. Ministry website not searched. Per a
+      secondary tracker it signed the CARICOM Declaration (2023): context
+      only.
+
+shift_events: []
+
+flags:
+  - "Belize delivered the 2025 CARICOM statement (Jamaica's 28 Oct 2025 statement aligns itself with the statement Belize delivered on behalf of CARICOM). Group statements corroborate only (R3), even when Belize is the speaker."
+  - "Did not vote on 78/241."

@@ -1,0 +1,57 @@
+# Portugal: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: PRT
+un_name: PORTUGAL
+display_name: Portugal
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-10-14
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      At the UN First Committee in October 2024, Portugal said its end goal is
+      a legally binding instrument that bans autonomous weapons that cannot
+      comply with the laws of war and regulates the rest. It said the same in
+      2025, and in 2026 it urged states to consider a treaty. On this site's
+      scale that is a treaty with bans.
+    evidence:
+      - source: prt-c1-79-general-2024
+        claim: Portugal states its end goal is a binding instrument that prohibits some systems and regulates the rest.
+        quote: "a legally binding instrument which prohibits systems that cannot be used in compliance with International Humanitarian Law and regulate the rest"
+        date: 2024-10-14
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Portugal_UNGA79_1C.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The sentence opens "Portugal remains committed to the end goal of having".
+      - source: prt-c1-80-cluster4-2025
+        claim: In 2025 Portugal again backs a binding instrument built on the two-tier approach.
+        quote: "prohibiting systems which cannot be used in compliance with international humanitarian law; on the other, regulating those that can"
+        date: 2025-10-23
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qacaJjoYnU_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          Same paragraph: "the adoption of a legally binding instrument on LAWS,
+          as recommended by the Secretary-General", with elements "enshrining a
+          two-tier approach".
+      - source: prt-c1-81-general-2026
+        claim: In October 2026 Portugal calls on states to consider adopting a treaty.
+        quote: "impel the international community to consider the adoption of a treaty on Lethal Autonomous Weapons Systems"
+        date: 2026-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Portugal.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Portugal filed no national submission under 78/241; it appears only among the Ibero-American communique signatories in A/79/88 (joint, corroboration only). No 79/239 national file found under the usual file names."
+  - "Earlier record: 2023 First Committee general debate (Portugal_en.pdf, 78th session) only welcomes the 2023 GGE report. The 2024 statement is the earliest found that states the instrument preference, so as_of is 2024-10-14; the position may be older."
+  - "Co-signer of CCW/GGE.1/2025/WP.8 (joint statement in support of the GGE, no instrument preference; corroboration only). The 2025 general debate (Portugal.pdf, 10 October 2025) and cluster 7 statement also call for new legally binding instruments on LAWS; not added to avoid padding."

@@ -1,0 +1,37 @@
+# Antigua and Barbuda: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: ATG
+un_name: ANTIGUA AND BARBUDA
+display_name: Antigua and Barbuda
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Antigua and Barbuda has said on autonomous
+      weapons and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: In A/C.1/77/PV.8 (12 Oct 2022) Antigua and
+      Barbuda voiced concern at autonomous weapons and said political
+      leadership is needed to stop their spread, with no instrument
+      preference. SG submissions: none filed under 78/241 (not in the annex
+      to A/79/88; no 78-241 national file found in the UNODA documents
+      library) and none under 79/239 (A/80/78); no separate 79/62 submission
+      round or national files were found. First Committee official records
+      searched for national statements: A/C.1/76/PV.2 to 9, A/C.1/77/PV.2 to
+      9, A/C.1/78/PV.2 to 30, A/C.1/79/PV.2 to 4 and 9 to 12 (80th session
+      verbatim records not issued; 79/PV.5 to 8 unavailable). UNODA
+      documents library probed for national First Committee statement files,
+      2023 to 2025. No national CCW GGE statement or working paper found.
+      The May 2025 New York informal consultations page could not be opened.
+      Ministry website not searched. Per a secondary tracker it joined the
+      CARICOM Declaration (2023), and it aligns with CARICOM group
+      statements: context only.
+
+shift_events: []
+
+flags:
+  - "A secondary tracker quotes a written 2022 statement in which Antigua and Barbuda joins 'the call for clear international rules'. That wording is not in the official verbatim record A/C.1/77/PV.8, and the written copy is hosted only on a site excluded by this review's rules. Even if confirmed, 'clear international rules' states no binding form; at most REG-SOFT or AMBIG at INFERRED."
+  - "Did not vote on 78/241."

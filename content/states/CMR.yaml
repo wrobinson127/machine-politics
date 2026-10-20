@@ -1,0 +1,57 @@
+# Cameroon: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: CMR
+un_name: CAMEROON
+display_name: Cameroon
+coverage_tier: anchor
+
+position_codings:
+  - code: CCW-ONLY
+    confidence: INFERRED
+    as_of: 2026-10-13
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In 2026 Cameroon told the First Committee that it attaches particular
+      importance to the work of the Geneva weapons convention's expert group
+      on autonomous weapons, and that the use of force must stay under
+      human judgment. It did not say what kind of instrument it wants. In
+      2025 it also called for an immediate moratorium. Both statements are
+      in French only, so this reading is a description.
+    evidence:
+      - source: cmr-c1-81-general-debate-2026
+        claim: Cameroon backs the CCW expert group's work and results-oriented dialogue, without naming an instrument.
+        description: >
+          French-only general debate statement. Cameroon says AI and
+          autonomous functions in weapons must stay subject to international
+          humanitarian law, attaches particular importance to the work under
+          the CCW and its GGE on LAWS, encourages substantive,
+          results-oriented multilateral dialogue, and says decisions on the
+          use of force must stay under appropriate human judgment and a
+          clear chain of responsibility.
+        date: 2026-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Cameroon.pdf
+        lang: fr
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: cmr-c1-80-cluster7-2025
+        claim: Cameroon calls for an immediate moratorium on lethal autonomous weapons.
+        description: >
+          French-only statement in the disarmament machinery debate. Calling
+          for preventive disarmament in the face of emerging technologies,
+          Cameroon asks for the immediate establishment of a moratorium on
+          lethal autonomous weapons systems and strict application of a
+          precautionary principle.
+        date: 2025-10-28
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Cameroon_French.pdf
+        lang: fr
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Unsure between CCW-ONLY and AMBIG. The 2025 moratorium call points toward prohibition; the 2026 statement is CCW-process language with no stated outcome. AMBIG would need confidence AMBIGUOUS, which conflicts with the French-only cap at INFERRED, so CCW-ONLY INFERRED is proposed."
+  - "Corroboration only (R3): Cameroon is a named High Contracting Party on the joint statement Brazil delivered at the Aug-Sep 2026 GGE, which supports the two-tier approach and the rolling text as a basis for negotiating an instrument (source ccw-gge-2026-joint-statement-aug-sep). Read together with the moratorium call, LBI-BAN INFERRED is arguable, but no national Cameroonian text names a treaty."
+  - "Cameroon's 2025 general debate statement (16 October 2025) also asks for 'cadres normatifs clairs' on AI, armed drones and lethal autonomous systems, without saying binding or not."
+  - "No SG submission found under 78/241 or 79/239. No Cameroon CCW national statement found on meetings.unoda.org."

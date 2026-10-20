@@ -194,7 +194,7 @@ TIMELINE_START_YEAR = 2013
 # It is not the vote-dataset snapshot date; that is UN_DATASET_DOWNLOADED_ON
 # and the dataset version named on the methodology page. A test holds this
 # at or after every approved as_of, so it cannot quietly fall behind.
-UPDATED_THROUGH = "2026-10-13"
+UPDATED_THROUGH = "2026-10-19"
 UN_DATASET_DOWNLOADED_ON = "2026-07-16"
 # The Seventh Review Conference of the CCW, Geneva. First and last day.
 REVCON_DATES = ("2026-11-16", "2026-11-20")

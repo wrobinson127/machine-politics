@@ -1,0 +1,26 @@
+# Monaco: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MCO
+un_name: MONACO
+display_name: Monaco
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Monaco has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (no national reply in
+      A/79/88) and under 79/62 and 79/239 (none found in the UNODA Eightieth
+      session folder); CCW GGE statements 2023 to 2026 on the UNODA portal
+      (none by Monaco); First Committee statements 2023 to 2026 on the UNODA
+      portal (none by Monaco listed); no LAWS explanation of vote found; not a
+      named author of Draft Protocol VI. No endorsements were used.
+
+shift_events: []
+
+flags:
+  - "No Monaco statement on autonomous weapons was found anywhere checked. The government and mission websites were not searched in depth."

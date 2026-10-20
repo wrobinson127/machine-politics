@@ -1,0 +1,22 @@
+# Guinea-Bissau: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GNB
+un_name: GUINEA-BISSAU
+display_name: Guinea-Bissau
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Guinea-Bissau has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (not among the replies in A/79/88) and 79/239 (no national file at the UNODA Eightieth session paths); First Committee official records A/C.1/78/PV.2 to PV.12 and PV.18 to PV.31 (2023); the 79th session records issued so far; UN machine transcripts of every 80th (2025) and 81st (2026) session First Committee meeting that has one; national statements posted on the UNODA documents library for the 78th to 81st sessions; transcripts of the 2026 CCW GGE sessions; the Vienna 2024 conference statements page. Guinea-Bissau's only statements found were delivered on behalf of the African Group (80th session, 2nd and 17th meetings), which speak of human control over lethal autonomous weapons; no national-capacity statement on the topic was found. African Group statements delivered by Guinea-Bissau corroborate only (R3). Guinea-Bissau is an ECOWAS member (Freetown Communique); context only.
+
+shift_events: []
+
+flags:
+  - "Guinea-Bissau chaired or spoke for the African Group in the 2025 First Committee; those group texts are not its own national position under R3."
+  - "Did not vote on 78/241; Yes on 79/62 and 80/57."

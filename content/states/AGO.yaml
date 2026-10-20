@@ -1,0 +1,21 @@
+# Angola: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: AGO
+un_name: ANGOLA
+display_name: Angola
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Angola has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission filed under 78/241 or 79/239. First Committee statements of 11, 18 and 23 October 2023 and the 14 October 2025 general debate statement (all English) do not mention autonomous weapons; the 2025 statement says military AI can be risky and calls for an open debate on how to regulate it, without naming an instrument. Angola's 1 April 2024 Disarmament Commission statement was on behalf of the African Group (context only).
+
+shift_events: []
+
+flags:
+  - "The 2025 line on regulating military AI is general and does not mention autonomous weapons; not treated as a position."

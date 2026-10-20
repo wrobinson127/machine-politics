@@ -1,0 +1,36 @@
+# Maldives: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MDV
+un_name: MALDIVES
+display_name: Maldives
+coverage_tier: anchor
+
+position_codings:
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2026-10-13
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      The Maldives' own words point two ways. In October 2026 it told
+      the UN First Committee that autonomous weapons that cannot comply
+      with international law must be banned and the rest regulated,
+      which points toward a treaty with bans. It did not say whether
+      those rules should be legally binding.
+    evidence:
+      - source: mdv-c1-81-gd-2026
+        claim: The Maldives wants non-compliant autonomous weapons banned and the rest regulated.
+        quote: "Autonomous weapons whose use cannot comply with international law must be banned and other systems must be regulated to ensure meaningful human control"
+        date: 2026-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Maldives.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: The document is undated; the date is the UNODA listing date for the 81st session general debate.
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: re-coded from LBI-BAN INFERRED to AMBIG AMBIGUOUS. The evidence never names a binding form, the pattern coded AMBIG for Sweden and Denmark. If two-tier or prohibition wording alone should count, restore LBI-BAN."
+  - "Single, very recent document. Earlier Maldives statements (78th, 79th, 80th sessions on UNODA, and the 80th session transcripts) mention autonomous weapons only as a concern, with no instrument preference."
+  - "INFERRED because 'banned' and 'regulated' are stated but the form of the rules is not. If the analyst reads 'must be banned' as necessarily a binding instrument, EXPLICIT is arguable."
+  - "No 78/241 or 79/239 submission found."

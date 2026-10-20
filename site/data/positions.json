@@ -14,6 +14,61 @@
  "note": "Positions as read by this site from each state's own words. A state with no row has not been reviewed yet. Vote data is not included; it is UN data under the UN's terms.",
  "rows": [
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "AFG",
+   "page": "https://machinepolitics.walker-robinson.com/state/AFG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Afghanistan"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "AGO",
+   "page": "https://machinepolitics.walker-robinson.com/state/AGO.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Angola"
+  },
+  {
+   "as_of": "2024-11-14",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "ALB",
+   "page": "https://machinepolitics.walker-robinson.com/state/ALB.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://ambasadat.gov.al/geneva/?p=1006",
+   "state": "Albania"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "AND",
+   "page": "https://machinepolitics.walker-robinson.com/state/AND.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Andorra"
+  },
+  {
+   "as_of": "2026-09-03",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ARE",
+   "page": "https://machinepolitics.walker-robinson.com/state/ARE.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://transcripts.un.org/en/asset/k12/k12hptpwu5 https://transcripts.un.org/en/asset/k1j/k1jgb18wkv https://transcripts.un.org/en/asset/k1l/k1lt3n3xwv",
+   "state": "United Arab Emirates"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -23,6 +78,28 @@
    "position": "Wants a treaty with bans",
    "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Argentina"
+  },
+  {
+   "as_of": "2025-10-23",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "ARM",
+   "page": "https://machinepolitics.walker-robinson.com/state/ARM.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/tUBYaQEhVK_AY_nyc_en.pdf",
+   "state": "Armenia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ATG",
+   "page": "https://machinepolitics.walker-robinson.com/state/ATG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Antigua and Barbuda"
   },
   {
    "as_of": "2023-03-13",
@@ -58,6 +135,17 @@
    "state": "Austria"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "AZE",
+   "page": "https://machinepolitics.walker-robinson.com/state/AZE.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Azerbaijan"
+  },
+  {
    "as_of": "2026-07-17",
    "code": "NONE",
    "confidence": "INFERRED",
@@ -69,6 +157,94 @@
    "state": "Burundi"
   },
   {
+   "as_of": "2026-10-09",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "BEL",
+   "page": "https://machinepolitics.walker-robinson.com/state/BEL.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Belgium.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Belgium_UNGA79_1C.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Belgium_4.pdf",
+   "state": "Belgium"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BEN",
+   "page": "https://machinepolitics.walker-robinson.com/state/BEN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Benin"
+  },
+  {
+   "as_of": "2024-10-23",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BFA",
+   "page": "https://machinepolitics.walker-robinson.com/state/BFA.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Burkina_Faso.pdf https://transcripts.un.org/en/ga/c1/80/4",
+   "state": "Burkina Faso"
+  },
+  {
+   "as_of": "2026-09-07",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "BGD",
+   "page": "https://machinepolitics.walker-robinson.com/state/BGD.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/DELIVERED-STATEMENT_BANGLADESH.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bangladesh.pdf",
+   "state": "Bangladesh"
+  },
+  {
+   "as_of": "2024-05-25",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "BGR",
+   "page": "https://machinepolitics.walker-robinson.com/state/BGR.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Bulgaria-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Bulgaria.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Bulgaria.pdf",
+   "state": "Bulgaria"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BHR",
+   "page": "https://machinepolitics.walker-robinson.com/state/BHR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Bahrain"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BHS",
+   "page": "https://machinepolitics.walker-robinson.com/state/BHS.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Bahamas"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BIH",
+   "page": "https://machinepolitics.walker-robinson.com/state/BIH.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Bosnia and Herzegovina"
+  },
+  {
    "as_of": "2026-07-17",
    "code": "NONE",
    "confidence": "INFERRED",
@@ -78,6 +254,28 @@
    "position": "No stated position",
    "sources": "",
    "state": "Belarus"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BLZ",
+   "page": "https://machinepolitics.walker-robinson.com/state/BLZ.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Belize"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BOL",
+   "page": "https://machinepolitics.walker-robinson.com/state/BOL.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Bolivia"
   },
   {
    "as_of": "2018-08-30",
@@ -102,6 +300,61 @@
    "state": "Brazil"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BRB",
+   "page": "https://machinepolitics.walker-robinson.com/state/BRB.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Barbados"
+  },
+  {
+   "as_of": "2024-10-15",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BRN",
+   "page": "https://machinepolitics.walker-robinson.com/state/BRN.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Brunei_Darussalam.pdf",
+   "state": "Brunei"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BTN",
+   "page": "https://machinepolitics.walker-robinson.com/state/BTN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Bhutan"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "BWA",
+   "page": "https://machinepolitics.walker-robinson.com/state/BWA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Botswana"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "CAF",
+   "page": "https://machinepolitics.walker-robinson.com/state/CAF.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Central African Republic"
+  },
+  {
    "as_of": "2023-03-13",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -111,6 +364,39 @@
    "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en",
    "state": "Canada"
+  },
+  {
+   "as_of": "2024-05-25",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "CHE",
+   "page": "https://machinepolitics.walker-robinson.com/state/CHE.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Switzerland-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qRYqeekPsQ_nyc_m.pdf",
+   "state": "Switzerland"
+  },
+  {
+   "as_of": "2018-08-30",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": false,
+   "iso3": "CHL",
+   "page": "https://machinepolitics.walker-robinson.com/state/CHL.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.2/2018/WP.7&l=E",
+   "state": "Chile"
+  },
+  {
+   "as_of": "2021-06-28",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "CHL",
+   "page": "https://machinepolitics.walker-robinson.com/state/CHL.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf https://docs.un.org/en/A/79/88",
+   "state": "Chile"
   },
   {
    "as_of": "2018-04-13",
@@ -157,6 +443,83 @@
    "state": "China"
   },
   {
+   "as_of": "2025-10-14",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "CIV",
+   "page": "https://machinepolitics.walker-robinson.com/state/CIV.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://transcripts.un.org/en/ga/c1/80/6 https://transcripts.un.org/en/ga/c1/81/7 https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-ECOWAS-EN.pdf",
+   "state": "Côte d'Ivoire"
+  },
+  {
+   "as_of": "2026-10-13",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "CMR",
+   "page": "https://machinepolitics.walker-robinson.com/state/CMR.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Cameroon.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Cameroon_French.pdf",
+   "state": "Cameroon"
+  },
+  {
+   "as_of": "2025-10-16",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "COD",
+   "page": "https://machinepolitics.walker-robinson.com/state/COD.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/nwCGu-_PolwuT_nyc_fr.pdf",
+   "state": "Democratic Republic of the Congo"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "COG",
+   "page": "https://machinepolitics.walker-robinson.com/state/COG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Republic of the Congo"
+  },
+  {
+   "as_of": "2023-05-11",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "COL",
+   "page": "https://machinepolitics.walker-robinson.com/state/COL.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/STATEMENT_OF_COLOMBIA_-_GENERAL_DEBATE_FIRST_COMMITTEE_-_(OCT._9_2023).pdf https://docs.un.org/en/A/79/88",
+   "state": "Colombia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "COM",
+   "page": "https://machinepolitics.walker-robinson.com/state/COM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Comoros"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "CPV",
+   "page": "https://machinepolitics.walker-robinson.com/state/CPV.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Cabo Verde"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -166,6 +529,28 @@
    "position": "Wants a treaty with bans",
    "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Costa Rica"
+  },
+  {
+   "as_of": "2018-10-10",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "CUB",
+   "page": "https://machinepolitics.walker-robinson.com/state/CUB.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/73/PV.4&l=E https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.6&l=E https://docs.un.org/en/A/79/88",
+   "state": "Cuba"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "CYP",
+   "page": "https://machinepolitics.walker-robinson.com/state/CYP.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Cyprus"
   },
   {
    "as_of": "2025-09-03",
@@ -190,6 +575,28 @@
    "state": "Germany"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "DJI",
+   "page": "https://machinepolitics.walker-robinson.com/state/DJI.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Djibouti"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "DMA",
+   "page": "https://machinepolitics.walker-robinson.com/state/DMA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Dominica"
+  },
+  {
    "as_of": "2024-03-04",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -199,6 +606,28 @@
    "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2024)/CCW-GGE.1-2024-WP.3.pdf https://transcripts.un.org/en/asset/k17/k179utoxqf https://transcripts.un.org/en/asset/k1j/k1jgb18wkv",
    "state": "Denmark"
+  },
+  {
+   "as_of": "2024-05-24",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "DOM",
+   "page": "https://machinepolitics.walker-robinson.com/state/DOM.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs.un.org/en/A/79/88",
+   "state": "Dominican Republic"
+  },
+  {
+   "as_of": "2021-10-12",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "DZA",
+   "page": "https://machinepolitics.walker-robinson.com/state/DZA.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2021/10/ga-76-fc-td-algeria-fr.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Algeria_4_AR.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Algeria.pdf",
+   "state": "Algeria"
   },
   {
    "as_of": "2022-08-09",
@@ -212,6 +641,39 @@
    "state": "Ecuador"
   },
   {
+   "as_of": "2024-04-01",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "EGY",
+   "page": "https://machinepolitics.walker-robinson.com/state/EGY.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/United_Nations_Disarmament_Commission_-_(2024)/egypt_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Egypt-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Egypt_0.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Egypt-en.pdf",
+   "state": "Egypt"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ERI",
+   "page": "https://machinepolitics.walker-robinson.com/state/ERI.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Eritrea"
+  },
+  {
+   "as_of": "2024-05-23",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ESP",
+   "page": "https://machinepolitics.walker-robinson.com/state/ESP.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs.un.org/en/A/79/88 https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Spain_es.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Spain.pdf",
+   "state": "Spain"
+  },
+  {
    "as_of": "2025-09-03",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -221,6 +683,17 @@
    "position": "Unclear or shifting",
    "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en",
    "state": "Estonia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ETH",
+   "page": "https://machinepolitics.walker-robinson.com/state/ETH.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Ethiopia"
   },
   {
    "as_of": "2024-05-16",
@@ -234,6 +707,17 @@
    "state": "Finland"
   },
   {
+   "as_of": "2024-05-25",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "FJI",
+   "page": "https://machinepolitics.walker-robinson.com/state/FJI.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs.un.org/en/A/79/88 https://transcripts.un.org/en/ga/c1/80/7",
+   "state": "Fiji"
+  },
+  {
    "as_of": "2024-05-24",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -243,6 +727,28 @@
    "position": "Wants a treaty with bans",
    "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-France-EN.pdf https://www.diplomatie.gouv.fr/en/presse-et-ressources/decouvrir-et-informer/actualites/organisations-internationales-reunion-du-groupe-d-experts-gouvernementaux-sur-les-systemes-d-armes",
    "state": "France"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "FSM",
+   "page": "https://machinepolitics.walker-robinson.com/state/FSM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Micronesia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GAB",
+   "page": "https://machinepolitics.walker-robinson.com/state/GAB.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Gabon"
   },
   {
    "as_of": "2022-06-14",
@@ -256,6 +762,94 @@
    "state": "United Kingdom"
   },
   {
+   "as_of": "2021-12-13",
+   "code": "CCW-ONLY",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "GEO",
+   "page": "https://machinepolitics.walker-robinson.com/state/GEO.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2022/02/Georgia-General-statement-CCW-6th-Rev-Con.pdf https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2022)/Statement_Georgia_MSP_CCW_FINAL.pdf",
+   "state": "Georgia"
+  },
+  {
+   "as_of": "2024-10-24",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GHA",
+   "page": "https://machinepolitics.walker-robinson.com/state/GHA.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://www.ghanamissionun.org/10242024/ https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Ghana.pdf",
+   "state": "Ghana"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GIN",
+   "page": "https://machinepolitics.walker-robinson.com/state/GIN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Guinea"
+  },
+  {
+   "as_of": "2024-04-29",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "GMB",
+   "page": "https://machinepolitics.walker-robinson.com/state/GMB.html",
+   "position": "Unclear or shifting",
+   "sources": "https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Gambia_National_Statement.pdf",
+   "state": "The Gambia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GNB",
+   "page": "https://machinepolitics.walker-robinson.com/state/GNB.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Guinea-Bissau"
+  },
+  {
+   "as_of": "2023-10-11",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GNQ",
+   "page": "https://machinepolitics.walker-robinson.com/state/GNQ.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/EQUATORIAL_GUINEA_es_0.pdf",
+   "state": "Equatorial Guinea"
+  },
+  {
+   "as_of": "2023-10-23",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "GRC",
+   "page": "https://machinepolitics.walker-robinson.com/state/GRC.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Greece_en.pdf https://docs.un.org/en/A/79/88 https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Greece_4.pdf",
+   "state": "Greece"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GRD",
+   "page": "https://machinepolitics.walker-robinson.com/state/GRD.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Grenada"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -265,6 +859,72 @@
    "position": "Wants a treaty with bans",
    "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Guatemala"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "GUY",
+   "page": "https://machinepolitics.walker-robinson.com/state/GUY.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Guyana"
+  },
+  {
+   "as_of": "2024-05-24",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "HND",
+   "page": "https://machinepolitics.walker-robinson.com/state/HND.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs.un.org/en/A/79/88",
+   "state": "Honduras"
+  },
+  {
+   "as_of": "2024-10-24",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "HRV",
+   "page": "https://machinepolitics.walker-robinson.com/state/HRV.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Croatia_0.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/croatia_eng.pdf",
+   "state": "Croatia"
+  },
+  {
+   "as_of": "2023-10-10",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "HTI",
+   "page": "https://machinepolitics.walker-robinson.com/state/HTI.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.8&l=E",
+   "state": "Haiti"
+  },
+  {
+   "as_of": "2025-10-13",
+   "code": "CCW-ONLY",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "HUN",
+   "page": "https://machinepolitics.walker-robinson.com/state/HUN.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/hungary_eng.pdf",
+   "state": "Hungary"
+  },
+  {
+   "as_of": "2024-10-24",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "IDN",
+   "page": "https://machinepolitics.walker-robinson.com/state/IDN.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Indonesia.pdf",
+   "state": "Indonesia"
   },
   {
    "as_of": "2024-12-02",
@@ -278,6 +938,39 @@
    "state": "India"
   },
   {
+   "as_of": "2024-05-24",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "IRL",
+   "page": "https://machinepolitics.walker-robinson.com/state/IRL.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Ireland-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Ireland.pdf",
+   "state": "Ireland"
+  },
+  {
+   "as_of": "2025-11-04",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "IRN",
+   "page": "https://machinepolitics.walker-robinson.com/state/IRN.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://transcripts.un.org/en/ga/c1/80/24",
+   "state": "Iran"
+  },
+  {
+   "as_of": "2023-10-23",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "IRQ",
+   "page": "https://machinepolitics.walker-robinson.com/state/IRQ.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Iraq.pdf",
+   "state": "Iraq"
+  },
+  {
    "as_of": "2023-11-01",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -287,6 +980,39 @@
    "position": "Unclear or shifting",
    "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Israel-EN.pdf https://transcripts.un.org/en/ga/c1/80/26",
    "state": "Israel"
+  },
+  {
+   "as_of": "2024-05-24",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "ITA",
+   "page": "https://machinepolitics.walker-robinson.com/state/ITA.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs.un.org/en/A/79/88 https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Italy.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Italy.pdf",
+   "state": "Italy"
+  },
+  {
+   "as_of": "2025-10-28",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "JAM",
+   "page": "https://machinepolitics.walker-robinson.com/state/JAM.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Jamaica.pdf",
+   "state": "Jamaica"
+  },
+  {
+   "as_of": "2025-06-23",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "JOR",
+   "page": "https://machinepolitics.walker-robinson.com/state/JOR.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Jordan-AR.pdf",
+   "state": "Jordan"
   },
   {
    "as_of": "2023-03-13",
@@ -311,6 +1037,61 @@
    "state": "Kazakhstan"
   },
   {
+   "as_of": "2025-10-13",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "KEN",
+   "page": "https://machinepolitics.walker-robinson.com/state/KEN.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Kenya_English.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Kenya_UNGA79_1C.pdf",
+   "state": "Kenya"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "KGZ",
+   "page": "https://machinepolitics.walker-robinson.com/state/KGZ.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Kyrgyzstan"
+  },
+  {
+   "as_of": "2025-10-24",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "KHM",
+   "page": "https://machinepolitics.walker-robinson.com/state/KHM.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/eYt-DskVvj_nyc_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Cambodia.pdf",
+   "state": "Cambodia"
+  },
+  {
+   "as_of": "2024-04-30",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "KIR",
+   "page": "https://machinepolitics.walker-robinson.com/state/KIR.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://www.bmeia.gv.at/fileadmin/user_upload/Zentrale/Aussenpolitik/Abruestung/AWS_2024/Statements/Kiribati_National_Statement.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Kiribati-EN.pdf",
+   "state": "Kiribati"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "KNA",
+   "page": "https://machinepolitics.walker-robinson.com/state/KNA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Saint Kitts and Nevis"
+  },
+  {
    "as_of": "2023-03-13",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -320,6 +1101,105 @@
    "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.4_Rev1.pdf https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2023/WP.4/Rev.2&l=en https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2025/WP.7&l=en",
    "state": "Republic of Korea"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "KWT",
+   "page": "https://machinepolitics.walker-robinson.com/state/KWT.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Kuwait"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LAO",
+   "page": "https://machinepolitics.walker-robinson.com/state/LAO.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Laos"
+  },
+  {
+   "as_of": "2024-06-24",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LBN",
+   "page": "https://machinepolitics.walker-robinson.com/state/LBN.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Lebanon-AR.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/lebanon.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/lebanon_16.10.pdf",
+   "state": "Lebanon"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LBR",
+   "page": "https://machinepolitics.walker-robinson.com/state/LBR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Liberia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LBY",
+   "page": "https://machinepolitics.walker-robinson.com/state/LBY.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Libya"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LCA",
+   "page": "https://machinepolitics.walker-robinson.com/state/LCA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Saint Lucia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "LIE",
+   "page": "https://machinepolitics.walker-robinson.com/state/LIE.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Liechtenstein"
+  },
+  {
+   "as_of": "2023-03-06",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "LKA",
+   "page": "https://machinepolitics.walker-robinson.com/state/LKA.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://live.lankamission.org/images/PDF-2023/6_march_2023_GGE_LAWS_Statement.pdf https://docs.un.org/en/A/79/88 https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Statement_by_Sri_Lanka_-_Box_1_&_3_-__2026_1st_Session_on_GGE_on_LAWS_-_02-06_March_2026.pdf",
+   "state": "Sri Lanka"
+  },
+  {
+   "as_of": "2023-10-23",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "LSO",
+   "page": "https://machinepolitics.walker-robinson.com/state/LSO.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Lesotho_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Lesotho.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_the_Kingdom_of_Lesotho.pdf",
+   "state": "Lesotho"
   },
   {
    "as_of": "2025-09-03",
@@ -333,6 +1213,17 @@
    "state": "Lithuania"
   },
   {
+   "as_of": "2024-05-25",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "LUX",
+   "page": "https://machinepolitics.walker-robinson.com/state/LUX.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Luxembourg-EN.pdf",
+   "state": "Luxembourg"
+  },
+  {
    "as_of": "2025-09-03",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -344,6 +1235,94 @@
    "state": "Latvia"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MAR",
+   "page": "https://machinepolitics.walker-robinson.com/state/MAR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Morocco"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MCO",
+   "page": "https://machinepolitics.walker-robinson.com/state/MCO.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Monaco"
+  },
+  {
+   "as_of": "2024-05-24",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "MDA",
+   "page": "https://machinepolitics.walker-robinson.com/state/MDA.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Moldova-EN.pdf",
+   "state": "Moldova"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MDG",
+   "page": "https://machinepolitics.walker-robinson.com/state/MDG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Madagascar"
+  },
+  {
+   "as_of": "2026-10-13",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "MDV",
+   "page": "https://machinepolitics.walker-robinson.com/state/MDV.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Maldives.pdf",
+   "state": "Maldives"
+  },
+  {
+   "as_of": "2021-06-28",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "MEX",
+   "page": "https://machinepolitics.walker-robinson.com/state/MEX.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf https://docs.un.org/en/A/79/88 https://documents.un.org/api/symbol/access?s=A/80/78&l=E",
+   "state": "Mexico"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MHL",
+   "page": "https://machinepolitics.walker-robinson.com/state/MHL.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Marshall Islands"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MKD",
+   "page": "https://machinepolitics.walker-robinson.com/state/MKD.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "North Macedonia"
+  },
+  {
    "as_of": "2026-07-17",
    "code": "NONE",
    "confidence": "INFERRED",
@@ -353,6 +1332,116 @@
    "position": "No stated position",
    "sources": "",
    "state": "Mali"
+  },
+  {
+   "as_of": "2024-10-09",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "MLT",
+   "page": "https://machinepolitics.walker-robinson.com/state/MLT.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Malta.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Malta_(English)_0.pdf",
+   "state": "Malta"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MMR",
+   "page": "https://machinepolitics.walker-robinson.com/state/MMR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Myanmar"
+  },
+  {
+   "as_of": "2025-10-15",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MNE",
+   "page": "https://machinepolitics.walker-robinson.com/state/MNE.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Montenegro_(English).pdf",
+   "state": "Montenegro"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MNG",
+   "page": "https://machinepolitics.walker-robinson.com/state/MNG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Mongolia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MOZ",
+   "page": "https://machinepolitics.walker-robinson.com/state/MOZ.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Mozambique"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MRT",
+   "page": "https://machinepolitics.walker-robinson.com/state/MRT.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Mauritania"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MUS",
+   "page": "https://machinepolitics.walker-robinson.com/state/MUS.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Mauritius"
+  },
+  {
+   "as_of": "2024-05-24",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "MWI",
+   "page": "https://machinepolitics.walker-robinson.com/state/MWI.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Malawi-EN.pdf",
+   "state": "Malawi"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "MYS",
+   "page": "https://machinepolitics.walker-robinson.com/state/MYS.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Malaysia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "NAM",
+   "page": "https://machinepolitics.walker-robinson.com/state/NAM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Namibia"
   },
   {
    "as_of": "2026-07-17",
@@ -377,6 +1466,17 @@
    "state": "Nigeria"
   },
   {
+   "as_of": "2024-05-24",
+   "code": "LBI-BAN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "NIC",
+   "page": "https://machinepolitics.walker-robinson.com/state/NIC.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs.un.org/en/A/79/88 https://transcripts.un.org/en/ga/c1/81/4",
+   "state": "Nicaragua"
+  },
+  {
    "as_of": "2024-04-26",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -399,6 +1499,61 @@
    "state": "Norway"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "NPL",
+   "page": "https://machinepolitics.walker-robinson.com/state/NPL.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Nepal"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "NRU",
+   "page": "https://machinepolitics.walker-robinson.com/state/NRU.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Nauru"
+  },
+  {
+   "as_of": "2021-11-16",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "NZL",
+   "page": "https://machinepolitics.walker-robinson.com/state/NZL.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://www.mfat.govt.nz/assets/OIA/OIA-2021-22/AWS-New-Zealand-Policy-Position.pdf https://www.mfat.govt.nz/assets/Peace-Rights-and-Security/Disarmament/New-Zealand-submission-to-the-UN-Secretary-General-on-autonomous-weapon-systems.pdf https://www.mfat.govt.nz/en/media-and-resources/ccw-group-of-governmental-experts-on-lethal-autonomous-weapon-systems",
+   "state": "New Zealand"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "OMN",
+   "page": "https://machinepolitics.walker-robinson.com/state/OMN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Oman"
+  },
+  {
+   "as_of": "2023-03-06",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "PAK",
+   "page": "https://machinepolitics.walker-robinson.com/state/PAK.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/Statement_of_Pakistan_at_GGE_(06_March_2023).pdf https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.3_REv.1_0.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Pakistan-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_Pakistan.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Pakistan-EN.pdf",
+   "state": "Pakistan"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -410,6 +1565,17 @@
    "state": "Panama"
   },
   {
+   "as_of": "2021-09-27",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "PER",
+   "page": "https://machinepolitics.walker-robinson.com/state/PER.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2023)/CCW_GGE1_2023_WP.6_2.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Peru.pdf",
+   "state": "Peru"
+  },
+  {
    "as_of": "2022-08-09",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
@@ -419,6 +1585,28 @@
    "position": "Wants a treaty with bans",
    "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Philippines"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "PLW",
+   "page": "https://machinepolitics.walker-robinson.com/state/PLW.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Palau"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "PNG",
+   "page": "https://machinepolitics.walker-robinson.com/state/PNG.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Papua New Guinea"
   },
   {
    "as_of": "2023-05-15",
@@ -443,6 +1631,50 @@
    "state": "Democratic People's Republic of Korea"
   },
   {
+   "as_of": "2024-10-14",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "PRT",
+   "page": "https://machinepolitics.walker-robinson.com/state/PRT.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Portugal_UNGA79_1C.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/qacaJjoYnU_nyc_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Portugal.pdf",
+   "state": "Portugal"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "PRY",
+   "page": "https://machinepolitics.walker-robinson.com/state/PRY.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Paraguay"
+  },
+  {
+   "as_of": "2021-12-13",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "QAT",
+   "page": "https://machinepolitics.walker-robinson.com/state/QAT.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2022/02/Qatar-CCW-RevCon-General-statement.pdf",
+   "state": "Qatar"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "ROU",
+   "page": "https://machinepolitics.walker-robinson.com/state/ROU.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Romania"
+  },
+  {
    "as_of": "2023-11-01",
    "code": "OPPOSE",
    "confidence": "EXPLICIT",
@@ -452,6 +1684,72 @@
    "position": "No new rules",
    "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2024/WP.2&l=E https://docs.un.org/en/A/79/88 https://transcripts.un.org/en/ga/c1/80/24 https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Russia_(ENG).pdf",
    "state": "Russia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "RWA",
+   "page": "https://machinepolitics.walker-robinson.com/state/RWA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Rwanda"
+  },
+  {
+   "as_of": "2025-09-27",
+   "code": "LBI-OPEN",
+   "confidence": "PROVISIONAL",
+   "current": true,
+   "iso3": "SAU",
+   "page": "https://machinepolitics.walker-robinson.com/state/SAU.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://transcripts.un.org/en/ga/80/13 https://alriyadhdaily.com/article/8c01c0e640a64a26a39f267d5b51f063",
+   "state": "Saudi Arabia"
+  },
+  {
+   "as_of": "2025-10-24",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SDN",
+   "page": "https://machinepolitics.walker-robinson.com/state/SDN.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Sudan_4_AR.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Sudan.pdf",
+   "state": "Sudan"
+  },
+  {
+   "as_of": "2025-10-27",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SEN",
+   "page": "https://machinepolitics.walker-robinson.com/state/SEN.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Senegal_4_FR.pdf https://transcripts.un.org/en/ga/c1/80/18 https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/Updated_JST_for_GGE_LAWS_Aug-Sep_2026_session.pdf",
+   "state": "Senegal"
+  },
+  {
+   "as_of": "2024-05-09",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "SGP",
+   "page": "https://machinepolitics.walker-robinson.com/state/SGP.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Singapore-EN.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Singapore_4.pdf",
+   "state": "Singapore"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SLB",
+   "page": "https://machinepolitics.walker-robinson.com/state/SLB.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Solomon Islands"
   },
   {
    "as_of": "2022-08-09",
@@ -476,6 +1774,94 @@
    "state": "El Salvador"
   },
   {
+   "as_of": "2024-10-16",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "SMR",
+   "page": "https://machinepolitics.walker-robinson.com/state/SMR.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/San_Marino.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/San_Marino.pdf",
+   "state": "San Marino"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SOM",
+   "page": "https://machinepolitics.walker-robinson.com/state/SOM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Somalia"
+  },
+  {
+   "as_of": "2024-05-18",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "SRB",
+   "page": "https://machinepolitics.walker-robinson.com/state/SRB.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs.un.org/en/A/79/88",
+   "state": "Serbia"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SSD",
+   "page": "https://machinepolitics.walker-robinson.com/state/SSD.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "South Sudan"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "STP",
+   "page": "https://machinepolitics.walker-robinson.com/state/STP.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Sao Tome and Principe"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SUR",
+   "page": "https://machinepolitics.walker-robinson.com/state/SUR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Suriname"
+  },
+  {
+   "as_of": "2023-10-04",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
+   "current": true,
+   "iso3": "SVK",
+   "page": "https://machinepolitics.walker-robinson.com/state/SVK.html",
+   "position": "Unclear or shifting",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovakia_en.pdf",
+   "state": "Slovakia"
+  },
+  {
+   "as_of": "2023-10-23",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SVN",
+   "page": "https://machinepolitics.walker-robinson.com/state/SVN.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovenia_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/slovenia_eng.pdf",
+   "state": "Slovenia"
+  },
+  {
    "as_of": "2024-05-15",
    "code": "AMBIG",
    "confidence": "AMBIGUOUS",
@@ -487,6 +1873,138 @@
    "state": "Sweden"
   },
   {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SWZ",
+   "page": "https://machinepolitics.walker-robinson.com/state/SWZ.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Eswatini"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SYC",
+   "page": "https://machinepolitics.walker-robinson.com/state/SYC.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Seychelles"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "SYR",
+   "page": "https://machinepolitics.walker-robinson.com/state/SYR.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Syria"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TCD",
+   "page": "https://machinepolitics.walker-robinson.com/state/TCD.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Chad"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TGO",
+   "page": "https://machinepolitics.walker-robinson.com/state/TGO.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Togo"
+  },
+  {
+   "as_of": "2025-10-24",
+   "code": "CCW-ONLY",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "THA",
+   "page": "https://machinepolitics.walker-robinson.com/state/THA.html",
+   "position": "Keep it in Geneva",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Thailand.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Thailand.pdf",
+   "state": "Thailand"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TJK",
+   "page": "https://machinepolitics.walker-robinson.com/state/TJK.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Tajikistan"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TKM",
+   "page": "https://machinepolitics.walker-robinson.com/state/TKM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Turkmenistan"
+  },
+  {
+   "as_of": "2025-10-13",
+   "code": "REG-SOFT",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TLS",
+   "page": "https://machinepolitics.walker-robinson.com/state/TLS.html",
+   "position": "Wants new rules, not a treaty",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/timor-leste_eng.pdf",
+   "state": "Timor-Leste"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TON",
+   "page": "https://machinepolitics.walker-robinson.com/state/TON.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Tonga"
+  },
+  {
+   "as_of": "2024-05-31",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "TTO",
+   "page": "https://machinepolitics.walker-robinson.com/state/TTO.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Trinidad-and-Tobago-EN.pdf",
+   "state": "Trinidad and Tobago"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TUN",
+   "page": "https://machinepolitics.walker-robinson.com/state/TUN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Tunisia"
+  },
+  {
    "as_of": "2023-11-01",
    "code": "REG-SOFT",
    "confidence": "EXPLICIT",
@@ -496,6 +2014,39 @@
    "position": "Wants new rules, not a treaty",
    "sources": "https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.28&l=E https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-Turkiye-EN.pdf https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Group_of_Governmental_Experts_on_Lethal_Autonomous_Weapons_Systems_(2026)/CCW-GGE.1-2026-WP.5.pdf https://transcripts.un.org/en/asset/k17/k179utoxqf https://transcripts.un.org/en/ga/c1/80/24",
    "state": "Türkiye"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TUV",
+   "page": "https://machinepolitics.walker-robinson.com/state/TUV.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Tuvalu"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "TZA",
+   "page": "https://machinepolitics.walker-robinson.com/state/TZA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Tanzania"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "UGA",
+   "page": "https://machinepolitics.walker-robinson.com/state/UGA.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Uganda"
   },
   {
    "as_of": "2026-08-31",
@@ -540,7 +2091,117 @@
    "position": "Keep it in Geneva",
    "sources": "https://geneva.usmission.gov/2025/11/04/80th-session-of-the-united-nations-general-assembly-first-committee-cluster-4-conventional-weapons/ https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/79-239-US-EN.pdf https://undocs.org/en/CCW/GGE.1/2025/WP.6 https://transcripts.un.org/en/asset/k1t/k1tjdugbhy https://transcripts.un.org/en/asset/k18/k1856vomjr",
    "state": "United States"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "UZB",
+   "page": "https://machinepolitics.walker-robinson.com/state/UZB.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Uzbekistan"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "VCT",
+   "page": "https://machinepolitics.walker-robinson.com/state/VCT.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Saint Vincent and the Grenadines"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "VEN",
+   "page": "https://machinepolitics.walker-robinson.com/state/VEN.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Venezuela"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "VNM",
+   "page": "https://machinepolitics.walker-robinson.com/state/VNM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Vietnam"
+  },
+  {
+   "as_of": "2025-10-13",
+   "code": "LBI-OPEN",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "VUT",
+   "page": "https://machinepolitics.walker-robinson.com/state/VUT.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/SxfFjblhlD_nyc_en.pdf https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.8&l=E",
+   "state": "Vanuatu"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "WSM",
+   "page": "https://machinepolitics.walker-robinson.com/state/WSM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Samoa"
+  },
+  {
+   "as_of": "2026-10-19",
+   "code": "NONE",
+   "confidence": "INFERRED",
+   "current": true,
+   "iso3": "YEM",
+   "page": "https://machinepolitics.walker-robinson.com/state/YEM.html",
+   "position": "No stated position",
+   "sources": "",
+   "state": "Yemen"
+  },
+  {
+   "as_of": "2021-12-13",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "ZAF",
+   "page": "https://machinepolitics.walker-robinson.com/state/ZAF.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://documents.unoda.org/wp-content/uploads/2022/02/South-Africa-CCW-RevCon-General-Statement-.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/ClfPAohnnl_nyc_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/UNGA79_1C_Cluster_4_-_Explanation_of_vote_by_South_Africa.pdf",
+   "state": "South Africa"
+  },
+  {
+   "as_of": "2025-10-16",
+   "code": "LBI-OPEN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "ZMB",
+   "page": "https://machinepolitics.walker-robinson.com/state/ZMB.html",
+   "position": "Wants a treaty, terms open",
+   "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/VzDbNoBBRnlK_nyc_en.pdf",
+   "state": "Zambia"
+  },
+  {
+   "as_of": "2015-11-12",
+   "code": "LBI-BAN",
+   "confidence": "EXPLICIT",
+   "current": true,
+   "iso3": "ZWE",
+   "page": "https://machinepolitics.walker-robinson.com/state/ZWE.html",
+   "position": "Wants a treaty with bans",
+   "sources": "https://unoda-documents-library.s3.amazonaws.com/Convention_on_Certain_Conventional_Weapons_-_Meeting_of_High_Contracting_Parties_(2015)/zimbabwe.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Statement_by_Zimbabwe_UNGA79_1C.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Zimbabwe.pdf",
+   "state": "Zimbabwe"
   }
  ],
- "updated_through": "2026-10-13"
+ "updated_through": "2026-10-19"
 }

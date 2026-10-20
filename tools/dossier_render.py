@@ -10,6 +10,7 @@ module imports only `config` and reimplements the two tiny helpers it needs, so
 there is no circular import.
 """
 import html as _html
+import json
 
 from config import config
 
@@ -32,15 +33,20 @@ MARK_HUE_OVERRIDE = {"REG-SOFT": ";--markhue:#8F6119"}
 # ISO 3166-1 alpha-2 for the marks' two-letter labels. Truncating alpha-3
 # misleads: UKR would read "UK" beside the United Kingdom's mark.
 ALPHA2 = {
-    "ARG": "AR", "AUS": "AU", "AUT": "AT", "BDI": "BI", "BLR": "BY", "BRA": "BR",
+    "ARE": "AE", "ARG": "AR", "AUS": "AU", "AUT": "AT", "BDI": "BI", "BLR": "BY", "BRA": "BR",
     "CAN": "CA", "CHN": "CN", "CRI": "CR", "CZE": "CZ", "DEU": "DE", "DNK": "DK",
-    "ECU": "EC", "EST": "EE", "FIN": "FI", "FRA": "FR", "GBR": "GB", "GTM": "GT",
-    "IND": "IN", "ISL": "IS", "ISR": "IL", "JPN": "JP", "KAZ": "KZ", "KOR": "KR",
-    "LTU": "LT", "LVA": "LV", "MLI": "ML", "NER": "NE", "NGA": "NG", "NLD": "NL",
-    "NOR": "NO", "PAN": "PA", "PHL": "PH", "POL": "PL", "PRK": "KP", "RUS": "RU",
+    "ECU": "EC", "EST": "EE", "FJI": "FJ", "FIN": "FI", "FRA": "FR", "GBR": "GB", "GTM": "GT",
+    "IND": "IN", "IRN": "IR", "ISL": "IS", "ISR": "IL", "JPN": "JP", "KAZ": "KZ", "KOR": "KR",
+    "LTU": "LT", "LVA": "LV", "MDG": "MG", "MLI": "ML", "NER": "NE", "NGA": "NG", "NIC": "NI", "NLD": "NL",
+    "NOR": "NO", "PAN": "PA", "PHL": "PH", "POL": "PL", "PRK": "KP", "ROU": "RO", "RUS": "RU", "SAU": "SA",
     "SLE": "SL", "SLV": "SV", "SWE": "SE", "TUR": "TR", "UKR": "UA", "URY": "UY",
     "USA": "US",
 }
+# Every other member state takes its ISO alpha-2 code from the Natural
+# Earth label points the world map already uses (unique by test).
+ALPHA2.update({k: v["a2"] for k, v in json.loads(
+    (config.REPO_ROOT / "data" / "source" / "ne_labels.json").read_text(encoding="utf-8")
+)["states"].items() if k not in ALPHA2})
 
 
 def esc(v):

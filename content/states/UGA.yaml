@@ -1,0 +1,21 @@
+# Uganda: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: UGA
+un_name: UGANDA
+display_name: Uganda
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Uganda has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Uganda (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Uganda is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: statements of 6 October 2023, 16 October 2024 and 14 October 2025 are listed with no posted text. Uganda presided over the 2025 CCW Meeting of High Contracting Parties and opened the 2026 PrepCom (UN machine transcript); remarks in that chair role are not national positions. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "None of Uganda's First Committee statements is posted as text; transcripts could be checked if the analyst wants to go further."

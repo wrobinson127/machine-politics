@@ -1,0 +1,22 @@
+# Djibouti: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: DJI
+un_name: DJIBOUTI
+display_name: Djibouti
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Djibouti has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions: the UNODA Documents Library has no 78/241 file for Djibouti (of the sixteen East and Southern African states reviewed in this batch, only Malawi filed), no 79/239 file, and 79/62 set no new national-submission series; Djibouti is not among the posted statements of the May 2025 informal consultations under 79/62. CCW: not a speaker in the meetings.unoda.org statement listings for the GGE on LAWS 2023, 2024, 2025 and 2026 or the 2026 Review Conference PrepCom. First Committee: statements of 10 October 2023, 2024 (one French file listed for 16 and 24 October) and 16 and 23 October 2025 read; all in French. The 2023 statement names lethal autonomous weapons as a danger and recommends finding an international solution to counter their use, without naming any instrument; the 2024 statement says the militarisation of AI drives their proliferation; the 2025 statements are silent. Explanations of vote of 2 November 2023 and 5 and 8 November 2024 are listed with no posted text. Djibouti endorsed the US Political Declaration on military AI, which is context only. Ministry and mission websites were not reviewed.
+
+shift_events: []
+
+flags:
+  - "2023 First Committee statement (French, no English version) recommends an international solution to counter LAWS use. Concern without an instrument preference; under the language rule it could support INFERRED at most anyway. Kept at NONE."
+  - "EOVs on 2023 and 2024 L-documents are listed on meetings.unoda.org with no posted file (2023 list names L.13, L.60/Rev.1, L.11; 2024 names L.7/Rev.1, L.58, L.59, L.75, L.61/Rev.1). I did not match these numbers against the LAWS drafts; if any is the LAWS draft, it is a retrieval target."

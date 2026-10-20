@@ -195,14 +195,20 @@
         if (d === hover || d === found) { ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(d._x, d._y, d._r + 3, 0, Math.PI * 2); ctx.strokeStyle = C.ink; ctx.lineWidth = 2; ctx.stroke(); }
         ctx.globalAlpha = 1;
       }
-      var grat = d3.geoGraticule10();
+      var grat = d3.geoGraticule10(), apath = d3.geoPath(proj);
+      // Mid-morph the blended projection folds the far side of the globe over
+      // the front, and a country cut by the moving clip edge can come back as
+      // its complement. No real country covers half the globe, so a fill that
+      // large is the artifact: skip it for that frame.
+      function folded(f, sph) { return alpha > .001 && alpha < .999 && apath.area(f) > sph * .5; }
       function draw() {
         ctx.clearRect(0, 0, VW, VH);
         if (mapA > .01) {
           ctx.globalAlpha = mapA;
           ctx.beginPath(); path({type: "Sphere"}); ctx.fillStyle = C.raise; ctx.fill(); ctx.strokeStyle = C.rule; ctx.lineWidth = 1; ctx.stroke();
           ctx.beginPath(); path(grat); ctx.strokeStyle = C.faint; ctx.lineWidth = .6; ctx.stroke();
-          countries.forEach(function (f) { var d = f._d, hot = d && (d === hover || d === found); ctx.beginPath(); path(f);
+          var sph = alpha > .001 && alpha < .999 ? apath.area({type: "Sphere"}) : 0;
+          countries.forEach(function (f) { if (sph && folded(f, sph)) return; var d = f._d, hot = d && (d === hover || d === found); ctx.beginPath(); path(f);
             ctx.fillStyle = !d ? C.faint : posFill(d) || C.paper; ctx.fill(); ctx.strokeStyle = hot ? C.ink : C.rule; ctx.lineWidth = hot ? 1.8 : .5; ctx.stroke(); });
           ctx.globalAlpha = 1;
         }

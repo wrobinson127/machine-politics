@@ -1,0 +1,39 @@
+# Jamaica: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: JAM
+un_name: JAMAICA
+display_name: Jamaica
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2025-10-28
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its own October 2025 statement to the UN First Committee, Jamaica
+      said autonomous weapons need regulating and repeated the Caribbean
+      call for legally binding norms. It did not say what those norms should
+      ban, so this site reads it as wanting a treaty with terms open.
+    evidence:
+      - source: jam-c1-80-other-measures-2025
+        kind: statement
+        claim: Jamaica supports discussions on autonomous weapons and repeats the CARICOM call for legally binding norms.
+        quote: "We support ongoing discussions on LAWS and reiterate the CARICOM call for the development of appropriate legally binding norms."
+        date: 2025-10-28
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_by_Jamaica.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          National statement in the thematic debate on other disarmament
+          measures, dated 28 October 2025 on its face. The sentence breaks
+          across pages 1 and 2. The preceding sentence says that "If not
+          properly regulated" these systems could erode accountability and
+          undermine international humanitarian law.
+
+shift_events: []
+
+flags:
+  - "LBI-OPEN vs LBI-BAN: 'the CARICOM call' it reiterates is the 2023 CARICOM Declaration, which asks for an instrument of prohibitions and regulations. Jamaica's own words say only 'legally binding norms', so LBI-OPEN. The analyst may read the reference as incorporating the declaration."
+  - "Jamaica delivered the CARICOM statements in the 2023 First Committee (A/C.1/78/PV.2 and PV.21), which call for a binding instrument that prohibits uncontrollable systems. Group statements corroborate only (R3), even when Jamaica is the speaker."
+  - "Jamaica's 29 Oct 2024 disarmament machinery statement mentions LAWS as a concern with no instrument preference. No Jamaica reply in A/79/88 or A/80/78; no 78-241 national file found. The un.int Jamaica copy of an earlier conventional weapons statement returned an error and was not read."

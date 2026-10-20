@@ -1,0 +1,45 @@
+# Serbia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: SRB
+un_name: SERBIA
+display_name: Serbia
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2024-05-18
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its May 2024 submission to the UN Secretary-General, Serbia said
+      lethal autonomous weapons should be banned or their production
+      restricted and their use monitored, and that international conventions
+      should regulate their use. That is a call for treaty rules, but Serbia
+      left open whether those rules should ban anything outright. On this
+      site's scale that is a treaty with its terms left open.
+    evidence:
+      - source: unsg-report-a-79-88
+        claim: Serbia says these systems should be prohibited, or restricted and monitored.
+        quote: "is of the opinion that these systems should be prohibited or their production restricted and their use monitored"
+        date: 2024-05-18
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+        note: 'Annex I of A/79/88 (Original: English, 18 May 2024). The subject of the sentence is "The Government of Serbia".'
+      - source: unsg-report-a-79-88
+        claim: Serbia says international conventions should regulate their use.
+        quote: "international conventions should regulate the use of lethal autonomous weapons systems"
+        date: 2024-05-18
+        url: https://docs.un.org/en/A/79/88
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "LBI-OPEN vs LBI-BAN: 'prohibited or their production restricted' offers a ban as one option, not a commitment, and the treaty sentence speaks only of regulating use. Held at LBI-OPEN. If the analyst reads 'should be prohibited' as Serbia's preferred tier, LBI-BAN at EXPLICIT is the alternative."
+  - "LBI-OPEN rests on 'international conventions should regulate', read as binding treaty rules. The word 'binding' does not appear."
+  - "Serbia's 79/239 submission (79-239-Serbia-EN.pdf, 4 April 2025) is about military AI and does not address the instrument question. No First Committee or CCW national statements by Serbia on this topic found on the UNODA portal; older records show Serbia aligning with EU statements (corroboration only)."

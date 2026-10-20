@@ -1,0 +1,52 @@
+# Malawi: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MWI
+un_name: MALAWI
+display_name: Malawi
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2024-05-24
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its 2024 submission to the UN Secretary-General, Malawi called for
+      talks on a legally binding treaty to start as soon as possible. It said
+      the treaty should ban unacceptable autonomous weapons, including those
+      that target people, and regulate the rest. That is a treaty with bans.
+    evidence:
+      - source: mwi-submission-78-241
+        claim: Malawi calls for negotiations on a legally binding instrument to begin soon.
+        quote: "call for the start of negotiations of a legally binding instrument on Autonomous Weapons Systems as soon as possible"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Malawi-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: mwi-submission-78-241
+        claim: Malawi wants the treaty to prohibit some systems and regulate others, the two-tier approach.
+        quote: "a treaty is required to prohibit fundamentally unacceptable autonomous weapons systems and regulate the use of other autonomous weapons systems"
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Malawi-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+      - source: mwi-submission-78-241
+        claim: Malawi names systems that target people as a category to prohibit.
+        quote: "This means AWS that target people must also be prohibited for legal and ethical reasons."
+        date: 2024-05-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/78-241-Malawi-EN.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: submission
+
+shift_events: []
+
+flags:
+  - "The note verbale is dated New York, 24 May 2024; the UNODA listing shows 28 May 2024. as_of uses the date on the face."
+  - "Malawi did not vote on 78/241 but filed this submission under it, then voted Yes on 79/62 and 80/57. No other Malawi statement on autonomous weapons was found (no First Committee statements posted 2023 to 2025; not a speaker in the CCW GGE 2023 to 2026 statement listings)."
+  - "Malawi endorsed the US Political Declaration on military AI (content/endorsements.yaml). Context only; it does not change the reading."
+  - "The repo corpus already has a row a7988-reply-MWI pointing at unsg-report-a-79-88; the new source id mwi-submission-78-241 is the national file itself."

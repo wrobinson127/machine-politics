@@ -1,0 +1,21 @@
+# Gabon: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GAB
+un_name: GABON
+display_name: Gabon
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Gabon has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission filed. First Committee general debate statements for 2023, 2024, 2025 and 2026 (all French) were read. The 2025 statement names AI and autonomous weapons systems as challenges that call for renewed commitment to disarmament, and the 2026 statement raises AI in nuclear command and control; neither says what kind of rules Gabon wants on autonomous weapons.
+
+shift_events: []
+
+flags:
+  - "The 2025 mention of 'systemes autonomes d'armement' is concern only."

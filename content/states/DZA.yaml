@@ -1,0 +1,59 @@
+# Algeria: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: DZA
+un_name: ALGERIA
+display_name: Algeria
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: EXPLICIT
+    as_of: 2021-10-12
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      Algeria told the UN First Committee in 2021 that there is an urgent
+      need for a legally binding instrument on autonomous weapons, and said
+      the same again in 2025. Its own statements do not say what such a
+      treaty should ban, so on this site's scale it wants a treaty with
+      terms open.
+    evidence:
+      - source: dza-c1-76-thematic-2021
+        claim: Algeria calls for a legally binding instrument on lethal autonomous weapons systems.
+        quote: "stresses the urgent need to pursue a legally-binding instrument on LAWS"
+        date: 2021-10-12
+        url: https://documents.unoda.org/wp-content/uploads/2021/10/ga-76-fc-td-algeria-fr.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: The file name ends in "-fr" but the statement is in English.
+      - source: dza-c1-80-cluster4-2025
+        claim: Algeria repeats in 2025 that a legally binding instrument is urgently needed.
+        description: >
+          Arabic-only statement in the conventional weapons debate. Algeria
+          says human control over these systems is essential for compliance
+          with international humanitarian law, that the GGE's outputs give a
+          suitable basis for negotiating a legally binding instrument, and
+          that the need for one is urgent and cannot be postponed.
+        date: 2025-10-24
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Algeria_4_AR.pdf
+        lang: ar
+        translation: none
+        confidence: INFERRED
+        kind: statement
+      - source: dza-c1-81-general-debate-2026
+        claim: In 2026 Algeria welcomes the GGE's consensus on elements and asks for real progress at the Review Conference.
+        quote: "Algeria welcomes the consensus reached in the Group of Governmental Experts on Lethal Autonomous Weapons Systems"
+        date: 2026-10-08
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Algeria.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "LBI-BAN was considered. Algeria associated itself (after delivery) with the joint statement Brazil delivered at the Aug-Sep 2026 GGE, which backs the two-tier approach of 'prohibitions of some types of systems and regulation' (source ccw-gge-2026-joint-statement-aug-sep). Under R3 that corroborates only, so the code stays LBI-OPEN until an Algerian national text names prohibitions."
+  - "The only English quote for the instrument call is from 2021. The 2025 restatement is Arabic only (described, INFERRED). The 2026 English general debate statement is softer: it welcomes the GGE elements 'without prejudging its nature' and does not repeat the call for a binding instrument. Not read as a shift."
+  - "Automated Decision Research cites Algerian CCW GGE statements from December 2021 and March 2023 calling for 'new legally binding provisions'. These exist only as audio or machine transcripts and were not used."
+  - "Algeria's 2023 First Committee English statements on the UNODA index are scanned images. Two were read visually (regional disarmament, ICT) and are silent on autonomous weapons. Its 23 October 2023 Arabic statement (Algeria_ar.pdf) produced no extractable text and was not read; it may be the conventional weapons statement."

@@ -1,0 +1,53 @@
+# Vanuatu: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: VUT
+un_name: VANUATU
+display_name: Vanuatu
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2025-10-13
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In its 2025 UN First Committee statement, Vanuatu said autonomous weapons,
+      artificial intelligence and cyber tools must be governed by international
+      law and human oversight, and that it supports efforts to set binding
+      norms. It did not say what those norms should ban, and the line covers
+      several technologies at once, so this reading is a careful one.
+    evidence:
+      - source: vut-c1-80-general-debate-2025
+        claim: Vanuatu supports binding norms for a group of technologies that includes autonomous weapons.
+        quote: "Vanuatu supports global efforts to establish binding norms that ensure these innovations serve the cause of peace, not destruction."
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/SxfFjblhlD_nyc_en.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+        note: >
+          Preceding sentences: autonomous weapons, AI and cyber capabilities "must be
+          governed by international law and human oversight." The "binding norms"
+          sentence refers to all three together.
+      - source: un-c1-78-pv8
+        claim: In 2023 Vanuatu called for an international framework on autonomous weapons, without saying it should be binding.
+        quote: "Vanuatu calls for the establishment of an international framework to ensure that international humanitarian law and human rights law are respected"
+        date: 2023-10-10
+        url: https://documents.un.org/api/symbol/access?s=A/C.1/78/PV.8&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: statement
+        note: >
+          Official record of the First Committee general debate, 10 October 2023
+          (Mr. William, Vanuatu). The same paragraph welcomes the draft resolution on
+          autonomous weapons. Corroborates concern; it does not by itself set the
+          instrument type.
+
+shift_events: []
+
+flags:
+  - "Single general-debate sentence covering AWS, AI and cyber together. NONE is a defensible alternative if the analyst reads 'binding norms' as too unspecific; LBI-OPEN INFERRED chosen because the state's own words support binding rules."
+  - "Document date on the PDF header is 13 October 2025; Automated Decision Research cites the same text as 16 October 2025 (a reachingcriticalwill.org copy, not opened). Delivery date unconfirmed."
+  - "The 10 Oct 2023 statement was read in the official record A/C.1/78/PV.8, not in the reachingcriticalwill.org copy ADR cites."
+  - "Vanuatu co-sponsored 80/57 (context only)."

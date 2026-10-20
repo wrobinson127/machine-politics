@@ -1,0 +1,72 @@
+# Mexico: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MEX
+un_name: MEXICO
+display_name: Mexico
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-BAN
+    confidence: EXPLICIT
+    as_of: 2021-06-28
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In 2021 Mexico, with Brazil and Chile, set out an outline of a legally
+      binding instrument made of prohibitions and regulations. Its 2024 and
+      2025 submissions to the UN Secretary-General say the same in Mexico's own
+      name: a treaty that bans some autonomous weapons and regulates the rest.
+      Mexico helped start the UN resolution track and voted Yes on all three
+      resolutions.
+    evidence:
+      - source: ccw-gge-2021-bra-chl-mex-elements
+        kind: working_paper
+        claim: The 2021 paper by Brazil, Chile and Mexico proposes an outline of an instrument of prohibitions and regulations.
+        quote: "propose the following outline of a normative framework, conducive to an instrument establishing prohibitions and regulations"
+        date: 2021-06-28
+        url: https://documents.unoda.org/wp-content/uploads/2021/06/Brazil-Chile-Mexico.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: >
+          Same paper and date convention as the approved BRA reading (no date
+          on the face; PDF creation date). Counts under ruling R2 because it
+          states an instrument preference ("should take the form of a legally
+          binding instrument", verified on the face 2026-10-19).
+      - source: unsg-report-a-79-88
+        kind: submission
+        claim: Mexico's own 2024 submission calls for a legally binding instrument with prohibitions and regulations.
+        quote: "considers it necessary to adopt a legally binding instrument that establishes prohibitions and regulations on autonomous weapons systems"
+        date: 2024-05-24
+        url: https://docs.un.org/en/A/79/88
+        lang: es
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Quoted from the official UN English text of Mexico's reply in the
+          annex to A/79/88 (original Spanish, dated 24 May 2024 in the
+          annex). The national Spanish file is 78-241-Mexico-SP.pdf in the
+          Seventy-Ninth session folder of the UNODA documents library. The
+          same reply lists the systems that should be prohibited (those that
+          cannot distinguish, cannot judge proportionality, cannot cancel an
+          attack, or cause superfluous injury).
+      - source: unsg-report-a-80-78
+        kind: submission
+        claim: In 2025 Mexico repeats the call to negotiate a legally binding instrument with specific prohibitions and regulations.
+        quote: "Mexico insists on the urgency of initiating negotiations on a legally binding instrument that establishes specific prohibitions and regulations on lethal autonomous weapons systems"
+        date: 2025-04-10
+        url: https://documents.un.org/api/symbol/access?s=A/80/78&l=E
+        lang: es
+        translation: official
+        confidence: EXPLICIT
+        note: >
+          Mexico's reply under resolution 79/239 (AI in the military domain),
+          official UN English text in A/80/78, original Spanish, dated
+          10 April 2025 in the annex. National Spanish file: 79-239-Mexico-SP.pdf
+          in the Eightieth session folder.
+
+shift_events: []
+
+flags:
+  - "as_of follows the approved BRA reading (2021 elements paper, ruling R2). Mexico likely called for a binding instrument earlier; no earlier Mexican text was verified. General debate records A/C.1/76/PV.2 and PV.7 (2021) were checked and Mexico did not address autonomous weapons there."
+  - "Mexico's 2023 to 2025 First Committee statements found on docs-library (24 Oct 2023 conventional weapons; 7 Oct 2024 general debate) are Spanish only and corroborate; not quoted. The 80th session (2025) has no verbatim records."
+  - "No national file under 79/62 found: 79/62 does not appear to have requested a new Secretary-General report, and no 79-62-<Country> files were found in the Eightieth session folder. The May 2025 New York informal consultations page (meetings.unoda.org/meeting/74871) could not be opened (automated access blocked), so Mexico's statement there was not read."
+  - "CCW GGE statements 2024 to 2026 not individually read; the record above is already consistent across 2021, 2024 and 2025."

@@ -1,0 +1,31 @@
+# Mauritania: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MRT
+un_name: MAURITANIA
+display_name: Mauritania
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Mauritania has said on autonomous weapons and
+      found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: no submission under 78/241 or 79/239; First
+      Committee statements 2023 (A/C.1/78/PV.8 and PV.19, Mauritania_en.pdf)
+      and three 2024 Arabic statements on the UNODA library are silent on
+      autonomous weapons; 2025 and 2026 First Committee transcripts record
+      outer space and nuclear passages only; the Vienna 2024 statements page
+      lists no Mauritanian text. Not a CCW High Contracting Party.
+
+shift_events: []
+
+flags:
+  - "Consistency pass 2026-10-19: a draft LBI-OPEN PROVISIONAL reading rested only on Automated Decision Research's report of a video-only Vienna 2024 statement, with no evidence the site can show. Moved to NONE; the lead stays here for retrieval."
+  - "Missing document: Mauritania's 30 April 2024 Vienna statement (video only, per Automated Decision Research). If the words are confirmed, LBI-OPEN would become EXPLICIT or, if in Arabic or French, INFERRED."
+  - "Mauritania endorsed the Vienna Chair's Summary (per Automated Decision Research); an endorsement corroborates only."
+  - "Checked and silent on autonomous weapons: Mauritania's First Committee statements for 2023 (A/C.1/78/PV.8 and PV.19, and the English text Mauritania_en.pdf) and three 2024 Arabic statements on the UNODA library (Arabic text searched for the LAWS and AI terms; no match). 2025 and 2026 First Committee transcripts record outer space and nuclear passages only."
+  - "Not a CCW High Contracting Party. Not an ECOWAS member, so the Freetown Communique does not apply. No submission under 78/241 or 79/239."
+  - "If the analyst prefers not to rest a coding on a reported video statement, the fallback is NONE."

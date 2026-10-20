@@ -1,0 +1,34 @@
+# Malaysia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: MYS
+un_name: MALAYSIA
+display_name: Malaysia
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Malaysia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Malaysia-EN.pdf returns 403) and 79/239 (none in
+      A/80/78); 79/62 produced no national submissions. CCW GGE statement
+      lists 2023 to 2026 and 2026 PrepCom (none; Malaysia is not a CCW
+      party). First Committee national statements and EOVs posted on UNODA
+      Meetings Place 2023 to 2025: six 2023 files, two 2024 files, five
+      2025 files including the EOV on L.4; 2023 EOVs on L.11, L.13, L.30,
+      L.51 not on LAWS. The 2025 cluster 4 and general debate statements
+      welcome the May 2025 informal consultations, follow CCW work on LAWS
+      and call for sustained dialogue with effective human control, but
+      state no instrument preference. ASEAN group statements (Malaysia
+      delivered one in 2025) are context only.
+
+shift_events: []
+
+flags:
+  - "Closest wording (2025 general debate, 13 Oct 2025): 'my delegation recognises the need for sustained dialogue on, inter alia, lethal autonomous weapons systems ... with effective human control and compliance with international law as key considerations.' Cluster 4 (24 Oct 2025): 'Although Malaysia has not acceded to the Convention on Certain Conventional Weapons (CCW), we support its humanitarian objectives and continue to follow developments under its framework'."
+  - "Malaysia likely spoke at the May 2025 New York informal consultations; those statements are not on UNODA Meetings Place and were not checked (the main archive is off limits). Retrieval target if a primary copy can be found."
+  - "The 2025 ASEAN cluster 4 statement (delivered by Cambodia) calls for a 'legally-binding instrument'; R3 corroboration only."

@@ -1,0 +1,40 @@
+# Democratic Republic of the Congo: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: COD
+un_name: DEMOCRATIC REPUBLIC OF THE CONGO
+display_name: Democratic Republic of the Congo
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2025-10-16
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In the 2025 First Committee general debate, the Democratic Republic of
+      the Congo named autonomous weapons as a concern and urged states to
+      negotiate a legally binding instrument so that military AI stays
+      within international law. It did not say what the instrument should
+      ban. The statement is in French only, so this reading is a
+      description, not a quotation.
+    evidence:
+      - source: cod-c1-80-general-debate-2025
+        claim: The DRC urges negotiation of a legally binding instrument covering military AI, in a passage about lethal autonomous weapons.
+        description: >
+          French-only general debate statement. After naming military AI and
+          lethal autonomous weapons systems (SALA) as sources of concern, the
+          DRC urges member states to act decisively to negotiate a legally
+          binding instrument so that technological progress serves humanity
+          and military AI stays compatible with international humanitarian
+          law, adding that humans, not machines, must stay at the centre.
+        date: 2025-10-16
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/nwCGu-_PolwuT_nyc_fr.pdf
+        lang: fr
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "The call is framed around military AI ('l'application de l'IA dans le domaine militaire') in a paragraph that opens with LAWS. Read here as covering LAWS. If the instrument's scope seems too broad or vague, NONE is the alternative."
+  - "Only one statement found. DRC did not vote on 78/241 and filed no SG submission under 78/241 or 79/239. Its 2023 First Committee statement mentions AI only in a nuclear context."

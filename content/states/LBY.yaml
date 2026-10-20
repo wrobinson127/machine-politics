@@ -1,0 +1,21 @@
+# Libya: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: LBY
+un_name: LIBYA
+display_name: Libya
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Libya has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submission lists in A/79/88 (78/241) and A/80/78 (79/239) and the UNODA documents index; meetings.unoda.org statement pages for the 2025 CCW GGE and the 2026 Review Conference PrepCom; the Aug-Sep 2026 GGE joint statement signatory list. No SG submission filed. Libya's only national First Committee statement on the index (10 October 2024, Arabic) is a scanned image with no extractable text and was not read. Libya delivered the Arab Group's 2026 general debate statement (Arabic), which does not address autonomous weapons; it is a group statement and context only.
+
+shift_events: []
+
+flags:
+  - "Libya's 10 October 2024 Arabic statement (Statement_by_Libya.pdf, 79th session folder) could not be machine-read; a visual read would close this gap."

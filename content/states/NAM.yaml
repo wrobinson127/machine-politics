@@ -1,0 +1,30 @@
+# Namibia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: NAM
+un_name: NAMIBIA
+display_name: Namibia
+coverage_tier: votes_only
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Namibia has said on autonomous weapons
+      and found no stated position.
+    search_note: >
+      Reviewed 2026-10-19: SG submissions under 78/241 (none filed; not in
+      A/79/88, 78-241-Namibia-EN.pdf returns 403) and 79/239 (none in
+      A/80/78). CCW GGE statement lists 2023 to 2026 (no Namibian
+      statement). First Committee statements on UNODA Meetings Place: two
+      2023 files, 2025 general debate and 2026 general debate read; 2024
+      and a second 2025 statement are listed without files. Only the 2026
+      general debate mentions autonomous weapons, supporting meaningful
+      human control with no instrument named. African Group statements are
+      context only.
+
+shift_events: []
+
+flags:
+  - "2026 general debate (13 Oct 2026): 'We support efforts to ensure meaningful human control over autonomous weapons systems'. A view on human control, not an instrument preference. Watch for a follow-up EOV on the 2026 LAWS resolution."
+  - "The 2024 general debate statement (posted 2024-10-17) has no file on UNODA Meetings Place; the official record A/C.1/79/PV.10 (17 Oct 2024) was searched and the hits near Namibia's turn belong to the Holy See, not Namibia."

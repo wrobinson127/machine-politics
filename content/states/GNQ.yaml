@@ -1,0 +1,38 @@
+# Equatorial Guinea: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: GNQ
+un_name: EQUATORIAL GUINEA
+display_name: Equatorial Guinea
+coverage_tier: anchor
+
+position_codings:
+  - code: LBI-OPEN
+    confidence: INFERRED
+    as_of: 2023-10-11
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In the 2023 First Committee general debate, Equatorial Guinea
+      recommended that states adopt new legally binding rules to regulate
+      autonomous weapons and keep enough human control over the use of
+      force. It did not call for bans. The statement is in Spanish only, so
+      this reading is a description, not a quotation.
+    evidence:
+      - source: gnq-c1-78-general-debate-2023
+        claim: Equatorial Guinea recommends new legally binding rules to regulate autonomous weapons systems.
+        description: >
+          Spanish-only general debate statement. It warns that autonomous
+          weapons are spreading with less human supervision, including in
+          cities, and recommends that states adopt new legally binding
+          norms to regulate autonomous weapons systems so that sufficient
+          human control and judgment over the use of force is kept.
+        date: 2023-10-11
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/EQUATORIAL_GUINEA_es_0.pdf
+        lang: es
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Single statement. Its wording closely follows the ICRC's 2021 recommendation (new legally binding rules to regulate AWS). It says 'regulate' only, with no prohibitions, hence LBI-OPEN rather than LBI-BAN."
+  - "Equatorial Guinea's four 2025 First Committee statements and its other 2023 statement (all Spanish) were checked and say nothing on autonomous weapons. No SG submission found. Not a CCW party."

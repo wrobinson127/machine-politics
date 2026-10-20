@@ -1,0 +1,46 @@
+# Romania: coverage batch 2, drafted 2026-10-19. In scope because its
+# recorded vote changed (Yes on 78/241, Abstain on 79/62, Yes on 80/57).
+# Nothing in Romania's own words on autonomous weapons was found; the only
+# signals are joint and EU texts, which corroborate and never decide a
+# reading. Coded NONE with the review date. approved: false throughout;
+# nothing renders until the analyst of record sets approved: true.
+iso3: ROU
+un_name: ROMANIA
+display_name: Romania
+
+position_codings:
+  - code: NONE
+    confidence: INFERRED
+    as_of: 2026-10-19
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      This site reviewed what Romania has said on autonomous weapons and
+      found no stated position.
+    search_note: >
+      Reviewed 2026-10-19. Searched the official First Committee records
+      A/C.1/78/PV.2 to PV.31 (2023) and every issued 2024 record, the 2024
+      plenary record A/79/PV.44, the machine transcripts of the 2025 and
+      2026 First Committee meetings (ga/c1/80/2 to 26, ga/c1/81/1 to 13),
+      the Secretary-General's reports A/79/88 and A/80/78, the transcribed
+      meetings of the CCW expert group (2025 and 2026) and the September
+      2026 Preparatory Committee, and web searches of the foreign ministry.
+      Romania's own statements found there do not address autonomous
+      weapons. It joined a 2025 joint statement and aligns with European
+      Union statements that favour the Geneva process; those are other
+      states' or the Union's words. Its votes (Yes, Abstain, Yes) come from
+      the UN dataset, not from any reviewed statement.
+
+shift_events: []
+
+flags:
+  - "LIKELY CCW-ONLY IF OWN WORDS SURFACE. Corroboration on file: (1) joint explanation of position on L.41 delivered by the United Kingdom for 15 states including Romania, 4 Nov 2025 (transcripts.un.org/en/ga/c1/80/24, 53:36): 'any future negotiations must take place within the framework of the CCW and must not prejudge the nature of their outcome' (R3, and transcript); (2) EU reply in A/79/88 (CCW 'offers an appropriate framework'; supports a two-tier approach); (3) EU statement A/C.1/78/PV.18: 'The CCW is the relevant forum, and we expect it to deliver results.', with which Romania aligned in PV.19."
+  - "Romania's own 2026 general debate words (transcripts.un.org/en/ga/c1/81/6, 2:06:07, 12 Oct 2026) are on military AI generally, not LAWS: 'We favor a layered governance approach based on gradually developed national strategies.' Not used."
+  - "VOTES: the 2024 abstention looks deliberate, not a recording slip. A/79/PV.44 carries no correction note for Romania, and it abstained on PP13 (the Secretary-General's calls for a legally binding instrument) and on OP7-11 (the New York consultations) together with Estonia, Latvia, Lithuania, Poland and Ukraine. The First Committee record of 5 Nov 2024 (A/C.1/79/PV.30) is not issued, so a committee-level note cannot be ruled out."
+  - "Romania is a CCW High Contracting Party (ratified 26 July 1995). No national reply under 78/241 or 79/239."
+
+doctrine:
+  status: not_yet_reviewed
+  approved: false
+  context:
+    - note: >
+        Romania is not yet doctrine-reviewed by this project.

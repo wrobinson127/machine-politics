@@ -1,0 +1,34 @@
+# Timor-Leste: drafted 2026-10-19 for the analyst of record. approved: false throughout.
+iso3: TLS
+un_name: TIMOR-LESTE
+display_name: Timor-Leste
+coverage_tier: anchor
+
+position_codings:
+  - code: REG-SOFT
+    confidence: INFERRED
+    as_of: 2025-10-13
+    approved: true    # analyst approval 2026-10-19, bulk review
+    rationale: >
+      In the UN First Committee's 2025 general debate, Timor-Leste called for
+      norms and guidelines to keep humans in control of autonomous systems
+      and accountable for their use. Norms and guidelines are not binding
+      rules. The call came in one line about military AI, so this reading is
+      an interpretation.
+    evidence:
+      - source: tls-c1-80-general-debate-2025
+        claim: Timor-Leste calls for norms and guidelines on human control over autonomous systems.
+        quote: "The development of norms and guidelines to ensure human control and accountability in the use of autonomous systems."
+        date: 2025-10-13
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/timor-leste_eng.pdf
+        lang: en
+        translation: none
+        confidence: INFERRED
+        kind: statement
+
+shift_events: []
+
+flags:
+  - "Thin reading. The call is item 2 of a list under military AI, introduced by 'The military applications of AI, if left unregulated, could lower the threshold for conflict'. It does not reject a treaty. NONE is a fair alternative if the analyst wants REG-SOFT reserved for states that prefer soft law over a treaty."
+  - "Same statement: Timor-Leste 'supports efforts to ensure that such technologies are developed and used in strict conformity with international humanitarian law, ethical standards, and multilateral oversight'. The 2026 general debate statement only says AI and emerging weapons 'raise important questions about human control'. 2023 and 2024 statements do not mention LAWS."
+  - "Did not vote on 78/241. No submission under 78/241. Absent from the 2023 to 2026 GGE statement lists on UNODA Meetings Place."
