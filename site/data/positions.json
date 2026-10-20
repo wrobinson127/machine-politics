@@ -69,14 +69,14 @@
    "state": "United Arab Emirates"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "ARG",
    "page": "https://machinepolitics.walker-robinson.com/state/ARG.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Argentina"
   },
   {
@@ -520,14 +520,14 @@
    "state": "Cabo Verde"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "CRI",
    "page": "https://machinepolitics.walker-robinson.com/state/CRI.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Costa Rica"
   },
   {
@@ -630,14 +630,14 @@
    "state": "Algeria"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "ECU",
    "page": "https://machinepolitics.walker-robinson.com/state/ECU.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Ecuador"
   },
   {
@@ -1554,14 +1554,14 @@
    "state": "Pakistan"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "PAN",
    "page": "https://machinepolitics.walker-robinson.com/state/PAN.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Panama"
   },
   {
@@ -1576,14 +1576,14 @@
    "state": "Peru"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "PHL",
    "page": "https://machinepolitics.walker-robinson.com/state/PHL.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Philippines"
   },
   {
@@ -1752,25 +1752,25 @@
    "state": "Solomon Islands"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "SLE",
    "page": "https://machinepolitics.walker-robinson.com/state/SLE.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Sierra Leone"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "SLV",
    "page": "https://machinepolitics.walker-robinson.com/state/SLV.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "El Salvador"
   },
   {
@@ -2060,14 +2060,14 @@
    "state": "Ukraine"
   },
   {
-   "as_of": "2022-08-09",
+   "as_of": "2021-09-27",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,
    "iso3": "URY",
    "page": "https://machinepolitics.walker-robinson.com/state/URY.html",
    "position": "Wants a treaty with bans",
-   "sources": "https://undocs.org/en/CCW/GGE.1/2022/WP.8",
+   "sources": "https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E https://undocs.org/en/CCW/GGE.1/2022/WP.8",
    "state": "Uruguay"
   },
   {
