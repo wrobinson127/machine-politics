@@ -2590,7 +2590,7 @@ def position_rows(votes, content_states, preview):
 
 
 def write_discovery_files(out, votes, content_states, preview):
-    """sitemap.xml, robots.txt, llms.txt and the CC BY position download.
+    """sitemap.xml, robots.txt, the IndexNow key, llms.txt and the CC BY position download.
     Deterministic, with no build timestamps, so the freshness gate holds."""
     out = Path(out)
     pages = list(STATIC_PAGES)
@@ -2607,6 +2607,9 @@ def write_discovery_files(out, votes, content_states, preview):
     (out / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n",
         encoding="utf-8", newline="\n")
+    # IndexNow key file: lets Bing and other IndexNow engines verify that
+    # submissions for this host come from its owner.
+    (out / f"{config.INDEXNOW_KEY}.txt").write_text(config.INDEXNOW_KEY, encoding="utf-8", newline="\n")
 
     rows = position_rows(votes, content_states, preview)
     (out / "data").mkdir(exist_ok=True)
