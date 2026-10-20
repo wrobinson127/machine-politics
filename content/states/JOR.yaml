@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: INFERRED
     as_of: 2025-06-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2025 submission to the UN Secretary-General on military uses
       of AI, Jordan said it rejects any system able to make lethal decisions

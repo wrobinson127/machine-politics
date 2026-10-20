@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2023-10-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Lesotho's own words point two ways. In 2023 it told the UN First
       Committee that autonomous weapons do not comply with the laws of

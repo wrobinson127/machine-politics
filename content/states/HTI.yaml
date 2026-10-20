@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2023-10-10
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the 2023 general debate of the UN First Committee, Haiti urged
       meaningful human control over autonomous weapons and welcomed work on a

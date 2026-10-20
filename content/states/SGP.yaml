@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-05-09
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Singapore's own words point two ways. In its 2024 submission it
       backs the two-tier approach: prohibit autonomous weapons that

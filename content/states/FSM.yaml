@@ -1,14 +1,14 @@
 # Micronesia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
 iso3: FSM
 un_name: MICRONESIA (FEDERATED STATES OF)
-display_name: "Micronesia (Federated States of)"
+display_name: "Micronesia"
 coverage_tier: votes_only
 
 position_codings:
   - code: NONE
     confidence: INFERRED
     as_of: 2026-10-19
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       This site reviewed what Micronesia has said on autonomous weapons
       and found no stated position.

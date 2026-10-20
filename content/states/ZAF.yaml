@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2021-12-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       South Africa wants the Geneva expert group's work to end in a legally
       binding instrument, and said in 2021 that a political document alone

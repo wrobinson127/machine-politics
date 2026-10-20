@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2025-10-15
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN First Committee in October 2025, Montenegro restated firm
       support for the Geneva weapons convention, the CCW, and praised the work

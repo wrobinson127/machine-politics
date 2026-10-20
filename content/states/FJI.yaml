@@ -11,7 +11,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-05-25
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2024 reply to the UN Secretary-General, Fiji called for
       negotiations to start at once on a legally binding treaty. It asked

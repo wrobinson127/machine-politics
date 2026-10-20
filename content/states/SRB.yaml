@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2024-05-18
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its May 2024 submission to the UN Secretary-General, Serbia said
       lethal autonomous weapons should be banned or their production

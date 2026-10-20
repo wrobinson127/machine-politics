@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2021-09-27
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In 2021 Peru co-wrote a working paper for the Geneva weapons convention
       asking for negotiations on a legally binding instrument with specific

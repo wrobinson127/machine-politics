@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2021-10-12
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Algeria told the UN First Committee in 2021 that there is an urgent
       need for a legally binding instrument on autonomous weapons, and said

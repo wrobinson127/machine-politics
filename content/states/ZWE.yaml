@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2015-11-12
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the Geneva weapons convention in 2015, Zimbabwe joined calls for a
       pre-emptive ban on lethal autonomous weapons. Since 2024 it has called

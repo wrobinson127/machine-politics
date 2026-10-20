@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: INFERRED
     as_of: 2024-10-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN in October 2024, Ghana said autonomous weapons need clear
       regulation and, echoing the joint call by the UN Secretary-General and

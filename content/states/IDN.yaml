@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2024-10-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the UN First Committee's 2024 debate on conventional weapons,
       Indonesia said it supports pursuing a legally binding instrument to

@@ -13,7 +13,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: PROVISIONAL
     as_of: 2025-09-27
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     provisional_note: >
       Read from the UN machine transcript of the English interpretation and
       from a press report of the speech. The official record of the meeting

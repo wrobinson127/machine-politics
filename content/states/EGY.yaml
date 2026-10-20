@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-04-01
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Egypt says the best course is a two-tier approach: a legally binding
       ban on fully autonomous weapons that work without human control, plus

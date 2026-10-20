@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2021-06-28
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In 2021 Mexico, with Brazil and Chile, set out an outline of a legally
       binding instrument made of prohibitions and regulations. Its 2024 and

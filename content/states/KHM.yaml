@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2025-10-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Cambodia says autonomous weapons must strictly follow international law,
       and in 2025 it pledged to support the Geneva expert group and asked all

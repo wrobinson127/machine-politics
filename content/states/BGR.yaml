@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-05-25
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2024 submission to the UN Secretary-General, Bulgaria called
       itself a strong supporter of the two-tier approach: ban the systems that

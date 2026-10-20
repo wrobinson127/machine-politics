@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2026-10-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       The Maldives' own words point two ways. In October 2026 it told
       the UN First Committee that autonomous weapons that cannot comply

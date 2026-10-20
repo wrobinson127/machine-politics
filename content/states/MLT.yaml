@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-10-09
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN First Committee in 2024 and 2025, Malta said autonomous weapons
       that cannot comply with the laws of war should be banned and that human

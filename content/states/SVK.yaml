@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2023-10-04
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Slovakia's own words point two ways. In October 2023 it told the
       UN First Committee it supports the two-tier approach, which bans

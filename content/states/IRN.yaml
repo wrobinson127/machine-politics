@@ -11,7 +11,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2025-11-04
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     scope_note: >
       Forum position only. Iran's explanations of vote object to the
       resolutions' wording and scope and send the issue to the Geneva expert

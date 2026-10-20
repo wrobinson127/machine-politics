@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2023-05-11
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Colombia is a named author of the revised Draft Protocol VI of May 2023,
       a proposed treaty for the Geneva weapons convention. It would ban

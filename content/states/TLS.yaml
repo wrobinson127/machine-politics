@@ -8,7 +8,7 @@ position_codings:
   - code: REG-SOFT
     confidence: INFERRED
     as_of: 2025-10-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the UN First Committee's 2025 general debate, Timor-Leste called for
       norms and guidelines to keep humans in control of autonomous systems

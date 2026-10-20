@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2025-10-16
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the 2025 First Committee general debate, the Democratic Republic of
       the Congo named autonomous weapons as a concern and urged states to

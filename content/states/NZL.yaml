@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2021-11-16
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In November 2021 the New Zealand Cabinet decided that the country would
       push for a legally binding instrument that bans autonomous weapons that

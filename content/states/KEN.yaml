@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2025-10-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN First Committee in October 2025, Kenya urged states to
       negotiate a legally binding instrument with clear prohibitions and

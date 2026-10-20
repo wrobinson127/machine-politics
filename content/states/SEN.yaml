@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2025-10-27
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN in October 2025, speaking about artificial intelligence and
       lethal autonomous weapons, Senegal said it supports every effort to

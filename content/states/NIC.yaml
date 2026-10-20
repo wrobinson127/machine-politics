@@ -12,7 +12,7 @@ position_codings:
   - code: LBI-BAN
     confidence: INFERRED
     as_of: 2024-05-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     scope_note: >
       This reading rests on a joint reply, not on a statement in
       Nicaragua's voice alone. Nicaragua is one of 22 states that sent the

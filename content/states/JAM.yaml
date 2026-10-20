@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2025-10-28
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its own October 2025 statement to the UN First Committee, Jamaica
       said autonomous weapons need regulating and repeated the Caribbean

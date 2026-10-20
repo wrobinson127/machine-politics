@@ -1,14 +1,14 @@
 # Brunei Darussalam: drafted 2026-10-19 for the analyst of record. approved: false throughout.
 iso3: BRN
 un_name: BRUNEI DARUSSALAM
-display_name: "Brunei Darussalam"
+display_name: "Brunei"
 coverage_tier: anchor
 
 position_codings:
   - code: LBI-BAN
     confidence: INFERRED
     as_of: 2024-10-15
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the UN First Committee's 2024 general debate, Brunei said autonomous
       weapons should not operate without strict regulation and oversight. It

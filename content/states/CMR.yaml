@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2026-10-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In 2026 Cameroon told the First Committee that it attaches particular
       importance to the work of the Geneva weapons convention's expert group

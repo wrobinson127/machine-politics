@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2023-03-06
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Sri Lanka told the Geneva expert group in March 2023 that a new treaty
       with prohibitions and regulations is needed. Its 2024 submission to the

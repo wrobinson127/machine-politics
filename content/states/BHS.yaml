@@ -8,7 +8,7 @@ position_codings:
   - code: NONE
     confidence: INFERRED
     as_of: 2026-10-19
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       This site reviewed what Bahamas has said on autonomous weapons and
       found no stated position.

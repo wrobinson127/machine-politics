@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2023-10-11
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the 2023 First Committee general debate, Equatorial Guinea
       recommended that states adopt new legally binding rules to regulate

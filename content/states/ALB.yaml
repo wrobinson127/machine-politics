@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2024-11-14
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the November 2024 meeting of the Geneva weapons convention, the CCW,
       Albania said the expert group's mandate should be strengthened with the

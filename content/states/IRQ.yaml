@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2023-10-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In the First Committee's 2023 debate on conventional weapons, Iraq
       called for legally binding rules to deal with lethal autonomous

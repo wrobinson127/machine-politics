@@ -1,14 +1,14 @@
 # Gambia: drafted 2026-10-19 for the analyst of record. approved: false throughout.
 iso3: GMB
 un_name: GAMBIA
-display_name: "Gambia"
+display_name: "The Gambia"
 coverage_tier: anchor
 
 position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-04-29
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       The Gambia's own words point two ways. At the Vienna conference in
       April 2024 its defence chief said it will advocate international

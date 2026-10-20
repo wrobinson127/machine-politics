@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: EXPLICIT
     as_of: 2018-08-30
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Chile, with Austria and Brazil, proposed in 2018 that the Geneva weapons
       convention start negotiating a legally binding instrument to keep
@@ -30,7 +30,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2021-06-28
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In 2021 Chile, with Brazil and Mexico, set out an outline for a legally
       binding instrument, preferably a new protocol to the Geneva weapons
@@ -81,7 +81,7 @@ shift_events:
     date: 2021-06-28
     from: LBI-OPEN
     to: LBI-BAN
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       The earliest verified Chilean text naming prohibitions within the
       instrument it seeks is the 2021 elements paper with Brazil and Mexico.

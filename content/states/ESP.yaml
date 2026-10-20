@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: INFERRED
     as_of: 2024-05-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2024 submission to the UN Secretary-General, Spain said it favours
       a two-tier approach of prohibition and regulation. In Spanish-language

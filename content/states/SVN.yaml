@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2023-10-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN First Committee in 2023, Slovenia backed a stronger mandate for
       the expert group of the Geneva weapons convention, the CCW, one that may

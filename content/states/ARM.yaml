@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2025-10-23
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the First Committee in October 2025, Armenia said it fully supports
       the two-tier approach: autonomous weapons that cannot be used lawfully

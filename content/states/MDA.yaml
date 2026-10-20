@@ -1,14 +1,14 @@
 # Moldova: drafted 2026-10-19 for the analyst of record. approved: false throughout.
 iso3: MDA
 un_name: REPUBLIC OF MOLDOVA
-display_name: "Republic of Moldova"
+display_name: "Moldova"
 coverage_tier: anchor
 
 position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-05-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Moldova's own words point two ways. In its 2024 submission it said
       an international framework is needed to limit and prohibit

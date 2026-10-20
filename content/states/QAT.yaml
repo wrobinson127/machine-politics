@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2021-12-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the 2021 review conference of the Geneva weapons convention (the
       CCW), Qatar called autonomous weapons the biggest challenge before the

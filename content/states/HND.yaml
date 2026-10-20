@@ -8,7 +8,7 @@ position_codings:
   - code: AMBIG
     confidence: AMBIGUOUS
     as_of: 2024-05-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Honduras's own words point two ways. In its 2024 submission it
       said prohibitions and regulations on autonomous weapons are needed

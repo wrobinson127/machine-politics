@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-10-14
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN First Committee in October 2024, Portugal said its end goal is
       a legally binding instrument that bans autonomous weapons that cannot

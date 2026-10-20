@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2025-10-13
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2025 UN First Committee statement, Vanuatu said autonomous weapons,
       artificial intelligence and cyber tools must be governed by international

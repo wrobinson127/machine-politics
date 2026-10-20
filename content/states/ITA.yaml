@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
     as_of: 2024-05-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its May 2024 submission to the UN Secretary-General, Italy said the
       future instrument should set clear prohibitions and regulations and be

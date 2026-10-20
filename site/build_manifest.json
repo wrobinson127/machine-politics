@@ -104,33 +104,33 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AFG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AGO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ALB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ARE"
   },
   {
@@ -152,15 +152,15 @@
    "state": "ARG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ARM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ATG"
   },
   {
@@ -194,9 +194,9 @@
    "state": "AUT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "AZE"
   },
   {
@@ -206,51 +206,51 @@
    "state": "BDI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BEL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BEN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BFA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BGD"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BGR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BHR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BHS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BIH"
   },
   {
@@ -260,15 +260,15 @@
    "state": "BLR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BLZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BOL"
   },
   {
@@ -290,33 +290,33 @@
    "state": "BRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BRB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BRN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BTN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "BWA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CAF"
   },
   {
@@ -332,27 +332,27 @@
    "state": "CAN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CHL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "shift_events",
-   "rendered": false,
+   "rendered": true,
    "state": "CHL"
   },
   {
@@ -386,45 +386,45 @@
    "state": "CHN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CIV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CMR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "COD"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "COG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "COL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "COM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CPV"
   },
   {
@@ -440,15 +440,15 @@
    "state": "CRI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CUB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "CYP"
   },
   {
@@ -476,15 +476,15 @@
    "state": "DEU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DJI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DMA"
   },
   {
@@ -494,15 +494,15 @@
    "state": "DNK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DOM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "DZA"
   },
   {
@@ -518,21 +518,21 @@
    "state": "ECU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "EGY"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ERI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ESP"
   },
   {
@@ -548,9 +548,9 @@
    "state": "EST"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ETH"
   },
   {
@@ -560,9 +560,9 @@
    "state": "FIN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "FJI"
   },
   {
@@ -584,15 +584,15 @@
    "state": "FRA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "FSM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GAB"
   },
   {
@@ -608,51 +608,51 @@
    "state": "GBR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GEO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GHA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GIN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GMB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GNB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GNQ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GRC"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GRD"
   },
   {
@@ -668,39 +668,39 @@
    "state": "GTM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "GUY"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "HND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "HRV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "HTI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "HUN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "IDN"
   },
   {
@@ -716,15 +716,15 @@
    "state": "IND"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "IRL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "IRN"
   },
   {
@@ -734,9 +734,9 @@
    "state": "IRN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "IRQ"
   },
   {
@@ -752,21 +752,21 @@
    "state": "ISR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ITA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "JAM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "JOR"
   },
   {
@@ -788,33 +788,33 @@
    "state": "KAZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KEN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KGZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KHM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KIR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KNA"
   },
   {
@@ -824,57 +824,57 @@
    "state": "KOR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "KWT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LAO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LBN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LBR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LBY"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LCA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LIE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LKA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LSO"
   },
   {
@@ -890,9 +890,9 @@
    "state": "LTU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "LUX"
   },
   {
@@ -908,27 +908,27 @@
    "state": "LVA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MAR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MCO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MDA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MDG"
   },
   {
@@ -938,27 +938,27 @@
    "state": "MDG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MDV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MEX"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MHL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MKD"
   },
   {
@@ -968,63 +968,63 @@
    "state": "MLI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MLT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MMR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MNE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MNG"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MOZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MRT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MUS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MWI"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "MYS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NAM"
   },
   {
@@ -1046,9 +1046,9 @@
    "state": "NGA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NIC"
   },
   {
@@ -1076,33 +1076,33 @@
    "state": "NOR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NPL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NRU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "NZL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "OMN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PAK"
   },
   {
@@ -1118,9 +1118,9 @@
    "state": "PAN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PER"
   },
   {
@@ -1136,15 +1136,15 @@
    "state": "PHL"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PLW"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PNG"
   },
   {
@@ -1166,27 +1166,27 @@
    "state": "PRK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PRT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "PRY"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "QAT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ROU"
   },
   {
@@ -1208,15 +1208,15 @@
    "state": "RUS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "RWA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SAU"
   },
   {
@@ -1226,27 +1226,27 @@
    "state": "SAU"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SDN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SEN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SGP"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SLB"
   },
   {
@@ -1274,51 +1274,51 @@
    "state": "SLV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SMR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SOM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SRB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SSD"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "STP"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SUR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SVK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SVN"
   },
   {
@@ -1328,75 +1328,75 @@
    "state": "SWE"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SWZ"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SYC"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "SYR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TCD"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TGO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "THA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TJK"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TKM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TLS"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TON"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TTO"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TUN"
   },
   {
@@ -1406,21 +1406,21 @@
    "state": "TUR"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TUV"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "TZA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "UGA"
   },
   {
@@ -1466,63 +1466,63 @@
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "UZB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "VCT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "VEN"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "VNM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "VUT"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "WSM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "YEM"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ZAF"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ZMB"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "position_codings",
-   "rendered": false,
+   "rendered": true,
    "state": "ZWE"
   }
  ],

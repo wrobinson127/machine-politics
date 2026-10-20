@@ -1,14 +1,14 @@
 # Syria: drafted 2026-10-19 for the analyst of record. approved: false throughout.
 iso3: SYR
 un_name: SYRIAN ARAB REPUBLIC
-display_name: "Syrian Arab Republic"
+display_name: "Syria"
 coverage_tier: votes_only
 
 position_codings:
   - code: NONE
     confidence: INFERRED
     as_of: 2026-10-19
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       This site reviewed what Syria has said on autonomous weapons
       and found no stated position.

@@ -8,7 +8,7 @@ position_codings:
   - code: CCW-ONLY
     confidence: INFERRED
     as_of: 2025-10-24
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       Sudan welcomed the Geneva expert group's work in 2025, and in 2026
       said it supports inclusive UN processes to keep autonomous weapons

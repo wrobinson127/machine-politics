@@ -8,7 +8,7 @@ position_codings:
   - code: LBI-OPEN
     confidence: INFERRED
     as_of: 2025-10-14
-    approved: false
+    approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the UN in October 2025, Côte d'Ivoire called for autonomous weapons
       to be regulated and pointed to the 2024 West African meeting in
