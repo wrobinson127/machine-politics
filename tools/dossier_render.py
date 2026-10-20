@@ -494,6 +494,8 @@ def _vote_pattern(entry):
 def state_body(iso3, name, un_name, entry, votes, cs, sources,
                endorsements, sponsorships, coded, preview, updated_through,
                doctrine_timeline=""):
+    on_scale = any(c["iso3"] == iso3 and c["code"] in FAMILY_ORDER for c in coded)
+
     def band(q, plain, arena, hint=""):
         h = f'<p class="hint">{hint}</p>' if hint else ""
         return (f'<section class="arena" data-band>'
@@ -503,10 +505,13 @@ def state_body(iso3, name, un_name, entry, votes, cs, sources,
         f'<section class="hero"><p class="doc-label">State dossier</p>'
         f'<h1>{esc(name)}</h1>'
         f'<p class="sub"><b>{esc(iso3)}</b> &middot; {esc(un_name)} &middot; <a href="../index.html#viz-world">on the world map</a></p></section>',
+        # The spectrum is the scale from most binding law to no new law. A state
+        # with no stated position, or whose words point both ways, has no place
+        # on it, so its page skips the grid rather than leave it unmarked.
         band("What does it want?", _plain_position(cs, preview),
-             spectrum(coded, iso3, name)
+             (spectrum(coded, iso3, name) if on_scale else "")
              + own_coding(iso3, name, cs, sources, preview, updated_through),
-             "Shown large among its peers &middot; hover a mark for its position"),
+             "Shown large among its peers &middot; hover a mark for its position" if on_scale else ""),
         band("How did it vote?", esc(_vote_pattern(entry)),
              waffles(iso3, name, entry, votes),
              "Hover a legend chip to light those votes &middot; each resolution links to its record"),
