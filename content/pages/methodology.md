@@ -22,7 +22,7 @@ Signatures and co-sponsorships are copied from each document's own list, so ther
 
 **Votes:** complete. All 193 member states, from the official UN voting dataset. The extraction code and its checks are public in the repository. Nothing is scraped.
 
-**Statements:** deep for a first set of states, chosen by published criteria: states that changed their vote, states that voted No or abstained on the latest resolution, states that co-sponsored a resolution, states with a published military policy, and states that sent their own submission to the UN Secretary-General. Every other state shows its votes and a note saying it has not been reviewed yet.
+**Statements:** every member state has been read, in two passes. The first went deep on states chosen by published criteria: states that changed their vote, states that voted No or abstained on the latest resolution, states that co-sponsored a resolution, states with a published military policy, and states that sent their own submission to the UN Secretary-General. The second, in October 2026, read every other state's submissions to the Secretary-General, its national statements at the UN and in Geneva, and the official meeting records. Where that search found nothing, the state shows "No stated position" with the date of the review. A reading held back for a document not yet posted shows "Not yet reviewed" until it is read.
 
 **National policy:** narrow scope, major military powers only. A national policy here means a document that specifically governs autonomy in weapons, like the US Department of Defense directive on the subject. Military AI strategies, responsible-AI principles, and draft laws are shown as context, never as evidence.
 
@@ -56,7 +56,7 @@ For national policy, the site only ever says: no published policy found by this 
 
 ## What this site cannot see
 
-This site reads what governments say in public. It cannot see what they say in closed negotiations, positions that are never published, or documents it can only describe because no official translation exists. Most member states have not been reviewed yet; their pages show votes and say so. Every reading is one analyst's, made by the published rubric, and any of them can be challenged on the corrections page.
+This site reads what governments say in public. It cannot see what they say in closed negotiations, positions that are never published, or documents it can only describe because no official translation exists. Many states say little in public, so for many the finding is "No stated position", dated to the review. That is a finding about the public record, not about what a government thinks. Every reading is one analyst's, made by the published rubric, and any of them can be challenged on the corrections page.
 
 ## Secondary sources
 
