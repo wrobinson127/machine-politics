@@ -11,7 +11,7 @@ display_name: El Salvador
 position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
-    as_of: 2022-08-09
+    as_of: 2021-09-27
     approved: true
     scope_note: >
       Coded from co-authorship of a substantive draft instrument (Draft
@@ -24,14 +24,43 @@ position_codings:
       on is shown in full - the article, the document symbol, the date, and
       the author list from the face - so a reader who thinks authorship
       should count for less can discount it directly. The rule is applied
-      symmetrically to drafts that prohibit and drafts that do not.
+      symmetrically to drafts that prohibit and drafts that do not. The reading
+      is dated from September 2021, when the state co-wrote a
+      working paper asking for a mandate to negotiate a legally
+      binding instrument and saying fully autonomous weapons must be
+      prohibited. That paper states an instrument preference, so it
+      counts as the state's own position.
     rationale: >
+      El Salvador first set out this position in September 2021, as
+      a co-author of a working paper that asked the Geneva weapons
+      convention to negotiate a legally binding instrument and said
+      fully autonomous weapons must be prohibited.
       El Salvador co-wrote Draft Protocol VI in August 2022, a proposed
       treaty for the Geneva weapons convention. It would ban autonomous
       weapons that attack without meaningful human control and cannot comply
       with the laws of war, and regulate the rest. Putting its name on a
       draft treaty is the most direct position a state can take.
     evidence:
+      - source: ccw-gge1-2021-wp7-group
+        claim: El Salvador co-authored a 2021 paper asking for a mandate to negotiate a legally binding instrument.
+        quote: "Recommend a new mandate for the GGE to initiate immediately an open-ended process to negotiate a legally binding instrument."
+        date: 2021-09-27
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: Ten authors on the face of CCW/GGE.1/2021/WP.7, verified 2026-10-19. Counts under ruling R2 because it states an instrument preference.
+      - source: ccw-gge1-2021-wp7-group
+        claim: The same paper says fully autonomous systems must be prohibited.
+        quote: "weapon systems or configurations within the scope of our discussions that are fully autonomous are unacceptable and must be prohibited under international law."
+        date: 2021-09-27
+        url: https://documents.un.org/api/symbol/access?s=CCW/GGE.1/2021/WP.7&l=E
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        kind: working_paper
+        note: Paragraph 9(a); the sentence opens "Real or hypothetical".
       - source: ccw-gge1-2022-wp8-draftprotocol
         claim: El Salvador co-authored a draft CCW protocol whose prohibition on autonomous weapons is conditional, and is paired with regulation of the rest.
         quote: "It is prohibited to develop, produce, possess, acquire, deploy, transfer, or use under any circumstances autonomous weapons systems if:"
