@@ -5,17 +5,18 @@ display_name: Cameroon
 coverage_tier: anchor
 
 position_codings:
-  - code: CCW-ONLY
-    confidence: INFERRED
-    as_of: 2026-10-13
+  - code: AMBIG
+    confidence: AMBIGUOUS
+    as_of: 2025-10-28
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      In 2026 Cameroon told the First Committee that it attaches particular
-      importance to the work of the Geneva weapons convention's expert group
-      on autonomous weapons, and that the use of force must stay under
-      human judgment. It did not say what kind of instrument it wants. In
-      2025 it also called for an immediate moratorium. Both statements are
-      in French only, so this reading is a description.
+      Cameroon's own words point two ways. In 2025 it called for an
+      immediate moratorium on lethal autonomous weapons, which points
+      toward a ban. In 2026 it said it attaches particular importance to
+      the Geneva weapons convention's expert group and that the use of
+      force must stay under human judgment, without naming an
+      instrument. Both statements are in French only, so this reading is
+      a description.
     evidence:
       - source: cmr-c1-81-general-debate-2026
         claim: Cameroon backs the CCW expert group's work and results-oriented dialogue, without naming an instrument.
@@ -51,6 +52,7 @@ position_codings:
 shift_events: []
 
 flags:
+  - "Audit correction 2026-10-19: was CCW-ONLY as of 2026-10-13. The 2025 moratorium call is a stated outcome, so CCW-ONLY understated it."
   - "Unsure between CCW-ONLY and AMBIG. The 2025 moratorium call points toward prohibition; the 2026 statement is CCW-process language with no stated outcome. AMBIG would need confidence AMBIGUOUS, which conflicts with the French-only cap at INFERRED, so CCW-ONLY INFERRED is proposed."
   - "Corroboration only (R3): Cameroon is a named High Contracting Party on the joint statement Brazil delivered at the Aug-Sep 2026 GGE, which supports the two-tier approach and the rolling text as a basis for negotiating an instrument (source ccw-gge-2026-joint-statement-aug-sep). Read together with the moratorium call, LBI-BAN INFERRED is arguable, but no national Cameroonian text names a treaty."
   - "Cameroon's 2025 general debate statement (16 October 2025) also asks for 'cadres normatifs clairs' on AI, armed drones and lethal autonomous systems, without saying binding or not."

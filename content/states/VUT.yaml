@@ -10,11 +10,12 @@ position_codings:
     as_of: 2025-10-13
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      In its 2025 UN First Committee statement, Vanuatu said autonomous weapons,
-      artificial intelligence and cyber tools must be governed by international
-      law and human oversight, and that it supports efforts to set binding
-      norms. It did not say what those norms should ban, and the line covers
-      several technologies at once, so this reading is a careful one.
+      In its 2025 UN First Committee statement, Vanuatu said autonomous
+      weapons, artificial intelligence and cyber tools must be governed
+      by international law and human oversight, and that it supports
+      efforts to set binding norms. It did not say what those norms
+      should ban, and the line covers several technologies at once, so
+      this reading is an interpretation.
     evidence:
       - source: vut-c1-80-general-debate-2025
         claim: Vanuatu supports binding norms for a group of technologies that includes autonomous weapons.

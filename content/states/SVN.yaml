@@ -5,17 +5,17 @@ display_name: Slovenia
 coverage_tier: anchor
 
 position_codings:
-  - code: CCW-ONLY
-    confidence: INFERRED
+  - code: AMBIG
+    confidence: AMBIGUOUS
     as_of: 2023-10-23
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      At the UN First Committee in 2023, Slovenia backed a stronger mandate for
-      the expert group of the Geneva weapons convention, the CCW, one that may
-      lead to negotiations on a new international instrument. In 2025 it
-      welcomed the group's progress. It has not said whether the instrument
-      should be binding or what it should ban, so on this site's scale its
-      stated position is support for the Geneva process.
+      Slovenia's words leave the kind of instrument open. At the UN
+      First Committee in 2023 it backed a stronger mandate for the
+      Geneva weapons convention's expert group, one that may lead to
+      negotiations on a new international instrument, and in 2025 it
+      welcomed the group's progress. It has not said whether that
+      instrument should be binding or what it should ban.
     evidence:
       - source: svn-c1-78-cluster4-2023
         claim: Slovenia supports a stronger CCW expert group mandate that may lead to negotiating a new instrument.
@@ -43,6 +43,7 @@ position_codings:
 shift_events: []
 
 flags:
+  - "Audit correction 2026-10-19: was CCW-ONLY. Naming a new instrument with its form open reads AMBIG, as for Croatia, Bangladesh and Greece."
   - "Weighing: CCW-ONLY vs AMBIG vs LBI-OPEN. Slovenia supports negotiating 'a new international instrument' under a stronger CCW mandate, form unstated. Chose CCW-ONLY because every statement is framed around the Geneva mandate; AMBIG ('instrument, nature open', as drafted for HRV) is the close alternative. Not LBI-OPEN: the word binding never appears in a document opened here."
   - "Not opened: a secondary tracker cites a Slovenian statement at the 2021 CCW Sixth Review Conference hoping for 'a legal instrument to prohibit or regulate'. Its only source is an unofficial speech-to-text page. If an official record exists it could move Slovenia to LBI-BAN or AMBIG; that reading would be PROVISIONAL until the document is obtained."
   - "No 78/241 or 79/239 national submission for Slovenia found in A/79/88 or A/80/78, contrary to the batch note. The 2024 general debate statement (15 October 2024) could not be retrieved: the portal links it to the same file as a later thematic statement."

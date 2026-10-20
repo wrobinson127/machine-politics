@@ -10,12 +10,11 @@ position_codings:
     as_of: 2024-05-24
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      In 2024 the Dominican Republic and thirteen other states sent the UN
-      Secretary-General a joint submission saying autonomous weapons need new
-      legally binding rules, including prohibitions and regulations, and
-      calling for treaty negotiations as soon as possible. The group backs
-      Draft Protocol VI, a proposed treaty that bans some systems and
-      regulates the rest.
+      In 2024 the Dominican Republic and thirteen other states sent the
+      UN Secretary-General a joint submission saying autonomous weapons
+      need new legally binding rules, including prohibitions and
+      regulations, and calling for treaty negotiations as soon as
+      possible.
     evidence:
       - source: unsg-report-a-79-88
         kind: submission

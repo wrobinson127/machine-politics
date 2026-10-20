@@ -312,12 +312,12 @@
   },
   {
    "as_of": "2024-10-15",
-   "code": "LBI-BAN",
-   "confidence": "INFERRED",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
    "current": true,
    "iso3": "BRN",
    "page": "https://machinepolitics.walker-robinson.com/state/BRN.html",
-   "position": "Wants a treaty with bans",
+   "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Ninth_session_(2024)/Brunei_Darussalam.pdf",
    "state": "Brunei"
   },
@@ -454,13 +454,13 @@
    "state": "Côte d'Ivoire"
   },
   {
-   "as_of": "2026-10-13",
-   "code": "CCW-ONLY",
-   "confidence": "INFERRED",
+   "as_of": "2025-10-28",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
    "current": true,
    "iso3": "CMR",
    "page": "https://machinepolitics.walker-robinson.com/state/CMR.html",
-   "position": "Keep it in Geneva",
+   "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Cameroon.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/Statement_Cameroon_French.pdf",
    "state": "Cameroon"
   },
@@ -1852,12 +1852,12 @@
   },
   {
    "as_of": "2023-10-23",
-   "code": "CCW-ONLY",
-   "confidence": "INFERRED",
+   "code": "AMBIG",
+   "confidence": "AMBIGUOUS",
    "current": true,
    "iso3": "SVN",
    "page": "https://machinepolitics.walker-robinson.com/state/SVN.html",
-   "position": "Keep it in Geneva",
+   "position": "Unclear or shifting",
    "sources": "https://docs-library.unoda.org/General_Assembly_First_Committee_-Seventy-Eighth_session_(2023)/Slovenia_en.pdf https://docs-library.unoda.org/General_Assembly_First_Committee_-Eightieth_session_(2025)/slovenia_eng.pdf",
    "state": "Slovenia"
   },
@@ -2192,7 +2192,7 @@
    "state": "Zambia"
   },
   {
-   "as_of": "2015-11-12",
+   "as_of": "2024-10-14",
    "code": "LBI-BAN",
    "confidence": "EXPLICIT",
    "current": true,

@@ -10,11 +10,10 @@ position_codings:
     as_of: 2018-08-30
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      Chile, with Austria and Brazil, proposed in 2018 that the Geneva weapons
-      convention start negotiating a legally binding instrument to keep
-      meaningful human control over autonomous weapons. The proposal did not
-      say what the instrument should ban. This is the same document that
-      grounds Austria's and Brazil's 2018 readings.
+      Chile, with Austria and Brazil, proposed in 2018 that the Geneva
+      weapons convention start negotiating a legally binding instrument
+      to keep meaningful human control over autonomous weapons. The
+      proposal did not say what the instrument should ban.
     evidence:
       - source: ccw-gge2-2018-wp7-aut-bra-chl
         kind: working_paper
