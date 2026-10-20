@@ -107,6 +107,22 @@ def test_deploy_states_show_absence_tiers_not_positions(deploy):
     assert 'class="pmark mk me"' not in html, f"{iso} uncoded but located in spectrum"
 
 
+
+def test_states_off_the_scale_get_no_spectrum(deploy):
+    """NONE and AMBIG have no place on the most-binding-to-no-new-law scale,
+    so their pages skip the peer grid instead of naming a state it omits."""
+    out, _ = deploy
+    checked = 0
+    for sf in sorted(config.STATES_DIR.glob("*.yaml")):
+        d = yaml.safe_load(sf.read_text(encoding="utf-8"))
+        approved = [c for c in (d.get("position_codings") or []) if c.get("approved") is True]
+        if not approved or approved[-1]["code"] not in ("NONE", "AMBIG"):
+            continue
+        html = (out / "state" / f"{sf.stem}.html").read_text(encoding="utf-8")
+        assert 'class="spectrum"' not in html, sf.stem
+        checked += 1
+    assert checked, "expected approved NONE or AMBIG states on deploy"
+
 def test_preview_renders_drafts_behind_banner(preview):
     out, manifest = preview
     assert manifest["unapproved_rendered"] > 0

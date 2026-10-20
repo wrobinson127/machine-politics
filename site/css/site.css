@@ -150,6 +150,8 @@ nav.primary { display: flex; gap: 1.1rem; flex-wrap: wrap; }
   }
   nav.primary::-webkit-scrollbar { display: none; }
   nav.primary a { white-space: nowrap; }
+  /* Tap targets: the nav links stay comfortably above the 24px minimum on a phone */
+  nav.primary a { display: inline-flex; align-items: center; min-height: 36px; }
 }
 
 nav.primary a {
@@ -1226,7 +1228,7 @@ footer.colophon p { margin: 0.3rem 0; }
 .states-table { border-collapse: collapse; width: 100%; font-size: .9rem; font-variant-numeric: tabular-nums; }
 .states-table th, .states-table td { text-align: left; padding: .38rem .9rem .38rem 0; border-bottom: 1px solid var(--rule-faint); vertical-align: middle; }
 .states-table thead th { font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; border-bottom: 1px solid var(--rule); }
-.states-table thead button { font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: .25em; text-align: left; }
+.states-table thead button { min-height: 28px; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: .25em; text-align: left; }
 .states-table tbody th { font-weight: 500; }
 .states-table td.vt { white-space: nowrap; }
 .states-table td.vt svg { vertical-align: -0.12em; margin-right: .3rem; }
