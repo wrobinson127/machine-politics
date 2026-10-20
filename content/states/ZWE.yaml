@@ -7,7 +7,7 @@ coverage_tier: anchor
 position_codings:
   - code: LBI-BAN
     confidence: EXPLICIT
-    as_of: 2015-11-12
+    as_of: 2024-10-14
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       At the Geneva weapons convention in 2015, Zimbabwe joined calls for a
@@ -47,6 +47,7 @@ position_codings:
 shift_events: []
 
 flags:
+  - "Audit correction 2026-10-19: as_of moved from 2015-11-12. The 2015 ban call names no binding form; the reading is complete once the 2024 treaty call joins it."
   - "Strongest doubt: the only explicit ban language is from 2015. Since 2024 Zimbabwe's words are a treaty 'regulating' or 'to regulate' autonomous weapons, plus the principle that machines must not decide over life and death. I read that principle as a prohibition, which keeps LBI-BAN. A stricter reading would make the current position LBI-OPEN from 2024-10-14, with a shift event from LBI-BAN. Analyst's call."
   - "Wording drift worth noting: 2025 says decisions 'must never be delegated to machines or algorithms'; 2026 (8 October 2026 general debate) says 'must never be delegated entirely to machines or algorithms' and 'support binding international legal instruments to regulate autonomous weapons systems'. The word 'entirely' is new in 2026."
   - "The 2015 statement says Zimbabwe was not yet a CCW party when it spoke. The meeting ran 12 to 13 November 2015; the UNODA listing shows 11 November. as_of uses 12 November, the first day on the face; the exact day of delivery is not on the document."

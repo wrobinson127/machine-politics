@@ -10,11 +10,10 @@ position_codings:
     as_of: 2024-05-31
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      In its 2024 submission to the UN Secretary-General, Trinidad and Tobago
-      called for a legally binding treaty that bans uncontrollable autonomous
-      weapons and those designed to use force against people, and regulates
-      the rest. It hosted the 2023 Caribbean conference that adopted the
-      CARICOM declaration on autonomous weapons.
+      In its 2024 submission to the UN Secretary-General, Trinidad and
+      Tobago called for a legally binding treaty that bans
+      uncontrollable autonomous weapons and those designed to use force
+      against people, and regulates the rest.
     evidence:
       - source: tto-submission-78-241
         kind: submission

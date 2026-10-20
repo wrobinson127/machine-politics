@@ -5,17 +5,17 @@ display_name: "Brunei"
 coverage_tier: anchor
 
 position_codings:
-  - code: LBI-BAN
-    confidence: INFERRED
+  - code: AMBIG
+    confidence: AMBIGUOUS
     as_of: 2024-10-15
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
-      In the UN First Committee's 2024 general debate, Brunei said autonomous
-      weapons should not operate without strict regulation and oversight. It
-      took note of the Secretary-General's call for a legally binding
-      instrument to prohibit them by 2026 and urged other states to back
-      global efforts. Brunei did not say outright that it wants that treaty,
-      so this reading is an interpretation.
+      Brunei's own words point two ways. In the UN First Committee's
+      2024 general debate it said autonomous weapons should not operate
+      without strict regulation and oversight, and it took note of the
+      Secretary-General's call for a legally binding instrument to
+      prohibit them by 2026. It did not say it wants that treaty, or
+      what kind of rules it prefers.
     evidence:
       - source: brn-c1-79-general-debate-2024
         claim: Brunei points to the Secretary-General's call for a binding instrument to prohibit LAWS by 2026.
@@ -39,6 +39,7 @@ position_codings:
 shift_events: []
 
 flags:
+  - "Audit correction 2026-10-19: was LBI-BAN INFERRED. 'Takes note' is not support, and a clause about urging other states had no evidence behind it."
   - "'Takes note' is weaker than 'supports'. The sentence goes on: 'and further calls upon other member states to solidify global efforts', which reads as endorsement, hence LBI-BAN at INFERRED. Alternatives: LBI-OPEN at INFERRED, or NONE if the analyst treats 'takes note' as neutral."
   - "Statement date: header gives only the debate period (7 to 16 October 2024); 2024-10-15 is the UNODA Meetings Place posting date."
   - "Later statements are softer: 2025 general debate calls for 'human oversight and responsible governance' of AI, including misuse in autonomous weapons; 2026 general debate speaks only of responsible AI use under international law. Neither contradicts the 2024 reading. 2023 general debate (posted 2023-10-09) was not retrieved as a file."
