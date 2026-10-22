@@ -85,7 +85,7 @@ def test_deploy_states_show_absence_tiers_not_positions(deploy):
     # not here, so that approving real content never restales this test.
     assert "DoD Directive 3000.09" in usa  # approved doctrine renders
     assert "not yet reviewed by this site" not in usa
-    assert "in favour of 193" in usa  # the vote waffle renders
+    assert "in favor of 193" in usa  # the vote waffle renders
     assert "A/RES/80/57" in usa
     # A genuinely uncoded state must show absence tiers and NOT be located in
     # the position spectrum. Picked dynamically so future approvals do not
@@ -136,9 +136,9 @@ def test_preview_renders_drafts_behind_banner(preview):
 def test_votes_page_tallies(deploy):
     out, _ = deploy
     votes_html = (out / "votes.html").read_text(encoding="utf-8")
-    assert "152 in favour, 4 against, 11 abstentions" in votes_html
-    assert "166 in favour, 3 against, 15 abstentions" in votes_html
-    assert "164 in favour, 6 against, 7 abstentions" in votes_html
+    assert "152 in favor, 4 against, 11 abstentions" in votes_html
+    assert "166 in favor, 3 against, 15 abstentions" in votes_html
+    assert "164 in favor, 6 against, 7 abstentions" in votes_html
 
 
 def test_no_valence_hues_in_generated_output(deploy):

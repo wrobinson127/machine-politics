@@ -395,7 +395,7 @@ footer.colophon p { margin: 0.3rem 0; }
 
 .axis-track { position: relative; height: 34px; }
 
-/* The tick line is half-strength ink via its colour, not via opacity: an
+/* The tick line is half-strength ink via its color, not via opacity: an
    opacity on the tick would dim the year label inside it too (a child's
    opacity cannot undo its parent's), which put the labels at 2.3:1. */
 .axis-tick {
@@ -472,7 +472,7 @@ footer.colophon p { margin: 0.3rem 0; }
    channel because it survives at 16px tall and stays readable on a band a few
    pixels wide, which is what a state that moves twice in a year produces.
    Every pair below differs in orientation or density, so no two are alike once
-   the colour is removed. LBI-BAN is deliberately plain: it is the largest
+   the color is removed. LBI-BAN is deliberately plain: it is the largest
    category, and leaving it untextured keeps the board quiet.
 
    Class names are assigned in config.POSITION_TEXTURES.

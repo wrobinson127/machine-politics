@@ -11,7 +11,7 @@ position_codings:
     approved: true    # analyst approval 2026-10-19, bulk review
     rationale: >
       In its 2024 submission to the UN Secretary-General, Spain said it
-      favours a two-tier approach of prohibition and regulation. In
+      favors a two-tier approach of prohibition and regulation. In
       Spanish-language statements to the UN First Committee in 2023 and
       2024, it said the goal of the Geneva expert group should be a
       legally binding instrument (2023) and a legal instrument (2024).
@@ -19,7 +19,7 @@ position_codings:
       rests on statements this site describes rather than quotes.
     evidence:
       - source: unsg-report-a-79-88
-        claim: Spain's submission favours a two-tier approach of prohibition and regulation.
+        claim: Spain's submission favors a two-tier approach of prohibition and regulation.
         quote: "Spain, together with other like-minded countries, favours a two-tiered approach based on prohibition and regulation."
         date: 2024-05-23
         url: https://docs.un.org/en/A/79/88

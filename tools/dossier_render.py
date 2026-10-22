@@ -148,7 +148,7 @@ def spectrum(coded, self_iso, self_name):
 # Arena 2: the voting floor (locate-pattern waffle, exactly 193 per grid)
 # ---------------------------------------------------------------------------
 
-VOTE_WORD = {"Y": "in favour", "N": "against", "A": "abstained", "X": "did not vote"}
+VOTE_WORD = {"Y": "in favor", "N": "against", "A": "abstained", "X": "did not vote"}
 
 
 def waffles(iso3, name, entry, votes):
@@ -183,11 +183,11 @@ def waffles(iso3, name, entry, votes):
             f'<a class="reslink" href="{esc(res["undl_link"])}">{esc(res["symbol"])} &nearr;</a></div>'
             f'<div class="grid">{"".join(cells)}</div>'
             f'<div class="tally"><span class="big">{tally["y"]}</span>'
-            f'<span class="of">in favour of 193</span></div></div>'
+            f'<span class="of">in favor of 193</span></div></div>'
         )
     legend = (
         '<div class="vlegend">'
-        '<span class="vg" data-hi="v:y" data-info="<b>In favour.</b> Highlights the states that voted yes."><span class="cell y"></span> In favour</span>'
+        '<span class="vg" data-hi="v:y" data-info="<b>In favor.</b> Highlights the states that voted yes."><span class="cell y"></span> In favor</span>'
         '<span class="vg" data-hi="v:n" data-info="<b>Against.</b> Highlights the states that voted no."><span class="cell n"></span> Against</span>'
         '<span class="vg" data-hi="v:a" data-info="<b>Abstained.</b>"><span class="cell a"></span> Abstained</span>'
         '<span class="vg" data-hi="v:x" data-info="<b>Non-voting</b> or absent."><span class="cell x"></span> Non-voting</span>'

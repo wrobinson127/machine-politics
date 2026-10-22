@@ -6,7 +6,7 @@ the same 193 states with the same approved readings. It is embedded in the
 page as JSON at build time: no fetch, no runtime data source.
 
 The static map is the Equal Earth projection drawn in SVG, with the exact
-scale and centre the canvas uses when it flattens, so the hand-off from
+scale and center the canvas uses when it flattens, so the hand-off from
 poster to interactive figure does not move a pixel of meaning. Equal Earth
 preserves area, so "too small to see" is a plain area test on the projected
 shape: those states, and the one with no shape at 1:110m (Tuvalu), are drawn
@@ -170,7 +170,7 @@ def static_map_svg(rows):
     by_iso = {r["i"]: r for r in rows}
     parts = [
         f'<svg class="viz-poster" viewBox="0 0 {VIEW_W} {VIEW_H}" role="img" '
-        'aria-label="World map of the UN member states, coloured by the position '
+        'aria-label="World map of the UN member states, colored by the position '
         'this site has read for each. The table below lists every state.">',
         f'<defs><clipPath id="viz-sphere"><path d="{sphere_path()}"/></clipPath></defs>',
         f'<path class="viz-sphere" d="{sphere_path()}"/>',

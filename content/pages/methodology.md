@@ -14,7 +14,7 @@ The five things above are shown side by side. They are never combined into a ran
 
 Signing something never decides a state's position on its own. Neither does co-sponsoring, and neither does a state's own military rulebook. Signing the US Political Declaration is not a vote against a treaty: Austria signed it and co-sponsored the treaty resolution in the same year. Positions come from what states say and how they vote, with the reasoning shown. This rule is enforced in code: a position whose only evidence is a signature, a co-sponsorship, or a policy document fails the build.
 
-A state missing from a signing list is shown as not listed. Not signing is not opposing, and the site never colours it as if it were.
+A state missing from a signing list is shown as not listed. Not signing is not opposing, and the site never colors it as if it were.
 
 ## How much has been reviewed
 
@@ -84,4 +84,4 @@ Automated Decision Research, the monitoring arm of the Stop Killer Robots campai
 
 ## Sources and licensing
 
-Two layers, two sets of terms. The vote data is © United Nations, taken from the UN Digital Library with attribution, and may be reused for non-commercial purposes only. This site's own work, meaning the positions, shifts, confidence levels, rubric, and analysis, is CC BY 4.0: free to reuse, including commercially, with credit. The CC BY licence does not cover the vote data. Where a page shows both, the stricter terms apply to the part they cover. Code is MIT. Full details in the repository's DATA_LICENSE.
+Two layers, two sets of terms. The vote data is © United Nations, taken from the UN Digital Library with attribution, and may be reused for non-commercial purposes only. This site's own work, meaning the positions, shifts, confidence levels, rubric, and analysis, is CC BY 4.0: free to reuse, including commercially, with credit. The CC BY license does not cover the vote data. Where a page shows both, the stricter terms apply to the part they cover. Code is MIT. Full details in the repository's DATA_LICENSE.

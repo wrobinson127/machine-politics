@@ -60,8 +60,8 @@ axis_b:
   name: How sure we are
   rules: >
     Confidence describes how directly the evidence supports the reading. On
-    the site it changes how strong the colour is and adds a dotted
-    underline. It never changes the colour itself.
+    the site it changes how strong the color is and adds a dotted
+    underline. It never changes the color itself.
   tiers:
     EXPLICIT: >
       The state said it directly, in an official statement or document, in
@@ -189,7 +189,7 @@ worked_examples:
     why: >
       The hard case, and the reason "unclear" exists as a category. China's
       own papers say two things at once: that broad bans would undermine
-      legitimate defence, and that a treaty banning a narrow class of
+      legitimate defense, and that a treaty banning a narrow class of
       systems could follow the model of the ban on blinding lasers. That
       narrow class is defined by five features a weapon must have all at
       once, so the ban China entertains is far smaller than the word "ban"
