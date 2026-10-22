@@ -36,7 +36,7 @@ position_codings:
         translation: none
         confidence: INFERRED
         kind: statement
-        note: The sentence describes what the Freetown Communique "underscored"; Cote d'Ivoire introduces it by saying it favours such regional initiatives.
+        note: The sentence describes what the Freetown Communique "underscored"; Cote d'Ivoire introduces it by saying it favors such regional initiatives.
       - source: un-c1-81-transcript-7
         claim: In 2026 Cote d'Ivoire supports a normative framework on lethal autonomous weapons systems.
         quote: "the crafting of a meaningful, normative framework on lethal autonomous weapons systems, guaranteeing respect for international law and appropriate human oversight"

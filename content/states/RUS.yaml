@@ -91,7 +91,7 @@ position_codings:
         confidence: EXPLICIT
       - source: ccw-gge1-2024-wp2-rus
         kind: working_paper
-        claim: The 2024 working paper calls talks on non-binding rules of behaviour
+        claim: The 2024 working paper calls talks on non-binding rules of behavior
           premature.
         quote: We believe the discussions aiming at negotiation of certain "rules
           of behavior" in relation to LAWS to be premature.

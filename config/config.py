@@ -120,7 +120,7 @@ LAWS_RESOLUTIONS = {
 # notices, and the shift-seam marking the moment a coded position changes.
 # AMBIG is a hatch texture over paper and carries no hue at all. Every other
 # substantive position pairs its hue with a texture from POSITION_TEXTURES
-# below, so no category depends on colour vision alone.
+# below, so no category depends on color vision alone.
 # ---------------------------------------------------------------------------
 
 PALETTE = {

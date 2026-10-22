@@ -13,7 +13,7 @@ states_heading: Every state
 assembly_intro: ""
 captions:
   globe: >
-    Colour shows the position this site has read for {reviewed} of the 193
+    Color shows the position this site has read for {reviewed} of the 193
     member states. Drag to turn the globe.
   map: >
     The same world, flattened. Small states are drawn as dots, so all 193 are
@@ -39,5 +39,5 @@ captions:
   assembly_moved: >
     {moved} states changed their vote from the year before.
   assembly_position: >
-    The same seats, coloured by position. In every year, the Yes block holds
+    The same seats, colored by position. In every year, the Yes block holds
     every position this site has read except No new rules.

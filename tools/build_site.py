@@ -462,7 +462,7 @@ def nav_items():
 #
 # The stylesheets and scripts are served from stable paths, so a browser or CDN
 # that has cached one will keep serving it after a deploy. That is not a
-# theoretical risk: during the colour-vision work a stale site.css made a
+# theoretical risk: during the color-vision work a stale site.css made a
 # working board render with transparent bands twice, and it looked exactly like
 # a bug in the build. On a live site the same thing hands returning readers a
 # page whose markup and stylesheet disagree.
@@ -601,7 +601,7 @@ def pct(d):
 
 def band_style(code, confidence):
     """Fill styling for a coded band. Every substantive position carries both a
-    hue and a texture, so the category survives colour-vision deficiency (see
+    hue and a texture, so the category survives color-vision deficiency (see
     config.POSITION_TEXTURES). AMBIG is texture only, over paper, because it
     has no hue. Confidence modulates opacity, hue never changes."""
     opacity = "1" if confidence == "EXPLICIT" else "0.55"
@@ -753,8 +753,8 @@ VIZ_FALLBACK = {
     "world_heading": "", "strands_heading": "Votes and positions", "strands_intro": "",
     "states_heading": "Every state", "assembly_intro": "",
     "captions": {
-        "globe": "Colour: the position this site has read, {reviewed} states. Pale: not yet reviewed.",
-        "map": "Colour: the position this site has read, {reviewed} states. Small states are drawn as dots.",
+        "globe": "Color: the position this site has read, {reviewed} states. Pale: not yet reviewed.",
+        "map": "Color: the position this site has read, {reviewed} states. Small states are drawn as dots.",
         "vote": "{year}, resolution {res}: {Y} Yes, {N} No, {A} abstained, {X} did not vote.",
         "movers": "Highlighted: {movers} states that changed a recorded vote.",
         "position": "{stated} with a stated position, {none} reviewed with none found, {nr} not yet reviewed.",
@@ -763,7 +763,7 @@ VIZ_FALLBACK = {
         "strands_movers": "{n} states that changed a recorded vote.",
         "assembly": "One seat per member state, ordered by vote.",
         "assembly_moved": "{moved} changed their vote from the year before.",
-        "assembly_position": "Seats coloured by position.",
+        "assembly_position": "Seats colored by position.",
     },
 }
 
@@ -796,7 +796,7 @@ def viz_scripts():
 def viz_textures_svg():
     """SVG patterns for the position textures, shared by every inline SVG on
     the page (the static map, the assembly, Strands). Hue paired with texture:
-    no category depends on colour alone."""
+    no category depends on color alone."""
     pos = config.PALETTE["positions"]
     tex = "rgba(255,255,255,.45)"
     return (
@@ -998,9 +998,9 @@ def assembly_figure_html(copy):
     <div class="seg" role="group" aria-label="Resolution">
       {"".join(f'<button type="button" data-year="{i}" aria-pressed="{str(i == 2).lower()}">{esc(_res_label(k))}</button>' for i, k in enumerate(keys))}
     </div>
-    <div class="seg" role="group" aria-label="Colour">
-      <button type="button" data-colour="vote" aria-pressed="true">Colour by vote</button>
-      <button type="button" data-colour="position" aria-pressed="false">Colour by position</button>
+    <div class="seg" role="group" aria-label="Color">
+      <button type="button" data-colour="vote" aria-pressed="true">Color by vote</button>
+      <button type="button" data-colour="position" aria-pressed="false">Color by position</button>
     </div>
     <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="Russia"></label>
   </div>
@@ -1046,7 +1046,7 @@ def votes_page(votes, content_states, preview):
 <section class="signal">
   <h2>{esc(res["symbol"])}</h2>
   <p>{esc(res["title"])}</p>
-  <p class="citation">Adopted {esc(res["date"])}, {tally["yes"]} in favour, {tally["no"]} against, {tally["abstain"]} abstentions ·
+  <p class="citation">Adopted {esc(res["date"])}, {tally["yes"]} in favor, {tally["no"]} against, {tally["abstain"]} abstentions ·
   <a href="{esc(res["undl_link"])}">UN Digital Library record</a></p>
   {tally_bar}
   <table class="vote-table">
@@ -1778,7 +1778,7 @@ def wave_map_block(instruments):
 <section class="signal" id="wave-map-section">
 <h2>Signing map</h2>
 <p>One document at a time. States that had signed it by the month shown fill
-in with that document's colour. States not yet on the list stay blank. The
+in with that document's color. States not yet on the list stay blank. The
 lists above are the record; the map only shows the wave.</p>
 <fieldset class="map-controls">
   <legend>Document</legend>
