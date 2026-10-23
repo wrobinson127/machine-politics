@@ -485,7 +485,7 @@ def _record_asset_hashes(out):
     _ASSET_HASHES.clear()
     out = Path(out)
     for rel in ("css/tokens.css", "css/site.css", "css/dossier.css",
-                "js/board.js", "js/dossier.js", "js/viz.js",
+                "js/board.js", "js/dossier.js", "js/viz.js", "js/film.js",
                 "js/instruments.js", "assets/favicon.svg"):
         path = out / rel
         if path.exists():  # instruments.js is conditional
@@ -497,6 +497,10 @@ def _record_asset_hashes(out):
             text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
             digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
             _ASSET_HASHES[rel] = digest[:10]
+    # The film is binary, so its bytes are the same on every platform
+    for path in sorted(p for p in (out / "assets" / "film").glob("*") if p.suffix in (".mp4", ".webm", ".png")):
+        rel = path.relative_to(out).as_posix()
+        _ASSET_HASHES[rel] = hashlib.sha256(path.read_bytes()).hexdigest()[:10]
 
 
 def asset(prefix, rel):
@@ -734,9 +738,6 @@ def current_position(cs, preview):
 # line. New claim-bearing prose does not belong in this file; it goes through
 # content/ and the approval gate.
 OPENER_HEADLINE = "Where every country stands on autonomous weapons."
-OPENER_DEK = ("Recorded votes, official statements, and national policy, tracked "
-              "as they shift over time. Every position links to a quoted, dated "
-              "source.")
 OPENER_CLOCK = ("The Geneva weapons convention holds its Seventh Review Conference "
                 "on 16 November 2026, and that is the next moment any of this can "
                 "turn into law.")
@@ -783,6 +784,70 @@ def load_viz_copy(preview, manifest=None):
     return out
 
 
+# Plain hero copy shown until the analyst approves content/landing.yaml: the
+# conference as a bare date line. The opening film plays either way; without
+# approved lines it has no end card, and its description says only what is
+# on screen.
+LANDING_FALLBACK = {
+    "conference_line": "Seventh Review Conference, 16 to 20 November 2026",
+    "film_question": "",
+    "film_line": "",
+    "film_cta": "",
+    "film_description": "A short film with no sound: a drone flies to a person, its display unable to classify them.",
+}
+FILM_LINES = ("film_question", "film_line", "film_cta")
+
+
+def load_landing_copy(preview, manifest=None):
+    path = config.CONTENT_DIR / "landing.yaml"
+    copy = load_yaml(path) if path.exists() else None
+    ok = bool(copy and (preview or is_approved(copy)))
+    if manifest is not None and copy is not None:
+        manifest["entries"].append({"state": None, "kind": "landing_copy",
+                                    "approved": is_approved(copy), "rendered": ok})
+    if not ok:
+        return dict(LANDING_FALLBACK)
+    return {k: " ".join(str(copy.get(k) or v).split()) for k, v in LANDING_FALLBACK.items()}
+
+
+def film_html(landing):
+    """The opening film over the hero: hidden, and inert, until film.js plays
+    it. The video is a grey master (rendered privately; the models never
+    ship); film.js plays it as it is, the same in every browser."""
+    lines = [landing[k] for k in FILM_LINES if landing[k]]
+    card = "".join(f'<p class="film-l{i}">{esc(t)}</p>' for i, t in enumerate(lines))
+    return f"""
+  <div class="film" id="film" role="region" aria-label="Opening film" hidden
+       data-src="{asset("", "assets/film/film-1080.mp4")}" data-src-small="{asset("", "assets/film/film-720.mp4")}"
+       data-src-webm="{asset("", "assets/film/film-1080.webm")}" data-src-small-webm="{asset("", "assets/film/film-720.webm")}"
+       data-poster="{asset("", "assets/film/poster.png")}">
+    <p class="film-desc">{esc(landing["film_description"])}</p>
+    <div class="film-stage" aria-hidden="true"></div>
+    <div class="film-card" hidden>{card}</div>
+    <div class="film-controls"><button type="button" class="film-pause">Pause</button><button type="button" class="film-skip">Skip</button></div>
+  </div>"""
+
+
+def hero_html(rows, landing, conf_link):
+    """The first screen: the headline, two ways in, the conference on one
+    line, and a large turning globe (drawn by viz.js; hidden until it is
+    live, so the page reads the same without JavaScript). The key lives with
+    the map below."""
+    return f"""
+<section class="opener hero" id="hero" aria-labelledby="opener-h">
+  <canvas class="hero-globe" role="img" aria-label="A turning globe of the 193 UN member states, colored by the position each has stated on autonomous weapons. The figures and table below have every value." hidden></canvas>
+  <div class="hero-text">
+    <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
+    <div class="hero-go">
+      <a class="hero-cta" href="#viz-world">See the world map</a>
+      <a class="hero-cta alt" href="#states">Find a country</a>
+    </div>
+    <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
+    <button type="button" class="film-replay" aria-label="Replay the film" title="Replay the film" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="film-replay-arc" d="M1 4v6h6M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/><path class="film-replay-play" d="M10 8.5 15.5 12 10 15.5z"/></svg></button>
+  </div>{film_html(landing)}
+</section>"""
+
+
 def viz_scripts():
     return (
         f'<script defer src="https://cdnjs.cloudflare.com/ajax/libs/d3/{D3_VERSION}/d3.min.js" '
@@ -791,6 +856,10 @@ def viz_scripts():
         f'integrity="{TOPOJSON_SRI}" crossorigin="anonymous"></script>\n'
         f'<script defer src="{asset("", "js/viz.js")}"></script>'
     )
+
+
+def film_script():
+    return f'<script defer src="{asset("", "js/film.js")}"></script>'
 
 
 def viz_textures_svg():
@@ -904,11 +973,11 @@ def world_figure_html(rows, copy):
     years = [k for k in keys]
     head = f'<h2 class="viz-h">{esc(copy["world_heading"])}</h2>' if copy["world_heading"] else ""
     return f"""
-<figure class="viz" id="viz-world" aria-labelledby="viz-world-cap">
+<figure class="viz" id="viz-world" data-start="map" aria-labelledby="viz-world-cap">
   {head}
   <div class="viz-controls">
     <div class="seg" role="group" aria-label="View">
-      {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "globe").lower()}">{esc(label)}</button>' for k, label in views)}
+      {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "map").lower()}">{esc(label)}</button>' for k, label in views)}
     </div>
     <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
   </div>
@@ -953,23 +1022,12 @@ def index_page(votes, content_states, preview, manifest=None):
     n_reviewed = sum(1 for r in rows if r["p"])
     coverage_line = (f"Votes cover all {len(rows)} member states. "
                      f"Positions have been reviewed for {n_reviewed} states so far.")
-    conf_link = (' <a href="conference.html">Follow the conference</a>.'
+    conf_link = (' <span aria-hidden="true">&middot;</span> <a href="conference.html">Follow the conference</a>'
                  if _conference_live else "")
+    landing = load_landing_copy(preview, manifest)
     body = f"""
 <svg class="viz-defs" width="0" height="0" aria-hidden="true"><defs>{viz_textures_svg()}</defs></svg>
-<section class="opener opener-wide" aria-labelledby="opener-h">
-  <div class="opener-text">
-    <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
-    <p class="opener-dek">{esc(OPENER_DEK)}</p>
-    <div class="opener-actions">
-      <a class="opener-go" href="#viz-world">Explore the globe</a>
-      <a class="skip-board" href="#states">Find a state</a>
-    </div>
-  </div>
-  <aside class="opener-aside">
-    <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
-  </aside>
-</section>
+{hero_html(rows, landing, conf_link)}
 {world_figure_html(rows, copy)}
 {strands_figure_html(copy)}
 {states_table_html(rows, coverage_line, copy)}
@@ -980,7 +1038,7 @@ def index_page(votes, content_states, preview, manifest=None):
         body,
         current="index.html",
         preview=preview,
-        extra_scripts=viz_scripts(),
+        extra_scripts=viz_scripts() + "\n" + film_script(),
         extra_head=dataset_jsonld(),
         og_path="",
         description="Where every country stands on autonomous weapons, tracked as positions shift over time.",
@@ -2374,6 +2432,15 @@ def build(out_dir, preview=False):
     src_viz = config.SITE_DIR / "js" / "viz.js"
     if src_viz.resolve() != (out / "js" / "viz.js").resolve():
         shutil.copyfile(src_viz, out / "js" / "viz.js")
+    # The opening film: film.js and the videos are source files too. The videos
+    # are rendered in the private dev repo (docs/finish/cinematic); only the
+    # finished grey masters ship, never the models they were rendered from.
+    src_film = config.SITE_DIR / "js" / "film.js"
+    if src_film.resolve() != (out / "js" / "film.js").resolve():
+        shutil.copyfile(src_film, out / "js" / "film.js")
+    src_media = config.SITE_DIR / "assets" / "film"
+    if src_media.exists() and src_media.resolve() != (out / "assets" / "film").resolve():
+        shutil.copytree(src_media, out / "assets" / "film", dirs_exist_ok=True)
     (out / "assets" / "world.json").write_text(world_topology(), encoding="utf-8", newline="\n")
     endorsements = load_endorsements()
     sponsorships = load_sponsorships()

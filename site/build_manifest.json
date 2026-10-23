@@ -9,6 +9,12 @@
   },
   {
    "approved": true,
+   "kind": "landing_copy",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
    "kind": "conference_page",
    "rendered": true,
    "state": null

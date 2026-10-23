@@ -482,6 +482,9 @@ def validate(content_dir=None):
     viz_path = content_dir / "viz.yaml"
     if viz_path.exists():
         check_viz(errors, viz_path)
+    landing_path = content_dir / "landing.yaml"
+    if landing_path.exists():
+        check_landing(errors, landing_path)
     endorsements = content_dir / "endorsements.yaml"
     if endorsements.exists():
         check_endorsements(errors, endorsements, vote_states)
@@ -706,6 +709,28 @@ def check_viz(errors, path):
             if tok not in VIZ_TOKENS:
                 errors.add(f"{where}.{k}", f"unknown placeholder {{{tok}}}")
     scan_prohibited_claims(errors, where, viz)
+
+
+LANDING_KEYS = ("conference_line", "film_question", "film_line", "film_cta", "film_description")
+
+
+def check_landing(errors, path):
+    """Hero copy on the home page. Claim-bearing: gated, dash-free, every
+    key present, and no placeholders (the hero's number is computed)."""
+    where = "landing.yaml"
+    landing = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    if not _check_entry_dict(errors, where, landing):
+        return
+    _check_approved(errors, where, landing)
+    for k in LANDING_KEYS:
+        if not str(landing.get(k) or "").strip():
+            errors.add(where, f"missing {k!r}")
+    for k, v in landing.items():
+        if isinstance(v, str):
+            _check_prose(errors, f"{where}.{k}", v)
+            if re.search(r"[{][^}]*[}]", v):
+                errors.add(f"{where}.{k}", "placeholders are not allowed in hero copy")
+    scan_prohibited_claims(errors, where, landing)
 
 
 def main():

@@ -3,6 +3,7 @@ the Review Conference date, the globe figure with a static map as its first
 paint, Strands, and every member state in a table. The figures read one
 payload, built from approved content only."""
 
+import hashlib
 import json
 import re
 import sys
@@ -43,7 +44,49 @@ def test_one_h1_and_it_is_the_opener(deploy):
 
 
 def test_opener_states_the_conference_date(deploy):
-    assert "16 November 2026" in _index(deploy)
+    """The first screen names the conference date, in either the approved
+    sentence or the hero's shorter line."""
+    hero = _index(deploy)
+    hero = hero[hero.find('class="opener'):hero.find('id="viz-world"')]
+    assert re.search(r"16 (to 20 )?November 2026", hero)
+
+
+def test_hero_is_the_headline_two_ways_in_and_a_globe(deploy):
+    """The hero is only the headline, two ways in, the conference on one
+    line, and a globe canvas that stays hidden until the script draws it
+    (so the page reads the same without JavaScript). The key lives with
+    the map below, not here."""
+    index = _index(deploy)
+    hero = index[index.find('class="opener'):index.find('id="viz-world"')]
+    assert re.search(r'<canvas class="hero-globe"[^>]*\shidden>', hero)
+    assert 'href="#viz-world"' in hero and 'href="#states"' in hero
+    assert "hero-key" not in hero and "hero-count" not in hero
+    assert hero.count('<p class="hero-conf">') == 1
+
+
+def test_world_figure_opens_on_the_flat_map(deploy):
+    """The hero is the globe, so the world figure below starts on the map."""
+    index = _index(deploy)
+    fig = index[index.find('id="viz-world"'):index.find('id="viz-strands"')]
+    assert '<figure class="viz" id="viz-world" data-start="map"' in index
+    assert 'data-view="map" aria-pressed="true"' in fig
+    assert 'data-view="globe" aria-pressed="false"' in fig
+
+
+def test_unapproved_landing_copy_falls_back_to_plain_words(deploy):
+    """Hero copy is gated: until approved the page shows a plain date
+    line, never the draft."""
+    _, manifest = deploy
+    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
+    entry = next(e for e in manifest["entries"] if e["kind"] == "landing_copy")
+    index = _index(deploy)
+    if bs.is_approved(landing):
+        assert entry["rendered"] is True
+        assert " ".join(landing["conference_line"].split()) in index
+    else:
+        assert entry["rendered"] is False
+        assert bs.LANDING_FALLBACK["conference_line"] in index
+        assert " ".join(landing["conference_line"].split()) not in index
 
 
 def test_the_retired_tour_and_board_are_gone(deploy):
@@ -123,3 +166,64 @@ def test_every_member_state_has_a_label_point_and_code():
     assert set(labels) == set(bs.load_votes()["states"])
     codes = [v["a2"] for v in labels.values()]
     assert len(codes) == len(set(codes)) and all(len(c) == 2 for c in codes)
+
+
+def _film(index):
+    m = re.search(r'<div class="film" id="film".*?</div>\s*</div>', index, re.S)
+    assert m, "no film panel in the hero"
+    return m.group(0)
+
+
+def test_the_film_sits_inside_the_hero_hidden_until_it_plays(deploy):
+    """The film plays over the hero and fades out to reveal it, so it lives
+    inside #hero, starts hidden (no JavaScript: the hero stands alone), and
+    has its controls and a text description from the first frame."""
+    index = _index(deploy)
+    hero = index[index.find('id="hero"'):index.find('id="viz-world"')]
+    assert '<div class="film" id="film"' in hero
+    film = _film(index)
+    assert re.search(r'id="film"[^>]*\shidden\b', film)
+    assert 'class="film-skip"' in film and 'class="film-pause"' in film
+    assert 'class="film-desc"' in film
+    assert re.search(r'<button type="button" class="film-replay" aria-label="Replay the film"[^>]*\shidden>', hero)
+
+
+def test_unapproved_film_copy_shows_no_end_card(deploy):
+    """The end-card lines are gated with the rest of the hero copy: until
+    approved the card is empty, so the film fades straight to the hero."""
+    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
+    film = _film(_index(deploy))
+    card = re.search(r'<div class="film-card" hidden>(.*?)</div>', film, re.S).group(1)
+    if bs.is_approved(landing):
+        for k in bs.FILM_LINES:
+            assert bs.esc(" ".join(landing[k].split())) in card
+    else:
+        assert card == ""
+        assert bs.esc(" ".join(landing["film_question"].split())) not in film
+        assert bs.LANDING_FALLBACK["film_description"] in film
+
+
+def test_the_preview_shows_the_draft_end_card(tmp_path):
+    out = tmp_path / "preview"
+    bs.build(out, preview=True)
+    index = (out / "index.html").read_text(encoding="utf-8")
+    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
+    card = re.search(r'<div class="film-card" hidden>(.*?)</div>', index, re.S).group(1)
+    assert [bs.esc(" ".join(landing[k].split())) for k in bs.FILM_LINES] == re.findall(r"<p[^>]*>(.*?)</p>", card)
+
+
+def test_the_film_ships_with_its_player_and_videos(deploy):
+    """film.js is linked on the home page only, and every video the panel
+    names is in the build, versioned by its bytes."""
+    out, _ = deploy
+    index = _index(deploy)
+    assert re.search(r'<script defer src="js/film\.js\?v=[0-9a-f]{10}"></script>', index)
+    assert (out / "js" / "film.js").exists()
+    film = _film(index)
+    for attr in ("data-src", "data-src-small", "data-src-webm", "data-src-small-webm", "data-poster"):
+        src = re.search(rf'{attr}="([^"]+)"', film).group(1)
+        path, _, digest = src.partition("?v=")
+        target = out / path
+        assert target.exists(), src
+        assert digest == hashlib.sha256(target.read_bytes()).hexdigest()[:10]
+    assert "film.js" not in (out / "votes.html").read_text(encoding="utf-8")

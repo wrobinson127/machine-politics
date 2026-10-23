@@ -18,6 +18,9 @@
   var YEARS = PACK.years, RES = PACK.resolutions;
   var CONF = PACK.conf;
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Canvas density, capped: past 1.5x a map gains nothing visible, and every
+  // morph frame would redraw nearly twice the pixels.
+  var DPR = Math.min(1.5, window.devicePixelRatio || 1);
   var hasD3 = typeof window.d3 !== "undefined" && typeof window.topojson !== "undefined";
   function count(f) { return DATA.filter(f).length; }
   function mover(d) { var v = d.v.replace(/X/g, ""); for (var i = 1; i < v.length; i++) if (v[i] !== v[i - 1]) return true; return false; }
@@ -82,7 +85,8 @@
       wrap.insertBefore(canvas, poster); poster.setAttribute("hidden", ""); fig.classList.add("viz-live");
 
       var mutate = d3.geoProjectionMutator(function (a) { return function (x, y) { var p = d3.geoOrthographicRaw(x, y), q = d3.geoEqualEarthRaw(x, y); return [p[0] + a * (q[0] - p[0]), p[1] + a * (q[1] - p[1])]; }; });
-      var alpha = 0, rot = [-20, -12, 0], proj = mutate(0), path = d3.geoPath(proj, ctx);
+      var startMap = fig.dataset.start === "map";
+      var alpha = startMap ? 1 : 0, rot = startMap ? [0, 0, 0] : [-20, -12, 0], proj = mutate(alpha), path = d3.geoPath(proj, ctx);
       function setProj() { mutate(alpha); proj.rotate(rot).translate([CX, CY]).scale(285 * (1 - alpha) + FLAT * alpha).precision(.4).clipAngle(alpha < .999 ? 90 + alpha * 89.9 : null); }
 
       var pat = {};
@@ -96,7 +100,7 @@
       function posFill(d) { return !d || !d.p ? null : (pat[d.p] || C.hue[d.p]); }
 
       DATA.forEach(function (d) { d._x = CX; d._y = CY; d._r = 0; d._a = 0; });
-      var view = "globe", year = 2, movers = false, mapA = 1, labels = [], labA = 0, hover = null, found = null, drag = null, tween = null, spinning = !reduce, pendingVH = null;
+      var view = startMap ? "map" : "globe", year = 2, movers = false, mapA = 1, labels = [], labA = 0, hover = null, found = null, drag = null, tween = null, spinning = !reduce && !startMap, pendingVH = null;
       // Dot layouts are computed for the space the reader actually has. The
       // canvas works in a 1100-unit-wide frame; on a phone that frame is
       // scaled down three times, so every size is scaled up by the same k
@@ -177,7 +181,7 @@
         draw();
       }
       var scale = 1;
-      function size() { var w = wrap.clientWidth, dpr = window.devicePixelRatio || 1; scale = w / VW; canvas.width = Math.round(w * dpr); canvas.height = Math.round(VH * scale * dpr); canvas.style.height = VH * scale + "px"; ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0); }
+      function size() { var w = wrap.clientWidth, dpr = DPR; scale = w / VW; canvas.width = Math.round(w * dpr); canvas.height = Math.round(VH * scale * dpr); canvas.style.height = VH * scale + "px"; ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0); }
       function dot(d) {
         if (d._a <= .01 || d._r <= .1) return;
         ctx.globalAlpha = d._a; ctx.beginPath(); ctx.arc(d._x, d._y, d._r, 0, Math.PI * 2);
@@ -229,7 +233,7 @@
         DATA.forEach(function (d) { if (d._a < .5) return; var dd = Math.hypot(d._x - x, d._y - y); if (dd < Math.max(bd, d._r + 2)) { bd = dd; best = d; } });
         if (best || !geo() || mapA < .5) return best;
         // The morphing projection has no inverse, so the canvas does the hit test.
-        var dpr = window.devicePixelRatio || 1, px = (e.clientX - b.left) * dpr, py = (e.clientY - b.top) * dpr;
+        var dpr = DPR, px = (e.clientX - b.left) * dpr, py = (e.clientY - b.top) * dpr;
         var f = countries.find(function (c) { if (!c._d) return false; ctx.beginPath(); path(c); return ctx.isPointInPath(px, py); });
         return f ? f._d : null;
       }
@@ -270,6 +274,72 @@
     // Before the globe loads (or without d3), the static flat map keeps its own caption.
     if (caption) caption.textContent = fill(CAP.map, {reviewed: count(function (d) { return d.p; })});
     setKey(key, "pos");
+  }
+
+  // ---- The hero: a large turning globe beside the headline ----
+  function hero(fig) {
+    var canvas = fig.querySelector(".hero-globe"); if (!canvas) return;
+    var ctx = canvas.getContext("2d"), C = tokens(), tip = makeTip(fig), pat = {}, tex = "rgba(255,255,255,.45)";
+    function mk(code, draw) { var c = document.createElement("canvas"); c.width = c.height = 8; var x = c.getContext("2d"); x.fillStyle = C.hue[code]; x.fillRect(0, 0, 8, 8); draw(x); pat[code] = ctx.createPattern(c, "repeat"); }
+    mk("LBI-OPEN", function (x) { x.fillStyle = tex; x.fillRect(0, 6, 8, 1.5); });
+    mk("REG-SOFT", function (x) { x.fillStyle = tex; x.fillRect(6, 0, 1.5, 8); x.fillRect(0, 6, 8, 1.5); });
+    mk("CCW-ONLY", function (x) { x.strokeStyle = tex; x.lineWidth = 1.5; x.beginPath(); x.moveTo(0, 0); x.lineTo(8, 8); x.stroke(); });
+    mk("OPPOSE", function (x) { x.fillStyle = tex; x.beginPath(); x.arc(4, 4, 1.3, 0, 7); x.fill(); });
+    mk("AMBIG", function (x) { x.strokeStyle = "rgba(26,26,26,.55)"; x.lineWidth = 1.4; x.beginPath(); x.moveTo(0, 8); x.lineTo(8, 0); x.stroke(); });
+    function fillOf(d) { return !d ? C.faint : !d.p ? C.paper : (pat[d.p] || C.hue[d.p]); }
+    fetch(PACK.base + "assets/world.json").then(function (r) { if (!r.ok) throw new Error("world " + r.status); return r.json(); }).then(function (topo) {
+      var byIso = new Map(DATA.map(function (d) { return [d.i, d]; }));
+      var countries = topojson.feature(topo, topo.objects.countries).features;
+      countries.forEach(function (f) { f._d = byIso.get(f.properties.i); });
+      var W, H, L, dpr = DPR, proj = d3.geoOrthographic().clipAngle(90).precision(.5), path = d3.geoPath(proj, ctx);
+      var rot = [-12, -18, 0], hover = null, drag = null, grat = d3.geoGraticule10(), onScreen = true;
+      canvas.hidden = false; fig.classList.add("hero-live");
+      function size() {
+        var b = canvas.getBoundingClientRect(); W = b.width; H = b.height;
+        canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        // Wide: a big globe on the right, cropped by the screen edge. Phone: centered under the words.
+        if (innerWidth < 760) L = {cx: W / 2, cy: H / 2, r: Math.min(W, H) * 0.46};
+        else { var gr = Math.min(H * 0.6, W * 0.34); L = {cx: W - gr * 0.62, cy: H * 0.52, r: gr}; }
+        proj.translate([L.cx, L.cy]).scale(L.r);
+      }
+      function visibleDot(d) { return d.sm && d3.geoDistance([d.lon, d.lat], [-rot[0], -rot[1]]) < Math.PI / 2 - .03; }
+      function draw() {
+        proj.rotate(rot); ctx.clearRect(0, 0, W, H);
+        ctx.beginPath(); path({type: "Sphere"}); ctx.fillStyle = C.raise; ctx.fill();
+        ctx.beginPath(); path(grat); ctx.strokeStyle = C.faint; ctx.lineWidth = .7; ctx.stroke();
+        countries.forEach(function (f) { var d = f._d, hot = d && d === hover; ctx.beginPath(); path(f);
+          ctx.fillStyle = fillOf(d); ctx.fill(); ctx.strokeStyle = hot ? C.ink : C.rule; ctx.lineWidth = hot ? 1.6 : .5; ctx.stroke(); });
+        DATA.forEach(function (d) { if (!visibleDot(d)) return; var p = proj([d.lon, d.lat]);
+          ctx.beginPath(); ctx.arc(p[0], p[1], Math.max(2.4, L.r / 160), 0, 7); ctx.fillStyle = fillOf(d); ctx.fill();
+          ctx.strokeStyle = d === hover ? C.ink : C.soft; ctx.lineWidth = d === hover ? 1.6 : .7; ctx.stroke(); });
+        ctx.beginPath(); path({type: "Sphere"}); ctx.strokeStyle = C.rule; ctx.lineWidth = 1; ctx.stroke();
+      }
+      function pick(x, y) {
+        var ll = proj.invert([x, y]); if (!ll || d3.geoDistance(ll, [-rot[0], -rot[1]]) > Math.PI / 2) return null;
+        var best = null, bd = 10;
+        DATA.forEach(function (d) { if (!visibleDot(d)) return; var p = proj([d.lon, d.lat]), dd = Math.hypot(p[0] - x, p[1] - y); if (dd < bd) { bd = dd; best = d; } });
+        if (best) return best;
+        var f = countries.find(function (c) { return c._d && d3.geoContains(c, ll); }); return f ? f._d : null;
+      }
+      canvas.addEventListener("pointerdown", function (e) { drag = {x: e.clientX, y: e.clientY, r: rot.slice(), moved: false}; canvas.setPointerCapture(e.pointerId); });
+      canvas.addEventListener("pointermove", function (e) {
+        var b = canvas.getBoundingClientRect();
+        if (drag) { var dx = e.clientX - drag.x, dy = e.clientY - drag.y; if (Math.abs(dx) + Math.abs(dy) > 3) drag.moved = true;
+          rot = [drag.r[0] + dx * .25, Math.max(-60, Math.min(60, drag.r[1] - dy * .25)), 0]; draw(); return; }
+        var d = pick(e.clientX - b.left, e.clientY - b.top); if (d !== hover) { hover = d; draw(); }
+        canvas.style.cursor = d ? "pointer" : "grab";
+        if (d && !tip.pinned) tip.show(d, e.clientX, e.clientY, false); else if (!d && !tip.pinned) tip.hide();
+      });
+      canvas.addEventListener("pointerup", function (e) { var moved = drag && drag.moved; drag = null; if (moved) return;
+        var b = canvas.getBoundingClientRect(), d = pick(e.clientX - b.left, e.clientY - b.top); if (d) { tip.show(d, e.clientX, e.clientY, true); e.stopPropagation(); } });
+      canvas.addEventListener("pointerleave", function () { hover = null; if (!tip.pinned) tip.hide(); draw(); });
+      // Spin only while the hero is on screen; the figures below have their own canvas.
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(fig);
+      size(); draw();
+      var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { size(); draw(); }, 150); });
+      // and not while the opening film covers it
+      if (!reduce) d3.timer(function () { if (onScreen && !drag && !hover && document.visibilityState === "visible" && !fig.classList.contains("film-on")) { rot[0] += .06; draw(); } });
+    }).catch(function () { /* the words stand on their own */ });
   }
 
   // ---- Strands: each state's three votes and its position ----
@@ -404,6 +474,7 @@
     });
   }
 
+  var hz = document.getElementById("hero"); if (hz && hasD3) hero(hz);
   var w = document.getElementById("viz-world"); if (w && hasD3) world(w); else if (w) { var c0 = w.querySelector(".viz-caption"); if (c0) c0.textContent = fill(CAP.map, {reviewed: count(function (d) { return d.p; })}); setKey(w.querySelector(".viz-key"), "pos"); }
   var s = document.getElementById("viz-strands"); if (s) strands(s);
   var a = document.getElementById("viz-assembly"); if (a) assembly(a);

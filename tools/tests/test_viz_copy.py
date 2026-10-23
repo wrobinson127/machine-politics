@@ -77,3 +77,62 @@ def test_a_missing_approval_flag_fails(tmp_path):
     def m(v):
         del v["approved"]
     assert _run(tmp_path, m)
+
+
+LANDING = config.CONTENT_DIR / "landing.yaml"
+
+
+def _landing(tmp_path, mutate=None):
+    data = yaml.safe_load(LANDING.read_text(encoding="utf-8"))
+    if mutate:
+        mutate(data)
+    path = tmp_path / "landing.yaml"
+    path.write_text(yaml.safe_dump(data, allow_unicode=True), encoding="utf-8")
+    errors = vc.Errors()
+    vc.check_landing(errors, path)
+    return errors.items
+
+
+def test_the_committed_landing_copy_passes(tmp_path):
+    assert _landing(tmp_path) == []
+
+
+def test_landing_copy_with_a_dash_fails(tmp_path):
+    def m(d):
+        d["conference_line"] = "Seventh Review Conference \u2014 Geneva, 16 to 20 November 2026"
+    assert _landing(tmp_path, m)
+
+
+def test_landing_copy_missing_a_key_fails(tmp_path):
+    def m(d):
+        del d["conference_line"]
+    assert any("conference_line" in i for i in _landing(tmp_path, m))
+
+
+def test_landing_copy_with_an_absence_claim_fails(tmp_path):
+    def m(d):
+        d["conference_line"] = "Many countries have no position on the Review Conference"
+    assert any("prohibited claim" in i for i in _landing(tmp_path, m))
+
+
+def test_every_film_line_is_a_required_landing_key():
+    for k in bs_film_lines():
+        assert k in vc.LANDING_KEYS, k
+    assert "film_description" in vc.LANDING_KEYS
+
+
+def bs_film_lines():
+    from tools import build_site as bs
+    return bs.FILM_LINES
+
+
+def test_landing_copy_missing_a_film_line_fails(tmp_path):
+    def m(d):
+        del d["film_question"]
+    assert any("film_question" in i for i in _landing(tmp_path, m))
+
+
+def test_a_film_line_with_a_dash_fails(tmp_path):
+    def m(d):
+        d["film_line"] = "193 countries – answering now"
+    assert _landing(tmp_path, m)
