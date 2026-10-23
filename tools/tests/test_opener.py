@@ -220,7 +220,7 @@ def test_the_film_ships_with_its_player_and_videos(deploy):
     assert re.search(r'<script defer src="js/film\.js\?v=[0-9a-f]{10}"></script>', index)
     assert (out / "js" / "film.js").exists()
     film = _film(index)
-    for attr in ("data-src", "data-src-small", "data-src-webm", "data-src-small-webm"):
+    for attr in ("data-src", "data-src-small", "data-src-webm", "data-src-small-webm", "data-poster"):
         src = re.search(rf'{attr}="([^"]+)"', film).group(1)
         path, _, digest = src.partition("?v=")
         target = out / path

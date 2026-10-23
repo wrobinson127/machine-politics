@@ -498,7 +498,7 @@ def _record_asset_hashes(out):
             digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
             _ASSET_HASHES[rel] = digest[:10]
     # The film is binary, so its bytes are the same on every platform
-    for path in sorted(p for p in (out / "assets" / "film").glob("*") if p.suffix in (".mp4", ".webm")):
+    for path in sorted(p for p in (out / "assets" / "film").glob("*") if p.suffix in (".mp4", ".webm", ".png")):
         rel = path.relative_to(out).as_posix()
         _ASSET_HASHES[rel] = hashlib.sha256(path.read_bytes()).hexdigest()[:10]
 
@@ -819,7 +819,8 @@ def film_html(landing):
     return f"""
   <div class="film" id="film" role="region" aria-label="Opening film" hidden
        data-src="{asset("", "assets/film/film-1080.mp4")}" data-src-small="{asset("", "assets/film/film-720.mp4")}"
-       data-src-webm="{asset("", "assets/film/film-1080.webm")}" data-src-small-webm="{asset("", "assets/film/film-720.webm")}">
+       data-src-webm="{asset("", "assets/film/film-1080.webm")}" data-src-small-webm="{asset("", "assets/film/film-720.webm")}"
+       data-poster="{asset("", "assets/film/poster.png")}">
     <p class="film-desc">{esc(landing["film_description"])}</p>
     <div class="film-stage" aria-hidden="true"></div>
     <div class="film-card" hidden>{card}</div>
