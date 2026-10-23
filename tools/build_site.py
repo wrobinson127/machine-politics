@@ -843,7 +843,7 @@ def hero_html(rows, landing, conf_link):
       <a class="hero-cta alt" href="#states">Find a country</a>
     </div>
     <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
-    <button type="button" class="film-replay" hidden><span class="film-replay-i" aria-hidden="true"></span>Replay the film <span class="film-replay-t">0:38</span></button>
+    <button type="button" class="film-replay" aria-label="Replay the film" title="Replay the film" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="film-replay-arc" d="M1 4v6h6M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/><path class="film-replay-play" d="M10 8.5 15.5 12 10 15.5z"/></svg></button>
   </div>{film_html(landing)}
 </section>"""
 

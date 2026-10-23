@@ -1296,14 +1296,13 @@ body { overflow-x: clip; }
 .film-controls button:focus-visible { outline: 2px solid var(--ground); outline-offset: 2px; }
 .film-card:not([hidden]) ~ .film-controls button { border-color: var(--ink); background: var(--ground); color: var(--ink); }
 .film.clear .film-controls { display: none; }
-.film-replay { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; min-height: 34px; padding: 0 12px 0 10px;
-  border: 1.5px solid var(--ink); border-radius: 999px; background: rgba(247, 244, 238, .88); color: var(--ink);
-  font: inherit; font-size: .84rem; cursor: pointer; pointer-events: auto; }
-.film-replay:hover { background: var(--ink); color: var(--ground); }
+.film-replay { display: inline-grid; place-items: center; width: 44px; height: 44px; margin: 14px 0 0 -7px; padding: 0;
+  border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; pointer-events: auto; }
+.film-replay svg { width: 30px; height: 30px; }
+.film-replay-arc { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.film-replay-play { fill: currentColor; }
+.film-replay:hover { color: var(--ink-soft); }
 .film-replay:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.film-replay-i { width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent currentColor; }
-.film-replay-t { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.film-replay:hover .film-replay-t { color: inherit; }
 .film-replay[hidden] { display: none; }
 .hero.film-on .hero-text { visibility: hidden; }
 /* after the film, focus returns to the headline for keyboard users; it is not a control, so no ring */

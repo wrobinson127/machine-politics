@@ -185,7 +185,7 @@ def test_the_film_sits_inside_the_hero_hidden_until_it_plays(deploy):
     assert re.search(r'id="film"[^>]*\shidden\b', film)
     assert 'class="film-skip"' in film and 'class="film-pause"' in film
     assert 'class="film-desc"' in film
-    assert '<button type="button" class="film-replay" hidden>' in hero and "Replay the film" in hero
+    assert re.search(r'<button type="button" class="film-replay" aria-label="Replay the film"[^>]*\shidden>', hero)
 
 
 def test_unapproved_film_copy_shows_no_end_card(deploy):
