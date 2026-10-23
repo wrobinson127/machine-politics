@@ -3,7 +3,7 @@
 # approved: true; until then the hero uses build_site.LANDING_FALLBACK (a
 # plain count, and the approved conference sentence) and the opening film
 # ends on black with no end card.
-approved: false
+approved: true
 count_caption: of 193 countries read, every position sourced
 conference_line: Seventh Review Conference, Geneva, 16 to 20 November 2026
 # The opening film's end card (three lines, in order) and its description

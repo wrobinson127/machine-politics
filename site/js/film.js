@@ -68,16 +68,21 @@
       if (video.readyState >= 2) gl.draw(video);
       raf = requestAnimationFrame(loop);
     }
-    // the end card, if there is approved copy for one, then the hero
+    // the end card, if there is approved copy for one: its lines fade in on paper, hold,
+    // then the card breaks into dots and drifts away, uncovering the hero underneath
+    var endCard = null;
     function ending() {
       if (!card.querySelector("p")) { finish(false); return; }
-      cancelAnimationFrame(raf); card.hidden = false; pause.hidden = true;
-      requestAnimationFrame(function () { card.classList.add("in"); });
-      setTimeout(function () { finish(false); }, 5200);
+      cancelAnimationFrame(raf); pause.hidden = true;
+      card.hidden = false; // the words, for screen readers; the canvas shows them
+      endCard = endCardCanvas(film, [].map.call(card.querySelectorAll("p"), function (p) { return p.textContent; }));
+      endCard.run(function () { hero.classList.remove("film-on"); stage.textContent = ""; film.classList.add("clear"); },
+                  function () { finish(true, true); });
     }
-    function finish(quiet) {
+    function finish(quiet, dissolved) {
       if (done) return; done = true;
       clearTimeout(giveUp); cancelAnimationFrame(raf);
+      if (endCard) endCard.stop();
       if (observer) observer.disconnect();
       document.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", fit);
@@ -85,11 +90,12 @@
       film.classList.remove("in");
       hero.classList.remove("film-on");
       setTimeout(function () {
-        film.hidden = true; card.hidden = true; card.classList.remove("in");
+        film.hidden = true; card.hidden = true; film.classList.remove("clear");
+        if (endCard) { endCard.remove(); endCard = null; }
         pause.hidden = false; pause.textContent = "Pause";
         stage.textContent = ""; video.removeAttribute("src"); video.load();
       }, quiet ? 0 : 700);
-      if (!quiet && film.contains(document.activeElement)) {
+      if ((!quiet || dissolved) && film.contains(document.activeElement)) {
         var h = hero.querySelector("h1"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
       }
     }
@@ -98,6 +104,84 @@
     skip.onclick = function () { finish(false); };
     pause.onclick = function () {
       if (video.paused) { video.play(); pause.textContent = "Pause"; } else { video.pause(); pause.textContent = "Play"; }
+    };
+  }
+
+  // The end card on a canvas, so the same pixels can come apart. Timings in seconds.
+  var LINE_IN = [0.2, 1.2, 2.1], FADE = 0.6, HOLD_UNTIL = 7.2, DISSOLVE = 1.8;
+  function endCardCanvas(film, lines) {
+    var cv = document.createElement("canvas"); cv.className = "film-end";
+    film.insertBefore(cv, film.querySelector(".film-controls"));
+    var x = cv.getContext("2d"), dpr = window.devicePixelRatio || 1, W, H, raf = 0, t0 = 0;
+    var cs = getComputedStyle(document.documentElement);
+    var PAPER = cs.getPropertyValue("--ground").trim() || "#F7F4EE", INK = cs.getPropertyValue("--ink").trim() || "#1A1A1A",
+        SOFT = cs.getPropertyValue("--ink-soft").trim() || "#55524C", FONT = cs.getPropertyValue("--font-display").trim() || "Georgia, serif";
+    var layout = [], particles = null, cells = null, CELL = 6;
+    function size() {
+      W = film.clientWidth; H = film.clientHeight; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      x.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var clampv = function (lo, v, hi) { return Math.max(lo, Math.min(hi, v)); };
+      var pad = clampv(20, W * 0.1, 144), big = clampv(32, W * 0.05, 67), small = clampv(18, W * 0.024, 30), maxW = Math.min(W - 2 * pad, 30 * big * 0.52);
+      layout = []; var y = 0;
+      lines.forEach(function (text, i) {
+        var fs = i ? small : big, font = (i ? "400 " : "italic 500 ") + fs + "px " + FONT, lh = fs * (i ? 1.3 : 1.05);
+        x.font = font; var words = text.split(" "), line = "", rows = [];
+        words.forEach(function (w) { var tryL = line ? line + " " + w : w; if (x.measureText(tryL).width > maxW && line) { rows.push(line); line = w; } else line = tryL; });
+        rows.push(line);
+        rows.forEach(function (r) { layout.push({ text: r, font: font, y: y + fs, i: i }); y += lh; });
+        y += i ? small * 0.4 : big * 0.5;
+      });
+      var top = (H - y) / 2; layout.forEach(function (l) { l.x = pad; l.y += top; });
+    }
+    function paint(alphaFor) {
+      x.clearRect(0, 0, W, H); x.fillStyle = PAPER; x.fillRect(0, 0, W, H);
+      layout.forEach(function (l) { x.globalAlpha = alphaFor(l.i); x.font = l.font; x.fillStyle = l.i === 2 ? SOFT : INK; x.fillText(l.text, l.x, l.y); });
+      x.globalAlpha = 1;
+    }
+    // freeze the finished card into particles (ink) and cells (paper)
+    function shatter() {
+      paint(function () { return 1; });
+      var img = x.getImageData(0, 0, cv.width, cv.height).data, step = Math.max(2, Math.round(2 * dpr)), seed = 7;
+      var rand = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      particles = [];
+      for (var py = 0; py < cv.height; py += step) for (var px = 0; px < cv.width; px += step) {
+        var o = (py * cv.width + px) * 4, l = img[o] + img[o + 1] + img[o + 2];
+        if (l < 380) particles.push({ x: px / dpr, y: py / dpr, c: l < 200 ? INK : SOFT, d: (px / cv.width) * 0.75 + rand() * 0.2,
+          vx: 20 + rand() * 60, vy: -30 - rand() * 70, s: step / dpr });
+      }
+      cells = [];
+      for (var cy = 0; cy < H; cy += CELL) for (var cx = 0; cx < W; cx += CELL) cells.push({ x: cx, y: cy, d: (cx / W) * 0.75 + rand() * 0.25 });
+    }
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      if (t < HOLD_UNTIL) {
+        paint(function (i) { return Math.max(0, Math.min(1, (t - LINE_IN[i]) / FADE)); });
+      } else {
+        if (!particles) { shatter(); onClear(); }
+        var p = (t - HOLD_UNTIL) / DISSOLVE;
+        x.clearRect(0, 0, W, H);
+        x.fillStyle = PAPER;
+        cells.forEach(function (c) { if (p < c.d) x.fillRect(c.x, c.y, CELL, CELL); });
+        particles.forEach(function (q) {
+          var a = (p - q.d) / 0.35; if (a > 1) return;
+          var k = Math.max(0, a), dt = k * 1.1;
+          x.globalAlpha = 1 - k; x.fillStyle = q.c;
+          x.fillRect(q.x + q.vx * dt + Math.sin(q.y * 0.05 + dt * 6) * 6 * k, q.y + q.vy * dt, q.s * (1 - k * 0.5), q.s * (1 - k * 0.5));
+        });
+        x.globalAlpha = 1;
+        if (p >= 1.3) { done(); return; }
+      }
+      raf = requestAnimationFrame(frame);
+    }
+    var onClear, done;
+    return {
+      run: function (cleared, finished) {
+        onClear = cleared; done = finished; size();
+        var go = function () { t0 = performance.now(); raf = requestAnimationFrame(frame); };
+        if (document.fonts && document.fonts.load) document.fonts.load("italic 500 40px " + FONT).then(go, go); else go();
+      },
+      stop: function () { cancelAnimationFrame(raf); },
+      remove: function () { cancelAnimationFrame(raf); cv.remove(); },
     };
   }
 
