@@ -8,9 +8,9 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "landing_copy",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
