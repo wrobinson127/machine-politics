@@ -1,10 +1,6 @@
 /* The opening film. It plays once per browser session over the home page hero,
-   then fades out to reveal it. The video is a grey master; this script prints it
-   in the site's two inks with an 8x8 ordered dither, one dot per CSS pixel, so it
-   stays sharp at any size. It draws only when the video has a new frame and only
-   while the film is on screen; on software WebGL (SwiftShader, Microsoft Basic
-   Render Driver and the like) it skips the shader and plays the grey 720p master
-   as it is.
+   then fades out to reveal it. The video plays as it is, the same in every
+   browser: no shader, so a computer without a graphics card sees the same film.
 
    Without JavaScript, under reduced motion, without autoplay or without a
    playable video, nothing happens and the hero stands as it is. */
@@ -18,44 +14,22 @@
   try { seen = sessionStorage.getItem(KEY) === "1"; } catch (e) { /* storage blocked: play once per load */ }
   if (reduced) return;
   if (replay) { replay.hidden = false; replay.addEventListener("click", function () { start(true); }); }
-  // Is WebGL software-rendered (SwiftShader and the like)? Asked in a throwaway worker:
-  // on a software rasteriser, even a short-lived WebGL context on the page slows every
-  // canvas drawn after it, so the page makes one only on real hardware.
-  var gpu = null;
-  function probeGpu(done) {
-    if (gpu !== null) { done(gpu); return; }
-    var src = "try{var c=new OffscreenCanvas(1,1),g=c.getContext('webgl');if(!g){postMessage('none')}else{var i=g.getExtension('WEBGL_debug_renderer_info');" +
-      "postMessage(String(i?g.getParameter(i.UNMASKED_RENDERER_WEBGL):g.getParameter(g.RENDERER)))}}catch(e){postMessage('unknown')}";
-    var url, w, settle = function (r) { if (w) w.terminate(); if (url) URL.revokeObjectURL(url); gpu = r; done(r); };
-    if (!window.Worker || !window.OffscreenCanvas) { settle("unknown"); return; }
-    try {
-      url = URL.createObjectURL(new Blob([src], { type: "text/javascript" })); w = new Worker(url);
-      w.onmessage = function (e) { settle(/swiftshader|llvmpipe|softpipe|software|basic render/i.test(e.data) ? "software" : e.data === "none" ? "none" : "hardware"); };
-      w.onerror = function () { settle("unknown"); };
-    } catch (e) { settle("unknown"); }
-  }
-
   if (!seen) start(false);
 
-  function start(fromReplay) { probeGpu(function (g) { play(fromReplay, g === "software" ? "none" : g, g === "software"); }); }
-  function play(fromReplay, g, soft) {
-    var probe = document.createElement("canvas"), gl = g === "none" ? null : dither(probe);
+  function start(fromReplay) {
     var video = document.createElement("video");
-    // the canvas is drawn at CSS pixels, so the 720p film covers anything under 1000 wide
-    var small = soft || (film.parentNode.clientWidth || innerWidth) < 1000;
+    // the 720p film covers anything under 1000 wide
+    var small = (film.parentNode.clientWidth || innerWidth) < 1000;
     // H.264 where the browser has it, VP9 otherwise (some Linux builds ship without H.264)
     var webm = video.canPlayType('video/mp4; codecs="avc1.640028"') === "" && video.canPlayType('video/webm; codecs="vp9"') !== "";
     video.src = film.getAttribute((small ? "data-src-small" : "data-src") + (webm ? "-webm" : ""));
     video.muted = true; video.playsInline = true; video.preload = "auto";
-    if (!gl) video.poster = film.getAttribute("data-poster");
     video.setAttribute("muted", ""); video.setAttribute("playsinline", "");
     var stage = film.querySelector(".film-stage"), card = film.querySelector(".film-card");
     var pause = film.querySelector(".film-pause"), skip = film.querySelector(".film-skip");
-    var canvas = probe;
     stage.textContent = "";
-    // without WebGL the grey master plays as it is
-    stage.appendChild(gl ? canvas : video);
-    var done = false, raf = 0, observer = null, visible = true;
+    stage.appendChild(video);
+    var done = false, observer = null;
     try { sessionStorage.setItem(KEY, "1"); } catch (e) { /* fine */ }
 
     var giveUp = setTimeout(function () { if (video.readyState < 3) finish(true); }, fromReplay ? 8000 : 3000);
@@ -80,7 +54,6 @@
       hero.classList.add("film-on");
       requestAnimationFrame(function () { film.classList.add("in"); });
       skip.focus({ preventScroll: true });
-      if (gl) loop();
       document.addEventListener("visibilitychange", onVisibility);
       // scrolling the hero out of view skips the film
       if ("IntersectionObserver" in window) {
@@ -88,30 +61,17 @@
         observer.observe(hero);
       }
     }
-    // one draw per new video frame (24 a second), not per display refresh. Paced by
-    // requestAnimationFrame: requestVideoFrameCallback never fires for a video that
-    // is not in the page, and this one only feeds the canvas.
-    var drawn = -1;
-    function loop() {
-      if (done || !visible || video.paused || video.ended) return;
-      if (video.readyState >= 2 && video.currentTime !== drawn) { drawn = video.currentTime; gl.draw(video); }
-      raf = requestAnimationFrame(loop);
-    }
-    function stopLoop() { cancelAnimationFrame(raf); raf = 0; }
-    // a background tab pauses the film and its drawing; coming back resumes both
+    // a background tab pauses the film; coming back resumes it
     function onVisibility() {
-      visible = document.visibilityState === "visible";
-      if (!visible) { stopLoop(); video.pause(); }
+      if (document.visibilityState !== "visible") video.pause();
       else if (!done && !endCard && pause.textContent === "Pause") { var q = video.play(); if (q && q.catch) q.catch(function () {}); }
     }
-    video.addEventListener("play", function () { stopLoop(); if (gl) loop(); });
-    video.addEventListener("pause", stopLoop);
     // the end card, if there is approved copy for one: its lines fade in on paper, hold,
     // then the card breaks into dots and drifts away, uncovering the hero underneath
     var endCard = null;
     function ending() {
       if (!card.querySelector("p")) { finish(false); return; }
-      stopLoop(); pause.hidden = true;
+      pause.hidden = true;
       card.hidden = false; // the words, for screen readers; the canvas shows them
       endCard = endCardCanvas(film, [].map.call(card.querySelectorAll("p"), function (p) { return p.textContent; }));
       endCard.run(function () { hero.classList.remove("film-on"); stage.textContent = ""; film.classList.add("clear"); },
@@ -119,7 +79,7 @@
     }
     function finish(quiet, dissolved) {
       if (done) return; done = true;
-      clearTimeout(giveUp); stopLoop();
+      clearTimeout(giveUp);
       if (endCard) endCard.stop();
       document.removeEventListener("visibilitychange", onVisibility);
       if (observer) observer.disconnect();
@@ -221,60 +181,6 @@
       },
       stop: function () { cancelAnimationFrame(raf); },
       remove: function () { cancelAnimationFrame(raf); cv.remove(); },
-    };
-  }
-
-  // The dither: one quad, the video as a texture, the threshold from an 8x8
-  // Bayer matrix at device pixels (one dot per CSS pixel on high-density screens)
-  function dither(canvas) {
-    var gl = canvas.getContext("webgl", { antialias: false, premultipliedAlpha: false, powerPreference: "low-power" });
-    if (!gl) return null;
-    var vs = "attribute vec2 p; varying vec2 uv; void main(){ uv = p * .5 + .5; uv.y = 1. - uv.y; gl_Position = vec4(p, 0., 1.); }";
-    var fs = [
-      "precision mediump float;",
-      "uniform sampler2D tex; uniform vec4 box;",
-      "varying vec2 uv;",
-      // the 8x8 Bayer value: the 2x2 pattern [0 2; 3 1], finest bit most significant
-      "float bayer(vec2 q){ float v = 0., s = .25; for (int i = 0; i < 3; i++) {",
-      "  vec2 m = mod(floor(q), 2.); v += (m.x * 2. + m.y * 3. - m.x * m.y * 4.) * s; s *= .25; q = floor(q / 2.); }",
-      "  return v; }",
-      "void main(){",
-      "  vec2 px = floor(gl_FragCoord.xy);",
-      "  vec2 t = (uv - box.xy) / box.zw;",
-      "  if (t.x < 0. || t.y < 0. || t.x > 1. || t.y > 1.) { gl_FragColor = vec4(.102, .102, .102, 1.); return; }",
-      "  vec3 c = texture2D(tex, t).rgb;",
-      "  float l = dot(c, vec3(.2126, .7152, .0722));",
-      "  l = clamp((l - .1) / .82, 0., 1.);",
-      "  float th = (bayer(vec2(px.x, px.y)) * 64. + .5) / 64.;",
-      "  gl_FragColor = l >= th ? vec4(.969, .957, .933, 1.) : vec4(.102, .102, .102, 1.);",
-      "}"].join("\n");
-    function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
-    var prog = gl.createProgram();
-    gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs));
-    gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
-    gl.useProgram(prog);
-    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-    var loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    var tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); });
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    var uBox = gl.getUniformLocation(prog, "box");
-    return {
-      draw: function (video) {
-        // CSS pixels: one dot per CSS pixel, and a quarter of the work on a retina screen
-        var w = Math.round(canvas.clientWidth), h = Math.round(canvas.clientHeight);
-        if (!w || !h) return;
-        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-        gl.viewport(0, 0, w, h);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, video);
-        // fit the 16:9 film inside the stage, letterboxed in ink
-        var a = (video.videoWidth / video.videoHeight) || 16 / 9, sa = w / h, bw = 1, bh = 1;
-        if (sa > a) bw = a / sa; else bh = sa / a;
-        gl.uniform4f(uBox, (1 - bw) / 2, (1 - bh) / 2, bw, bh);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      },
     };
   }
 })();

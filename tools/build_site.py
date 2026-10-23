@@ -813,7 +813,7 @@ def load_landing_copy(preview, manifest=None):
 def film_html(landing):
     """The opening film over the hero: hidden, and inert, until film.js plays
     it. The video is a grey master (rendered privately; the models never
-    ship); film.js prints it in the two inks at the screen's own pixels."""
+    ship); film.js plays it as it is, the same in every browser."""
     lines = [landing[k] for k in FILM_LINES if landing[k]]
     card = "".join(f'<p class="film-l{i}">{esc(t)}</p>' for i, t in enumerate(lines))
     return f"""
