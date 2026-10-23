@@ -780,9 +780,9 @@ def load_viz_copy(preview, manifest=None):
     return out
 
 
-# Plain hero copy shown until the analyst approves content/landing.yaml: a bare
-# count beside the number, and the conference sentence already approved.
-LANDING_FALLBACK = {"count_caption": "of 193 member states read", "conference_line": OPENER_CLOCK}
+# Plain hero copy shown until the analyst approves content/landing.yaml: the
+# conference as a bare date line.
+LANDING_FALLBACK = {"conference_line": "Seventh Review Conference, 16 to 20 November 2026"}
 
 
 def load_landing_copy(preview, manifest=None):
@@ -798,24 +798,20 @@ def load_landing_copy(preview, manifest=None):
 
 
 def hero_html(rows, landing, conf_link):
-    """The first screen: headline, one live number, two ways in, the
-    conference date, and a large turning globe (drawn by viz.js; hidden
-    until it is live, so the page reads the same without JavaScript)."""
-    n = sum(1 for r in rows if r["p"])
-    key = "".join(f'<span>{_swatch(k)}{esc(config.POSITION_PLAIN[k] if k else "Not yet reviewed")}</span>'
-                  for k in [*config.POSITION_CATEGORIES, ""])
+    """The first screen: the headline, two ways in, the conference on one
+    line, and a large turning globe (drawn by viz.js; hidden until it is
+    live, so the page reads the same without JavaScript). The key lives with
+    the map below."""
     return f"""
 <section class="opener hero" id="hero" aria-labelledby="opener-h">
   <canvas class="hero-globe" role="img" aria-label="A turning globe of the 193 UN member states, colored by the position each has stated on autonomous weapons. The figures and table below have every value." hidden></canvas>
   <div class="hero-text">
     <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
-    <p class="hero-count"><b>{n}</b><span>{esc(landing["count_caption"])}</span></p>
     <div class="hero-go">
       <a class="hero-cta" href="#viz-world">See the world map</a>
       <a class="hero-cta alt" href="#states">Find a country</a>
     </div>
     <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
-    <div class="hero-key">{key}</div>
   </div>
 </section>"""
 

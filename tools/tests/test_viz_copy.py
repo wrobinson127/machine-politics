@@ -99,7 +99,7 @@ def test_the_committed_landing_copy_passes(tmp_path):
 
 def test_landing_copy_with_a_dash_fails(tmp_path):
     def m(d):
-        d["count_caption"] = "of 193 countries read \u2014 every position sourced"
+        d["conference_line"] = "Seventh Review Conference \u2014 Geneva, 16 to 20 November 2026"
     assert _landing(tmp_path, m)
 
 
@@ -111,5 +111,5 @@ def test_landing_copy_missing_a_key_fails(tmp_path):
 
 def test_landing_copy_with_an_absence_claim_fails(tmp_path):
     def m(d):
-        d["count_caption"] = "of 193 countries read; many have no position"
+        d["conference_line"] = "Many countries have no position on the Review Conference"
     assert any("prohibited claim" in i for i in _landing(tmp_path, m))

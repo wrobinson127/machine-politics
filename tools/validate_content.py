@@ -711,7 +711,7 @@ def check_viz(errors, path):
     scan_prohibited_claims(errors, where, viz)
 
 
-LANDING_KEYS = ("count_caption", "conference_line")
+LANDING_KEYS = ("conference_line",)
 
 
 def check_landing(errors, path):
