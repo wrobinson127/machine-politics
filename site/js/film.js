@@ -53,7 +53,7 @@
     stage.textContent = "";
     // without WebGL the grey master plays as it is
     stage.appendChild(gl ? canvas : video);
-    var done = false, raf = 0, vfc = 0, observer = null, visible = true;
+    var done = false, raf = 0, observer = null, visible = true;
     try { sessionStorage.setItem(KEY, "1"); } catch (e) { /* fine */ }
 
     var giveUp = setTimeout(function () { if (video.readyState < 3) finish(true); }, fromReplay ? 8000 : 3000);
@@ -86,17 +86,16 @@
         observer.observe(hero);
       }
     }
-    // one draw per new video frame (24 a second), not per display refresh
+    // one draw per new video frame (24 a second), not per display refresh. Paced by
+    // requestAnimationFrame: requestVideoFrameCallback never fires for a video that
+    // is not in the page, and this one only feeds the canvas.
+    var drawn = -1;
     function loop() {
       if (done || !visible || video.paused || video.ended) return;
-      if (video.readyState >= 2) gl.draw(video);
-      if (video.requestVideoFrameCallback) vfc = video.requestVideoFrameCallback(loop);
-      else raf = requestAnimationFrame(loop);
+      if (video.readyState >= 2 && video.currentTime !== drawn) { drawn = video.currentTime; gl.draw(video); }
+      raf = requestAnimationFrame(loop);
     }
-    function stopLoop() {
-      cancelAnimationFrame(raf); raf = 0;
-      if (vfc && video.cancelVideoFrameCallback) video.cancelVideoFrameCallback(vfc); vfc = 0;
-    }
+    function stopLoop() { cancelAnimationFrame(raf); raf = 0; }
     // a background tab pauses the film and its drawing; coming back resumes both
     function onVisibility() {
       visible = document.visibilityState === "visible";
