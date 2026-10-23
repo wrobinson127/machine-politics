@@ -847,7 +847,7 @@ def hero_html(rows, landing, conf_link):
     </div>
     <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
     <div class="hero-key">{key}</div>
-    <button type="button" class="film-replay" hidden>Replay the film</button>
+    <button type="button" class="film-replay" hidden><span class="film-replay-i" aria-hidden="true"></span>Replay the film <span class="film-replay-t">0:38</span></button>
   </div>{film_html(landing)}
 </section>"""
 
