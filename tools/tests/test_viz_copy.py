@@ -113,3 +113,26 @@ def test_landing_copy_with_an_absence_claim_fails(tmp_path):
     def m(d):
         d["count_caption"] = "of 193 countries read; many have no position"
     assert any("prohibited claim" in i for i in _landing(tmp_path, m))
+
+
+def test_every_film_line_is_a_required_landing_key():
+    for k in bs_film_lines():
+        assert k in vc.LANDING_KEYS, k
+    assert "film_description" in vc.LANDING_KEYS
+
+
+def bs_film_lines():
+    from tools import build_site as bs
+    return bs.FILM_LINES
+
+
+def test_landing_copy_missing_a_film_line_fails(tmp_path):
+    def m(d):
+        del d["film_question"]
+    assert any("film_question" in i for i in _landing(tmp_path, m))
+
+
+def test_a_film_line_with_a_dash_fails(tmp_path):
+    def m(d):
+        d["film_line"] = "193 countries – answering now"
+    assert _landing(tmp_path, m)

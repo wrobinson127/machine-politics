@@ -15,5 +15,20 @@ the map tiles noted below.
 | Natural Earth 1:50m Admin 0 label points | 5 | Public domain | One dot per state at its label point, ISO alpha-2 codes, subregions (`data/source/ne_labels.json`) |
 | Newsreader variable fonts (self-hosted) | 2.0 | SIL Open Font License 1.1 (OFL.txt ships beside the fonts) | Display type |
 
+## The opening film
+
+`site/assets/film/` holds the home page film, rendered to video. Only the
+finished video ships; none of the models, textures or animation data it
+was rendered from is in this repository or on the site.
+
+| Component | License | Use |
+|---|---|---|
+| Characters and animations from Adobe Mixamo | Mixamo terms: free use in finished works, no redistribution of the files | The people in the film |
+| Textures and models from Poly Haven | CC0 | Ground, walls, buildings, props, trees and rocks |
+| three.js | MIT | Rendering the film (offline; not loaded by the site) |
+
+`site/js/film.js` prints the video in the site's two inks in the browser,
+with WebGL and no libraries.
+
 Data licensing (UN-derived extracts, this project's coded data, code)
 is in `DATA_LICENSE.md`.
