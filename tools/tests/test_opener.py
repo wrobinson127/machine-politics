@@ -51,18 +51,17 @@ def test_opener_states_the_conference_date(deploy):
     assert re.search(r"16 (to 20 )?November 2026", hero)
 
 
-def test_hero_is_one_number_and_a_globe(deploy):
-    """The hero shows the reviewed count from the payload, two ways in, a
-    key for every position, and a globe canvas that stays hidden until the
-    script draws it (so the page reads the same without JavaScript)."""
+def test_hero_is_the_headline_two_ways_in_and_a_globe(deploy):
+    """The hero is only the headline, two ways in, the conference on one
+    line, and a globe canvas that stays hidden until the script draws it
+    (so the page reads the same without JavaScript). The key lives with
+    the map below, not here."""
     index = _index(deploy)
     hero = index[index.find('class="opener'):index.find('id="viz-world"')]
-    reviewed = sum(1 for r in _payload(index)["rows"] if r["p"])
-    assert f'class="hero-count"><b>{reviewed}</b>' in hero
     assert re.search(r'<canvas class="hero-globe"[^>]*\shidden>', hero)
     assert 'href="#viz-world"' in hero and 'href="#states"' in hero
-    for code in config.POSITION_CATEGORIES:
-        assert config.POSITION_PLAIN[code] in hero, code
+    assert "hero-key" not in hero and "hero-count" not in hero
+    assert hero.count('<p class="hero-conf">') == 1
 
 
 def test_world_figure_opens_on_the_flat_map(deploy):
@@ -75,19 +74,19 @@ def test_world_figure_opens_on_the_flat_map(deploy):
 
 
 def test_unapproved_landing_copy_falls_back_to_plain_words(deploy):
-    """Hero copy is gated: until approved the page shows the plain count
-    and the approved conference sentence, never the draft."""
+    """Hero copy is gated: until approved the page shows a plain date
+    line, never the draft."""
     _, manifest = deploy
     landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
     entry = next(e for e in manifest["entries"] if e["kind"] == "landing_copy")
     index = _index(deploy)
     if bs.is_approved(landing):
         assert entry["rendered"] is True
-        assert " ".join(landing["count_caption"].split()) in index
+        assert " ".join(landing["conference_line"].split()) in index
     else:
         assert entry["rendered"] is False
-        assert bs.LANDING_FALLBACK["count_caption"] in index
-        assert " ".join(landing["count_caption"].split()) not in index
+        assert bs.LANDING_FALLBACK["conference_line"] in index
+        assert " ".join(landing["conference_line"].split()) not in index
 
 
 def test_the_retired_tour_and_board_are_gone(deploy):

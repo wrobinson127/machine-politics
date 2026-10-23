@@ -18,6 +18,9 @@
   var YEARS = PACK.years, RES = PACK.resolutions;
   var CONF = PACK.conf;
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Canvas density, capped: past 1.5x a map gains nothing visible, and every
+  // morph frame would redraw nearly twice the pixels.
+  var DPR = Math.min(1.5, window.devicePixelRatio || 1);
   var hasD3 = typeof window.d3 !== "undefined" && typeof window.topojson !== "undefined";
   function count(f) { return DATA.filter(f).length; }
   function mover(d) { var v = d.v.replace(/X/g, ""); for (var i = 1; i < v.length; i++) if (v[i] !== v[i - 1]) return true; return false; }
@@ -178,7 +181,7 @@
         draw();
       }
       var scale = 1;
-      function size() { var w = wrap.clientWidth, dpr = window.devicePixelRatio || 1; scale = w / VW; canvas.width = Math.round(w * dpr); canvas.height = Math.round(VH * scale * dpr); canvas.style.height = VH * scale + "px"; ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0); }
+      function size() { var w = wrap.clientWidth, dpr = DPR; scale = w / VW; canvas.width = Math.round(w * dpr); canvas.height = Math.round(VH * scale * dpr); canvas.style.height = VH * scale + "px"; ctx.setTransform(dpr * scale, 0, 0, dpr * scale, 0, 0); }
       function dot(d) {
         if (d._a <= .01 || d._r <= .1) return;
         ctx.globalAlpha = d._a; ctx.beginPath(); ctx.arc(d._x, d._y, d._r, 0, Math.PI * 2);
@@ -230,7 +233,7 @@
         DATA.forEach(function (d) { if (d._a < .5) return; var dd = Math.hypot(d._x - x, d._y - y); if (dd < Math.max(bd, d._r + 2)) { bd = dd; best = d; } });
         if (best || !geo() || mapA < .5) return best;
         // The morphing projection has no inverse, so the canvas does the hit test.
-        var dpr = window.devicePixelRatio || 1, px = (e.clientX - b.left) * dpr, py = (e.clientY - b.top) * dpr;
+        var dpr = DPR, px = (e.clientX - b.left) * dpr, py = (e.clientY - b.top) * dpr;
         var f = countries.find(function (c) { if (!c._d) return false; ctx.beginPath(); path(c); return ctx.isPointInPath(px, py); });
         return f ? f._d : null;
       }
@@ -288,7 +291,7 @@
       var byIso = new Map(DATA.map(function (d) { return [d.i, d]; }));
       var countries = topojson.feature(topo, topo.objects.countries).features;
       countries.forEach(function (f) { f._d = byIso.get(f.properties.i); });
-      var W, H, L, dpr = Math.min(2, window.devicePixelRatio || 1), proj = d3.geoOrthographic().clipAngle(90).precision(.5), path = d3.geoPath(proj, ctx);
+      var W, H, L, dpr = DPR, proj = d3.geoOrthographic().clipAngle(90).precision(.5), path = d3.geoPath(proj, ctx);
       var rot = [-12, -18, 0], hover = null, drag = null, grat = d3.geoGraticule10(), onScreen = true;
       canvas.hidden = false; fig.classList.add("hero-live");
       function size() {
