@@ -2,8 +2,9 @@
    then fades out to reveal it. The video is a grey master; this script prints it
    in the site's two inks with an 8x8 ordered dither, one dot per CSS pixel, so it
    stays sharp at any size. It draws only when the video has a new frame and only
-   while the film is on screen; on software WebGL (SwiftShader and the like) it
-   skips the shader and the video, and shows a still poster instead.
+   while the film is on screen; on software WebGL (SwiftShader, Microsoft Basic
+   Render Driver and the like) it skips the shader and plays the grey 720p master
+   as it is.
 
    Without JavaScript, under reduced motion, without autoplay or without a
    playable video, nothing happens and the hero stands as it is. */
@@ -36,16 +37,17 @@
 
   if (!seen) start(false);
 
-  function start(fromReplay) { probeGpu(function (g) { if (g === "software") poster(fromReplay); else play(fromReplay, g); }); }
-  function play(fromReplay, g) {
+  function start(fromReplay) { probeGpu(function (g) { play(fromReplay, g === "software" ? "none" : g, g === "software"); }); }
+  function play(fromReplay, g, soft) {
     var probe = document.createElement("canvas"), gl = g === "none" ? null : dither(probe);
     var video = document.createElement("video");
     // the canvas is drawn at CSS pixels, so the 720p film covers anything under 1000 wide
-    var small = (film.parentNode.clientWidth || innerWidth) < 1000;
+    var small = soft || (film.parentNode.clientWidth || innerWidth) < 1000;
     // H.264 where the browser has it, VP9 otherwise (some Linux builds ship without H.264)
     var webm = video.canPlayType('video/mp4; codecs="avc1.640028"') === "" && video.canPlayType('video/webm; codecs="vp9"') !== "";
     video.src = film.getAttribute((small ? "data-src-small" : "data-src") + (webm ? "-webm" : ""));
     video.muted = true; video.playsInline = true; video.preload = "auto";
+    if (!gl) video.poster = film.getAttribute("data-poster");
     video.setAttribute("muted", ""); video.setAttribute("playsinline", "");
     var stage = film.querySelector(".film-stage"), card = film.querySelector(".film-card");
     var pause = film.querySelector(".film-pause"), skip = film.querySelector(".film-skip");
@@ -142,37 +144,6 @@
     pause.onclick = function () {
       if (video.paused) { video.play(); pause.textContent = "Pause"; } else { video.pause(); pause.textContent = "Play"; }
     };
-  }
-
-  // Software WebGL: no shader, no video decode. The still poster, then the end card.
-  function poster(fromReplay) {
-    var stage = film.querySelector(".film-stage"), card = film.querySelector(".film-card");
-    var pause = film.querySelector(".film-pause"), skip = film.querySelector(".film-skip");
-    var img = new Image(), endCard = null, done = false, timer = 0;
-    img.alt = ""; img.src = film.getAttribute("data-poster");
-    try { sessionStorage.setItem(KEY, "1"); } catch (e) { /* fine */ }
-    function close() {
-      if (done) return; done = true; clearTimeout(timer);
-      if (endCard) endCard.remove();
-      document.removeEventListener("keydown", onKey);
-      film.classList.remove("in", "clear"); hero.classList.remove("film-on");
-      setTimeout(function () { film.hidden = true; card.hidden = true; pause.hidden = false; stage.textContent = ""; }, 600);
-      if (film.contains(document.activeElement)) { var h = hero.querySelector("h1"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }
-    }
-    function onKey(e) { if (e.key === "Escape") close(); }
-    img.onload = function () {
-      stage.textContent = ""; stage.appendChild(img);
-      film.hidden = false; pause.hidden = true; hero.classList.add("film-on");
-      requestAnimationFrame(function () { film.classList.add("in"); });
-      skip.onclick = close; document.addEventListener("keydown", onKey);
-      timer = setTimeout(function () {
-        if (!card.querySelector("p")) { close(); return; }
-        card.hidden = false;
-        endCard = endCardCanvas(film, [].map.call(card.querySelectorAll("p"), function (p) { return p.textContent; }));
-        endCard.run(function () { hero.classList.remove("film-on"); stage.textContent = ""; film.classList.add("clear"); }, close);
-      }, 2500);
-    };
-    img.onerror = function () { done = true; };
   }
 
   // The end card on a canvas, so the same pixels can come apart. Timings in seconds.
