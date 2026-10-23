@@ -43,7 +43,50 @@ def test_one_h1_and_it_is_the_opener(deploy):
 
 
 def test_opener_states_the_conference_date(deploy):
-    assert "16 November 2026" in _index(deploy)
+    """The first screen names the conference date, in either the approved
+    sentence or the hero's shorter line."""
+    hero = _index(deploy)
+    hero = hero[hero.find('class="opener'):hero.find('id="viz-world"')]
+    assert re.search(r"16 (to 20 )?November 2026", hero)
+
+
+def test_hero_is_one_number_and_a_globe(deploy):
+    """The hero shows the reviewed count from the payload, two ways in, a
+    key for every position, and a globe canvas that stays hidden until the
+    script draws it (so the page reads the same without JavaScript)."""
+    index = _index(deploy)
+    hero = index[index.find('class="opener'):index.find('id="viz-world"')]
+    reviewed = sum(1 for r in _payload(index)["rows"] if r["p"])
+    assert f'class="hero-count"><b>{reviewed}</b>' in hero
+    assert re.search(r'<canvas class="hero-globe"[^>]*\shidden>', hero)
+    assert 'href="#viz-world"' in hero and 'href="#states"' in hero
+    for code in config.POSITION_CATEGORIES:
+        assert config.POSITION_PLAIN[code] in hero, code
+
+
+def test_world_figure_opens_on_the_flat_map(deploy):
+    """The hero is the globe, so the world figure below starts on the map."""
+    index = _index(deploy)
+    fig = index[index.find('id="viz-world"'):index.find('id="viz-strands"')]
+    assert '<figure class="viz" id="viz-world" data-start="map"' in index
+    assert 'data-view="map" aria-pressed="true"' in fig
+    assert 'data-view="globe" aria-pressed="false"' in fig
+
+
+def test_unapproved_landing_copy_falls_back_to_plain_words(deploy):
+    """Hero copy is gated: until approved the page shows the plain count
+    and the approved conference sentence, never the draft."""
+    _, manifest = deploy
+    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
+    entry = next(e for e in manifest["entries"] if e["kind"] == "landing_copy")
+    index = _index(deploy)
+    if bs.is_approved(landing):
+        assert entry["rendered"] is True
+        assert " ".join(landing["count_caption"].split()) in index
+    else:
+        assert entry["rendered"] is False
+        assert bs.LANDING_FALLBACK["count_caption"] in index
+        assert " ".join(landing["count_caption"].split()) not in index
 
 
 def test_the_retired_tour_and_board_are_gone(deploy):

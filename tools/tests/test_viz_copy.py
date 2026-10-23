@@ -77,3 +77,39 @@ def test_a_missing_approval_flag_fails(tmp_path):
     def m(v):
         del v["approved"]
     assert _run(tmp_path, m)
+
+
+LANDING = config.CONTENT_DIR / "landing.yaml"
+
+
+def _landing(tmp_path, mutate=None):
+    data = yaml.safe_load(LANDING.read_text(encoding="utf-8"))
+    if mutate:
+        mutate(data)
+    path = tmp_path / "landing.yaml"
+    path.write_text(yaml.safe_dump(data, allow_unicode=True), encoding="utf-8")
+    errors = vc.Errors()
+    vc.check_landing(errors, path)
+    return errors.items
+
+
+def test_the_committed_landing_copy_passes(tmp_path):
+    assert _landing(tmp_path) == []
+
+
+def test_landing_copy_with_a_dash_fails(tmp_path):
+    def m(d):
+        d["count_caption"] = "of 193 countries read \u2014 every position sourced"
+    assert _landing(tmp_path, m)
+
+
+def test_landing_copy_missing_a_key_fails(tmp_path):
+    def m(d):
+        del d["conference_line"]
+    assert any("conference_line" in i for i in _landing(tmp_path, m))
+
+
+def test_landing_copy_with_an_absence_claim_fails(tmp_path):
+    def m(d):
+        d["count_caption"] = "of 193 countries read; many have no position"
+    assert any("prohibited claim" in i for i in _landing(tmp_path, m))

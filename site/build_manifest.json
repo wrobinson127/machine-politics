@@ -8,6 +8,12 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "landing_copy",
+   "rendered": false,
+   "state": null
+  },
+  {
    "approved": true,
    "kind": "conference_page",
    "rendered": true,

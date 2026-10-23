@@ -734,9 +734,6 @@ def current_position(cs, preview):
 # line. New claim-bearing prose does not belong in this file; it goes through
 # content/ and the approval gate.
 OPENER_HEADLINE = "Where every country stands on autonomous weapons."
-OPENER_DEK = ("Recorded votes, official statements, and national policy, tracked "
-              "as they shift over time. Every position links to a quoted, dated "
-              "source.")
 OPENER_CLOCK = ("The Geneva weapons convention holds its Seventh Review Conference "
                 "on 16 November 2026, and that is the next moment any of this can "
                 "turn into law.")
@@ -781,6 +778,46 @@ def load_viz_copy(preview, manifest=None):
     out["captions"] = {k: " ".join(str((copy.get("captions") or {}).get(k) or v).split())
                        for k, v in VIZ_FALLBACK["captions"].items()}
     return out
+
+
+# Plain hero copy shown until the analyst approves content/landing.yaml: a bare
+# count beside the number, and the conference sentence already approved.
+LANDING_FALLBACK = {"count_caption": "of 193 member states read", "conference_line": OPENER_CLOCK}
+
+
+def load_landing_copy(preview, manifest=None):
+    path = config.CONTENT_DIR / "landing.yaml"
+    copy = load_yaml(path) if path.exists() else None
+    ok = bool(copy and (preview or is_approved(copy)))
+    if manifest is not None and copy is not None:
+        manifest["entries"].append({"state": None, "kind": "landing_copy",
+                                    "approved": is_approved(copy), "rendered": ok})
+    if not ok:
+        return dict(LANDING_FALLBACK)
+    return {k: " ".join(str(copy.get(k) or v).split()) for k, v in LANDING_FALLBACK.items()}
+
+
+def hero_html(rows, landing, conf_link):
+    """The first screen: headline, one live number, two ways in, the
+    conference date, and a large turning globe (drawn by viz.js; hidden
+    until it is live, so the page reads the same without JavaScript)."""
+    n = sum(1 for r in rows if r["p"])
+    key = "".join(f'<span>{_swatch(k)}{esc(config.POSITION_PLAIN[k] if k else "Not yet reviewed")}</span>'
+                  for k in [*config.POSITION_CATEGORIES, ""])
+    return f"""
+<section class="opener hero" id="hero" aria-labelledby="opener-h">
+  <canvas class="hero-globe" role="img" aria-label="A turning globe of the 193 UN member states, colored by the position each has stated on autonomous weapons. The figures and table below have every value." hidden></canvas>
+  <div class="hero-text">
+    <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
+    <p class="hero-count"><b>{n}</b><span>{esc(landing["count_caption"])}</span></p>
+    <div class="hero-go">
+      <a class="hero-cta" href="#viz-world">See the world map</a>
+      <a class="hero-cta alt" href="#states">Find a country</a>
+    </div>
+    <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
+    <div class="hero-key">{key}</div>
+  </div>
+</section>"""
 
 
 def viz_scripts():
@@ -904,11 +941,11 @@ def world_figure_html(rows, copy):
     years = [k for k in keys]
     head = f'<h2 class="viz-h">{esc(copy["world_heading"])}</h2>' if copy["world_heading"] else ""
     return f"""
-<figure class="viz" id="viz-world" aria-labelledby="viz-world-cap">
+<figure class="viz" id="viz-world" data-start="map" aria-labelledby="viz-world-cap">
   {head}
   <div class="viz-controls">
     <div class="seg" role="group" aria-label="View">
-      {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "globe").lower()}">{esc(label)}</button>' for k, label in views)}
+      {"".join(f'<button type="button" data-view="{k}" aria-pressed="{str(k == "map").lower()}">{esc(label)}</button>' for k, label in views)}
     </div>
     <label class="find">Find <input class="viz-find" type="search" autocomplete="off" placeholder="India"></label>
   </div>
@@ -953,23 +990,12 @@ def index_page(votes, content_states, preview, manifest=None):
     n_reviewed = sum(1 for r in rows if r["p"])
     coverage_line = (f"Votes cover all {len(rows)} member states. "
                      f"Positions have been reviewed for {n_reviewed} states so far.")
-    conf_link = (' <a href="conference.html">Follow the conference</a>.'
+    conf_link = (' <span aria-hidden="true">&middot;</span> <a href="conference.html">Follow the conference</a>'
                  if _conference_live else "")
+    landing = load_landing_copy(preview, manifest)
     body = f"""
 <svg class="viz-defs" width="0" height="0" aria-hidden="true"><defs>{viz_textures_svg()}</defs></svg>
-<section class="opener opener-wide" aria-labelledby="opener-h">
-  <div class="opener-text">
-    <h1 id="opener-h">{esc(OPENER_HEADLINE)}</h1>
-    <p class="opener-dek">{esc(OPENER_DEK)}</p>
-    <div class="opener-actions">
-      <a class="opener-go" href="#viz-world">Explore the globe</a>
-      <a class="skip-board" href="#states">Find a state</a>
-    </div>
-  </div>
-  <aside class="opener-aside">
-    <p class="opener-clock">{esc(OPENER_CLOCK)}{conf_link}</p>
-  </aside>
-</section>
+{hero_html(rows, landing, conf_link)}
 {world_figure_html(rows, copy)}
 {strands_figure_html(copy)}
 {states_table_html(rows, coverage_line, copy)}
