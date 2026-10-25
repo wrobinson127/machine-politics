@@ -566,6 +566,8 @@ def page(title, body, *, current, depth=0, preview=False, description="",
 <link rel="stylesheet" href="{asset(prefix, 'css/tokens.css')}">
 <link rel="stylesheet" href="{asset(prefix, 'css/site.css')}">
 <link rel="icon" href="{asset(prefix, 'assets/favicon.svg')}" type="image/svg+xml">
+<link rel="icon" href="{prefix}favicon.ico" sizes="48x48">
+<link rel="icon" href="{prefix}assets/favicon-192.png" type="image/png" sizes="192x192">
 {extra_head}</head>
 <body>
 {banner}<header class="masthead">
