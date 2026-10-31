@@ -168,62 +168,11 @@ def test_every_member_state_has_a_label_point_and_code():
     assert len(codes) == len(set(codes)) and all(len(c) == 2 for c in codes)
 
 
-def _film(index):
-    m = re.search(r'<div class="film" id="film".*?</div>\s*</div>', index, re.S)
-    assert m, "no film panel in the hero"
-    return m.group(0)
-
-
-def test_the_film_sits_inside_the_hero_hidden_until_it_plays(deploy):
-    """The film plays over the hero and fades out to reveal it, so it lives
-    inside #hero, starts hidden (no JavaScript: the hero stands alone), and
-    has its controls and a text description from the first frame."""
-    index = _index(deploy)
-    hero = index[index.find('id="hero"'):index.find('id="viz-world"')]
-    assert '<div class="film" id="film"' in hero
-    film = _film(index)
-    assert re.search(r'id="film"[^>]*\shidden\b', film)
-    assert 'class="film-skip"' in film and 'class="film-pause"' in film
-    assert 'class="film-desc"' in film
-    assert re.search(r'<button type="button" class="film-replay" aria-label="Replay the film"[^>]*\shidden>', hero)
-
-
-def test_unapproved_film_copy_shows_no_end_card(deploy):
-    """The end-card lines are gated with the rest of the hero copy: until
-    approved the card is empty, so the film fades straight to the hero."""
-    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
-    film = _film(_index(deploy))
-    card = re.search(r'<div class="film-card" hidden>(.*?)</div>', film, re.S).group(1)
-    if bs.is_approved(landing):
-        for k in bs.FILM_LINES:
-            assert bs.esc(" ".join(landing[k].split())) in card
-    else:
-        assert card == ""
-        assert bs.esc(" ".join(landing["film_question"].split())) not in film
-        assert bs.LANDING_FALLBACK["film_description"] in film
-
-
-def test_the_preview_shows_the_draft_end_card(tmp_path):
-    out = tmp_path / "preview"
-    bs.build(out, preview=True)
-    index = (out / "index.html").read_text(encoding="utf-8")
-    landing = bs.load_yaml(config.CONTENT_DIR / "landing.yaml")
-    card = re.search(r'<div class="film-card" hidden>(.*?)</div>', index, re.S).group(1)
-    assert [bs.esc(" ".join(landing[k].split())) for k in bs.FILM_LINES] == re.findall(r"<p[^>]*>(.*?)</p>", card)
-
-
-def test_the_film_ships_with_its_player_and_videos(deploy):
-    """film.js is linked on the home page only, and every video the panel
-    names is in the build, versioned by its bytes."""
+def test_the_home_page_ships_no_film(deploy):
+    """The opening film was taken off the site on 31 Oct 2026: no panel, no
+    replay button, no player script and no video files in the build."""
     out, _ = deploy
     index = _index(deploy)
-    assert re.search(r'<script defer src="js/film\.js\?v=[0-9a-f]{10}"></script>', index)
-    assert (out / "js" / "film.js").exists()
-    film = _film(index)
-    for attr in ("data-src", "data-src-small", "data-src-webm", "data-src-small-webm", "data-poster"):
-        src = re.search(rf'{attr}="([^"]+)"', film).group(1)
-        path, _, digest = src.partition("?v=")
-        target = out / path
-        assert target.exists(), src
-        assert digest == hashlib.sha256(target.read_bytes()).hexdigest()[:10]
-    assert "film.js" not in (out / "votes.html").read_text(encoding="utf-8")
+    assert 'id="film"' not in index and "film-replay" not in index
+    assert "film.js" not in index and not (out / "js" / "film.js").exists()
+    assert not (out / "assets" / "film").exists()

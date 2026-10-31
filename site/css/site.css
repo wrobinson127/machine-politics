@@ -1278,35 +1278,6 @@ body { overflow-x: clip; }
 .hero-cta.alt:hover { background: var(--ground-raise); }
 .hero-conf { margin: 20px 0 0; font-size: .9rem; color: var(--ink-soft); max-width: none; white-space: nowrap; }
 .hero-conf a { color: var(--ink); }
-/* The opening film: an ink panel over the hero that fades out to reveal it.
-   film.js shows it once per session; reduced motion and no-JS never see it. */
-.film { position: absolute; inset: 0 0 auto; height: 100%; z-index: 5; background: var(--ink); opacity: 0; transition: opacity .6s ease; }
-.film.in { opacity: 1; }
-.film[hidden] { display: none; }
-.film-stage, .film-stage > * { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; }
-.film-desc { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
-.film-card { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
-.film-card[hidden] { display: none; }
-.film-end { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.film.clear { background: transparent; }
-.film-controls { position: absolute; right: clamp(12px, 2vw, 24px); top: clamp(12px, 2vw, 24px); display: flex; gap: 8px; z-index: 1; }
-.film-controls button { min-height: 40px; padding: 0 16px; border-radius: 6px; border: 1.5px solid var(--ground); background: rgba(26, 26, 26, .72);
-  color: var(--ground); font: inherit; font-size: .9rem; cursor: pointer; }
-.film-controls button:hover { background: var(--ground); color: var(--ink); }
-.film-controls button:focus-visible { outline: 2px solid var(--ground); outline-offset: 2px; }
-.film-card:not([hidden]) ~ .film-controls button { border-color: var(--ink); background: var(--ground); color: var(--ink); }
-.film.clear .film-controls { display: none; }
-.film-replay { display: inline-grid; place-items: center; width: 44px; height: 44px; margin: 14px 0 0 -7px; padding: 0;
-  border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer; pointer-events: auto; }
-.film-replay svg { width: 30px; height: 30px; }
-.film-replay-arc { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.film-replay-play { fill: currentColor; }
-.film-replay:hover { color: var(--ink-soft); }
-.film-replay:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.film-replay[hidden] { display: none; }
-.hero.film-on .hero-text { visibility: hidden; }
-/* after the film, focus returns to the headline for keyboard users; it is not a control, so no ring */
-.hero h1[tabindex="-1"]:focus { outline: none; }
 @media (max-width: 760px) {
   .opener.hero { display: flex; flex-direction: column; min-height: 0; margin-bottom: 1.5rem; }
   .hero::before { display: none; }
