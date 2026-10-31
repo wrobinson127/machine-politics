@@ -337,8 +337,7 @@
       if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(fig);
       size(); draw();
       var rz; window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { size(); draw(); }, 150); });
-      // and not while the opening film covers it
-      if (!reduce) d3.timer(function () { if (onScreen && !drag && !hover && document.visibilityState === "visible" && !fig.classList.contains("film-on")) { rot[0] += .06; draw(); } });
+      if (!reduce) d3.timer(function () { if (onScreen && !drag && !hover && document.visibilityState === "visible") { rot[0] += .06; draw(); } });
     }).catch(function () { /* the words stand on their own */ });
   }
 

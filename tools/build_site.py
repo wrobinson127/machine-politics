@@ -485,7 +485,7 @@ def _record_asset_hashes(out):
     _ASSET_HASHES.clear()
     out = Path(out)
     for rel in ("css/tokens.css", "css/site.css", "css/dossier.css",
-                "js/board.js", "js/dossier.js", "js/viz.js", "js/film.js",
+                "js/board.js", "js/dossier.js", "js/viz.js",
                 "js/instruments.js", "assets/favicon.svg"):
         path = out / rel
         if path.exists():  # instruments.js is conditional
@@ -497,10 +497,7 @@ def _record_asset_hashes(out):
             text = path.read_text(encoding="utf-8").replace("\r\n", "\n")
             digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
             _ASSET_HASHES[rel] = digest[:10]
-    # The film is binary, so its bytes are the same on every platform
-    for path in sorted(p for p in (out / "assets" / "film").glob("*") if p.suffix in (".mp4", ".webm", ".png")):
-        rel = path.relative_to(out).as_posix()
-        _ASSET_HASHES[rel] = hashlib.sha256(path.read_bytes()).hexdigest()[:10]
+
 
 
 def asset(prefix, rel):
@@ -787,17 +784,8 @@ def load_viz_copy(preview, manifest=None):
 
 
 # Plain hero copy shown until the analyst approves content/landing.yaml: the
-# conference as a bare date line. The opening film plays either way; without
-# approved lines it has no end card, and its description says only what is
-# on screen.
-LANDING_FALLBACK = {
-    "conference_line": "Seventh Review Conference, 16 to 20 November 2026",
-    "film_question": "",
-    "film_line": "",
-    "film_cta": "",
-    "film_description": "A short film with no sound: a drone flies to a person, its display unable to classify them.",
-}
-FILM_LINES = ("film_question", "film_line", "film_cta")
+# conference as a bare date line.
+LANDING_FALLBACK = {"conference_line": "Seventh Review Conference, 16 to 20 November 2026"}
 
 
 def load_landing_copy(preview, manifest=None):
@@ -810,24 +798,6 @@ def load_landing_copy(preview, manifest=None):
     if not ok:
         return dict(LANDING_FALLBACK)
     return {k: " ".join(str(copy.get(k) or v).split()) for k, v in LANDING_FALLBACK.items()}
-
-
-def film_html(landing):
-    """The opening film over the hero: hidden, and inert, until film.js plays
-    it. The video is a grey master (rendered privately; the models never
-    ship); film.js plays it as it is, the same in every browser."""
-    lines = [landing[k] for k in FILM_LINES if landing[k]]
-    card = "".join(f'<p class="film-l{i}">{esc(t)}</p>' for i, t in enumerate(lines))
-    return f"""
-  <div class="film" id="film" role="region" aria-label="Opening film" hidden
-       data-src="{asset("", "assets/film/film-1080.mp4")}" data-src-small="{asset("", "assets/film/film-720.mp4")}"
-       data-src-webm="{asset("", "assets/film/film-1080.webm")}" data-src-small-webm="{asset("", "assets/film/film-720.webm")}"
-       data-poster="{asset("", "assets/film/poster.png")}">
-    <p class="film-desc">{esc(landing["film_description"])}</p>
-    <div class="film-stage" aria-hidden="true"></div>
-    <div class="film-card" hidden>{card}</div>
-    <div class="film-controls"><button type="button" class="film-pause">Pause</button><button type="button" class="film-skip">Skip</button></div>
-  </div>"""
 
 
 def hero_html(rows, landing, conf_link):
@@ -845,8 +815,7 @@ def hero_html(rows, landing, conf_link):
       <a class="hero-cta alt" href="#states">Find a country</a>
     </div>
     <p class="hero-conf">{esc(landing["conference_line"])}{conf_link}</p>
-    <button type="button" class="film-replay" aria-label="Replay the film" title="Replay the film" hidden><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="film-replay-arc" d="M1 4v6h6M3.5 15a9 9 0 1 0 2.1-9.4L1 10"/><path class="film-replay-play" d="M10 8.5 15.5 12 10 15.5z"/></svg></button>
-  </div>{film_html(landing)}
+  </div>
 </section>"""
 
 
@@ -858,10 +827,6 @@ def viz_scripts():
         f'integrity="{TOPOJSON_SRI}" crossorigin="anonymous"></script>\n'
         f'<script defer src="{asset("", "js/viz.js")}"></script>'
     )
-
-
-def film_script():
-    return f'<script defer src="{asset("", "js/film.js")}"></script>'
 
 
 def viz_textures_svg():
@@ -1040,7 +1005,7 @@ def index_page(votes, content_states, preview, manifest=None):
         body,
         current="index.html",
         preview=preview,
-        extra_scripts=viz_scripts() + "\n" + film_script(),
+        extra_scripts=viz_scripts(),
         extra_head=dataset_jsonld(),
         og_path="",
         description="Where every country stands on autonomous weapons, tracked as positions shift over time.",
@@ -2434,15 +2399,6 @@ def build(out_dir, preview=False):
     src_viz = config.SITE_DIR / "js" / "viz.js"
     if src_viz.resolve() != (out / "js" / "viz.js").resolve():
         shutil.copyfile(src_viz, out / "js" / "viz.js")
-    # The opening film: film.js and the videos are source files too. The videos
-    # are rendered in the private dev repo (docs/finish/cinematic); only the
-    # finished grey masters ship, never the models they were rendered from.
-    src_film = config.SITE_DIR / "js" / "film.js"
-    if src_film.resolve() != (out / "js" / "film.js").resolve():
-        shutil.copyfile(src_film, out / "js" / "film.js")
-    src_media = config.SITE_DIR / "assets" / "film"
-    if src_media.exists() and src_media.resolve() != (out / "assets" / "film").resolve():
-        shutil.copytree(src_media, out / "assets" / "film", dirs_exist_ok=True)
     (out / "assets" / "world.json").write_text(world_topology(), encoding="utf-8", newline="\n")
     endorsements = load_endorsements()
     sponsorships = load_sponsorships()

@@ -1,17 +1,6 @@
 # Copy for the home page hero (the globe at the top of the page). Drafted
 # 2026-10-23 for the analyst of record. Nothing here renders until
 # approved: true; until then the hero uses build_site.LANDING_FALLBACK (a
-# plain date line). conference_line approved by Walker 2026-10-23; the film's
-# lines approved by Walker 2026-10-23.
+# plain date line). conference_line approved by Walker 2026-10-23.
 approved: true
 conference_line: Seventh Review Conference, Geneva, 16 to 20 November 2026
-# The opening film's end card (three lines, in order) and its description
-# for screen readers. Drafted 2026-10-23.
-film_question: Should a machine make that call?
-film_line: 193 countries are answering that now.
-film_cta: See where each one stands.
-film_description: >-
-  A short film with no sound. An operator types an order to strike and a
-  drone flies out alone. Its targeting display labels each person it nears
-  as combatant, civilian, surrendering or wounded, then can only say
-  unknown, and the screen goes black.
