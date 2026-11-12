@@ -70,9 +70,10 @@ events:
     kind: document
     title: The cost of an expert group in 2027
     text: >
-      The secretariat set out what a 2027 session of the expert group would
-      cost, so the conference can decide how long it meets: about 348,700
-      US dollars for 10 days, 477,000 for 15 days and 607,500 for 20 days.
+      A conference document sets out what a 2027 session of the expert group
+      would cost, so the conference can decide how long it meets: about
+      348,700 US dollars for 10 days, 477,000 for 15 days and 607,500 for
+      20 days.
     links:
       - label: "Estimated costs, 2027 expert group on autonomous weapons, CCW/CONF.VII/7"
         url: "https://docs.un.org/en/CCW/CONF.VII/7"
@@ -83,14 +84,17 @@ events:
     kind: document
     title: A proposal to negotiate a new protocol
     text: >
-      A proposal posted by the chair-designate asks the conference to have
-      the expert group "negotiate a new Protocol to the Convention" on
+      A proposal, listed by UNODA as submitted by the "Chair-designate" on
+      23 October, asks the conference to have the expert group "negotiate a
+      new Protocol to the Convention" on
       autonomous weapons, building on the elements adopted in 2026. The
       group would meet 15 days a year, work by consensus, and send a draft
       protocol to the 2028 meeting of the parties.
     links:
       - label: "Proposal on the mandate and modalities of the future work of the expert group, paras 2 and 5"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/Enclosure_-_CCW_7th_Review_Conference_Proposal_GGE_LAWS_Mandate.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
     approved: false
 
   - id: revcon-draft-final-declaration
@@ -98,13 +102,16 @@ events:
     kind: document
     title: The draft final declaration
     text: >
-      The president-designate's draft final declaration was posted to the
-      conference page. It welcomes the expert group's work, but its paragraph
+      A draft final declaration, listed by UNODA as submitted by the
+      "President-designate" on 28 October, welcomes the expert group's work,
+      but its paragraph
       and its first decision on autonomous weapons are placeholders, left
       for the conference to fill.
     links:
       - label: "Elements for the final declaration of the Review Conference, draft, para 17, para 50 and Decision 1"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/CCW_-_Draft_final_declaration.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
     approved: false
 
   - id: revcon-wp2-united-states
