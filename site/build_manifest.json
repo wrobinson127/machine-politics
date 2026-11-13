@@ -33,6 +33,30 @@
   },
   {
    "approved": true,
+   "kind": "conference:revcon-ggelaws-cost-estimates",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
+   "kind": "conference:revcon-gge-mandate-proposal",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
+   "kind": "conference:revcon-draft-final-declaration",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
+   "kind": "conference:revcon-wp2-united-states",
+   "rendered": true,
+   "state": "USA"
+  },
+  {
+   "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
    "state": null

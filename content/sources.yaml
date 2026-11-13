@@ -1797,3 +1797,28 @@ sources:
     type: statement
     lang: en
     accessed: 2026-10-19
+  # Pre-conference run (drafted 2026-11-12). Each read in full on 2026-11-12.
+  - id: isl-c1-81-general-debate-2026
+    title: Statement by Iceland, First Committee general debate, 81st session
+    publisher: Ministry for Foreign Affairs of Iceland (stjornarradid.is)
+    date: 2026-10-08
+    url: https://www.stjornarradid.is/raduneyti/utanrikisraduneytid/utanrikisradherra/stok-raeda-utanrikirradherra/2026-10-08-statement-on-arms-control-disarmament-and-non-proliferation-08-10-2026/
+    type: statement
+    lang: en
+    accessed: 2026-11-12
+    note: >
+      Written text of the national statement delivered at the 4th meeting on
+      8 October 2026 by Iceland's Director for Arms Control, Disarmament and
+      Non-Proliferation. It opens by referring to the Nordic statement
+      delivered by Finland.
+  - id: nor-c1-81-general-debate-2026
+    title: Statement by Norway, First Committee general debate, 81st session
+    publisher: Permanent Mission of Norway to the United Nations, via UNODA Meetings Place
+    date: 2026-10-09
+    url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Norway.pdf
+    type: statement
+    lang: en
+    accessed: 2026-11-12
+    note: >
+      Written national statement, delivered by the Permanent Representative.
+      The same text is on norway.no.

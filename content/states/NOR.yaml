@@ -107,10 +107,29 @@ position_codings:
         translation: none
         confidence: INFERRED
         note: General exchange of views, speaker Norway, timestamp 2:27:12.
+      - source: nor-c1-81-general-debate-2026
+        kind: statement
+        claim: In a written statement, Norway says the expert group's outcome is
+          enough to start negotiating an instrument, and the Review Conference
+          should mandate it.
+        quote: The consensus outcome in the GGE on LAWS provides a sufficient basis
+          for negotiations on an instrument to start.
+        date: 2026-10-09
+        url: https://docs-library.unoda.org/General_Assembly_First_Committee_-Eighty-First_session_(2026)/Norway.pdf
+        lang: en
+        translation: none
+        confidence: EXPLICIT
+        note: 'National statement, First Committee general debate. The next sentence
+          reads "The CCW Review Conference should mandate such negotiations." It
+          does not say whether the instrument should be binding or include prohibitions.
+
+          '
     provisional_note: 'Norway''s written statement to the Preparatory Committee,
-      Main Committee II segment, 8 September 2026. Not posted on the PrepCom statements
-      tab as of 2026-10-19 (only Austria, Bangladesh and Brazil posted). Alternative:
-      check the quotes against the UN Web TV audio at 1:29:53 of the 3rd meeting.
+      Main Committee II segment, 8 September 2026. Still not posted on the PrepCom
+      statements tab when checked on 2026-11-12 (only Austria, Bangladesh and Brazil
+      posted). Its October 2026 First Committee statement, in writing, backs a
+      negotiating mandate but does not mention prohibitions. Alternative: check
+      the quotes against the UN Web TV audio at 1:29:53 of the 3rd meeting.
 
       '
 
@@ -118,6 +137,7 @@ shift_events: []
 
 flags:
   - "HELD 2026-10-19 (packet item 11): the candidate LBI-BAN reading below stays approved: false; its evidence is machine transcripts, and ruling R1 bars a shift on transcripts alone, so the shift is not drafted. Revisit when Norway's written statement is posted."
+  - "RE-CHECKED 2026-11-12 (pre-conference run): the PrepCom written statement is still not posted (statements tab, meeting 80186; norway.no Geneva CCW page has nothing for 2026). New written evidence added to the candidate: the First Committee national statement of 9 October 2026 (nor-c1-81-general-debate-2026) calls the GGE outcome a sufficient basis to start negotiating an instrument and asks the Review Conference to mandate it. That is written support for a negotiating mandate, which fits the approved LBI-OPEN reading as well as LBI-BAN. The ban element (prohibitions, 'it is prohibited') still rests on machine transcripts alone, so R1 still bars the shift. Recommendation: keep held; no reading change during conference week."
   - "PROVENANCE RESOLVED 2026-08-24: primary retrieved from the UNODA Documents Library and read in full. The document URL is pinned and the quote is now verified verbatim against the primary. The retrieval CORRECTED the quote: the research capture had compressed 'international humanitarian law' to 'IHL', which is not what the statement says. Verified-primary status granted"
   - "DATE, for the analyst: the statement's own dateline reads 'Geneva, August 2024' with no day. The 2024-08-26 day comes from UNODA's filing of it as the second-session general statement. Kept as a dated day on publisher metadata; set date_precision: month if you would rather the site show only 'August 2024'"
   - "Seven-state elements paper co-authorship: sponsorship layer, enumeration bundle; never coding evidence by itself (no-inference rule)"
