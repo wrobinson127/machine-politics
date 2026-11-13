@@ -32,27 +32,27 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-ggelaws-cost-estimates",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-gge-mandate-proposal",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-draft-final-declaration",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-wp2-united-states",
-   "rendered": false,
+   "rendered": true,
    "state": "USA"
   },
   {

@@ -77,7 +77,7 @@ events:
     links:
       - label: "Estimated costs, 2027 expert group on autonomous weapons, CCW/CONF.VII/7"
         url: "https://docs.un.org/en/CCW/CONF.VII/7"
-    approved: false
+    approved: true    # analyst approval 2026-11-12, PR #22
 
   - id: revcon-gge-mandate-proposal
     date: 2026-10-23
@@ -95,7 +95,7 @@ events:
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/Enclosure_-_CCW_7th_Review_Conference_Proposal_GGE_LAWS_Mandate.pdf"
       - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
         url: "https://meetings.unoda.org/meeting/79323/documents"
-    approved: false
+    approved: true    # analyst approval 2026-11-12, PR #22
 
   - id: revcon-draft-final-declaration
     date: 2026-10-28
@@ -112,7 +112,7 @@ events:
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-Preparatory_Committee_for_the_Seventh_Review_Conference_(2026)/CCW_-_Draft_final_declaration.pdf"
       - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
         url: "https://meetings.unoda.org/meeting/79323/documents"
-    approved: false
+    approved: true    # analyst approval 2026-11-12, PR #22
 
   - id: revcon-wp2-united-states
     date: 2026-11-04
@@ -127,4 +127,4 @@ events:
     links:
       - label: "Working paper submitted by the United States, CCW/CONF.VII/WP.2, paras 4 and 5"
         url: "https://docs.un.org/en/CCW/CONF.VII/WP.2"
-    approved: false
+    approved: true    # analyst approval 2026-11-12, PR #22
