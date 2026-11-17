@@ -128,3 +128,40 @@ events:
       - label: "Working paper submitted by the United States, CCW/CONF.VII/WP.2, paras 4 and 5"
         url: "https://docs.un.org/en/CCW/CONF.VII/WP.2"
     approved: true    # analyst approval 2026-11-12, PR #22
+
+  # Drafted 2026-11-16 by the daily conference run. No official record of
+  # 16 November (statements or decisions) was posted on UNODA Meetings Place
+  # at drafting time; these two drafts were the new official items. Each was
+  # read in full on 2026-11-16 from the link given. approved: false until the
+  # analyst flips it.
+  - id: revcon-draft-final-declaration-nov13
+    date: 2026-11-13
+    kind: document
+    title: A new draft declaration leaves autonomous weapons blank
+    text: >
+      A new draft final declaration, listed by UNODA as submitted by the
+      "President-designate" on 13 November, welcomes the expert group's work.
+      Its paragraph on autonomous weapons, its first decision and the expert
+      group's place in the list of 2027 meetings are placeholders.
+    links:
+      - label: "Draft final declaration, CCW/CONF.VII/MC.I/CRP.1, paras 17, 34, 42(iii) and 61"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-MC.I-CRP.1_Draft_Final_Declaration.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-draft-final-document-nov13
+    date: 2026-11-13
+    kind: document
+    title: The draft final document gives autonomous weapons to Main Committee II
+    text: >
+      A draft final document, listed by UNODA as submitted by the
+      "President-designate" on 13 November, would give autonomous weapons
+      to Main Committee II. In the meeting agenda it annexes, the item on
+      autonomous weapons is a placeholder.
+    links:
+      - label: "Draft final document, CCW/CONF.VII/CRP.1, para 17 and Annex II, item 8"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1_Draft_Final_Report.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
