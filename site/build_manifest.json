@@ -140,9 +140,9 @@
    "state": null
   },
   {
-   "approved": true,
+   "approved": false,
    "kind": "page:corrections",
-   "rendered": true,
+   "rendered": false,
    "state": null
   },
   {
