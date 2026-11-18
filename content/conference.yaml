@@ -191,7 +191,7 @@ events:
         url: "https://webtv.un.org/en/asset/k13/k13tn4gno5"
       - label: "2nd meeting, 16 November 2026, UN Web TV"
         url: "https://webtv.un.org/en/asset/k1s/k1s9d0k0uc"
-    approved: false
+    approved: true    # analyst approval 2026-11-18, PR #24
 
   - id: revcon-meetings-nov17
     date: 2026-11-17
@@ -207,4 +207,4 @@ events:
         url: "https://webtv.un.org/en/asset/k17/k17gcm6px3"
       - label: "Conference statements, UNODA Meetings Place"
         url: "https://meetings.unoda.org/meeting/79323/statements"
-    approved: false
+    approved: true    # analyst approval 2026-11-18, PR #24

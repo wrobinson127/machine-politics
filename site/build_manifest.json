@@ -68,15 +68,15 @@
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-meetings-nov16",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-meetings-nov17",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
