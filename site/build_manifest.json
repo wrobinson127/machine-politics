@@ -57,6 +57,18 @@
   },
   {
    "approved": true,
+   "kind": "conference:revcon-draft-final-declaration-nov13",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
+   "kind": "conference:revcon-draft-final-document-nov13",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
    "state": null
