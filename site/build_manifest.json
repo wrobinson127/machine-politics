@@ -69,6 +69,18 @@
   },
   {
    "approved": true,
+   "kind": "conference:revcon-meetings-nov16",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
+   "kind": "conference:revcon-meetings-nov17",
+   "rendered": true,
+   "state": null
+  },
+  {
+   "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
    "state": null
