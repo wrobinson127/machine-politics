@@ -173,14 +173,16 @@ events:
   # posted no statements and no new documents at drafting time, so these two
   # entries state only what the UN Web TV listings state (date, meeting
   # number, length, agenda item). Each listing was read on 2026-11-17 from
-  # the link given. approved: false until the analyst flips it.
-  - id: revcon-plenary-nov16
+  # the link given. Wording tightened 2026-11-18 after the hub fact-check;
+  # the statements page and the Web TV listing were rechecked that day.
+  # approved: false until the analyst flips it.
+  - id: revcon-meetings-nov16
     date: 2026-11-16
     kind: background
-    title: Two plenary meetings on the opening day
+    title: UN Web TV lists two meetings on the opening day
     text: >
-      UN Web TV lists two plenary meetings on 16 November. The first, 1 hour
-      23 minutes long, is listed under the opening of the conference, the
+      UN Web TV lists two meetings of the conference on 16 November. The
+      first, 1 hour 24 minutes long, is listed under the opening of the conference, the
       confirmation of the nomination of the president-designate and the
       adoption of the agenda. The second, 9 minutes long, is listed as
       "Adoption of the agenda (continued)".
@@ -191,15 +193,15 @@ events:
         url: "https://webtv.un.org/en/asset/k1s/k1s9d0k0uc"
     approved: false
 
-  - id: revcon-plenary-nov17
+  - id: revcon-meetings-nov17
     date: 2026-11-17
     kind: background
-    title: One short plenary meeting, no statements posted
+    title: UN Web TV lists one 3-minute meeting on 17 November
     text: >
-      UN Web TV lists one plenary meeting on 17 November, the fourth, 3
-      minutes long, under the item "Adoption of the rules of procedure". By
-      the end of 17 November in Geneva, the official conference page had
-      posted no statements.
+      UN Web TV lists one meeting of the conference on 17 November, the
+      fourth, 3 minutes long, under the item "Adoption of the rules of
+      procedure". The third meeting is not listed on UN Web TV. When checked
+      on 18 November, the official conference page had posted no statements.
     links:
       - label: "4th meeting, 17 November 2026, UN Web TV"
         url: "https://webtv.un.org/en/asset/k17/k17gcm6px3"
