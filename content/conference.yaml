@@ -137,15 +137,18 @@ events:
   - id: revcon-draft-final-declaration-nov13
     date: 2026-11-13
     kind: document
-    title: A new draft declaration leaves autonomous weapons blank
+    title: A revised draft declaration still leaves its autonomous-weapons text open
     text: >
-      A new draft final declaration, listed by UNODA as submitted by the
-      "President-designate" on 13 November, welcomes the expert group's work.
-      Its paragraph on autonomous weapons, its first decision and the expert
-      group's place in the list of 2027 meetings are placeholders.
+      A revised draft final declaration, listed by UNODA as submitted by the
+      "President-designate" on 13 November, keeps its paragraph and its first
+      decision on autonomous weapons as placeholders. It now dates the other
+      2027 meetings, with a placeholder where an autonomous-weapons meeting
+      would go.
     links:
-      - label: "Draft final declaration, CCW/CONF.VII/MC.I/CRP.1, paras 17, 34, 42(iii) and 61"
+      - label: "Draft final declaration, CCW/CONF.VII/MC.I/CRP.1, paras 17, 34 and 42"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-MC.I-CRP.1_Draft_Final_Declaration.pdf"
+      - label: "Earlier draft, 28 October, para 17 and Decisions 1 and 4"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW_-_Draft_final_declaration.pdf"
       - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
         url: "https://meetings.unoda.org/meeting/79323/documents"
     approved: false
@@ -153,12 +156,12 @@ events:
   - id: revcon-draft-final-document-nov13
     date: 2026-11-13
     kind: document
-    title: The draft final document gives autonomous weapons to Main Committee II
+    title: The draft final document names Main Committee II as the committee for autonomous weapons
     text: >
       A draft final document, listed by UNODA as submitted by the
       "President-designate" on 13 November, would give autonomous weapons
-      to Main Committee II. In the meeting agenda it annexes, the item on
-      autonomous weapons is a placeholder.
+      to Main Committee II. In the agenda it proposes for the next meeting
+      of the parties, the item on autonomous weapons is a placeholder.
     links:
       - label: "Draft final document, CCW/CONF.VII/CRP.1, para 17 and Annex II, item 8"
         url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1_Draft_Final_Report.pdf"
