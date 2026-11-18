@@ -165,3 +165,41 @@ events:
       - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
         url: "https://meetings.unoda.org/meeting/79323/documents"
     approved: false
+
+  # Drafted 2026-11-17 by the daily conference run. UNODA Meetings Place had
+  # posted no statements and no new documents at drafting time, so these two
+  # entries state only what the UN Web TV listings state (date, meeting
+  # number, length, agenda item). Each listing was read on 2026-11-17 from
+  # the link given. approved: false until the analyst flips it.
+  - id: revcon-plenary-nov16
+    date: 2026-11-16
+    kind: background
+    title: Two plenary meetings on the opening day
+    text: >
+      UN Web TV lists two plenary meetings on 16 November. The first, 1 hour
+      23 minutes long, is listed under the opening of the conference, the
+      confirmation of the nomination of the president-designate and the
+      adoption of the agenda. The second, 9 minutes long, is listed as
+      "Adoption of the agenda (continued)".
+    links:
+      - label: "1st meeting, 16 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k13/k13tn4gno5"
+      - label: "2nd meeting, 16 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k1s/k1s9d0k0uc"
+    approved: false
+
+  - id: revcon-plenary-nov17
+    date: 2026-11-17
+    kind: background
+    title: One short plenary meeting, no statements posted
+    text: >
+      UN Web TV lists one plenary meeting on 17 November, the fourth, 3
+      minutes long, under the item "Adoption of the rules of procedure". By
+      the end of 17 November in Geneva, the official conference page had
+      posted no statements.
+    links:
+      - label: "4th meeting, 17 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k17/k17gcm6px3"
+      - label: "Conference statements, UNODA Meetings Place"
+        url: "https://meetings.unoda.org/meeting/79323/statements"
+    approved: false

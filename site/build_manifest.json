@@ -68,6 +68,18 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "conference:revcon-plenary-nov16",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-plenary-nov17",
+   "rendered": false,
+   "state": null
+  },
+  {
    "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
