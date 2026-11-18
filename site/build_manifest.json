@@ -56,15 +56,15 @@
    "state": "USA"
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-draft-final-declaration-nov13",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
-   "approved": false,
+   "approved": true,
    "kind": "conference:revcon-draft-final-document-nov13",
-   "rendered": false,
+   "rendered": true,
    "state": null
   },
   {
