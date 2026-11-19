@@ -208,3 +208,59 @@ events:
       - label: "Conference statements, UNODA Meetings Place"
         url: "https://meetings.unoda.org/meeting/79323/statements"
     approved: true    # analyst approval 2026-11-18, PR #24
+
+  # Drafted 2026-11-18 by the daily conference run. UNODA Meetings Place had
+  # posted no statements at drafting time (checked 00:15 UTC, 19 November).
+  # The two working papers were read in full on 2026-11-18 from the links
+  # given. approved: false until the analyst flips it.
+  - id: revcon-wp7-seven-states
+    date: 2026-11-18
+    kind: document
+    title: Seven states propose a one-year negotiation of a new protocol
+    text: >
+      Austria, Belgium, Brazil, Ireland, New Zealand, Panama and Mexico
+      submitted a working paper dated 18 November. UNODA lists it as
+      submitted on 17 November by "Mexico on behalf of a group of States".
+      It asks the conference to set "an explicit, clear, time-bound
+      negotiating mandate for a new Protocol" on autonomous weapons: a new
+      expert group that meets for 25 days in three sessions in 2027 and
+      sends a draft protocol to the 2027 meeting of the parties.
+    links:
+      - label: "Working paper submitted by Austria, Belgium, Brazil, Ireland, New Zealand, Panama and Mexico, CCW/CONF.VII/WP.7, paras 11, 12, 26, 30 and 31"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-WP.7.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-wp9-icrc
+    date: 2026-11-18
+    kind: document
+    title: The Red Cross urges a mandate to negotiate a new protocol
+    text: >
+      In a working paper dated 18 November, the International Committee of
+      the Red Cross urges the parties "to adopt a mandate to negotiate a new
+      Protocol to the Convention to regulate autonomous weapon systems". It
+      recommends a one-year mandate, with the draft protocol considered and
+      adopted by the 2027 meeting of the parties. It says the expert group's
+      final report "falls short of effectively responding" to the risks, but
+      that with the group's other work it is a "strong and sufficient basis"
+      to launch negotiations.
+    links:
+      - label: "Working paper submitted by the International Committee of the Red Cross, CCW/CONF.VII/WP.9, paras 46 to 48"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-WP.9.pdf"
+    approved: false
+
+  - id: revcon-no-plenary-nov18
+    date: 2026-11-18
+    kind: background
+    title: The official page lists no plenary for 18 November
+    text: >
+      Among its webcast links, the official conference page lists "Wednesday
+      (no plenary)". When checked at 00:15 UTC on 19 November, its
+      statements page had posted no statements.
+    links:
+      - label: "Conference overview, UNODA Meetings Place (Multimedia section)"
+        url: "https://meetings.unoda.org/meeting/79323"
+      - label: "Conference statements, UNODA Meetings Place"
+        url: "https://meetings.unoda.org/meeting/79323/statements"
+    approved: false

@@ -80,6 +80,24 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "conference:revcon-wp7-seven-states",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-wp9-icrc",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-no-plenary-nov18",
+   "rendered": false,
+   "state": null
+  },
+  {
    "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
