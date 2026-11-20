@@ -264,3 +264,66 @@ events:
       - label: "Conference statements, UNODA Meetings Place"
         url: "https://meetings.unoda.org/meeting/79323/statements"
     approved: false
+
+  # Drafted 2026-11-19 by the daily conference run. UNODA Meetings Place had
+  # posted no statements at drafting time (checked 00:07 UTC, 20 November).
+  # The revised draft final document, the 13 November draft and the Holy See
+  # paper were read in full on 2026-11-19 from the links given. The revised
+  # draft is a draft: it also pre-writes adoptions for 20 November, which
+  # are not reported here. approved: false until the analyst flips it.
+  - id: revcon-draft-final-document-rev1
+    date: 2026-11-19
+    kind: document
+    title: The revised draft final document says the agenda was not adopted
+    text: >
+      A revised draft final document, listed by UNODA as submitted by the
+      "President" on 19 November, says the parties "were not able to adopt
+      the agenda" or the rules of procedure, "as no consensus on this matter
+      was reached". It does not include the 13 November draft's paragraphs
+      on the two main committees. Its decision on autonomous weapons is
+      still a placeholder, as are the 2027 autonomous-weapons meeting and
+      the agenda item for the 2027 meeting of the parties.
+    links:
+      - label: "Draft final document, CCW/CONF.VII/CRP.1/Rev.1, para 16, Decision 1 (para 48), Decision 7 (para 56 iii) and Annex III, item 8"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1-Rev.1_Draft_Final_Document.pdf"
+      - label: "Earlier draft, 13 November, CCW/CONF.VII/CRP.1, paras 14, 15, 17 to 19, 30, 31 and 35"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1_Draft_Final_Report.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-wp10-holy-see
+    date: 2026-11-19
+    kind: document
+    title: The Holy See calls for a legally binding agreement and a moratorium
+    text: >
+      In a working paper dated 19 November, the Holy See says it "is
+      convinced that a legally binding agreement to address the questions
+      raised by LAWS", joined by all states, would advance security for all.
+      LAWS is the paper's short form for lethal autonomous weapons systems.
+      In the meantime it "reiterates its call for a moratorium on the
+      development and use of LAWS", with a prohibition on those that target
+      human beings or can be expected to cause accidental human casualties.
+    links:
+      - label: "Working paper submitted by the Holy See, CCW/CONF.VII/WP.10, para 21"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-WP.10.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-meeting-nov19
+    date: 2026-11-19
+    kind: background
+    title: UN Web TV lists a plenary meeting on 19 November
+    text: >
+      UN Web TV lists the conference's 8th meeting on 19 November, 3 hours
+      20 minutes long, as a "Meeting of the Plenary" under the item
+      "Consideration and adoption of the final document". When checked at
+      00:07 UTC on 20 November, the official conference page had posted no
+      statements.
+    links:
+      - label: "8th meeting, 19 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k12/k121fnd2fe"
+      - label: "Conference statements, UNODA Meetings Place"
+        url: "https://meetings.unoda.org/meeting/79323/statements"
+    approved: false
