@@ -98,6 +98,24 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "conference:revcon-draft-final-document-rev1",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-wp10-holy-see",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-meeting-nov19",
+   "rendered": false,
+   "state": null
+  },
+  {
    "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
