@@ -116,6 +116,30 @@
    "state": null
   },
   {
+   "approved": false,
+   "kind": "conference:revcon-draft-final-document-rev2",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-wp18-nam",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-wp8-ihlyi",
+   "rendered": false,
+   "state": null
+  },
+  {
+   "approved": false,
+   "kind": "conference:revcon-meetings-nov20",
+   "rendered": false,
+   "state": null
+  },
+  {
    "approved": true,
    "kind": "endorsement_instrument:us-political-declaration",
    "rendered": true,
