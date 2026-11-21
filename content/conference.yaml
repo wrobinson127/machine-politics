@@ -327,3 +327,90 @@ events:
       - label: "Conference statements, UNODA Meetings Place"
         url: "https://meetings.unoda.org/meeting/79323/statements"
     approved: false
+
+  # Drafted 2026-11-20 by the daily conference run. UNODA Meetings Place had
+  # posted no statements and no final document (CCW/CONF.VII/11) at drafting
+  # time (checked 00:10 UTC, 21 November). The second revised draft, the 19
+  # November draft and the two working papers were read in full on 2026-11-20
+  # from the links given. The revised draft is a draft: it pre-writes
+  # adoptions for 20 November, which are not reported here. approved: false
+  # until the analyst flips it.
+  - id: revcon-draft-final-document-rev2
+    date: 2026-11-20
+    kind: document
+    title: The 20 November draft says the conference could not conduct a formal review
+    text: >
+      A second revised draft final document, dated 20 November and listed by
+      UNODA as submitted by the "President", adds to its paragraph on the
+      agenda. With the agenda and the rules of procedure not adopted, the
+      draft says, the preamble and declaratory part of the final declaration
+      "were not adopted" and the conference "was not in a position to conduct
+      a formal review" of the convention and its protocols. As in the 19
+      November draft, Decision 1 reads "[LAWS]", and "[Placeholder LAWS]"
+      stands in the list of 2027 activities and in the agenda proposed for
+      the 2027 meeting of the parties.
+    links:
+      - label: "Draft final document, CCW/CONF.VII/CRP.1/Rev.2, para 16, Decision 1 (para 47), Decision 7 (para 54 iii) and Annex III, item 8"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1-Rev.2.pdf"
+      - label: "Earlier draft, 19 November, CCW/CONF.VII/CRP.1/Rev.1, para 16, Decision 1 (para 48), Decision 7 (para 56 iii) and Annex III, item 8"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-CRP.1-Rev.1_Draft_Final_Document.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-wp18-nam
+    date: 2026-11-20
+    kind: document
+    title: The Non-Aligned Movement group sees an urgent need to pursue a legally binding instrument
+    text: >
+      A working paper dated 20 November, submitted by Uganda on behalf of the
+      Group of the Non-Aligned Movement and other states, says "there is an
+      urgent need to pursue a legally binding instrument under the Convention
+      that will contain prohibitions and regulations" on autonomous weapons.
+      It expects this to be reflected in a "strengthened mandate" for the
+      expert group, and says the conference is an opportunity to agree that
+      mandate by consensus.
+    links:
+      - label: "Working paper submitted by Uganda on behalf of the Group of the Non-Aligned Movement and other States, CCW/CONF.VII/WP.18, paras 7 and 10"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-WP.18.pdf"
+      - label: "Conference document list, UNODA Meetings Place (submit date and author columns)"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
+
+  - id: revcon-wp8-ihlyi
+    date: 2026-11-20
+    kind: document
+    title: A youth initiative asks for a one-year negotiating mandate
+    text: >
+      In a working paper dated 20 November, the International Humanitarian
+      Law & Youth Initiative, which calls the paper a "youth-led civil
+      society contribution", calls on the conference "to support moving
+      towards negotiations on a legally binding international instrument
+      regulating LAWS". LAWS is the paper's short form for lethal autonomous
+      weapon systems. It proposes an initial negotiating period of one year.
+    links:
+      - label: "Working paper submitted by the International Humanitarian Law & Youth Initiative, CCW/CONF.VII/WP.8, paras 1, 5, 11, 12 and 38"
+        url: "https://docs-library.unoda.org/Convention_on_Certain_Conventional_Weapons_-SeventhReview_Conference_(2026)/CCW-CONF.VII-WP.8.pdf"
+    approved: false
+
+  - id: revcon-meetings-nov20
+    date: 2026-11-20
+    kind: background
+    title: UN Web TV lists two plenary meetings on 20 November
+    text: >
+      UN Web TV lists the conference's 9th and 10th meetings on 20 November,
+      about 1 hour 17 minutes and 2 hours 38 minutes long. It describes each
+      as a "Meeting of the Plenary" under the item "Consideration and
+      adoption of the final document (continued)". When checked at 00:10 UTC
+      on 21 November, the official conference page had posted no statements
+      and no final document. The 20 November draft was the latest text.
+    links:
+      - label: "9th meeting, 20 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k1n/k1nc42osbz"
+      - label: "10th meeting, 20 November 2026, UN Web TV"
+        url: "https://webtv.un.org/en/asset/k1o/k1o8tyt1rk"
+      - label: "Conference statements, UNODA Meetings Place"
+        url: "https://meetings.unoda.org/meeting/79323/statements"
+      - label: "Conference document list, UNODA Meetings Place"
+        url: "https://meetings.unoda.org/meeting/79323/documents"
+    approved: false
